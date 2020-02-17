@@ -1,27 +1,41 @@
-# UiKitSampleApp
+CometChat Kitchen Sink Sample App (built using **CometChat UIKit**) is a fully functional messaging app capable of **one-on-one** (private) and **group** messaging along with recent conversations. This sample app enables users to send **text** and **multimedia messages like  images, documents.**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+## Table of Contents
 
-## Development server
+1. [Installation](#installation)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. [Running the sample app](rRunning-the-sample-app)
 
-## Code scaffolding
+3. [Learn more about UI-Kit](#learn-more-about-ui-kit)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. [Troubleshooting](#troubleshooting)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Installation
 
-## Running unit tests
+1. Simply clone the project from [angular-chat-ui-kit-app](https://github.com/cometchat-pro-samples/angular-uikit-sampleapp.git) repository. After cloning the repository:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+# Running the sample app
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To Run to sample app you have to do the following changes by Adding **APP_ID**, **API_KEY** and  **REGION_CODE**
 
-## Further help
+   You can obtain your  *APP_ID*, *API_KEY* and *REGION_CODE* from [CometChat-Pro Dashboard](https://app.cometchat.io/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+   - Open the project.
+
+   - Modify `APP_ID` and `API_KEY` and `REGION` with your own (update the `CONSTS.ts` file) .
+
+   -  Select demo users or enter the **UID** at the time of login once the app is launched.
+
+Build and run the Sample App.
+
+# Learn more about UI-Kit
+
+Learn more about how to integrate [UI Kit](https://github.com/cometchat-pro-samples/angular-uikit) inside your app.
+
+
+# Troubleshooting
+
+Facing any issues while integrating or installing the UI Kit please <a href="https://forum.cometchat.com/"> visit our forum</a>.
+
