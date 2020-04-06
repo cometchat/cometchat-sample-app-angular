@@ -1,20 +1,28 @@
-<div style="height:100%;width: 100%;">
-    <cometchat-loader *ngIf="loader">
+<div class="cometchat-grouplist-container" (scroll)="onScroll($event)">
+  <div class="cometchat-grouplist-header-container">
+    <p class="cometchat-grouplist-header-text">Groups</p>
+    <p (click)=createGroup() class="cometchat-create-group-icon"></p>
+  </div>
 
-    </cometchat-loader>
-    <div class="ccl-left-panel-head-wrap">
-        <h4 class="ccl-left-panel-head-ttl">Groups</h4>
-        <!-- <a href="javascript:;" class="ccl-left-panel-head-edit-link"></a> -->
-    </div>
+  <input class="cometchat-groups-search-input" type="text" placeholder="Search" (input)='onSearchChange($event)' />
 
-    <search style="height:max-content;" (searchModelChange)="updateSearchModel($event)"></search>
+  <ul *ngIf="groups?.length > 0" class="cometchat-grouplist-decoration">
+    <li *ngFor="let group of groups" (click)="onItemClick(group,'group')">
+      <cometchat-group-view group={{JSONParser.stringify(group)}}
+        [selected]="((selectedGroup && selectedGroup.guid==group.guid)?true: false)">
+      </cometchat-group-view>
+      <div class="cometchat-grouplist-seperator"></div>
+    </li>
+  </ul>
 
+  <div *ngIf="groups?.length==0" class="cometchat-grouplist-decorator-message-container">
+    <p class="cometchat-grouplist-decorator-message">
+      {{messageToDisplay}}
+    </p>
+  </div>
+</div>
 
-    <div class="chat-ppl-list-ext-wrap" (scroll)="onScroll($event)" style="height: calc(100% - 160px); width: 100%;">
-        <div class="chat-ppl-list-wrap" *ngIf="groups?.length > 0">
-            <div class="chat-ppl-listitem clearfix" *ngFor="let group of groups;" (click)="onGroupSelect(group)">
-                <group-view class="full-width" group={{JSONParser.stringify(group)}}></group-view>
-            </div>
-        </div>
-    </div>
+<div *ngIf="showCreateGroup">
+  <cometchat-create-group-screen (actionPerformed)=handleGroupCreationActions($event) showPopUp={{showCreateGroup}}>
+  </cometchat-create-group-screen>
 </div>

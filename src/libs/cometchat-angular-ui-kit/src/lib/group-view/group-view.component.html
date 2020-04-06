@@ -1,10 +1,14 @@
-<div class="chat-ppl-thumbnail-wrap grp-chat-ppl-thumbnail-wrap">
-    <avatar image={{group.avatar}}  name={{group.name}} cornerRadius="50%" borderColor="#CCC" borderWidth="1px">
-    </avatar>
+<div class="cometchat-group-item" [ngClass]="selected?'cometchat-group-selected':''">
+  <cometchat-avatar class=" cometchat-group-avatar" image={{group.icon}} cornerRadius="50%" borderColor="#CCC"
+    borderWidth="1px">
+  </cometchat-avatar>
+
+  <div class="cometchat-group-details">
+    <p class="cometchat-group-name">
+      {{group.name}}
+    </p>
+    <p class="cometchat-group-desc">
+      {{group.description?group.description:group.type}}
+    </p>
+  </div>
 </div>
-<div class="chat-ppl-listitem-dtls">
-    <span class="chat-ppl-listitem-name">{{group.name}}</span>
-    <p class="chat-ppl-listitem-txt ccl-secondary-color">{{group.guid}}</p>
-</div>
-<!-- <a href="javascript:void(0);" class="chat-ppl-listitem-pin" *ngIf="!group.membersCount"></a> -->
-<!-- <span class="chat-ppl-listitem-msg-cnt" *ngIf="group.membersCount">{{group.membersCount}}</span> -->

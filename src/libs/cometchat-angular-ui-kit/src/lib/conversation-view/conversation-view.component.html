@@ -1,11 +1,22 @@
-<div class="chat-ppl-thumbnail-wrap">
-    <avatar image="{{image}}" name={{name}} cornerRadius="50%" borderColor="#CCC" borderWidth="1px">
-    </avatar>
+<div class="cometchat-conversation-item-container">
+  <div class="cometchat-conversation-item" [ngClass]="{conversationSelected: (selected)}">
+    <cometchat-avatar class="cometchat-conversation-avatar" image="{{image}}" cornerRadius="50%" borderColor="#CCC"
+      borderWidth="1px">
+    </cometchat-avatar>
+    <status-indicator class="status-indicator" *ngIf="conversationType==='user'" status={{status}}>
+
+    </status-indicator>
+    <div class="cometchat-conversation-item-details">
+      <p class="cometchat-conversation-name">
+        {{name}}
+      </p>
+      <p class="cometchat-conversation-text">
+        {{text}}
+      </p>
+    </div>
+    <div class="cometchat-conversation-unread-count" *ngIf="count > 0">
+      <cometchat-badge count={{count}} backgroundColor="#3399FF" textColor="#FFF">
+      </cometchat-badge>
+    </div>
+  </div>
 </div>
-<div class="chat-ppl-listitem-dtls">
-    <span class="chat-ppl-listitem-name">{{name}}</span>
-    <p class="chat-ppl-listitem-txt ccl-secondary-color">{{text}}</p>
-</div>
-<!-- <span class="chat-ppl-listitem-time ccl-secondary-color">8:46 PM</span> -->
-<!-- <a href="javascript:void(0);" class="chat-ppl-listitem-pin" *ngIf="count < 1"></a> -->
-<badgecount style="position: absolute;right: 16px;" *ngIf="count > 0" count={{count}}></badgecount>

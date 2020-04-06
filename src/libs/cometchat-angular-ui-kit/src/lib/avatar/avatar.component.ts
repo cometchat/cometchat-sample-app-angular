@@ -1,41 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+// import Avatars from '@dicebear/avatars';
+// import sprites from '@dicebear/avatars-human-sprites';
+
 
 @Component({
-  selector: 'avatar',
+  selector: 'cometchat-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
+export class AvatarComponent implements OnChanges {
+  @Input() image: any;
+  @Input() cornerRadius?: any;
+  @Input() borderWidth?: any;
+  @Input() borderColor?: any;
+  constructor(private sanitizer: DomSanitizer, private cdRef: ChangeDetectorRef) { }
 
-export class AvatarComponent implements OnInit {
-
-  @Input() image: string = 'https://data-us.cometchat.io/assets/images/avatars/captainamerica.png';
-  @Input() name: string;
-  @Input() cornerRadius?: string;
-  @Input() borderWidth?: string;
-  @Input() borderColor?: string;
-
-  bgColor;
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.image, "avatar");
-    let color = Math.floor(0x1000000 * Math.random()).toString(16);
-    this.bgColor = '#' + ('000000' + color).slice(-6);
+  ngOnChanges() {
+    this.image = this.sanitizer.bypassSecurityTrustResourceUrl(this.image);
   }
 
   getMyStyle = () => {
     return {
       border:
         (this.borderWidth ? this.borderWidth : '1px') + ' solid ' + (this.borderColor ? this.borderColor : '#AAA'),
-      'border-radius': this.cornerRadius ? this.cornerRadius : '0px'
-    }
+      'border-radius': this.cornerRadius ? this.cornerRadius : '50%'
+    };
   }
-
-  getRandomColor() {
-    return this.bgColor;
-  }
-
-
-
-
 }

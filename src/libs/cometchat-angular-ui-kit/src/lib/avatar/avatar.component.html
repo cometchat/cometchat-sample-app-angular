@@ -1,4 +1,3 @@
-<div class='chat-contact-listitem-thum'>
-    <img *ngIf="image" [src]="image" />
-    <div *ngIf="!image && name" class="default-profile" [ngStyle]="{'background-color': getRandomColor()}">{{name.charAt(0)}}</div>
-</div>
+<div class="avatar" [ngStyle]="getMyStyle()">
+    <img [src]=image alt="">
+</div> 

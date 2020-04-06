@@ -1,22 +1,24 @@
-<div style="height:100%;width: 100%;">
-    <cometchat-loader *ngIf="loader">
+<div class="cometchat-conversation-list-container" (scroll)="onScroll($event)">
+  <div class="cometchat-conversation-list-header-text-container">
+    <p class="cometchat-conversation-list-header-text">Chats</p>
+  </div>
 
-    </cometchat-loader>
-    <div class="ccl-left-panel-head-wrap">
-        <h4 class="ccl-left-panel-head-ttl">Chats</h4>
-        <!-- <a href="javascript:;" class="ccl-left-panel-head-edit-link"></a> -->
-    </div>
-    <!-- <search [(searchModel)]="searchModel"></search> -->
 
-    <div class="chat-ppl-list-ext-wrap chat-contact-list-ext-wrap" (scroll)="onScroll($event)"
-        style="height: calc(100% - 160px); width: 100%">
-        <div class="chat-ppl-list-wrap" *ngIf="conversations?.length > 0">
+  <ul *ngIf="conversations?.length > 0" class="cometchat-conversation-list-decoration">
 
-            <div class="chat-ppl-listitem clearfix" *ngFor="let conversation of conversations "
-                (click)="onItemClicked(conversation)">
-                <conversation-view class="full-width" *ngIf="conversation"
-                    conversation={{JSONParser.stringify(conversation)}}></conversation-view>
-            </div>
-        </div>
-    </div>
+    <li *ngFor="let conversation of conversations" (click)="onConversationClick(conversation)">
+      <cometchat-conversation-view *ngIf="conversation"
+        [selected]="(conversation.conversationId === selectedConversation?.conversationId)"
+        conversation={{JSONParser.stringify(conversation)}}></cometchat-conversation-view>
+
+      <div class="cometchat-conversation-list-seperator" *ngIf="conversation"></div>
+    </li>
+
+  </ul>
+
+  <div *ngIf="conversations?.length==0" class="cometchat-conversation-list-decorator-message-container">
+    <p class="cometchat-conversation-list-decorator-message">
+      {{decoratorMessage}}
+    </p>
+  </div>
 </div>

@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-cometchat-angular-ui-kit',
-  template: `
-    <p>
-      cometchat-angular-ui-kit works!
-    </p>
-  `,
-  styles: []
+  selector: 'app-cometchat-angular-ui-kit',
+  templateUrl: './cometchat-angular-ui-kit.component.html',
+  styleUrls: ['./cometchat-angular-ui-kit.component.scss']
 })
 export class CometchatAngularUiKitComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  friendsOnly: boolean = false
+  ngOnInit(): void {
+    const params = new URLSearchParams(location.search);
+    if (params.get('friendsOnly')) {
+      this.friendsOnly = true;
+    }
   }
-
 }

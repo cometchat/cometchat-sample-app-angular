@@ -1,126 +1,73 @@
-.chat-ppl-thumbnail-wrap {
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    margin-right: 7px;
-    float: left;
-    img {
-        display: block;
-        border-radius: 18px;
-        overflow: hidden;
-        width: 36px;
-    }
+@import "./../../styles.scss";
+@include font-family;
+
+.cometchat-conversation-item {
+  display: flex;
+  background: #fff;
+  padding: 8px;
+  overflow: hidden;
+  max-width: calc(100% - 10px);
+  width: calc(100% - 10px);
+  display: flex;
 }
 
-.chat-ppl-thumbnail-wrap.grp-chat-ppl-thumbnail-wrap {
-	img {
-		width: 24px;
-		position: absolute;
-		display: inline-block;
-		&:first-child {
-			top: 0;
-			left: 0;
-		}
-		&:nth-child(2) {
-			bottom: 0;
-			right: 0;
-		}
-	}
+.cometchat-conversation-avatar {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.conversationSelected {
+  background: darken(#fff, $amount: 10%);
 }
 
-.chat-ppl-listitem.add-member {
-	.chat-ppl-thumbnail-wrap {
-		padding: 8px;
-		img {
-			width: 20px;
-		}
-	}
+.cometchat-conversation-item:hover {
+  background: darken(#fff, $amount: 10%);
+  cursor: pointer;
 }
 
-.chat-ppl-listitem-dtls {
-	display: inline-block;
-	// width: 110px;
-	padding-bottom: 14px;
-	border-bottom: 1px solid #f7f7f7;
-	width: calc(100% - 43px);
-}
-.chat-ppl-listitem-name {
-	font-size: 15px;
-	font-weight: 600;
-	letter-spacing: -.1px;
-	display: block;
-	// max-width: 147px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	text-transform: capitalize;
-	width: 84%;
-	max-width: none;
-	display: inline-block;
-	vertical-align: middle;
+.cometchat-conversation-item-details {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 10px;
+  text-transform: capitalize;
+  color: #333;
+  max-width: 75%;
+  width: 75%;
 }
 
-
-.chat-ppl-listitem-txt {
-	margin: 0;
-	font-size: 13px;
-	max-width: 176px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	letter-spacing: -0.1px;
-	line-height: 20px;
+.cometchat-conversation-name,
+.cometchat-conversation-text {
+  margin: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.chat-ppl-listitem-pin {
-	display: block;
-	width: 16px;
-	height: 17px;
-	background: url(../../assets/images/svg/chat-pin-grey-icon.svg)no-repeat center;
-	position: absolute;
-	right: 16px;
-	top: 33px;
-  }
-
-
-.chat-ppl-listitem-msg-cnt {
-	display: block;
-	font-size: 12px;
-	width: 16px;
-	height: 16px;
-	border-radius: 8px;
-	background-color: #39f;
-	color: #fff;
-	letter-spacing: -.1px;
-	text-align: center;
-	font-weight: 600;
-	position: absolute;
-	right: 16px;
-	top: 33px;
+.cometchat-conversation-name {
+  text-transform: capitalize;
+  font-weight: 600;
+  color: #141414;
+  display: flex;
+  font-size: 15px;
 }
 
+.cometchat-conversation-text {
+  color: #888;
+  font-weight: 400;
+  font-size: 13px;
+  max-width: 80%;
+}
 
-// .chat-ppl-listitem-txt {
-// 	padding-left: 23px;
-// }
-.chat-ppl-listitem-txt.incoming {
-	background: url(../../assets/images/svg/incoming-call-grey-icon.svg) no-repeat left center;
+.cometchat-conversation-item-container {
+  display: flex;
 }
-.chat-ppl-listitem-txt.video-incoming {
-	background: url(../../assets/images/svg/incoming-call-video-grey-icon.svg) no-repeat left center;
+
+.cometchat-conversation-unread-count {
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
-.chat-ppl-listitem-txt.outgoing {
-	background: url(../../assets/images/svg/outgoing-call-grey-icon.svg) no-repeat left center;
-}
-.chat-ppl-listitem-txt.missed {
-	background: url(../../assets/images/svg/missed-call-grey-icon.svg) no-repeat left center;
-}
-.del-call-link {
-	width: 14px;
-	height: 18px;
-	background: url(../../assets/images/svg/delete-grey-icon.svg) no-repeat center;
-	position: absolute;
-	right: 16px;
-	top: 25px;
-	display: none;
+.status-indicator {
+  position: relative;
+  right: 10px;
+  bottom: -10px;
 }

@@ -7,31 +7,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StatusIndicatorComponent implements OnInit {
 
-  @Input() cornerRadius = '50%';
-  @Input() borderWidth = '2px';
-  @Input() borderColor = '#EEE';
-  @Input() color = '#00FF00';
-  @Input() status = '';
-
+  @Input() cornerRadius: string;
+  @Input() borderWidth: string;
+  @Input() borderColor: string;
+  @Input() color: string;
+  @Input() status: string = 'offline';
+  @Input() width: string;
+  @Input() height: string;
+  @Input() background: string;
   constructor() { }
 
   ngOnInit() {
   }
 
   getMyStyle = () => {
-    if (this.status === 'offline') {
-      return {
-        border:
-          (this.borderWidth ? this.borderWidth : '1px') + ' solid ' + (this.borderColor ? this.borderColor : '#AAA'),
-        width: '15px', height: '15px', background: '#555', 'border-radius': this.cornerRadius
-      };
-    } else {
-      return {
-        border:
-          (this.borderWidth ? this.borderWidth : '1px') + ' solid ' + (this.borderColor ? this.borderColor : '#AAA'),
-        width: '15px', height: '15px', background: this.color, 'border-radius': this.cornerRadius
-      };
-    }
 
+    return {
+      border:
+        this.borderWidth + ' solid ' + this.borderColor + ' ' + this.borderColor,
+      width: this.width, height: this.height, background: this.background, 'border-radius': this.cornerRadius
+    };
   }
 }
