@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <button type="button" (click)="onLogin('superhero1')">superhero1</button>
+        <button type="button" (click)="onLogin('superhero2')">superhero2</button>
+        <button type="button" (click)="onLogin('superhero3')">superhero3</button>
+        <button type="button" (click)="onLogin('superhero4')">superhero4</button>
+        <button type="button" (click)="onLogin('superhero5')">superhero5</button>
+    </div>
+
+    <br>
+
+    <input type="text"   [(ngModel)]="userInput">
+    <button type="button" (click)="onLogin(userInput)">Login!</button>
+    
+</div>
+
+
