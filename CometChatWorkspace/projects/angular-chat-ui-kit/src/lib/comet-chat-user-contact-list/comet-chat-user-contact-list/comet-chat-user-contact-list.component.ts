@@ -11,6 +11,8 @@ export class CometChatUserContactListComponent implements OnInit {
   usersRequest;
   timeout;
   @Input() friendsOnly = false;
+  defaultAvatarImage =
+    "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
 
   constructor() {}
 
