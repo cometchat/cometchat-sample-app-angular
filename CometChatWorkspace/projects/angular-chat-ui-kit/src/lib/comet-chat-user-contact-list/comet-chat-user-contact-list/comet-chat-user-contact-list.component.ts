@@ -7,17 +7,18 @@ import { CometChat } from "@cometchat-pro/chat";
   styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })
 export class CometChatUserContactListComponent implements OnInit {
+  @Input() friendsOnly = false;
+
   usersList = [];
   usersRequest;
   timeout;
-  @Input() friendsOnly = false;
   defaultAvatarImage =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
 
   constructor() {}
 
   ngOnInit() {
-    console.log(`friends only status is `, this.friendsOnly);
+    //console.log(`friends only status is `, this.friendsOnly);
 
     this.usersRequest = new CometChat.UsersRequestBuilder()
       .friendsOnly(this.friendsOnly)
@@ -26,7 +27,7 @@ export class CometChatUserContactListComponent implements OnInit {
 
     let user = CometChat.getLoggedinUser().then(
       (user) => {
-        console.log("Inside librart user details:", { user });
+        //console.log("Inside library user details:", { user });
         this.fetchNextContactList();
       },
       (error) => {
@@ -40,7 +41,7 @@ export class CometChatUserContactListComponent implements OnInit {
    * @param String searchKey
    */
   searchUsers(searchKey) {
-    console.log("search user based on key = ", searchKey);
+    //console.log("search user based on key = ", searchKey);
 
     if (this.timeout) {
       clearTimeout(this.timeout);
@@ -48,7 +49,7 @@ export class CometChatUserContactListComponent implements OnInit {
 
     let val = searchKey;
     this.timeout = setTimeout(() => {
-      console.log("Searching for user");
+      //console.log("Searching for user");
 
       //Empty Intial User List before searching user list according to search key
       this.usersList = [];
