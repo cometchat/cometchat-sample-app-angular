@@ -1,16 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CometChatUserContactListComponent } from './comet-chat-user-contact-list/comet-chat-user-contact-list.component';
-import { FormsModule } from '@angular/forms';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { CometChatUserContactListComponent } from "./comet-chat-user-contact-list/comet-chat-user-contact-list.component";
 
 @NgModule({
   declarations: [CometChatUserContactListComponent],
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-  exports : [CometChatUserContactListComponent]
+  imports: [CommonModule],
+  exports: [CometChatUserContactListComponent],
 })
-export class CometChatUserContactListModule { }
+export class CometChatUserContactListModule {}

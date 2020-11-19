@@ -9,7 +9,6 @@ import { CometChat } from "@cometchat-pro/chat";
 export class CometChatUserContactListComponent implements OnInit {
   usersList;
   usersRequest;
-  searchKey: String;
   timeout;
   friendsOnly = false;
 

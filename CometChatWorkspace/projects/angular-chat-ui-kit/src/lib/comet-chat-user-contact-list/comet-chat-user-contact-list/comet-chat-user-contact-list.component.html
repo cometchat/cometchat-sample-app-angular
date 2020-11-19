@@ -1,6 +1,2 @@
 <p>Contact Screen Component</p>
-<input
-  type="text"
-  [(ngModel)]="searchKey"
-  (ngModelChange)="searchUsers(searchKey)"
-/>
+<input #search type="text" (keyup)="searchUsers(search.value)" />
