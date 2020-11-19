@@ -1,9 +1,11 @@
 <div>
   <p>Contact Screen Component</p>
   <input #search type="text" (keyup)="searchUsers(search.value)" />
-  <ul>
-    <li *ngFor="let user of usersList" (onscroll)="handleScroll($event)">
-      <div>{{ user.name }}</div>
-    </li>
-  </ul>
+  <div class="contactListStyle" (scroll)="handleScroll($event)">
+    <ul>
+      <li *ngFor="let user of usersList">
+        <div>{{ user.name }}</div>
+      </li>
+    </ul>
+  </div>
 </div>

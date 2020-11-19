@@ -59,15 +59,19 @@ export class CometChatUserContactListComponent implements OnInit {
     }, 500);
   }
 
-  handleScroll = (e) => {
+  /**
+   * If User scrolls to the bottom of the current Contact list than fetch next items of the contact list and append
+   * @param Event e
+   */
+  handleScroll(e) {
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
 
     console.log("reached bottom ", bottom);
 
-    //if (bottom) this.fetchNextContactList();
-  };
+    if (bottom) this.fetchNextContactList();
+  }
 
   /**
    * Get List of users that are contacts of the current user
