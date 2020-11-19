@@ -7,7 +7,7 @@ import { CometChat } from "@cometchat-pro/chat";
   styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })
 export class CometChatUserContactListComponent implements OnInit {
-  usersList;
+  usersList = [];
   usersRequest;
   timeout;
   friendsOnly = false;
@@ -46,6 +46,9 @@ export class CometChatUserContactListComponent implements OnInit {
     this.timeout = setTimeout(() => {
       console.log("Searching for user");
 
+      //Empty Intial User List before searching user list according to search key
+      this.usersList = [];
+
       this.usersRequest = new CometChat.UsersRequestBuilder()
         .friendsOnly(this.friendsOnly)
         .setSearchKeyword(searchKey)
@@ -56,6 +59,16 @@ export class CometChatUserContactListComponent implements OnInit {
     }, 500);
   }
 
+  handleScroll = (e) => {
+    const bottom =
+      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
+      Math.round(e.currentTarget.clientHeight);
+
+    console.log("reached bottom ", bottom);
+
+    //if (bottom) this.fetchNextContactList();
+  };
+
   /**
    * Get List of users that are contacts of the current user
    *
@@ -65,7 +78,7 @@ export class CometChatUserContactListComponent implements OnInit {
       (userList) => {
         /* userList will be the list of User class. */
         console.log("User list received:", userList);
-        this.usersList = userList;
+        this.usersList = [...this.usersList, ...userList];
         /* retrived list can be used to display contact list. */
       },
       (error) => {
