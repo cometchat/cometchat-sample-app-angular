@@ -8,12 +8,21 @@ import { CometChat } from '@cometchat-pro/chat';
 })
 export class CometChatUserContactListComponent implements OnInit {
 
-  usersRequest = new CometChat.UsersRequestBuilder().setLimit(60).build();
+  
   usersList;
+  usersRequest;
+  searchKey : String;
+  timeout;
+  friendsOnly = false;
+  
 
   constructor() { }
 
   ngOnInit() {
+
+    this.usersRequest = new CometChat.UsersRequestBuilder().friendsOnly(this.friendsOnly).setLimit(60).build();
+
+
     let user = CometChat.getLoggedinUser().then(
       user => {
         console.log("Inside librart user details:", { user });
@@ -23,6 +32,36 @@ export class CometChatUserContactListComponent implements OnInit {
         console.log("error getting details:", { error });
       }
     );
+
+
+  }
+
+
+  /**
+	 * Search User Based on their Name
+	 * @param String searchKey
+	*/
+  serchUsers(searchKey){
+
+    console.log('search user based on key = ', searchKey);
+
+
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+
+    let val = searchKey;
+    this.timeout = setTimeout(() => {
+
+      console.log('Searching for user');
+
+      this.usersRequest = new CometChat.UsersRequestBuilder().friendsOnly(this.friendsOnly).setSearchKeyword(searchKey).setLimit(30).build();
+
+      this.fetchNextContactList();
+      
+    }, 500)
+
+
   }
 
   /**
