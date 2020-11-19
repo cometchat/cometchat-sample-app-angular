@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
 
 
    /**
-	 * Get webApp Info and businessIDs from token data
+	 * Logout the user that is currently logged in
 	 * @param 
 	*/
  onLogout(){
