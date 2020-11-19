@@ -41,7 +41,7 @@ export class CometChatUserContactListComponent implements OnInit {
 	 * Search User Based on their Name
 	 * @param String searchKey
 	*/
-  serchUsers(searchKey){
+  searchUsers(searchKey){
 
     console.log('search user based on key = ', searchKey);
 
