@@ -3,6 +3,9 @@
   <input #search type="text" (keyup)="searchUsers(search.value)" />
   <div class="contactListStyle" (scroll)="handleScroll($event)">
     <ul>
+      <li>
+        <div><lib-avatar></lib-avatar>test User For Avatar</div>
+      </li>
       <li *ngFor="let user of usersList">
         <div>{{ user.name }}</div>
       </li>

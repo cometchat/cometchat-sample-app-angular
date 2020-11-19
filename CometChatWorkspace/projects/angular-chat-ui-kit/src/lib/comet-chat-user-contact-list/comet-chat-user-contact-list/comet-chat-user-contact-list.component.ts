@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
@@ -10,11 +10,13 @@ export class CometChatUserContactListComponent implements OnInit {
   usersList = [];
   usersRequest;
   timeout;
-  friendsOnly = false;
+  @Input() friendsOnly = false;
 
   constructor() {}
 
   ngOnInit() {
+    console.log(`friends only status is `, this.friendsOnly);
+
     this.usersRequest = new CometChat.UsersRequestBuilder()
       .friendsOnly(this.friendsOnly)
       .setLimit(60)
