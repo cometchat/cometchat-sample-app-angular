@@ -8,7 +8,8 @@ import { CometChat } from '@cometchat-pro/chat';
 })
 export class CometChatUserContactListComponent implements OnInit {
 
-  usersRequest = new CometChat.UsersRequestBuilder().setLimit(30).build();
+  usersRequest = new CometChat.UsersRequestBuilder().setLimit(60).build();
+  usersList;
 
   constructor() { }
 
@@ -16,8 +17,7 @@ export class CometChatUserContactListComponent implements OnInit {
     let user = CometChat.getLoggedinUser().then(
       user => {
         console.log("Inside librart user details:", { user });
-        //console.log(this.fetchNextContactList());
-        
+        this.fetchNextContactList();
       },
       error => {
         console.log("error getting details:", { error });
@@ -27,10 +27,20 @@ export class CometChatUserContactListComponent implements OnInit {
 
   /**
 	 * Get List of users that are contacts of the current user
-	 * @param {String} UID
-	*/
-  // fetchNextContactList() {
-  //   return this.usersRequest.fetchNext();
-  // }
+	 * 
+  */
+  fetchNextContactList() {
+    this.usersRequest.fetchNext().then(
+      userList => {
+        /* userList will be the list of User class. */
+        console.log("User list received:", userList);
+        this.usersList = userList;
+        /* retrived list can be used to display contact list. */
+      },
+      error => {
+        console.log("User list fetching failed with error:", error);
+      }
+    );
+  }
 
 }
