@@ -1,50 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { CometChat } from '@cometchat-pro/chat';
+import { Component, OnInit } from "@angular/core";
+import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
-  selector: 'lib-comet-chat-user-contact-list',
-  templateUrl: './comet-chat-user-contact-list.component.html',
-  styleUrls: ['./comet-chat-user-contact-list.component.css']
+  selector: "lib-comet-chat-user-contact-list",
+  templateUrl: "./comet-chat-user-contact-list.component.html",
+  styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })
 export class CometChatUserContactListComponent implements OnInit {
-
-  
   usersList;
   usersRequest;
-  searchKey : String;
+  searchKey: String;
   timeout;
   friendsOnly = false;
-  
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-
-    this.usersRequest = new CometChat.UsersRequestBuilder().friendsOnly(this.friendsOnly).setLimit(60).build();
-
+    this.usersRequest = new CometChat.UsersRequestBuilder()
+      .friendsOnly(this.friendsOnly)
+      .setLimit(60)
+      .build();
 
     let user = CometChat.getLoggedinUser().then(
-      user => {
+      (user) => {
         console.log("Inside librart user details:", { user });
         this.fetchNextContactList();
       },
-      error => {
+      (error) => {
         console.log("error getting details:", { error });
       }
     );
-
-
   }
 
-
   /**
-	 * Search User Based on their Name
-	 * @param String searchKey
-	*/
-  searchUsers(searchKey){
-
-    console.log('search user based on key = ', searchKey);
-
+   * Search User Based on their Name
+   * @param String searchKey
+   */
+  searchUsers(searchKey) {
+    console.log("search user based on key = ", searchKey);
 
     if (this.timeout) {
       clearTimeout(this.timeout);
@@ -52,34 +45,33 @@ export class CometChatUserContactListComponent implements OnInit {
 
     let val = searchKey;
     this.timeout = setTimeout(() => {
+      console.log("Searching for user");
 
-      console.log('Searching for user');
-
-      this.usersRequest = new CometChat.UsersRequestBuilder().friendsOnly(this.friendsOnly).setSearchKeyword(searchKey).setLimit(30).build();
+      this.usersRequest = new CometChat.UsersRequestBuilder()
+        .friendsOnly(this.friendsOnly)
+        .setSearchKeyword(searchKey)
+        .setLimit(30)
+        .build();
 
       this.fetchNextContactList();
-      
-    }, 500)
-
-
+    }, 500);
   }
 
   /**
-	 * Get List of users that are contacts of the current user
-	 * 
-  */
+   * Get List of users that are contacts of the current user
+   *
+   */
   fetchNextContactList() {
     this.usersRequest.fetchNext().then(
-      userList => {
+      (userList) => {
         /* userList will be the list of User class. */
         console.log("User list received:", userList);
         this.usersList = userList;
         /* retrived list can be used to display contact list. */
       },
-      error => {
+      (error) => {
         console.log("User list fetching failed with error:", error);
       }
     );
   }
-
 }
