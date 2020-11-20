@@ -1,5 +1,93 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+.contactWrapperStyle {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.contactWrapperStyle > * {
+  box-sizing: border-box;
+}
+
+.contactWrapperStyle::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+
+.contactWrapperStyle::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+.contactWrapperStyle::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+.contactHeaderStyle {
+  padding: 19px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.contactHeaderTitleStyle {
+  margin: 0;
+  font-weight: 700;
+  display: inline-block;
+  width: 66%;
+  text-align: left;
+  font-size: 20px;
+}
+
+.contactSearchStyle {
+  padding: 16px 16px;
+  position: relative;
+}
+
+.contactSearchInputStyle {
+  display: block;
+  width: 100%;
+  border: 0;
+  box-shadow: rgba(20, 20, 20, 0.04) 0 0 0 1px inset;
+  border-radius: 8px;
+  padding: 6px 8px 6px 35px;
+  font-size: 15px;
+  outline: none;
+  background-color: rgba(20, 20, 20, 0.04);
+  /* background: url(); */
+}
+.contactNameStyle {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.contactNameStyle:hover {
+  background: #e6e6e6;
+  cursor: pointer;
+}
+
 .contactListStyle {
-  width: 1500px;
-  height: 800px;
+  width: 100%;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: scroll;
+}
+
+.avatarContact {
+  margin-right: 15px;
+}
+
+.contactAlphabetStyle {
+  margin: 5px 0;
+  width: 100%;
+  font-size: 14px;
 }
