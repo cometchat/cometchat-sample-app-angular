@@ -1,14 +1,28 @@
-<div>
-  <p>Contact Screen Component</p>
-  <input #search type="text" (keyup)="searchUsers(search.value)" />
+<div class="contactWrapperStyle">
+  <div class="contactHeaderStyle">
+    <h4 class="contactHeaderTitleStyle">Contacts</h4>
+    <div></div>
+  </div>
+  <div class="contactSearchStyle">
+    <input
+      class="contactSearchInputStyle"
+      placeholder="Search"
+      #search
+      type="text"
+      (keyup)="searchUsers(search.value)"
+      autocomplete="off"
+    />
+  </div>
   <div class="contactListStyle" (scroll)="handleScroll($event)">
-    <ul>
-      <li *ngFor="let user of usersList">
-        <div>
-          <lib-avatar [avatar]="user.avatar"></lib-avatar>
-          {{ user.name }}
-        </div>
-      </li>
-    </ul>
+    <div
+      *ngFor="let alphabet of contacts | keyvalue"
+      class="contactAlphabetStyle"
+    >
+      {{ alphabet.key }}
+      <div *ngFor="let user of alphabet.value" class="contactNameStyle">
+        <lib-avatar [avatar]="user.avatar" class="avatarContact"></lib-avatar>
+        {{ user.name }}
+      </div>
+    </div>
   </div>
 </div>
