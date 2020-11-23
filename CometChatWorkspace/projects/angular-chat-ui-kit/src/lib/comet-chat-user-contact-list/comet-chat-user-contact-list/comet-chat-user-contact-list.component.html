@@ -13,7 +13,20 @@
       autocomplete="off"
     />
   </div>
+
+  <div *ngIf="loader" class="contactMsgStyle">
+    <p class="contactTxtMsgStyle">
+      {{ decoratorMsg }}
+    </p>
+  </div>
+
   <div class="contactListStyle" (scroll)="handleScroll($event)">
+    <div *ngIf="contactsNotFound" class="contactMsgStyle">
+      <p class="contactTxtMsgStyle">
+        {{ decoratorMsg }}
+      </p>
+    </div>
+
     <div
       *ngFor="let alphabet of contacts | keyvalue"
       class="contactAlphabetStyle"
