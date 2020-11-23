@@ -32,7 +32,7 @@ export class KitchenSinkAppComponent implements OnInit {
 
   
   /**
-	 * Get webApp Info and businessIDs from token data
+	 * Get User info by using the UID for logging a user in
 	 * @param {String} UID
 	*/
   onLogin(UID){
