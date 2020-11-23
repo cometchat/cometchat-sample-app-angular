@@ -15,8 +15,6 @@ export class CometChatUserContactListComponent implements OnInit {
   defaultAvatarImage =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
 
-  currentAlphabet = "A";
-
   constructor() {}
 
   ngOnInit() {
@@ -90,31 +88,10 @@ export class CometChatUserContactListComponent implements OnInit {
         /* userList will be the list of User class. */
         console.log("User list received:", userList);
         this.usersList = [...this.usersList, ...userList];
-        /* retrived list can be used to display contact list. */
-
-        // let userListObj = [];
-        // userList.forEach((value) => {
-        //   if (!userListObj.hasOwnProperty(value.name.charAt(0))) {
-        //     userListObj[value.name.charAt(0)] = [];
-        //   }
-        //   userListObj[value.name.charAt(0)].push(value);
-        // });
-        // this.contacts = userListObj;
-        // console.log(this.contacts);
-        // this.contacts.sort();
       },
       (error) => {
         console.log("User list fetching failed with error:", error);
       }
     );
-  }
-
-  /**
-   * Set The Alphabet to show users starting with that alphabet
-   * @param String alphabet
-   */
-  setCurrentAlphabet(alphabet) {
-    console.log(`set current alphabet to ${alphabet}`);
-    return true;
   }
 }
