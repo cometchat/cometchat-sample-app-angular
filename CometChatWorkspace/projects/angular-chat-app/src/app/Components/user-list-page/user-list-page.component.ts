@@ -9,4 +9,8 @@ export class UserListPageComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  userClicked(user) {
+    console.log(`user in parent component  `, user);
+  }
 }

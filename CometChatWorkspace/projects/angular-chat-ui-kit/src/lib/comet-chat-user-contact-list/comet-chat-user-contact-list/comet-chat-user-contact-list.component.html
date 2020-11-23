@@ -1,5 +1,6 @@
 <div class="contactWrapperStyle">
   <div class="contactHeaderStyle">
+    <!-- CLOSE BUTTOM - In react it is there ... but was not visible , hence not implemented right now  -->
     <h4 class="contactHeaderTitleStyle">Contacts</h4>
     <div></div>
   </div>
@@ -45,7 +46,7 @@
         usersList[i].name[0].toUpperCase()
       }}</ng-template>
 
-      <div class="contactNameStyle">
+      <div class="contactNameStyle" (click)="onUserClicked(user)">
         <lib-avatar
           [avatar]="user.avatar"
           [userStatus]="user.status"
