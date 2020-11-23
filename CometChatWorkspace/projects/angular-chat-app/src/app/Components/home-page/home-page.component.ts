@@ -10,6 +10,9 @@ import { CometChat } from "@cometchat-pro/chat";
 export class HomePageComponent implements OnInit {
   constructor(private router: Router) {}
 
+  defaultAvatar =
+    "https://data-us.cometchat.io/assets/images/avatars/cyclops.png";
+
   ngOnInit() {}
 
   /**
