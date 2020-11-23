@@ -16,7 +16,15 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {}
 
   /**
-   * Get webApp Info and businessIDs from token data
+   * Go to contact page
+   *
+   */
+  navigateToContactPage() {
+    this.router.navigate(["/contact-list"]);
+  }
+
+  /**
+   * Logout the user that is currently logged in
    * @param
    */
   onLogout() {
@@ -29,13 +37,5 @@ export class HomePageComponent implements OnInit {
         //console.log("Logout failed", { error });
       }
     );
-  }
-
-  /**
-   * Go to contact page
-   *
-   */
-  navigateToContactPage() {
-    this.router.navigate(["/contact-list"]);
   }
 }
