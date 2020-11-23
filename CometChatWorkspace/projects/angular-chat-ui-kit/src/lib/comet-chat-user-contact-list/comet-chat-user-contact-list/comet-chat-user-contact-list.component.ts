@@ -59,13 +59,15 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       new CometChat.UserListener({
         onUserOnline: (onlineUser) => {
           /* when someuser/friend comes online, user will be received here */
-          //callback(onlineUser);
+
           console.log("On User Online:", { onlineUser });
+          this.userUpdated(onlineUser);
         },
         onUserOffline: (offlineUser) => {
           /* when someuser/friend went offline, user will be received here */
-          //callback(offlineUser);
+
           console.log("On User Offline:", { offlineUser });
+          this.userUpdated(offlineUser);
         },
       })
     );
@@ -154,6 +156,11 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       userlist.splice(userKey, 1, newUserObj);
 
       this.usersList = userlist;
+
+      console.log(
+        "user list updated on someone online/offline ",
+        this.usersList
+      );
     }
   };
 }
