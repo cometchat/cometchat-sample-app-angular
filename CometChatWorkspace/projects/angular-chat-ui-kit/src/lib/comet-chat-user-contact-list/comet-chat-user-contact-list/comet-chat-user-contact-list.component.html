@@ -1,0 +1,14 @@
+<div>
+  <p>Contact Screen Component</p>
+  <input #search type="text" (keyup)="searchUsers(search.value)" />
+  <div class="contactListStyle" (scroll)="handleScroll($event)">
+    <ul>
+      <li *ngFor="let user of usersList">
+        <div>
+          <lib-avatar [avatar]="user.avatar"></lib-avatar>
+          {{ user.name }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
