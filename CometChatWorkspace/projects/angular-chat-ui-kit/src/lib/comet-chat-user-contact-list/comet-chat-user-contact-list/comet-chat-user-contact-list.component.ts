@@ -15,7 +15,10 @@ import { CometChat } from "@cometchat-pro/chat";
 export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   @Input() friendsOnly = false;
   @Input() widgetsettings = null;
+  @Input() hasActions = false;
+
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
+  @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   userListenerId = "userlist_" + new Date().getTime();
 
@@ -193,4 +196,16 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
     console.log(`user clicked is `, userToEmit);
     this.onUserClick.emit(userToEmit);
   }
+
+  /**
+   * Emitting the close Menu action to be used in parent component to handle screen logic
+   * @param Any userToEmit
+   */
+  handleMenuClose = () => {
+    if (!this.hasActions) {
+      return false;
+    }
+
+    this.actionGenerated.emit("closeMenuClicked");
+  };
 }
