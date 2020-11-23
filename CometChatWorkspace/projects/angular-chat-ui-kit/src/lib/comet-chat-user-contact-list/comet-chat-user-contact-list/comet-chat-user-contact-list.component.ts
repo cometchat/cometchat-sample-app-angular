@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
@@ -6,8 +6,12 @@ import { CometChat } from "@cometchat-pro/chat";
   templateUrl: "./comet-chat-user-contact-list.component.html",
   styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })
-export class CometChatUserContactListComponent implements OnInit {
+export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   @Input() friendsOnly = false;
+  @Input() widgetsettings = null;
+
+  userListenerId = "userlist_" + new Date().getTime();
+
   decoratorMsg: string = "Loading...";
   loader: Boolean = true;
   contactsNotFound: Boolean = false;
@@ -22,6 +26,20 @@ export class CometChatUserContactListComponent implements OnInit {
 
   ngOnInit() {
     //console.log(`friends only status is `, this.friendsOnly);
+
+    if (
+      this.widgetsettings &&
+      this.widgetsettings.hasOwnProperty("sidebar") &&
+      this.widgetsettings.sidebar.hasOwnProperty("user_listing")
+    ) {
+      switch (this.widgetsettings.sidebar["user_listing"]) {
+        case "friends":
+          this.friendsOnly = true;
+          break;
+        default:
+          break;
+      }
+    }
 
     this.usersRequest = new CometChat.UsersRequestBuilder()
       .friendsOnly(this.friendsOnly)
@@ -38,6 +56,32 @@ export class CometChatUserContactListComponent implements OnInit {
         console.log("error getting details:", { error });
       }
     );
+
+    //Attaching User Listeners to dynamilcally update when a user comes online and goes offline
+    CometChat.addUserListener(
+      this.userListenerId,
+      new CometChat.UserListener({
+        onUserOnline: (onlineUser) => {
+          /* when someuser/friend comes online, user will be received here */
+
+          console.log("On User Online:", { onlineUser });
+          this.userUpdated(onlineUser);
+        },
+        onUserOffline: (offlineUser) => {
+          /* when someuser/friend went offline, user will be received here */
+
+          console.log("On User Offline:", { offlineUser });
+          this.userUpdated(offlineUser);
+        },
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    console.log("Removing Listeners just before destroying this component");
+    CometChat.removeUserListener(this.userListenerId);
+    this.userListenerId = null;
+    this.usersRequest = null;
   }
 
   /**
@@ -102,20 +146,35 @@ export class CometChatUserContactListComponent implements OnInit {
         this.usersList = [...this.usersList, ...userList];
         this.loader = false;
         /* retrived list can be used to display contact list. */
-
-        let userListObj = [];
-        userList.forEach((value) => {
-          if (!userListObj.hasOwnProperty(value.name.charAt(0))) {
-            userListObj[value.name.charAt(0)] = [];
-          }
-          userListObj[value.name.charAt(0)].push(value);
-        });
-        this.contacts = userListObj;
-        console.log(this.contacts);
       },
       (error) => {
         console.log("User list fetching failed with error:", error);
       }
     );
   }
+
+  /**
+   * This function updates the status ( online / offline ) , in real-time when getting signals from the listerners
+   * @param Any user
+   */
+  userUpdated = (user) => {
+    let userlist = [...this.usersList];
+
+    //search for user
+    let userKey = userlist.findIndex((u, k) => u.uid === user.uid);
+
+    //if found in the list, update user object
+    if (userKey > -1) {
+      let userObj = { ...userlist[userKey] };
+      let newUserObj = { ...userObj, ...user };
+      userlist.splice(userKey, 1, newUserObj);
+
+      this.usersList = [...userlist];
+
+      console.log(
+        "user list updated on someone online/offline ",
+        this.usersList
+      );
+    }
+  };
 }
