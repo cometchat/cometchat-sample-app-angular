@@ -1,17 +1,53 @@
-<div>
-    <div>
-        <button type="button" (click)="onLogin('superhero1')">superhero1</button>
-        <button type="button" (click)="onLogin('superhero2')">superhero2</button>
-        <button type="button" (click)="onLogin('superhero3')">superhero3</button>
-        <button type="button" (click)="onLogin('superhero4')">superhero4</button>
-        <button type="button" (click)="onLogin('superhero5')">superhero5</button>
+<div class="wrapperStyle">
+  <p class="titleStyle">Kitchen Sink App</p>
+  <p class="subtitleStyle">Login with one of our sample users</p>
+
+  <div class="userContainerStyle">
+    <div class="userWrapperStyle" (click)="onLogin('superhero1')">
+      <div class="thumbnailWrapperStyle">
+        <!-- AVATAR WILL BE ADDED HERE -->
+      </div>
+      <p>superhero1</p>
     </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero2')">
+      <div class="thumbnailWrapperStyle">
+        <!-- AVATAR WILL BE ADDED HERE -->
+      </div>
+      <p>superhero2</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero3')">
+      <div class="thumbnailWrapperStyle">
+        <!-- AVATAR WILL BE ADDED HERE -->
+      </div>
+      <p>superhero3</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero4')">
+      <div class="thumbnailWrapperStyle">
+        <!-- AVATAR WILL BE ADDED HERE -->
+      </div>
+      <p>superhero4</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero5')">
+      <div class="thumbnailWrapperStyle">
+        <!-- AVATAR WILL BE ADDED HERE -->
+      </div>
+      <p>superhero5</p>
+    </div>
+  </div>
 
-    <br>
-
-    <input type="text"   [(ngModel)]="userInput">
-    <button type="button" (click)="onLogin(userInput)">Login!</button>
-    
+  <div class="uidWrapperStyle">
+    <div>
+      <p class="subtitleStyle">Login continue with UID</p>
+    </div>
+    <div class="inputWrapperStyle">
+      <input
+        type="text"
+        placeholder="Enter your UID here"
+        [(ngModel)]="userInput"
+      />
+    </div>
+    <div class="loginBtn">
+      <button type="button" (click)="onLogin(userInput)">Login</button>
+    </div>
+  </div>
 </div>
-
-

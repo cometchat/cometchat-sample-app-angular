@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometChatUserContactListComponent } from './comet-chat-user-contact-list.component';
+import { CometChatUserContactListComponent } from "./comet-chat-user-contact-list.component";
 
-describe('CometChatUserContactListComponent', () => {
+describe("CometChatUserContactListComponent", () => {
   let component: CometChatUserContactListComponent;
   let fixture: ComponentFixture<CometChatUserContactListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CometChatUserContactListComponent ]
-    })
-    .compileComponents();
+      declarations: [CometChatUserContactListComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CometChatUserContactListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

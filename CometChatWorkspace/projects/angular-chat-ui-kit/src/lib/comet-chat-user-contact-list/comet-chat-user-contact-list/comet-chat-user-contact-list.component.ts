@@ -8,7 +8,7 @@ import { CometChat } from "@cometchat-pro/chat";
 })
 export class CometChatUserContactListComponent implements OnInit {
   @Input() friendsOnly = false;
-
+  contacts = [];
   usersList = [];
   usersRequest;
   timeout;
@@ -89,6 +89,17 @@ export class CometChatUserContactListComponent implements OnInit {
         console.log("User list received:", userList);
         this.usersList = [...this.usersList, ...userList];
         /* retrived list can be used to display contact list. */
+
+        let userListObj = [];
+        userList.forEach((value) => {
+          if (!userListObj.hasOwnProperty(value.name.charAt(0))) {
+            userListObj[value.name.charAt(0)] = [];
+          }
+          userListObj[value.name.charAt(0)].push(value);
+        });
+        this.contacts = userListObj;
+        console.log(this.contacts);
+        this.contacts.sort();
       },
       (error) => {
         console.log("User list fetching failed with error:", error);

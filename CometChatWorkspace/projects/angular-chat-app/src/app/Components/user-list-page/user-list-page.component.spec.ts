@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UserListPageComponent } from './user-list-page.component';
+import { UserListPageComponent } from "./user-list-page.component";
 
-describe('UserListPageComponent', () => {
+describe("UserListPageComponent", () => {
   let component: UserListPageComponent;
   let fixture: ComponentFixture<UserListPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListPageComponent ]
-    })
-    .compileComponents();
+      declarations: [UserListPageComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('UserListPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
