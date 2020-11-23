@@ -45,7 +45,7 @@
         usersList[i].name[0].toUpperCase()
       }}</ng-template>
 
-      <div class="contactNameStyle">
+      <div class="contactNameStyle" (click)="onUserClicked(user)">
         <lib-avatar
           [avatar]="user.avatar"
           [userStatus]="user.status"

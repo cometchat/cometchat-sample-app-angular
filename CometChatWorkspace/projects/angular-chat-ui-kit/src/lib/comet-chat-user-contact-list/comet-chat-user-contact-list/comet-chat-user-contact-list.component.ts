@@ -1,6 +1,12 @@
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  EventEmitter,
+} from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
-
 @Component({
   selector: "lib-comet-chat-user-contact-list",
   templateUrl: "./comet-chat-user-contact-list.component.html",
@@ -9,6 +15,7 @@ import { CometChat } from "@cometchat-pro/chat";
 export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   @Input() friendsOnly = false;
   @Input() widgetsettings = null;
+  @Output() onUserClick: EventEmitter<any> = new EventEmitter();
 
   userListenerId = "userlist_" + new Date().getTime();
 
@@ -177,4 +184,13 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       );
     }
   };
+
+  /**
+   * Emitting the user clicked so that it can be used in the parent component
+   * @param Any userToEmit
+   */
+  onUserClicked(userToEmit) {
+    console.log(`user clicked is `, userToEmit);
+    this.onUserClick.emit(userToEmit);
+  }
 }
