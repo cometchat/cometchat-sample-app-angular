@@ -8,6 +8,9 @@ import { CometChat } from "@cometchat-pro/chat";
 })
 export class CometChatUserContactListComponent implements OnInit {
   @Input() friendsOnly = false;
+  decoratorMsg: string = "Loading...";
+  loader: Boolean = true;
+  contactsNotFound: Boolean = false;
   contacts = [];
   usersList = [];
   usersRequest;
@@ -28,6 +31,7 @@ export class CometChatUserContactListComponent implements OnInit {
     let user = CometChat.getLoggedinUser().then(
       (user) => {
         //console.log("Inside library user details:", { user });
+
         this.fetchNextContactList();
       },
       (error) => {
@@ -42,11 +46,13 @@ export class CometChatUserContactListComponent implements OnInit {
    */
   searchUsers(searchKey) {
     //console.log("search user based on key = ", searchKey);
+    this.contactsNotFound = false;
+    this.decoratorMsg = "Loading...";
 
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-
+    this.loader = true;
     let val = searchKey;
     this.timeout = setTimeout(() => {
       //console.log("Searching for user");
@@ -59,7 +65,7 @@ export class CometChatUserContactListComponent implements OnInit {
         .setSearchKeyword(searchKey)
         .setLimit(30)
         .build();
-
+      console.log(this.usersRequest);
       this.fetchNextContactList();
     }, 500);
   }
@@ -85,9 +91,16 @@ export class CometChatUserContactListComponent implements OnInit {
   fetchNextContactList() {
     this.usersRequest.fetchNext().then(
       (userList) => {
+        console.log(userList.length);
+
+        if (userList.length == 0) {
+          this.contactsNotFound = true;
+          this.decoratorMsg = "No Users Found";
+        }
         /* userList will be the list of User class. */
         console.log("User list received:", userList);
         this.usersList = [...this.usersList, ...userList];
+        this.loader = false;
         /* retrived list can be used to display contact list. */
 
         let userListObj = [];
@@ -99,7 +112,6 @@ export class CometChatUserContactListComponent implements OnInit {
         });
         this.contacts = userListObj;
         console.log(this.contacts);
-        this.contacts.sort();
       },
       (error) => {
         console.log("User list fetching failed with error:", error);

@@ -1,1 +1,5 @@
-<img [src]="avatar" class="imgStyle imgBorderStyle" />
+<div>
+  <img [src]="avatar" class="imgStyle imgBorderStyle" />
+  <span *ngIf="userStatus == 'offline'" class="figure Offline"></span>
+  <span *ngIf="userStatus == 'online'" class="figure Online"></span>
+</div>

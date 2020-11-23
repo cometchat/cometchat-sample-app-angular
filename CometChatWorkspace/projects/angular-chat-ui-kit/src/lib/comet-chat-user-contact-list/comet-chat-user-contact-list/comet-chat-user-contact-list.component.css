@@ -1,5 +1,5 @@
 * {
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }
 .contactWrapperStyle {
   display: flex;
@@ -58,7 +58,27 @@
   outline: none;
   background-color: rgba(20, 20, 20, 0.04);
   /* background: url(); */
+  /* background-image: url("../resources/iconmonstr-search-thin-12.png"); */
 }
+
+.contactMsgStyle {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+}
+
+.contactTxtMsgStyle {
+  margin: 0;
+  height: 30px;
+  font-size: 24px !important;
+  font-weight: 600;
+  color: #cccccc;
+}
+
 .contactNameStyle {
   padding: 15px 20px;
   display: flex;
