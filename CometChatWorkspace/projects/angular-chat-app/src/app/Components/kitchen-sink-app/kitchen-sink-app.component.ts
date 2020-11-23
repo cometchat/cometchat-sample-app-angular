@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CometChat } from '@cometchat-pro/chat';
-import { COMETCHAT_CONSTANTS } from 'projects/angular-chat-app/src/CONSTS';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { CometChat } from "@cometchat-pro/chat";
+import { COMETCHAT_CONSTANTS } from "projects/angular-chat-app/src/CONSTS";
 
 @Component({
-  selector: 'app-kitchen-sink-app',
-  templateUrl: './kitchen-sink-app.component.html',
-  styleUrls: ['./kitchen-sink-app.component.scss']
+  selector: "app-kitchen-sink-app",
+  templateUrl: "./kitchen-sink-app.component.html",
+  styleUrls: ["./kitchen-sink-app.component.scss"],
 })
 export class KitchenSinkAppComponent implements OnInit {
+  userInput: String = "";
+  superHero1 = "https://data-us.cometchat.io/assets/images/avatars/ironman.png";
+  superHero2 =
+    "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png";
+  superHero3 =
+    "https://data-us.cometchat.io/assets/images/avatars/spiderman.png";
+  superHero4 =
+    "https://data-us.cometchat.io/assets/images/avatars/wolverine.png";
+  superHero5 = "https://data-us.cometchat.io/assets/images/avatars/cyclops.png";
 
-  userInput : String = '';
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     //console.log('kitchen sink app loaded');
-
     //Create User
     // let  user = new CometChat.User('testing');
     // user.setName('Sohail');
@@ -27,27 +33,23 @@ export class KitchenSinkAppComponent implements OnInit {
     //       console.log("error", error);
     //   }
     // )
-
   }
 
-  
   /**
-	 * Get User info by using the UID for logging a user in
-	 * @param {String} UID
-	*/
-  onLogin(UID){
+   * Get User info by using the UID for logging a user in
+   * @param {String} UID
+   */
+  onLogin(UID) {
     //console.log(UID)
-    
+
     CometChat.login(UID, COMETCHAT_CONSTANTS.API_KEY).then(
-      user => {
-        console.log("Login Successful:", { user });    
-        this.router.navigate(['/Home']);
+      (user) => {
+        console.log("Login Successful:", { user });
+        this.router.navigate(["/Home"]);
       },
-      error => {
-        //console.log("Login failed with exception:", { error });    
+      (error) => {
+        //console.log("Login failed with exception:", { error });
       }
     );
-    
   }
-
 }
