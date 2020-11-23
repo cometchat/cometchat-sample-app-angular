@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from "@angular/core";
 export class AvatarComponent implements OnInit {
   @Input() avatar =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
+  @Input() userStatus = "";
 
   constructor() {}
 

@@ -12,6 +12,9 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
 
   userListenerId = "userlist_" + new Date().getTime();
 
+  decoratorMsg: string = "Loading...";
+  loader: Boolean = true;
+  contactsNotFound: Boolean = false;
   contacts = [];
   usersList = [];
   usersRequest;
@@ -46,6 +49,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
     let user = CometChat.getLoggedinUser().then(
       (user) => {
         //console.log("Inside library user details:", { user });
+
         this.fetchNextContactList();
       },
       (error) => {
@@ -86,11 +90,13 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
    */
   searchUsers(searchKey) {
     //console.log("search user based on key = ", searchKey);
+    this.contactsNotFound = false;
+    this.decoratorMsg = "Loading...";
 
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
-
+    this.loader = true;
     let val = searchKey;
     this.timeout = setTimeout(() => {
       //console.log("Searching for user");
@@ -103,7 +109,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
         .setSearchKeyword(searchKey)
         .setLimit(30)
         .build();
-
+      console.log(this.usersRequest);
       this.fetchNextContactList();
     }, 500);
   }
@@ -129,9 +135,17 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   fetchNextContactList() {
     this.usersRequest.fetchNext().then(
       (userList) => {
+        console.log(userList.length);
+
+        if (userList.length == 0) {
+          this.contactsNotFound = true;
+          this.decoratorMsg = "No Users Found";
+        }
         /* userList will be the list of User class. */
         console.log("User list received:", userList);
         this.usersList = [...this.usersList, ...userList];
+        this.loader = false;
+        /* retrived list can be used to display contact list. */
       },
       (error) => {
         console.log("User list fetching failed with error:", error);
@@ -155,7 +169,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       let newUserObj = { ...userObj, ...user };
       userlist.splice(userKey, 1, newUserObj);
 
-      this.usersList = userlist;
+      this.usersList = [...userlist];
 
       console.log(
         "user list updated on someone online/offline ",
