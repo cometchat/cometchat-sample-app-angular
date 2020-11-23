@@ -33,7 +33,11 @@
     >
       {{ alphabet.key }}
       <div *ngFor="let user of alphabet.value" class="contactNameStyle">
-        <lib-avatar [avatar]="user.avatar" class="avatarContact"></lib-avatar>
+        <lib-avatar
+          [avatar]="user.avatar"
+          [userStatus]="user.status"
+          class="avatarContact"
+        ></lib-avatar>
         {{ user.name }}
       </div>
     </div>
