@@ -199,7 +199,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
 
   /**
    * Emitting the close Menu action to be used in parent component to handle screen logic
-   * @param Any userToEmit
+   * @param
    */
   handleMenuClose = () => {
     if (!this.hasActions) {
