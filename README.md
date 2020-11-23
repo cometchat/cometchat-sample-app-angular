@@ -1,9 +1,21 @@
-1. Clone the Repo
+Steps To Start The Project :
 
-2. cd CometChatWorkspace
+    1. Clone the Repo
 
-3. npm install
+    2. cd CometChatWorkspace
 
-4. ng build angular-chat-ui-kit ( to build the library )
+    3. npm install
 
-5. ng serve angular-chat-app ( parent application to use the library )
+    4. ng build angular-chat-ui-kit ( to build the library )
+
+    5. ng serve angular-chat-app ( parent application to use the library )
+
+Components And Description :
+
+    1. UserList Component :
+        Description : lists all the users
+        Inputs : @Input() friendsOnly = false;   can be set to fetch userList that are friends of current user
+                 @Input() widgetsettings = null;  can be set for some option in the component
+                 @Input() hasActions = false;     can be Set , to get actions from component to help screen logic
+        OutPuts :   @Output() onUserClick : The Event emits a user that was clicked
+                    @Output() actionGenerated: The Event emits The Type of action that was generated
