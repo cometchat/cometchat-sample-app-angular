@@ -15,11 +15,24 @@
   </div>
   <div class="contactListStyle" (scroll)="handleScroll($event)">
     <div
-      *ngFor="let alphabet of contacts | keyvalue"
       class="contactAlphabetStyle"
+      *ngFor="let user of usersList; let i = index"
     >
-      {{ alphabet.key }}
-      <div *ngFor="let user of alphabet.value" class="contactNameStyle">
+      <div *ngIf="i > 0; else elseBlock">
+        <div
+          *ngIf="
+            usersList[i - 1].name[0].toUpperCase() !==
+            usersList[i].name[0].toUpperCase()
+          "
+        >
+          {{ usersList[i].name[0].toUpperCase() }}
+        </div>
+      </div>
+      <ng-template #elseBlock>{{
+        usersList[i].name[0].toUpperCase()
+      }}</ng-template>
+
+      <div class="contactNameStyle">
         <lib-avatar [avatar]="user.avatar" class="avatarContact"></lib-avatar>
         {{ user.name }}
       </div>
