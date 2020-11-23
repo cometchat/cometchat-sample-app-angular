@@ -1,8 +1,8 @@
 .imgStyle {
   overflow: hidden;
   display: inherit;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
 }
 
 .imgBorderStyle {
@@ -10,4 +10,29 @@
   border-color: #aaa;
   border-radius: 50%;
   border-style: solid;
+}
+
+.figure {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(234, 234, 234);
+  border-radius: 50%;
+}
+
+.Offline {
+  width: 9px;
+  height: 9px;
+  top: -12px;
+  float: right;
+  position: relative;
+  background-color: rgb(85, 85, 85);
+}
+
+.Online {
+  width: 9px;
+  height: 9px;
+  top: -12px;
+  float: right;
+  position: relative;
+  background-color: rgb(0, 255, 0);
 }
