@@ -8,13 +8,15 @@ import { KitchenSinkAppComponent } from './Components/kitchen-sink-app/kitchen-s
 import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { UserListPageComponent } from './Components/user-list-page/user-list-page.component';
+import { CometChatConversationListPageComponent } from './Components/Pages/comet-chat-conversation-list-page/comet-chat-conversation-list-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KitchenSinkAppComponent,
     HomePageComponent,
-    UserListPageComponent
+    UserListPageComponent,
+    CometChatConversationListPageComponent
   ],
   imports: [
     BrowserModule,
