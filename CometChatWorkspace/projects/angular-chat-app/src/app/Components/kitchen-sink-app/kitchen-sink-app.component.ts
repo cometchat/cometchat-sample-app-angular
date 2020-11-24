@@ -21,6 +21,9 @@ export class KitchenSinkAppComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  onLoginError: boolean = false;
+  errorMsg: string = "";
+
   ngOnInit() {
     //console.log('kitchen sink app loaded');
     //Create User
@@ -49,6 +52,9 @@ export class KitchenSinkAppComponent implements OnInit {
       },
       (error) => {
         //console.log("Login failed with exception:", { error });
+        console.log(error.message);
+        this.onLoginError = true;
+        this.errorMsg = error.message;
       }
     );
   }
