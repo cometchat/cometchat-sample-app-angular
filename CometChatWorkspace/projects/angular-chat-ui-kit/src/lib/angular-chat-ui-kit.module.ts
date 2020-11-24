@@ -4,6 +4,7 @@ import { AvatarModule } from "./avatar/avatar.module";
 import { CometChatUserContactListModule } from "./comet-chat-user-contact-list/comet-chat-user-contact-list.module";
 import { CometChatUserContactListComponent } from "./comet-chat-user-contact-list/comet-chat-user-contact-list/comet-chat-user-contact-list.component";
 import { CometChatConversationListModule } from "./comet-chat-conversation-list/comet-chat-conversation-list.module";
+import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/cometchat-user-list-screen.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [CometChatUserContactListModule, AvatarModule],
@@ -12,6 +13,7 @@ import { CometChatConversationListModule } from "./comet-chat-conversation-list/
     CometChatUserContactListModule,
     AvatarModule,
     CometChatConversationListModule,
+    CometchatUserListScreenModule,
   ],
 })
 export class AngularChatUiKitModule {}
