@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'lib-cometchat-user-list-screen',
-  templateUrl: './cometchat-user-list-screen.component.html',
-  styleUrls: ['./cometchat-user-list-screen.component.css']
+  selector: "lib-cometchat-user-list-screen",
+  templateUrl: "./cometchat-user-list-screen.component.html",
+  styleUrls: ["./cometchat-user-list-screen.component.css"],
 })
 export class CometchatUserListScreenComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  /**
+   * Listen to the user emitted by the userList component
+   * @param Event user
+   */
+  userClicked(user) {
+    console.log(`user in parent component  `, user);
   }
-
 }
