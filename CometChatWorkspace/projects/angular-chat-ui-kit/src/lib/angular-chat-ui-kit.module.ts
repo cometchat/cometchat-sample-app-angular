@@ -7,7 +7,12 @@ import { CometChatConversationListModule } from "./comet-chat-conversation-list/
 import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/cometchat-user-list-screen.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
-  imports: [CometChatUserContactListModule, AvatarModule],
+  imports: [
+    CometChatUserContactListModule,
+    AvatarModule,
+    CometChatConversationListModule,
+    CometchatUserListScreenModule,
+  ],
   exports: [
     AngularChatUiKitComponent,
     CometChatUserContactListModule,
