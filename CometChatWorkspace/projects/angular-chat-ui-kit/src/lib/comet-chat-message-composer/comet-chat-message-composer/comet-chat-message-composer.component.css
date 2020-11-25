@@ -52,6 +52,7 @@
   min-height: 50px;
   max-height: 100px;
   user-select: text;
+  border: none;
 }
 .messageInputStyle:empty::before {
   content: attr(placeholder);
