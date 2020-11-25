@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+.chatComposerStyle {
+  padding: 14px 16px;
+  background-color: white;
+  z-index: 1;
+  order: 3;
+  position: relative;
+  flex: none;
+  min-height: 105px;
+}
+
+.composerInputStyle {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-end;
+  position: relative;
+  z-index: 2;
+  padding: 0;
+  min-height: 85px;
+}
+
+.inputInnerStyle {
+  flex: 1 1 auto;
+  position: relative;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+  /*  backgroundColor: `${props.theme.backgroundColor.white}`; */
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 85px;
+}
+
+.messageInputStyle {
+  width: 100%;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  padding: 15px 10px;
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  z-index: 1;
+  min-height: 50px;
+  max-height: 100px;
+  user-select: text;
+  border: none;
+}
+.messageInputStyle:empty::before {
+  content: attr(placeholder);
+  color: rgb(153, 153, 153);
+  pointer-events: none;
+  display: block;
+}
+
+.inputStickyStyle {
+  padding: 7px 10px;
+  height: 35px;
+  border-top: 1px solid #eaeaea;
+  background-color: rgba(20, 20, 20, 0.04);
+  display: flex;
+  justify-content: space-between;
+}
+
+.stickyAttachmentStyle {
+  display: flex;
+}
+
+.attachmentIconStyle {
+  margin: auto 0;
+}
+.attachmentIconStyle > span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("./resources/rounded-plus-grey-icon.svg");
+  /* background: url(roundedPlus) center center no-repeat; */
+  cursor: pointer;
+}
+
+.filePickerStyle {
+  /* const active = (state.showFilePicker) ? {
+        width: "120px",
+        opacity: "1",
+        margin: "auto 10px",
+    } : {}; */
+  left: 0;
+  bottom: 0;
+  position: relative;
+  width: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  opacity: 0;
+  transition: width 0.5s linear;
+  /* ...active */
+}
+
+.fileListStyle {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.stickyButtonStyle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stickyButtonStyle div:not(:first-of-type) {
+  margin-left: 5px;
+}
+.stickyButtonStyle div:not(:last-of-type) {
+  margin-right: 5px;
+}
+
+.send {
+  display: none;
+}
