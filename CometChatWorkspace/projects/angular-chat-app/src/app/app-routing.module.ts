@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: "contact-screen",
-    component: CometChatMessageComposerPageComponent,
+    component: UserListScreenPageComponent,
   },
 ];
 
