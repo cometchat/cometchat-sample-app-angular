@@ -9,3 +9,10 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.messageWindowStyle {
+  padding: 20px;
+  height: 540px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
