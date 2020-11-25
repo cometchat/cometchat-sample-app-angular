@@ -6,6 +6,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./cometchat-user-list-screen.component.css"],
 })
 export class CometchatUserListScreenComponent implements OnInit {
+  //It can be a user or a group
+  curentItem = null;
+
   constructor() {}
 
   ngOnInit() {}
@@ -16,5 +19,6 @@ export class CometchatUserListScreenComponent implements OnInit {
    */
   userClicked(user) {
     console.log(`user in parent component  `, user);
+    this.curentItem = user;
   }
 }
