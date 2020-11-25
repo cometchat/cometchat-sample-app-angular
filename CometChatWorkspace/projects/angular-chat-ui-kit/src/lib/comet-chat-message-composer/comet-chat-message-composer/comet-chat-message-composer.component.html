@@ -1,0 +1,73 @@
+<div class="chatComposerStyle">
+  <div class="composerInputStyle">
+    <div class="inputInnerStyle" tabindex="-1">
+      <input
+        class="messageInputStyle"
+        contenteditable="true"
+        placeholder="Enter your message here"
+        dir="ltr"
+        oninput=""
+        onblur=""
+        (keyup)="sendMessageOnEnter($event)"
+        #message
+      />
+      <div class="inputStickyStyle">
+        <div class="stickyAttachmentStyle">
+          <!--All file upload options starts here-->
+          <div class="attachmentIconStyle" (click)="(toggleFilePicker)">
+            <span>&nbsp;</span>
+            <!-- FILE UPLOAD PICKER-->
+            <input
+              type="file"
+              id="vidPicker"
+              hidden="hidden"
+              accept="video/*"
+              (change)="onVideoChange($event)"
+            />
+            <input
+              type="file"
+              id="imgPicker"
+              hidden="hidden"
+              accept="image/*"
+              (change)="onImgChange($event)"
+            />
+            <input
+              type="file"
+              id="audPicker"
+              hidden="hidden"
+              accept="audio/*"
+              (change)="onAudChange($event)"
+            />
+            <input
+              type="file"
+              id="filePicker"
+              hidden="hidden"
+              accept="file/*"
+              (change)="onFileChange($event)"
+            />
+            <!-- FILE UPLOAD PICKER ENDS-->
+            <button (click)="getVideo()">Video</button>
+            <button (click)="getAudio()">Audio</button>
+            <button (click)="getImage()">Image</button>
+            <button (click)="getFile()">File</button>
+          </div>
+          <div class="filePickerStyle">
+            <div class="fileListStyle">
+              <!--button will come-->
+            </div>
+          </div>
+        </div>
+        <div class="stickyButtonStyle">
+          <!-- all buttons will come here-->
+          <!-- <div id="ci"> -->
+          <button id="send" *ngIf="senddisable">Send</button>
+          <!-- </div> -->
+          <button id="reaction" *ngIf="reactdisable">Reaction</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--poll will come here-->
+</div>
+
+<!-- oninput onblur onkeydown to be inplemented -->
