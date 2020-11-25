@@ -1,0 +1,47 @@
+.messageContainerStyle {
+  align-self: flex-end;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 65%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.messageContainerStyle:hover {
+  display: flex;
+}
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-end;
+  display: flex;
+}
+
+.messageTxtWrapperStyle {
+  display: inline-block;
+  border-radius: 12px;
+  background-color: #39f;
+  color: #fff;
+  /* backgroundColor: `${props.theme.backgroundColor.blue}`;
+color: `${props.theme.color.white}`; */
+  padding: 8px 12px;
+  align-self: flex-end;
+  width: auto;
+}
+
+.messageTxtStyle {
+  margin: 0;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: left;
+  width: auto;
+}
+
+.messageInfoWrapperStyle {
+  align-self: flex-end;
+}
