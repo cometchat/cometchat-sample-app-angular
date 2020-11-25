@@ -1,0 +1,13 @@
+<div class="userScreenStyle">
+  <div class="userScreenSidebarStyle">
+    <lib-comet-chat-user-contact-list
+      (onUserClick)="userClicked($event)"
+    ></lib-comet-chat-user-contact-list>
+  </div>
+  <!-- Render this Chat Screen only if a user or a group is clicked -->
+  <div class="userScreenMainStyle" *ngIf="curentItem !== null">
+    <lib-cometchat-message-list-screen
+      [item]="curentItem"
+    ></lib-cometchat-message-list-screen>
+  </div>
+</div>

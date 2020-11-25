@@ -13,7 +13,7 @@ export class AvatarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    if (this.avatar === undefined) {
+    if (this.avatar === undefined || this.avatar === null) {
       this.avatar =
         "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
     }

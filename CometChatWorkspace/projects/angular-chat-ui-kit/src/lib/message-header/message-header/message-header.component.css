@@ -1,0 +1,86 @@
+.chatHeaderStyle {
+  /* padding: 14px 16px; */
+  padding: 12px 16px;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chatDetailStyle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: calc(100% - 100px);
+}
+
+.chatThumbnailStyle {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+/* Add Media Query to this */
+.chatUserStyle {
+  width: calc(100% - 50px);
+  padding: 0px 14px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatNameStyle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* change color based on online , offline , typing  */
+.chatStatusStyle {
+  color: #39f;
+  text-transform: capitalize;
+  font-size: 13px;
+  line-height: 20px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chatOptionWrapStyle {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100px;
+}
+
+.chatOptionStyle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.callOption {
+  background: url("https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/410.svg");
+  margin-left: 0;
+}
+
+.videoCallOption {
+  background-image: url("https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg");
+}
+
+.detailsOption {
+  background-image: url("https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg");
+  margin-right: 0;
+}
