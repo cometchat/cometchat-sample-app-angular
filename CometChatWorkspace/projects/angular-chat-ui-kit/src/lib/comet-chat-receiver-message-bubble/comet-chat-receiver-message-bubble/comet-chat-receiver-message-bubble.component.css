@@ -1,0 +1,72 @@
+.messageContainerStyle {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 65%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.messageContainerStyle ul message__action:hover {
+  display: flex;
+}
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageDetailStyle {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageTxtContainerStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageInfoWrapperStyle {
+  align-self: flex-start;
+  padding: 3px 5px;
+}
+
+.messageTimestampStyle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 12px;
+  text-transform: uppercase;
+  /* color: `${props.theme.color.helpText}`; */
+}
+
+.messageTxtWrapperStyle {
+  display: inline-block;
+  border-radius: 12px;
+  background-color: #f6f6f6;
+  /* backgroundColor: `${props.theme.backgroundColor.secondary}`; */
+  padding: 8px 12px;
+  align-self: flex-start;
+  width: auto;
+}
+
+.messageTxtStyle {
+  margin: 0;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: left;
+  width: auto;
+  /** All Emojis css left check from react app*/
+}
+.messageTxtStyle a:hover {
+  color: #0432ff;
+}
