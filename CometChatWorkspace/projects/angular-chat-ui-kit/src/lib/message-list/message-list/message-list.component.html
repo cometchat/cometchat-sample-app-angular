@@ -1,1 +1,10 @@
-<p>message-list works!</p>
+<div class="chatListStyle">
+  <!--Message Container-->
+  <div class="listWrapperStyle">
+    <!--message-->
+    <div *ngFor="let items of item">
+      <lib-comet-chat-receiver-message-bubble></lib-comet-chat-receiver-message-bubble>
+      <lib-comet-chat-sender-message-bubble></lib-comet-chat-sender-message-bubble>
+    </div>
+  </div>
+</div>
