@@ -39,6 +39,12 @@
 /* The Media Query Styling is left .. take help ... and SecondaryVieww */
 .userScreenMainStyle {
   width: calc(100% - 280);
+  display: flex;
+  flex-direction: column;
   height: 100%;
   order: 2;
+}
+
+/* This Styling will be used while creating the Detail and threaded message View screen ( Right Side Bar ) */
+.chatScreenSecondaryStyle {
 }
