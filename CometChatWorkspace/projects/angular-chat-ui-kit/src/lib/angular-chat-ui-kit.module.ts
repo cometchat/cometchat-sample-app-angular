@@ -6,6 +6,7 @@ import { CometChatUserContactListComponent } from "./comet-chat-user-contact-lis
 import { CometChatConversationListModule } from "./comet-chat-conversation-list/comet-chat-conversation-list.module";
 import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/cometchat-user-list-screen.module";
 import { MessageHeaderModule } from "./message-header/message-header.module";
+import { CometchatMessageListScreenModule } from "./cometchat-message-list-screen/cometchat-message-list-screen.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -22,6 +23,7 @@ import { MessageHeaderModule } from "./message-header/message-header.module";
     CometChatConversationListModule,
     CometchatUserListScreenModule,
     MessageHeaderModule,
+    CometchatMessageListScreenModule,
   ],
 })
 export class AngularChatUiKitModule {}
