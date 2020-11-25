@@ -3,7 +3,10 @@
     <!-- SideBar menu icon when screen size goes to mobile -->
     <div class="chatThumbnailStyle">
       <!-- Pass The emitted User to The AVATAR below -->
-      <lib-avatar></lib-avatar>
+      <lib-avatar
+        [avatar]="item.avatar"
+        [userStatus]="item.status"
+      ></lib-avatar>
     </div>
     <div class="chatUserStyle">
       <!-- Add Tool Tip functions here -->
