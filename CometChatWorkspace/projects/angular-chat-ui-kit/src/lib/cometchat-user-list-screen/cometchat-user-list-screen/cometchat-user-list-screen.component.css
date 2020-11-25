@@ -38,7 +38,8 @@
 
 /* The Media Query Styling is left .. take help ... and SecondaryVieww */
 .userScreenMainStyle {
-  width: calc(100% - 280);
+  /* width: calc(100% - 280); */
+  width: 80%;
   display: flex;
   flex-direction: column;
   height: 100%;
