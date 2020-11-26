@@ -5,5 +5,9 @@
     <lib-message-list></lib-message-list>
   </div>
 
-  <lib-comet-chat-message-composer></lib-comet-chat-message-composer>
+  <lib-comet-chat-message-composer
+    [item]="item"
+    [type]="type"
+    (actionGenerated)="actionHandler($event)"
+  ></lib-comet-chat-message-composer>
 </div>
