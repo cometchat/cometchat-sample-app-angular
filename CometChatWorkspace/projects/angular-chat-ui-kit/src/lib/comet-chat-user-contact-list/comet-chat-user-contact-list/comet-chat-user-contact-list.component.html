@@ -27,7 +27,6 @@
         {{ decoratorMsg }}
       </p>
     </div>
-
     <div
       class="contactAlphabetStyle"
       *ngFor="let user of usersList; let i = index"
@@ -47,12 +46,18 @@
       }}</ng-template>
 
       <div class="contactNameStyle" (click)="onUserClicked(user)">
-        <lib-avatar
-          [avatar]="user.avatar"
-          [userStatus]="user.status"
-          class="avatarContact"
-        ></lib-avatar>
-        {{ user.name }}
+        <div class="listItem">
+          <lib-avatar
+            [avatar]="user.avatar"
+            [userStatus]="user.status"
+            class="avatarContact"
+          ></lib-avatar>
+          <div class="itemDetailStyle">
+            <div class="itemNameStyle">
+              {{ user.name }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
