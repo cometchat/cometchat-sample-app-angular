@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
@@ -7,7 +14,7 @@ import * as enums from "../../utils/enums";
   templateUrl: "./message-list.component.html",
   styleUrls: ["./message-list.component.css"],
 })
-export class MessageListComponent implements OnInit {
+export class MessageListComponent implements OnInit, OnDestroy {
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessageId = null;
@@ -22,6 +29,7 @@ export class MessageListComponent implements OnInit {
   times = 0;
   lastScrollTop = 0;
   loggedInUser;
+  msgListenerId = "message_" + new Date().getTime();
 
   categories = [
     enums.CATEGORY_MESSAGE,
@@ -42,24 +50,6 @@ export class MessageListComponent implements OnInit {
     enums.CALL_TYPE_VIDEO,
   ];
 
-  items = [
-    "1",
-    "2",
-    "3",
-    "1",
-    "2",
-    "3",
-    "1",
-    "2",
-    "3",
-    "1",
-    "2",
-    "3",
-    "1",
-    "2",
-    "3",
-    "1",
-  ];
   constructor() {}
 
   ngOnInit() {
@@ -85,6 +75,37 @@ export class MessageListComponent implements OnInit {
     this.getMessages();
 
     // Attach MessageListeners Here
+    this.addMessageEventListeners();
+  }
+
+  ngOnDestroy() {
+    //Removing Message Listeners
+    CometChat.removeMessageListener(this.msgListenerId);
+  }
+
+  /**
+   * Listener To Receive Messages in Real Time
+   * @param
+   */
+  addMessageEventListeners() {
+    CometChat.addMessageListener(
+      this.msgListenerId,
+      new CometChat.MessageListener({
+        onTextMessageReceived: (textMessage) => {
+          console.log("Text message received successfully", textMessage);
+          this.messageUpdated(enums.TEXT_MESSAGE_RECEIVED, textMessage);
+          // Handle text message
+        },
+        onMediaMessageReceived: (mediaMessage) => {
+          console.log("Media message received successfully", mediaMessage);
+          // Handle media message
+        },
+        onCustomMessageReceived: (customMessage) => {
+          console.log("Custom message received successfully", customMessage);
+          // Handle custom message
+        },
+      })
+    );
   }
 
   /**
@@ -233,5 +254,59 @@ export class MessageListComponent implements OnInit {
         console.log("No Logged In User Found", { error });
       }
     );
+  }
+
+  messageUpdated(key = null, message = null, group = null, options = null) {
+    //there are many cases to be filled Here
+
+    switch (key) {
+      case enums.TEXT_MESSAGE_RECEIVED:
+      case enums.MEDIA_MESSAGE_RECEIVED:
+        this.messageReceived(message);
+        break;
+    }
+  }
+
+  messageReceived(message) {
+    console.log(` Message Type of the receiver `, message.getReceiverType());
+
+    //new messages
+    if (
+      this.type === "group" &&
+      message.getReceiverType() === "group" &&
+      message.getReceiverId() === this.item.guid
+    ) {
+      if (!message.getReadAt()) {
+        CometChat.markAsRead(
+          message.getId().toString(),
+          message.getReceiverId(),
+          message.getReceiverType()
+        );
+      }
+
+      this.actionGenerated.emit({
+        type: "messageReceived",
+        payLoad: [message],
+      });
+    } else if (
+      this.type === "user" &&
+      message.getReceiverType() === "user" &&
+      message.getSender().uid === this.item.uid
+    ) {
+      if (!message.getReadAt()) {
+        CometChat.markAsRead(
+          message.getId().toString(),
+          message.getSender().uid,
+          message.getReceiverType()
+        );
+      }
+
+      console.log(`received a message from a user`);
+
+      this.actionGenerated.emit({
+        type: "messageReceived",
+        payLoad: [message],
+      });
+    }
   }
 }

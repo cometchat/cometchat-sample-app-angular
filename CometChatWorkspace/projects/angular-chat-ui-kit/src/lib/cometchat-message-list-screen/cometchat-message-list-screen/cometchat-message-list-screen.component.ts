@@ -25,21 +25,42 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
   /**
    * Edit and Sent a Text message
-   * @param Event e
+   * @param Event action
    */
   actionHandler(action) {
     //handle Events/Actions generated from MessageHeader , MessageComposer and MessageList Here
+
+    // action.payLoad has the array of messages that is received
+    let messages = action.payLoad;
+
     console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
+      case "customMessageReceived":
+      case "messageReceived":
+        {
+          const message = messages[0];
+          if (message.parentMessageId) {
+            // Implement while doing the threaded message feature
+            // this.updateReplyCount(messages);
+          } else {
+            // Smart Reply Feature
+            // this.smartReplyPreview(messages);
+            this.appendMessage(messages);
+          }
+
+          //play message received audio
+          //this.playAudio();
+        }
+        break;
       case "messageFetched":
-        this.prependMessages(action.payLoad);
+        this.prependMessages(messages);
         break;
       case "messageComposed": {
-        this.appendMessage(action.payLoad);
+        this.appendMessage(messages);
         this.actionGenerated.emit({
           type: "messageComposed",
-          payLoad: action.payLoad,
+          payLoad: messages,
         });
         break;
       }
