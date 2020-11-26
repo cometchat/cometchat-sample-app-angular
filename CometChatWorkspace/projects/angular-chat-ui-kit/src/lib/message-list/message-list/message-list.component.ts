@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "lib-message-list",
@@ -6,7 +8,41 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./message-list.component.css"],
 })
 export class MessageListComponent implements OnInit {
-  item = [
+  @Input() item = null;
+  @Input() type = null;
+  @Input() parentMessageId = null;
+  @Input() widgetSettings = null;
+  @Input() messages = [];
+
+  @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
+
+  messagesRequest;
+  limit = 50;
+  decoratorMessage = "Loading...";
+  times = 0;
+  lastScrollTop = 0;
+  loggedInUser;
+
+  categories = [
+    enums.CATEGORY_MESSAGE,
+    enums.CATEGORY_CUSTOM,
+    enums.CATEGORY_ACTION,
+    enums.CATEGORY_CALL,
+  ];
+  types = [
+    enums.MESSAGE_TYPE_TEXT,
+    enums.MESSAGE_TYPE_IMAGE,
+    enums.MESSAGE_TYPE_VIDEO,
+    enums.MESSAGE_TYPE_AUDIO,
+    enums.MESSAGE_TYPE_FILE,
+    enums.CUSTOM_TYPE_POLL,
+    enums.CUSTOM_TYPE_STICKER,
+    enums.ACTION_TYPE_GROUPMEMBER,
+    enums.CALL_TYPE_AUDIO,
+    enums.CALL_TYPE_VIDEO,
+  ];
+
+  items = [
     "1",
     "2",
     "3",
@@ -26,5 +62,176 @@ export class MessageListComponent implements OnInit {
   ];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log(`MessageList --> item `, this.item);
+    // console.log(`MessageList --> UserType `, this.type);
+    console.log(`MessageList --> Messages `, this.messages);
+
+    if (this.parentMessageId) {
+      this.messagesRequest = this.buildMessageRequestObject(
+        this.widgetSettings,
+        this.item,
+        this.type,
+        this.parentMessageId
+      );
+    } else {
+      this.messagesRequest = this.buildMessageRequestObject(
+        this.widgetSettings,
+        this.item,
+        this.type
+      );
+    }
+
+    this.getMessages();
+
+    // Attach MessageListeners Here
+  }
+
+  /**
+   * This Build Message Request Configuration Object , that helps in getting messages of a particular conversation
+   * @param
+   */
+  buildMessageRequestObject(
+    widgetSettings = null,
+    item = null,
+    type = null,
+    parentMessageId = null
+  ) {
+    let messageRequestBuilt;
+
+    if (type === "user") {
+      if (parentMessageId) {
+        messageRequestBuilt = new CometChat.MessagesRequestBuilder()
+          .setUID(item.uid)
+          .setParentMessageId(parentMessageId)
+          .setCategories(this.categories)
+          .setTypes(this.types)
+          .setLimit(this.limit)
+          .build();
+      } else {
+        messageRequestBuilt = new CometChat.MessagesRequestBuilder()
+          .setUID(item.uid)
+          .setCategories(this.categories)
+          .setTypes(this.types)
+          .hideReplies(true)
+          .setLimit(this.limit)
+          .build();
+      }
+    } else if (type === "group") {
+      if (parentMessageId) {
+        messageRequestBuilt = new CometChat.MessagesRequestBuilder()
+          .setGUID(item.guid)
+          .setParentMessageId(parentMessageId)
+          .setCategories(this.categories)
+          .setTypes(this.types)
+          .setLimit(this.limit)
+          .build();
+      } else {
+        messageRequestBuilt = new CometChat.MessagesRequestBuilder()
+          .setGUID(item.guid)
+          .setCategories(this.categories)
+          .setTypes(this.types)
+          .hideReplies(true)
+          .setLimit(this.limit)
+          .build();
+      }
+    }
+
+    return messageRequestBuilt;
+  }
+
+  /**
+   * Gets Messages For a particular conversation bases on MessageRequestConfig
+   * @param
+   */
+  getMessages(scrollToBottom = false) {
+    const actionMessages = [];
+
+    let user = CometChat.getLoggedinUser().then(
+      (user) => {
+        // console.log("Inside MessageList user details:", { user });
+        this.loggedInUser = user;
+
+        this.messagesRequest.fetchPrevious().then(
+          (messageList) => {
+            // No Messages Found
+            if (messageList.length === 0) {
+              this.decoratorMessage = "No messages found";
+            }
+
+            messageList.forEach((message) => {
+              if (
+                message.category === "action" &&
+                message.sender.uid === "app_system"
+              ) {
+                actionMessages.push(message);
+              }
+
+              //if the sender of the message is not the loggedin user, mark it as read.
+              if (
+                message.getSender().getUid() !== user.getUid() &&
+                !message.getReadAt()
+              ) {
+                if (message.getReceiverType() === "user") {
+                  CometChat.markAsRead(
+                    message.getId().toString(),
+                    message.getSender().getUid(),
+                    message.getReceiverType()
+                  );
+                } else if (message.getReceiverType() === "group") {
+                  CometChat.markAsRead(
+                    message.getId().toString(),
+                    message.getReceiverId(),
+                    message.getReceiverType()
+                  );
+                }
+              }
+              this.actionGenerated.emit({
+                type: "messageRead",
+                payLoad: message,
+              });
+            });
+
+            ++this.times;
+
+            // Temporary emiting of MessageFetch  Action Below -- Testing
+            this.actionGenerated.emit({
+              type: "messageFetched",
+              payLoad: messageList,
+            });
+            // Temporary emiting of MessageFetch  Action Above -- Testing
+
+            let actionGeneratedType = "messageFetched";
+            if (scrollToBottom === true) {
+              actionGeneratedType = "messageFetchedAgain";
+            }
+
+            if (
+              (this.times === 1 && actionMessages.length > 5) ||
+              (this.times > 1 && actionMessages.length === 30)
+            ) {
+              this.actionGenerated.emit({
+                type: "messageFetched",
+                payLoad: messageList,
+              });
+              this.getMessages(true);
+            } else {
+              // Implement Scroll Logic from React
+              // this.lastScrollTop = this.messagesEnd.scrollHeight;
+              // this.actionGenerated( type : actionGeneratedType, payLoad : messageList);
+            }
+
+            console.log("Message list fetched:", messageList);
+            // Handle the list of messages
+          },
+          (error) => {
+            console.log("Message fetching failed with error:", error);
+          }
+        );
+      },
+      (error) => {
+        console.log("No Logged In User Found", { error });
+      }
+    );
+  }
 }
