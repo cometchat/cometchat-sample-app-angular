@@ -18,8 +18,8 @@ export class CometChatMessageComposerComponent implements OnInit {
   senddisable = false;
   reactdisable = true;
   messageSending: boolean = false;
-  messageInput: "";
-  messageType: "";
+  messageInput = "";
+  messageType = "";
   emojiViewer = false;
   createPoll = false;
   messageToBeEdited = false;
@@ -150,9 +150,12 @@ export class CometChatMessageComposerComponent implements OnInit {
 
         // this Message Emitted will Be Appended to the existing Message List
         this.actionGenerated.emit({
-          action: "messageComposed",
+          type: "messageComposed",
           payLoad: [message],
         });
+
+        //clearing Message Input Box
+        this.messageInput = "";
 
         console.log("Message Sent Successfull to ", this.item);
       })

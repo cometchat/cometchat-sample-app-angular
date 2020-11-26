@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "lib-cometchat-message-list-screen",
@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from "@angular/core";
 export class CometchatMessageListScreenComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
+
+  @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   messageList = [];
   scrollToBottom: true;
@@ -33,10 +35,32 @@ export class CometchatMessageListScreenComponent implements OnInit {
       case "messageFetched":
         this.prependMessages(action.payLoad);
         break;
+      case "messageComposed": {
+        this.appendMessage(action.payLoad);
+        this.actionGenerated.emit({
+          type: "messageComposed",
+          payLoad: action.payLoad,
+        });
+        break;
+      }
     }
   }
 
+  /**
+   * prepend Fetched Messages
+   * @param Any messages
+   */
   prependMessages(messages) {
     this.messageList = [...messages, ...this.messageList];
   }
+
+  /**
+   * append Messages that are sent
+   * @param Any messages
+   */
+  appendMessage = (messages) => {
+    this.messageList = [...this.messageList, ...messages];
+
+    console.log("appending the sent message ", this.messageList);
+  };
 }
