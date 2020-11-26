@@ -1,5 +1,6 @@
 * {
   font-family: Inter, sans-serif;
+  /* overflow: hidden; */
 }
 .contactWrapperStyle {
   display: flex;
@@ -57,6 +58,7 @@
   font-size: 15px;
   outline: none;
   background-color: rgba(20, 20, 20, 0.04);
+  background: url("");
   /* background: url(); */
   /* background-image: url("../resources/iconmonstr-search-thin-12.png"); */
 }
@@ -80,7 +82,7 @@
 }
 
 .contactNameStyle {
-  padding: 15px 20px;
+  /* padding: 15px 0px; */
   display: flex;
   justify-content: left;
   align-items: center;
@@ -94,23 +96,26 @@
 }
 
 .contactListStyle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   /* width: 100%;
   padding: 10px 15px;
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: scroll; */
-  /* height: calc(100% - 125px); */
-  height: 84%;
-  overflow: hidden;
+  height: calc(100% - 125px);
+  /* height: 84%; */
+  /* overflow: hidden; */
   overflow-y: auto;
   margin: 0;
   padding: 0;
 }
 
-.avatarContact {
+/* .avatarContact {
   margin-right: 15px;
-}
+} */
 
 .contactAlphabetStyle {
   margin: 5px 0;
