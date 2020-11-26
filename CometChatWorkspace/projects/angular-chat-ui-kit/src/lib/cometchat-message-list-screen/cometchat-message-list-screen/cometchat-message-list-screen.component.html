@@ -2,7 +2,12 @@
   <!-- Add the Action To header to make it Dynamic -->
   <lib-message-header [item]="item"></lib-message-header>
   <div class="messageWindowStyle">
-    <lib-message-list></lib-message-list>
+    <lib-message-list
+      [item]="item"
+      [type]="type"
+      [messages]="messageList"
+      (actionGenerated)="actionHandler($event)"
+    ></lib-message-list>
   </div>
 
   <lib-comet-chat-message-composer

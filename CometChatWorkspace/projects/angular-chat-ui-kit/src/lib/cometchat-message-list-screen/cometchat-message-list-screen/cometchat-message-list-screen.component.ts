@@ -9,6 +9,12 @@ export class CometchatMessageListScreenComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
 
+  messageList = [];
+  scrollToBottom: true;
+  messageToBeEdited: null;
+  replyPreview: null;
+  liveReaction: false;
+
   constructor() {}
 
   ngOnInit() {
@@ -19,8 +25,18 @@ export class CometchatMessageListScreenComponent implements OnInit {
    * Edit and Sent a Text message
    * @param Event e
    */
-  actionHandler(e) {
+  actionHandler(action) {
     //handle Events/Actions generated from MessageHeader , MessageComposer and MessageList Here
-    console.log("MessageListScreen --> action generation is ", e);
+    console.log("MessageListScreen --> action generation is ", action);
+
+    switch (action.type) {
+      case "messageFetched":
+        this.prependMessages(action.payLoad);
+        break;
+    }
+  }
+
+  prependMessages(messages) {
+    this.messageList = [...messages, ...this.messageList];
   }
 }
