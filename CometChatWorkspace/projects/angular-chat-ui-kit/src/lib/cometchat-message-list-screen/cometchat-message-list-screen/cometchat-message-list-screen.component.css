@@ -12,7 +12,7 @@
 
 .messageWindowStyle {
   padding: 20px;
-  height: 540px;
+  height: 101vh;
   overflow: hidden;
   overflow-y: scroll;
 }
