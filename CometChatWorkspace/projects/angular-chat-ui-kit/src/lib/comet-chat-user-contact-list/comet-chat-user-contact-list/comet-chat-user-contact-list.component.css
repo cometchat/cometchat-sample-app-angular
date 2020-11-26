@@ -8,20 +8,20 @@
   box-sizing: border-box;
 }
 
-.contactWrapperStyle > * {
+.contactWrapperStyle * {
   box-sizing: border-box;
 }
 
-.contactWrapperStyle::-webkit-scrollbar {
+.contactWrapperStyle *::-webkit-scrollbar {
   width: 8px;
   height: 4px;
 }
 
-.contactWrapperStyle::-webkit-scrollbar-track {
+.contactWrapperStyle *::-webkit-scrollbar-track {
   background: #ffffff00;
 }
 
-.contactWrapperStyle::-webkit-scrollbar-thumb {
+.contactWrapperStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
 
@@ -94,12 +94,18 @@
 }
 
 .contactListStyle {
-  width: 100%;
+  /* width: 100%;
   padding: 10px 15px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: scroll;
+  overflow: scroll; */
+  /* height: calc(100% - 125px); */
+  height: 84%;
+  overflow: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .avatarContact {
@@ -110,4 +116,31 @@
   margin: 5px 0;
   width: 100%;
   font-size: 14px;
+  padding: 0 15px;
+}
+
+.itemDetailStyle {
+  width: calc(100% - 45px);
+  flex-grow: 1;
+  padding-left: 15px;
+}
+
+.itemNameStyle {
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 20px;
 }
