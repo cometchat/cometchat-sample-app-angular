@@ -17,41 +17,61 @@
           <!--All file upload options starts here-->
           <div class="attachmentIconStyle" (click)="(toggleFilePicker)">
             <span>&nbsp;</span>
-            <!-- FILE UPLOAD PICKER-->
+          </div>
+
+          <span
+            title="Attach Video"
+            (click)="getVideo()"
+            class="fileItemStyle"
+            id="video"
+          >
             <input
               type="file"
-              id="vidPicker"
-              hidden="hidden"
               accept="video/*"
+              id="vidPicker"
               (change)="onVideoChange($event)"
             />
+          </span>
+          <span
+            title="Attach Audio"
+            (click)="getAudio()"
+            class="fileItemStyle"
+            id="audio"
+          >
             <input
               type="file"
-              id="imgPicker"
-              hidden="hidden"
-              accept="image/*"
-              (change)="onImgChange($event)"
-            />
-            <input
-              type="file"
-              id="audPicker"
-              hidden="hidden"
               accept="audio/*"
+              id="audPicker"
               (change)="onAudChange($event)"
             />
+          </span>
+          <span
+            title="Attach Image"
+            (click)="getImage()"
+            class="fileItemStyle"
+            id="image"
+          >
             <input
               type="file"
-              id="filePicker"
-              hidden="hidden"
+              accept="image/*"
+              id="imgPicker"
+              (change)="onImgChange($event)"
+            />
+          </span>
+          <span
+            title="Attach File"
+            (click)="getFile()"
+            class="fileItemStyle"
+            id="file"
+          >
+            <input
+              type="file"
               accept="file/*"
+              id="filePicker"
               (change)="onFileChange($event)"
             />
-            <!-- FILE UPLOAD PICKER ENDS-->
-            <button (click)="getVideo()">Video</button>
-            <button (click)="getAudio()">Audio</button>
-            <button (click)="getImage()">Image</button>
-            <button (click)="getFile()">File</button>
-          </div>
+          </span>
+
           <div class="filePickerStyle">
             <div class="fileListStyle">
               <!--button will come-->
@@ -60,12 +80,16 @@
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
-          <!-- <div id="ci"> -->
-          <button id="send" *ngIf="senddisable" (click)="sendTextMessage()">
-            Send
-          </button>
-          <!-- </div> -->
-          <button id="reaction" *ngIf="reactdisable">Reaction</button>
+          <span
+            id="send"
+            title="send message"
+            *ngIf="senddisable"
+            class="sendButtonStyle"
+            (click)="sendTextMessage()"
+          >
+          </span>
+          <span class="reactionBtnStyle" id="reaction" *ngIf="reactdisable">
+          </span>
         </div>
       </div>
     </div>

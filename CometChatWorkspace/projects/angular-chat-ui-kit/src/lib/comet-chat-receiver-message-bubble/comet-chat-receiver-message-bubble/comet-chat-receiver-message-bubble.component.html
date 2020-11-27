@@ -7,12 +7,13 @@
       <div class="messageTxtContainerStyle">
         <!--messageTxt-->
         <div class="messageTxtWrapperStyle">
-          <p class="messageTxtStyle">{{ MessageText }}</p>
+          <p class="messageTxtStyle">{{ MessageDetails.data.text }}</p>
         </div>
       </div>
       <div class="messageInfoWrapperStyle">
         <span class="messageTimestampStyle">
           <!--Date-->
+          {{ getTime() }}
         </span>
         <!--ReplyCount component-->
       </div>
