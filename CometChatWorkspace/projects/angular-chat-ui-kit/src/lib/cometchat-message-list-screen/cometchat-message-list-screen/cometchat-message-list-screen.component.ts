@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from "@angular/core";
 
 @Component({
   selector: "lib-cometchat-message-list-screen",
@@ -6,6 +14,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./cometchat-message-list-screen.component.css"],
 })
 export class CometchatMessageListScreenComponent implements OnInit {
+  @ViewChild("scrollMe", null) chatWindow: ElementRef;
+
   @Input() item = null;
   @Input() type = null;
 
@@ -22,6 +32,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
   ngOnInit() {
     //console.log("MessageListScreen -> Type of User ", this.type);
+    console.log("MessageListScreen -> ChatWindow ", this.chatWindow);
   }
 
   /**
@@ -80,6 +91,13 @@ export class CometchatMessageListScreenComponent implements OnInit {
    */
   setMessages(messages) {
     this.messageList = [...messages];
+    this.chatWindow.nativeElement.scrollTop =
+      this.chatWindow.nativeElement.scrollHeight -
+      this.chatWindow.nativeElement.clientHeight;
+    console.log(
+      `Message List Screen --> changed chat window height `,
+      this.chatWindow
+    );
   }
 
   /**
@@ -109,4 +127,27 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
     console.log("appending the sent message ", this.messageList);
   };
+
+  handleScroll(e) {
+    console.log(`Message List Screen --> user started scrollling `, e);
+
+    console.log(
+      `Message List Screen --> e.currentTarget.scrollHeight `,
+      e.currentTarget.scrollHeight
+    );
+    console.log(
+      `Message List Screen --> e.currentTarget.scrollTop `,
+      e.currentTarget.scrollTop
+    );
+    console.log(
+      `Message List Screen --> e.currentTarget.clientHeight `,
+      e.currentTarget.clientHeight
+    );
+
+    const bottom =
+      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
+      Math.round(e.currentTarget.clientHeight);
+
+    console.log("Message List Screen --> reached bottom ", bottom);
+  }
 }
