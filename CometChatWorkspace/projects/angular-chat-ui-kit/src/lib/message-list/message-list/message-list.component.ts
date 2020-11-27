@@ -4,7 +4,9 @@ import {
   OnInit,
   Output,
   EventEmitter,
+  OnChanges,
   OnDestroy,
+  SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
@@ -14,7 +16,8 @@ import * as enums from "../../utils/enums";
   templateUrl: "./message-list.component.html",
   styleUrls: ["./message-list.component.css"],
 })
-export class MessageListComponent implements OnInit, OnDestroy {
+export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() changeNumber = 0;
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessageId = null;
@@ -51,6 +54,20 @@ export class MessageListComponent implements OnInit, OnDestroy {
   ];
 
   constructor() {}
+
+  ngOnChanges(change: SimpleChanges) {
+    console.log("Message List --> ngOnChanges -->  ", change);
+
+    if (change["messages"]) {
+      console.log("Message List --> the messages changed ");
+      console.log(change["messages"]);
+    }
+
+    if (change["changeNumber"]) {
+      console.log("Message List --> the changeNumber changed ");
+      console.log(change["changeNumber"]);
+    }
+  }
 
   ngOnInit() {
     // console.log(`MessageList --> item `, this.item);
@@ -206,21 +223,15 @@ export class MessageListComponent implements OnInit, OnDestroy {
                     message.getReceiverType()
                   );
                 }
+
+                this.actionGenerated.emit({
+                  type: "messageRead",
+                  payLoad: message,
+                });
               }
-              this.actionGenerated.emit({
-                type: "messageRead",
-                payLoad: message,
-              });
             });
 
             ++this.times;
-
-            // Temporary emiting of MessageFetch  Action Below -- Testing
-            this.actionGenerated.emit({
-              type: "messageFetched",
-              payLoad: messageList,
-            });
-            // Temporary emiting of MessageFetch  Action Above -- Testing
 
             let actionGeneratedType = "messageFetched";
             if (scrollToBottom === true) {
@@ -239,7 +250,11 @@ export class MessageListComponent implements OnInit, OnDestroy {
             } else {
               // Implement Scroll Logic from React
               // this.lastScrollTop = this.messagesEnd.scrollHeight;
-              // this.actionGenerated( type : actionGeneratedType, payLoad : messageList);
+
+              this.actionGenerated.emit({
+                type: actionGeneratedType,
+                payLoad: messageList,
+              });
             }
 
             console.log("Message list fetched:", messageList);
@@ -302,6 +317,11 @@ export class MessageListComponent implements OnInit, OnDestroy {
       }
 
       console.log(`received a message from a user `, this.item);
+
+      // test this line .. if this updates the message or not
+      // let dummy = [...this.messages];
+      // this.messages = [...dummy, ...[message]];
+      // console.log("after adding the received message ", this.messages);
 
       this.actionGenerated.emit({
         type: "messageReceived",
