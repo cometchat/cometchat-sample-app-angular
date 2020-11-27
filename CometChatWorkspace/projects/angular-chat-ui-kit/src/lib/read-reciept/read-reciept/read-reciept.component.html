@@ -1,1 +1,9 @@
-<p>read-reciept works!</p>
+<div *ngIf="msgSent">
+  <span class="msgTimestampStyle"> {{ getTime() }} {{ tick }} </span>
+</div>
+<span class="msgTimestampStyle" *ngIf="msgRead" id="read">
+  {{ getTime() }} {{ tick }}
+</span>
+<span class="msgTimestampStyle" *ngIf="msgDeliv" id="deliv">
+  {{ getTime() }} {{ tick }}
+</span>
