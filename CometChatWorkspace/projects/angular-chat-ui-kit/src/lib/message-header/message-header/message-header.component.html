@@ -12,7 +12,15 @@
       <!-- Add Tool Tip functions here -->
       <h6 class="chatNameStyle">{{ item.name }}</h6>
       <!-- Add Mouse Event to status -->
-      <span class="chatStatusStyle">{{ item.status }}</span>
+      <div *ngIf="item.status === 'online'">
+        <span class="chatStatusStyle">{{ item.status }}</span>
+      </div>
+
+      <div *ngIf="item.status === 'offline'">
+        <span class="chatStatusStyle" id="lastActive"
+          >Last Active At: {{ getDate(item.lastActiveAt) }}</span
+        >
+      </div>
     </div>
   </div>
   <div class="chatOptionWrapStyle">
