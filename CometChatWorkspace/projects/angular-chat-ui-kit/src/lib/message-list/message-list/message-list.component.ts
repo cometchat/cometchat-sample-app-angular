@@ -301,7 +301,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
         );
       }
 
-      console.log(`received a message from a user`);
+      console.log(`received a message from a user `, this.item);
 
       this.actionGenerated.emit({
         type: "messageReceived",
