@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./comet-chat-sender-message-bubble.component.css"],
 })
 export class CometChatSenderMessageBubbleComponent implements OnInit {
-  @Input() MessageText = "Dummy";
+  @Input() MessageDetails = null;
 
   constructor() {}
 

@@ -2,12 +2,14 @@
   <!--ToolTip Component-->
   <div class="messageWrapperStyle">
     <div class="messageTxtWrapperStyle">
-      <p class="messageTxtStyle message__txt">{{ MessageText }}</p>
+      <p class="messageTxtStyle message__txt">{{ MessageDetails.data.text }}</p>
     </div>
   </div>
 
   <div class="messageInfoWrapperStyle">
     <!--ReplyCount component-->
+
     <!--ReadReciept component-->
+    <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
   </div>
 </div>

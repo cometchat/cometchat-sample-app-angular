@@ -11,6 +11,7 @@ import { CometChatMessageComposerModule } from "./comet-chat-message-composer/co
 import { CometChatSenderMessageBubbleModule } from "./comet-chat-sender-message-bubble/comet-chat-sender-message-bubble.module";
 import { CometChatReceiverMessageBubbleModule } from "./comet-chat-receiver-message-bubble/comet-chat-receiver-message-bubble.module";
 import { MessageListModule } from "./message-list/message-list.module";
+import { ReadRecieptModule } from "./read-reciept/read-reciept.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -23,6 +24,7 @@ import { MessageListModule } from "./message-list/message-list.module";
     CometChatSenderMessageBubbleModule,
     CometChatReceiverMessageBubbleModule,
     MessageListModule,
+    ReadRecieptModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -36,6 +38,7 @@ import { MessageListModule } from "./message-list/message-list.module";
     CometChatSenderMessageBubbleModule,
     CometChatReceiverMessageBubbleModule,
     MessageListModule,
+    ReadRecieptModule,
   ],
 })
 export class AngularChatUiKitModule {}

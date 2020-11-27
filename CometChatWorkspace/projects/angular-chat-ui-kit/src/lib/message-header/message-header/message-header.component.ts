@@ -10,4 +10,18 @@ export class MessageHeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  getDate(date) {
+    let lastActiveDate;
+    lastActiveDate = new Date(date * 1000).toLocaleTimeString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+    // console.log("z->>>>>> ", lastActiveDate);
+    return lastActiveDate;
+  }
 }
