@@ -11,7 +11,7 @@
       ></lib-comet-chat-receiver-message-bubble>
       <lib-comet-chat-sender-message-bubble
         *ngIf="msg.sender.uid === loggedInUser.uid"
-        [MessageText]="msg.data.text"
+        [Message]="msg"
       ></lib-comet-chat-sender-message-bubble>
     </div>
   </div>
