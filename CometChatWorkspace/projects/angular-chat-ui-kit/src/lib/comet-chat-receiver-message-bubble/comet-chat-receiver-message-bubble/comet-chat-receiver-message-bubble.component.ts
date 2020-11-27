@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "lib-comet-chat-receiver-message-bubble",
@@ -6,6 +6,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./comet-chat-receiver-message-bubble.component.css"],
 })
 export class CometChatReceiverMessageBubbleComponent implements OnInit {
+  @Input() MessageText = "Dummy";
+
   constructor() {}
 
   ngOnInit() {}

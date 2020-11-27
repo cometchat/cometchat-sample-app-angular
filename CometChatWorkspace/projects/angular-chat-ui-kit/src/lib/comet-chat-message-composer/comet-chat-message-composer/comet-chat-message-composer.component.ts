@@ -1,23 +1,71 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { CometChat } from "@cometchat-pro/chat";
+
 @Component({
   selector: "lib-comet-chat-message-composer",
   templateUrl: "./comet-chat-message-composer.component.html",
   styleUrls: ["./comet-chat-message-composer.component.css"],
 })
 export class CometChatMessageComposerComponent implements OnInit {
-  constructor() {}
+  @Input() parentMessageId = null;
 
-  ngOnInit() {}
+  // can be user or a group
+  @Input() item = null;
+  @Input() type = null;
+
+  @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   senddisable = false;
   reactdisable = true;
   messageSending: boolean = false;
+  messageInput = "";
+  messageType = "";
+  emojiViewer = false;
+  createPoll = false;
+  messageToBeEdited = false;
+  replyPreview = null;
+  stickerViewer = false;
 
+  constructor() {}
+
+  ngOnInit() {
+    console.log(
+      "MessageComposer -> user to which , message will be sent ",
+      this.item
+    );
+
+    console.log("MessageComposer -> Type of User ", this.type);
+  }
+
+  /**
+   * Get Details of the User/Group , to whom , you want to send the message
+   * @param
+   */
+  getReceiverDetails() {
+    let receiverId;
+    let receiverType;
+
+    if (this.type == "user") {
+      receiverId = this.item.uid;
+      receiverType = CometChat.RECEIVER_TYPE.USER;
+    } else if (this.item.type == "group") {
+      receiverId = this.item.guid;
+      receiverType = CometChat.RECEIVER_TYPE.GROUP;
+    }
+
+    return { receiverId: receiverId, receiverType: receiverType };
+  }
+
+  /**
+   * Update the Message to be sent on every key press and send the message if user hits ENTER-key
+   * @param Event e
+   */
   sendMessageOnEnter(event) {
     console.log(event);
     console.log(event.target.value);
     console.log(event.target.value.length);
     if (event.target.value.length > 0) {
+      this.messageInput = event.target.value;
       this.senddisable = true;
       this.reactdisable = false;
     }
@@ -33,7 +81,89 @@ export class CometChatMessageComposerComponent implements OnInit {
     }
   }
 
-  sendTextMessage() {}
+  /**
+   * Edit and Sent a Text message
+   * @param
+   */
+  editMessage() {}
+
+  /**
+   * Send Text Message
+   * @param
+   */
+  sendTextMessage() {
+    console.log("Send Text Message Button Clicked");
+
+    // Close Emoji Viewer if it is open while sending the message
+    if (this.emojiViewer) {
+      this.emojiViewer = false;
+    }
+
+    // Dont Send Blank text messages -- i.e --- messages that only contain spaces
+    if (this.messageInput.trim().length == 0) {
+      return false;
+    }
+
+    // wait for the previous message to be sent before sending the current message
+    if (this.messageSending) {
+      return false;
+    }
+
+    this.messageSending = true;
+
+    // If its an Edit and Send Message Operation , use Edit Message Function
+    if (this.messageToBeEdited) {
+      this.editMessage();
+      return false;
+    }
+
+    let { receiverId, receiverType } = this.getReceiverDetails();
+
+    console.log(
+      `receiverID = ${receiverId}  and receiverType = ${receiverType} `
+    );
+
+    let messageInput = this.messageInput.trim();
+    let textMessage = new CometChat.TextMessage(
+      receiverId,
+      messageInput,
+      receiverType
+    );
+
+    if (this.parentMessageId) {
+      textMessage.setParentMessageId(this.parentMessageId);
+    }
+
+    // End Typing Indicator Function
+    // this.endTyping();
+
+    CometChat.sendMessage(textMessage)
+      .then((message) => {
+        this.messageInput = "";
+        this.messageSending = false;
+
+        // Clear Message Input Box Logic
+        // this.messageInputRef.current.textContent = "";
+
+        // Play Message Sent Successfully Audio
+        // this.playAudio();
+
+        // this Message Emitted will Be Appended to the existing Message List
+        this.actionGenerated.emit({
+          type: "messageComposed",
+          payLoad: [message],
+        });
+
+        //clearing Message Input Box
+        this.messageInput = "";
+
+        console.log("Message Sent Successfull to ", this.item);
+      })
+      .catch((error) => {
+        console.log("Message sending failed with error:", error);
+        this.messageSending = false;
+      });
+  }
 
   toggleFilePicker() {}
 

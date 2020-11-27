@@ -9,6 +9,7 @@
         oninput=""
         onblur=""
         (keyup)="sendMessageOnEnter($event)"
+        [value]="messageInput"
         #message
       />
       <div class="inputStickyStyle">
@@ -60,7 +61,9 @@
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
           <!-- <div id="ci"> -->
-          <button id="send" *ngIf="senddisable">Send</button>
+          <button id="send" *ngIf="senddisable" (click)="sendTextMessage()">
+            Send
+          </button>
           <!-- </div> -->
           <button id="reaction" *ngIf="reactdisable">Reaction</button>
         </div>

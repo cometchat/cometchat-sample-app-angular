@@ -2,9 +2,17 @@
   <!--Message Container-->
   <div class="listWrapperStyle">
     <!--message-->
-    <div *ngFor="let items of item">
-      <lib-comet-chat-receiver-message-bubble></lib-comet-chat-receiver-message-bubble>
-      <lib-comet-chat-sender-message-bubble></lib-comet-chat-sender-message-bubble>
+    <div *ngFor="let msg of messages">
+      <!-- NgSwitchCase for different Types Of Bubble -->
+
+      <lib-comet-chat-receiver-message-bubble
+        *ngIf="msg.sender.uid !== loggedInUser.uid"
+        [MessageText]="msg.data.text"
+      ></lib-comet-chat-receiver-message-bubble>
+      <lib-comet-chat-sender-message-bubble
+        *ngIf="msg.sender.uid === loggedInUser.uid"
+        [MessageText]="msg.data.text"
+      ></lib-comet-chat-sender-message-bubble>
     </div>
   </div>
 </div>
