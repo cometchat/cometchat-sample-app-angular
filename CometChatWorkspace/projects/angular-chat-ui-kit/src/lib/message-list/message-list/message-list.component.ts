@@ -7,6 +7,7 @@ import {
   OnChanges,
   OnDestroy,
   SimpleChanges,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
@@ -33,6 +34,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   lastScrollTop = 0;
   loggedInUser;
   msgListenerId = "message_" + new Date().getTime();
+  prevUser;
 
   categories = [
     enums.CATEGORY_MESSAGE,
@@ -53,10 +55,24 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     enums.CALL_TYPE_VIDEO,
   ];
 
-  constructor() {}
+  constructor(private ref: ChangeDetectorRef) {
+    setInterval(() => {
+      console.log("detectchange called");
+      this.ref.detectChanges();
+    }, 5000);
+  }
 
   ngOnChanges(change: SimpleChanges) {
     console.log("Message List --> ngOnChanges -->  ", change);
+
+    if (change["item"]) {
+      console.log(
+        "Message List --> the User to which we were conversing changed ",
+        change["item"]
+      );
+
+      this.createMessageRequestObjectAndGetMessages();
+    }
 
     if (change["messages"]) {
       console.log("Message List --> the messages changed ");
@@ -74,6 +90,22 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     // console.log(`MessageList --> UserType `, this.type);
     console.log(`MessageList --> Messages `, this.messages);
 
+    this.createMessageRequestObjectAndGetMessages();
+
+    // Attach MessageListeners Here
+    this.addMessageEventListeners();
+  }
+
+  ngOnDestroy() {
+    //Removing Message Listeners
+    CometChat.removeMessageListener(this.msgListenerId);
+  }
+
+  /**
+   * Creates a Message Request object ( holding the config , that is the two user involved in conversation ) and gets all the messages
+   * @param
+   */
+  createMessageRequestObjectAndGetMessages() {
     if (this.parentMessageId) {
       this.messagesRequest = this.buildMessageRequestObject(
         this.widgetSettings,
@@ -89,15 +121,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       );
     }
 
-    this.getMessages();
-
-    // Attach MessageListeners Here
-    this.addMessageEventListeners();
-  }
-
-  ngOnDestroy() {
-    //Removing Message Listeners
-    CometChat.removeMessageListener(this.msgListenerId);
+    this.getMessages(false, true);
   }
 
   /**
@@ -182,7 +206,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
    * Gets Messages For a particular conversation bases on MessageRequestConfig
    * @param
    */
-  getMessages(scrollToBottom = false) {
+  getMessages(scrollToBottom = false, newConversation = false) {
     const actionMessages = [];
 
     let user = CometChat.getLoggedinUser().then(
@@ -238,6 +262,12 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
               actionGeneratedType = "messageFetchedAgain";
             }
 
+            // Only called when the active user changes the the conversation , that is switches to some other person
+            // to chat with
+            if (newConversation) {
+              actionGeneratedType = "newConversationOpened";
+            }
+
             if (
               (this.times === 1 && actionMessages.length > 5) ||
               (this.times > 1 && actionMessages.length === 30)
@@ -246,7 +276,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
                 type: "messageFetched",
                 payLoad: messageList,
               });
-              this.getMessages(true);
+              this.getMessages(true, false);
             } else {
               // Implement Scroll Logic from React
               // this.lastScrollTop = this.messagesEnd.scrollHeight;
