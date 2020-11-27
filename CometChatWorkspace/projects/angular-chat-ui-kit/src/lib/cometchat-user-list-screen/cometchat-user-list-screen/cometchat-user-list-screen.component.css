@@ -1,5 +1,6 @@
 * {
   font-family: Inter, sans-serif;
+  overflow: hidden;
 }
 
 .userScreenStyle {
@@ -13,16 +14,16 @@
   box-sizing: border-box;
 }
 
-.userScreenStyle::-webkit-scrollbar {
+.userScreenStyle *::-webkit-scrollbar {
   width: 8px;
   height: 4px;
 }
 
-.userScreenStyle::-webkit-scrollbar-track {
+.userScreenStyle *::-webkit-scrollbar-track {
   background: #ffffff00;
 }
 
-.userScreenStyle::-webkit-scrollbar-thumb {
+.userScreenStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
 
@@ -38,14 +39,31 @@
 
 /* The Media Query Styling is left .. take help ... and SecondaryVieww */
 .userScreenMainStyle {
-  /* width: calc(100% - 280); */
+  /* width: calc(100% - 280px); */
   width: 80%;
   display: flex;
   flex-direction: column;
   height: 100%;
-  order: 2;
+  /* order: 2; */
 }
 
+/* @media (min-width: 320px) and (max-width: 767px) {
+  Media query for .userScreenSidebarStyle
+  .userScreenSidebarStyle {
+    position: absolute !important;
+    left: -100%;
+    top: 0;
+    bottom: 0;
+    width: 100% !important;
+    z-index: 2;
+    backgroundColor: ${theme.backgroundColor.white};
+    transition: all 0.3s ease-out;
+  }
+  .userScreenMainStyle {
+    width: 100% !important;
+  }
+} */
+
 /* This Styling will be used while creating the Detail and threaded message View screen ( Right Side Bar ) */
-.chatScreenSecondaryStyle {
-}
+/* .chatScreenSecondaryStyle {
+} */
