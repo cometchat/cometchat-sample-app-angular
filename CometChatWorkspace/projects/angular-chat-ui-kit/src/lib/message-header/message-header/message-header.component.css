@@ -54,6 +54,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+#lastActive {
+  color: rgba(20, 20, 20, 0.6);
+}
 
 .chatOptionWrapStyle {
   display: flex;
