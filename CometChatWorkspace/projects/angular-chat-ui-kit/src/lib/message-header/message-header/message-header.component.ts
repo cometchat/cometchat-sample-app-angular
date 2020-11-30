@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 @Component({
-  selector: "lib-message-header",
+  selector: "message-header",
   templateUrl: "./message-header.component.html",
   styleUrls: ["./message-header.component.css"],
 })

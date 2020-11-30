@@ -4,17 +4,21 @@ import {
   OnInit,
   Output,
   EventEmitter,
+  OnChanges,
   OnDestroy,
+  SimpleChanges,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "lib-message-list",
+  selector: "message-list",
   templateUrl: "./message-list.component.html",
   styleUrls: ["./message-list.component.css"],
 })
-export class MessageListComponent implements OnInit, OnDestroy {
+export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() changeNumber = 0;
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessageId = null;
@@ -30,6 +34,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
   lastScrollTop = 0;
   loggedInUser;
   msgListenerId = "message_" + new Date().getTime();
+  prevUser;
 
   categories = [
     enums.CATEGORY_MESSAGE,
@@ -50,13 +55,65 @@ export class MessageListComponent implements OnInit, OnDestroy {
     enums.CALL_TYPE_VIDEO,
   ];
 
-  constructor() {}
+  constructor(private ref: ChangeDetectorRef) {
+    setInterval(() => {
+      console.log("detectchange called");
+      this.ref.detectChanges();
+    }, 5000);
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    console.log("Message List --> ngOnChanges -->  ", change);
+
+    if (change["item"]) {
+      //Removing Previous Conversation Listeners
+      CometChat.removeMessageListener(this.msgListenerId);
+
+      console.log(
+        "Message List --> the User to which we were conversing changed ",
+        change["item"]
+      );
+
+      this.msgListenerId = "message_" + new Date().getTime();
+
+      this.createMessageRequestObjectAndGetMessages();
+
+      // Attach MessageListeners for the new conversation
+      this.addMessageEventListeners();
+    }
+
+    if (change["messages"]) {
+      console.log("Message List --> the messages changed ");
+      console.log(change["messages"]);
+    }
+
+    if (change["changeNumber"]) {
+      console.log("Message List --> the changeNumber changed ");
+      console.log(change["changeNumber"]);
+    }
+  }
 
   ngOnInit() {
     // console.log(`MessageList --> item `, this.item);
     // console.log(`MessageList --> UserType `, this.type);
     console.log(`MessageList --> Messages `, this.messages);
 
+    this.createMessageRequestObjectAndGetMessages();
+
+    // Attach MessageListeners Here
+    this.addMessageEventListeners();
+  }
+
+  ngOnDestroy() {
+    //Removing Message Listeners
+    CometChat.removeMessageListener(this.msgListenerId);
+  }
+
+  /**
+   * Creates a Message Request object ( holding the config , that is the two user involved in conversation ) and gets all the messages
+   * @param
+   */
+  createMessageRequestObjectAndGetMessages() {
     if (this.parentMessageId) {
       this.messagesRequest = this.buildMessageRequestObject(
         this.widgetSettings,
@@ -72,15 +129,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
       );
     }
 
-    this.getMessages();
-
-    // Attach MessageListeners Here
-    this.addMessageEventListeners();
-  }
-
-  ngOnDestroy() {
-    //Removing Message Listeners
-    CometChat.removeMessageListener(this.msgListenerId);
+    this.getMessages(false, true);
   }
 
   /**
@@ -165,7 +214,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
    * Gets Messages For a particular conversation bases on MessageRequestConfig
    * @param
    */
-  getMessages(scrollToBottom = false) {
+  getMessages(scrollToBottom = false, newConversation = false) {
     const actionMessages = [];
 
     let user = CometChat.getLoggedinUser().then(
@@ -206,25 +255,25 @@ export class MessageListComponent implements OnInit, OnDestroy {
                     message.getReceiverType()
                   );
                 }
+
+                this.actionGenerated.emit({
+                  type: "messageRead",
+                  payLoad: message,
+                });
               }
-              this.actionGenerated.emit({
-                type: "messageRead",
-                payLoad: message,
-              });
             });
 
             ++this.times;
 
-            // Temporary emiting of MessageFetch  Action Below -- Testing
-            this.actionGenerated.emit({
-              type: "messageFetched",
-              payLoad: messageList,
-            });
-            // Temporary emiting of MessageFetch  Action Above -- Testing
-
             let actionGeneratedType = "messageFetched";
             if (scrollToBottom === true) {
               actionGeneratedType = "messageFetchedAgain";
+            }
+
+            // Only called when the active user changes the the conversation , that is switches to some other person
+            // to chat with
+            if (newConversation) {
+              actionGeneratedType = "newConversationOpened";
             }
 
             if (
@@ -235,11 +284,15 @@ export class MessageListComponent implements OnInit, OnDestroy {
                 type: "messageFetched",
                 payLoad: messageList,
               });
-              this.getMessages(true);
+              this.getMessages(true, false);
             } else {
               // Implement Scroll Logic from React
               // this.lastScrollTop = this.messagesEnd.scrollHeight;
-              // this.actionGenerated( type : actionGeneratedType, payLoad : messageList);
+
+              this.actionGenerated.emit({
+                type: actionGeneratedType,
+                payLoad: messageList,
+              });
             }
 
             console.log("Message list fetched:", messageList);
@@ -301,7 +354,12 @@ export class MessageListComponent implements OnInit, OnDestroy {
         );
       }
 
-      console.log(`received a message from a user`);
+      console.log(`received a message from a user `, this.item);
+
+      // test this line .. if this updates the message or not
+      // let dummy = [...this.messages];
+      // this.messages = [...dummy, ...[message]];
+      // console.log("after adding the received message ", this.messages);
 
       this.actionGenerated.emit({
         type: "messageReceived",

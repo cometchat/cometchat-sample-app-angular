@@ -9,7 +9,7 @@ import {
   animate,
 } from "@angular/animations";
 @Component({
-  selector: "lib-comet-chat-message-composer",
+  selector: "comet-chat-message-composer",
   templateUrl: "./comet-chat-message-composer.component.html",
   styleUrls: ["./comet-chat-message-composer.component.css"],
   animations: [
@@ -86,9 +86,9 @@ export class CometChatMessageComposerComponent implements OnInit {
    * @param Event e
    */
   sendMessageOnEnter(event) {
-    console.log(event);
-    console.log(event.target.value);
-    console.log(event.target.value.length);
+    // console.log(event);
+    // console.log(event.target.value);
+    // console.log(event.target.value.length);
     if (event.target.value.length > 0) {
       this.messageInput = event.target.value;
       this.senddisable = true;

@@ -5,10 +5,11 @@ import {
   OnInit,
   Output,
   EventEmitter,
+  ChangeDetectorRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 @Component({
-  selector: "lib-comet-chat-user-contact-list",
+  selector: "comet-chat-user-list",
   templateUrl: "./comet-chat-user-contact-list.component.html",
   styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })
@@ -33,7 +34,12 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   defaultAvatarImage =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
 
-  constructor() {}
+  constructor(private ref: ChangeDetectorRef) {
+    setInterval(() => {
+      console.log("UserList --> detectchange called");
+      this.ref.detectChanges();
+    }, 5000);
+  }
 
   ngOnInit() {
     //console.log(`friends only status is `, this.friendsOnly);
