@@ -1,9 +1,12 @@
-<div *ngIf="msgSent">
-  <span class="msgTimestampStyle"> {{ getTime() }} {{ tick }} </span>
+<div *ngIf="msgSent" class="recieptContainer">
+  <span class="msgTimestampStyle"> {{ getTime() }} </span>
+  <span class="tick sent">&nbsp;</span>
 </div>
-<span class="msgTimestampStyle" *ngIf="msgRead" id="read">
-  {{ getTime() }} {{ tick }}
-</span>
-<span class="msgTimestampStyle" *ngIf="msgDeliv" id="deliv">
-  {{ getTime() }} {{ tick }}
-</span>
+<div *ngIf="msgDeliv" class="recieptContainer">
+  <span class="msgTimestampStyle"> {{ getTime() }} </span>
+  <span class="tick deliv">&nbsp;</span>
+</div>
+<div *ngIf="msgRead" class="recieptContainer">
+  <span class="msgTimestampStyle"> {{ getTime() }} </span>
+  <span class="tick read">&nbsp;</span>
+</div>
