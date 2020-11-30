@@ -7,20 +7,12 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class SenderFileBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
-  url1;
+  url: string;
+  name: string;
   constructor() {}
 
   ngOnInit() {
-    console.log("sender-file-bubble ->>> ", this.MessageDetails);
-    console.log(
-      "image detials ->>>> ",
-      this.MessageDetails.data.attachments[0].name
-    );
-    this.url1 = this.MessageDetails.data.attachments[0].url;
-    console.log(
-      "url detials ->>>> ",
-      this.MessageDetails.data.attachments[0].url
-    );
-    console.log("->>>>>>>>>>>>", this.url1);
+    this.url = this.MessageDetails.data.attachments[0].url;
+    this.name = this.MessageDetails.data.attachments[0].name;
   }
 }
