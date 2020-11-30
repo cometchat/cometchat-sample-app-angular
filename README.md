@@ -47,7 +47,12 @@ Components And Description :
         Inputs : @Input() MessageDetails = null;   It hold the messsage Information , i.e., senderId, receiverId, etc
 
     6. UserList Screen Component :
-        Descritpion : It is used to display all the user ( with whom you can chat with ) and when you click on a user , a chat window with that user open to the right hand side.
+        Descritpion : It is used to display all the user ( with whom you can chat with ) and when you click on a user , a chat window with that user open to the right hand side. Its is made up using the UserList component and the MessageListScreen Component.
 
         Inputs : None
         Outputs : None
+
+    7. Message Header :
+        Description : it shows the user ( you are chatting with) avatar , it online activity and calling options (voice/video)
+
+        Inputs :  @Input() item = null;     Holds the information the receiver ( user you are chating with )
