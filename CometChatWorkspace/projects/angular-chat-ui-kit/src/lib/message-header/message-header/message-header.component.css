@@ -54,7 +54,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-#lastActive {
+.lastActive {
   color: rgba(20, 20, 20, 0.6);
 }
 
@@ -63,7 +63,7 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 100px;
+  width: 118px;
 }
 
 .chatOptionStyle {
@@ -75,15 +75,16 @@
 }
 
 .callOption {
-  background-image: url("https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg");
-  margin-left: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><g><g><path fill="%2339f" d="M16.234 12.26l-2.54-.29a1.99 1.99 0 0 0-1.64.57l-1.84 1.84a15.045 15.045 0 0 1-6.59-6.59l1.85-1.85c.43-.43.64-1.03.57-1.64l-.29-2.52A2.001 2.001 0 0 0 3.764.01h-1.73c-1.13 0-2.07.94-2 2.07.53 8.54 7.36 15.36 15.89 15.89 1.13.07 2.07-.87 2.07-2v-1.73c.01-1.01-.75-1.86-1.76-1.98z"/></g></g></svg>')
+    center center no-repeat;
 }
 
 .videoCallOption {
-  background-image: url("https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg");
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12"><g><g><path fill="%2339f" d="M14 4.5V1a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7.5l2.29 2.29c.63.63 1.71.18 1.71-.71V2.91c0-.89-1.08-1.34-1.71-.71z"/></g></g></svg>')
+    center center no-repeat;
 }
 
 .detailsOption {
-  background-image: url("https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg");
-  margin-right: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 15"><g><g><path fill="%2339f" d="M16.357 10h-4.714c-.352 0-.643.34-.643.75s.291.75.643.75h4.714c.352 0 .643-.34.643-.75s-.291-.75-.643-.75zm0-3h-4.714c-.352 0-.643.34-.643.75s.291.75.643.75h4.714c.352 0 .643-.34.643-.75S16.709 7 16.357 7zm0-3h-4.714c-.352 0-.643.34-.643.75s.291.75.643.75h4.714c.352 0 .643-.34.643-.75S16.709 4 16.357 4zM18 12a1 1 0 0 1-1 1h-7V2h7a1 1 0 0 1 1 1zM3 0a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3z"/></g></g></svg>')
+    center center no-repeat;
 }
