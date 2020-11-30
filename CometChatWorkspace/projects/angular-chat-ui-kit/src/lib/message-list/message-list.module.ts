@@ -10,8 +10,8 @@ import { SenderFileBubbleModule } from "../sender-file-bubble/sender-file-bubble
   imports: [
     CommonModule,
     CometChatSenderMessageBubbleModule,
-    CometChatReceiverMessageBubbleModule,
     SenderFileBubbleModule,
+    CometChatReceiverMessageBubbleModule,
   ],
   exports: [MessageListComponent],
 })
