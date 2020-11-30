@@ -1,0 +1,58 @@
+.messageContainerStyle {
+  align-self: flex-end;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 100%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+/* .messageContainerStyle:hover > ul.message__actions {
+  display: flex;
+} */
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-end;
+  display: flex;
+}
+
+.messageFileWrapper {
+  display: inline-block;
+  border-radius: 12px;
+  background-color: #39f;
+  color: #fff;
+  /* backgroundColor: `${props.theme.backgroundColor.blue}`; */
+  /* color: `${props.theme.color.white}`; */
+  padding: 8px 12px;
+  align-self: flex-end;
+  max-width: 100%;
+}
+.messageFileWrapper > a {
+  background: 0 0;
+  text-decoration: none;
+  color: #fff;
+  /* color: `${props.theme.color.white}`; */
+  max-width: 100%;
+  font-size: 14px;
+}
+.messageFileWrapper:visited,
+.messageFileWrapper:active,
+.messageFileWrapper:hover {
+  color: #fff;
+  /* color: `${props.theme.color.white}`; */
+  text-decoration: none;
+}
+
+#file {
+  background: white
+    url('data:image/svg+xml;<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path fill="%2339f" d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+}
+
+.messageInfoWrapperStyle {
+  align-self: flex-end;
+}

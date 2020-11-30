@@ -286,11 +286,15 @@ export class CometChatMessageComposerComponent implements OnInit {
   }
 
   onFileChange(event) {
-    if (!event.target.files[0]) {
+    console.log("hahahahaa ->>>>> ", event.target.files[0]);
+
+    if (!event.target.files["0"]) {
       return false;
     }
-    const uploadedFile = event.target.files[0];
-    const reader = new FileReader();
+    console.log("event is ", event);
+
+    const uploadedFile = event.target.files["0"];
+    var reader = new FileReader();
     reader.addEventListener(
       "load",
       () => {
@@ -303,7 +307,7 @@ export class CometChatMessageComposerComponent implements OnInit {
       },
       false
     );
-    console.log(reader);
+    console.log("reader is ", reader);
 
     reader.readAsArrayBuffer(uploadedFile);
   }
@@ -315,7 +319,44 @@ export class CometChatMessageComposerComponent implements OnInit {
     }
     this.messageSending = true;
 
-    // const { receiverId, receiverType } = this.getReceiverDetails();
+    const { receiverId, receiverType } = this.getReceiverDetails();
+
+    let mediaMessage = new CometChat.MediaMessage(
+      receiverId,
+      messageInput,
+      messageType,
+      receiverType
+    );
+    if (this.type.parentMessageId) {
+      mediaMessage.setParentMessageId(this.parentMessageId);
+    }
+    console.log("typeeee iss ->>>>>> ", this.parentMessageId);
+
+    // this.endTyping()
+    console.log(
+      "sendMediaMessage mediaMessage Message_Composer ->>>",
+      mediaMessage
+    );
+    CometChat.sendMessage(mediaMessage)
+      .then((response) => {
+        console.log(
+          "sendMediaMessage response Message_Composer ->>>",
+          response
+        );
+        this.messageSending = false;
+        // this.playAudio()
+        this.actionGenerated.emit({
+          type: "messageComposed",
+          payLoad: [response],
+        });
+      })
+      .catch((error) => {
+        this.messageSending = false;
+        console.log(
+          "message sending failed with error Message_Composer ",
+          error
+        );
+      });
   }
 
   addEmoji(event) {

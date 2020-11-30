@@ -1,0 +1,100 @@
+.messageContainerStyle {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 65%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.messageContainerStyle:hover {
+  display: flex;
+}
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageThumbnailStyle {
+  width: 36px;
+  height: 36px;
+  margin: 10px 5px;
+  float: left;
+  flex-shrink: 0;
+}
+
+.messageDetailStyle {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nameWrapperStyle {
+  align-self: flex-start;
+}
+
+.nameStyle {
+  font-size: 10px;
+  /* color: `${props.theme.color.helpText}`, */
+}
+
+.messageFileContainerStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageFileWrapperStyle {
+  display: inline-block;
+  border-radius: 12px;
+  color: #cccccc;
+  background-color: #f6f6f6;
+  /* color: `${props.theme.color.secondary}`;
+    backgroundColor: `${props.theme.backgroundColor.secondary}`; */
+  padding: 8px 12px;
+  align-self: flex-start;
+  width: auto;
+}
+.messageFileWrapperStyle > a {
+  background: 0 0;
+  text-decoration: none;
+  background-color: transparent;
+  color: #141414;
+  /* color: `${props.theme.color.primary}`; */
+  width: auto;
+  font-size: 14px;
+}
+.messageFileWrapperStyle:visited,
+.messageFileWrapperStyle:active,
+.messageFileWrapperStyle:hover {
+  color: #141414;
+  /* color: `${props.theme.color.primary}`, */
+  text-decoration: none;
+}
+
+#file {
+  background: white
+    url('data:image/svg+xml;<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path fill="%2339f" d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>')
+    10px center;
+}
+
+.messageInfoWrapperStyle {
+  align-self: flex-start;
+  padding: 3px 5px;
+}
+
+.messageTimestampStyle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 12px;
+  text-transform: uppercase;
+  /* color: `${props.theme.color.helpText}`; */
+}
