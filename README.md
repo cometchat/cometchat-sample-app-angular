@@ -72,3 +72,13 @@ Components And Description :
 
         Outpust:
              @Output() actionGenerated  The Event emits The Type of action that was generated
+
+    9. Message List Screen :
+        Description : It is made up of messageHeader , messageList and MessageComposer Components . It is used to send and receive message to a person/user and know his/her online activity.
+
+        Inputs :
+            @Input() item = null;    Holds the information the receiver ( user you are chating with )
+            @Input() type = null;    The Type of user you are Chatting With ( Group / User ).
+
+         Outpust:
+             @Output() actionGenerated  The Event emits The Type of action that was generated
