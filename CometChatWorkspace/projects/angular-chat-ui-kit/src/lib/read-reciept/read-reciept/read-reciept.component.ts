@@ -23,34 +23,34 @@ export class ReadRecieptComponent implements OnInit {
       minute: "numeric",
       hour12: true,
     });
-    //console.log("time is ", timeStamp);
+    // console.log("time is ", timeStamp);
     return timeStamp;
   }
-  tick;
 
   getTick() {
+    let tick;
     // this.msgSent = false;
     let sentAt = this.MessageDetails.sentAt;
     let readAt = this.MessageDetails.readAt;
     let delivAt = this.MessageDetails.deliveredAt;
     if (sentAt && !readAt && !delivAt) {
       this.msgSent = true;
-      this.tick = "single";
+      //tick = "single";
       this.msgDeliv = false;
       this.msgRead = false;
     }
     if (sentAt && !readAt && delivAt) {
-      this.msgRead = true;
-      this.tick = "double";
-      this.msgSent = false;
-      this.msgDeliv = false;
-    }
-    if (sentAt && readAt && delivAt) {
       this.msgDeliv = true;
-      this.tick = "blue tick";
+      //tick = "double";
       this.msgSent = false;
       this.msgRead = false;
     }
-    return this.tick;
+    if (sentAt && readAt && delivAt) {
+      this.msgRead = true;
+      // tick = "blue tick";
+      this.msgSent = false;
+      this.msgDeliv = false;
+    }
+    // return tick;
   }
 }

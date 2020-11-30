@@ -15,7 +15,7 @@
       <div class="inputStickyStyle">
         <div class="stickyAttachmentStyle">
           <!--All file upload options starts here-->
-          <div class="attachmentIconStyle" (click)="(toggleFilePicker)">
+          <div class="attachmentIconStyle" (click)="toggleFilePicker()">
             <span>&nbsp;</span>
           </div>
 
@@ -24,6 +24,7 @@
             (click)="getVideo()"
             class="fileItemStyle"
             id="video"
+            [@FadeInFadeOut]="checkAnimatedState"
           >
             <input
               type="file"
@@ -37,6 +38,7 @@
             (click)="getAudio()"
             class="fileItemStyle"
             id="audio"
+            [@FadeInFadeOut]="checkAnimatedState"
           >
             <input
               type="file"
@@ -50,6 +52,7 @@
             (click)="getImage()"
             class="fileItemStyle"
             id="image"
+            [@FadeInFadeOut]="checkAnimatedState"
           >
             <input
               type="file"
@@ -63,6 +66,7 @@
             (click)="getFile()"
             class="fileItemStyle"
             id="file"
+            [@FadeInFadeOut]="checkAnimatedState"
           >
             <input
               type="file"
