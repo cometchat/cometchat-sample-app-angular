@@ -28,6 +28,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
   liveReaction: false;
   changeNumber = 0;
   reachedTopOfConversation = false;
+  scrollVariable = 0;
 
   constructor() {}
 
@@ -98,13 +99,8 @@ export class CometchatMessageListScreenComponent implements OnInit {
    */
   setMessages(messages) {
     this.messageList = [...messages];
-    this.chatWindow.nativeElement.scrollTop =
-      this.chatWindow.nativeElement.scrollHeight -
-      this.chatWindow.nativeElement.clientHeight;
-    console.log(
-      `Message List Screen --> changed chat window height `,
-      this.chatWindow
-    );
+
+    this.scrollToBottomOfChatWindow();
   }
 
   /**
@@ -124,32 +120,26 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
     this.messageList = [...dummy, ...messages];
 
-    if (this.messageList !== dummy) {
-      console.log("the reference of message list array also changed");
-    } else {
-      console.log("the reference of message list array also NOT changed");
-    }
-
-    this.changeNumber++;
+    this.scrollToBottomOfChatWindow();
 
     console.log("appending the sent message ", this.messageList);
   };
 
   handleScroll(e) {
-    console.log(`Message List Screen --> user started scrollling `, e);
+    // console.log(`Message List Screen --> user started scrollling `, e);
 
-    console.log(
-      `Message List Screen --> e.currentTarget.scrollHeight `,
-      e.currentTarget.scrollHeight
-    );
-    console.log(
-      `Message List Screen --> e.currentTarget.scrollTop `,
-      e.currentTarget.scrollTop
-    );
-    console.log(
-      `Message List Screen --> e.currentTarget.clientHeight `,
-      e.currentTarget.clientHeight
-    );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.scrollHeight `,
+    //   e.currentTarget.scrollHeight
+    // );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.scrollTop `,
+    //   e.currentTarget.scrollTop
+    // );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.clientHeight `,
+    //   e.currentTarget.clientHeight
+    // );
 
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
@@ -161,15 +151,19 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
     if (top) {
       this.reachedTopOfConversation = top;
-
-      // setTimeout(() => {
-      //    this.reachedTopOfConversation = false;
-      // }, 3000);
     }
 
     console.log(
       "Message List Screen --> reached top of chat , fetch old conversation ",
       this.reachedTopOfConversation
     );
+  }
+
+  scrollToBottomOfChatWindow() {
+    setInterval(() => {
+      this.scrollVariable =
+        this.chatWindow.nativeElement.scrollHeight -
+        this.chatWindow.nativeElement.clientHeight;
+    }, 1);
   }
 }
