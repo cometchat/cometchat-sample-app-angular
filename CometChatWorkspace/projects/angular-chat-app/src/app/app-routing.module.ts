@@ -8,6 +8,8 @@ import { UserListPageComponent } from "./Components/user-list-page/user-list-pag
 import { UserListScreenPageComponent } from "./Components/user-list-screen-page/user-list-screen-page.component";
 
 const routes: Routes = [
+  { path: "", redirectTo: "login", pathMatch: "full" },
+
   {
     path: "login",
     component: KitchenSinkAppComponent,
