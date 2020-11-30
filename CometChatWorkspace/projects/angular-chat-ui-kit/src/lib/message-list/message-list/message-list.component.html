@@ -4,15 +4,30 @@
     <!--message-->
     <div *ngFor="let msg of messages">
       <!-- NgSwitchCase for different Types Of Bubble -->
+      <div [ngSwitch]="msg.type">
+        <!-- CASE FOR TEXT -->
+        <div *ngSwitchCase="'text'">
+          <comet-chat-receiver-message-bubble
+            *ngIf="msg.sender.uid !== loggedInUser.uid"
+            [MessageDetails]="msg"
+          ></comet-chat-receiver-message-bubble>
 
-      <comet-chat-receiver-message-bubble
-        *ngIf="msg.sender.uid !== loggedInUser.uid"
-        [MessageDetails]="msg"
-      ></comet-chat-receiver-message-bubble>
-      <comet-chat-sender-message-bubble
-        *ngIf="msg.sender.uid === loggedInUser.uid"
-        [MessageDetails]="msg"
-      ></comet-chat-sender-message-bubble>
+          <comet-chat-sender-message-bubble
+            *ngIf="msg.sender.uid === loggedInUser.uid"
+            [MessageDetails]="msg"
+          ></comet-chat-sender-message-bubble>
+        </div>
+        <!--CASE FOR TEXT ENDS -->
+
+        <!--CASE FOR FILE-->
+        <div *ngSwitchCase="'file'">
+          <sender-file-bubble
+            *ngIf="msg.sender.uid === loggedInUser.uid"
+            [MessageDetails]="msg"
+          ></sender-file-bubble>
+        </div>
+        <!--CASE FOR FILE ENDS-->
+      </div>
     </div>
   </div>
 </div>
