@@ -19,3 +19,12 @@ Components And Description :
                  @Input() hasActions = false;     can be Set , to get actions from component to help screen logic
         OutPuts :   @Output() onUserClick : The Event emits a user that was clicked
                     @Output() actionGenerated: The Event emits The Type of action that was generated
+
+
+
+    2. Avatar Component :
+        Description : User to display the profile Image of any user in a Circular Container
+        Inputs : @Input() avatar =  "some Image Url"  , the url of the profile picture Image
+                 @Input() userStatus = "";    the offline ( grey dot) / online ( green dot  ) status of the user
+
+        OutPuts : None
