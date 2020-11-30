@@ -18,7 +18,6 @@ import * as enums from "../../utils/enums";
   styleUrls: ["./message-list.component.css"],
 })
 export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() changeNumber = 0;
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessageId = null;

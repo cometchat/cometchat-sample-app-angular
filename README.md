@@ -56,3 +56,19 @@ Components And Description :
         Description : it shows the user ( you are chatting with) avatar , it online activity and calling options (voice/video)
 
         Inputs :  @Input() item = null;     Holds the information the receiver ( user you are chating with )
+
+        Outputs : None
+
+    8. Message List :
+        Description : It is used to display all the messages between the two users that are chatting
+
+        Inputs :
+            @Input() item = null;    Holds the information the receiver ( user you are chating with )
+            @Input() type = null;    The Type of user you are Chatting With ( Group / User ).
+            @Input() parentMessageId = null;   Will Be Used in threaded Messages
+            @Input() widgetSettings = null;    can be set for some option in the component
+            @Input() messages = [];          List of Messages between the two users
+            @Input() reachedTopOfConversation = [];  it indicates the user has scrolled to the top of the messageList and now , its time to fetch more previous messages
+
+        Outpust:
+             @Output() actionGenerated  The Event emits The Type of action that was generated
