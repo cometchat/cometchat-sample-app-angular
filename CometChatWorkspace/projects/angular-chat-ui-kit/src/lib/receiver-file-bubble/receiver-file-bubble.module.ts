@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReceiverFileBubbleComponent } from './receiver-file-bubble/receiver-file-bubble.component';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ReceiverFileBubbleComponent } from "./receiver-file-bubble/receiver-file-bubble.component";
+import { ReadRecieptModule } from "../read-reciept/read-reciept.module";
 
 @NgModule({
   declarations: [ReceiverFileBubbleComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, ReadRecieptModule],
+  exports: [ReceiverFileBubbleComponent],
 })
-export class ReceiverFileBubbleModule { }
+export class ReceiverFileBubbleModule {}
