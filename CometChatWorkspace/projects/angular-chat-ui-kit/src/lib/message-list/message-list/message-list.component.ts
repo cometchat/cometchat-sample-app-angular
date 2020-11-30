@@ -24,6 +24,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   @Input() parentMessageId = null;
   @Input() widgetSettings = null;
   @Input() messages = [];
+  @Input() reachedTopOfConversation = [];
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -87,9 +88,13 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       console.log(change["messages"]);
     }
 
-    if (change["changeNumber"]) {
-      console.log("Message List --> the changeNumber changed ");
-      console.log(change["changeNumber"]);
+    if (change["reachedTopOfConversation"]) {
+      console.log("Message List --> reachedTopOfConversation ");
+      console.log(change["reachedTopOfConversation"]);
+
+      if (change["reachedTopOfConversation"].currentValue) {
+        this.getMessages(false, false, true);
+      }
     }
   }
 
@@ -214,7 +219,11 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
    * Gets Messages For a particular conversation bases on MessageRequestConfig
    * @param
    */
-  getMessages(scrollToBottom = false, newConversation = false) {
+  getMessages(
+    scrollToBottom = false,
+    newConversation = false,
+    scrollToTop = false
+  ) {
     const actionMessages = [];
 
     let user = CometChat.getLoggedinUser().then(
@@ -268,6 +277,10 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
             let actionGeneratedType = "messageFetched";
             if (scrollToBottom === true) {
               actionGeneratedType = "messageFetchedAgain";
+            }
+
+            if (scrollToTop) {
+              actionGeneratedType = "olderMessagesFetched";
             }
 
             // Only called when the active user changes the the conversation , that is switches to some other person

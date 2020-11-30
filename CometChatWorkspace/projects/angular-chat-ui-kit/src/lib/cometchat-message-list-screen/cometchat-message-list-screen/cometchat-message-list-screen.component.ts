@@ -27,6 +27,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
   replyPreview: null;
   liveReaction: false;
   changeNumber = 0;
+  reachedTopOfConversation = false;
 
   constructor() {}
 
@@ -71,6 +72,10 @@ export class CometchatMessageListScreenComponent implements OnInit {
       case "messageFetched":
         this.prependMessages(messages);
         break;
+      case "olderMessagesFetched":
+        this.reachedTopOfConversation = false;
+        this.prependMessages(messages);
+        break;
       case "messageComposed": {
         this.appendMessage(messages);
         this.actionGenerated.emit({
@@ -79,9 +84,11 @@ export class CometchatMessageListScreenComponent implements OnInit {
         });
         break;
       }
-      case "newConversationOpened": {
-        this.setMessages(messages);
-      }
+      case "newConversationOpened":
+        {
+          this.setMessages(messages);
+        }
+        break;
     }
   }
 
@@ -149,5 +156,20 @@ export class CometchatMessageListScreenComponent implements OnInit {
       Math.round(e.currentTarget.clientHeight);
 
     console.log("Message List Screen --> reached bottom ", bottom);
+
+    const top = e.currentTarget.scrollTop === 0;
+
+    if (top) {
+      this.reachedTopOfConversation = top;
+
+      // setTimeout(() => {
+      //    this.reachedTopOfConversation = false;
+      // }, 3000);
+    }
+
+    console.log(
+      "Message List Screen --> reached top of chat , fetch old conversation ",
+      this.reachedTopOfConversation
+    );
   }
 }
