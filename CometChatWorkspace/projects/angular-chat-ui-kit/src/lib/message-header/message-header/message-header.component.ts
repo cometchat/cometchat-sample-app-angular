@@ -12,15 +12,23 @@ export class MessageHeaderComponent implements OnInit {
   ngOnInit() {}
 
   getDate(date) {
-    let lastActiveDate;
-    lastActiveDate = new Date(date * 1000).toLocaleTimeString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
+    let lastActiveDate = "Last Active At: ";
+
+    if (date === undefined) {
+      lastActiveDate = "Offline";
+      return lastActiveDate;
+    }
+
+    lastActiveDate =
+      lastActiveDate +
+      new Date(date * 1000).toLocaleTimeString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
     // console.log("z->>>>>> ", lastActiveDate);
     return lastActiveDate;
   }

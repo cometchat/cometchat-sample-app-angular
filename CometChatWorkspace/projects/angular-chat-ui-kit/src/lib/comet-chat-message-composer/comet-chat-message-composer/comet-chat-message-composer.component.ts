@@ -1,10 +1,35 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
 @Component({
   selector: "comet-chat-message-composer",
   templateUrl: "./comet-chat-message-composer.component.html",
   styleUrls: ["./comet-chat-message-composer.component.css"],
+  animations: [
+    trigger("FadeInFadeOut", [
+      state(
+        "normal",
+        style({
+          width: "0px",
+        })
+      ),
+      state(
+        "animated",
+        style({
+          width: "22px",
+          margin: "auto 1px",
+        })
+      ),
+      transition("normal=>animated", animate(500)),
+    ]),
+  ],
 })
 export class CometChatMessageComposerComponent implements OnInit {
   @Input() parentMessageId = null;
@@ -25,9 +50,9 @@ export class CometChatMessageComposerComponent implements OnInit {
   messageToBeEdited = false;
   replyPreview = null;
   stickerViewer = false;
+  checkAnimatedState = "normal";
 
   constructor() {}
-
   ngOnInit() {
     console.log(
       "MessageComposer -> user to which , message will be sent ",
@@ -165,7 +190,11 @@ export class CometChatMessageComposerComponent implements OnInit {
       });
   }
 
-  toggleFilePicker() {}
+  toggleFilePicker() {
+    this.checkAnimatedState == "normal"
+      ? (this.checkAnimatedState = "animated")
+      : (this.checkAnimatedState = "normal");
+  }
 
   getVideo() {
     let vidPicker = document.getElementById("vidPicker");
@@ -287,5 +316,9 @@ export class CometChatMessageComposerComponent implements OnInit {
     this.messageSending = true;
 
     // const { receiverId, receiverType } = this.getReceiverDetails();
+  }
+
+  addEmoji(event) {
+    console.log("event ->>>>>> ", event);
   }
 }

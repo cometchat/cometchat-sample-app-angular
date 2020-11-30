@@ -14,9 +14,9 @@
       </div>
 
       <div *ngIf="item.status === 'offline'">
-        <span class="chatStatusStyle" id="lastActive"
-          >Last Active At: {{ getDate(item.lastActiveAt) }}</span
-        >
+        <span class="chatStatusStyle lastActive">{{
+          getDate(item.lastActiveAt)
+        }}</span>
       </div>
     </div>
   </div>
