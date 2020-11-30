@@ -58,7 +58,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
-      console.log("detectchange called");
+      //console.log("detectchange called");
       this.ref.detectChanges();
     }, 5000);
   }

@@ -36,7 +36,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
 
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
-      console.log("UserList --> detectchange called");
+      //console.log("UserList --> detectchange called");
       this.ref.detectChanges();
     }, 5000);
   }
