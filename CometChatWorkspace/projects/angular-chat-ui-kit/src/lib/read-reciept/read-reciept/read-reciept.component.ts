@@ -23,7 +23,7 @@ export class ReadRecieptComponent implements OnInit {
       minute: "numeric",
       hour12: true,
     });
-    console.log("time is ", timeStamp);
+    //console.log("time is ", timeStamp);
     return timeStamp;
   }
   tick;
