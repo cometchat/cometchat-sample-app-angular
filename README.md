@@ -45,3 +45,9 @@ Components And Description :
     5. Sender Message Bubble Component :
         Description : it is used to display the Text Message sent by the loggedIn user
         Inputs : @Input() MessageDetails = null;   It hold the messsage Information , i.e., senderId, receiverId, etc
+
+    6. UserList Screen Component :
+        Descritpion : It is used to display all the user ( with whom you can chat with ) and when you click on a user , a chat window with that user open to the right hand side.
+
+        Inputs : None
+        Outputs : None
