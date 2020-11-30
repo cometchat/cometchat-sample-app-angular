@@ -9,7 +9,6 @@ import { UserListScreenPageComponent } from "./Components/user-list-screen-page/
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
-
   {
     path: "login",
     component: KitchenSinkAppComponent,

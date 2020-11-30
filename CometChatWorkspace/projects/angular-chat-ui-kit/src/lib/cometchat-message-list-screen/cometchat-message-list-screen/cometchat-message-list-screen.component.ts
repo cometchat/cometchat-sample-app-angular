@@ -27,12 +27,14 @@ export class CometchatMessageListScreenComponent implements OnInit {
   replyPreview: null;
   liveReaction: false;
   changeNumber = 0;
+  reachedTopOfConversation = false;
+  scrollVariable = 0;
 
   constructor() {}
 
   ngOnInit() {
     //console.log("MessageListScreen -> Type of User ", this.type);
-    console.log("MessageListScreen -> ChatWindow ", this.chatWindow);
+    //console.log("MessageListScreen -> ChatWindow ", this.chatWindow);
   }
 
   /**
@@ -49,28 +51,47 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
     switch (action.type) {
       case "customMessageReceived":
-      case "messageReceived":
-        {
-          const message = messages[0];
-          if (message.parentMessageId) {
-            // Implement while doing the threaded message feature
-            // this.updateReplyCount(messages);
-          } else {
-            // Smart Reply Feature
-            // this.smartReplyPreview(messages);
-            console.log(
-              "received a message from the user , u r chatting with , going to append it"
-            );
-            this.appendMessage(messages);
-          }
-
-          //play message received audio
-          //this.playAudio();
+      case "messageReceived": {
+        const message = messages[0];
+        if (message.parentMessageId) {
+          // Implement while doing the threaded message feature
+          // this.updateReplyCount(messages);
+        } else {
+          // Smart Reply Feature
+          // this.smartReplyPreview(messages);
+          console.log(
+            "received a message from the user , u r chatting with , going to append it"
+          );
+          this.appendMessage(messages);
         }
+
+        //play message received audio
+        //this.playAudio();
+
         break;
-      case "messageFetched":
+      }
+
+      case "messageFetched": {
         this.prependMessages(messages);
         break;
+      }
+      case "olderMessagesFetched": {
+        this.reachedTopOfConversation = false;
+
+        //No Need for below actions if there is nothing to prepend
+        if (messages.length == 0) break;
+
+        let prevScrollHeight = this.chatWindow.nativeElement.scrollHeight;
+
+        this.prependMessages(messages);
+
+        setTimeout(() => {
+          this.scrollVariable =
+            this.chatWindow.nativeElement.scrollHeight - prevScrollHeight;
+        }, 1);
+
+        break;
+      }
       case "messageComposed": {
         this.appendMessage(messages);
         this.actionGenerated.emit({
@@ -81,6 +102,8 @@ export class CometchatMessageListScreenComponent implements OnInit {
       }
       case "newConversationOpened": {
         this.setMessages(messages);
+
+        break;
       }
     }
   }
@@ -91,13 +114,8 @@ export class CometchatMessageListScreenComponent implements OnInit {
    */
   setMessages(messages) {
     this.messageList = [...messages];
-    this.chatWindow.nativeElement.scrollTop =
-      this.chatWindow.nativeElement.scrollHeight -
-      this.chatWindow.nativeElement.clientHeight;
-    console.log(
-      `Message List Screen --> changed chat window height `,
-      this.chatWindow
-    );
+
+    this.scrollToBottomOfChatWindow();
   }
 
   /**
@@ -117,28 +135,22 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
     this.messageList = [...dummy, ...messages];
 
-    if (this.messageList !== dummy) {
-      console.log("the reference of message list array also changed");
-    } else {
-      console.log("the reference of message list array also NOT changed");
-    }
+    this.scrollToBottomOfChatWindow();
 
-    this.changeNumber++;
-
-    console.log("appending the sent message ", this.messageList);
+    //console.log("appending the sent message ", this.messageList);
   };
 
   handleScroll(e) {
-    console.log(`Message List Screen --> user started scrollling `, e);
+    // console.log(`Message List Screen --> user started scrollling `, e);
 
-    console.log(
-      `Message List Screen --> e.currentTarget.scrollHeight `,
-      e.currentTarget.scrollHeight
-    );
-    console.log(
-      `Message List Screen --> e.currentTarget.scrollTop `,
-      e.currentTarget.scrollTop
-    );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.scrollHeight `,
+    //   e.currentTarget.scrollHeight
+    // );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.scrollTop `,
+    //   e.currentTarget.scrollTop
+    // );
     console.log(
       `Message List Screen --> e.currentTarget.clientHeight `,
       e.currentTarget.clientHeight
@@ -148,6 +160,29 @@ export class CometchatMessageListScreenComponent implements OnInit {
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
 
-    console.log("Message List Screen --> reached bottom ", bottom);
+    //console.log("Message List Screen --> reached bottom ", bottom);
+
+    const top = e.currentTarget.scrollTop === 0;
+
+    if (top) {
+      this.reachedTopOfConversation = top;
+    }
+
+    // console.log(
+    //   "Message List Screen --> reached top of chat , fetch old conversation ",
+    //   this.reachedTopOfConversation
+    // );
+  }
+
+  scrollToBottomOfChatWindow() {
+    // console.log(
+    //   "Message List Screen --> Making The Chat Window Scroll to Bottom "
+    // );
+
+    setTimeout(() => {
+      this.scrollVariable =
+        this.chatWindow.nativeElement.scrollHeight -
+        this.chatWindow.nativeElement.clientHeight;
+    }, 1);
   }
 }

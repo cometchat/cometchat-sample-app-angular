@@ -1,11 +1,17 @@
 <div class="chatWrapperStyle">
   <!-- Add the Action To header to make it Dynamic -->
   <message-header [item]="item"></message-header>
-  <div class="messageWindowStyle" (scroll)="handleScroll($event)" #scrollMe>
+  <div
+    class="messageWindowStyle"
+    (scroll)="handleScroll($event)"
+    #scrollMe
+    [scrollTop]="scrollVariable"
+  >
     <message-list
       [item]="item"
       [type]="type"
       [messages]="messageList"
+      [reachedTopOfConversation]="reachedTopOfConversation"
       (actionGenerated)="actionHandler($event)"
     ></message-list>
   </div>

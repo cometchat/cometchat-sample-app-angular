@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "lib-cometchat-user-list-screen",
+  selector: "cometchat-user-list-screen",
   templateUrl: "./cometchat-user-list-screen.component.html",
   styleUrls: ["./cometchat-user-list-screen.component.css"],
 })
