@@ -25,6 +25,11 @@
             *ngIf="msg.sender.uid === loggedInUser.uid"
             [MessageDetails]="msg"
           ></sender-file-bubble>
+
+          <receiver-file-bubble
+            *ngIf="msg.sender.uid !== loggedInUser.uid"
+            [MessageDetails]="msg"
+          ></receiver-file-bubble>
         </div>
         <!--CASE FOR FILE ENDS-->
       </div>
