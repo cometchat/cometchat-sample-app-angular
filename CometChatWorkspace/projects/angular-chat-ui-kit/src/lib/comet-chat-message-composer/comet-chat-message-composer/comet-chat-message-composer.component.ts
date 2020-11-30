@@ -61,9 +61,9 @@ export class CometChatMessageComposerComponent implements OnInit {
    * @param Event e
    */
   sendMessageOnEnter(event) {
-    console.log(event);
-    console.log(event.target.value);
-    console.log(event.target.value.length);
+    // console.log(event);
+    // console.log(event.target.value);
+    // console.log(event.target.value.length);
     if (event.target.value.length > 0) {
       this.messageInput = event.target.value;
       this.senddisable = true;
