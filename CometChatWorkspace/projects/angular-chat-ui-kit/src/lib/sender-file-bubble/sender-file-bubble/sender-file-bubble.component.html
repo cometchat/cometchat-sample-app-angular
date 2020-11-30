@@ -1,0 +1,15 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <div class="messageWrapperStyle">
+    <div class="messageFileWrapper">
+      <a [href]="url" target="_blank"
+        >{{ name }}
+        <span id="file">&nbsp;</span>
+      </a>
+    </div>
+  </div>
+  <div class="messageInfoWrapperStyle">
+    <!--ReplyCount-->
+    <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
+  </div>
+</div>

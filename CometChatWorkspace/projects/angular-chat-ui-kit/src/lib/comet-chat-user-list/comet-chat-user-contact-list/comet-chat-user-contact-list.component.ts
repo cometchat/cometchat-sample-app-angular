@@ -108,12 +108,12 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   searchUsers(searchKey) {
     //console.log("search user based on key = ", searchKey);
     this.contactsNotFound = false;
-    this.userSearches = true;
     this.decoratorMsg = "Loading...";
 
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
+    this.userSearches = true;
     this.loader = true;
     let val = searchKey;
     this.timeout = setTimeout(() => {
@@ -155,15 +155,16 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       (userList) => {
         console.log(userList.length);
 
-        if (userList.length == 0 && this.userSearches === true) {
+        if (userList.length === 0 && this.userSearches === true) {
           this.contactsNotFound = true;
           this.decoratorMsg = "No Users Found";
+        } else {
+          this.userSearches = false;
+          /* userList will be the list of User class. */
+          console.log("User list received:", userList);
+          this.usersList = [...this.usersList, ...userList];
+          this.loader = false;
         }
-        this.userSearches = false;
-        /* userList will be the list of User class. */
-        console.log("User list received:", userList);
-        this.usersList = [...this.usersList, ...userList];
-        this.loader = false;
         /* retrived list can be used to display contact list. */
       },
       (error) => {

@@ -151,6 +151,8 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         },
         onMediaMessageReceived: (mediaMessage) => {
           console.log("Media message received successfully", mediaMessage);
+          this.messageUpdated(enums.MEDIA_MESSAGE_RECEIVED, mediaMessage);
+
           // Handle media message
         },
         onCustomMessageReceived: (customMessage) => {
