@@ -13,7 +13,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "lib-message-list",
+  selector: "message-list",
   templateUrl: "./message-list.component.html",
   styleUrls: ["./message-list.component.css"],
 })

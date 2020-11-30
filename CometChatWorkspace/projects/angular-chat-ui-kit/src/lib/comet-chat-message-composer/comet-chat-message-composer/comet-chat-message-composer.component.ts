@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
-  selector: "lib-comet-chat-message-composer",
+  selector: "comet-chat-message-composer",
   templateUrl: "./comet-chat-message-composer.component.html",
   styleUrls: ["./comet-chat-message-composer.component.css"],
 })

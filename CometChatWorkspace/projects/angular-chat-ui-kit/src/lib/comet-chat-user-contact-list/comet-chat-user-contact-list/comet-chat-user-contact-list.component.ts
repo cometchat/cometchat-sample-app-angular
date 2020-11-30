@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 @Component({
-  selector: "lib-comet-chat-user-contact-list",
+  selector: "comet-chat-user-list",
   templateUrl: "./comet-chat-user-contact-list.component.html",
   styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })

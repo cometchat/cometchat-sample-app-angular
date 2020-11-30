@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: "lib-comet-chat-sender-message-bubble",
+  selector: "comet-chat-sender-message-bubble",
   templateUrl: "./comet-chat-sender-message-bubble.component.html",
   styleUrls: ["./comet-chat-sender-message-bubble.component.css"],
 })
