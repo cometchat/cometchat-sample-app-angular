@@ -1,13 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SenderFileBubbleComponent } from './sender-file-bubble/sender-file-bubble.component';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { SenderFileBubbleComponent } from "./sender-file-bubble/sender-file-bubble.component";
 
 @NgModule({
   declarations: [SenderFileBubbleComponent],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  exports: [SenderFileBubbleComponent],
 })
-export class SenderFileBubbleModule { }
+export class SenderFileBubbleModule {}
