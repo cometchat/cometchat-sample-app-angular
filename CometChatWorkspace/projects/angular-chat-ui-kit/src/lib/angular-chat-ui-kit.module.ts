@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SenderFileBubbleModule } from "./sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "./receiver-file-bubble/receiver-file-bubble.module";
 import { MessageThreadModule } from "./message-thread/message-thread.module";
+import { ToolTipModule } from "./tool-tip/tool-tip.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -33,6 +34,7 @@ import { MessageThreadModule } from "./message-thread/message-thread.module";
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     MessageThreadModule,
+    ToolTipModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -50,6 +52,7 @@ import { MessageThreadModule } from "./message-thread/message-thread.module";
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     MessageThreadModule,
+    ToolTipModule,
   ],
 })
 export class AngularChatUiKitModule {}
