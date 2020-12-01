@@ -14,6 +14,11 @@
 
   <!-- Message Thread View Below -->
   <div class="userScreenSecondaryStyle">
-    <message-thread></message-thread>
+    <message-thread
+      [item]="curentItem"
+      [type]="type"
+      [parentMessage]="dummyMessage"
+      (actionGenerated)="actionHandler($event)"
+    ></message-thread>
   </div>
 </div>

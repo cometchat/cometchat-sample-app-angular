@@ -6,6 +6,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./cometchat-user-list-screen.component.css"],
 })
 export class CometchatUserListScreenComponent implements OnInit {
+  dummyMessage = {
+    data: {
+      text: "testing thread",
+    },
+    sender: {
+      sentAt: 1606742046,
+    },
+  };
+
   //It can be a user or a group
   curentItem = null;
 
@@ -31,5 +40,18 @@ export class CometchatUserListScreenComponent implements OnInit {
     }
 
     //console.log("UserListScreen -> Type of User ", this.type);
+  }
+
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    //handle Events/Actions generated from MessageHeader , MessageComposer and MessageList Here
+
+    // action.payLoad has the array of messages that is received
+    let messages = action.payLoad;
+
+    console.log("UserListScreen --> action generation is ", action);
   }
 }
