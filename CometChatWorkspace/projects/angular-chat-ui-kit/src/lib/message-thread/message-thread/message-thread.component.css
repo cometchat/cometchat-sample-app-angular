@@ -1,0 +1,124 @@
+* {
+  font-family: Inter, sans-serif;
+}
+
+.wrapperStyle {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.wrapperStyle > * {
+  box-sizing: border-box;
+}
+
+.headerStyle {
+  padding: 10px 10px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.headerWrapperStyle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.headerDetailStyle {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 40px);
+}
+
+.headerTitleStyle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  width: 100%;
+}
+
+.headerNameStyle {
+  font-size: 13px;
+  line-height: 20px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.headerCloseStyle {
+  cursor: pointer;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>')
+    center center no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.messageContainerStyle {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* transition: background .3s ease-out .1s; */
+  width: 100%;
+  z-index: 100;
+  min-height: calc(100% - 68px);
+  order: 2;
+}
+
+.messageContainerStyle .chatListStyle {
+  min-height: 250px;
+}
+
+.messageContainerStyle .chatListStyle .listWrapperStyle ::-webkit-scrollbar {
+  display: none;
+}
+
+.parentMessageStyle {
+  /* Sender and receiver have different justify content */
+  justify-content: flex-end;
+  padding: 14px 16px;
+  align-items: center;
+}
+
+.parentMessageStyle .sender__message__container,
+.receiver__message__container {
+  max-width: 100%;
+}
+
+.parentMessageStyle .replycount {
+  display: none;
+}
+
+.messageSeparatorStyle {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 7px 16px;
+  height: 15px;
+}
+
+.messageSeparatorStyle hr {
+  flex: 1;
+  margin: 1px 0 0 0;
+  border-top: 1px solid #eaeaea;
+}
+
+.messageReplyStyle {
+  margin-right: 12px;
+  font-size: 12px;
+}
+
+.messageWindowStyle {
+  padding: 20px;
+  height: 101vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}

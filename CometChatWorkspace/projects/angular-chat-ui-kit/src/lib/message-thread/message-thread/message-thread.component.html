@@ -1,1 +1,28 @@
-<p>message-thread works!</p>
+<div class="wrapperStyle">
+  <div class="headerStyle">
+    <div class="headerWrapperStyle">
+      <div class="headerDetailStyle">
+        <h6 class="headerTitleStyle">Thread</h6>
+        <span class="headerNameStyle">Test Name</span>
+      </div>
+      <div class="headerCloseStyle" (click)="closeThread()"></div>
+    </div>
+  </div>
+
+  <div class="messageContainerStyle">
+    <div class="parentMessageStyle">
+      <comet-chat-sender-message-bubble
+        [MessageDetails]="dummyMessage"
+      ></comet-chat-sender-message-bubble>
+    </div>
+    <div class="messageSeparatorStyle">
+      <span class="messageReplyStyle"> 1 reply</span>
+      <hr />
+    </div>
+    <div class="messageWindowStyle">
+      <message-list></message-list>
+    </div>
+
+    <comet-chat-message-composer></comet-chat-message-composer>
+  </div>
+</div>
