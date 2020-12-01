@@ -100,6 +100,10 @@ export class CometchatMessageListScreenComponent implements OnInit {
         });
         break;
       }
+      case "messageUpdated": {
+        this.updateMessages(messages);
+        break;
+      }
       case "newConversationOpened": {
         this.setMessages(messages);
 
@@ -138,6 +142,17 @@ export class CometchatMessageListScreenComponent implements OnInit {
     this.scrollToBottomOfChatWindow();
 
     //console.log("appending the sent message ", this.messageList);
+  };
+
+  /**
+   * update status of message ie. read or deliv
+   * @param Any messages
+   */
+  updateMessages = (messages) => {
+    // let dummy = [...this.messageList];
+
+    this.messageList = [...messages];
+    this.scrollToBottomOfChatWindow();
   };
 
   handleScroll(e) {
