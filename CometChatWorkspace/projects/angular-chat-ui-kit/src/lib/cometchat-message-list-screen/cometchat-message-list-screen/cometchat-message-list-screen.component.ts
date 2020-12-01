@@ -47,7 +47,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
     // action.payLoad has the array of messages that is received
     let messages = action.payLoad;
 
-    // console.log("MessageListScreen --> action generation is ", action);
+    console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
       case "customMessageReceived":
@@ -104,6 +104,13 @@ export class CometchatMessageListScreenComponent implements OnInit {
         this.updateMessages(messages);
         break;
       }
+      case "viewActualImage": {
+        this.actionGenerated.emit({
+          type: "viewActualImage",
+          payLoad: messages,
+        });
+        break;
+      }
       case "newConversationOpened": {
         this.setMessages(messages);
 
@@ -111,13 +118,14 @@ export class CometchatMessageListScreenComponent implements OnInit {
       }
     }
   }
-
   /**
    * set Messages Directly , coz new conversation is opened , hence no need to prepend or append
    * @param Any messages
    */
   setMessages(messages) {
     this.messageList = [...messages];
+
+    console.log("MessageListScreen->> ", this.messageList);
 
     this.scrollToBottomOfChatWindow();
   }
