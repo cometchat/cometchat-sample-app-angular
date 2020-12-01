@@ -10,6 +10,7 @@ export class ReadRecieptComponent implements OnInit {
   msgSent: boolean = false;
   msgRead: boolean = false;
   msgDeliv: boolean = false;
+  tickStatus: string;
   constructor() {}
 
   ngOnInit() {
@@ -28,28 +29,33 @@ export class ReadRecieptComponent implements OnInit {
   }
 
   getTick() {
-    let tick;
+    // let tick;
     // this.msgSent = false;
     let sentAt = this.MessageDetails.sentAt;
     let readAt = this.MessageDetails.readAt;
     let delivAt = this.MessageDetails.deliveredAt;
+    // this.msgSent = sentAt && !readAt && !delivAt;
+    // this.msgDeliv = sentAt && !readAt && delivAt;
+    // this.msgRead = sentAt && readAt && delivAt;
     if (sentAt && !readAt && !delivAt) {
-      this.msgSent = true;
-      //tick = "single";
-      this.msgDeliv = false;
-      this.msgRead = false;
+      // this.msgSent = true;
+      this.tickStatus = "sent";
     }
     if (sentAt && !readAt && delivAt) {
-      this.msgDeliv = true;
+      // this.msgDeliv = true;
+      this.tickStatus = "deliv";
+
       //tick = "double";
-      this.msgSent = false;
-      this.msgRead = false;
+      // this.msgSent = false;
+      // this.msgRead = false;
     }
     if (sentAt && readAt && delivAt) {
-      this.msgRead = true;
+      // this.msgRead = true;
+      this.tickStatus = "read";
+
       // tick = "blue tick";
-      this.msgSent = false;
-      this.msgDeliv = false;
+      // this.msgSent = false;
+      // this.msgDeliv = false;
     }
     // return tick;
   }

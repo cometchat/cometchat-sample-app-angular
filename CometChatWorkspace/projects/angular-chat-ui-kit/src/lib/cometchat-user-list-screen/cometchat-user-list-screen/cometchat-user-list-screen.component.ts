@@ -21,7 +21,7 @@ export class CometchatUserListScreenComponent implements OnInit {
    * @param Event user
    */
   userClicked(user) {
-    console.log(`user in parent component  `, user);
+    // console.log(`user in parent component  `, user);
     this.curentItem = user;
 
     if (this.curentItem.hasOwnProperty("uid")) {

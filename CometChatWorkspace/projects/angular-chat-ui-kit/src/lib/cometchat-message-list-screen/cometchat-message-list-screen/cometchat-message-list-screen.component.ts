@@ -47,7 +47,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
     // action.payLoad has the array of messages that is received
     let messages = action.payLoad;
 
-    console.log("MessageListScreen --> action generation is ", action);
+    // console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
       case "customMessageReceived":
@@ -59,9 +59,9 @@ export class CometchatMessageListScreenComponent implements OnInit {
         } else {
           // Smart Reply Feature
           // this.smartReplyPreview(messages);
-          console.log(
-            "received a message from the user , u r chatting with , going to append it"
-          );
+          // console.log(
+          //   "received a message from the user , u r chatting with , going to append it"
+          // );
           this.appendMessage(messages);
         }
 
@@ -98,6 +98,10 @@ export class CometchatMessageListScreenComponent implements OnInit {
           type: "messageComposed",
           payLoad: messages,
         });
+        break;
+      }
+      case "messageUpdated": {
+        this.updateMessages(messages);
         break;
       }
       case "newConversationOpened": {
@@ -140,6 +144,17 @@ export class CometchatMessageListScreenComponent implements OnInit {
     //console.log("appending the sent message ", this.messageList);
   };
 
+  /**
+   * update status of message ie. read or deliv
+   * @param Any messages
+   */
+  updateMessages = (messages) => {
+    // let dummy = [...this.messageList];
+
+    this.messageList = [...messages];
+    this.scrollToBottomOfChatWindow();
+  };
+
   handleScroll(e) {
     // console.log(`Message List Screen --> user started scrollling `, e);
 
@@ -151,10 +166,10 @@ export class CometchatMessageListScreenComponent implements OnInit {
     //   `Message List Screen --> e.currentTarget.scrollTop `,
     //   e.currentTarget.scrollTop
     // );
-    console.log(
-      `Message List Screen --> e.currentTarget.clientHeight `,
-      e.currentTarget.clientHeight
-    );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.clientHeight `,
+    //   e.currentTarget.clientHeight
+    // );
 
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
