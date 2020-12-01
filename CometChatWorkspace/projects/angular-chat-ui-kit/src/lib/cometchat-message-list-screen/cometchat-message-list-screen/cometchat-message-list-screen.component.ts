@@ -38,7 +38,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
   }
 
   /**
-   * Edit and Sent a Text message
+   * Handles all the actions emitted by the child components that make the current component
    * @param Event action
    */
   actionHandler(action) {
