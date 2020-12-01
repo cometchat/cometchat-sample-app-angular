@@ -32,6 +32,17 @@
           ></receiver-file-bubble>
         </div>
         <!--CASE FOR FILE ENDS-->
+
+        <!--CASE FOR IMAGE -->
+        <div *ngSwitchCase="'image'">
+          <sender-image-bubble
+            *ngIf="msg.sender.uid === loggedInUser.uid"
+            (actionGenerated)="actionHandler($event)"
+            [MessageDetails]="msg"
+          ></sender-image-bubble>
+        </div>
+
+        <!--CASE FOR IMAGE  ENDS-->
       </div>
     </div>
   </div>
