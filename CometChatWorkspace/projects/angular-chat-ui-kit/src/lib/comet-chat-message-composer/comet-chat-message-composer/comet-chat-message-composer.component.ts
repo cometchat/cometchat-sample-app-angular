@@ -54,12 +54,11 @@ export class CometChatMessageComposerComponent implements OnInit {
 
   constructor() {}
   ngOnInit() {
-    console.log(
-      "MessageComposer -> user to which , message will be sent ",
-      this.item
-    );
-
-    console.log("MessageComposer -> Type of User ", this.type);
+    // console.log(
+    //   "MessageComposer -> user to which , message will be sent ",
+    //   this.item
+    // );
+    //console.log("MessageComposer -> Type of User ", this.type);
   }
 
   /**
@@ -101,7 +100,7 @@ export class CometChatMessageComposerComponent implements OnInit {
 
     if (event.keyCode === 13 && !event.shiftKey) {
       event.preventDefault();
-      console.log(event);
+      //console.log(event);
       this.sendTextMessage();
     }
   }
@@ -117,7 +116,7 @@ export class CometChatMessageComposerComponent implements OnInit {
    * @param
    */
   sendTextMessage() {
-    console.log("Send Text Message Button Clicked");
+    //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
     if (this.emojiViewer) {
@@ -144,9 +143,9 @@ export class CometChatMessageComposerComponent implements OnInit {
 
     let { receiverId, receiverType } = this.getReceiverDetails();
 
-    console.log(
-      `receiverID = ${receiverId}  and receiverType = ${receiverType} `
-    );
+    // console.log(
+    //   `receiverID = ${receiverId}  and receiverType = ${receiverType} `
+    // );
 
     let messageInput = this.messageInput.trim();
     let textMessage = new CometChat.TextMessage(
@@ -182,7 +181,7 @@ export class CometChatMessageComposerComponent implements OnInit {
         //clearing Message Input Box
         this.messageInput = "";
 
-        console.log("Message Sent Successfull to ", this.item);
+        //console.log("Message Sent Successfull to ", this.item);
       })
       .catch((error) => {
         console.log("Message sending failed with error:", error);
@@ -214,8 +213,6 @@ export class CometChatMessageComposerComponent implements OnInit {
   }
 
   onVideoChange(event) {
-    console.log(event);
-    console.log(event.target.files[0]);
     if (!event.target.files[0]) {
       return false;
     }
@@ -233,7 +230,6 @@ export class CometChatMessageComposerComponent implements OnInit {
       },
       false
     );
-    console.log(reader);
 
     reader.readAsArrayBuffer(uploadedFile);
   }
@@ -256,13 +252,11 @@ export class CometChatMessageComposerComponent implements OnInit {
       },
       false
     );
-    console.log(reader);
 
     reader.readAsArrayBuffer(uploadedFile);
   }
 
   onImgChange(event) {
-    console.log(event);
     if (!event.target.files[0]) {
       return false;
     }
@@ -280,18 +274,14 @@ export class CometChatMessageComposerComponent implements OnInit {
       },
       false
     );
-    console.log(reader);
 
     reader.readAsArrayBuffer(uploadedFile);
   }
 
   onFileChange(event) {
-    console.log("hahahahaa ->>>>> ", event.target.files[0]);
-
     if (!event.target.files["0"]) {
       return false;
     }
-    console.log("event is ", event);
 
     const uploadedFile = event.target.files["0"];
     var reader = new FileReader();
@@ -330,19 +320,18 @@ export class CometChatMessageComposerComponent implements OnInit {
     if (this.type.parentMessageId) {
       mediaMessage.setParentMessageId(this.parentMessageId);
     }
-    console.log("typeeee iss ->>>>>> ", this.parentMessageId);
 
     // this.endTyping()
-    console.log(
-      "sendMediaMessage mediaMessage Message_Composer ->>>",
-      mediaMessage
-    );
+    // console.log(
+    //   "sendMediaMessage mediaMessage Message_Composer ->>>",
+    //   mediaMessage
+    // );
     CometChat.sendMessage(mediaMessage)
       .then((response) => {
-        console.log(
-          "sendMediaMessage response Message_Composer ->>>",
-          response
-        );
+        // console.log(
+        //   "sendMediaMessage response Message_Composer ->>>",
+        //   response
+        // );
         this.messageSending = false;
         // this.playAudio()
         this.actionGenerated.emit({
@@ -360,6 +349,6 @@ export class CometChatMessageComposerComponent implements OnInit {
   }
 
   addEmoji(event) {
-    console.log("event ->>>>>> ", event);
+    // console.log("event ->>>>>> ", event);
   }
 }
