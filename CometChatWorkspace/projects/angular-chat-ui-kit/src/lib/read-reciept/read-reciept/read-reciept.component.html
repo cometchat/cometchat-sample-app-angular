@@ -1,4 +1,4 @@
-<div *ngIf="msgSent" class="recieptContainer">
+<!-- <div *ngIf="msgSent" class="recieptContainer">
   <span class="msgTimestampStyle"> {{ getTime() }} </span>
   <span class="tick sent">&nbsp;</span>
 </div>
@@ -9,4 +9,19 @@
 <div *ngIf="msgRead" class="recieptContainer">
   <span class="msgTimestampStyle"> {{ getTime() }} </span>
   <span class="tick read">&nbsp;</span>
+</div> -->
+
+<div [ngSwitch]="tickStatus">
+  <div *ngSwitchCase="'sent'" class="recieptContainer">
+    <span class="msgTimestampStyle"> {{ getTime() }} </span>
+    <span class="tick sent">&nbsp;</span>
+  </div>
+  <div *ngSwitchCase="'deliv'" class="recieptContainer">
+    <span class="msgTimestampStyle"> {{ getTime() }} </span>
+    <span class="tick deliv">&nbsp;</span>
+  </div>
+  <div *ngSwitchCase="'read'" class="recieptContainer">
+    <span class="msgTimestampStyle"> {{ getTime() }} </span>
+    <span class="tick read">&nbsp;</span>
+  </div>
 </div>
