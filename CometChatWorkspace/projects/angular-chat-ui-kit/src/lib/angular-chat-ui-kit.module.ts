@@ -22,6 +22,7 @@ import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-imag
 import { BackdropModule } from "./backdrop/backdrop.module";
 import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-video-bubble.module";
+import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-user-detail.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -45,6 +46,7 @@ import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-vide
     BackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
+    CometChatUserDetailModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -68,6 +70,7 @@ import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-vide
     BackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
+    CometChatUserDetailModule,
   ],
 })
 export class AngularChatUiKitModule {}
