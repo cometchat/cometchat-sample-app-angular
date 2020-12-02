@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
   selector: "tool-tip",
@@ -10,7 +11,11 @@ export class ToolTipComponent implements OnInit {
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
-  showToolTip: boolean = true;
+  @Input() showToolTip: boolean = true;
+
+  loggedInUser;
+
+  showOnlyReplyButton: boolean = false;
 
   constructor() {}
 
@@ -18,6 +23,15 @@ export class ToolTipComponent implements OnInit {
     if (this.MessageDetails.hasOwnProperty("parentMessageId")) {
       this.showToolTip = false;
     }
+
+    let user = CometChat.getLoggedinUser().then((user) => {
+      this.loggedInUser = user;
+
+      //for the message that is received , only show the reply button in tooltip
+      if (this.MessageDetails.sender.uid !== this.loggedInUser.uid) {
+        this.showOnlyReplyButton = true;
+      }
+    });
   }
 
   /**
