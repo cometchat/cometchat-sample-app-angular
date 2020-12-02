@@ -6,6 +6,8 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  OnChanges,
+  SimpleChanges,
 } from "@angular/core";
 
 @Component({
@@ -13,7 +15,7 @@ import {
   templateUrl: "./message-thread.component.html",
   styleUrls: ["./message-thread.component.css"],
 })
-export class MessageThreadComponent implements OnInit {
+export class MessageThreadComponent implements OnInit, OnChanges {
   @ViewChild("scrollMe", null) chatWindow: ElementRef;
 
   @Input() item = null;
@@ -23,12 +25,30 @@ export class MessageThreadComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   messageList = [];
+  replyCount: number = 0;
   reachedTopOfConversation = false;
   scrollVariable = 0;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnChanges(change: SimpleChanges) {
+    if (change["parentMessage"]) {
+      this.messageList = [];
+      this.scrollToBottomOfChatWindow();
+      if (change["parentMessage"].currentValue.hasOwnProperty("replyCount")) {
+        this.replyCount = this.parentMessage.replyCount;
+      } else {
+        this.replyCount = 0;
+      }
+    }
+  }
+
+  ngOnInit() {
+    //console.log("Message Thread --> parent message ", this.parentMessage);
+    if (this.parentMessage.hasOwnProperty("replyCount")) {
+      this.replyCount = this.parentMessage.replyCount;
+    }
+  }
 
   /**
    * Handles all the actions emitted by the child components that make the current component
@@ -47,6 +67,8 @@ export class MessageThreadComponent implements OnInit {
       }
       case "messageComposed": {
         this.appendMessage(messages);
+        this.replyCount = this.replyCount + messages.length;
+
         this.actionGenerated.emit({
           type: "messageComposed",
           payLoad: messages,
@@ -60,6 +82,7 @@ export class MessageThreadComponent implements OnInit {
           // const replyCount = this.state.replyCount + 1;
           // this.setState({ replyCount: replyCount });
           //this.smartReplyPreview(messages);
+          this.replyCount = this.replyCount + messages.length;
           this.appendMessage(messages);
         }
         break;
