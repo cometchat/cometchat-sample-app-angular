@@ -4,6 +4,7 @@ import { CometchatUserListScreenComponent } from "./cometchat-user-list-screen/c
 import { CometChatUserContactListModule } from "../comet-chat-user-list/comet-chat-user-contact-list.module";
 import { CometchatMessageListScreenModule } from "../cometchat-message-list-screen/cometchat-message-list-screen.module";
 import { MessageThreadModule } from "../message-thread/message-thread.module";
+import { ImageViewModule } from "../image-view/image-view.module";
 
 @NgModule({
   declarations: [CometchatUserListScreenComponent],
@@ -12,6 +13,7 @@ import { MessageThreadModule } from "../message-thread/message-thread.module";
     CometChatUserContactListModule,
     CometchatMessageListScreenModule,
     MessageThreadModule,
+    ImageViewModule,
   ],
   exports: [CometchatUserListScreenComponent],
 })

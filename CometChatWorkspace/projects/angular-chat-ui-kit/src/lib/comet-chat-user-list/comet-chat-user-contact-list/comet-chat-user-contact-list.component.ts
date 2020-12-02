@@ -81,13 +81,13 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
         onUserOnline: (onlineUser) => {
           /* when someuser/friend comes online, user will be received here */
 
-          console.log("On User Online:", { onlineUser });
+          // console.log("On User Online:", { onlineUser });
           this.userUpdated(onlineUser);
         },
         onUserOffline: (offlineUser) => {
           /* when someuser/friend went offline, user will be received here */
 
-          console.log("On User Offline:", { offlineUser });
+          // console.log("On User Offline:", { offlineUser });
           this.userUpdated(offlineUser);
         },
       })
@@ -95,7 +95,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log("Removing Listeners just before destroying this component");
+    // console.log("Removing Listeners just before destroying this component");
     CometChat.removeUserListener(this.userListenerId);
     this.userListenerId = null;
     this.usersRequest = null;
@@ -127,7 +127,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
         .setSearchKeyword(searchKey)
         .setLimit(30)
         .build();
-      console.log(this.usersRequest);
+      // console.log(this.usersRequest);
       this.fetchNextContactList();
     }, 500);
   }
@@ -141,7 +141,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
 
-    console.log("reached bottom ", bottom);
+    // console.log("reached bottom ", bottom);
 
     if (bottom) this.fetchNextContactList();
   }
@@ -153,7 +153,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   fetchNextContactList() {
     this.usersRequest.fetchNext().then(
       (userList) => {
-        console.log(userList.length);
+        // console.log(userList.length);
 
         if (userList.length === 0 && this.userSearches === true) {
           this.contactsNotFound = true;
@@ -161,7 +161,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
         } else {
           this.userSearches = false;
           /* userList will be the list of User class. */
-          console.log("User list received:", userList);
+          // console.log("User list received:", userList);
           this.usersList = [...this.usersList, ...userList];
           this.loader = false;
         }
@@ -191,10 +191,10 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
 
       this.usersList = [...userlist];
 
-      console.log(
-        "user list updated on someone online/offline ",
-        this.usersList
-      );
+      // console.log(
+      //   "user list updated on someone online/offline ",
+      //   this.usersList
+      // );
     }
   };
 
@@ -203,7 +203,7 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
    * @param Any userToEmit
    */
   onUserClicked(userToEmit) {
-    console.log(`user clicked is `, userToEmit);
+    // console.log(`user clicked is `, userToEmit);
     this.onUserClick.emit(userToEmit);
   }
 

@@ -26,4 +26,10 @@
       (actionGenerated)="actionHandler($event)"
     ></message-thread>
   </div>
+  <image-view
+    *ngIf="fullScreenViewImage"
+    [MessageDetails]="imageView"
+    [open]="true"
+    (actionGenerated)="actionHandler($event)"
+  ></image-view>
 </div>

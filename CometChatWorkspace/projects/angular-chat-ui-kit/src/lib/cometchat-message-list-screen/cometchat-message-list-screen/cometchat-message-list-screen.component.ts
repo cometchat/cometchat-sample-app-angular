@@ -59,9 +59,9 @@ export class CometchatMessageListScreenComponent implements OnInit {
         } else {
           // Smart Reply Feature
           // this.smartReplyPreview(messages);
-          console.log(
-            "received a message from the user , u r chatting with , going to append it"
-          );
+          // console.log(
+          //   "received a message from the user , u r chatting with , going to append it"
+          // );
           this.appendMessage(messages);
         }
 
@@ -100,6 +100,17 @@ export class CometchatMessageListScreenComponent implements OnInit {
         });
         break;
       }
+      case "messageUpdated": {
+        this.updateMessages(messages);
+        break;
+      }
+      case "viewActualImage": {
+        this.actionGenerated.emit({
+          type: "viewActualImage",
+          payLoad: messages,
+        });
+        break;
+      }
       case "newConversationOpened": {
         this.setMessages(messages);
 
@@ -122,13 +133,14 @@ export class CometchatMessageListScreenComponent implements OnInit {
       }
     }
   }
-
   /**
    * set Messages Directly , coz new conversation is opened , hence no need to prepend or append
    * @param Any messages
    */
   setMessages(messages) {
     this.messageList = [...messages];
+
+    console.log("MessageListScreen->> ", this.messageList);
 
     this.scrollToBottomOfChatWindow();
   }
@@ -155,6 +167,17 @@ export class CometchatMessageListScreenComponent implements OnInit {
     //console.log("appending the sent message ", this.messageList);
   };
 
+  /**
+   * update status of message ie. read or deliv
+   * @param Any messages
+   */
+  updateMessages = (messages) => {
+    // let dummy = [...this.messageList];
+
+    this.messageList = [...messages];
+    this.scrollToBottomOfChatWindow();
+  };
+
   handleScroll(e) {
     // console.log(`Message List Screen --> user started scrollling `, e);
 
@@ -166,10 +189,10 @@ export class CometchatMessageListScreenComponent implements OnInit {
     //   `Message List Screen --> e.currentTarget.scrollTop `,
     //   e.currentTarget.scrollTop
     // );
-    console.log(
-      `Message List Screen --> e.currentTarget.clientHeight `,
-      e.currentTarget.clientHeight
-    );
+    // console.log(
+    //   `Message List Screen --> e.currentTarget.clientHeight `,
+    //   e.currentTarget.clientHeight
+    // );
 
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===

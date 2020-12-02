@@ -63,16 +63,16 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(change: SimpleChanges) {
-    console.log("Message List --> ngOnChanges -->  ", change);
+    // console.log("Message List --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
       //Removing Previous Conversation Listeners
       CometChat.removeMessageListener(this.msgListenerId);
 
-      console.log(
-        "Message List --> the User to which we were conversing changed ",
-        change["item"]
-      );
+      // console.log(
+      //   "Message List --> the User to which we were conversing changed ",
+      //   change["item"]
+      // );
 
       this.msgListenerId = "message_" + new Date().getTime();
 
@@ -83,13 +83,13 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     if (change["messages"]) {
-      console.log("Message List --> the messages changed ");
-      console.log(change["messages"]);
+      // console.log("Message List --> the messages changed ");
+      // console.log(change["messages"]);
     }
 
     if (change["reachedTopOfConversation"]) {
-      console.log("Message List --> reachedTopOfConversation ");
-      console.log(change["reachedTopOfConversation"]);
+      // console.log("Message List --> reachedTopOfConversation ");
+      // console.log(change["reachedTopOfConversation"]);
 
       if (change["reachedTopOfConversation"].currentValue) {
         this.getMessages(false, false, true);
@@ -111,7 +111,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit() {
     // console.log(`MessageList --> item `, this.item);
     // console.log(`MessageList --> UserType `, this.type);
-    console.log(`MessageList --> Messages `, this.messages);
+    // console.log(`MessageList --> Messages `, this.messages);
 
     this.createMessageRequestObjectAndGetMessages();
 
@@ -169,6 +169,16 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         onCustomMessageReceived: (customMessage) => {
           console.log("Custom message received successfully", customMessage);
           // Handle custom message
+        },
+        onMessagesDelivered: (messageReceipt) => {
+          console.log("Text Message Delivered successfully ", messageReceipt);
+
+          this.messageUpdated(enums.MESSAGE_DELIVERED, messageReceipt);
+        },
+        onMessagesRead: (messageReceipt) => {
+          console.log("Text Message Read successfully ", messageReceipt);
+
+          this.messageUpdated(enums.MESSAGE_READ, messageReceipt);
         },
       })
     );
@@ -320,11 +330,11 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
               });
             }
 
-            console.log("Message list fetched:", messageList);
+            // console.log("Message list fetched:", messageList);
             // Handle the list of messages
           },
           (error) => {
-            console.log("Message fetching failed with error:", error);
+            // console.log("Message fetching failed with error:", error);
           }
         );
       },
@@ -342,11 +352,15 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       case enums.MEDIA_MESSAGE_RECEIVED:
         this.messageReceived(message);
         break;
+      case enums.MESSAGE_DELIVERED:
+      case enums.MESSAGE_READ:
+        this.messageReadAndDelivered(message);
+        break;
     }
   }
 
   messageReceived(message) {
-    console.log(` Message Type of the receiver `, message.getReceiverType());
+    // console.log(` Message Type of the receiver `, message.getReceiverType());
 
     //new messages
     if (
@@ -379,7 +393,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      console.log(`received a message from a user `, this.item);
+      // console.log(`received a message from a user `, this.item);
 
       // test this line .. if this updates the message or not
       // let dummy = [...this.messages];
@@ -398,7 +412,66 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
+    console.log("Message List --> action generation is ", action);
     this.actionGenerated.emit(action);
+  }
+
+  messageReadAndDelivered(message) {
+    if (
+      message.getReceiverType() === "user" &&
+      message.getSender().getUid() === this.item.uid &&
+      message.getReceiver() === this.loggedInUser.uid
+    ) {
+      let messageList = [...this.messages];
+
+      if (message.getReceiptType() === "delivery") {
+        //search for message
+        let messageKey = messageList.findIndex(
+          (m) => m.id === message.messageId
+        );
+
+        if (messageKey > -1) {
+          let messageObj = { ...messageList[messageKey] };
+          let newMessageObj = Object.assign({}, messageObj, {
+            deliveredAt: message.getDeliveredAt(),
+          });
+          messageList.splice(messageKey, 1, newMessageObj);
+
+          this.actionGenerated.emit({
+            type: "messageUpdated",
+            payLoad: messageList,
+          });
+        }
+      } else if (message.getReceiptType() === "read") {
+        //search for message
+        let messageKey = messageList.findIndex(
+          (m) => m.id === message.messageId
+        );
+
+        if (messageKey > -1) {
+          let messageObj = { ...messageList[messageKey] };
+          let newMessageObj = Object.assign({}, messageObj, {
+            readAt: message.getReadAt(),
+          });
+          messageList.splice(messageKey, 1, newMessageObj);
+
+          // this.actionGenerated.emit({
+          //   type: "messageUpdated",
+          //   payLoad: messageList,
+          // });
+          setTimeout(() => {
+            this.actionGenerated.emit({
+              type: "messageUpdated",
+              payLoad: messageList,
+            });
+          }, 5000);
+        }
+      }
+    } else if (
+      message.getReceiverType() === "group" &&
+      message.getReceiver().guid === this.item.guid
+    ) {
+      //not implemented in React Also
+    }
   }
 }

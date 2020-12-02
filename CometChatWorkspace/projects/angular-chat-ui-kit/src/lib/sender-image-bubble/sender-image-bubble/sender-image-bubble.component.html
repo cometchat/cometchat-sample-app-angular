@@ -1,0 +1,12 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <div class="messageWrapperStyle">
+    <div class="messageImgWrapper" (click)="open()">
+      <img [src]="imageUrl" />
+    </div>
+  </div>
+  <div class="messageInfoWrapperStyle">
+    <!--ReplyCount-->
+    <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
+  </div>
+</div>

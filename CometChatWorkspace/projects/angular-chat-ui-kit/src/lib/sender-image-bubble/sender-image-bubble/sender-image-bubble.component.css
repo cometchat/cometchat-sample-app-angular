@@ -1,0 +1,47 @@
+.messageContainerStyle {
+  align-self: flex-end;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 100%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.messageContainerStyle ul.message__actions:hover {
+  display: flex;
+}
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-end;
+  display: flex;
+}
+
+.messageImgWrapper {
+  display: inline-block;
+  align-self: flex-end;
+  max-width: 300px;
+  height: 200px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.messageImgWrapper img {
+  border-radius: 8px;
+  height: 100%;
+}
+/* .messageImgWrapper{
+    [`@media ${mq[0]}`]: {
+        minWidth: "50px",
+        maxWidth: "150px",
+        height: "100px",
+        padding: "2px 2px",
+    }
+} */
+
+.messageInfoWrapperStyle {
+  align-self: flex-end;
+}

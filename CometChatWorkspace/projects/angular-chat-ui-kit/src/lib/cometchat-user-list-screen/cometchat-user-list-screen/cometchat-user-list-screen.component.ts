@@ -17,6 +17,11 @@ export class CometchatUserListScreenComponent implements OnInit {
   threadMessageItem = null;
   threadMessageType = "";
   viewDetailScreen: boolean = false;
+  // To display image in full screen
+  imageView = null;
+
+  //If clicked then only show image in full screen
+  fullScreenViewImage: boolean = false;
 
   constructor() {}
 
@@ -27,7 +32,7 @@ export class CometchatUserListScreenComponent implements OnInit {
    * @param Event user
    */
   userClicked(user) {
-    console.log(`user in parent component  `, user);
+    // console.log(`user in parent component  `, user);
     this.curentItem = user;
 
     if (this.curentItem.hasOwnProperty("uid")) {
@@ -38,7 +43,6 @@ export class CometchatUserListScreenComponent implements OnInit {
 
     //console.log("UserListScreen -> Type of User ", this.type);
   }
-
   /**
    * Handles all the actions emitted by the child components that make the current component
    * @param Event action
@@ -60,6 +64,13 @@ export class CometchatUserListScreenComponent implements OnInit {
         this.closeThreadMessages();
         break;
       }
+      case "viewActualImage": {
+        this.toggleImageView(action.payLoad);
+        break;
+      }
+      case "closeFullScreenImage": {
+        this.toggleImageView(null);
+      }
     }
   }
 
@@ -79,11 +90,21 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.threadMessageType = this.type;
   }
 
+  /**
+   * Close the thread window
+   * @param Any parentMessage
+   */
   closeThreadMessages() {
     //close Thread Screen
     this.threadMessageView = false;
     this.threadMessageParent = null;
     this.threadMessageItem = null;
     this.threadMessageType = null;
+  }
+
+  toggleImageView(message) {
+    console.log("userlistscreen toggleImageView ", message);
+    this.imageView = message;
+    this.fullScreenViewImage = !this.fullScreenViewImage;
   }
 }

@@ -1,0 +1,32 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <div class="messageWrapperStyle">
+    <!--Avatar-->
+    <!--PENDING-->
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <avatar [avatar]="userAvatar" class="avatarStyle"></avatar>
+    </div>
+    <!--Avatar Ends-->
+    <div class="messageDetailStyle">
+      <!--Name-->
+      <!--Styling Pending for this-->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ name }}
+        </span>
+      </div>
+      <!--Name End-->
+      <div class="messageVideoContainer">
+        <div class="messageVideoWrapperStyle">
+          <video controls>
+            <source [src]="videoUrl" />
+          </video>
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle"> {{ getTime() }}</span>
+        <!--ReplyCount-->
+      </div>
+    </div>
+  </div>
+</div>
