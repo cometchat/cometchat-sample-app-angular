@@ -1,11 +1,23 @@
 <ul class="messageActionStyle">
   <li class="actionGroupStyle">
-    <button type="button" class="groupButtonStyle replyIcon"></button>
+    <button
+      type="button"
+      class="groupButtonStyle replyIcon"
+      (click)="replyToMessage()"
+    ></button>
   </li>
   <li class="actionGroupStyle">
-    <button type="button" class="groupButtonStyle editIcon"></button>
+    <button
+      type="button"
+      class="groupButtonStyle editIcon"
+      (click)="editMessage()"
+    ></button>
   </li>
   <li class="actionGroupStyle">
-    <button type="button" class="groupButtonStyle deleteIcon"></button>
+    <button
+      type="button"
+      class="groupButtonStyle deleteIcon"
+      (click)="deleteMessage()"
+    ></button>
   </li>
 </ul>
