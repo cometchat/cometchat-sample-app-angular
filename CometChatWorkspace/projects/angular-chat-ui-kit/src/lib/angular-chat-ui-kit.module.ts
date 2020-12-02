@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SenderFileBubbleModule } from "./sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "./receiver-file-bubble/receiver-file-bubble.module";
 import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubble.module";
+import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-image-bubble.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -33,6 +34,7 @@ import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubb
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     SenderImageBubbleModule,
+    ReceiverImageBubbleModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -50,6 +52,7 @@ import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubb
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     SenderImageBubbleModule,
+    ReceiverImageBubbleModule,
   ],
 })
 export class AngularChatUiKitModule {}
