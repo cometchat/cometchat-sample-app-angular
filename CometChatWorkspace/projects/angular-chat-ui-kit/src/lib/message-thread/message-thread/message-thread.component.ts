@@ -9,7 +9,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from "@angular/core";
-
+import { CometChat } from "@cometchat-pro/chat";
 @Component({
   selector: "message-thread",
   templateUrl: "./message-thread.component.html",
@@ -28,6 +28,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   replyCount: number = 0;
   reachedTopOfConversation = false;
   scrollVariable = 0;
+  loggedInUser;
 
   constructor() {}
 
@@ -48,6 +49,10 @@ export class MessageThreadComponent implements OnInit, OnChanges {
     if (this.parentMessage.hasOwnProperty("replyCount")) {
       this.replyCount = this.parentMessage.replyCount;
     }
+
+    let user = CometChat.getLoggedinUser().then((user) => {
+      this.loggedInUser = user;
+    });
   }
 
   /**
