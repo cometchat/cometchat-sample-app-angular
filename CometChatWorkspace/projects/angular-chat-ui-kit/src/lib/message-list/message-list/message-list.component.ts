@@ -95,6 +95,17 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         this.getMessages(false, false, true);
       }
     }
+
+    // new thread opened
+    if (change["parentMessageId"]) {
+      //Removing Previous thread Listeners
+      CometChat.removeMessageListener(this.msgListenerId);
+      this.msgListenerId = "message_" + new Date().getTime();
+      this.createMessageRequestObjectAndGetMessages();
+
+      // Attach MessageListeners for the new conversation
+      this.addMessageEventListeners();
+    }
   }
 
   ngOnInit() {

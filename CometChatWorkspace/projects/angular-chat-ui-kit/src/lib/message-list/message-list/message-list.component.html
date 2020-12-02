@@ -16,6 +16,7 @@
           <comet-chat-sender-message-bubble
             *ngIf="msg.sender.uid === loggedInUser.uid"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           ></comet-chat-sender-message-bubble>
         </div>
         <!--CASE FOR TEXT ENDS -->
