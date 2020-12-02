@@ -454,4 +454,16 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       //not implemented in React Also
     }
   }
+  /**
+   * Handles action by the child component
+   * @param Event action
+   */
+  actionHandler(action) {
+    switch (action.type) {
+      case "viewActualImage": {
+        this.actionGenerated.emit(action);
+        break;
+      }
+    }
+  }
 }

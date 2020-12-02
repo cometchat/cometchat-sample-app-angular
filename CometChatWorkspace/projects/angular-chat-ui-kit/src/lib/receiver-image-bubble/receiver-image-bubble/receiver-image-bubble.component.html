@@ -1,0 +1,20 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <div class="messageWrapperStyle">
+    <!--Avatar-->
+    <div class="messageDetailStyle">
+      <!--name-->
+      <div class="messageImgContainerStyle">
+        <div class="messageImgWrapperStyle" (click)="open()">
+          <img [src]="imageUrl" />
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle">
+          {{ getTime() }}
+        </span>
+        <!--ReplyCount-->
+      </div>
+    </div>
+  </div>
+</div>
