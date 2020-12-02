@@ -1,0 +1,82 @@
+.messageContainerStyle {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 65%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.messageContainerStyle ul.message__actions:hover {
+  display: flex;
+}
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageThumbnailStyle {
+  width: 36px;
+  height: 36px;
+  margin: 10px 5px;
+  float: left;
+  flex-shrink: 0;
+}
+
+.messageDetailStyle {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nameWrapperStyle {
+  align-self: flex-start;
+}
+
+.nameStyle {
+  font-size: 10px;
+  /* color: `${props.theme.color.helpText}`, */
+}
+
+.messageVideoContainerStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageVideoWrapperStyle {
+  display: inline-block;
+  align-self: flex-start;
+}
+.messageVideoWrapperStyle > video {
+  max-width: 250px;
+  border-radius: 12px;
+  display: inherit;
+  outline: none;
+}
+
+.messageInfoWrapperStyle {
+  align-self: flex-start;
+  padding: 3px 5px;
+}
+
+.messageTimestampStyle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 12px;
+  text-transform: uppercase;
+  /* color: `${props.theme.color.helpText}`; */
+}
+
+.avatarStyle {
+  border-radius: 50%;
+  border-width: 1px;
+}
