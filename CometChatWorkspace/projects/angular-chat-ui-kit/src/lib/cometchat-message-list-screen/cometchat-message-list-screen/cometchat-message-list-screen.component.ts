@@ -105,6 +105,21 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
         break;
       }
+      case "viewMessageThread": {
+        this.actionGenerated.emit({
+          type: "viewMessageThread",
+          payLoad: messages,
+        });
+        break;
+      }
+      case "deleteMessage": {
+        //this.deleteMessage(messages);
+        break;
+      }
+      case "editMessage": {
+        //this.editMessage(messages);
+        break;
+      }
     }
   }
 
