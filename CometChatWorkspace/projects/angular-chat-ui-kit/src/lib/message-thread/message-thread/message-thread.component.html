@@ -30,33 +30,33 @@
         </div>
         <!--CASE FOR TEXT ENDS -->
       </div>
+    </div>
 
-      <div class="messageSeparatorStyle">
-        <span class="messageReplyStyle"> {{ replyCount }} reply</span>
-        <hr />
-      </div>
-      <div
-        class="messageWindowStyle"
-        (scroll)="handleScroll($event)"
-        #scrollMe
-        [scrollTop]="scrollVariable"
-      >
-        <message-list
-          [item]="item"
-          [type]="type"
-          [parentMessageId]="parentMessage?.id"
-          [messages]="messageList"
-          [reachedTopOfConversation]="reachedTopOfConversation"
-          (actionGenerated)="actionHandler($event)"
-        ></message-list>
-      </div>
-
-      <comet-chat-message-composer
+    <div class="messageSeparatorStyle">
+      <span class="messageReplyStyle"> {{ replyCount }} reply</span>
+      <hr />
+    </div>
+    <div
+      class="messageWindowStyle"
+      (scroll)="handleScroll($event)"
+      #scrollMe
+      [scrollTop]="scrollVariable"
+    >
+      <message-list
         [item]="item"
         [type]="type"
         [parentMessageId]="parentMessage?.id"
+        [messages]="messageList"
+        [reachedTopOfConversation]="reachedTopOfConversation"
         (actionGenerated)="actionHandler($event)"
-      ></comet-chat-message-composer>
+      ></message-list>
     </div>
+
+    <comet-chat-message-composer
+      [item]="item"
+      [type]="type"
+      [parentMessageId]="parentMessage?.id"
+      (actionGenerated)="actionHandler($event)"
+    ></comet-chat-message-composer>
   </div>
 </div>
