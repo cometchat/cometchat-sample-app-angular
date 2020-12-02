@@ -9,15 +9,17 @@
     <cometchat-message-list-screen
       [item]="curentItem"
       [type]="type"
+      (actionGenerated)="actionHandler($event)"
     ></cometchat-message-list-screen>
   </div>
 
   <!-- Message Thread View Below -->
   <div class="userScreenSecondaryStyle">
     <message-thread
-      [item]="curentItem"
-      [type]="type"
-      [parentMessage]="dummyMessage"
+      *ngIf="threadMessageView"
+      [item]="threadMessageItem"
+      [type]="threadMessageType"
+      [parentMessage]="threadMessageParent"
       (actionGenerated)="actionHandler($event)"
     ></message-thread>
   </div>

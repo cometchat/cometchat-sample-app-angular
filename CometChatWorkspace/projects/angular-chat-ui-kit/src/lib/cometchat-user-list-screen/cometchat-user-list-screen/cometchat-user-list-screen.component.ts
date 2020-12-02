@@ -21,6 +21,12 @@ export class CometchatUserListScreenComponent implements OnInit {
   // Defines the types of item that was clicked --> that is .. if its a user or a group
   type = null;
 
+  threadMessageView: boolean = false;
+  threadMessageParent = null;
+  threadMessageItem = null;
+  threadMessageType = "";
+  viewDetailScreen: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}
@@ -50,8 +56,31 @@ export class CometchatUserListScreenComponent implements OnInit {
     //handle Events/Actions generated from MessageHeader , MessageComposer and MessageList Here
 
     // action.payLoad has the array of messages that is received
-    let messages = action.payLoad;
+    let message = action.payLoad;
 
     console.log("UserListScreen --> action generation is ", action);
+
+    switch (action.type) {
+      case "viewMessageThread": {
+        this.viewMessageThread(message);
+        break;
+      }
+    }
+  }
+
+  /**
+   * Sets All the Intial Conditions for the threaded View of Messages
+   * @param Any parentMessage
+   */
+  viewMessageThread(parentMessage) {
+    //Open Thread Screen
+    this.threadMessageView = true;
+
+    //close user ( the person you are chatting with ) Detail screen
+    this.viewDetailScreen = false;
+
+    this.threadMessageParent = parentMessage;
+    this.threadMessageItem = this.curentItem;
+    this.threadMessageType = this.type;
   }
 }
