@@ -24,7 +24,10 @@ export class SenderImageBubbleComponent implements OnInit {
   ngOnInit() {
     this.setImage();
   }
-
+  /**
+   * Checks if thumnail-generation extension is present And then Sets the image
+   * @param
+   */
   setImage() {
     if (this.MessageDetails.hasOwnProperty("metadata")) {
       const metadata = this.MessageDetails.metadata;
@@ -39,51 +42,30 @@ export class SenderImageBubbleComponent implements OnInit {
             extensionsObject["thumbnail-generation"];
 
           //mq harcoded value is used until theme is not passed change it after
-          const mq = window.matchMedia(
-            "(min-width:360px) and (max-width: 767px)"
-          );
+          // const mq = window.matchMedia(
+          //   "(min-width:360px) and (max-width: 767px)"
+          // );
 
           //when theme is passed use this mq
           //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
-          mq.addListener(() => {
-            const imageToDownload = this.chooseImage(thumbnailGenerationObject);
-            let img = new Image();
-            img.src = imageToDownload;
-            img.onload = () => {
-              this.imageUrl = img.src;
-              console.log("listner");
-            };
-          });
+
+          // mq.addListener(() => {
+          //   const imageToDownload = this.chooseImage(thumbnailGenerationObject);
+          //   let img = new Image();
+          //   img.src = imageToDownload;
+          //   img.onload = () => {
+          //     this.imageUrl = img.src;
+          //     console.log("listner");
+          //   };
+          // });
 
           const imageToDownload = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
           img.src = imageToDownload;
           img.onload = () => {
             this.imageUrl = img.src;
-            //  console.log("src ", img.src);
-            //console.log("src_ ", Object.assign({}, { img: img.src }));
-
             URL.revokeObjectURL(img.src);
           };
-          // console.log("imgtodownload ", imageToDownload);
-          //console.log("img_ ", Object.assign({}, { img: imageToDownload }));
-
-          // this.downloadImage(imageToDownload)
-          //   .then((response) => {
-          //     const url = URL.createObjectURL(response);
-          //     //   console.log("_url ", url);
-
-          //     let img = new Image();
-          //     img.src = imageToDownload;
-          //     img.onload = () => {
-          //       this.imageUrl = img.src;
-          //       //  console.log("src ", img.src);
-          //       //console.log("src_ ", Object.assign({}, { img: img.src }));
-
-          //       URL.revokeObjectURL(img.src);
-          //     };
-          //   })
-          //   .catch((error) => console.error(error));
         }
       }
     } else {
@@ -91,6 +73,10 @@ export class SenderImageBubbleComponent implements OnInit {
     }
   }
 
+  /**
+   * Sets image url ie. medium or small-size image
+   * @param
+   */
   chooseImage(thumbnailGenerationObject) {
     //console.log("thumbnail ", thumbnailGenerationObject);
 
@@ -111,6 +97,10 @@ export class SenderImageBubbleComponent implements OnInit {
     return imageToDownload;
   }
 
+  /**
+   * If thumnail-generation extension is not present
+   * @param
+   */
   setMessageImageUrl() {
     let img = new Image();
     img.src = this.MessageDetails.data.url;
@@ -120,35 +110,10 @@ export class SenderImageBubbleComponent implements OnInit {
     };
   }
 
-  // downloadImage(imgUrl) {
-  //   const promise = new Promise((resolve, reject) => {
-  //     const xhr = new XMLHttpRequest();
-  //     xhr.open("GET", imgUrl, true);
-  //     xhr.responseType = "blob";
-  //     xhr.onload = () => {
-  //       if (xhr.readyState === 4) {
-  //         if (xhr.status === 200) {
-  //           this.timer = null;
-  //           resolve(xhr.response);
-  //         } else if (xhr.status === 403) {
-  //           this.timer = setTimeout(() => {
-  //             this.downloadImage(imgUrl)
-  //               .then((response) => resolve(response))
-  //               .catch((error) => reject(error));
-  //           }, 800);
-  //         }
-  //       } else {
-  //         reject(xhr.statusText);
-  //       }
-  //     };
-  //     xhr.onerror = (event) => reject(new Error("There was a network error."));
-  //     xhr.ontimeout = (event) =>
-  //       reject(new Error("There was a timeout error."));
-  //     xhr.send();
-  //   });
-  //   return promise;
-  // }
-
+  /**
+   * Emits action to open image in full-screen view
+   * @param
+   */
   open() {
     this.actionGenerated.emit({
       type: "viewActualImage",
