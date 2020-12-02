@@ -132,6 +132,13 @@ export class CometchatMessageListScreenComponent implements OnInit {
         //this.editMessage(messages);
         break;
       }
+      case "audioCall":
+      case "videoCall":
+      case "viewDetail":
+      case "menuClicked": {
+        this.actionGenerated.emit(action);
+        break;
+      }
     }
   }
   /**
