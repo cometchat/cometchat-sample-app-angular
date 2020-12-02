@@ -25,6 +25,8 @@
       [parentMessage]="threadMessageParent"
       (actionGenerated)="actionHandler($event)"
     ></message-thread>
+
+    <comet-chat-user-detail *ngIf="viewDetailScreen"></comet-chat-user-detail>
   </div>
   <image-view
     *ngIf="fullScreenViewImage"

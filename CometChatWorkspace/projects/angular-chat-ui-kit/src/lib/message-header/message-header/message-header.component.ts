@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, EventEmitter, Output } from "@angular/core";
 @Component({
   selector: "message-header",
   templateUrl: "./message-header.component.html",
@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class MessageHeaderComponent implements OnInit {
   @Input() item = null;
-
+  @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
@@ -31,5 +31,13 @@ export class MessageHeaderComponent implements OnInit {
       });
     // console.log("z->>>>>> ", lastActiveDate);
     return lastActiveDate;
+  }
+
+  /**
+   * Emits an action to indicate the parent component to open the user ( you are chatting with ) Detail component
+   * @param
+   */
+  openUserDetail() {
+    this.actionGenerated.emit({ type: "viewDetail", payLoad: null });
   }
 }

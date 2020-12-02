@@ -71,6 +71,11 @@ export class CometchatUserListScreenComponent implements OnInit {
       case "closeFullScreenImage": {
         this.toggleImageView(null);
       }
+      case "viewDetail":
+      case "closeDetailClicked": {
+        this.toggleDetailView();
+        break;
+      }
     }
   }
 
@@ -102,9 +107,21 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.threadMessageType = null;
   }
 
+  /**
+   * Opens the clicked Image in full screen mode
+   * @param Any message
+   */
   toggleImageView(message) {
     console.log("userlistscreen toggleImageView ", message);
     this.imageView = message;
     this.fullScreenViewImage = !this.fullScreenViewImage;
   }
+
+  /**
+   * Opens User Detail Right Side bar
+   * @param Any message
+   */
+  toggleDetailView = () => {
+    this.viewDetailScreen = !this.viewDetailScreen;
+  };
 }
