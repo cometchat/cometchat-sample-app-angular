@@ -3,7 +3,7 @@
     <div class="headerWrapperStyle">
       <div class="headerDetailStyle">
         <h6 class="headerTitleStyle">Thread</h6>
-        <span class="headerNameStyle">Test Name</span>
+        <span class="headerNameStyle">{{ item.name }}</span>
       </div>
       <div class="headerCloseStyle" (click)="closeThread()"></div>
     </div>
@@ -12,17 +12,34 @@
   <div class="messageContainerStyle">
     <div class="parentMessageStyle">
       <comet-chat-sender-message-bubble
-        [MessageDetails]="dummyMessage"
+        [MessageDetails]="parentMessage"
       ></comet-chat-sender-message-bubble>
     </div>
     <div class="messageSeparatorStyle">
       <span class="messageReplyStyle"> 1 reply</span>
       <hr />
     </div>
-    <div class="messageWindowStyle">
-      <message-list></message-list>
+    <div
+      class="messageWindowStyle"
+      (scroll)="handleScroll($event)"
+      #scrollMe
+      [scrollTop]="scrollVariable"
+    >
+      <message-list
+        [item]="item"
+        [type]="type"
+        [parentMessageId]="parentMessage?.id"
+        [messages]="messageList"
+        [reachedTopOfConversation]="reachedTopOfConversation"
+        (actionGenerated)="actionHandler($event)"
+      ></message-list>
     </div>
 
-    <comet-chat-message-composer></comet-chat-message-composer>
+    <comet-chat-message-composer
+      [item]="item"
+      [type]="type"
+      [parentMessageId]="parentMessage?.id"
+      (actionGenerated)="actionHandler($event)"
+    ></comet-chat-message-composer>
   </div>
 </div>
