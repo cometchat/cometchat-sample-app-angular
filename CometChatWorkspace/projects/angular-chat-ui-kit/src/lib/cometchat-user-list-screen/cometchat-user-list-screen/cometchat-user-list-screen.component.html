@@ -9,6 +9,8 @@
     <cometchat-message-list-screen
       [item]="curentItem"
       [type]="type"
+      (actionGenerated)="actionHandler($event)"
     ></cometchat-message-list-screen>
   </div>
+  <!-- <image-view></image-view> -->
 </div>
