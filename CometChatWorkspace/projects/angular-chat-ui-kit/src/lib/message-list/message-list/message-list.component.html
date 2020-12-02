@@ -40,6 +40,12 @@
             (actionGenerated)="actionHandler($event)"
             [MessageDetails]="msg"
           ></sender-image-bubble>
+
+          <receiver-image-bubble
+            *ngIf="msg.sender.uid !== loggedInUser.uid"
+            [MessageDetails]="msg"
+          >
+          </receiver-image-bubble>
         </div>
 
         <!--CASE FOR IMAGE  ENDS-->
