@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "comet-chat-receiver-message-bubble",
@@ -7,6 +7,10 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class CometChatReceiverMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
+
+  @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
+
+  @Input() showToolTip = true;
 
   constructor() {}
 
@@ -20,5 +24,19 @@ export class CometChatReceiverMessageBubbleComponent implements OnInit {
       hour12: true,
     });
     return timeStamp;
+  }
+
+  toggleToolTip() {
+    //console.log("toggle tool tip");
+    //this.showToolTip = !this.showToolTip;
+  }
+
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    console.log("receiver Message Bubble --> action generation is ", action);
+    this.actionGenerated.emit(action);
   }
 }
