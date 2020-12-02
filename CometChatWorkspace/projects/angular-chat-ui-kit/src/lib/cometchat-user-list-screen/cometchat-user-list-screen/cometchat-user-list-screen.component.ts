@@ -6,15 +6,6 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./cometchat-user-list-screen.component.css"],
 })
 export class CometchatUserListScreenComponent implements OnInit {
-  dummyMessage = {
-    data: {
-      text: "testing thread",
-    },
-    sender: {
-      sentAt: 1606742046,
-    },
-  };
-
   //It can be a user or a group
   curentItem = null;
 
@@ -65,11 +56,15 @@ export class CometchatUserListScreenComponent implements OnInit {
         this.viewMessageThread(message);
         break;
       }
+      case "closeThreadClicked": {
+        this.closeThreadMessages();
+        break;
+      }
     }
   }
 
   /**
-   * Sets All the Intial Conditions for the threaded View of Messages
+   * Sets All the Intial Conditions for the threaded View of Messages and Opens thread View
    * @param Any parentMessage
    */
   viewMessageThread(parentMessage) {
@@ -82,5 +77,13 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.threadMessageParent = parentMessage;
     this.threadMessageItem = this.curentItem;
     this.threadMessageType = this.type;
+  }
+
+  closeThreadMessages() {
+    //close Thread Screen
+    this.threadMessageView = false;
+    this.threadMessageParent = null;
+    this.threadMessageItem = null;
+    this.threadMessageType = null;
   }
 }

@@ -14,7 +14,10 @@
   </div>
 
   <!-- Message Thread View Below -->
-  <div class="userScreenSecondaryStyle">
+  <div
+    class="userScreenSecondaryStyle"
+    *ngIf="threadMessageView || viewDetailScreen"
+  >
     <message-thread
       *ngIf="threadMessageView"
       [item]="threadMessageItem"
