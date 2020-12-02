@@ -32,46 +32,58 @@ export class ReceiverImageBubbleComponent implements OnInit {
     }
     this.setImage();
   }
+  /**
+   * Checks if thumnail-generation extension is present or not And then Sets the image
+   * @param
+   */
   setImage() {
-    const metadata = this.MessageDetails.metadata;
-    const injectedObject = metadata["@injected"];
-    if (injectedObject && injectedObject.hasOwnProperty("extensions")) {
-      const extensionsObject = injectedObject["extensions"];
-      if (
-        extensionsObject &&
-        extensionsObject.hasOwnProperty("thumbnail-generation")
-      ) {
-        const thumbnailGenerationObject =
-          extensionsObject["thumbnail-generation"];
-        //mq harcoded value is used until theme is not passed change it after
-        const mq = window.matchMedia(
-          "(min-width:360px) and (max-width: 767px)"
-        );
+    if (this.MessageDetails.hasOwnProperty("metadata")) {
+      const metadata = this.MessageDetails.metadata;
 
-        //when theme is passed use this mq
-        //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
+      const injectedObject = metadata["@injected"];
+      if (injectedObject && injectedObject.hasOwnProperty("extensions")) {
+        const extensionsObject = injectedObject["extensions"];
+        if (
+          extensionsObject &&
+          extensionsObject.hasOwnProperty("thumbnail-generation")
+        ) {
+          const thumbnailGenerationObject =
+            extensionsObject["thumbnail-generation"];
 
-        mq.addListener(() => {
+          //mq harcoded value is used until theme is not passed change it after
+          const mq = window.matchMedia(
+            "(min-width:360px) and (max-width: 767px)"
+          );
+
+          //when theme is passed use this mq
+          //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
+
+          mq.addListener(() => {
+            const imageToDownload = this.chooseImage(thumbnailGenerationObject);
+            let img = new Image();
+            img.src = imageToDownload;
+            img.onload = () => {
+              this.imageUrl = img.src;
+              console.log("eventlist");
+            };
+          });
           const imageToDownload = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
           img.src = imageToDownload;
           img.onload = () => {
             this.imageUrl = img.src;
-            console.log("eventlist");
+            URL.revokeObjectURL(img.src);
           };
-        });
-        const imageToDownload = this.chooseImage(thumbnailGenerationObject);
-        let img = new Image();
-        img.src = imageToDownload;
-        img.onload = () => {
-          this.imageUrl = img.src;
-          URL.revokeObjectURL(img.src);
-        };
+        }
       }
     } else {
       this.setMessageImageUrl();
     }
   }
+  /**
+   * If thumbnail-extension is not present then this works
+   * @param
+   */
   setMessageImageUrl = () => {
     let img = new Image();
     img.src = this.MessageDetails.data.url;
@@ -79,7 +91,10 @@ export class ReceiverImageBubbleComponent implements OnInit {
       this.imageUrl = img.src;
     };
   };
-
+  /**
+   * Sets image url i.e medium-size or small-size
+   * @param
+   */
   chooseImage(thumbnailGenerationObject) {
     const smallUrl = thumbnailGenerationObject["url_small"];
     const mediumUrl = thumbnailGenerationObject["url_medium"];
@@ -91,7 +106,10 @@ export class ReceiverImageBubbleComponent implements OnInit {
 
     return imageToDownload;
   }
-
+  /**
+   *
+   *   Emits action to view image in full screen
+   */
   open() {
     this.actionGenerated.emit({
       type: "viewActualImage",
@@ -99,6 +117,10 @@ export class ReceiverImageBubbleComponent implements OnInit {
     });
   }
 
+  /**
+   * Set Time-Stamp for receiving image
+   * @param
+   */
   getTime() {
     let msgSentAt = this.MessageDetails.sentAt;
     let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
