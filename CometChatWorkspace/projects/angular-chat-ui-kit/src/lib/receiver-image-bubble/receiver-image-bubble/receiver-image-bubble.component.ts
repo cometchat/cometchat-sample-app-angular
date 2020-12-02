@@ -58,15 +58,15 @@ export class ReceiverImageBubbleComponent implements OnInit {
           //when theme is passed use this mq
           //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
 
-          mq.addListener(() => {
-            const imageToDownload = this.chooseImage(thumbnailGenerationObject);
-            let img = new Image();
-            img.src = imageToDownload;
-            img.onload = () => {
-              this.imageUrl = img.src;
-              console.log("eventlist");
-            };
-          });
+          // mq.addListener(() => {
+          //   const imageToDownload = this.chooseImage(thumbnailGenerationObject);
+          //   let img = new Image();
+          //   img.src = imageToDownload;
+          //   img.onload = () => {
+          //     this.imageUrl = img.src;
+          //     console.log("eventlist");
+          //   };
+          // });
           const imageToDownload = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
           img.src = imageToDownload;
