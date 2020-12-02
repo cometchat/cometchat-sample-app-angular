@@ -12,5 +12,10 @@
       (actionGenerated)="actionHandler($event)"
     ></cometchat-message-list-screen>
   </div>
-  <!-- <image-view></image-view> -->
+  <image-view
+    *ngIf="fullScreenViewImage"
+    [MessageDetails]="imageView"
+    [open]="true"
+    (actionGenerated)="actionHandler($event)"
+  ></image-view>
 </div>
