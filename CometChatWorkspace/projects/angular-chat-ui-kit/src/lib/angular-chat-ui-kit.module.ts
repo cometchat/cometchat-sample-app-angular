@@ -18,6 +18,7 @@ import { ReceiverFileBubbleModule } from "./receiver-file-bubble/receiver-file-b
 import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubble.module";
 import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-image-bubble.module";
 import { BackdropModule } from "./backdrop/backdrop.module";
+import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -37,6 +38,7 @@ import { BackdropModule } from "./backdrop/backdrop.module";
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,
     BackdropModule,
+    SenderVideoBubbleModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -56,6 +58,7 @@ import { BackdropModule } from "./backdrop/backdrop.module";
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,
     BackdropModule,
+    SenderVideoBubbleModule,
   ],
 })
 export class AngularChatUiKitModule {}
