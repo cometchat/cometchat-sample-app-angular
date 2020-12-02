@@ -37,13 +37,14 @@
         <div *ngSwitchCase="'image'">
           <sender-image-bubble
             *ngIf="msg.sender.uid === loggedInUser.uid"
-            (actionGenerated)="actionHandler($event)"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           ></sender-image-bubble>
 
           <receiver-image-bubble
             *ngIf="msg.sender.uid !== loggedInUser.uid"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           >
           </receiver-image-bubble>
         </div>
