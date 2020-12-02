@@ -50,6 +50,21 @@
         </div>
 
         <!--CASE FOR IMAGE  ENDS-->
+
+        <!--CASE FOR VIDEO -->
+        <div *ngSwitchCase="'video'">
+          <sender-video-bubble
+            *ngIf="msg.sender.uid === loggedInUser.uid"
+            [MessageDetails]="msg"
+          >
+          </sender-video-bubble>
+          <receiver-video-bubble
+            *ngIf="msg.sender.uid !== loggedInUser.uid"
+            [MessageDetails]="msg"
+          >
+          </receiver-video-bubble>
+        </div>
+        <!--CASE FOR VIDEO ENDS -->
       </div>
     </div>
   </div>
