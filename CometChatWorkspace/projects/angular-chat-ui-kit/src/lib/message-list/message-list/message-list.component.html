@@ -58,6 +58,11 @@
             [MessageDetails]="msg"
           >
           </sender-video-bubble>
+          <receiver-video-bubble
+            *ngIf="msg.sender.uid !== loggedInUser.uid"
+            [MessageDetails]="msg"
+          >
+          </receiver-video-bubble>
         </div>
         <!--CASE FOR VIDEO ENDS -->
       </div>
