@@ -11,18 +11,18 @@
 
   <div class="messageContainerStyle">
     <div class="parentMessageStyle">
-      <div [ngSwitch]="parentMessage.type">
+      <div [ngSwitch]="parentMessage?.type">
         <!-- CASE FOR TEXT -->
         <div *ngSwitchCase="'text'">
           <comet-chat-receiver-message-bubble
-            *ngIf="parentMessage.sender.uid !== loggedInUser.uid"
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             (actionGenerated)="actionHandler($event)"
           ></comet-chat-receiver-message-bubble>
 
           <comet-chat-sender-message-bubble
-            *ngIf="parentMessage.sender.uid === loggedInUser.uid"
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             (actionGenerated)="actionHandler($event)"

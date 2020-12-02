@@ -28,7 +28,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   replyCount: number = 0;
   reachedTopOfConversation = false;
   scrollVariable = 0;
-  loggedInUser;
+  loggedInUser = null;
 
   constructor() {}
 
