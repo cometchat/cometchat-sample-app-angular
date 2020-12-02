@@ -10,9 +10,15 @@ export class ToolTipComponent implements OnInit {
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
+  showToolTip: boolean = true;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.MessageDetails.hasOwnProperty("parentMessageId")) {
+      this.showToolTip = false;
+    }
+  }
 
   /**
    * Generates an action to reply to the current message
