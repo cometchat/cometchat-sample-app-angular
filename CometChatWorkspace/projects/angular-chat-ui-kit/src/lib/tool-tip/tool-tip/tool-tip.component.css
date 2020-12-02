@@ -1,7 +1,8 @@
 .messageActionStyle {
   position: absolute;
   z-index: 1;
-  display: none;
+  /* this display is use to show and hide */
+  display: flex;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -12,7 +13,7 @@
   align-items: center;
   justify-content: center;
   align-self: flex-start;
-  top: 0;
+  top: -25px;
 }
 
 .actionGroupStyle {
