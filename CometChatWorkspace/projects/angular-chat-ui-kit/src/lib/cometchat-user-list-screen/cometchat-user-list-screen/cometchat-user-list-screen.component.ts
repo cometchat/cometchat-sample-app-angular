@@ -12,6 +12,12 @@ export class CometchatUserListScreenComponent implements OnInit {
   // Defines the types of item that was clicked --> that is .. if its a user or a group
   type = null;
 
+  // To display image in full screen
+  imageView = null;
+
+  //If clicked then only show image in full screen
+  fullScreenViewImage: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}
@@ -39,7 +45,21 @@ export class CometchatUserListScreenComponent implements OnInit {
   actionHandler(action) {
     //handle Events/Actions generated from MessageHeader , MessageComposer and MessageList Here
     // action.payLoad has the array of messages that is received
-    let messages = action.payLoad;
-    console.log("UserListScreen --> action generation is ", action);
+    // let messages = action.payLoad;
+    // console.log("UserListScreen --> action generation is ", action);
+    switch (action.type) {
+      case "viewActualImage": {
+        this.toggleImageView(action.payLoad);
+        break;
+      }
+      case "closeFullScreenImage": {
+        this.toggleImageView(null);
+      }
+    }
+  }
+  toggleImageView(message) {
+    console.log("userlistscreen toggleImageView ", message);
+    this.imageView = message;
+    this.fullScreenViewImage = !this.fullScreenViewImage;
   }
 }
