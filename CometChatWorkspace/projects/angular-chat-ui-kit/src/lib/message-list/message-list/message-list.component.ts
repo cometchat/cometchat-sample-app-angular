@@ -95,6 +95,17 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         this.getMessages(false, false, true);
       }
     }
+
+    // new thread opened
+    if (change["parentMessageId"]) {
+      //Removing Previous thread Listeners
+      CometChat.removeMessageListener(this.msgListenerId);
+      this.msgListenerId = "message_" + new Date().getTime();
+      this.createMessageRequestObjectAndGetMessages();
+
+      // Attach MessageListeners for the new conversation
+      this.addMessageEventListeners();
+    }
   }
 
   ngOnInit() {
@@ -396,6 +407,15 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    console.log("Message List --> action generation is ", action);
+    this.actionGenerated.emit(action);
+  }
+
   messageReadAndDelivered(message) {
     if (
       message.getReceiverType() === "user" &&
@@ -452,18 +472,6 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       message.getReceiver().guid === this.item.guid
     ) {
       //not implemented in React Also
-    }
-  }
-  /**
-   * Handles action by the child component
-   * @param Event action
-   */
-  actionHandler(action) {
-    switch (action.type) {
-      case "viewActualImage": {
-        this.actionGenerated.emit(action);
-        break;
-      }
     }
   }
 }

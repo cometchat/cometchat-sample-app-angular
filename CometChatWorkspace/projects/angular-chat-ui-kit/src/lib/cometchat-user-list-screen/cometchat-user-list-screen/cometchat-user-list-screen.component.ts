@@ -12,6 +12,11 @@ export class CometchatUserListScreenComponent implements OnInit {
   // Defines the types of item that was clicked --> that is .. if its a user or a group
   type = null;
 
+  threadMessageView: boolean = false;
+  threadMessageParent = null;
+  threadMessageItem = null;
+  threadMessageType = "";
+  viewDetailScreen: boolean = false;
   // To display image in full screen
   imageView = null;
 
@@ -44,10 +49,21 @@ export class CometchatUserListScreenComponent implements OnInit {
    */
   actionHandler(action) {
     //handle Events/Actions generated from MessageHeader , MessageComposer and MessageList Here
+
     // action.payLoad has the array of messages that is received
-    // let messages = action.payLoad;
-    // console.log("UserListScreen --> action generation is ", action);
+    let message = action.payLoad;
+
+    console.log("UserListScreen --> action generation is ", action);
+
     switch (action.type) {
+      case "viewMessageThread": {
+        this.viewMessageThread(message);
+        break;
+      }
+      case "closeThreadClicked": {
+        this.closeThreadMessages();
+        break;
+      }
       case "viewActualImage": {
         this.toggleImageView(action.payLoad);
         break;
@@ -57,6 +73,35 @@ export class CometchatUserListScreenComponent implements OnInit {
       }
     }
   }
+
+  /**
+   * Sets All the Intial Conditions for the threaded View of Messages and Opens thread View
+   * @param Any parentMessage
+   */
+  viewMessageThread(parentMessage) {
+    //Open Thread Screen
+    this.threadMessageView = true;
+
+    //close user ( the person you are chatting with ) Detail screen
+    this.viewDetailScreen = false;
+
+    this.threadMessageParent = parentMessage;
+    this.threadMessageItem = this.curentItem;
+    this.threadMessageType = this.type;
+  }
+
+  /**
+   * Close the thread window
+   * @param Any parentMessage
+   */
+  closeThreadMessages() {
+    //close Thread Screen
+    this.threadMessageView = false;
+    this.threadMessageParent = null;
+    this.threadMessageItem = null;
+    this.threadMessageType = null;
+  }
+
   toggleImageView(message) {
     console.log("userlistscreen toggleImageView ", message);
     this.imageView = message;

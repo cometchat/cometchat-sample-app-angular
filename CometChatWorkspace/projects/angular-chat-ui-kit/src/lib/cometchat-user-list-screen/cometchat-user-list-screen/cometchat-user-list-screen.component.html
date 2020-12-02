@@ -12,6 +12,20 @@
       (actionGenerated)="actionHandler($event)"
     ></cometchat-message-list-screen>
   </div>
+
+  <!-- Message Thread View Below -->
+  <div
+    class="userScreenSecondaryStyle"
+    *ngIf="threadMessageView || viewDetailScreen"
+  >
+    <message-thread
+      *ngIf="threadMessageView"
+      [item]="threadMessageItem"
+      [type]="threadMessageType"
+      [parentMessage]="threadMessageParent"
+      (actionGenerated)="actionHandler($event)"
+    ></message-thread>
+  </div>
   <image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"

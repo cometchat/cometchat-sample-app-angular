@@ -1,0 +1,62 @@
+<div class="wrapperStyle">
+  <div class="headerStyle">
+    <div class="headerWrapperStyle">
+      <div class="headerDetailStyle">
+        <h6 class="headerTitleStyle">Thread</h6>
+        <span class="headerNameStyle">{{ item.name }}</span>
+      </div>
+      <div class="headerCloseStyle" (click)="closeThread()"></div>
+    </div>
+  </div>
+
+  <div class="messageContainerStyle">
+    <div class="parentMessageStyle">
+      <div [ngSwitch]="parentMessage.type">
+        <!-- CASE FOR TEXT -->
+        <div *ngSwitchCase="'text'">
+          <comet-chat-receiver-message-bubble
+            *ngIf="parentMessage.sender.uid !== loggedInUser.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></comet-chat-receiver-message-bubble>
+
+          <comet-chat-sender-message-bubble
+            *ngIf="parentMessage.sender.uid === loggedInUser.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></comet-chat-sender-message-bubble>
+        </div>
+        <!--CASE FOR TEXT ENDS -->
+      </div>
+    </div>
+
+    <div class="messageSeparatorStyle">
+      <span class="messageReplyStyle"> {{ replyCount }} reply</span>
+      <hr />
+    </div>
+    <div
+      class="messageWindowStyle"
+      (scroll)="handleScroll($event)"
+      #scrollMe
+      [scrollTop]="scrollVariable"
+    >
+      <message-list
+        [item]="item"
+        [type]="type"
+        [parentMessageId]="parentMessage?.id"
+        [messages]="messageList"
+        [reachedTopOfConversation]="reachedTopOfConversation"
+        (actionGenerated)="actionHandler($event)"
+      ></message-list>
+    </div>
+
+    <comet-chat-message-composer
+      [item]="item"
+      [type]="type"
+      [parentMessageId]="parentMessage?.id"
+      (actionGenerated)="actionHandler($event)"
+    ></comet-chat-message-composer>
+  </div>
+</div>

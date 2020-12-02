@@ -1,12 +1,24 @@
 <div class="messageContainerStyle">
   <!--ToolTip Component-->
+  <tool-tip
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></tool-tip>
+
   <div class="messageWrapperStyle">
     <!--avatar component-->
     <div class="messageDetailStyle">
       <!--name--->
-      <div class="messageTxtContainerStyle">
+
+      <div
+        class="messageTxtContainerStyle"
+        (mouseover)="toggleToolTip()"
+        (mouseout)="toggleToolTip()"
+      >
         <!--messageTxt-->
-        <div class="messageTxtWrapperStyle">
+
+        <div class="messageTxtWrapperStyle" id="check">
           <p class="messageTxtStyle">{{ MessageDetails.data.text }}</p>
         </div>
       </div>
