@@ -7,6 +7,7 @@ import {
   ViewChild,
   ElementRef,
 } from "@angular/core";
+import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
   selector: "cometchat-message-list-screen",
@@ -124,7 +125,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
         break;
       }
       case "deleteMessage": {
-        //this.deleteMessage(messages);
+        this.deleteMessage(messages);
         break;
       }
       case "editMessage": {
@@ -176,6 +177,54 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
     this.messageList = [...messages];
     this.scrollToBottomOfChatWindow();
+  };
+
+  /**
+   * Delete the message
+   * @param Any message
+   */
+  deleteMessage = (message) => {
+    const messageId = message.id;
+    CometChat.deleteMessage(messageId)
+      .then((deletedMessage) => {
+        this.removeMessages([deletedMessage]);
+
+        console.log(" MessageList screen --> Message Deleted successfully");
+
+        const messageList = [...this.messageList];
+        let messageKey = messageList.findIndex((m) => m.id === message.id);
+
+        if (messageList.length - messageKey === 1 && !message.replyCount) {
+          this.actionGenerated.emit({
+            type: "messageDeleted",
+            payLoad: [deletedMessage],
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("Message delete failed with error:", error);
+      });
+  };
+
+  /**
+   * If the message gets deleted successfull , remove the deleted message in frontend using this function
+   * @param Any messages
+   */
+  removeMessages = (messages) => {
+    const deletedMessage = messages[0];
+    const messagelist = [...this.messageList];
+
+    let messageKey = messagelist.findIndex(
+      (message) => message.id === deletedMessage.id
+    );
+    if (messageKey > -1) {
+      let messageObj = { ...messagelist[messageKey] };
+      let newMessageObj = Object.assign({}, messageObj, deletedMessage);
+
+      messagelist.splice(messageKey, 1, newMessageObj);
+      // this.setState({ messageList: messagelist, scrollToBottom: false });
+      this.messageList = [...messagelist];
+    }
   };
 
   handleScroll(e) {
