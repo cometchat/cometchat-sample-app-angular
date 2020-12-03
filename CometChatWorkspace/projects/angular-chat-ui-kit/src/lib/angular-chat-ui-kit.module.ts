@@ -23,6 +23,7 @@ import { BackdropModule } from "./backdrop/backdrop.module";
 import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-video-bubble.module";
 import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-user-detail.module";
+import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-message-bubble.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -47,6 +48,7 @@ import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-u
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     CometChatUserDetailModule,
+    DeletedMessageBubbleModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -71,6 +73,7 @@ import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-u
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     CometChatUserDetailModule,
+    DeletedMessageBubbleModule,
   ],
 })
 export class AngularChatUiKitModule {}
