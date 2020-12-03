@@ -1,5 +1,9 @@
 <div class="messageContainerStyle">
-  <!--ToolTip-->
+  <tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+  ></tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageImgWrapper" (click)="open()">
       <img [src]="imageUrl" />
