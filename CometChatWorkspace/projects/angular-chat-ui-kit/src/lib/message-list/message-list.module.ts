@@ -10,6 +10,7 @@ import { ReceiverImageBubbleModule } from "../receiver-image-bubble/receiver-ima
 import { SenderVideoBubbleModule } from "../sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "../receiver-video-bubble/receiver-video-bubble.module";
 import { SenderAudioBubbleModule } from "../sender-audio-bubble/sender-audio-bubble.module";
+import { ReceiverAudioBubbleModule } from "../receiver-audio-bubble/receiver-audio-bubble.module";
 
 @NgModule({
   declarations: [MessageListComponent],
@@ -23,6 +24,7 @@ import { SenderAudioBubbleModule } from "../sender-audio-bubble/sender-audio-bub
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     SenderAudioBubbleModule,
+    ReceiverAudioBubbleModule,
     CometChatReceiverMessageBubbleModule,
   ],
   exports: [MessageListComponent],
