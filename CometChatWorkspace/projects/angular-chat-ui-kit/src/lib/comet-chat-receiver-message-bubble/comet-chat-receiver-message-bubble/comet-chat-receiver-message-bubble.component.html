@@ -1,6 +1,7 @@
 <div class="messageContainerStyle">
   <!--ToolTip Component-->
   <tool-tip
+    class="tool"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
     *ngIf="showToolTip"

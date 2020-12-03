@@ -3,15 +3,19 @@
   margin-bottom: 16px;
   padding-left: 16px;
   padding-right: 16px;
-  max-width: 100%;
+  max-width: 65%;
   clear: both;
   position: relative;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  float: right;
 }
-.messageContainerStyle:hover {
+.messageContainerStyle:hover > .tool {
   display: flex;
+}
+.tool {
+  display: none;
 }
 
 .messageWrapperStyle {

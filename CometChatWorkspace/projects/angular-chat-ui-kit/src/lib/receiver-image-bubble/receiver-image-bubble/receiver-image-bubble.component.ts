@@ -7,12 +7,19 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class ReceiverImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   messageFrom = "receiver";
 
   messageAssign = Object.assign({}, this.MessageDetails, {
     messageFrom: this.messageFrom,
   });
+  avatar = null;
+  //Sets Username of Avatar
+  name: string = null;
+  //If Group then only show avatar
+  //If Group then only show avatar
+  avatarIfGroup: boolean = false;
 
   message = this.messageAssign;
   imageUrl = "";
@@ -20,7 +27,12 @@ export class ReceiverImageBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    /**
+     *  If Group then displays Avatar And Name
+     */
     if (this.MessageDetails.receiverType === "group") {
+      this.avatarIfGroup = true;
+
       if (!this.MessageDetails.sender.avatar) {
         const uid = this.MessageDetails.sender.getUid();
         const char = this.MessageDetails.sender
@@ -29,12 +41,14 @@ export class ReceiverImageBubbleComponent implements OnInit {
           .toUpperCase();
         // this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid, char));
       }
+      this.name = this.MessageDetails.sender.name;
+      this.avatar = this.MessageDetails.sender.avatar;
     }
     this.setImage();
   }
   /**
    * Checks if thumnail-generation extension is present or not And then Sets the image
-   * @param
+   *
    */
   setImage() {
     if (this.MessageDetails.hasOwnProperty("metadata")) {
@@ -57,16 +71,6 @@ export class ReceiverImageBubbleComponent implements OnInit {
 
           //when theme is passed use this mq
           //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
-
-          // mq.addListener(() => {
-          //   const imageToDownload = this.chooseImage(thumbnailGenerationObject);
-          //   let img = new Image();
-          //   img.src = imageToDownload;
-          //   img.onload = () => {
-          //     this.imageUrl = img.src;
-          //     console.log("eventlist");
-          //   };
-          // });
           const imageToDownload = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
           img.src = imageToDownload;
@@ -82,7 +86,7 @@ export class ReceiverImageBubbleComponent implements OnInit {
   }
   /**
    * If thumbnail-extension is not present then this works
-   * @param
+   *
    */
   setMessageImageUrl = () => {
     let img = new Image();
@@ -119,7 +123,7 @@ export class ReceiverImageBubbleComponent implements OnInit {
 
   /**
    * Set Time-Stamp for receiving image
-   * @param
+   *
    */
   getTime() {
     let msgSentAt = this.MessageDetails.sentAt;
@@ -129,5 +133,14 @@ export class ReceiverImageBubbleComponent implements OnInit {
       hour12: true,
     });
     return timeStamp;
+  }
+
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    console.log("receiver Message Bubble --> action generation is ", action);
+    this.actionGenerated.emit(action);
   }
 }

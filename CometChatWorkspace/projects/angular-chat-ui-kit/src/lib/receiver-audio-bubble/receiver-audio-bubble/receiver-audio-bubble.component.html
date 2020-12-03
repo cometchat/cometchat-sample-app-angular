@@ -15,19 +15,21 @@
       <!--name-->
       <div class="nameWrapperStyle">
         <span class="nameStyle">
-          {{ avatarName }}
+          {{ name }}
         </span>
       </div>
-      <div class="messageFileContainerStyle">
-        <div class="messageFileWrapperStyle">
-          <a [href]="url" target="_blank"
-            >{{ name }}
-            <span id="file">&nbsp;</span>
-          </a>
+      <div class="messageAudioContainerStyle">
+        <div class="messageAudioWrapperStyle">
+          <audio controls>
+            <source [src]="audioUrl" />
+          </audio>
         </div>
       </div>
       <div class="messageInfoWrapperStyle">
-        <span class="messageTimestampStyle">{{ getTime() }}</span>
+        <span class="messageTimestampStyle">
+          {{ getTime() }}
+        </span>
+        <!--ReplyCount-->
       </div>
     </div>
   </div>

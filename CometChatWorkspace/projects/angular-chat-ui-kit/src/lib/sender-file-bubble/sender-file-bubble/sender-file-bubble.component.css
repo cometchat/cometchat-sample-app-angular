@@ -9,10 +9,14 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  float: right;
 }
-/* .messageContainerStyle:hover > ul.message__actions {
+.messageContainerStyle:hover > .tool {
   display: flex;
-} */
+}
+.tool {
+  display: none;
+}
 
 .messageWrapperStyle {
   width: auto;
