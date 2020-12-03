@@ -3,6 +3,7 @@
     class="tool"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
   ></tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageImgWrapper" (click)="open()">
