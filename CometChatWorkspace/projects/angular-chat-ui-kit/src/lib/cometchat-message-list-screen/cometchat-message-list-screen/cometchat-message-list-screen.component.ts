@@ -24,9 +24,9 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
   messageList = [];
   scrollToBottom: true;
-  messageToBeEdited: null;
-  replyPreview: null;
-  liveReaction: false;
+  messageToBeEdited = null;
+  replyPreview = null;
+  liveReaction = false;
   changeNumber = 0;
   reachedTopOfConversation = false;
   scrollVariable = 0;
@@ -113,6 +113,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
         break;
       }
       case "newConversationOpened": {
+        this.resetPage();
         this.setMessages(messages);
 
         break;
@@ -129,7 +130,11 @@ export class CometchatMessageListScreenComponent implements OnInit {
         break;
       }
       case "editMessage": {
-        //this.editMessage(messages);
+        this.editMessage(messages);
+        break;
+      }
+      case "messageEdited": {
+        this.messageEdited(messages);
         break;
       }
       case "audioCall":
@@ -139,8 +144,22 @@ export class CometchatMessageListScreenComponent implements OnInit {
         this.actionGenerated.emit(action);
         break;
       }
+      case "clearMessageToBeEdited": {
+        this.messageToBeEdited = null;
+        break;
+      }
     }
   }
+
+  /**
+   * Resets The component to initial conditions
+   * @param
+   */
+  resetPage() {
+    this.messageToBeEdited = null;
+    this.replyPreview = null;
+  }
+
   /**
    * set Messages Directly , coz new conversation is opened , hence no need to prepend or append
    * @param Any messages
@@ -183,7 +202,7 @@ export class CometchatMessageListScreenComponent implements OnInit {
     // let dummy = [...this.messageList];
 
     this.messageList = [...messages];
-    this.scrollToBottomOfChatWindow();
+    //this.scrollToBottomOfChatWindow();
   };
 
   /**
@@ -212,6 +231,38 @@ export class CometchatMessageListScreenComponent implements OnInit {
         console.log("Message delete failed with error:", error);
       });
   };
+
+  /**
+   * Sets The message to be edited to pass it to the message composer
+   * @param Any messages
+   */
+  editMessage(messages) {
+    this.messageToBeEdited = messages;
+  }
+
+  /**
+   * Render The Message List after Message has been successfullly edited
+   * @param Any message
+   */
+  messageEdited(message) {
+    const messageList = [...this.messageList];
+    let messageKey = messageList.findIndex((m) => m.id === message.id);
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+
+      const newMessageObj = Object.assign({}, messageObj, message);
+
+      messageList.splice(messageKey, 1, newMessageObj);
+      this.updateMessages(messageList);
+
+      if (messageList.length - messageKey === 1 && !message.replyCount) {
+        this.actionGenerated.emit({
+          type: "messageEdited",
+          payLoad: [newMessageObj],
+        });
+      }
+    }
+  }
 
   /**
    * If the message gets deleted successfull , remove the deleted message in frontend using this function
