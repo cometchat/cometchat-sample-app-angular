@@ -1,1 +1,36 @@
-<p>receiver-audio-bubble works!</p>
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></tool-tip>
+  <div class="messageWrapperStyle">
+    <!--Avatar-->
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <avatar [avatar]="avatar" class="avatarStyle"></avatar>
+    </div>
+    <div class="messageDetailStyle">
+      <!--name-->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ name }}
+        </span>
+      </div>
+      <div class="messageAudioContainerStyle">
+        <div class="messageAudioWrapperStyle">
+          <audio controls>
+            <source [src]="audioUrl" />
+          </audio>
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle">
+          {{ getTime() }}
+        </span>
+        <!--ReplyCount-->
+      </div>
+    </div>
+  </div>
+</div>
