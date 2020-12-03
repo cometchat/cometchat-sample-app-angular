@@ -148,6 +148,15 @@ export class CometchatMessageListScreenComponent implements OnInit {
         this.messageToBeEdited = null;
         break;
       }
+      case "messageUpdated": {
+        this.updateMessages(messages);
+        break;
+      }
+
+      case "messageDeleted": {
+        this.removeMessages(messages);
+        break;
+      }
     }
   }
 
