@@ -1,1 +1,26 @@
-<p>deleted-message-bubble works!</p>
+<div class="messageContainerStyle" *ngIf="loggedInUserDeletedThisMessage">
+  <div class="messageWrapperStyle">
+    <div class="messageTxtWrapperStyle">
+      <p class="messageTxtStyle">You deleted this message.</p>
+    </div>
+    <div class="messageInfoWrapperStyle">
+      <span class="messageTimeStampStyle"> {{ getTime() }} </span>
+    </div>
+  </div>
+</div>
+
+<!-- Received a Deleted Message Buubble -->
+<div
+  class="messageContainerStyle deletedMessageReceivedStyle"
+  *ngIf="!loggedInUserDeletedThisMessage"
+>
+  <div class="messageWrapperStyle deletedMessageWrapperStyle">
+    <div class="messageTxtWrapperStyle deletedMessageReceivedStyle">
+      <p class="messageTxtStyle">This message Was Deleted.</p>
+    </div>
+    <div class="messageInfoWrapperStyle deletedMessageReceivedStyle">
+      <span class="messageTimeStampStyle"> {{ getTime() }} </span>
+    </div>
+  </div>
+</div>
+<!-- Received a Deleted Message Buubble -->
