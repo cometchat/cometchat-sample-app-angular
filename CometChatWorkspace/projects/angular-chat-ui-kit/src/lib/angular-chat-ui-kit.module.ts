@@ -23,6 +23,8 @@ import { BackdropModule } from "./backdrop/backdrop.module";
 import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-video-bubble.module";
 import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-user-detail.module";
+import { SenderAudioBubbleModule } from "./sender-audio-bubble/sender-audio-bubble.module";
+import { ReceiverAudioBubbleModule } from "./receiver-audio-bubble/receiver-audio-bubble.module";
 import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-message-bubble.module";
 import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 @NgModule({
@@ -48,6 +50,8 @@ import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
     BackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
+    SenderAudioBubbleModule,
+    ReceiverAudioBubbleModule,
     CometChatUserDetailModule,
     DeletedMessageBubbleModule,
     ReplyPreviewModule,
@@ -74,6 +78,8 @@ import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
     BackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
+    SenderAudioBubbleModule,
+    ReceiverAudioBubbleModule,
     CometChatUserDetailModule,
     DeletedMessageBubbleModule,
     ReplyPreviewModule,

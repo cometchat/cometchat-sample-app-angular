@@ -4,7 +4,6 @@
     <!--message-->
     <div *ngFor="let msg of messages">
       <!-- CASE FOR DELETED MESSAGES -->
-
       <div *ngIf="msg?.deletedAt; else elseBlock">
         <deleted-message-bubble
           [MessageDetails]="msg"
@@ -12,7 +11,6 @@
         ></deleted-message-bubble>
       </div>
       <!-- CASE FOR DELETED MESSAGES ENDS -->
-
       <ng-template #elseBlock>
         <!-- NgSwitchCase for different Types Of Bubble -->
         <div [ngSwitch]="msg.type">
@@ -23,7 +21,6 @@
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             ></comet-chat-receiver-message-bubble>
-
             <comet-chat-sender-message-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
@@ -31,21 +28,20 @@
             ></comet-chat-sender-message-bubble>
           </div>
           <!--CASE FOR TEXT ENDS -->
-
           <!--CASE FOR FILE-->
           <div *ngSwitchCase="'file'">
             <sender-file-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
             ></sender-file-bubble>
-
             <receiver-file-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
             ></receiver-file-bubble>
           </div>
           <!--CASE FOR FILE ENDS-->
-
           <!--CASE FOR IMAGE -->
           <div *ngSwitchCase="'image'">
             <sender-image-bubble
@@ -53,7 +49,6 @@
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             ></sender-image-bubble>
-
             <receiver-image-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
@@ -61,23 +56,40 @@
             >
             </receiver-image-bubble>
           </div>
-
           <!--CASE FOR IMAGE  ENDS-->
-
           <!--CASE FOR VIDEO -->
           <div *ngSwitchCase="'video'">
             <sender-video-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
             >
             </sender-video-bubble>
             <receiver-video-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
             >
             </receiver-video-bubble>
           </div>
           <!--CASE FOR VIDEO ENDS -->
+
+          <!--CASE FOR AUDIO -->
+          <div *ngSwitchCase="'audio'">
+            <sender-audio-bubble
+              *ngIf="msg.sender.uid === loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </sender-audio-bubble>
+            <receiver-audio-bubble
+              *ngIf="msg.sender.uid !== loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </receiver-audio-bubble>
+          </div>
+          <!--CASE FOR AUDIO ENDS -->
         </div>
       </ng-template>
     </div>

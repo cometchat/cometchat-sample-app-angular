@@ -11,6 +11,7 @@
   flex-shrink: 0;
   float: left;
 }
+
 .messageContainerStyle:hover > .tool {
   display: flex;
 }
@@ -38,58 +39,35 @@
   display: flex;
   flex-direction: column;
 }
-
+/*
+Styling for name will come
+*/
 .nameWrapperStyle {
+  padding: 3px 5px;
   align-self: flex-start;
 }
 
 .nameStyle {
   font-size: 10px;
-  /* color: `${props.theme.color.helpText}`, */
+  color: rgba(20, 20, 20, 0.6);
 }
 
-.messageFileContainerStyle {
+.messageAudioContainerStyle {
   width: auto;
   flex: 1 1;
   align-self: flex-start;
   display: flex;
 }
 
-.messageFileWrapperStyle {
+.messageAudioWrapperStyle {
   display: inline-block;
   border-radius: 12px;
-  color: #cccccc;
-  background-color: #f6f6f6;
-  /* color: `${props.theme.color.secondary}`;
-    backgroundColor: `${props.theme.backgroundColor.secondary}`; */
-  padding: 8px 12px;
   align-self: flex-start;
-  width: auto;
 }
-.messageFileWrapperStyle > a {
-  background: 0 0;
-  text-decoration: none;
-  background-color: transparent;
-  color: #141414;
-  /* color: `${props.theme.color.primary}`; */
-  width: auto;
-  font-size: 14px;
-}
-.messageFileWrapperStyle:visited,
-.messageFileWrapperStyle:active,
-.messageFileWrapperStyle:hover {
-  color: #141414;
-  /* color: `${props.theme.color.primary}`, */
-  text-decoration: none;
-}
-
-#file {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path fill="%2339f" d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/><path d="M0 0h24v24H0z" fill="none"/></svg>')
-    0px center no-repeat;
-  background-color: white;
-  height: 30px;
-  display: inline-block;
-  padding: 10px 0px 0px 20px;
+.messageAudioWrapperStyle > audio {
+  max-width: 250px;
+  display: inherit;
+  outline: none;
 }
 
 .messageInfoWrapperStyle {
@@ -104,4 +82,10 @@
   line-height: 12px;
   text-transform: uppercase;
   /* color: `${props.theme.color.helpText}`; */
+}
+
+.avatarStyle {
+  border-radius: 50%;
+  border-width: 1px;
+  /* border-color: props.theme.color.secondary; */
 }

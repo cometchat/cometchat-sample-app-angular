@@ -1,26 +1,22 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "receiver-video-bubble",
-  templateUrl: "./receiver-video-bubble.component.html",
-  styleUrls: ["./receiver-video-bubble.component.css"],
+  selector: "receiver-audio-bubble",
+  templateUrl: "./receiver-audio-bubble.component.html",
+  styleUrls: ["./receiver-audio-bubble.component.css"],
 })
-export class ReceiverVideoBubbleComponent implements OnInit {
+export class ReceiverAudioBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
+  audioUrl: string;
   //Sets the User Avatar if group
   avatar = null;
   //Sets Username of Avatar
   name: string = null;
-
-  videoUrl: string;
-
-  //if group then only show avatar
+  //If Group then only show avatar
   avatarIfGroup: boolean = false;
-
-  message = Object.assign({}, this.MessageDetails, { messageFrom: "receiver" });
 
   constructor() {}
 
@@ -32,9 +28,11 @@ export class ReceiverVideoBubbleComponent implements OnInit {
       this.avatarIfGroup = true;
       if (!this.MessageDetails.sender.avatar) {
         const uid = this.MessageDetails.sender.getUid();
-        const char = this.MessageDetails.sender.getName().charAt(0);
-
-        //  this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid,char))
+        const char = this.MessageDetails.sender
+          .getName()
+          .charAt(0)
+          .toUpperCase();
+        // this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid, char));
       }
       this.name = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;
@@ -43,14 +41,7 @@ export class ReceiverVideoBubbleComponent implements OnInit {
   }
 
   /**
-   * Gets the url of video to be displayed
-   */
-  getUrl() {
-    this.videoUrl = this.MessageDetails.data.url;
-  }
-
-  /**
-   * Gets time when the video message was received
+   * Gets time when the audio message was received
    */
   getTime() {
     let msgSentAt = this.MessageDetails.sentAt;
@@ -60,6 +51,13 @@ export class ReceiverVideoBubbleComponent implements OnInit {
       hour12: true,
     });
     return timeStamp;
+  }
+
+  /**
+   * Gets the url of audio to be displayed
+   */
+  getUrl() {
+    this.audioUrl = this.MessageDetails.data.url;
   }
 
   /**

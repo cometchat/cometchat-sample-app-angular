@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ReceiverImageBubbleComponent } from "./receiver-image-bubble/receiver-image-bubble.component";
+import { ReceiverAudioBubbleComponent } from "./receiver-audio-bubble/receiver-audio-bubble.component";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
 import { AvatarModule } from "../avatar/avatar.module";
 
 @NgModule({
-  declarations: [ReceiverImageBubbleComponent],
+  declarations: [ReceiverAudioBubbleComponent],
   imports: [CommonModule, ToolTipModule, AvatarModule],
-  exports: [ReceiverImageBubbleComponent],
+  exports: [ReceiverAudioBubbleComponent],
 })
-export class ReceiverImageBubbleModule {}
+export class ReceiverAudioBubbleModule {}

@@ -1,5 +1,11 @@
 <div class="messageContainerStyle">
   <!--ToolTip-->
+  <tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageFileWrapper">
       <a [href]="url" target="_blank"

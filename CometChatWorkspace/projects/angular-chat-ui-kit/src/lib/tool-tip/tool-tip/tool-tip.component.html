@@ -1,23 +1,25 @@
 <ul class="messageActionStyle" *ngIf="showToolTip">
-  <li class="actionGroupStyle">
-    <button
-      type="button"
-      class="groupButtonStyle replyIcon"
-      (click)="replyToMessage()"
-    ></button>
-  </li>
-  <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
-    <button
-      type="button"
-      class="groupButtonStyle editIcon"
-      (click)="editMessage()"
-    ></button>
-  </li>
-  <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
-    <button
-      type="button"
-      class="groupButtonStyle deleteIcon"
-      (click)="deleteMessage()"
-    ></button>
-  </li>
+  <div [class.tool]="!showOnlyReplyButton">
+    <li class="actionGroupStyle">
+      <button
+        type="button"
+        class="groupButtonStyle replyIcon"
+        (click)="replyToMessage()"
+      ></button>
+    </li>
+    <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
+      <button
+        type="button"
+        class="groupButtonStyle editIcon"
+        (click)="editMessage()"
+      ></button>
+    </li>
+    <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
+      <button
+        type="button"
+        class="groupButtonStyle deleteIcon"
+        (click)="deleteMessage()"
+      ></button>
+    </li>
+  </div>
 </ul>

@@ -6,6 +6,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class SenderImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   timer = null;
@@ -119,5 +120,13 @@ export class SenderImageBubbleComponent implements OnInit {
       type: "viewActualImage",
       payLoad: { ...this.message, ...this.MessageDetails },
     });
+  }
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    console.log("receiver Message Bubble --> action generation is ", action);
+    this.actionGenerated.emit(action);
   }
 }

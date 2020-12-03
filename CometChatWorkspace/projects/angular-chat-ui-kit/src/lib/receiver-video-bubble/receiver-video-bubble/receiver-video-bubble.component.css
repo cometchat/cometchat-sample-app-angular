@@ -9,9 +9,13 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  float: left;
 }
-.messageContainerStyle ul.message__actions:hover {
+.messageContainerStyle:hover > .tool {
   display: flex;
+}
+.tool {
+  display: none;
 }
 
 .messageWrapperStyle {
@@ -36,11 +40,13 @@
 }
 
 .nameWrapperStyle {
+  padding: 3px 5px;
   align-self: flex-start;
 }
 
 .nameStyle {
   font-size: 10px;
+  color: rgba(20, 20, 20, 0.6);
   /* color: `${props.theme.color.helpText}`, */
 }
 

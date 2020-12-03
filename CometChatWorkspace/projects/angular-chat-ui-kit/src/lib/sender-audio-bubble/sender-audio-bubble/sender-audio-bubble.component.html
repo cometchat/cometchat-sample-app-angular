@@ -1,20 +1,19 @@
 <div class="messageContainerStyle">
-  <!--ToolTip Component-->
   <tool-tip
     class="tool"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
   ></tool-tip>
   <div class="messageWrapperStyle">
-    <div class="messageTxtWrapperStyle">
-      <p class="messageTxtStyle message__txt">{{ MessageDetails.data.text }}</p>
+    <div class="messageAudioWrapperStyle">
+      <audio controls>
+        <source [src]="audioUrl" />
+      </audio>
     </div>
   </div>
-
   <div class="messageInfoWrapperStyle">
-    <!--ReplyCount component-->
-
-    <!--ReadReciept component-->
+    <!--Reply Count-->
     <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
   </div>
 </div>

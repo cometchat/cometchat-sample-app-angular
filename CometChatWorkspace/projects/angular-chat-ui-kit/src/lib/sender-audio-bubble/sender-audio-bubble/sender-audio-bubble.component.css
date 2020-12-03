@@ -3,7 +3,7 @@
   margin-bottom: 16px;
   padding-left: 16px;
   padding-right: 16px;
-  max-width: 100%;
+  max-width: 65%;
   clear: both;
   position: relative;
   display: flex;
@@ -17,6 +17,7 @@
 .tool {
   display: none;
 }
+
 .messageWrapperStyle {
   width: auto;
   flex: 1 1;
@@ -24,13 +25,13 @@
   display: flex;
 }
 
-.messageVideoWrapperStyle {
+.messageAudioWrapperStyle {
   display: inline-block;
-  align-self: "flex-end";
-}
-.messageVideoWrapperStyle > video {
-  max-width: 250px;
   border-radius: 12px;
+  align-self: flex-end;
+}
+.messageAudioWrapperStyle > audio {
+  max-width: 250px;
   display: inherit;
 }
 
