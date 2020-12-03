@@ -180,6 +180,12 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
 
           this.messageUpdated(enums.MESSAGE_READ, messageReceipt);
         },
+        onMessageDeleted: (deletedMessage) => {
+          this.messageUpdated(enums.MESSAGE_DELETED, deletedMessage);
+        },
+        onMessageEdited: (editedMessage) => {
+          this.messageUpdated(enums.MESSAGE_EDITED, editedMessage);
+        },
       })
     );
   }
@@ -356,6 +362,14 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       case enums.MESSAGE_READ:
         this.messageReadAndDelivered(message);
         break;
+      case enums.MESSAGE_DELETED: {
+        this.messageDeleted(message);
+        break;
+      }
+      case enums.MESSAGE_EDITED: {
+        this.messageEdited(message);
+        break;
+      }
     }
   }
 
@@ -474,4 +488,77 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       //not implemented in React Also
     }
   }
+
+  /**
+   * Emits an Action Indicating that a message was deleted by the user/person you are chatting with
+   * @param Any message
+   */
+  messageDeleted(message) {
+    if (
+      this.type === "group" &&
+      message.getReceiverType() === "group" &&
+      message.getReceiver().guid === this.item.guid
+    ) {
+      this.actionGenerated.emit({ type: "messageDeleted", payLoad: [message] });
+    } else if (
+      this.type === "user" &&
+      message.getReceiverType() === "user" &&
+      message.getSender().uid === this.item.uid
+    ) {
+      this.actionGenerated.emit({ type: "messageDeleted", payLoad: [message] });
+    }
+  }
+
+  /**
+   * Detects if the message that was edit is you current open conversation window
+   * @param Any message
+   */
+  messageEdited = (message) => {
+    if (
+      message.category === enums.CATEGORY_CUSTOM &&
+      message.type === enums.CUSTOM_TYPE_POLL
+    ) {
+      if (
+        (this.type === "group" &&
+          message.getReceiverType() === "group" &&
+          message.getReceiver().guid === this.item.guid) ||
+        (this.type === "user" &&
+          message.getReceiverType() === "user" &&
+          message.getReceiver().uid === this.item.uid)
+      ) {
+        this.updateEditedMessage(message);
+      }
+    } else {
+      if (
+        (this.type === "group" &&
+          message.getReceiverType() === "group" &&
+          message.getReceiver().guid === this.item.guid) ||
+        (this.type === "user" &&
+          message.getReceiverType() === "user" &&
+          message.getSender().uid === this.item.uid)
+      ) {
+        this.updateEditedMessage(message);
+      }
+    }
+  };
+
+  /**
+   * Emits an Action Indicating that a message was deleted by the user/person you are chatting with
+   * @param Any message
+   */
+  updateEditedMessage = (message) => {
+    const messageList = [...this.messages];
+    let messageKey = messageList.findIndex((m, k) => m.id === message.id);
+
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+      const newMessageObj = Object.assign({}, messageObj, message);
+
+      messageList.splice(messageKey, 1, newMessageObj);
+      this.actionGenerated.emit({
+        type: "messageUpdated",
+        payLoad: messageList,
+      });
+    }
+  };
 }

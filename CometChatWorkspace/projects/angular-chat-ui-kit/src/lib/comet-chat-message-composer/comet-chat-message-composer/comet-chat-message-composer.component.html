@@ -1,4 +1,11 @@
 <div class="chatComposerStyle">
+  <div class="editPreviewContainerStyle" *ngIf="openEditMessageWindow">
+    <div class="previewHeadingStyle">
+      <div class="previewTextStyle">Edit message</div>
+      <span class="previewCloseStyle" (click)="closeEditPreview()"></span>
+    </div>
+    <div>{{ this.messageToBeEdited?.data?.text }}</div>
+  </div>
   <div class="composerInputStyle">
     <div class="inputInnerStyle" tabindex="-1">
       <input

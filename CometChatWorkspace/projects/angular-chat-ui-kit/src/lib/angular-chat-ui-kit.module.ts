@@ -25,6 +25,7 @@ import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-vide
 import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-user-detail.module";
 import { SenderAudioBubbleModule } from "./sender-audio-bubble/sender-audio-bubble.module";
 import { ReceiverAudioBubbleModule } from "./receiver-audio-bubble/receiver-audio-bubble.module";
+import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-message-bubble.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -51,6 +52,7 @@ import { ReceiverAudioBubbleModule } from "./receiver-audio-bubble/receiver-audi
     SenderAudioBubbleModule,
     ReceiverAudioBubbleModule,
     CometChatUserDetailModule,
+    DeletedMessageBubbleModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -77,6 +79,7 @@ import { ReceiverAudioBubbleModule } from "./receiver-audio-bubble/receiver-audi
     SenderAudioBubbleModule,
     ReceiverAudioBubbleModule,
     CometChatUserDetailModule,
+    DeletedMessageBubbleModule,
   ],
 })
 export class AngularChatUiKitModule {}

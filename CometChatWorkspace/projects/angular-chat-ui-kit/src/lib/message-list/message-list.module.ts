@@ -11,6 +11,7 @@ import { SenderVideoBubbleModule } from "../sender-video-bubble/sender-video-bub
 import { ReceiverVideoBubbleModule } from "../receiver-video-bubble/receiver-video-bubble.module";
 import { SenderAudioBubbleModule } from "../sender-audio-bubble/sender-audio-bubble.module";
 import { ReceiverAudioBubbleModule } from "../receiver-audio-bubble/receiver-audio-bubble.module";
+import { DeletedMessageBubbleModule } from "../deleted-message-bubble/deleted-message-bubble.module";
 
 @NgModule({
   declarations: [MessageListComponent],
@@ -26,6 +27,7 @@ import { ReceiverAudioBubbleModule } from "../receiver-audio-bubble/receiver-aud
     SenderAudioBubbleModule,
     ReceiverAudioBubbleModule,
     CometChatReceiverMessageBubbleModule,
+    DeletedMessageBubbleModule,
   ],
   exports: [MessageListComponent],
 })
