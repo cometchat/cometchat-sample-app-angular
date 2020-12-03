@@ -67,6 +67,16 @@
           </receiver-video-bubble>
         </div>
         <!--CASE FOR VIDEO ENDS -->
+        <!--CASE FOR AUDIO -->
+        <div *ngSwitchCase="'audio'">
+          <sender-audio-bubble
+            *ngIf="msg.sender.uid === loggedInUser.uid"
+            [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </sender-audio-bubble>
+        </div>
+        <!--CASE FOR AUDIO ENDS -->
       </div>
     </div>
   </div>
