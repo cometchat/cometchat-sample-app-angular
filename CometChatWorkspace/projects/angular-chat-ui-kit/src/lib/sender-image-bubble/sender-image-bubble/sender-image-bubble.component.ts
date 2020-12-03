@@ -120,4 +120,12 @@ export class SenderImageBubbleComponent implements OnInit {
       payLoad: { ...this.message, ...this.MessageDetails },
     });
   }
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    console.log("receiver Message Bubble --> action generation is ", action);
+    this.actionGenerated.emit(action);
+  }
 }
