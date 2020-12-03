@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 import {
@@ -31,12 +39,13 @@ import {
     ]),
   ],
 })
-export class CometChatMessageComposerComponent implements OnInit {
+export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() parentMessageId = null;
 
   // can be user or a group
   @Input() item = null;
   @Input() type = null;
+  @Input() messageToBeEdited = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -47,12 +56,29 @@ export class CometChatMessageComposerComponent implements OnInit {
   messageType = "";
   emojiViewer = false;
   createPoll = false;
-  messageToBeEdited = false;
   replyPreview = null;
   stickerViewer = false;
   checkAnimatedState = "normal";
+  openEditMessageWindow: boolean = false;
 
   constructor() {}
+
+  ngOnChanges(change: SimpleChanges) {
+    // console.log("Message Composer --> ngOnChanges -->  ", change);
+
+    if (change["messageToBeEdited"]) {
+      console.log(
+        "Message Composer --> Message to Be edited changed -->  ",
+        change["messageToBeEdited"]
+      );
+
+      //edit message only if its not null or undefined
+      if (change["messageToBeEdited"].currentValue) {
+        this.openEditPreview();
+      }
+    }
+  }
+
   ngOnInit() {
     // console.log(
     //   "MessageComposer -> user to which , message will be sent ",
@@ -109,7 +135,37 @@ export class CometChatMessageComposerComponent implements OnInit {
    * Edit and Sent a Text message
    * @param
    */
-  editMessage() {}
+  editMessage() {
+    const messageToBeEdited = this.messageToBeEdited;
+
+    let { receiverId, receiverType } = this.getReceiverDetails();
+
+    let messageText = this.messageInput.trim();
+    let textMessage = new CometChat.TextMessage(
+      receiverId,
+      messageText,
+      receiverType
+    );
+    textMessage.setId(messageToBeEdited.id);
+
+    //this.endTyping();
+
+    CometChat.editMessage(textMessage)
+      .then((message) => {
+        this.messageInput = "";
+        this.messageSending = false;
+
+        //this.playAudio();
+
+        this.closeEditPreview();
+
+        this.actionGenerated.emit({ type: "messageEdited", payLoad: message });
+      })
+      .catch((error) => {
+        this.messageSending = false;
+        console.log("Message editing failed with error:", error);
+      });
+  }
 
   /**
    * Send Text Message
@@ -350,5 +406,28 @@ export class CometChatMessageComposerComponent implements OnInit {
 
   addEmoji(event) {
     // console.log("event ->>>>>> ", event);
+  }
+
+  /**
+   * opens the edit message window
+   * @param
+   */
+  openEditPreview() {
+    this.openEditMessageWindow = true;
+    this.messageInput = this.messageToBeEdited.data.text;
+  }
+
+  /**
+   * Closes the edit message window
+   * @param
+   */
+  closeEditPreview() {
+    this.openEditMessageWindow = false;
+    this.messageToBeEdited = null;
+    this.messageInput = "";
+    this.actionGenerated.emit({
+      type: "clearMessageToBeEdited",
+      payLoad: null,
+    });
   }
 }
