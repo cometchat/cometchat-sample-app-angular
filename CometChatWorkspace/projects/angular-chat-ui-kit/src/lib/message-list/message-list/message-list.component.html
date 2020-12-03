@@ -26,11 +26,13 @@
           <sender-file-bubble
             *ngIf="msg.sender.uid === loggedInUser.uid"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           ></sender-file-bubble>
 
           <receiver-file-bubble
             *ngIf="msg.sender.uid !== loggedInUser.uid"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           ></receiver-file-bubble>
         </div>
         <!--CASE FOR FILE ENDS-->
@@ -58,11 +60,13 @@
           <sender-video-bubble
             *ngIf="msg.sender.uid === loggedInUser.uid"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           >
           </sender-video-bubble>
           <receiver-video-bubble
             *ngIf="msg.sender.uid !== loggedInUser.uid"
             [MessageDetails]="msg"
+            (actionGenerated)="actionHandler($event)"
           >
           </receiver-video-bubble>
         </div>
