@@ -7,6 +7,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class ReceiverVideoBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   //Sets the User Avatar if group
