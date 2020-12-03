@@ -29,6 +29,78 @@
           ></comet-chat-sender-message-bubble>
         </div>
         <!--CASE FOR TEXT ENDS -->
+
+        <!-- CASE FOR FILE -->
+        <div *ngSwitchCase="'file'">
+          <receiver-file-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></receiver-file-bubble>
+
+          <sender-file-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></sender-file-bubble>
+        </div>
+        <!--CASE FOR FILE ENDS -->
+
+        <!-- CASE FOR IMAGE -->
+        <div *ngSwitchCase="'image'">
+          <receiver-image-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></receiver-image-bubble>
+
+          <sender-image-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></sender-image-bubble>
+        </div>
+        <!--CASE FOR IMAGE ENDS -->
+
+        <!-- CASE FOR VIDEO -->
+        <div *ngSwitchCase="'video'">
+          <receiver-video-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></receiver-video-bubble>
+
+          <sender-video-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></sender-video-bubble>
+        </div>
+        <!--CASE FOR VIDEO ENDS -->
+
+        <!-- CASE FOR AUDIO -->
+        <div *ngSwitchCase="'audio'">
+          <receiver-audio-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></receiver-audio-bubble>
+
+          <sender-audio-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></sender-audio-bubble>
+        </div>
+        <!--CASE FOR AUDIO ENDS -->
       </div>
     </div>
 
