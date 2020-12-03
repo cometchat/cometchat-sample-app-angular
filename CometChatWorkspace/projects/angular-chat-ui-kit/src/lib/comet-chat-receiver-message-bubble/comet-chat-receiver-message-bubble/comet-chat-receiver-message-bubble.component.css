@@ -9,9 +9,13 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  float: left;
 }
-.messageContainerStyle ul message__action:hover {
+.messageContainerStyle:hover > .tool {
   display: flex;
+}
+.tool {
+  display: none;
 }
 
 .messageWrapperStyle {
