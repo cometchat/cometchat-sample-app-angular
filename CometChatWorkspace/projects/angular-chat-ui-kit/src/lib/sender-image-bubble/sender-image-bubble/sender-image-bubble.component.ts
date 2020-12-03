@@ -6,6 +6,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class SenderImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   timer = null;
