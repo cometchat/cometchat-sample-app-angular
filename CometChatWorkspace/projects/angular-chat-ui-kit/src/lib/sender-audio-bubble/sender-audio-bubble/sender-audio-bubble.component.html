@@ -1,1 +1,18 @@
-<p>sender-audio-bubble works!</p>
+<div class="messageContainerStyle">
+  <tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+  ></tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageAudioWrapperStyle">
+      <audio controls>
+        <source [src]="audioUrl" />
+      </audio>
+    </div>
+  </div>
+  <div class="messageInfoWrapperStyle">
+    <!--Reply Count-->
+    <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
+  </div>
+</div>
