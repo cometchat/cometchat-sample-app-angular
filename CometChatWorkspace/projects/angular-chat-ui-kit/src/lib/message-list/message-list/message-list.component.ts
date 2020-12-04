@@ -469,16 +469,10 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
           });
           messageList.splice(messageKey, 1, newMessageObj);
 
-          // this.actionGenerated.emit({
-          //   type: "messageUpdated",
-          //   payLoad: messageList,
-          // });
-          setTimeout(() => {
-            this.actionGenerated.emit({
-              type: "messageUpdated",
-              payLoad: messageList,
-            });
-          }, 5000);
+          this.actionGenerated.emit({
+            type: "messageUpdated",
+            payLoad: messageList,
+          });
         }
       }
     } else if (

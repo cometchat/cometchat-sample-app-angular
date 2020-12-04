@@ -47,5 +47,6 @@ color: `${props.theme.color.white}`; */
 }
 
 .messageInfoWrapperStyle {
+  display: flex;
   align-self: flex-end;
 }
