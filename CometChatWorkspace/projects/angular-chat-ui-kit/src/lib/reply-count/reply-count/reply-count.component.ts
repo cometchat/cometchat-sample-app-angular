@@ -21,7 +21,9 @@ export class ReplyCountComponent implements OnInit {
       this.reply = replyCount + " replies";
     }
   }
-
+  /**
+   * get reply count for thread
+   */
   getReplyCount() {
     if (this.MessageDetails.hasOwnProperty("replyCount") === false) {
       this.replies = null;
@@ -46,7 +48,9 @@ export class ReplyCountComponent implements OnInit {
     this.replies = this.MessageDetails.replyCount;
     return this.replies;
   }
-
+  /**
+   * Open thread when clicked
+   */
   openThreadMessage() {
     this.actionGenerated.emit({
       type: "viewMessageThread",
