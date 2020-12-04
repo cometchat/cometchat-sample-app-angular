@@ -29,6 +29,12 @@
           {{ getTime() }}
         </span>
         <!--ReplyCount-->
+        <reply-count
+          *ngIf="showReplyCount"
+          [MessageDetails]="MessageDetails"
+          (actionGenerated)="actionHandler($event)"
+        >
+        </reply-count>
       </div>
     </div>
   </div>
