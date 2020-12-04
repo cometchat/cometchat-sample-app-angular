@@ -83,14 +83,19 @@
             />
           </span>
 
-          <div class="filePickerStyle">
-            <div class="fileListStyle">
-              <!--button will come-->
-            </div>
-          </div>
+          <span
+            title="Create Poll"
+            class="fileItemStyle"
+            id="poll"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+          </span>
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
+          <span class="stickerBtnStyle" title="Add Emoji">&nbsp;</span>
+          <span class="emojiButtonStyle" title="Add Sticker">&nbsp;</span>
+
           <span
             id="send"
             title="send message"
