@@ -47,7 +47,7 @@
 } */
 
 .messageInfoWrapperStyle {
-  align-self: flex-end;
+  /* align-self: flex-end; */
   display: flex;
   align-self: flex-end;
 }
