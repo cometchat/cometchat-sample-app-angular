@@ -15,6 +15,7 @@ export class SenderImageBubbleComponent implements OnInit {
   messageAssign = Object.assign({}, this.MessageDetails, {
     messageFrom: this.messageFrom,
   });
+  imageLoader: boolean = true;
 
   message = this.messageAssign;
   imageUrl = "";
@@ -30,6 +31,7 @@ export class SenderImageBubbleComponent implements OnInit {
    * @param
    */
   setImage() {
+    this.imageLoader = true;
     if (this.MessageDetails.hasOwnProperty("metadata")) {
       const metadata = this.MessageDetails.metadata;
       const injectedObject = metadata["@injected"];
@@ -41,29 +43,11 @@ export class SenderImageBubbleComponent implements OnInit {
         ) {
           const thumbnailGenerationObject =
             extensionsObject["thumbnail-generation"];
-
-          //mq harcoded value is used until theme is not passed change it after
-          // const mq = window.matchMedia(
-          //   "(min-width:360px) and (max-width: 767px)"
-          // );
-
-          //when theme is passed use this mq
-          //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
-
-          // mq.addListener(() => {
-          //   const imageToDownload = this.chooseImage(thumbnailGenerationObject);
-          //   let img = new Image();
-          //   img.src = imageToDownload;
-          //   img.onload = () => {
-          //     this.imageUrl = img.src;
-          //     console.log("listner");
-          //   };
-          // });
-
           const imageToDownload = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
           img.src = imageToDownload;
           img.onload = () => {
+            this.imageLoader = false;
             this.imageUrl = img.src;
             URL.revokeObjectURL(img.src);
           };
@@ -113,7 +97,7 @@ export class SenderImageBubbleComponent implements OnInit {
 
   /**
    * Emits action to open image in full-screen view
-   * @param
+   *
    */
   open() {
     this.actionGenerated.emit({
