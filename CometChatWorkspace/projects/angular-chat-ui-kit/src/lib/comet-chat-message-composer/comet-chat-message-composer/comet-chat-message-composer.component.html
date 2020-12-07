@@ -36,7 +36,7 @@
             <input
               type="file"
               accept="video/*"
-              id="vidPicker"
+              #vidPicker
               (change)="onVideoChange($event)"
             />
           </span>
@@ -50,7 +50,7 @@
             <input
               type="file"
               accept="audio/*"
-              id="audPicker"
+              #audPicker
               (change)="onAudChange($event)"
             />
           </span>
@@ -78,7 +78,7 @@
             <input
               type="file"
               accept="file/*"
-              id="filePicker"
+              #filePicker
               (change)="onFileChange($event)"
             />
           </span>
