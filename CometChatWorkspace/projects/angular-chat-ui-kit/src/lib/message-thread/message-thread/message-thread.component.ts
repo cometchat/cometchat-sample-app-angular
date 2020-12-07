@@ -82,6 +82,11 @@ export class MessageThreadComponent implements OnInit, OnChanges {
         });
         break;
       }
+      case "messageUpdated": {
+        this.updateMessages(messages);
+        break;
+      }
+
       case "customMessageReceived":
       case "messageReceived": {
         const message = messages[0];
@@ -156,6 +161,17 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   prependMessages(messages) {
     this.messageList = [...messages, ...this.messageList];
   }
+
+  /**
+   * update status of message ie. read or deliv
+   * @param Any messages
+   */
+  updateMessages = (messages) => {
+    // let dummy = [...this.messageList];
+
+    this.messageList = [...messages];
+    //this.scrollToBottomOfChatWindow();
+  };
 
   handleScroll(e) {
     console.log(
