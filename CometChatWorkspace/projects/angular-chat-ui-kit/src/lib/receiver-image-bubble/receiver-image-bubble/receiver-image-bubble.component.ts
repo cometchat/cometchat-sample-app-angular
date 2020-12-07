@@ -8,12 +8,15 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class ReceiverImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() showReplyCount = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   messageFrom = "receiver";
 
   messageAssign = Object.assign({}, this.MessageDetails, {
     messageFrom: this.messageFrom,
   });
+  imageLoader: boolean = true;
+
   avatar = null;
   //Sets Username of Avatar
   name: string = null;
@@ -51,6 +54,7 @@ export class ReceiverImageBubbleComponent implements OnInit {
    *
    */
   setImage() {
+    this.imageLoader = true;
     if (this.MessageDetails.hasOwnProperty("metadata")) {
       const metadata = this.MessageDetails.metadata;
 
@@ -64,17 +68,15 @@ export class ReceiverImageBubbleComponent implements OnInit {
           const thumbnailGenerationObject =
             extensionsObject["thumbnail-generation"];
 
-          //mq harcoded value is used until theme is not passed change it after
           const mq = window.matchMedia(
             "(min-width:360px) and (max-width: 767px)"
           );
 
-          //when theme is passed use this mq
-          //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
-          const imageToDownload = this.chooseImage(thumbnailGenerationObject);
+          const imageToShow = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
-          img.src = imageToDownload;
+          img.src = imageToShow;
           img.onload = () => {
+            this.imageLoader = false;
             this.imageUrl = img.src;
             URL.revokeObjectURL(img.src);
           };
@@ -103,12 +105,12 @@ export class ReceiverImageBubbleComponent implements OnInit {
     const smallUrl = thumbnailGenerationObject["url_small"];
     const mediumUrl = thumbnailGenerationObject["url_medium"];
     const mq = window.matchMedia("(min-width:360px) and (max-width: 767px)");
-    let imageToDownload = mediumUrl;
+    let imageToShow = mediumUrl;
     if (mq.matches) {
-      imageToDownload = smallUrl;
+      imageToShow = smallUrl;
     }
 
-    return imageToDownload;
+    return imageToShow;
   }
   /**
    *

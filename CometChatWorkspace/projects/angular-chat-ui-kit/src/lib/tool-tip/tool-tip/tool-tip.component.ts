@@ -16,6 +16,7 @@ export class ToolTipComponent implements OnInit {
   loggedInUser;
 
   showOnlyReplyButton: boolean = false;
+  receivedMessage: boolean = false;
 
   constructor() {}
 
@@ -30,6 +31,7 @@ export class ToolTipComponent implements OnInit {
       //for the message that is received , only show the reply button in tooltip
       if (this.MessageDetails.sender.uid !== this.loggedInUser.uid) {
         this.showOnlyReplyButton = true;
+        this.receivedMessage = true;
       }
     });
   }

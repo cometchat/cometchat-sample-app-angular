@@ -47,5 +47,15 @@
 } */
 
 .messageInfoWrapperStyle {
+  /* align-self: flex-end; */
+  display: flex;
   align-self: flex-end;
+}
+
+.imageLoaderStyle {
+  width: 200px;
+  background-color: rgba(212, 209, 209, 0.3);
+  height: 200px;
+  float: right;
+  border-radius: 20px;
 }

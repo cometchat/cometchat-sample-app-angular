@@ -6,6 +6,8 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
+  ViewChild,
+  ElementRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
@@ -48,6 +50,11 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() messageToBeEdited = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild("imgPicker", null) imgPicker: ElementRef;
+  @ViewChild("vidPicker", null) vidPicker: ElementRef;
+  @ViewChild("audPicker", null) audPicker: ElementRef;
+  @ViewChild("filePicker", null) filePicker: ElementRef;
 
   senddisable = false;
   reactdisable = true;
@@ -237,6 +244,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         //clearing Message Input Box
         this.messageInput = "";
 
+        // Change the send button to reaction button
+        setTimeout(() => {
+          this.reactdisable = true;
+          this.senddisable = false;
+        }, 500);
+
         //console.log("Message Sent Successfull to ", this.item);
       })
       .catch((error) => {
@@ -252,20 +265,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   getVideo() {
-    let vidPicker = document.getElementById("vidPicker");
-    vidPicker.click();
+    this.vidPicker.nativeElement.click();
   }
   getAudio() {
-    let audPicker = document.getElementById("audPicker");
-    audPicker.click();
+    this.audPicker.nativeElement.click();
   }
   getImage() {
-    let imgPicker = document.getElementById("imgPicker");
-    imgPicker.click();
+    this.imgPicker.nativeElement.click();
   }
   getFile() {
-    let filePicker = document.getElementById("filePicker");
-    filePicker.click();
+    this.filePicker.nativeElement.click();
   }
 
   onVideoChange(event) {
@@ -373,7 +382,11 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       messageType,
       receiverType
     );
-    if (this.type.parentMessageId) {
+
+    console.log(`Message Composer --> setting parent for media message`);
+
+    if (this.parentMessageId) {
+      console.log(`Message Composer --> setting parent for media message`);
       mediaMessage.setParentMessageId(this.parentMessageId);
     }
 

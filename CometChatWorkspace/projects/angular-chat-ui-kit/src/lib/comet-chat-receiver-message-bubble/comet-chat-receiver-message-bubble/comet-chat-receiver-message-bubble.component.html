@@ -12,11 +12,7 @@
     <div class="messageDetailStyle">
       <!--name--->
 
-      <div
-        class="messageTxtContainerStyle"
-        (mouseover)="toggleToolTip()"
-        (mouseout)="toggleToolTip()"
-      >
+      <div class="messageTxtContainerStyle">
         <!--messageTxt-->
 
         <div class="messageTxtWrapperStyle" id="check">
@@ -29,6 +25,12 @@
           {{ getTime() }}
         </span>
         <!--ReplyCount component-->
+        <reply-count
+          *ngIf="showReplyCount"
+          [MessageDetails]="MessageDetails"
+          (actionGenerated)="actionHandler($event)"
+        >
+        </reply-count>
       </div>
     </div>
   </div>

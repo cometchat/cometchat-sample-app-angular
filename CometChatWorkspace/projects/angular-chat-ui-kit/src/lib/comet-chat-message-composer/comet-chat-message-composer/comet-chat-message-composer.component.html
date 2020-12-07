@@ -36,7 +36,7 @@
             <input
               type="file"
               accept="video/*"
-              id="vidPicker"
+              #vidPicker
               (change)="onVideoChange($event)"
             />
           </span>
@@ -50,7 +50,7 @@
             <input
               type="file"
               accept="audio/*"
-              id="audPicker"
+              #audPicker
               (change)="onAudChange($event)"
             />
           </span>
@@ -64,7 +64,7 @@
             <input
               type="file"
               accept="image/*"
-              id="imgPicker"
+              #imgPicker
               (change)="onImgChange($event)"
             />
           </span>
@@ -78,19 +78,24 @@
             <input
               type="file"
               accept="file/*"
-              id="filePicker"
+              #filePicker
               (change)="onFileChange($event)"
             />
           </span>
 
-          <div class="filePickerStyle">
-            <div class="fileListStyle">
-              <!--button will come-->
-            </div>
-          </div>
+          <span
+            title="Create Poll"
+            class="fileItemStyle"
+            id="poll"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+          </span>
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
+          <span class="stickerBtnStyle" title="Add Emoji">&nbsp;</span>
+          <span class="emojiButtonStyle" title="Add Sticker">&nbsp;</span>
+
           <span
             id="send"
             title="send message"

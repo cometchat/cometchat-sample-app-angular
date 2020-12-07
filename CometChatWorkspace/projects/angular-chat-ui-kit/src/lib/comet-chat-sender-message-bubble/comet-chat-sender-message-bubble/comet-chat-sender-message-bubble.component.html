@@ -2,6 +2,7 @@
   <!--ToolTip Component-->
   <tool-tip
     class="tool"
+    *ngIf="showToolTip"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
   ></tool-tip>
@@ -13,7 +14,12 @@
 
   <div class="messageInfoWrapperStyle">
     <!--ReplyCount component-->
-
+    <reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </reply-count>
     <!--ReadReciept component-->
     <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
   </div>

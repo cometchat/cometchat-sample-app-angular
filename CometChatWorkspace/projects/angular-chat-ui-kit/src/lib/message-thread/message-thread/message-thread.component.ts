@@ -16,7 +16,7 @@ import { CometChat } from "@cometchat-pro/chat";
   styleUrls: ["./message-thread.component.css"],
 })
 export class MessageThreadComponent implements OnInit, OnChanges {
-  @ViewChild("scrollMe", null) chatWindow: ElementRef;
+  @ViewChild("messageWindow", null) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
@@ -67,19 +67,26 @@ export class MessageThreadComponent implements OnInit, OnChanges {
     switch (action.type) {
       case "newConversationOpened": {
         this.setMessages(messages);
-
+        this.replyCount = messages.length;
         break;
       }
       case "messageComposed": {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;
 
+        console.log("Message Thread --> new message added ", messages);
+
         this.actionGenerated.emit({
-          type: "messageComposed",
-          payLoad: messages,
+          type: "changeThreadParentMessageReplyCount",
+          payLoad: this.replyCount,
         });
         break;
       }
+      case "messageUpdated": {
+        this.updateMessages(messages);
+        break;
+      }
+
       case "customMessageReceived":
       case "messageReceived": {
         const message = messages[0];
@@ -89,6 +96,10 @@ export class MessageThreadComponent implements OnInit, OnChanges {
           //this.smartReplyPreview(messages);
           this.replyCount = this.replyCount + messages.length;
           this.appendMessage(messages);
+          this.actionGenerated.emit({
+            type: "changeThreadParentMessageReplyCount",
+            payLoad: this.replyCount,
+          });
         }
         break;
       }
@@ -150,6 +161,17 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   prependMessages(messages) {
     this.messageList = [...messages, ...this.messageList];
   }
+
+  /**
+   * update status of message ie. read or deliv
+   * @param Any messages
+   */
+  updateMessages = (messages) => {
+    // let dummy = [...this.messageList];
+
+    this.messageList = [...messages];
+    //this.scrollToBottomOfChatWindow();
+  };
 
   handleScroll(e) {
     console.log(

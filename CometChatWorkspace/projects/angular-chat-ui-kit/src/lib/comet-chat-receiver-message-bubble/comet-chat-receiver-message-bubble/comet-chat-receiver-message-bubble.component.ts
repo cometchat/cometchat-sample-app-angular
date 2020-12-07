@@ -7,6 +7,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class CometChatReceiverMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() showReplyCount = true;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 

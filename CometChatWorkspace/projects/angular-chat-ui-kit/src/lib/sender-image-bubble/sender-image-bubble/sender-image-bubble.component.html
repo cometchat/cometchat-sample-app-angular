@@ -7,11 +7,18 @@
   ></tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageImgWrapper" (click)="open()">
+      <div *ngIf="imageLoader" class="imageLoaderStyle">&nbsp;</div>
       <img [src]="imageUrl" />
     </div>
   </div>
   <div class="messageInfoWrapperStyle">
     <!--ReplyCount-->
+    <reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </reply-count>
     <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
   </div>
 </div>

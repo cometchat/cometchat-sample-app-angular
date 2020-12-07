@@ -18,6 +18,7 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></comet-chat-receiver-message-bubble>
 
@@ -25,6 +26,7 @@
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></comet-chat-sender-message-bubble>
         </div>
@@ -54,6 +56,7 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></receiver-image-bubble>
 
@@ -61,6 +64,7 @@
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></sender-image-bubble>
         </div>
@@ -111,7 +115,7 @@
     <div
       class="messageWindowStyle"
       (scroll)="handleScroll($event)"
-      #scrollMe
+      #messageWindow
       [scrollTop]="scrollVariable"
     >
       <message-list

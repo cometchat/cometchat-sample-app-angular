@@ -7,10 +7,12 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class SenderImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() showReplyCount = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   timer = null;
   messageFrom = "sender";
+  imageLoader: boolean = true;
 
   messageAssign = Object.assign({}, this.MessageDetails, {
     messageFrom: this.messageFrom,
@@ -27,9 +29,10 @@ export class SenderImageBubbleComponent implements OnInit {
   }
   /**
    * Checks if thumnail-generation extension is present And then Sets the image
-   * @param
+   *
    */
   setImage() {
+    this.imageLoader = true;
     if (this.MessageDetails.hasOwnProperty("metadata")) {
       const metadata = this.MessageDetails.metadata;
       const injectedObject = metadata["@injected"];
@@ -41,29 +44,11 @@ export class SenderImageBubbleComponent implements OnInit {
         ) {
           const thumbnailGenerationObject =
             extensionsObject["thumbnail-generation"];
-
-          //mq harcoded value is used until theme is not passed change it after
-          // const mq = window.matchMedia(
-          //   "(min-width:360px) and (max-width: 767px)"
-          // );
-
-          //when theme is passed use this mq
-          //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
-
-          // mq.addListener(() => {
-          //   const imageToDownload = this.chooseImage(thumbnailGenerationObject);
-          //   let img = new Image();
-          //   img.src = imageToDownload;
-          //   img.onload = () => {
-          //     this.imageUrl = img.src;
-          //     console.log("listner");
-          //   };
-          // });
-
-          const imageToDownload = this.chooseImage(thumbnailGenerationObject);
+          const imageToShow = this.chooseImage(thumbnailGenerationObject);
           let img = new Image();
-          img.src = imageToDownload;
+          img.src = imageToShow;
           img.onload = () => {
+            this.imageLoader = false;
             this.imageUrl = img.src;
             URL.revokeObjectURL(img.src);
           };
@@ -79,23 +64,17 @@ export class SenderImageBubbleComponent implements OnInit {
    * @param
    */
   chooseImage(thumbnailGenerationObject) {
-    //console.log("thumbnail ", thumbnailGenerationObject);
-
     const smallUrl = thumbnailGenerationObject["url_small"];
     const mediumUrl = thumbnailGenerationObject["url_medium"];
 
-    //mq harcoded value is used until theme is not passed change it after
     const mq = window.matchMedia("(min-width:360px) and (max-width: 767px)");
 
-    //when theme is passed use this mq
-    //const mq = window.matchMedia(this.MessageDetails.theme.breakPoints[0]);
-
-    let imageToDownload = mediumUrl;
+    let imageToShow = mediumUrl;
     if (mq.matches) {
-      imageToDownload = smallUrl;
+      imageToShow = smallUrl;
     }
 
-    return imageToDownload;
+    return imageToShow;
   }
 
   /**
@@ -113,7 +92,7 @@ export class SenderImageBubbleComponent implements OnInit {
 
   /**
    * Emits action to open image in full-screen view
-   * @param
+   *
    */
   open() {
     this.actionGenerated.emit({
