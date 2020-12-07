@@ -16,7 +16,7 @@ import { CometChat } from "@cometchat-pro/chat";
   styleUrls: ["./message-thread.component.css"],
 })
 export class MessageThreadComponent implements OnInit, OnChanges {
-  @ViewChild("scrollMe", null) chatWindow: ElementRef;
+  @ViewChild("messageWindow", null) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
