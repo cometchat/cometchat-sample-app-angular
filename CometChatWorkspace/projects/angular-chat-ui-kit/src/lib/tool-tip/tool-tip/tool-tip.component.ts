@@ -18,6 +18,7 @@ export class ToolTipComponent implements OnInit {
   showOnlyReplyButton: boolean = false;
   receivedMessage: boolean = false;
   showReplyOption: boolean = true;
+  threadView: boolean = false;
 
   constructor() {}
 
@@ -25,6 +26,7 @@ export class ToolTipComponent implements OnInit {
     if (this.MessageDetails.hasOwnProperty("parentMessageId")) {
       //you cannot reply any message inside thread window
       this.showReplyOption = false;
+      this.threadView = true;
     }
 
     let user = CometChat.getLoggedinUser().then((user) => {
