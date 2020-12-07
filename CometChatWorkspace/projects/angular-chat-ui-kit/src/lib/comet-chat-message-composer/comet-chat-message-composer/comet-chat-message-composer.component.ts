@@ -94,6 +94,26 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    let message = action.payLoad;
+
+    console.log("Message Composer --> action generation is ", action);
+
+    switch (action.type) {
+      case "sendSmartReply": {
+        this.sendTextMessage(message);
+
+        //closing smartReply preview window
+        this.replyPreview = null;
+        break;
+      }
+    }
+  }
+
+  /**
    * Get Details of the User/Group , to whom , you want to send the message
    * @param
    */
@@ -177,7 +197,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    * Send Text Message
    * @param
    */
-  sendTextMessage() {
+  sendTextMessage(textMsg = null) {
     //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
@@ -186,7 +206,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     }
 
     // Dont Send Blank text messages -- i.e --- messages that only contain spaces
-    if (this.messageInput.trim().length == 0) {
+    if (this.messageInput.trim().length == 0 && textMsg.trim().length == 0) {
       return false;
     }
 
@@ -209,7 +229,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     //   `receiverID = ${receiverId}  and receiverType = ${receiverType} `
     // );
 
-    let messageInput = this.messageInput.trim();
+    let messageInput;
+
+    if (textMsg !== null) {
+      messageInput = textMsg.trim();
+    } else {
+      messageInput = this.messageInput.trim();
+    }
+
+    console.log("message composer --> sending message ", messageInput);
+
     let textMessage = new CometChat.TextMessage(
       receiverId,
       messageInput,

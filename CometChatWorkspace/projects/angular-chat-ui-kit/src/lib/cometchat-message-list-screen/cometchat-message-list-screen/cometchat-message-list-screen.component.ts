@@ -104,6 +104,13 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         } else {
           // Smart Reply Feature
           this.smartReplyPreview(messages);
+
+          setTimeout(() => {
+            console.log("scroll to bottom after getting smart reply");
+
+            this.scrollToBottomOfChatWindow();
+          }, 2500);
+
           // console.log(
           //   "received a message from the user , u r chatting with , going to append it"
           // );
