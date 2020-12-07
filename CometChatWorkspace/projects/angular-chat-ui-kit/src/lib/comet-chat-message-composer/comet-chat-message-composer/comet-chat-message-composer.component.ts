@@ -52,6 +52,9 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   @ViewChild("imgPicker", null) imgPicker: ElementRef;
+  @ViewChild("vidPicker", null) vidPicker: ElementRef;
+  @ViewChild("audPicker", null) audPicker: ElementRef;
+  @ViewChild("filePicker", null) filePicker: ElementRef;
 
   senddisable = false;
   reactdisable = true;
@@ -262,19 +265,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   getVideo() {
-    let vidPicker = document.getElementById("vidPicker");
-    vidPicker.click();
+    this.vidPicker.nativeElement.click();
   }
   getAudio() {
-    let audPicker = document.getElementById("audPicker");
-    audPicker.click();
+    this.audPicker.nativeElement.click();
   }
   getImage() {
     this.imgPicker.nativeElement.click();
   }
   getFile() {
-    let filePicker = document.getElementById("filePicker");
-    filePicker.click();
+    this.filePicker.nativeElement.click();
   }
 
   onVideoChange(event) {
