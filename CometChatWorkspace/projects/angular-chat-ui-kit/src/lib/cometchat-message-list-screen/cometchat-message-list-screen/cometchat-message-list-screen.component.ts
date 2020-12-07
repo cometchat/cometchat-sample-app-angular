@@ -47,7 +47,8 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
       // There is a valid Thread parent message , than update it's reply count
       if (change["composedthreadmessage"].currentValue) {
-        this.updateReplyCount(change["composedthreadmessage"].currentValue);
+        //this.updateReplyCount(change["composedthreadmessage"].currentValue);
+        this.messageEdited(change["composedthreadmessage"].currentValue);
       }
     }
   }
@@ -61,8 +62,24 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
    * Updating the reply count of Thread Parent Message
    * @param Any message
    */
-  updateReplyCount(message) {
-    this.messageEdited(message);
+  updateReplyCount(messages) {
+    const receivedMessage = messages[0];
+
+    let messageList = [...this.messageList];
+    let messageKey = messageList.findIndex(
+      (m) => m.id === receivedMessage.parentMessageId
+    );
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+      let replyCount = messageObj.replyCount ? messageObj.replyCount : 0;
+      replyCount = replyCount + 1;
+      const newMessageObj = Object.assign({}, messageObj, {
+        replyCount: replyCount,
+      });
+
+      messageList.splice(messageKey, 1, newMessageObj);
+      this.messageList = [...messageList];
+    }
   }
 
   /**
@@ -83,7 +100,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         const message = messages[0];
         if (message.parentMessageId) {
           // Implement while doing the threaded message feature
-          // this.updateReplyCount(messages);
+          this.updateReplyCount(messages);
         } else {
           // Smart Reply Feature
           // this.smartReplyPreview(messages);
