@@ -2,12 +2,13 @@
   <!-- Add the Action To header to make it Dynamic -->
   <message-header
     [item]="item"
+    [type]="type"
     (actionGenerated)="actionHandler($event)"
   ></message-header>
   <div
     class="messageWindowStyle"
     (scroll)="handleScroll($event)"
-    #scrollMe
+    #messageWindow
     [scrollTop]="scrollVariable"
   >
     <message-list

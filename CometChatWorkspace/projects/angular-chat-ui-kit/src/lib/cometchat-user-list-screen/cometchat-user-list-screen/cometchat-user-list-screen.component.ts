@@ -16,6 +16,7 @@ export class CometchatUserListScreenComponent implements OnInit {
   threadMessageParent = null;
   threadMessageItem = null;
   threadMessageType = "";
+  composedthreadmessage = null;
   viewDetailScreen: boolean = false;
   // To display image in full screen
   imageView = null;
@@ -74,6 +75,21 @@ export class CometchatUserListScreenComponent implements OnInit {
       case "viewDetail":
       case "closeDetailClicked": {
         this.toggleDetailView();
+        break;
+      }
+      case "changeThreadParentMessageReplyCount": {
+        // this.toggleDetailView();
+
+        this.composedthreadmessage = {
+          ...this.threadMessageParent,
+          replyCount: action.payLoad,
+        };
+
+        console.log(
+          "UserListScreen --> thread Message Reply count updated ",
+          action.payLoad
+        );
+
         break;
       }
     }
