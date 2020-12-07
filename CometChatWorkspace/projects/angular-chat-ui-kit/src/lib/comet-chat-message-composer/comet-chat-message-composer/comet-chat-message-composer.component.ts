@@ -237,6 +237,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         //clearing Message Input Box
         this.messageInput = "";
 
+        // Change the send button to reaction button
+        setTimeout(() => {
+          this.reactdisable = true;
+          this.senddisable = false;
+        }, 500);
+
         //console.log("Message Sent Successfull to ", this.item);
       })
       .catch((error) => {
