@@ -6,6 +6,8 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
+  ViewChild,
+  ElementRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
@@ -48,6 +50,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() messageToBeEdited = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild("imgPicker", null) imgPicker: ElementRef;
 
   senddisable = false;
   reactdisable = true;
@@ -266,8 +270,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     audPicker.click();
   }
   getImage() {
-    let imgPicker = document.getElementById("imgPicker");
-    imgPicker.click();
+    this.imgPicker.nativeElement.click();
   }
   getFile() {
     let filePicker = document.getElementById("filePicker");
@@ -379,7 +382,11 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       messageType,
       receiverType
     );
-    if (this.type.parentMessageId) {
+
+    console.log(`Message Composer --> setting parent for media message`);
+
+    if (this.parentMessageId) {
+      console.log(`Message Composer --> setting parent for media message`);
       mediaMessage.setParentMessageId(this.parentMessageId);
     }
 
