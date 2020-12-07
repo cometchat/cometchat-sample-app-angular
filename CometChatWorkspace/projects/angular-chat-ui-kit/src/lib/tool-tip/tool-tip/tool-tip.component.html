@@ -1,6 +1,9 @@
-<ul class="messageActionStyle" *ngIf="showToolTip">
+<ul
+  class="messageActionStyle"
+  *ngIf="showToolTip && (!receivedMessage || (receivedMessage && !threadView))"
+>
   <div [class.tool]="!receivedMessage">
-    <li class="actionGroupStyle">
+    <li class="actionGroupStyle" *ngIf="showReplyOption">
       <button
         type="button"
         class="groupButtonStyle replyIcon"
