@@ -48,6 +48,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() messageToBeEdited = null;
+  @Input() replyPreview = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -63,11 +64,9 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   messageType = "";
   emojiViewer = false;
   createPoll = false;
-  replyPreview = null;
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
-
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -92,6 +91,26 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     //   this.item
     // );
     //console.log("MessageComposer -> Type of User ", this.type);
+  }
+
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    let message = action.payLoad;
+
+    console.log("Message Composer --> action generation is ", action);
+
+    switch (action.type) {
+      case "sendSmartReply": {
+        this.sendTextMessage(message);
+
+        //closing smartReply preview window
+        this.replyPreview = null;
+        break;
+      }
+    }
   }
 
   /**
@@ -178,7 +197,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    * Send Text Message
    * @param
    */
-  sendTextMessage() {
+  sendTextMessage(textMsg = null) {
     //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
@@ -187,7 +206,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     }
 
     // Dont Send Blank text messages -- i.e --- messages that only contain spaces
-    if (this.messageInput.trim().length == 0) {
+    if (this.messageInput.trim().length == 0 && textMsg.trim().length == 0) {
       return false;
     }
 
@@ -210,7 +229,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     //   `receiverID = ${receiverId}  and receiverType = ${receiverType} `
     // );
 
-    let messageInput = this.messageInput.trim();
+    let messageInput;
+
+    if (textMsg !== null) {
+      messageInput = textMsg.trim();
+    } else {
+      messageInput = this.messageInput.trim();
+    }
+
+    console.log("message composer --> sending message ", messageInput);
+
     let textMessage = new CometChat.TextMessage(
       receiverId,
       messageInput,

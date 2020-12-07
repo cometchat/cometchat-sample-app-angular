@@ -6,6 +6,10 @@
     </div>
     <div>{{ this.messageToBeEdited?.data?.text }}</div>
   </div>
+  <reply-preview
+    [replyPreview]="replyPreview"
+    (actionGenerated)="actionHandler($event)"
+  ></reply-preview>
   <div class="composerInputStyle">
     <div class="inputInnerStyle" tabindex="-1">
       <input

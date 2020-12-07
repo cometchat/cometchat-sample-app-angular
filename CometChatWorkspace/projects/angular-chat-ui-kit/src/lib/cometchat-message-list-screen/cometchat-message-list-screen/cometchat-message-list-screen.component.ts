@@ -103,7 +103,14 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
           this.updateReplyCount(messages);
         } else {
           // Smart Reply Feature
-          // this.smartReplyPreview(messages);
+          this.smartReplyPreview(messages);
+
+          setTimeout(() => {
+            console.log("scroll to bottom after getting smart reply");
+
+            this.scrollToBottomOfChatWindow();
+          }, 2500);
+
           // console.log(
           //   "received a message from the user , u r chatting with , going to append it"
           // );
@@ -337,6 +344,28 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       this.messageList = [...messagelist];
     }
   };
+
+  smartReplyPreview(messages) {
+    const message = messages[0];
+
+    if (message.hasOwnProperty("metadata")) {
+      const metadata = message.metadata;
+      if (metadata.hasOwnProperty("@injected")) {
+        const injectedObject = metadata["@injected"];
+        if (injectedObject.hasOwnProperty("extensions")) {
+          const extensionsObject = injectedObject["extensions"];
+          if (extensionsObject.hasOwnProperty("smart-reply")) {
+            const smartReply = extensionsObject["smart-reply"];
+            if (smartReply.hasOwnProperty("error") === false) {
+              this.replyPreview = message;
+            } else {
+              this, (this.replyPreview = null);
+            }
+          }
+        }
+      }
+    }
+  }
 
   handleScroll(e) {
     // console.log(`Message List Screen --> user started scrollling `, e);
