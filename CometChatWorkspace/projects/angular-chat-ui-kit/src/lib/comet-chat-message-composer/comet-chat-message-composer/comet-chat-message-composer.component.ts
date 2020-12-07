@@ -48,6 +48,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() messageToBeEdited = null;
+  @Input() replyPreview = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -63,11 +64,9 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   messageType = "";
   emojiViewer = false;
   createPoll = false;
-  replyPreview = null;
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
-
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
