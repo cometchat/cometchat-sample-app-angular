@@ -67,16 +67,18 @@ export class MessageThreadComponent implements OnInit, OnChanges {
     switch (action.type) {
       case "newConversationOpened": {
         this.setMessages(messages);
-
+        this.replyCount = messages.length;
         break;
       }
       case "messageComposed": {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;
 
+        console.log("Message Thread --> new message added ", messages);
+
         this.actionGenerated.emit({
-          type: "messageComposed",
-          payLoad: messages,
+          type: "changeThreadParentMessageReplyCount",
+          payLoad: this.replyCount,
         });
         break;
       }
@@ -89,6 +91,10 @@ export class MessageThreadComponent implements OnInit, OnChanges {
           //this.smartReplyPreview(messages);
           this.replyCount = this.replyCount + messages.length;
           this.appendMessage(messages);
+          this.actionGenerated.emit({
+            type: "changeThreadParentMessageReplyCount",
+            payLoad: this.replyCount,
+          });
         }
         break;
       }

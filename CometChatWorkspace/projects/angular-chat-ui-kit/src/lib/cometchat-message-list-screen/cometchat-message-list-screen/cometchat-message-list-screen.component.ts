@@ -6,6 +6,8 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  OnChanges,
+  SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
@@ -14,11 +16,12 @@ import { CometChat } from "@cometchat-pro/chat";
   templateUrl: "./cometchat-message-list-screen.component.html",
   styleUrls: ["./cometchat-message-list-screen.component.css"],
 })
-export class CometchatMessageListScreenComponent implements OnInit {
+export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   @ViewChild("scrollMe", null) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
+  @Input() composedthreadmessage = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -33,9 +36,33 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
   constructor() {}
 
+  ngOnChanges(change: SimpleChanges) {
+    // console.log("Message List --> ngOnChanges -->  ", change);
+
+    if (change["composedthreadmessage"]) {
+      console.log(
+        "Message List Screen --> a thread Parent was updated ",
+        change["composedthreadmessage"]
+      );
+
+      // There is a valid Thread parent message , than update it's reply count
+      if (change["composedthreadmessage"].currentValue) {
+        this.updateReplyCount(change["composedthreadmessage"].currentValue);
+      }
+    }
+  }
+
   ngOnInit() {
     //console.log("MessageListScreen -> Type of User ", this.type);
     //console.log("MessageListScreen -> ChatWindow ", this.chatWindow);
+  }
+
+  /**
+   * Updating the reply count of Thread Parent Message
+   * @param Any message
+   */
+  updateReplyCount(message) {
+    this.messageEdited(message);
   }
 
   /**
