@@ -1,5 +1,5 @@
 <ul class="messageActionStyle" *ngIf="showToolTip">
-  <div [class.tool]="!showOnlyReplyButton">
+  <div [class.tool]="!receivedMessage">
     <li class="actionGroupStyle">
       <button
         type="button"
@@ -7,7 +7,10 @@
         (click)="replyToMessage()"
       ></button>
     </li>
-    <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
+    <li
+      class="actionGroupStyle"
+      *ngIf="!showOnlyReplyButton && MessageDetails?.type === 'text'"
+    >
       <button
         type="button"
         class="groupButtonStyle editIcon"
