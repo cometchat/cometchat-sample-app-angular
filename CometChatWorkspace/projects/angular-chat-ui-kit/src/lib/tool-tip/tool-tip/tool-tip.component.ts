@@ -17,12 +17,14 @@ export class ToolTipComponent implements OnInit {
 
   showOnlyReplyButton: boolean = false;
   receivedMessage: boolean = false;
+  showReplyOption: boolean = true;
 
   constructor() {}
 
   ngOnInit() {
     if (this.MessageDetails.hasOwnProperty("parentMessageId")) {
-      this.showToolTip = false;
+      //you cannot reply any message inside thread window
+      this.showReplyOption = false;
     }
 
     let user = CometChat.getLoggedinUser().then((user) => {
