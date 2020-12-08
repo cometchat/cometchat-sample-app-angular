@@ -18,6 +18,8 @@ import {
   transition,
   animate,
 } from "@angular/animations";
+
+import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSound";
 @Component({
   selector: "comet-chat-message-composer",
   templateUrl: "./comet-chat-message-composer.component.html",
@@ -157,6 +159,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       event.preventDefault();
       //console.log(event);
       this.sendTextMessage();
+      this.playAudio();
     }
   }
 
@@ -480,5 +483,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       type: "clearMessageToBeEdited",
       payLoad: null,
     });
+  }
+
+  /**
+   * Plays Audio When Message is Sent
+   */
+  playAudio() {
+    let audio = new Audio();
+    audio.src = OUTGOING_MESSAGE_SOUND;
+    audio.play();
   }
 }
