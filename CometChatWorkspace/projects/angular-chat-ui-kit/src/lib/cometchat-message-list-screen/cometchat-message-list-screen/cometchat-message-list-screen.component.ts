@@ -6,6 +6,8 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  OnChanges,
+  SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
@@ -14,11 +16,12 @@ import { CometChat } from "@cometchat-pro/chat";
   templateUrl: "./cometchat-message-list-screen.component.html",
   styleUrls: ["./cometchat-message-list-screen.component.css"],
 })
-export class CometchatMessageListScreenComponent implements OnInit {
-  @ViewChild("scrollMe", null) chatWindow: ElementRef;
+export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
+  @ViewChild("messageWindow", null) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
+  @Input() composedthreadmessage = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -33,9 +36,50 @@ export class CometchatMessageListScreenComponent implements OnInit {
 
   constructor() {}
 
+  ngOnChanges(change: SimpleChanges) {
+    // console.log("Message List --> ngOnChanges -->  ", change);
+
+    if (change["composedthreadmessage"]) {
+      console.log(
+        "Message List Screen --> a thread Parent was updated ",
+        change["composedthreadmessage"]
+      );
+
+      // There is a valid Thread parent message , than update it's reply count
+      if (change["composedthreadmessage"].currentValue) {
+        //this.updateReplyCount(change["composedthreadmessage"].currentValue);
+        this.messageEdited(change["composedthreadmessage"].currentValue);
+      }
+    }
+  }
+
   ngOnInit() {
     //console.log("MessageListScreen -> Type of User ", this.type);
     //console.log("MessageListScreen -> ChatWindow ", this.chatWindow);
+  }
+
+  /**
+   * Updating the reply count of Thread Parent Message
+   * @param Any message
+   */
+  updateReplyCount(messages) {
+    const receivedMessage = messages[0];
+
+    let messageList = [...this.messageList];
+    let messageKey = messageList.findIndex(
+      (m) => m.id === receivedMessage.parentMessageId
+    );
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+      let replyCount = messageObj.replyCount ? messageObj.replyCount : 0;
+      replyCount = replyCount + 1;
+      const newMessageObj = Object.assign({}, messageObj, {
+        replyCount: replyCount,
+      });
+
+      messageList.splice(messageKey, 1, newMessageObj);
+      this.messageList = [...messageList];
+    }
   }
 
   /**
@@ -56,10 +100,17 @@ export class CometchatMessageListScreenComponent implements OnInit {
         const message = messages[0];
         if (message.parentMessageId) {
           // Implement while doing the threaded message feature
-          // this.updateReplyCount(messages);
+          this.updateReplyCount(messages);
         } else {
           // Smart Reply Feature
-          // this.smartReplyPreview(messages);
+          this.smartReplyPreview(messages);
+
+          setTimeout(() => {
+            console.log("scroll to bottom after getting smart reply");
+
+            this.scrollToBottomOfChatWindow();
+          }, 2500);
+
           // console.log(
           //   "received a message from the user , u r chatting with , going to append it"
           // );
@@ -293,6 +344,28 @@ export class CometchatMessageListScreenComponent implements OnInit {
       this.messageList = [...messagelist];
     }
   };
+
+  smartReplyPreview(messages) {
+    const message = messages[0];
+
+    if (message.hasOwnProperty("metadata")) {
+      const metadata = message.metadata;
+      if (metadata.hasOwnProperty("@injected")) {
+        const injectedObject = metadata["@injected"];
+        if (injectedObject.hasOwnProperty("extensions")) {
+          const extensionsObject = injectedObject["extensions"];
+          if (extensionsObject.hasOwnProperty("smart-reply")) {
+            const smartReply = extensionsObject["smart-reply"];
+            if (smartReply.hasOwnProperty("error") === false) {
+              this.replyPreview = message;
+            } else {
+              this, (this.replyPreview = null);
+            }
+          }
+        }
+      }
+    }
+  }
 
   handleScroll(e) {
     // console.log(`Message List Screen --> user started scrollling `, e);

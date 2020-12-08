@@ -115,7 +115,7 @@
     <div
       class="messageWindowStyle"
       (scroll)="handleScroll($event)"
-      #scrollMe
+      #messageWindow
       [scrollTop]="scrollVariable"
     >
       <message-list
@@ -132,6 +132,8 @@
       [item]="item"
       [type]="type"
       [parentMessageId]="parentMessage?.id"
+      [replyPreview]="replyPreview"
+      [messageToBeEdited]="messageToBeEdited"
       (actionGenerated)="actionHandler($event)"
     ></comet-chat-message-composer>
   </div>

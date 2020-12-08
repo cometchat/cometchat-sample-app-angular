@@ -16,7 +16,7 @@ import { CometChat } from "@cometchat-pro/chat";
   styleUrls: ["./message-thread.component.css"],
 })
 export class MessageThreadComponent implements OnInit, OnChanges {
-  @ViewChild("scrollMe", null) chatWindow: ElementRef;
+  @ViewChild("messageWindow", null) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
@@ -29,6 +29,8 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   reachedTopOfConversation = false;
   scrollVariable = 0;
   loggedInUser = null;
+  messageToBeEdited = null;
+  replyPreview = null;
 
   constructor() {}
 
@@ -67,28 +69,39 @@ export class MessageThreadComponent implements OnInit, OnChanges {
     switch (action.type) {
       case "newConversationOpened": {
         this.setMessages(messages);
-
+        this.replyCount = messages.length;
         break;
       }
       case "messageComposed": {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;
 
+        console.log("Message Thread --> new message added ", messages);
+
         this.actionGenerated.emit({
-          type: "messageComposed",
-          payLoad: messages,
+          type: "changeThreadParentMessageReplyCount",
+          payLoad: this.replyCount,
         });
         break;
       }
+      case "messageUpdated": {
+        this.updateMessages(messages);
+        break;
+      }
+
       case "customMessageReceived":
       case "messageReceived": {
         const message = messages[0];
         if (message.parentMessageId === this.parentMessage.id) {
           // const replyCount = this.state.replyCount + 1;
           // this.setState({ replyCount: replyCount });
-          //this.smartReplyPreview(messages);
+          this.smartReplyPreview(messages);
           this.replyCount = this.replyCount + messages.length;
           this.appendMessage(messages);
+          this.actionGenerated.emit({
+            type: "changeThreadParentMessageReplyCount",
+            payLoad: this.replyCount,
+          });
         }
         break;
       }
@@ -109,6 +122,21 @@ export class MessageThreadComponent implements OnInit, OnChanges {
 
         break;
       }
+      case "editMessage": {
+        this.editMessage(messages);
+        break;
+      }
+      case "messageEdited": {
+        this.messageEdited(messages);
+        break;
+      }
+      case "deleteMessage": {
+        this.deleteMessage(messages);
+        break;
+      }
+      case "messageDeleted":
+        this.removeMessages(messages);
+        break;
     }
   }
 
@@ -149,6 +177,119 @@ export class MessageThreadComponent implements OnInit, OnChanges {
    */
   prependMessages(messages) {
     this.messageList = [...messages, ...this.messageList];
+  }
+
+  /**
+   * update status of message ie. read or deliv
+   * @param Any messages
+   */
+  updateMessages = (messages) => {
+    // let dummy = [...this.messageList];
+
+    this.messageList = [...messages];
+    //this.scrollToBottomOfChatWindow();
+  };
+
+  /**
+   * Sets The message to be edited to pass it to the message composer
+   * @param Any messages
+   */
+  editMessage(messages) {
+    this.messageToBeEdited = messages;
+  }
+
+  /**
+   * Render The Message List after Message has been successfullly edited
+   * @param Any message
+   */
+  messageEdited(message) {
+    const messageList = [...this.messageList];
+    let messageKey = messageList.findIndex((m) => m.id === message.id);
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+
+      const newMessageObj = Object.assign({}, messageObj, message);
+
+      messageList.splice(messageKey, 1, newMessageObj);
+      this.updateMessages(messageList);
+
+      if (messageList.length - messageKey === 1 && !message.replyCount) {
+        this.actionGenerated.emit({
+          type: "messageEdited",
+          payLoad: [newMessageObj],
+        });
+      }
+    }
+  }
+
+  /**
+   * Delete the message
+   * @param Any message
+   */
+  deleteMessage = (message) => {
+    const messageId = message.id;
+    CometChat.deleteMessage(messageId)
+      .then((deletedMessage) => {
+        this.removeMessages([deletedMessage]);
+
+        console.log(" MessageList screen --> Message Deleted successfully");
+
+        const messageList = [...this.messageList];
+        let messageKey = messageList.findIndex((m) => m.id === message.id);
+
+        if (messageList.length - messageKey === 1 && !message.replyCount) {
+          this.actionGenerated.emit({
+            type: "messageDeleted",
+            payLoad: [deletedMessage],
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("Message delete failed with error:", error);
+      });
+  };
+
+  /**
+   * If the message gets deleted successfull , remove the deleted message in frontend using this function
+   * @param Any messages
+   */
+  removeMessages = (messages) => {
+    const deletedMessage = messages[0];
+    const messagelist = [...this.messageList];
+
+    let messageKey = messagelist.findIndex(
+      (message) => message.id === deletedMessage.id
+    );
+    if (messageKey > -1) {
+      let messageObj = { ...messagelist[messageKey] };
+      let newMessageObj = Object.assign({}, messageObj, deletedMessage);
+
+      messagelist.splice(messageKey, 1, newMessageObj);
+      // this.setState({ messageList: messagelist, scrollToBottom: false });
+      this.messageList = [...messagelist];
+    }
+  };
+
+  smartReplyPreview(messages) {
+    const message = messages[0];
+
+    if (message.hasOwnProperty("metadata")) {
+      const metadata = message.metadata;
+      if (metadata.hasOwnProperty("@injected")) {
+        const injectedObject = metadata["@injected"];
+        if (injectedObject.hasOwnProperty("extensions")) {
+          const extensionsObject = injectedObject["extensions"];
+          if (extensionsObject.hasOwnProperty("smart-reply")) {
+            const smartReply = extensionsObject["smart-reply"];
+            if (smartReply.hasOwnProperty("error") === false) {
+              this.replyPreview = message;
+            } else {
+              this, (this.replyPreview = null);
+            }
+          }
+        }
+      }
+    }
   }
 
   handleScroll(e) {

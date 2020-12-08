@@ -6,6 +6,10 @@
     </div>
     <div>{{ this.messageToBeEdited?.data?.text }}</div>
   </div>
+  <reply-preview
+    [replyPreview]="replyPreview"
+    (actionGenerated)="actionHandler($event)"
+  ></reply-preview>
   <div class="composerInputStyle">
     <div class="inputInnerStyle" tabindex="-1">
       <input
@@ -36,7 +40,7 @@
             <input
               type="file"
               accept="video/*"
-              id="vidPicker"
+              #vidPicker
               (change)="onVideoChange($event)"
             />
           </span>
@@ -50,7 +54,7 @@
             <input
               type="file"
               accept="audio/*"
-              id="audPicker"
+              #audPicker
               (change)="onAudChange($event)"
             />
           </span>
@@ -64,7 +68,7 @@
             <input
               type="file"
               accept="image/*"
-              id="imgPicker"
+              #imgPicker
               (change)="onImgChange($event)"
             />
           </span>
@@ -78,7 +82,7 @@
             <input
               type="file"
               accept="file/*"
-              id="filePicker"
+              #filePicker
               (change)="onFileChange($event)"
             />
           </span>

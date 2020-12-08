@@ -26,6 +26,7 @@ import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-u
 import { SenderAudioBubbleModule } from "./sender-audio-bubble/sender-audio-bubble.module";
 import { ReceiverAudioBubbleModule } from "./receiver-audio-bubble/receiver-audio-bubble.module";
 import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-message-bubble.module";
+import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 import { ReplyCountModule } from "./reply-count/reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
 @NgModule({
@@ -55,6 +56,7 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
     ReceiverAudioBubbleModule,
     CometChatUserDetailModule,
     DeletedMessageBubbleModule,
+    ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
   ],
@@ -84,6 +86,7 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
     ReceiverAudioBubbleModule,
     CometChatUserDetailModule,
     DeletedMessageBubbleModule,
+    ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
   ],

@@ -6,6 +6,8 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
+  ViewChild,
+  ElementRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
@@ -46,8 +48,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() messageToBeEdited = null;
+  @Input() replyPreview = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild("imgPicker", null) imgPicker: ElementRef;
+  @ViewChild("vidPicker", null) vidPicker: ElementRef;
+  @ViewChild("audPicker", null) audPicker: ElementRef;
+  @ViewChild("filePicker", null) filePicker: ElementRef;
 
   senddisable = false;
   reactdisable = true;
@@ -56,11 +64,9 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   messageType = "";
   emojiViewer = false;
   createPoll = false;
-  replyPreview = null;
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
-
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -85,6 +91,26 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     //   this.item
     // );
     //console.log("MessageComposer -> Type of User ", this.type);
+  }
+
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
+  actionHandler(action) {
+    let message = action.payLoad;
+
+    console.log("Message Composer --> action generation is ", action);
+
+    switch (action.type) {
+      case "sendSmartReply": {
+        this.sendTextMessage(message);
+
+        //closing smartReply preview window
+        this.replyPreview = null;
+        break;
+      }
+    }
   }
 
   /**
@@ -171,7 +197,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    * Send Text Message
    * @param
    */
-  sendTextMessage() {
+  sendTextMessage(textMsg = null) {
     //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
@@ -180,7 +206,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     }
 
     // Dont Send Blank text messages -- i.e --- messages that only contain spaces
-    if (this.messageInput.trim().length == 0) {
+    if (this.messageInput.trim().length == 0 && textMsg.trim().length == 0) {
       return false;
     }
 
@@ -203,7 +229,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     //   `receiverID = ${receiverId}  and receiverType = ${receiverType} `
     // );
 
-    let messageInput = this.messageInput.trim();
+    let messageInput;
+
+    if (textMsg !== null) {
+      messageInput = textMsg.trim();
+    } else {
+      messageInput = this.messageInput.trim();
+    }
+
+    console.log("message composer --> sending message ", messageInput);
+
     let textMessage = new CometChat.TextMessage(
       receiverId,
       messageInput,
@@ -237,6 +272,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         //clearing Message Input Box
         this.messageInput = "";
 
+        // Change the send button to reaction button
+        setTimeout(() => {
+          this.reactdisable = true;
+          this.senddisable = false;
+        }, 500);
+
         //console.log("Message Sent Successfull to ", this.item);
       })
       .catch((error) => {
@@ -252,20 +293,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   getVideo() {
-    let vidPicker = document.getElementById("vidPicker");
-    vidPicker.click();
+    this.vidPicker.nativeElement.click();
   }
   getAudio() {
-    let audPicker = document.getElementById("audPicker");
-    audPicker.click();
+    this.audPicker.nativeElement.click();
   }
   getImage() {
-    let imgPicker = document.getElementById("imgPicker");
-    imgPicker.click();
+    this.imgPicker.nativeElement.click();
   }
   getFile() {
-    let filePicker = document.getElementById("filePicker");
-    filePicker.click();
+    this.filePicker.nativeElement.click();
   }
 
   onVideoChange(event) {
@@ -373,7 +410,11 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       messageType,
       receiverType
     );
-    if (this.type.parentMessageId) {
+
+    console.log(`Message Composer --> setting parent for media message`);
+
+    if (this.parentMessageId) {
+      console.log(`Message Composer --> setting parent for media message`);
       mediaMessage.setParentMessageId(this.parentMessageId);
     }
 

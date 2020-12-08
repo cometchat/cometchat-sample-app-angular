@@ -1,13 +1,19 @@
-<ul class="messageActionStyle" *ngIf="showToolTip">
-  <div [class.tool]="!showOnlyReplyButton">
-    <li class="actionGroupStyle">
+<ul
+  class="messageActionStyle"
+  *ngIf="showToolTip && (!receivedMessage || (receivedMessage && !threadView))"
+>
+  <div [class.tool]="!receivedMessage">
+    <li class="actionGroupStyle" *ngIf="showReplyOption">
       <button
         type="button"
         class="groupButtonStyle replyIcon"
         (click)="replyToMessage()"
       ></button>
     </li>
-    <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
+    <li
+      class="actionGroupStyle"
+      *ngIf="!showOnlyReplyButton && MessageDetails?.type === 'text'"
+    >
       <button
         type="button"
         class="groupButtonStyle editIcon"
