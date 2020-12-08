@@ -18,31 +18,30 @@
       #mediaContainer
       [scrollTop]="scrollVariable"
     >
-      <div *ngFor="let msg of messageList">
-        <div [ngSwitch]="msg.type">
+      <div class="mediaContainer" *ngFor="let msg of messageList">
+        <div [ngSwitch]="msg.type" *ngIf="msg.data.url">
           <div *ngSwitchCase="'image'">
             <div class="itemStylePhotos">
               <img [src]="msg.data.url" />
             </div>
-            <p>images</p>
           </div>
 
           <div *ngSwitchCase="'video'">
             <div class="itemStyleVideo">
               <video [src]="msg.data.url"></video>
             </div>
-            <p>{{ msg.data.url }}</p>
-            <p>{{ msg.type }}</p>
-            <p>videos</p>
           </div>
           <div *ngSwitchCase="'file'">
-            <div class="itemStyle file">
-              <!-- <a [href]="docsUrl" target="_blank">
-                        {{ message.data.attachments[0].name }}
-                      </a> -->
+            <div class="itemStyleDocs file">
+              <a [href]="msg.data.url" target="_blank">
+                {{ msg.data.attachments[0].name }}
+              </a>
             </div>
           </div>
         </div>
+      </div>
+      <div *ngIf="checkMediaMessage">
+        {{ displayMessage }}
       </div>
     </div>
   </div>
