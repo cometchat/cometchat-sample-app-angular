@@ -97,8 +97,17 @@
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
-          <span class="stickerBtnStyle" title="Add Emoji">&nbsp;</span>
-          <span class="emojiButtonStyle" title="Add Sticker">&nbsp;</span>
+          <span class="stickerBtnStyle" title="Add Sticker">&nbsp;</span>
+          <span class="emojiButtonStyle" title="Add Emoji">
+            <i
+              class="attachment"
+              (click)="emojiToggled = !emojiToggled"
+              [(emojiPickerIf)]="emojiToggled"
+              [emojiPickerDirection]="'top'"
+              (emojiPickerSelect)="addEmoji($event)"
+              >&nbsp;&nbsp;&nbsp;&nbsp;</i
+            ></span
+          >
 
           <span
             id="send"
