@@ -29,7 +29,6 @@ import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-mes
 import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 import { ReplyCountModule } from "./reply-count/reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
-import { NgxEmojiPickerModule } from "ngx-emoji-picker";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -60,7 +59,6 @@ import { NgxEmojiPickerModule } from "ngx-emoji-picker";
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
-    NgxEmojiPickerModule.forRoot(),
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -91,7 +89,6 @@ import { NgxEmojiPickerModule } from "ngx-emoji-picker";
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
-    NgxEmojiPickerModule,
   ],
 })
 export class AngularChatUiKitModule {}
