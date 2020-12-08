@@ -15,7 +15,7 @@ export class ReceiverImageBubbleComponent implements OnInit {
   messageAssign = Object.assign({}, this.MessageDetails, {
     messageFrom: this.messageFrom,
   });
-  imageLoader: boolean = true;
+  imageLoader: boolean = false;
 
   avatar = null;
   //Sets Username of Avatar
@@ -94,6 +94,7 @@ export class ReceiverImageBubbleComponent implements OnInit {
     let img = new Image();
     img.src = this.MessageDetails.data.url;
     img.onload = () => {
+      this.imageLoader = false;
       this.imageUrl = img.src;
     };
   };
