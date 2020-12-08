@@ -27,7 +27,11 @@
       (actionGenerated)="actionHandler($event)"
     ></message-thread>
 
-    <comet-chat-user-detail *ngIf="viewDetailScreen"></comet-chat-user-detail>
+    <comet-chat-user-detail
+      *ngIf="viewDetailScreen"
+      [item]="curentItem"
+      [type]="type"
+    ></comet-chat-user-detail>
   </div>
   <image-view
     *ngIf="fullScreenViewImage"

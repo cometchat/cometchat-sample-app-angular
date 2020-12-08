@@ -36,6 +36,10 @@ export class CometchatUserListScreenComponent implements OnInit {
     // console.log(`user in parent component  `, user);
     this.curentItem = user;
 
+    //Close Thread And User Detail Screen When Chat Window Is Changed
+    this.closeThreadMessages();
+    this.viewDetailScreen = false;
+
     if (this.curentItem.hasOwnProperty("uid")) {
       this.type = "user";
     } else {
@@ -138,6 +142,7 @@ export class CometchatUserListScreenComponent implements OnInit {
    * @param Any message
    */
   toggleDetailView = () => {
+    this.threadMessageView = false;
     this.viewDetailScreen = !this.viewDetailScreen;
   };
 }
