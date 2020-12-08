@@ -150,6 +150,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     if (event.target.value.length == 0) {
       this.senddisable = false;
       this.reactdisable = true;
+      this.messageInput = "";
     }
 
     if (event.keyCode === 13 && !event.shiftKey) {
@@ -447,13 +448,15 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       });
   }
 
-  addEmoji(event) {
+  /**
+   * Add emoji to the input when user clicks on emoji
+   * @param
+   */
+  addEmoji($event) {
     this.senddisable = true;
     this.reactdisable = false;
-    // console.log("event ->>>>>> ", event);
-    // console.log(event.char);
-    let emoji = event.char;
-    this.messageInput = this.messageInput + " " + emoji;
+    let emoji = $event.emoji.native;
+    this.messageInput = this.messageInput + emoji;
   }
 
   /**
