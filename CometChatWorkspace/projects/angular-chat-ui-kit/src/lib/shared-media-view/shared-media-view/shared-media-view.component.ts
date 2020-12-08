@@ -13,27 +13,29 @@ export class SharedMediaViewComponent implements OnInit {
 
   @Input() type = null;
   @Input() item = null;
+
+  //Sets type of media message to be fetched
   messageType: string = "image";
+  //To get all the media message that user requests
   messageList = [];
-  SharedMediaManager;
+
+  displaySharedMedia: any;
   messageContainer;
   mediaMessageListenerId = "messages_" + new Date().getTime();
   mediaMessageRequest = null;
   loggedInUser;
 
-  imageUrl: string;
-  videoUrl: string =
-    "https://data-eu.cometchat.io/2575989843b6228/media/1607353513_326798529_92ae4119d8f21fb2133f16a41deb7796.mov";
-  docsUrl: string;
+  //If No speciifc type of media message is sent/received
+  checkMediaMessage: boolean = false;
+  displayMessage: string;
 
   scrollVariable = 0;
-
   scrolltoBottom: boolean;
 
   constructor() {}
 
   ngOnInit() {
-    this.SharedMediaManager = this.mediaMessageRequestBuilder(
+    this.displaySharedMedia = this.mediaMessageRequestBuilder(
       this.item,
       this.type,
       this.messageType
@@ -48,7 +50,9 @@ export class SharedMediaViewComponent implements OnInit {
   ngOnDestroy() {
     CometChat.removeMessageListener(this.mediaMessageListenerId);
   }
-
+  /**
+   * Builds the user request
+   */
   mediaMessageRequestBuilder(item, type, messageType) {
     if (type === "user") {
       this.mediaMessageRequest = new CometChat.MessagesRequestBuilder()
@@ -73,9 +77,7 @@ export class SharedMediaViewComponent implements OnInit {
    */
   addMediaMessageEventListeners(callback) {
     CometChat.addMessageListener(
-      //not sure
       this.mediaMessageListenerId,
-      //
       new CometChat.MessageListener({
         onMediaMessageReceived: (mediaMessage) => {
           callback(enums.MEDIA_MESSAGE_RECEIVED, mediaMessage);
@@ -103,7 +105,13 @@ export class SharedMediaViewComponent implements OnInit {
     }
   }
 
+  /**
+   * If User Deletes Message
+   * @param
+   */
   messageDeleted(deletedMessage) {
+    console.log("deleted ", deletedMessage);
+
     const messageType = deletedMessage.data.type;
     if (
       this.type === "group" &&
@@ -119,7 +127,10 @@ export class SharedMediaViewComponent implements OnInit {
       this.scrolltoBottom = false;
     }
   }
-
+  /**
+   * When a message is recieved
+   * @param
+   */
   messageReceived(message) {
     const messageType = message.data.type;
     if (
@@ -149,9 +160,11 @@ export class SharedMediaViewComponent implements OnInit {
           .then((messages) => {
             const messageList = [...messages, ...this.messageList];
             console.log("messagelist check  ", messageList);
-
-            // this.messageList = messageList;
-            // this.displayMessages();
+            if (messageList.length === 0) {
+              console.log("true");
+              this.checkMediaMessage = true;
+              this.displayMessage = "No records found.";
+            }
             if (scrollToBottom) {
               this.messageList = messageList;
               this.scrollToBottom();
@@ -196,6 +209,9 @@ export class SharedMediaViewComponent implements OnInit {
     return this.mediaMessageRequest.fetchPrevious();
   }
 
+  /**
+   * Scrolls to Bottom of Chat Window
+   */
   scrollToBottom() {
     setTimeout(() => {
       console.log("scrolling shared-media");
@@ -204,12 +220,12 @@ export class SharedMediaViewComponent implements OnInit {
         this.mediaWindow.nativeElement.scrollHeight -
         this.mediaWindow.nativeElement.clientHeight;
     }, 1);
-
-    // if (this.messageContainer) {
-    //   this.messageContainer.scrollTop = this.messageContainer.scrollHeight;
-    // }
   }
 
+  /**
+   * Handles the scroll
+   * @param
+   */
   handleScroll(e) {
     const top = Math.round(e.currentTarget.scrollTop) === 0;
     if (top && this.messageList.length) {
@@ -222,22 +238,14 @@ export class SharedMediaViewComponent implements OnInit {
    * @param
    */
   mediaClickHandler(type) {
+    this.checkMediaMessage = false;
     this.messageList = [];
     this.messageType = type;
-    this.SharedMediaManager = this.mediaMessageRequestBuilder(
+    this.displaySharedMedia = this.mediaMessageRequestBuilder(
       this.item,
       this.type,
       this.messageType
     );
     this.getMessages(true);
-  }
-
-  /**
-   * Displays The Media Messages
-   */
-  displayMessages() {
-    const messages = [...this.messageList];
-    console.log("display messages ", messages);
-    this.messageList = messages;
   }
 }
