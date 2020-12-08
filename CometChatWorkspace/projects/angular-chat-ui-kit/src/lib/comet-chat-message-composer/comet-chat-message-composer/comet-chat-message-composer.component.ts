@@ -67,6 +67,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
+  emojiToggled: boolean = false;
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -140,6 +141,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     // console.log(event);
     // console.log(event.target.value);
     // console.log(event.target.value.length);
+
     if (event.target.value.length > 0) {
       this.messageInput = event.target.value;
       this.senddisable = true;
@@ -446,7 +448,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   addEmoji(event) {
+    this.senddisable = true;
+    this.reactdisable = false;
     // console.log("event ->>>>>> ", event);
+    // console.log(event.char);
+    let emoji = event.char;
+    this.messageInput = this.messageInput + " " + emoji;
   }
 
   /**
