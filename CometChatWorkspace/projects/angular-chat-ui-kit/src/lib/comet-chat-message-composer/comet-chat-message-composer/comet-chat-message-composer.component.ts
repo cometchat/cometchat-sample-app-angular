@@ -436,7 +436,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         //   response
         // );
         this.messageSending = false;
-        // this.playAudio()
+        this.playAudio();
         this.actionGenerated.emit({
           type: "messageComposed",
           payLoad: [response],
