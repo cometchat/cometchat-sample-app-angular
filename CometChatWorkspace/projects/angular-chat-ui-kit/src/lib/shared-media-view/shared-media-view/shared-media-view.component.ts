@@ -110,8 +110,6 @@ export class SharedMediaViewComponent implements OnInit {
    * @param
    */
   messageDeleted(deletedMessage) {
-    console.log("deleted ", deletedMessage);
-
     const messageType = deletedMessage.data.type;
     if (
       this.type === "group" &&
@@ -159,9 +157,8 @@ export class SharedMediaViewComponent implements OnInit {
         this.fetchPreviousMessages()
           .then((messages) => {
             const messageList = [...messages, ...this.messageList];
-            console.log("messagelist check  ", messageList);
+            // console.log("SharedMediaView messageList check  ", messageList);
             if (messageList.length === 0) {
-              console.log("true");
               this.checkMediaMessage = true;
               this.displayMessage = "No records found.";
             }
@@ -214,8 +211,6 @@ export class SharedMediaViewComponent implements OnInit {
    */
   scrollToBottom() {
     setTimeout(() => {
-      console.log("scrolling shared-media");
-
       this.scrollVariable =
         this.mediaWindow.nativeElement.scrollHeight -
         this.mediaWindow.nativeElement.clientHeight;
