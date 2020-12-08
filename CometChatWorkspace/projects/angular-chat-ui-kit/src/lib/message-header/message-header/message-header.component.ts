@@ -205,6 +205,6 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
    * @param
    */
   openUserDetail() {
-    // this.actionGenerated.emit({ type: "viewDetail", payLoad: null });
+    this.actionGenerated.emit({ type: "viewDetail", payLoad: null });
   }
 }
