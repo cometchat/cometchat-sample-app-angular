@@ -12,16 +12,16 @@ export class ConversationViewComponent implements OnInit {
 
   ngOnInit() {
     console.log("ConversationView -> ngOnInit  ", this.ConversationListDetails);
-
-    // const timestamp = this.getLastMessageTimestamp();
-    // this.lastMessageTimestamp = timestamp;
   }
 
+  /**
+   * Gets the Last Conversation with user
+   * @param
+   */
   getLastMessage(data) {
     if (data === null) {
       return false;
     }
-    //console.log(data.hasOwnProperty("lastMessage"));
 
     if (data.hasOwnProperty("lastMessage") === false) {
       return false;
@@ -54,13 +54,14 @@ export class ConversationViewComponent implements OnInit {
     return message;
   }
 
+  /**
+   * Gets Time when the last conversation was done
+   * @param
+   */
   getLastMessageTimestamp(data) {
-    // let dummy;
-    // return dummy;
     if (data === null) {
       return false;
     }
-    //console.log(data.hasOwnProperty("lastMessage"));
 
     if (data.hasOwnProperty("lastMessage") === false) {
       return false;
@@ -93,6 +94,11 @@ export class ConversationViewComponent implements OnInit {
 
     return timestamp;
   }
+
+  /**
+   * Gets the MessageType i.e if text then display text else displays image,video,etc
+   * @param
+   */
   getMessage(lastMessage) {
     let message = null;
     switch (lastMessage.type) {
@@ -120,7 +126,6 @@ export class ConversationViewComponent implements OnInit {
       default:
         break;
     }
-
     return message;
   }
 }
