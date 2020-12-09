@@ -8,8 +8,9 @@
     <div class="chatUserStyle">
       <!-- Add Tool Tip functions here -->
       <h6 class="chatNameStyle">{{ item.name }}</h6>
+      <div class="chatStatusStyle typing">{{ status }}</div>
       <!-- Add Mouse Event to status -->
-      <div *ngIf="item.status === 'online'">
+      <div *ngIf="item.status === 'online' && isTyping">
         <span class="chatStatusStyle">{{ item.status }}</span>
       </div>
 
