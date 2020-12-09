@@ -70,6 +70,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
   emojiToggled: boolean = false;
+  isTyping: any;
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -136,14 +137,11 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Update the Message to be sent on every key press and send the message if user hits ENTER-key
-   * @param Event e
+   * Update the Message to be sent on every key press
+   * @param event
    */
-  sendMessageOnEnter(event) {
-    // console.log(event);
-    // console.log(event.target.value);
-    // console.log(event.target.value.length);
-
+  changeHandler(event) {
+    this.startTyping();
     if (event.target.value.length > 0) {
       this.messageInput = event.target.value;
       this.senddisable = true;
@@ -154,7 +152,13 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       this.reactdisable = true;
       this.messageInput = "";
     }
+  }
 
+  /**
+   * Send the message if user hits ENTER-key
+   * @param Event e
+   */
+  sendMessageOnEnter(event) {
     if (event.keyCode === 13 && !event.shiftKey) {
       event.preventDefault();
       this.sendTextMessage();
@@ -179,7 +183,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
     textMessage.setId(messageToBeEdited.id);
 
-    //this.endTyping();
+    this.endTyping();
 
     CometChat.editMessage(textMessage)
       .then((message) => {
@@ -255,7 +259,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     }
 
     // End Typing Indicator Function
-    // this.endTyping();
+    this.endTyping();
 
     CometChat.sendMessage(textMessage)
       .then((message) => {
@@ -423,7 +427,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       mediaMessage.setParentMessageId(this.parentMessageId);
     }
 
-    // this.endTyping()
+    this.endTyping();
     // console.log(
     //   "sendMediaMessage mediaMessage Message_Composer ->>>",
     //   mediaMessage
@@ -491,5 +495,61 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     let audio = new Audio();
     audio.src = OUTGOING_MESSAGE_SOUND;
     audio.play();
+  }
+
+  /**
+   *  When user starts typing
+   */
+
+  //Use this when params are passed through live Reaction  and comment down
+  // startTyping(timer, metadata) {
+  startTyping() {
+    // let typingInterval = timer || 5000;
+    let typingInterval = 5000;
+
+    //console.log("typing interval ", typingInterval);
+
+    if (this.isTyping > 0) {
+      return false;
+    }
+    let { receiverId, receiverType } = this.getReceiverDetails();
+    // let typingMetadata = metadata || undefined;
+    let typingMetadata = undefined;
+
+    // let typingMetadata = metadata || undefined;
+
+    let typingNotification = new CometChat.TypingIndicator(
+      receiverId,
+      receiverType,
+      typingMetadata
+    );
+    CometChat.startTyping(typingNotification);
+    // console.log("start notification ", typingNotification);
+    this.isTyping = setTimeout(() => {
+      this.endTyping();
+    }, typingInterval);
+  }
+  /**
+   * When user stops writing
+   */
+  endTyping() {
+    let { receiverId, receiverType } = this.getReceiverDetails();
+
+    // let typingMetadata = metadata || undefined;
+
+    let typingMetadata = undefined;
+
+    let typingNotification = new CometChat.TypingIndicator(
+      receiverId,
+      receiverType,
+      typingMetadata
+    );
+    CometChat.endTyping(typingNotification);
+    console.log("end notification ", typingNotification);
+
+    // console.log("end notification typing ", this.istyping);
+
+    clearTimeout(this.isTyping);
+    this.isTyping = null;
   }
 }

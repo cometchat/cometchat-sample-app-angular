@@ -17,8 +17,8 @@
         contenteditable="true"
         placeholder="Enter your message here"
         dir="ltr"
-        oninput=""
-        onblur=""
+        (input)="changeHandler($event)"
+        (blur)="endTyping()"
         (keyup)="sendMessageOnEnter($event)"
         [value]="messageInput"
         #message

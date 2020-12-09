@@ -57,6 +57,11 @@
 .lastActive {
   color: rgba(20, 20, 20, 0.6);
 }
+.typing {
+  color: rgba(20, 20, 20, 0.6);
+  text-transform: none;
+  font-style: italic;
+}
 
 .chatOptionWrapStyle {
   display: flex;
