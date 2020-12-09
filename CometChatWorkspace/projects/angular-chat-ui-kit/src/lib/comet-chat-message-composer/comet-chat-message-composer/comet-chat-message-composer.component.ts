@@ -18,6 +18,8 @@ import {
   transition,
   animate,
 } from "@angular/animations";
+
+import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSound";
 @Component({
   selector: "comet-chat-message-composer",
   templateUrl: "./comet-chat-message-composer.component.html",
@@ -67,6 +69,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
+  emojiToggled: boolean = false;
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -140,6 +143,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     // console.log(event);
     // console.log(event.target.value);
     // console.log(event.target.value.length);
+
     if (event.target.value.length > 0) {
       this.messageInput = event.target.value;
       this.senddisable = true;
@@ -148,12 +152,13 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     if (event.target.value.length == 0) {
       this.senddisable = false;
       this.reactdisable = true;
+      this.messageInput = "";
     }
 
     if (event.keyCode === 13 && !event.shiftKey) {
       event.preventDefault();
-      //console.log(event);
       this.sendTextMessage();
+      this.playAudio();
     }
   }
 
@@ -430,7 +435,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         //   response
         // );
         this.messageSending = false;
-        // this.playAudio()
+        this.playAudio();
         this.actionGenerated.emit({
           type: "messageComposed",
           payLoad: [response],
@@ -445,8 +450,15 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       });
   }
 
-  addEmoji(event) {
-    // console.log("event ->>>>>> ", event);
+  /**
+   * Add emoji to the input when user clicks on emoji
+   * @param
+   */
+  addEmoji($event) {
+    this.senddisable = true;
+    this.reactdisable = false;
+    let emoji = $event.emoji.native;
+    this.messageInput = this.messageInput + emoji;
   }
 
   /**
@@ -470,5 +482,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       type: "clearMessageToBeEdited",
       payLoad: null,
     });
+  }
+
+  /**
+   * Plays Audio When Message is Sent
+   */
+  playAudio() {
+    let audio = new Audio();
+    audio.src = OUTGOING_MESSAGE_SOUND;
+    audio.play();
   }
 }
