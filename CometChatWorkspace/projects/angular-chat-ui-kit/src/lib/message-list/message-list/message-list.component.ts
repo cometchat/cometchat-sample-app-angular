@@ -59,7 +59,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     setInterval(() => {
       //console.log("detectchange called");
       this.ref.detectChanges();
-    }, 5000);
+    }, 2500);
   }
 
   ngOnChanges(change: SimpleChanges) {
