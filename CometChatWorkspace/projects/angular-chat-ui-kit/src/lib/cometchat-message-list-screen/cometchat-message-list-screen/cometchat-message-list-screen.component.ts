@@ -10,6 +10,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import { INCOMING_MESSAGE_SOUND } from "../../resources/audio/incomingMessageSound";
 
 @Component({
   selector: "cometchat-message-list-screen",
@@ -118,7 +119,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         }
 
         //play message received audio
-        //this.playAudio();
+        this.playAudio();
 
         break;
       }
@@ -411,5 +412,14 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.chatWindow.nativeElement.scrollHeight -
         this.chatWindow.nativeElement.clientHeight;
     }, 1);
+  }
+
+  /**
+   * Plays Audio When Message is Sent
+   */
+  playAudio() {
+    let audio = new Audio();
+    audio.src = INCOMING_MESSAGE_SOUND;
+    audio.play();
   }
 }
