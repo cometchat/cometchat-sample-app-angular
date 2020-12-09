@@ -87,14 +87,28 @@ export class ReceiverPollBubbleComponent implements OnInit {
         //   `reciver poll bubble --> percentage of ${this.pollExtensionData.options[currentItem]} is ${calculatedPercent} `
         // );
       }
+
+      let selectedByLoggedInUser = false;
+      if (optionData.hasOwnProperty("voters")) {
+        console.log(this.loggedInUserUid);
+        console.log(optionData.voters);
+        console.log(optionData.voters.hasOwnProperty(this.loggedInUserUid));
+        if (optionData.voters.hasOwnProperty(this.loggedInUserUid)) {
+          selectedByLoggedInUser = true;
+        }
+      }
+
       optionList.push({
         id: currentItem,
         percent: calculatedPercent + "%",
         text: this.pollExtensionData.options[currentItem],
+        selectedByLoggedInUser,
       });
     });
 
     this.pollOptions = [...optionList];
+
+    console.log(`reciver poll bubble --> option list `, optionList);
   }
 
   /**

@@ -22,7 +22,12 @@
                 class="pollPercentStyle"
                 [ngStyle]="{ width: option?.percent }"
               ></div>
-              <div class="answerWrapperStyle">
+              <div
+                [ngClass]="{
+                  answerWrapperStyle: !option?.selectedByLoggedInUser,
+                  answerCheckedWrapperStyle: option?.selectedByLoggedInUser
+                }"
+              >
                 <span> {{ option?.percent }}</span>
                 <p>{{ option?.text }}</p>
               </div>
