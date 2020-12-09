@@ -67,6 +67,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
+  createPollView: boolean = false;
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -108,6 +110,21 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
         //closing smartReply preview window
         this.replyPreview = null;
+        break;
+      }
+      case "closePollView": {
+        this.closeCreatePollPreview();
+        break;
+      }
+      case "pollCreated": {
+        this.closeCreatePollPreview();
+        this.actionGenerated.emit({ type: "pollCreated", payLoad: [message] });
+
+        //temporary check; custom data listener working for sender too
+        // if (this.type === "user") {
+        //   this.actionGenerated.emit({ type :  "pollCreated", payLoad : [message]});
+        // }
+
         break;
       }
     }
@@ -470,5 +487,21 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       type: "clearMessageToBeEdited",
       payLoad: null,
     });
+  }
+
+  /**
+   * opens the create poll Modal
+   * @param
+   */
+  openCreatePollPreview() {
+    this.createPollView = true;
+  }
+
+  /**
+   * Closes the create poll Modal
+   * @param
+   */
+  closeCreatePollPreview() {
+    this.createPollView = false;
   }
 }
