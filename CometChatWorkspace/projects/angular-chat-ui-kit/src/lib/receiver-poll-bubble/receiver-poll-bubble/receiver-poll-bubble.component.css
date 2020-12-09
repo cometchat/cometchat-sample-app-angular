@@ -1,0 +1,158 @@
+.messageContainerStyle {
+  align-self: flex-start;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 100%;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.messageContainerStyle:hover > .tool {
+  display: flex;
+}
+
+.tool {
+  display: none;
+}
+
+.messageWrapperStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageThumbnailStyle {
+  width: 36px;
+  height: 36px;
+  margin: 10px 5px;
+  float: left;
+  flex-shrink: 0;
+}
+
+.messageDetailStyle {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nameWrapperStyle {
+  align-self: flex-start;
+
+  /* if avatar is to be shown in group polls , below padding is added */
+  /* padding: "3px 5px", */
+}
+
+.nameStyle {
+  font-size: 10px;
+  color: rgb(85, 85, 85);
+}
+
+.messageTxtContainerStyle {
+  width: auto;
+  flex: 1 1;
+  align-self: flex-start;
+  display: flex;
+}
+
+.messageTxtWrapperStyle {
+  display: inline-block;
+  border-radius: 12px;
+  background-color: #f6f6f6;
+  color: #141414;
+  padding: 8px 12px;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.pollQuestionStyle {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  width: 100%;
+  font-size: 14px;
+}
+
+.pollAnswerStyle {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pollAnswerStyle > li {
+  background-color: #fff;
+  margin: 10px 0;
+  border-radius: 8px;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.pollTotalStyle {
+  font-size: 13px;
+  margin: 0;
+  align-self: flex-end;
+}
+
+.pollPercentStyle {
+  /* curved borders */
+
+  max-width: 100%;
+
+  /* dynamic width to show the grey shade */
+  width: 100%;
+
+  border-radius: 8px 8px 8px 8px;
+  background-color: #e6e6e6;
+  min-height: 35px;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.answerWrapperStyle {
+  width: 100%;
+  color: #141414;
+  display: flex;
+  align-items: center;
+  min-height: 35px;
+  height: 100%;
+  z-index: 2;
+}
+
+.answerWrapperStyle p {
+  margin: 0;
+  padding: 6px 12px;
+  width: calc(100% - 40px);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+.answerWrapperStyle span {
+  width: 40px;
+  padding: 6px 12px;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.messageInfoWrapperStyle {
+  align-self: flex-start;
+  padding: "3px 5px";
+}
+
+.messageTimestampStyle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: rgb(85, 85, 85);
+}
