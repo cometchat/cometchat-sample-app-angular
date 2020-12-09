@@ -208,6 +208,15 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.removeMessages(messages);
         break;
       }
+      case "pollCreated": {
+        this.appendPollMessage(messages);
+        break;
+      }
+      case "pollAnswered": {
+        console.log("Mesasge List screen -->Answer poll case ");
+        this.updatePollMessage(messages);
+        break;
+      }
     }
   }
 
@@ -227,7 +236,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   setMessages(messages) {
     this.messageList = [...messages];
 
-    console.log("MessageListScreen->> ", this.messageList);
+    // console.log("MessageListScreen->> ", this.messageList);
 
     this.scrollToBottomOfChatWindow();
   }
@@ -253,6 +262,46 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
     //console.log("appending the sent message ", this.messageList);
   };
+
+  /**
+   * append Poll Messages that are sent
+   * @param Any messages
+   */
+  appendPollMessage(messages) {
+    console.log("MessageListScreen->> Appending poll message ", messages);
+
+    this.appendMessage(messages);
+  }
+
+  /**
+   * updates Poll Messages depending on answer given by user
+   * @param Any messages
+   */
+  updatePollMessage(message) {
+    console.log("Mesasge List screen --> starting to update poll message ");
+
+    const messageList = [...this.messageList];
+    const messageId = message.poll.id;
+    let messageKey = messageList.findIndex((m, k) => m.id === messageId);
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+
+      const metadataObj = {
+        "@injected": { extensions: { polls: message.poll } },
+      };
+
+      const newMessageObj = { ...messageObj, metadata: metadataObj };
+
+      // messageList.splice(messageKey, 1, newMessageObj);
+
+      console.log(
+        "Mesasge List screen --> updated poll message ",
+        newMessageObj
+      );
+
+      this.messageEdited(newMessageObj);
+    }
+  }
 
   /**
    * update status of message ie. read or deliv
