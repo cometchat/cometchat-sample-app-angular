@@ -13,9 +13,80 @@ export class SenderPollBubbleComponent implements OnInit {
 
   @Input() showToolTip = true;
 
+  isPollExtensionEnabled: boolean = false;
+  pollExtensionData = null;
+  pollOptions = [];
+  totalVotes = 0;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("sener Poll bubble --> message details ", this.MessageDetails);
+
+    this.checkPollExtension();
+  }
+
+  /**
+   * Displays the poll component , only if it is enabled
+   * @param
+   */
+  checkPollExtension() {
+    if (this.MessageDetails.hasOwnProperty("metadata")) {
+      if (this.MessageDetails.metadata.hasOwnProperty("@injected")) {
+        if (
+          this.MessageDetails.metadata["@injected"].hasOwnProperty("extensions")
+        ) {
+          if (
+            this.MessageDetails.metadata["@injected"][
+              "extensions"
+            ].hasOwnProperty("polls")
+          ) {
+            console.log("sender Poll bubble --> Enable poll extension ");
+            this.isPollExtensionEnabled = true;
+            this.setPollExtensionData();
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Sets Poll Data
+   * @param
+   */
+  setPollExtensionData() {
+    this.pollExtensionData = this.MessageDetails.metadata["@injected"][
+      "extensions"
+    ]["polls"];
+
+    this.totalVotes = this.pollExtensionData.results.total;
+
+    let optionKeys = Object.keys(this.pollExtensionData.options);
+
+    let optionList = [];
+    optionKeys.forEach((currentItem) => {
+      // Add Percentage calculation logic
+      const optionData = this.pollExtensionData.results.options[currentItem];
+      const vote = optionData["count"];
+      let calculatedPercent = 0;
+
+      if (this.totalVotes > 0) {
+        calculatedPercent = (vote / this.totalVotes) * 100;
+
+        // console.log(
+        //   `sender poll bubble --> percentage of ${this.pollExtensionData.options[currentItem]} is ${calculatedPercent} `
+        // );
+      }
+
+      optionList.push({
+        id: currentItem,
+        percent: calculatedPercent + "%",
+        text: this.pollExtensionData.options[currentItem],
+      });
+    });
+
+    this.pollOptions = [...optionList];
+  }
 
   /**
    * Handles all the actions emitted by the child components that make the current component
