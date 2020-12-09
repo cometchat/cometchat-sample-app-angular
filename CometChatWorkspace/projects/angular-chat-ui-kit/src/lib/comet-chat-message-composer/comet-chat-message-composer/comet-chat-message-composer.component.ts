@@ -136,6 +136,10 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     return { receiverId: receiverId, receiverType: receiverType };
   }
 
+  /**
+   * Update the Message to be sent on every key press
+   * @param event
+   */
   changeHandler(event) {
     this.startTyping();
     if (event.target.value.length > 0) {
@@ -151,7 +155,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Update the Message to be sent on every key press and send the message if user hits ENTER-key
+   * Send the message if user hits ENTER-key
    * @param Event e
    */
   sendMessageOnEnter(event) {
