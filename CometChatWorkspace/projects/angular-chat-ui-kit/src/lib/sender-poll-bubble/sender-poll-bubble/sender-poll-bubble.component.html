@@ -1,1 +1,42 @@
-<p>sender-poll-bubble works!</p>
+<div class="messageContainerStyle">
+  <tool-tip
+    class="tool"
+    *ngIf="showToolTip"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+  ></tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageTxtWrapperStyle">
+      <p class="pollQuestionStyle">Test question</p>
+      <ul class="pollAnswerStyle">
+        <!-- Options -->
+        <li>
+          <div class="pollPercentStyle"></div>
+          <div class="answerWrapperStyle">
+            <span>12%</span>
+            <p>messi</p>
+          </div>
+        </li>
+        <li>
+          <div class="pollPercentStyle"></div>
+          <div class="answerWrapperStyle">
+            <span>10%</span>
+            <p>ronaldo</p>
+          </div>
+        </li>
+        <!-- Options -->
+      </ul>
+      <p class="pollTotalStyle">total vote</p>
+    </div>
+  </div>
+  <div css="{messageInfoWrapperStyle()}" className="message__info__wrapper">
+    <reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </reply-count>
+
+    <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
+  </div>
+</div>
