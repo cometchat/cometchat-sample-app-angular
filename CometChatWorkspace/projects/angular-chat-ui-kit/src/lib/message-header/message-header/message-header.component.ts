@@ -26,7 +26,6 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   groupListenerId = "head_group_" + new Date().getTime();
   status: string = "";
   isTyping: boolean = true;
-  presence: string;
 
   constructor() {}
 
