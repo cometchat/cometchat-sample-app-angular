@@ -1,1 +1,29 @@
-<p>conversation-view works!</p>
+<div *ngFor="let items of ConversationListDetails">
+  <div class="listItem">
+    <div class="itemThumbnailStyle">
+      <!--Avatar-->
+      <avatar
+        [avatar]="items.conversationWith.avatar"
+        [userStatus]="items.conversationWith.status"
+      ></avatar>
+    </div>
+    <div class="itemDetailStyle">
+      <div class="itemRowStyle">
+        <div class="itemNameStyle">
+          <!--Conversation Name-->
+          {{ items.conversationWith.name }}
+        </div>
+        <span class="itemLastMsgTimeStyle">
+          {{ getLastMessageTimestamp(items) }}
+        </span>
+      </div>
+      <div class="itemRowStyle">
+        <div class="itemLastMsgStyle">
+          <!--Last Message-->
+          {{ getLastMessage(items) }}
+        </div>
+        <!--BadgeCount-->
+      </div>
+    </div>
+  </div>
+</div>
