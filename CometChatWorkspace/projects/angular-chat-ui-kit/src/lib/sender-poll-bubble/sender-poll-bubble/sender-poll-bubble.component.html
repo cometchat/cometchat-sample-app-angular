@@ -29,14 +29,7 @@
       <p class="pollTotalStyle">total vote</p>
     </div>
   </div>
-  <div css="{messageInfoWrapperStyle()}" className="message__info__wrapper">
-    <reply-count
-      *ngIf="showReplyCount"
-      [MessageDetails]="MessageDetails"
-      (actionGenerated)="actionHandler($event)"
-    >
-    </reply-count>
-
+  <div class="messageInfoWrapperStyle">
     <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
   </div>
 </div>
