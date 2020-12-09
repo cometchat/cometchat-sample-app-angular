@@ -90,6 +90,24 @@
             </receiver-audio-bubble>
           </div>
           <!--CASE FOR AUDIO ENDS -->
+
+          <!--CASE FOR POLLS -->
+          <div *ngSwitchCase="'extension_poll'">
+            <sender-poll-bubble
+              *ngIf="msg.sender.uid === loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </sender-poll-bubble>
+            <receiver-poll-bubble
+              *ngIf="msg.sender.uid !== loggedInUser.uid"
+              [loggedInUserUid]="loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </receiver-poll-bubble>
+          </div>
+          <!--CASE FOR AUDIO POLLS -->
         </div>
       </ng-template>
     </div>

@@ -336,7 +336,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
               });
             }
 
-            // console.log("Message list fetched:", messageList);
+            console.log("Message list -->> fetched messages:", messageList);
             // Handle the list of messages
           },
           (error) => {
