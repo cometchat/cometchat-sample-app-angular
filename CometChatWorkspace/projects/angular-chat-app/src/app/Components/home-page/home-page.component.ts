@@ -31,6 +31,10 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(["/contact-screen"]);
   }
 
+  navigateToConversationList() {
+    this.router.navigate(["/test"]);
+  }
+
   /**
    * Logout the user that is currently logged in
    * @param
