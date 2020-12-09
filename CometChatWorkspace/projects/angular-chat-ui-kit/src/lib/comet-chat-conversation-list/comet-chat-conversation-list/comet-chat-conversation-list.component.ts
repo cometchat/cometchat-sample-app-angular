@@ -50,7 +50,7 @@ export class CometChatConversationListComponent implements OnInit {
   }
 
   /**
-   * Listeners
+   * Listeners for respective functionality
    * @param callback
    */
   attachListeners(callback) {
@@ -172,6 +172,9 @@ export class CometChatConversationListComponent implements OnInit {
     CometChat.removeCallListener(this.callListenerId);
   }
 
+  /**
+   * Fetches Conversations Details with all the users
+   */
   getConversation() {
     new CometChatManager()
       .getLoggedInUser()
@@ -218,6 +221,7 @@ export class CometChatConversationListComponent implements OnInit {
               ...this.conversationList,
               ...conversationList,
             ];
+            //////////////////condition///////////////////////////
             this.check = true;
             console.log(
               "ConversationList-> conversationList  ",
@@ -241,6 +245,11 @@ export class CometChatConversationListComponent implements OnInit {
       });
   }
 
+  ///////////////////////////////////////////////////////VERIFY
+  /**
+   * Sets User Avatar If Avatar is not present
+   * @param
+   */
   setAvatar(conversation) {
     if (
       conversation.conversationType === "user" &&
@@ -312,6 +321,10 @@ export class CometChatConversationListComponent implements OnInit {
     }
   };
 
+  /**
+   * Updates Detail when user comes online/offline
+   * @param
+   */
   updateUser(user) {
     //when user updates
     const conversationlist = [...this.conversationList];
@@ -334,7 +347,7 @@ export class CometChatConversationListComponent implements OnInit {
         conversationWith: conversationWithObj,
       };
       conversationlist.splice(conversationKey, 1, newConversationObj);
-      console.log("ConversationList -> new conversationList", conversationlist);
+      // console.log("ConversationList -> new conversationList", conversationlist);
 
       this.conversationList = conversationlist;
     }
