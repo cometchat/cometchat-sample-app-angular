@@ -157,7 +157,6 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
     if (event.keyCode === 13 && !event.shiftKey) {
       event.preventDefault();
-      //console.log(event);
       this.sendTextMessage();
       this.playAudio();
     }
