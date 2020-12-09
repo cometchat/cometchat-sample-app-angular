@@ -1,1 +1,21 @@
-<p>comet-chat-conversation-list works!</p>
+<div class="chasWrapperStyle">
+  <div class="chatsHeaderStyle">
+    <!--Close Btn-->
+    <h4 class="chatsHeaderTitleStyle">Chats</h4>
+    <div></div>
+  </div>
+  <!--Message Container-->
+  <div class="chatsMsgStyle">
+    <p class="chatsMsgTxtStyle">
+      {{ decoratorMessage }}
+    </p>
+  </div>
+  <div class="chatsListStyle">
+    <!--Conversation List-->
+    <conversation-view
+      *ngIf="check"
+      [ConversationListDetails]="conversationList"
+    >
+    </conversation-view>
+  </div>
+</div>
