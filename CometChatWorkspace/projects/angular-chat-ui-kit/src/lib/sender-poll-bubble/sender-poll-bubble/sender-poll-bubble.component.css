@@ -76,10 +76,12 @@
   /* dynamic width to show the grey shade */
   width: 100%;
 
-  border-radius: 8px 0px 0px 8px;
+  border-radius: 8px 8px 8px 8px;
   background-color: #e6e6e6;
   min-height: 35px;
   height: 100%;
+  position: absolute;
+  z-index: 1;
 }
 
 .answerWrapperStyle {
@@ -87,7 +89,7 @@
   color: #141414;
   display: flex;
   align-items: center;
-  min-height: 25px;
+  min-height: 35px;
   height: 100%;
   z-index: 2;
 }
