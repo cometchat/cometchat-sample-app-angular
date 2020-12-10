@@ -25,14 +25,19 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   msgListenerId = "head_message_" + new Date().getTime();
   groupListenerId = "head_group_" + new Date().getTime();
 
+  //displays audio and video call options
+  checkNotBlocked: boolean = true;
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
     // console.log("Message Header --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
-      // if the person you are chatting with changes
+      //Check if user is blocked/unblocked
+      this.checkBlocked();
 
+      // if the person you are chatting with changes
       //Removing User Presence , typing and Group Listeners
       this.removeListeners();
 
@@ -115,6 +120,17 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
     CometChat.removeUserListener(this.userListenerId);
     CometChat.removeMessageListener(this.msgListenerId);
     CometChat.removeGroupListener(this.groupListenerId);
+  }
+
+  /**
+   * If user blocked then doesnot display audio and video call else displays
+   */
+  checkBlocked() {
+    if (this.item.blockedByMe === true) {
+      this.checkNotBlocked = false;
+    } else {
+      this.checkNotBlocked = true;
+    }
   }
 
   updateHeader(key = null, item = null, groupUser = null) {
