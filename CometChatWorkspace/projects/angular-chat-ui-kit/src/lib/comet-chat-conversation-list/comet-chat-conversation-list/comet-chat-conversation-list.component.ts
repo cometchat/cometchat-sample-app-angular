@@ -11,7 +11,6 @@ import { CometChatManager } from "../../utils/controller";
 export class CometChatConversationListComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
-  check: boolean = false;
 
   decoratorMessage: string;
   loggedInUser = null;
@@ -221,8 +220,6 @@ export class CometChatConversationListComponent implements OnInit {
               ...this.conversationList,
               ...conversationList,
             ];
-            //////////////////condition///////////////////////////
-            this.check = true;
             console.log(
               "ConversationList-> conversationList  ",
               this.conversationList
