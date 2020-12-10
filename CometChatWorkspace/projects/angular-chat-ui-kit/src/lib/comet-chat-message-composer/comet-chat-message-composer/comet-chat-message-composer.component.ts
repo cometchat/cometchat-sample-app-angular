@@ -501,11 +501,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    *  When user starts typing
    */
 
-  //Use this when params are passed through live Reaction  and comment down
-  // startTyping(timer, metadata) {
-  startTyping() {
-    // let typingInterval = timer || 5000;
-    let typingInterval = 5000;
+  startTyping(timer = null, metadata = null) {
+    let typingInterval = timer || 5000;
 
     //console.log("typing interval ", typingInterval);
 
@@ -513,10 +510,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       return false;
     }
     let { receiverId, receiverType } = this.getReceiverDetails();
-    // let typingMetadata = metadata || undefined;
-    let typingMetadata = undefined;
-
-    // let typingMetadata = metadata || undefined;
+    let typingMetadata = metadata || undefined;
 
     let typingNotification = new CometChat.TypingIndicator(
       receiverId,
@@ -529,15 +523,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       this.endTyping();
     }, typingInterval);
   }
+
   /**
    * When user stops writing
    */
-  endTyping() {
+  endTyping(metadata = null) {
     let { receiverId, receiverType } = this.getReceiverDetails();
 
-    // let typingMetadata = metadata || undefined;
-
-    let typingMetadata = undefined;
+    let typingMetadata = metadata || undefined;
 
     let typingNotification = new CometChat.TypingIndicator(
       receiverId,
