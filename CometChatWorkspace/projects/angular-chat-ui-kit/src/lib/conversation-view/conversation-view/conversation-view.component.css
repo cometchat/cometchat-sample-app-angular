@@ -12,7 +12,7 @@
 }
 .listItem:hover {
   /* backgroundColor: `${props.theme.backgroundColor.primary}` */
-  background-color: yellow;
+  background-color: #eaeaea;
 }
 
 .itemThumbnailStyle {
@@ -52,11 +52,14 @@
   text-emphasis: ellipsis;
   white-space: nowrap;
   line-height: 20px;
+  color: rgba(20, 20, 20, 0.6);
   /* color: `${props.theme.color.helpText}`; */
 }
 
 .itemLastMsgTimeStyle {
   font-size: 11px;
   text-transform: uppercase;
+  color: rgba(20, 20, 20, 0.6);
+
   /* color: `${props.theme.color.helpText}`; */
 }
