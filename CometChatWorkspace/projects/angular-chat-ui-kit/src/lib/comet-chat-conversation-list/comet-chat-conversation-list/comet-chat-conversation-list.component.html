@@ -13,8 +13,8 @@
   <div class="chatsListStyle">
     <!--Conversation List-->
     <conversation-view
-      *ngIf="check"
       [ConversationListDetails]="conversationList"
+      [loggedInUser]="loggedInUser"
     >
     </conversation-view>
   </div>
