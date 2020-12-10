@@ -29,6 +29,7 @@ import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-mes
 import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 import { ReplyCountModule } from "./reply-count/reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
+import { CometChatGroupListModule } from "./comet-chat-group-list/comet-chat-group-list.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -59,6 +60,7 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    CometChatGroupListModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -89,6 +91,7 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    CometChatGroupListModule,
   ],
 })
 export class AngularChatUiKitModule {}
