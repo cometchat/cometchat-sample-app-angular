@@ -1,10 +1,4 @@
 <div class="messageContainerStyle" *ngIf="isPollExtensionEnabled">
-  <tool-tip
-    class="tool"
-    *ngIf="showToolTip"
-    [MessageDetails]="MessageDetails"
-    (actionGenerated)="actionHandler($event)"
-  ></tool-tip>
   <div class="messageWrapperStyle">
     <!-- Avatar for group -->
     <div class="messageDetailStyle">
