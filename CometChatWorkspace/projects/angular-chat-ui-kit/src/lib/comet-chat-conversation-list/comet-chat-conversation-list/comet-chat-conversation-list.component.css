@@ -25,6 +25,7 @@
   padding: 19px 16px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #eaeaea;
   /* borderBottom: `1px solid ${theme.color.darkSecondary}` */
 }
 
