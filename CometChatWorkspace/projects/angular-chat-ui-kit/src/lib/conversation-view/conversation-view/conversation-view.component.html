@@ -3,7 +3,7 @@
     <div class="itemThumbnailStyle">
       <!--Avatar-->
       <avatar
-        [avatar]="items.conversationWith.avatar"
+        [avatar]="getAvatar(items)"
         [userStatus]="items.conversationWith.status"
       ></avatar>
     </div>
@@ -23,6 +23,10 @@
           {{ getLastMessage(items) }}
         </div>
         <!--BadgeCount-->
+        <badge-count
+          *ngIf="items.unreadMessageCount > 0"
+          [UnreadMessageCount]="items.unreadMessageCount"
+        ></badge-count>
       </div>
     </div>
   </div>
