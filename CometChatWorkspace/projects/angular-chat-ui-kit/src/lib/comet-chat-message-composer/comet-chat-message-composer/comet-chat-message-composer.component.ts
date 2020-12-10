@@ -334,6 +334,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.vidPicker.nativeElement.value = "";
   }
 
   onAudChange(event) {
@@ -356,6 +358,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.audPicker.nativeElement.value = "";
   }
 
   onImgChange(event) {
@@ -378,6 +382,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.imgPicker.nativeElement.value = "";
   }
 
   onFileChange(event) {
@@ -402,6 +408,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     console.log("reader is ", reader);
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.filePicker.nativeElement.value = "";
   }
 
   sendMediaMessage(messageInput, messageType) {
