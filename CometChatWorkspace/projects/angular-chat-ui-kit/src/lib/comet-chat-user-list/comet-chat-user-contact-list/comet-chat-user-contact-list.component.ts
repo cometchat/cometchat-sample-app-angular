@@ -37,7 +37,9 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
       //console.log("UserList --> detectchange called");
-      this.ref.detectChanges();
+      if (!this.ref["destroyed"]) {
+        this.ref.detectChanges();
+      }
     }, 5000);
   }
 
@@ -95,6 +97,9 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    // removinf the changeDetector Ref
+    this.ref.detach();
+
     // console.log("Removing Listeners just before destroying this component");
     CometChat.removeUserListener(this.userListenerId);
     this.userListenerId = null;
