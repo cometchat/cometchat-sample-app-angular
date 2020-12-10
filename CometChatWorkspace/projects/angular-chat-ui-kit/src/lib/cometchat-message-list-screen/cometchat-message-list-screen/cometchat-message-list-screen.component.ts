@@ -111,9 +111,9 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
             this.scrollToBottomOfChatWindow();
           }, 2500);
 
-          // console.log(
-          //   "received a message from the user , u r chatting with , going to append it"
-          // );
+          console.log(
+            " MessageListScreen -->  received a message from the user , u r chatting with , going to append it"
+          );
           this.appendMessage(messages);
         }
 
