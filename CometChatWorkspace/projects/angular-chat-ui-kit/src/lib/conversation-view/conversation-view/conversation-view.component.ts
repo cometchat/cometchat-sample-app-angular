@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, SimpleChange } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "conversation-view",
@@ -8,10 +9,28 @@ import { CometChat } from "@cometchat-pro/chat";
 })
 export class ConversationViewComponent implements OnInit {
   @Input() ConversationListDetails = null;
+  @Input() loggedInUser = null;
+  setAvatar: string;
   constructor() {}
 
   ngOnInit() {
     console.log("ConversationView -> ngOnInit  ", this.ConversationListDetails);
+  }
+  ngOnChanges(change: SimpleChange) {
+    console.log("Conversation View ngOnChanges ->> ", change);
+  }
+
+  /**
+   * Sets Avatar According to user type ie. user or group
+   * @param
+   */
+  getAvatar(data) {
+    if (data.conversationType === "user") {
+      this.setAvatar = data.conversationWith.avatar;
+    } else if (data.conversationType === "group") {
+      this.setAvatar = data.conversationWith.icon;
+    }
+    return this.setAvatar;
   }
 
   /**
@@ -22,15 +41,15 @@ export class ConversationViewComponent implements OnInit {
     if (data === null) {
       return false;
     }
-
     if (data.hasOwnProperty("lastMessage") === false) {
       return false;
     }
     let message = null;
     const lastMessage = data.lastMessage;
+
     if (lastMessage.hasOwnProperty("deletedAt")) {
       message =
-        this.ConversationListDetails.loggedInUser.uid === lastMessage.sender.uid
+        this.loggedInUser.uid === lastMessage.sender.uid
           ? "⚠ You deleted this message."
           : "⚠ This message was deleted.";
     } else {
@@ -38,15 +57,15 @@ export class ConversationViewComponent implements OnInit {
         case "message":
           message = this.getMessage(lastMessage);
           break;
-        // case "call":
-        //   message = this.getCallMessage(lastMessage);
-        //   break;
-        // case "action":
-        //   message = lastMessage.message;
-        //   break;
-        // case "custom":
-        //   message = this.getCustomMessage(lastMessage);
-        //   break;
+        case "call":
+          message = this.getCallMessage(lastMessage);
+          break;
+        case "action":
+          message = lastMessage.message;
+          break;
+        case "custom":
+          message = this.getCustomMessage(lastMessage);
+          break;
         default:
           break;
       }
@@ -128,4 +147,44 @@ export class ConversationViewComponent implements OnInit {
     }
     return message;
   }
+
+  /**
+   * Displays if lastMessage was Video or Audio Call
+   * @param
+   */
+  getCallMessage(lastMessage) {
+    let message = null;
+    switch (lastMessage.type) {
+      case CometChat.MESSAGE_TYPE.VIDEO:
+        message = "Video call";
+        break;
+      case CometChat.MESSAGE_TYPE.AUDIO:
+        message = "Audio call";
+        break;
+      default:
+        break;
+    }
+
+    return message;
+  }
+
+  /**
+   * Displays lastMessage was Custom Message i.e Poll or Sticker
+   * @param
+   */
+  getCustomMessage = (lastMessage) => {
+    let message = null;
+    switch (lastMessage.type) {
+      case enums.CUSTOM_TYPE_POLL:
+        message = "Poll";
+        break;
+      case enums.CUSTOM_TYPE_STICKER:
+        message = "Sticker";
+        break;
+      default:
+        break;
+    }
+
+    return message;
+  };
 }
