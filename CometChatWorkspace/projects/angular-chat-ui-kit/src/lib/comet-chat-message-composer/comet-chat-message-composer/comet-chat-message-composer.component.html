@@ -22,6 +22,9 @@
         (keyup)="sendMessageOnEnter($event)"
         [value]="messageInput"
         #message
+        [ngClass]="{
+          messageInputDisabledStyle: disabled
+        }"
       />
       <div class="inputStickyStyle">
         <div class="stickyAttachmentStyle">
