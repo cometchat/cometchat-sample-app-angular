@@ -49,24 +49,24 @@ export class CometChatUserContactListComponent
     // console.log("Message List --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
-      const userlist = [...this.usersList];
+      if (change["item"].previousValue !== change["item"].currentValue) {
+        const userlist = [...this.usersList];
 
-      let userKey = userlist.findIndex(
-        (u, k) => u.uid === change["item"].currentValue.uid
-      );
-
-      //if found in the list, update user object
-      if (userKey > -1) {
-        let userObj = userlist[userKey]; //{...userlist[userKey]};
-        let newUserObj = Object.assign(
-          {},
-          userObj,
-          change["item"].currentValue
+        let userKey = userlist.findIndex(
+          (u, k) => u.uid === change["item"].currentValue.uid
         );
-        userlist.splice(userKey, 1, newUserObj);
-        this.usersList = [...userlist];
 
-        // this.setState({ userlist: userlist });
+        //if found in the list, update user object
+        if (userKey > -1) {
+          let userObj = userlist[userKey]; //{...userlist[userKey]};
+          let newUserObj = Object.assign(
+            {},
+            userObj,
+            change["item"].currentValue
+          );
+          userlist.splice(userKey, 1, newUserObj);
+          this.usersList = [...userlist];
+        }
       }
     }
   }
