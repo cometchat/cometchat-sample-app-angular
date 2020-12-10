@@ -3,9 +3,11 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  OnChanges,
   Output,
   EventEmitter,
   ChangeDetectorRef,
+  SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 @Component({
@@ -13,10 +15,12 @@ import { CometChat } from "@cometchat-pro/chat";
   templateUrl: "./comet-chat-user-contact-list.component.html",
   styleUrls: ["./comet-chat-user-contact-list.component.css"],
 })
-export class CometChatUserContactListComponent implements OnInit, OnDestroy {
+export class CometChatUserContactListComponent
+  implements OnInit, OnDestroy, OnChanges {
   @Input() friendsOnly = false;
   @Input() widgetsettings = null;
   @Input() hasActions = false;
+  @Input() item = null;
 
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
@@ -39,6 +43,32 @@ export class CometChatUserContactListComponent implements OnInit, OnDestroy {
       //console.log("UserList --> detectchange called");
       this.ref.detectChanges();
     }, 5000);
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    // console.log("Message List --> ngOnChanges -->  ", change);
+
+    if (change["item"]) {
+      const userlist = [...this.usersList];
+
+      let userKey = userlist.findIndex(
+        (u, k) => u.uid === change["item"].currentValue.uid
+      );
+
+      //if found in the list, update user object
+      if (userKey > -1) {
+        let userObj = userlist[userKey]; //{...userlist[userKey]};
+        let newUserObj = Object.assign(
+          {},
+          userObj,
+          change["item"].currentValue
+        );
+        userlist.splice(userKey, 1, newUserObj);
+        this.usersList = [...userlist];
+
+        // this.setState({ userlist: userlist });
+      }
+    }
   }
 
   ngOnInit() {
