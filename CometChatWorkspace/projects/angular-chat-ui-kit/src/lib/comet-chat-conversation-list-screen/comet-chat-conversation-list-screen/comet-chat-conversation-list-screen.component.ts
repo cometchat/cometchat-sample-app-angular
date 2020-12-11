@@ -26,9 +26,9 @@ export class CometChatConversationListScreenComponent implements OnInit {
     // console.log("item is ", this.item);
     // console.log("type is ", this.type);
 
-    if (!Object.keys(this.item).length) {
-      this.toggleSideBar();
-    }
+    // if (!Object.keys(this.item).length) {
+    //   this.toggleSideBar();
+    // }
     new CometChatManager()
       .getLoggedInUser()
       .then((user) => {
