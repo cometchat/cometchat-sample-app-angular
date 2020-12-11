@@ -43,7 +43,7 @@ export class ConversationViewComponent implements OnInit, OnChanges {
     }
   }
   ngOnInit() {
-    console.log("ConversationView -> ngOnInit  ", this.ConversationDetails);
+    // console.log("ConversationView -> ngOnInit  ", this.ConversationDetails);
     this.getLastMessage(this.ConversationDetails);
     this.getLastMessageTimestamp(this.ConversationDetails);
     this.getName(this.ConversationDetails);
@@ -232,7 +232,7 @@ export class ConversationViewComponent implements OnInit, OnChanges {
    * @param Any userToEmit
    */
   onUserClicked(userToEmit) {
-    console.log(`user clicked is `, userToEmit);
+    // console.log(`user clicked is `, userToEmit);
     this.onUserClick.emit(userToEmit);
   }
 }
