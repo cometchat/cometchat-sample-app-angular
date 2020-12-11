@@ -1,1 +1,59 @@
-<p>comet-chat-conversation-list-screen works!</p>
+<div class="chatScreenStyle">
+  <div class="chatScreenSidebarStyle">
+    <comet-chat-conversation-list
+      (onUserClick)="userClicked($event)"
+    ></comet-chat-conversation-list>
+  </div>
+  <div class="chatScreenMainStyle" *ngIf="item !== null">
+    <!--Message List Screen-->
+    <cometchat-message-list-screen
+      [item]="item"
+      [type]="type"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </cometchat-message-list-screen>
+    <!--Message List Screen ENDS-->
+  </div>
+
+  <!--DetailScreen-->
+
+  <div
+    *ngIf="threadMessageView || viewDetailScreen"
+    class="chatScreenSecondaryStyle"
+  >
+    <!--IF USER-->
+    <div *ngIf="type === 'user'">
+      <comet-chat-user-detail
+        *ngIf="viewDetailScreen"
+        [item]="item"
+        [type]="type"
+        (actionGenerated)="actionHandler($event)"
+      >
+      </comet-chat-user-detail>
+    </div>
+    <!--IF USER ENDS-->
+
+    <!--IF GROUP-->
+
+    <!--GROUP ENDS-->
+
+    <!--ThreadedMessageView-->
+
+    <message-thread
+      *ngIf="threadMessageView"
+      [item]="threadMessageItem"
+      [type]="threadMessageType"
+      [parentMessage]="threadMessageParent"
+      (actionGenerated)="actionHandler($event)"
+    ></message-thread>
+  </div>
+  <image-view
+    *ngIf="fullScreenViewImage"
+    [MessageDetails]="imageView"
+    [open]="true"
+    (actionGenerated)="actionHandler($event)"
+  ></image-view>
+
+  <!--Call Alert-->
+  <!--CallScreen-->
+</div>
