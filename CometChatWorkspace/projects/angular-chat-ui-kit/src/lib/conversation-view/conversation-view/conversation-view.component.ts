@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, SimpleChange } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
@@ -7,17 +13,36 @@ import * as enums from "../../utils/enums";
   templateUrl: "./conversation-view.component.html",
   styleUrls: ["./conversation-view.component.css"],
 })
-export class ConversationViewComponent implements OnInit {
-  @Input() ConversationListDetails = null;
+export class ConversationViewComponent implements OnInit, OnChanges {
+  @Input() ConversationDetails = null;
   @Input() loggedInUser = null;
   setAvatar: string;
+  lastMessage: string;
+  lastMessageTimestamp: string;
+  lastMessageName: string;
+
   constructor() {}
 
-  ngOnInit() {
-    console.log("ConversationView -> ngOnInit  ", this.ConversationListDetails);
+  ngOnChanges(change: SimpleChanges) {
+    // console.log("Conversation View ngOnChanges ->> ", change);
+    if (change["ConversationDetails"]) {
+      if (
+        change["ConversationDetails"].currentValue !==
+        change["ConversationDetails"].previousValue
+      ) {
+        this.getLastMessage(change["ConversationDetails"].currentValue);
+        this.getLastMessageTimestamp(
+          change["ConversationDetails"].currentValue
+        );
+        this.getName(change["ConversationDetails"].currentValue);
+      }
+    }
   }
-  ngOnChanges(change: SimpleChange) {
-    console.log("Conversation View ngOnChanges ->> ", change);
+  ngOnInit() {
+    // console.log("ConversationView -> ngOnInit  ", this.ConversationDetails);
+    this.getLastMessage(this.ConversationDetails);
+    this.getLastMessageTimestamp(this.ConversationDetails);
+    this.getName(this.ConversationDetails);
   }
 
   /**
@@ -31,6 +56,15 @@ export class ConversationViewComponent implements OnInit {
       this.setAvatar = data.conversationWith.icon;
     }
     return this.setAvatar;
+  }
+
+  /**
+   * Gets Name of Last Conversation User
+   * @param
+   */
+  getName(data) {
+    this.lastMessageName = data.conversationWith.name;
+    return this.lastMessageName;
   }
 
   /**
@@ -70,7 +104,8 @@ export class ConversationViewComponent implements OnInit {
           break;
       }
     }
-    return message;
+    this.lastMessage = message;
+    return this.lastMessage;
   }
 
   /**
@@ -110,8 +145,8 @@ export class ConversationViewComponent implements OnInit {
         day: "2-digit",
       });
     }
-
-    return timestamp;
+    this.lastMessageTimestamp = timestamp;
+    return this.lastMessageTimestamp;
   }
 
   /**
