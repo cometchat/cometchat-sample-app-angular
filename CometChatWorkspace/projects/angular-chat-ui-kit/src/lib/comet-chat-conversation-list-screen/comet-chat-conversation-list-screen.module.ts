@@ -1,13 +1,22 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CometChatConversationListScreenComponent } from './comet-chat-conversation-list-screen/comet-chat-conversation-list-screen.component';
-
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { CometChatConversationListScreenComponent } from "./comet-chat-conversation-list-screen/comet-chat-conversation-list-screen.component";
+import { CometChatConversationListModule } from "../comet-chat-conversation-list/comet-chat-conversation-list.module";
+import { CometchatMessageListScreenModule } from "../cometchat-message-list-screen/cometchat-message-list-screen.module";
+import { CometChatUserDetailModule } from "../comet-chat-user-detail/comet-chat-user-detail.module";
+import { MessageThreadModule } from "../message-thread/message-thread.module";
+import { ImageViewModule } from "../image-view/image-view.module";
 
 @NgModule({
   declarations: [CometChatConversationListScreenComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    CometChatConversationListModule,
+    CometchatMessageListScreenModule,
+    CometChatUserDetailModule,
+    MessageThreadModule,
+    ImageViewModule,
+  ],
+  exports: [CometChatConversationListScreenComponent],
 })
-export class CometChatConversationListScreenModule { }
+export class CometChatConversationListScreenModule {}
