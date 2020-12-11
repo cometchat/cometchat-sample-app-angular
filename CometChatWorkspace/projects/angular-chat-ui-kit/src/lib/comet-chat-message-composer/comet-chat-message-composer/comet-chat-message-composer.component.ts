@@ -71,11 +71,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   openEditMessageWindow: boolean = false;
   emojiToggled: boolean = false;
   isTyping: any;
+  disabled: boolean = false;
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
     // console.log("Message Composer --> ngOnChanges -->  ", change);
-
+    if (change["item"]) {
+      this.checkBlocked();
+    }
     if (change["messageToBeEdited"]) {
       console.log(
         "Message Composer --> Message to Be edited changed -->  ",
@@ -117,6 +120,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Check If user Blocked then disable input box
+   */
+  checkBlocked() {
+    if (this.item.blockedByMe) {
+      this.disabled = true;
+    } else {
+      this.disabled = false;
+    }
+  }
   /**
    * Get Details of the User/Group , to whom , you want to send the message
    * @param

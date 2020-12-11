@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-
+import { CometChatManager } from "../../utils/controller";
 @Component({
   selector: "cometchat-user-list-screen",
   templateUrl: "./cometchat-user-list-screen.component.html",
@@ -96,6 +96,13 @@ export class CometchatUserListScreenComponent implements OnInit {
 
         break;
       }
+      case "blockUser": {
+        this.blockUser();
+        break;
+      }
+      case "unblockUser":
+        this.unblockUser();
+        break;
     }
   }
 
@@ -145,4 +152,34 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.threadMessageView = false;
     this.viewDetailScreen = !this.viewDetailScreen;
   };
+
+  /**
+   * When User Block someone
+   */
+  blockUser() {
+    let usersList = [this.curentItem.uid];
+    CometChatManager.blockUsers(usersList)
+      .then((list) => {
+        this.curentItem = { ...this.curentItem, blockedByMe: true };
+        console.log("block success");
+      })
+      .catch((error) => {
+        console.log("Blocking user fails with error", error);
+      });
+  }
+
+  /**
+   * When User UnBlock someone
+   */
+  unblockUser() {
+    let usersList = [this.curentItem.uid];
+    CometChatManager.unblockUsers(usersList)
+      .then((list) => {
+        this.curentItem = { ...this.curentItem, blockedByMe: false };
+        console.log("unblock success");
+      })
+      .catch((error) => {
+        console.log("unblocking user fails with error", error);
+      });
+  }
 }
