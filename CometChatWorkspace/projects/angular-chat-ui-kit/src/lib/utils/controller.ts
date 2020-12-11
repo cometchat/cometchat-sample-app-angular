@@ -4,6 +4,9 @@ export class CometChatManager {
   loggedInUser;
   isUserLoggedIn;
 
+  /**
+   * Gets LoggedIn Information of User
+   */
   getLoggedInUser() {
     let timerCounter = 10000;
     let timer = 0;
@@ -31,6 +34,36 @@ export class CometChatManager {
         timer += 100;
       }, 100);
     });
+  }
+
+  /**
+   * Blocks the User
+   * @param
+   */
+  static blockUsers(userList) {
+    let promise = new Promise((resolve, reject) => {
+      CometChat.blockUsers(userList).then(
+        (list) => resolve(list),
+        (error) => reject(error)
+      );
+    });
+
+    return promise;
+  }
+
+  /**
+   * Unblocks the User
+   * @param
+   */
+  static unblockUsers(userList) {
+    let promise = new Promise((resolve, reject) => {
+      CometChat.unblockUsers(userList).then(
+        (list) => resolve(list),
+        (error) => reject(error)
+      );
+    });
+
+    return promise;
   }
 }
 

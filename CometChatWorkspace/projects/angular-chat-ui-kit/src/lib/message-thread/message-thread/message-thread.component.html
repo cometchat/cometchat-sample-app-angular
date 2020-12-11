@@ -109,7 +109,9 @@
     </div>
 
     <div class="messageSeparatorStyle">
-      <span class="messageReplyStyle"> {{ replyCount }} reply</span>
+      <span class="messageReplyStyle" *ngIf="replyCount > 0">
+        {{ replyCount }} reply</span
+      >
       <hr />
     </div>
     <div

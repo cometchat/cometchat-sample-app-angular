@@ -58,7 +58,9 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
       //console.log("detectchange called");
-      this.ref.detectChanges();
+      if (!this.ref["destroyed"]) {
+        this.ref.detectChanges();
+      }
     }, 2500);
   }
 
@@ -120,6 +122,9 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy() {
+    // removinf the changeDetector Ref
+    //this.ref.detach();
+
     //Removing Message Listeners
     CometChat.removeMessageListener(this.msgListenerId);
   }

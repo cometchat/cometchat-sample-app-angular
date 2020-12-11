@@ -9,7 +9,9 @@
       <h6 class="sectionHeaderStyle">Options</h6>
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">Block User</div>
+          <div class="itemLinkStyle" (click)="toggleBlockUser()">
+            {{ blockUserText }}
+          </div>
         </div>
       </div>
     </div>

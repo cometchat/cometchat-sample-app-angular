@@ -71,11 +71,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   openEditMessageWindow: boolean = false;
   emojiToggled: boolean = false;
   isTyping: any;
+  disabled: boolean = false;
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
     // console.log("Message Composer --> ngOnChanges -->  ", change);
-
+    if (change["item"]) {
+      this.checkBlocked();
+    }
     if (change["messageToBeEdited"]) {
       console.log(
         "Message Composer --> Message to Be edited changed -->  ",
@@ -117,6 +120,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Check If user Blocked then disable input box
+   */
+  checkBlocked() {
+    if (this.item.blockedByMe) {
+      this.disabled = true;
+    } else {
+      this.disabled = false;
+    }
+  }
   /**
    * Get Details of the User/Group , to whom , you want to send the message
    * @param
@@ -334,6 +347,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.vidPicker.nativeElement.value = "";
   }
 
   onAudChange(event) {
@@ -356,6 +371,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.audPicker.nativeElement.value = "";
   }
 
   onImgChange(event) {
@@ -378,6 +395,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     );
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.imgPicker.nativeElement.value = "";
   }
 
   onFileChange(event) {
@@ -402,6 +421,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     console.log("reader is ", reader);
 
     reader.readAsArrayBuffer(uploadedFile);
+
+    this.filePicker.nativeElement.value = "";
   }
 
   sendMediaMessage(messageInput, messageType) {
@@ -501,11 +522,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    *  When user starts typing
    */
 
-  //Use this when params are passed through live Reaction  and comment down
-  // startTyping(timer, metadata) {
-  startTyping() {
-    // let typingInterval = timer || 5000;
-    let typingInterval = 5000;
+  startTyping(timer = null, metadata = null) {
+    let typingInterval = timer || 5000;
 
     //console.log("typing interval ", typingInterval);
 
@@ -513,10 +531,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       return false;
     }
     let { receiverId, receiverType } = this.getReceiverDetails();
-    // let typingMetadata = metadata || undefined;
-    let typingMetadata = undefined;
-
-    // let typingMetadata = metadata || undefined;
+    let typingMetadata = metadata || undefined;
 
     let typingNotification = new CometChat.TypingIndicator(
       receiverId,
@@ -529,15 +544,14 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       this.endTyping();
     }, typingInterval);
   }
+
   /**
    * When user stops writing
    */
-  endTyping() {
+  endTyping(metadata = null) {
     let { receiverId, receiverType } = this.getReceiverDetails();
 
-    // let typingMetadata = metadata || undefined;
-
-    let typingMetadata = undefined;
+    let typingMetadata = metadata || undefined;
 
     let typingNotification = new CometChat.TypingIndicator(
       receiverId,
