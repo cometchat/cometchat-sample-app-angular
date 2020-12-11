@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
@@ -8,7 +15,7 @@ import { CometChatManager } from "../../utils/controller";
   templateUrl: "./comet-chat-conversation-list.component.html",
   styleUrls: ["./comet-chat-conversation-list.component.css"],
 })
-export class CometChatConversationListComponent implements OnInit {
+export class CometChatConversationListComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
 
@@ -30,12 +37,16 @@ export class CometChatConversationListComponent implements OnInit {
   groupListenerId = "chatlist_group_" + new Date().getTime();
   callListenerId = "chatlist_call_" + new Date().getTime();
 
-  constructor() {
-    // this.conversationRequest = new CometChat.ConversationsRequestBuilder()
-    //   .setLimit(30)
-    //   .build();
+  constructor(private ref: ChangeDetectorRef) {
+    setInterval(() => {
+      //console.log("UserList --> detectchange called");
+      if (!this.ref["destroyed"]) {
+        this.ref.detectChanges();
+      }
+    }, 5000);
   }
 
+  ngOnChanges(change: SimpleChanges) {}
   ngOnInit() {
     this.conversationRequest = new CometChat.ConversationsRequestBuilder()
       .setLimit(30)
@@ -280,9 +291,10 @@ export class CometChatConversationListComponent implements OnInit {
 
     switch (key) {
       case enums.USER_ONLINE:
-      case enums.USER_OFFLINE:
+      case enums.USER_OFFLINE: {
         this.updateUser(item);
         break;
+      }
       // case enums.TEXT_MESSAGE_RECEIVED:
       // case enums.MEDIA_MESSAGE_RECEIVED:
       // case enums.CUSTOM_MESSAGE_RECEIVED:
