@@ -16,6 +16,7 @@
       <conversation-view
         [ConversationDetails]="conversation"
         [loggedInUser]="loggedInUser"
+        (onUserClick)="userClicked($event)"
       >
       </conversation-view>
     </div>
