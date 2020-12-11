@@ -1,33 +1,31 @@
-<div *ngFor="let items of ConversationListDetails">
-  <div class="listItem">
-    <div class="itemThumbnailStyle">
-      <!--Avatar-->
-      <avatar
-        [avatar]="getAvatar(items)"
-        [userStatus]="items.conversationWith.status"
-      ></avatar>
+<div class="listItem">
+  <div class="itemThumbnailStyle">
+    <!--Avatar-->
+    <avatar
+      [avatar]="getAvatar(ConversationDetails)"
+      [userStatus]="ConversationDetails.conversationWith.status"
+    ></avatar>
+  </div>
+  <div class="itemDetailStyle">
+    <div class="itemRowStyle">
+      <div class="itemNameStyle">
+        <!--Conversation Name-->
+        {{ lastMessageName }}
+      </div>
+      <span class="itemLastMsgTimeStyle">
+        {{ lastMessageTimestamp }}
+      </span>
     </div>
-    <div class="itemDetailStyle">
-      <div class="itemRowStyle">
-        <div class="itemNameStyle">
-          <!--Conversation Name-->
-          {{ items.conversationWith.name }}
-        </div>
-        <span class="itemLastMsgTimeStyle">
-          {{ getLastMessageTimestamp(items) }}
-        </span>
+    <div class="itemRowStyle">
+      <div class="itemLastMsgStyle">
+        <!--Last Message-->
+        {{ lastMessage }}
       </div>
-      <div class="itemRowStyle">
-        <div class="itemLastMsgStyle">
-          <!--Last Message-->
-          {{ getLastMessage(items) }}
-        </div>
-        <!--BadgeCount-->
-        <badge-count
-          *ngIf="items.unreadMessageCount > 0"
-          [UnreadMessageCount]="items.unreadMessageCount"
-        ></badge-count>
-      </div>
+      <!--BadgeCount-->
+      <badge-count
+        *ngIf="ConversationDetails.unreadMessageCount > 0"
+        [UnreadMessageCount]="ConversationDetails.unreadMessageCount"
+      ></badge-count>
     </div>
   </div>
 </div>
