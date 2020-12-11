@@ -35,6 +35,10 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(["/conversations-list"]);
   }
 
+  navigateToConversationListScreen() {
+    this.router.navigate(["/conversation-screen"]);
+  }
+
   /**
    * Logout the user that is currently logged in
    * @param
