@@ -300,11 +300,11 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         this.updateUser(item);
         break;
       }
-      // case enums.TEXT_MESSAGE_RECEIVED:
-      // case enums.MEDIA_MESSAGE_RECEIVED:
-      // case enums.CUSTOM_MESSAGE_RECEIVED:
-      //   this.updateConversation(message);
-      //   break;
+      case enums.TEXT_MESSAGE_RECEIVED:
+      case enums.MEDIA_MESSAGE_RECEIVED:
+      case enums.CUSTOM_MESSAGE_RECEIVED:
+        this.updateConversation(message);
+        break;
       // case enums.MESSAGE_EDITED:
       // case enums.MESSAGE_DELETED:
       //   this.conversationEditedDeleted(message);
@@ -366,6 +366,148 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       this.conversationList = conversationlist;
     }
   }
+
+  /**
+   *
+   * Gets the last message
+   * @param conversation
+   */
+  makeLastMessage(message, conversation = {}) {
+    const newMessage = Object.assign({}, message);
+    return newMessage;
+  }
+
+  /**
+   *
+   * Updates Conversations as Text/Custom Messages are received
+   * @param
+   *
+   */
+  updateConversation(message, notification = true) {
+    // console.log("messagee ", message);
+    this.makeConversation(message)
+      .then((response: any) => {
+        const conversationKey = response.conversationKey;
+        const conversationObj = response.conversationObj;
+        const conversationList = response.conversationList;
+        console.log("ck ", conversationKey);
+
+        if (conversationKey > -1) {
+          let unreadMessageCount = this.makeUnreadMessageCount(conversationObj);
+          let lastMessageObj = this.makeLastMessage(message, conversationObj);
+          let newConversationObj = {
+            ...conversationObj,
+            lastMessage: lastMessageObj,
+            unreadMessageCount: unreadMessageCount,
+          };
+          console.log("cc ", conversationList);
+          console.log("new cc ", newConversationObj);
+
+          conversationList.splice(conversationKey, 1);
+          conversationList.unshift(newConversationObj);
+          this.conversationList = conversationList;
+          console.log("this1", this.conversationList);
+
+          if (notification) {
+            // this.playAudio(message);
+          }
+        } else {
+          let unreadMessageCount = this.makeUnreadMessageCount();
+          let lastMessageObj = this.makeLastMessage(message);
+          let newConversationObj = {
+            ...conversationObj,
+            lastMessage: lastMessageObj,
+            unreadMessageCount: unreadMessageCount,
+          };
+          conversationList.unshift(newConversationObj);
+          this.conversationList = conversationList;
+
+          if (notification) {
+            // this.playAudio(message);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(
+          "This is an error in converting message to conversation",
+          error
+        );
+      });
+  }
+
+  /**
+   *
+   * Gets The Count of Unread Messages
+   * @param
+   */
+  makeUnreadMessageCount(conversation: any = {}, operator = null) {
+    if (Object.keys(conversation).length === 0) {
+      return 1;
+    }
+
+    let unreadMessageCount = parseInt(conversation.unreadMessageCount);
+    if (
+      this.selectedConversation &&
+      this.selectedConversation.conversationId === conversation.conversationId
+    ) {
+      unreadMessageCount = 0;
+    } else if (
+      (this.item &&
+        this.item.hasOwnProperty("guid") &&
+        conversation.conversationWith.hasOwnProperty("guid") &&
+        this.item.guid === conversation.conversationWith.guid) ||
+      (this.item &&
+        this.item.hasOwnProperty("uid") &&
+        conversation.conversationWith.hasOwnProperty("uid") &&
+        this.item.uid === conversation.conversationWith.uid)
+    ) {
+      unreadMessageCount = 0;
+    } else {
+      if (operator && operator === "decrement") {
+        unreadMessageCount = unreadMessageCount ? unreadMessageCount - 1 : 0;
+      } else {
+        unreadMessageCount = unreadMessageCount + 1;
+      }
+    }
+
+    return unreadMessageCount;
+  }
+
+  /**
+   *
+   * @param
+   */
+  makeConversation(message) {
+    const promise = new Promise((resolve, reject) => {
+      CometChat.CometChatHelper.getConversationFromMessage(message)
+        .then((conversation: any) => {
+          let conversationList = [...this.conversationList];
+          let conversationKey = conversationList.findIndex(
+            (c) => c.conversationId === conversation.conversationId
+          );
+
+          let conversationObj = { ...conversation };
+          if (conversationKey > -1) {
+            conversationObj = { ...conversationList[conversationKey] };
+          }
+
+          resolve({
+            conversationKey: conversationKey,
+            conversationObj: conversationObj,
+            conversationList: conversationList,
+          });
+        })
+        .catch((error) => reject(error));
+    });
+
+    return promise;
+  }
+
+  /**
+   * Emits User on User Click
+   * @param user
+   */
+
   userClicked(user) {
     this.onUserClick.emit(user);
   }
