@@ -1,12 +1,24 @@
-<div class="listItem">
+<div
+  class="listItem"
+  [ngClass]="{
+    selectedGroupStyle: group?.guid === selectedGroup?.guid
+  }"
+  (click)="groupClicked(group)"
+>
   <div class="itemThumbnailStyle">
-    <avatar></avatar>
+    <avatar [avatar]="group.icon"></avatar>
   </div>
   <div class="itemDetailStyle">
     <div class="itemNameWrapperStyle">
-      <span class="listItemName">Test Group</span>
-      <span class="listItemIcon"></span>
+      <span class="listItemName">{{ group.name }}</span>
+      <span class="shieldIcon" *ngIf="group.type === 'private'"></span>
+      <span class="lockIcon" *ngIf="group.type === 'password'"></span>
     </div>
-    <div class="itemDescStyle">2 members</div>
+    <div class="itemDescStyle" *ngIf="group.membersCount == 1">
+      {{ group?.membersCount }} member
+    </div>
+    <div class="itemDescStyle" *ngIf="group.membersCount > 1">
+      {{ group?.membersCount }} members
+    </div>
   </div>
 </div>
