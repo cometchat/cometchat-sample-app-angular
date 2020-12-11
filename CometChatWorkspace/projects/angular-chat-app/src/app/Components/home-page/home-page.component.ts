@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
   }
 
   navigateToConversationList() {
-    this.router.navigate(["/test"]);
+    this.router.navigate(["/conversations-list"]);
   }
 
   /**
