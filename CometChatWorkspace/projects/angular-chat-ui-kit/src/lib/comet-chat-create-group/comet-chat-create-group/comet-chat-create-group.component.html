@@ -1,1 +1,58 @@
-<p>comet-chat-create-group works!</p>
+<div>
+  <backdrop></backdrop>
+  <!-- <p>test</p> -->
+  <div class="modalWrapperStyle">
+    <span class="modalCloseStyle"></span>
+    <div class="modalBodyStyle">
+      <table class="modalTableStyle">
+        <caption class="tableCaptionStyle">
+          Create Group
+        </caption>
+        <tbody class="tableBodyStyle">
+          <tr>
+            <td><div class="tableErrorStyle">TestError</div></td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                class="inputStyle"
+                autoComplete="off"
+                placeholder="Enter group name"
+                type="text"
+                tabIndex="1"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <select class="inputStyle" tabIndex="2">
+                <option value="">Select group type</option>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+                <option value="protected">Password Protected</option>
+              </select>
+            </td>
+          </tr>
+          <!-- Password -->
+          <tr>
+            <td>
+              <input
+                class="inputStyle"
+                autoComplete="off"
+                placeholder="Enter group password"
+                type="password"
+                tabIndex="3"
+              />
+            </td>
+          </tr>
+          <!-- Password -->
+        </tbody>
+        <tfoot class="tableFootStyle">
+          <tr>
+            <td><button tabIndex="4">Create</button></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
