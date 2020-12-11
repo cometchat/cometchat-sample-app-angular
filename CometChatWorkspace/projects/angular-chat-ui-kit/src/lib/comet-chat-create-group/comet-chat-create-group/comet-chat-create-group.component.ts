@@ -131,6 +131,15 @@ export class CometChatCreateGroupComponent implements OnInit {
   }
 
   /**
+   * Emits an action indicating the parent to close the create group view
+   * @param
+   */
+  closeCreateGroupView() {
+    console.log(" create Group --> close group view ");
+    this.actionGenerated.emit({ type: "closeCreateGroupView", payLoad: null });
+  }
+
+  /**
    * Resets all the Group creation form data to initial values
    * @param
    */
