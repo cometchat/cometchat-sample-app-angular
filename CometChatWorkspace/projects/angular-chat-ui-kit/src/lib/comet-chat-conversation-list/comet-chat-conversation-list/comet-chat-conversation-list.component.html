@@ -12,10 +12,12 @@
   </div>
   <div class="chatsListStyle">
     <!--Conversation List-->
-    <conversation-view
-      [ConversationListDetails]="conversationList"
-      [loggedInUser]="loggedInUser"
-    >
-    </conversation-view>
+    <div *ngFor="let conversation of conversationList">
+      <conversation-view
+        [ConversationDetails]="conversation"
+        [loggedInUser]="loggedInUser"
+      >
+      </conversation-view>
+    </div>
   </div>
 </div>
