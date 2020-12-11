@@ -5,6 +5,8 @@ import {
   OnInit,
   SimpleChanges,
   ChangeDetectorRef,
+  Output,
+  EventEmitter,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
@@ -16,8 +18,8 @@ import { CometChatManager } from "../../utils/controller";
   styleUrls: ["./comet-chat-conversation-list.component.css"],
 })
 export class CometChatConversationListComponent implements OnInit, OnChanges {
-  @Input() item = null;
-  @Input() type = null;
+  @Input() item;
+  @Input() type;
 
   decoratorMessage: string;
   loggedInUser = null;
@@ -25,6 +27,9 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   onItemClick = null;
   selectedConversation = undefined;
   ConversationListManager;
+
+  @Output() onUserClick: EventEmitter<any> = new EventEmitter();
+  // @Output() curentType: EventEmitter<any> = new EventEmitter();
 
   // this.theme = Object.assign({}, theme, this.props.theme);
 
@@ -43,7 +48,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       if (!this.ref["destroyed"]) {
         this.ref.detectChanges();
       }
-    }, 5000);
+    }, 1500);
   }
 
   ngOnChanges(change: SimpleChanges) {}
@@ -231,10 +236,10 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
               ...this.conversationList,
               ...conversationList,
             ];
-            console.log(
-              "ConversationList-> conversationList  ",
-              this.conversationList
-            );
+            // console.log(
+            //   "ConversationList-> conversationList  ",
+            //   this.conversationList
+            // );
           })
           .catch((error) => {
             this.decoratorMessage = "Error";
@@ -360,5 +365,8 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
 
       this.conversationList = conversationlist;
     }
+  }
+  userClicked(user) {
+    this.onUserClick.emit(user);
   }
 }
