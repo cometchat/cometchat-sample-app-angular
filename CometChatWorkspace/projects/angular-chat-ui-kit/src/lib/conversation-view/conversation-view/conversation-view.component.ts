@@ -3,7 +3,9 @@ import {
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
+  EventEmitter,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
@@ -16,6 +18,8 @@ import * as enums from "../../utils/enums";
 export class ConversationViewComponent implements OnInit, OnChanges {
   @Input() ConversationDetails = null;
   @Input() loggedInUser = null;
+  @Output() onUserClick: EventEmitter<any> = new EventEmitter();
+
   setAvatar: string;
   lastMessage: string;
   lastMessageTimestamp: string;
@@ -39,7 +43,7 @@ export class ConversationViewComponent implements OnInit, OnChanges {
     }
   }
   ngOnInit() {
-    // console.log("ConversationView -> ngOnInit  ", this.ConversationDetails);
+    console.log("ConversationView -> ngOnInit  ", this.ConversationDetails);
     this.getLastMessage(this.ConversationDetails);
     this.getLastMessageTimestamp(this.ConversationDetails);
     this.getName(this.ConversationDetails);
@@ -222,4 +226,13 @@ export class ConversationViewComponent implements OnInit, OnChanges {
 
     return message;
   };
+
+  /**
+   * Emitting the user clicked so that it can be used in the parent component
+   * @param Any userToEmit
+   */
+  onUserClicked(userToEmit) {
+    console.log(`user clicked is `, userToEmit);
+    this.onUserClick.emit(userToEmit);
+  }
 }
