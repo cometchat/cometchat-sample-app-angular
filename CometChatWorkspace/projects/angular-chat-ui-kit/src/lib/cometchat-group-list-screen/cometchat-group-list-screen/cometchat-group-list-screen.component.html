@@ -1,1 +1,44 @@
-<p>cometchat-group-list-screen works!</p>
+<div class="groupScreenStyle">
+  <div class="groupScreenSidebarStyle">
+    <!-- Group List left side bar -->
+    <comet-chat-group-list
+      (onGroupClick)="groupClicked($event)"
+    ></comet-chat-group-list>
+  </div>
+
+  <div class="groupScreenMainStyle" *ngIf="item !== null">
+    <cometchat-message-list-screen
+      [item]="item"
+      [type]="type"
+      [composedthreadmessage]="composedthreadmessage"
+      (actionGenerated)="actionHandler($event)"
+    ></cometchat-message-list-screen>
+  </div>
+
+  <div
+    class="groupScreenSecondaryStyle"
+    *ngIf="threadMessageView || viewDetailScreen"
+  >
+    <!-- Message Thread Right side bar -->
+    <message-thread
+      *ngIf="threadMessageView"
+      [item]="threadMessageItem"
+      [type]="threadMessageType"
+      [parentMessage]="threadMessageParent"
+      (actionGenerated)="actionHandler($event)"
+    ></message-thread>
+
+    <!-- Detail sceen -->
+    <comet-chat-user-detail
+      *ngIf="viewDetailScreen"
+      [item]="item"
+      [type]="type"
+    ></comet-chat-user-detail>
+  </div>
+  <image-view
+    *ngIf="fullScreenViewImage"
+    [MessageDetails]="imageView"
+    [open]="true"
+    (actionGenerated)="actionHandler($event)"
+  ></image-view>
+</div>
