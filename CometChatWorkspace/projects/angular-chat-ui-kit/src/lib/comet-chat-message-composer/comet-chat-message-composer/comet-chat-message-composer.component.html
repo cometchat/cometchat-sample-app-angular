@@ -128,7 +128,12 @@
             (click)="sendTextMessage()"
           >
           </span>
-          <span class="reactionBtnStyle" id="reaction" *ngIf="reactdisable">
+          <span
+            class="reactionBtnStyle"
+            id="reaction"
+            *ngIf="reactdisable"
+            (click)="sendReaction($event)"
+          >
           </span>
         </div>
       </div>
