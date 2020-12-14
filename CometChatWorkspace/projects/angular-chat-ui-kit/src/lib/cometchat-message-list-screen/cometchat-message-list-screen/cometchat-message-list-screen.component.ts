@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import { INCOMING_MESSAGE_SOUND } from "../../resources/audio/incomingMessageSound";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-message-list-screen",
   templateUrl: "./cometchat-message-list-screen.component.html",
@@ -114,9 +114,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
             this.scrollToBottomOfChatWindow();
           }, 2500);
 
-          // console.log(
-          //   "received a message from the user , u r chatting with , going to append it"
-          // );
           this.appendMessage(messages);
         }
 
@@ -203,7 +200,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         break;
       }
       case "showReaction": {
-        // this.showReaction(messages);
+        this.showReaction(messages);
         break;
       }
       case "stopReaction": {
@@ -383,21 +380,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   }
 
   handleScroll(e) {
-    // console.log(`Message List Screen --> user started scrollling `, e);
-
-    // console.log(
-    //   `Message List Screen --> e.currentTarget.scrollHeight `,
-    //   e.currentTarget.scrollHeight
-    // );
-    // console.log(
-    //   `Message List Screen --> e.currentTarget.scrollTop `,
-    //   e.currentTarget.scrollTop
-    // );
-    // console.log(
-    //   `Message List Screen --> e.currentTarget.clientHeight `,
-    //   e.currentTarget.clientHeight
-    // );
-
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
@@ -409,18 +391,9 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     if (top) {
       this.reachedTopOfConversation = top;
     }
-
-    // console.log(
-    //   "Message List Screen --> reached top of chat , fetch old conversation ",
-    //   this.reachedTopOfConversation
-    // );
   }
 
   scrollToBottomOfChatWindow() {
-    // console.log(
-    //   "Message List Screen --> Making The Chat Window Scroll to Bottom "
-    // );
-
     setTimeout(() => {
       this.scrollVariable =
         this.chatWindow.nativeElement.scrollHeight -
@@ -428,22 +401,37 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     }, 1);
   }
 
+  /**
+   * Toggle Reaction -> true/false
+   * @param
+   */
   toggleReaction(flag) {
     this.liveReaction = flag;
-    console.log("msgListScreen ", this.liveReaction);
   }
 
-  // showReaction(reaction) {
-  //   if (!reaction.hasOwnProperty("metadata")) {
-  //     return false;
-  //   }
-  //   if (
-  //     !reaction.metadata.hasOwnProperty("type") ||
-  //     !reaction.metadata.hasOwnProperty("reaction")
-  //   ) {
-  //     return false;
-  //   }
-  // }
+  /**
+   * Shows Reaction on receiving end
+   * @param
+   */
+  showReaction(reaction) {
+    if (!reaction.hasOwnProperty("metadata")) {
+      return false;
+    }
+    if (
+      !reaction.metadata.hasOwnProperty("type") ||
+      !reaction.metadata.hasOwnProperty("reaction")
+    ) {
+      return false;
+    }
+    if (!enums.LIVE_REACTIONS.hasOwnProperty(reaction.metadata.reaction)) {
+      return false;
+    }
+
+    if (reaction.metadata.type === enums.LIVE_REACTION_KEY) {
+      this.reactionName = reaction.metadata.reaction;
+      this.liveReaction = true;
+    }
+  }
 
   /**
    * Plays Audio When Message is Sent
