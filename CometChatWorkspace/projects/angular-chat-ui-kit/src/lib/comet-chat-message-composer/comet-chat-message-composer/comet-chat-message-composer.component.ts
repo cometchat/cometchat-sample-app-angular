@@ -10,6 +10,7 @@ import {
   ElementRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 import {
   trigger,
@@ -565,5 +566,30 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
     clearTimeout(this.isTyping);
     this.isTyping = null;
+  }
+  /**
+   * Sends Live Reaction
+   */
+
+  sendReaction(event) {
+    const typingInterval = 1000;
+    console.log("send reaction");
+
+    const typingMetadata = {
+      type: enums.LIVE_REACTION_KEY,
+      reaction: "heart",
+    };
+
+    this.startTyping(typingInterval, typingMetadata);
+    this.actionGenerated.emit({
+      type: "sendReaction",
+    });
+    // event.persist();
+    setTimeout(() => {
+      this.endTyping(typingMetadata);
+      this.actionGenerated.emit({
+        type: "stopReaction",
+      });
+    }, typingInterval);
   }
 }
