@@ -35,6 +35,8 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   reachedTopOfConversation = false;
   scrollVariable = 0;
 
+  reactionName = "heart";
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -194,6 +196,18 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       case "viewDetail":
       case "menuClicked": {
         this.actionGenerated.emit(action);
+        break;
+      }
+      case "sendReaction": {
+        this.toggleReaction(true);
+        break;
+      }
+      case "showReaction": {
+        // this.showReaction(messages);
+        break;
+      }
+      case "stopReaction": {
+        this.toggleReaction(false);
         break;
       }
       case "clearMessageToBeEdited": {
@@ -413,6 +427,23 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.chatWindow.nativeElement.clientHeight;
     }, 1);
   }
+
+  toggleReaction(flag) {
+    this.liveReaction = flag;
+    console.log("msgListScreen ", this.liveReaction);
+  }
+
+  // showReaction(reaction) {
+  //   if (!reaction.hasOwnProperty("metadata")) {
+  //     return false;
+  //   }
+  //   if (
+  //     !reaction.metadata.hasOwnProperty("type") ||
+  //     !reaction.metadata.hasOwnProperty("reaction")
+  //   ) {
+  //     return false;
+  //   }
+  // }
 
   /**
    * Plays Audio When Message is Sent
