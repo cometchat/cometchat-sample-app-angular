@@ -128,7 +128,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     if (this.type == "user") {
       receiverId = this.item.uid;
       receiverType = CometChat.RECEIVER_TYPE.USER;
-    } else if (this.item.type == "group") {
+    } else if (this.type == "group") {
+      console.log(
+        ` Message Composer --> see user receing the message details `,
+        this.item
+      );
+
       receiverId = this.item.guid;
       receiverType = CometChat.RECEIVER_TYPE.GROUP;
     }
