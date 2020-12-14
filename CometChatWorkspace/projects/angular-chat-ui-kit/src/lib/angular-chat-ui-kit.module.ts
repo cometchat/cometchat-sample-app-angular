@@ -32,6 +32,7 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
 import { CometChatGroupListModule } from "./comet-chat-group-list/comet-chat-group-list.module";
 import { GroupViewModule } from "./group-view/group-view.module";
 import { CometChatCreateGroupModule } from "./comet-chat-create-group/comet-chat-create-group.module";
+import { CometchatGroupListScreenModule } from "./cometchat-group-list-screen/cometchat-group-list-screen.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -65,6 +66,7 @@ import { CometChatCreateGroupModule } from "./comet-chat-create-group/comet-chat
     CometChatGroupListModule,
     GroupViewModule,
     CometChatCreateGroupModule,
+    CometchatGroupListScreenModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -98,6 +100,7 @@ import { CometChatCreateGroupModule } from "./comet-chat-create-group/comet-chat
     CometChatGroupListModule,
     GroupViewModule,
     CometChatCreateGroupModule,
+    CometchatGroupListScreenModule,
   ],
 })
 export class AngularChatUiKitModule {}
