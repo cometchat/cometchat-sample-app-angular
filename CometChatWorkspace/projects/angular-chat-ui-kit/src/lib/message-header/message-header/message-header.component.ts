@@ -160,8 +160,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.item.guid === item.receiverId
         ) {
           this.status = item.sender.name + " is typing...";
-          // this.setState({ status: `${item.sender.name} is typing...` });
-          // this.props.actionGenerated("showReaction", item);
+          this.actionGenerated.emit({
+            type: "showReaction",
+            payLoad: item,
+          });
         } else if (
           this.type === "user" &&
           this.type === item.receiverType &&
@@ -169,8 +171,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
         ) {
           this.isTyping = false;
           this.status = "typing...";
-          // this.setState({ status: "typing..." });
-          // this.props.actionGenerated("showReaction", item);
+          this.actionGenerated.emit({
+            type: "showReaction",
+            payLoad: item,
+          });
         }
         break;
       }
@@ -181,13 +185,15 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.item.guid === item.receiverId
         ) {
           // this.setStatusForGroup();
-          // this.props.actionGenerated("stopReaction", item);
+          this.actionGenerated.emit({
+            type: "stopReaction",
+            payLoad: item,
+          });
         } else if (
           this.type === "user" &&
           this.type === item.receiverType &&
           this.item.uid === item.sender.uid
         ) {
-          // this.status = this.item.status + "haha";
           if (this.item.status === "online") {
             console.log("typing online");
             this.status = null;
@@ -195,18 +201,19 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           } else {
             this.getDate(item.lastActiveAt);
           }
-          // this.props.actionGenerated("stopReaction", item);
-          // if(this.state.presence === "online") {
-          //   this.setState({ status: "online", presence: "online" });
-          // } else {
-          //   this.setStatusForUser();
-          // }
+          this.actionGenerated.emit({
+            type: "stopReaction",
+            payLoad: item,
+          });
         }
         break;
       }
     }
   }
-
+  /**
+   * Get Last Active Date
+   * @param
+   */
   getDate(date) {
     let lastActiveDate = "Last Active At: ";
 
