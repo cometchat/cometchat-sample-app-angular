@@ -8,8 +8,7 @@ import {
   OnChanges,
 } from "@angular/core";
 
-import { BLOCK_USER } from "../../utils/enums";
-import { UNBLOCK_USER } from "../../utils/enums";
+import { BLOCK_USER, UNBLOCK_USER } from "../../utils/enums";
 
 @Component({
   selector: "comet-chat-user-detail",
