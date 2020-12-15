@@ -1,11 +1,19 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+  OnChanges,
+} from "@angular/core";
 
 @Component({
   selector: "receiver-sticker-bubble",
   templateUrl: "./receiver-sticker-bubble.component.html",
   styleUrls: ["./receiver-sticker-bubble.component.css"],
 })
-export class ReceiverStickerBubbleComponent implements OnInit {
+export class ReceiverStickerBubbleComponent implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
 
@@ -22,7 +30,24 @@ export class ReceiverStickerBubbleComponent implements OnInit {
 
   stickerName: string;
   stickerUrl: string;
+
+  messageFrom = "receiver";
+
   constructor() {}
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change["MessageDetails"]) {
+      if (
+        change["MessageDetails"].previousValue !==
+        change["MessageDetails"].currentValue
+      ) {
+        const message = Object.assign({}, this.MessageDetails, {
+          messageFrom: this.messageFrom,
+        });
+        this.MessageDetails = message;
+      }
+    }
+  }
 
   ngOnInit() {
     /**
