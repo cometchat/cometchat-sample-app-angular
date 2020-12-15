@@ -118,6 +118,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         this.replyPreview = null;
         break;
       }
+      case "sendSticker":
+        this.sendSticker(message);
+        break;
+      case "closeSticker":
+        this.toggleStickerPicker();
+        break;
     }
   }
 
@@ -591,5 +597,48 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         type: "stopReaction",
       });
     }, typingInterval);
+  }
+
+  /**
+   * Toggles Sticker Window
+   */
+  toggleStickerPicker() {
+    const stickerViewer = this.stickerViewer;
+    this.stickerViewer = !stickerViewer;
+  }
+
+  /**
+   * Sends Sticker Message
+   * @param
+   */
+  sendSticker(stickerMessage) {
+    this.messageSending = true;
+    const { receiverId, receiverType } = this.getReceiverDetails();
+    const customData = {
+      sticker_url: stickerMessage.stickerUrl,
+      sticker_name: stickerMessage.stickerName,
+    };
+    const customType = enums.CUSTOM_TYPE_STICKER;
+    const customMessage = new CometChat.CustomMessage(
+      receiverId,
+      receiverType,
+      customType,
+      customData
+    );
+    CometChat.sendCustomMessage(customMessage)
+      .then((message) => {
+        console.log("custom msg ", message);
+
+        this.messageSending = false;
+        this.playAudio();
+        this.actionGenerated.emit({
+          type: "messageComposed",
+          payLoad: [message],
+        });
+      })
+      .catch((error) => {
+        this.messageSending = false;
+        console.log("custom message sending failed with error", error);
+      });
   }
 }
