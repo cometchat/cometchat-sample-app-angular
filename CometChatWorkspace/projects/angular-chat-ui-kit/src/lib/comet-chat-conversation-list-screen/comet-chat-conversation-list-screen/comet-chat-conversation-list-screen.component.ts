@@ -23,7 +23,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // console.log("item is ", this.item);
+    //console.log("item is ", this.item);
     // console.log("type is ", this.type);
 
     // if (!Object.keys(this.item).length) {
@@ -193,6 +193,9 @@ export class CometChatConversationListScreenComponent implements OnInit {
    */
   userClicked(event) {
     // console.log("event is  ", event);
+    this.item = event;
+    // console.log("item is userclicked ", this.item);
+
     this.closeThreadMessages();
     this.viewDetailScreen = false;
     this.item = event.conversationWith;
