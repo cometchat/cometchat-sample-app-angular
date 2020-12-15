@@ -65,7 +65,7 @@
   max-width: 250px;
   border-radius: 12px;
   display: inherit;
-  outline: none;
+  outline: 0 !important;
 }
 
 .messageInfoWrapperStyle {
