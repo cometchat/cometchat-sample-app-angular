@@ -1,1 +1,23 @@
-<p>sender-sticker-bubble works!</p>
+<div class="messageContainerStyle">
+  <tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageImgWrapper">
+      <!--sticker img-->
+      <img [src]="stickerUrl" />
+    </div>
+  </div>
+  <div class="messageInfoWrapperStyle">
+    <reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </reply-count>
+    <read-reciept [MessageDetails]="MessageDetails"></read-reciept>
+  </div>
+</div>
