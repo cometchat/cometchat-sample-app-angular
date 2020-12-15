@@ -2,6 +2,8 @@
   <div class="chatScreenSidebarStyle">
     <comet-chat-conversation-list
       (onUserClick)="userClicked($event)"
+      [item]="item"
+      [type]="type"
     ></comet-chat-conversation-list>
   </div>
   <div class="chatScreenMainStyle" *ngIf="item !== null">
