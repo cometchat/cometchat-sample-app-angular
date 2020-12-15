@@ -29,6 +29,8 @@ import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-mes
 import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 import { ReplyCountModule } from "./reply-count/reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
+import { LiveReactionModule } from "./live-reaction/live-reaction.module";
+import { StickerViewModule } from "./sticker-view/sticker-view.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -59,6 +61,8 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    LiveReactionModule,
+    StickerViewModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -89,6 +93,8 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    LiveReactionModule,
+    StickerViewModule,
   ],
 })
 export class AngularChatUiKitModule {}
