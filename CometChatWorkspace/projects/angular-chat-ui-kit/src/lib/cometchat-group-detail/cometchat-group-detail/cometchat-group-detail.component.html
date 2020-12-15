@@ -1,1 +1,57 @@
-<p>cometchat-group-detail works!</p>
+<div class="detailStyle">
+  <div class="headerStyle">
+    <div class="headerCloseStyle"></div>
+    <h4 class="headerTitleStyle">Details</h4>
+  </div>
+  <div class="detailPaneStyle">
+    <!-- MEMBER SECTION BELOW-->
+    <div class="sectionStyle">
+      <h6 class="sectionHeaderStyle">Members</h6>
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle">View Members</div>
+        </div>
+      </div>
+
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle">Add Members</div>
+        </div>
+      </div>
+
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle">Banned Members</div>
+        </div>
+      </div>
+    </div>
+    <!-- MEMBER SECTION ABOVE-->
+
+    <!-- OPTION SECTION BELOW-->
+    <div class="sectionStyle">
+      <h6 class="sectionHeaderStyle">Options</h6>
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle">Leave Group</div>
+        </div>
+      </div>
+
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle itemDeleteLinkStyle">Delete and Exit</div>
+        </div>
+      </div>
+    </div>
+    <!-- OPTION SECTION ABOVE-->
+
+    <!-- SHARED MEDIA SECTION BELOW-->
+    <shared-media-view [item]="item" [type]="type"></shared-media-view>
+    <!-- SHARED MEDIA SECTION ABOVE-->
+  </div>
+
+  <!-- VIEW MEMBERS COMPONENT -->
+
+  <!-- ADD MEMBERS COMPONENT -->
+
+  <!-- BANNED MEMBERS COMPONENT -->
+</div>
