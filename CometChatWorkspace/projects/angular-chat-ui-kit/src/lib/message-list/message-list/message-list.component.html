@@ -90,6 +90,23 @@
             </receiver-audio-bubble>
           </div>
           <!--CASE FOR AUDIO ENDS -->
+
+          <!--CASE FOR STICKER -->
+          <div *ngSwitchCase="'extension_sticker'">
+            <sender-sticker-bubble
+              *ngIf="msg.sender.uid === loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </sender-sticker-bubble>
+            <receiver-sticker-bubble
+              *ngIf="msg.sender.uid !== loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </receiver-sticker-bubble>
+          </div>
+          <!--CASE FOR STICKER ENDS -->
         </div>
       </ng-template>
     </div>
