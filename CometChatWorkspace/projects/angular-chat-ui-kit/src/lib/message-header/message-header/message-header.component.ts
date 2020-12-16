@@ -25,7 +25,8 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   msgListenerId = "head_message_" + new Date().getTime();
   groupListenerId = "head_group_" + new Date().getTime();
   status: string = "";
-  isTyping: boolean = true;
+  isTyping: boolean = false;
+  loggedInUser = null;
 
   constructor() {}
 
@@ -48,11 +49,34 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.attachListeners();
+
+    this.getLoggedInUserInfo();
+
+    if (this.type == "group") {
+      this.setGroupMemeberCountStatus(this.item.membersCount);
+    }
   }
 
   ngOnDestroy() {
     //Removing User Presence , typing and Group Listeners
     this.removeListeners();
+  }
+
+  /**
+   * Gets Information of the currently logged in user
+   * @param
+   */
+  getLoggedInUserInfo() {
+    CometChat.getLoggedinUser()
+      .then((user) => {
+        this.loggedInUser = user;
+      })
+      .catch((error) => {
+        console.log(
+          "[CometChatGroupList] getUsers getLoggedInUser error",
+          error
+        );
+      });
   }
 
   attachListeners() {
@@ -137,6 +161,33 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
         }
         break;
       }
+      case enums.GROUP_MEMBER_KICKED:
+      case enums.GROUP_MEMBER_BANNED:
+      case enums.GROUP_MEMBER_LEFT:
+        if (
+          this.type === "group" &&
+          this.item.guid === item.guid &&
+          this.loggedInUser.uid !== groupUser.uid
+        ) {
+          let membersCount = parseInt(item.membersCount);
+          this.item.membersCount = membersCount;
+          this.setGroupMemeberCountStatus(membersCount);
+        }
+        break;
+      case enums.GROUP_MEMBER_JOINED:
+        if (this.type === "group" && this.item.guid === item.guid) {
+          let membersCount = parseInt(item.membersCount);
+          this.item.membersCount = membersCount;
+          this.setGroupMemeberCountStatus(membersCount);
+        }
+        break;
+      case enums.GROUP_MEMBER_ADDED:
+        if (this.type === "group" && this.item.guid === item.guid) {
+          let membersCount = parseInt(item.membersCount);
+          this.item.membersCount = membersCount;
+          this.setGroupMemeberCountStatus(membersCount);
+        }
+        break;
       case enums.TYPING_STARTED: {
         if (
           this.type === "group" &&
@@ -151,7 +202,7 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.uid === item.sender.uid
         ) {
-          this.isTyping = false;
+          this.isTyping = true;
           this.status = "typing...";
           // this.setState({ status: "typing..." });
           // this.props.actionGenerated("showReaction", item);
@@ -164,6 +215,8 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.guid === item.receiverId
         ) {
+          this.setGroupMemeberCountStatus(this.item.membersCount);
+
           // this.setStatusForGroup();
           // this.props.actionGenerated("stopReaction", item);
         } else if (
@@ -175,7 +228,7 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           if (this.item.status === "online") {
             console.log("typing online");
             this.status = null;
-            this.isTyping = true;
+            this.isTyping = false;
           } else {
             this.getDate(item.lastActiveAt);
           }
@@ -188,6 +241,18 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
         }
         break;
       }
+    }
+  }
+
+  /**
+   * Sets status of the group according to its member count
+   * @param number membersCount
+   */
+  setGroupMemeberCountStatus(membersCount) {
+    if (membersCount > 1) {
+      this.status = membersCount + " members";
+    } else {
+      this.status = membersCount + " member";
     }
   }
 
