@@ -126,6 +126,13 @@ color: `${props.theme.color.white}`; */
   font-style: normal;
   padding: 8px 0;
 }
+.previewTextStyle > a {
+  text-decoration: none;
+  color: #0432ff;
+}
+.previewTextStyle > a:hover {
+  color: #04009d;
+}
 
 .previewLinkStyle {
   display: flex;
