@@ -47,7 +47,7 @@ export class LiveReactionComponent implements OnInit {
   constructor() {}
 
   ngOnDestroy() {
-    this.timer = null;
+    clearTimeout(this.timer);
   }
 
   ngOnInit() {
