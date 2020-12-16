@@ -6,6 +6,7 @@ import { CometChatManager } from "../../utils/controller";
   styleUrls: ["./comet-chat-conversation-list-screen.component.css"],
 })
 export class CometChatConversationListScreenComponent implements OnInit {
+  curentItem;
   item = null;
   type = "";
   loggedInUser;
@@ -224,12 +225,13 @@ export class CometChatConversationListScreenComponent implements OnInit {
    */
   userClicked(event) {
     // console.log("event is  ", event);
-    this.item = event;
+    // this.item = event;
     // console.log("item is userclicked ", this.item);
 
     this.closeThreadMessages();
     this.viewDetailScreen = false;
     this.item = event.conversationWith;
+    this.curentItem = this.item;
     if (this.item.hasOwnProperty("uid")) {
       this.type = "user";
     } else {
