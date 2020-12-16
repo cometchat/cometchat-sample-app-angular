@@ -29,6 +29,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
   fullScreenViewImage: boolean = false;
 
   groupToUpdate;
+  groupMessage = [];
 
   constructor() {}
 
@@ -112,6 +113,9 @@ export class CometchatGroupListScreenComponent implements OnInit {
         this.updateMembersCount(data.item, data.count);
         break;
       }
+      case "groupUpdated":
+        this.groupUpdated(data.messages, data.key, data.group, data.options);
+        break;
     }
   }
 
@@ -178,10 +182,12 @@ export class CometchatGroupListScreenComponent implements OnInit {
         type: enums.ACTION_TYPE_GROUPMEMBER,
         sentAt: sentAt,
       };
-      // messageList.push(messageObj);
+      messageList.push(messageObj);
 
       console.log("group list screen --> message to be dislayed ", messageObj);
     });
+
+    this.groupMessage = messageList;
 
     // this.setState({ groupmessage: messageList });
   };
@@ -195,5 +201,37 @@ export class CometchatGroupListScreenComponent implements OnInit {
 
     this.item = group;
     this.groupToUpdate = group;
+  };
+
+  /**
+   * Updates Current Group Information
+   * @param
+   */
+  groupUpdated = (message, key, group, options) => {
+    switch (key) {
+      case enums.GROUP_MEMBER_BANNED:
+      case enums.GROUP_MEMBER_KICKED: {
+        if (options.user.uid === this.loggedInUser.uid) {
+          this.item = {};
+          this.type = "group";
+          this.viewDetailScreen = false;
+        }
+        break;
+      }
+      case enums.GROUP_MEMBER_SCOPE_CHANGED: {
+        if (options.user.uid === this.loggedInUser.uid) {
+          const newObj = Object.assign({}, this.item, {
+            scope: options["scope"],
+          });
+
+          this.item = {};
+          this.type = "group";
+          this.viewDetailScreen = false;
+        }
+        break;
+      }
+      default:
+        break;
+    }
   };
 }
