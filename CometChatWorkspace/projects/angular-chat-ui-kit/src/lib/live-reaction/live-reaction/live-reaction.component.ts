@@ -38,8 +38,6 @@ export class LiveReactionComponent implements OnInit {
   before;
   items = [];
   timer;
-  itemList = ["1", "2", "3", "4"];
-  emojis = [];
   checkAnimatedState = "normal";
 
   @ViewChild("emoji", null) emojiWindow: ElementRef;
