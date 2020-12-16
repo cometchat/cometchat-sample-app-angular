@@ -231,10 +231,10 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
               ...this.conversationList,
               ...conversationList,
             ];
-            console.log(
-              "ConversationList-> conversationList  ",
-              this.conversationList
-            );
+            // console.log(
+            //   "ConversationList-> conversationList  ",
+            //   this.conversationList
+            // );
           })
           .catch((error) => {
             this.decoratorMessage = "Error";
@@ -253,7 +253,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       });
   }
 
-  ///////////////////////////////////////////////////////VERIFY
   /**
    * Sets User Avatar If Avatar is not present
    * @param
