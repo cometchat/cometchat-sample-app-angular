@@ -1,7 +1,7 @@
 <div>
   <backdrop></backdrop>
   <div class="modalWrapperStyle">
-    <span class="modalCloseStyle"></span>
+    <span class="modalCloseStyle" (click)="closeViewMemberModal()"></span>
     <div class="modalBodyStyle">
       <table class="modalTableStyle">
         <caption class="tableCaptionStyle">
@@ -13,13 +13,23 @@
             <th class="scopeColumnStyle">Scope</th>
 
             <!-- EDIT ACCESS -->
-            <th class="actionColumnStyle">Ban</th>
-            <th class="actionColumnStyle">Kick</th>
+            <th class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
+              Ban
+            </th>
+            <th class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
+              Kick
+            </th>
             <!-- EDIT ACCESS -->
           </tr>
         </thead>
         <tbody class="tableBodyStyle">
-          <member-view></member-view>
+          <member-view
+            *ngFor="let member of memberlist"
+            [member]="member"
+            [item]="item"
+            [type]="type"
+            (actionGenerated)="actionHandler($event)"
+          ></member-view>
         </tbody>
       </table>
     </div>
