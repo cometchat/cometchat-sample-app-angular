@@ -7,8 +7,40 @@
     (actionGenerated)="actionHandler($event)"
   ></tool-tip>
   <div class="messageWrapperStyle">
-    <div class="messageTxtWrapperStyle">
-      <p class="messageTxtStyle message__txt">{{ MessageDetails.data.text }}</p>
+    <div class="messageTxtWrapperStyle" *ngIf="linkPreview === false">
+      <p class="messageTxtStyle message__txt">
+        {{ MessageDetails.data.text }}
+      </p>
+    </div>
+    <div class="messagePreviewContainerStyle" *ngIf="linkPreview">
+      <div class="messagePreviewWrapperStyle">
+        <div class="previewImageStyle">
+          <img [src]="linkImage" />
+        </div>
+        <div class="previewDataStyle">
+          <div class="previewTitleStyle" *ngIf="linkTitle !== ''">
+            <span>
+              <!--titile-->
+              {{ linkTitle }}
+            </span>
+          </div>
+          <div class="previewDescStyle" *ngIf="linkDescription !== ''">
+            <span>
+              <!--descript-->
+              {{ linkDescription }}
+            </span>
+          </div>
+          <div class="previewTextStyle">
+            <!--actual msg-->
+            {{ linkUrl }}
+          </div>
+        </div>
+        <div class="previewLinkStyle">
+          <a [href]="linkUrl" target="_blank">
+            {{ linkText }}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
