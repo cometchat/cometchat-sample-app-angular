@@ -9,7 +9,9 @@
       <h6 class="sectionHeaderStyle">Members</h6>
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">View Members</div>
+          <div class="itemLinkStyle" (click)="toggleViewMember()">
+            View Members
+          </div>
         </div>
       </div>
 
@@ -50,6 +52,13 @@
   </div>
 
   <!-- VIEW MEMBERS COMPONENT -->
+  <cometchat-view-members
+    *ngIf="openViewMember"
+    [item]="item"
+    [type]="type"
+    [memberlist]="memberlist"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-view-members>
 
   <!-- ADD MEMBERS COMPONENT -->
 
