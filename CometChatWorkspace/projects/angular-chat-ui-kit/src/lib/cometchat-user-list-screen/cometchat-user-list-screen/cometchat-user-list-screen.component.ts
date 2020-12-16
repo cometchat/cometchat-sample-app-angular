@@ -37,7 +37,7 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.curentItem = user;
 
     //Close Thread And User Detail Screen When Chat Window Is Changed
-    this.closeThreadMessages();
+    // this.closeThreadMessages();
     this.viewDetailScreen = false;
 
     if (this.curentItem.hasOwnProperty("uid")) {
