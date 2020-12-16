@@ -80,7 +80,9 @@ export class StickerViewComponent implements OnInit {
 
         // console.log("map ", this.stickerSet);
         // this.decoratorMessage = "";
-        this.loading = false;
+        if (stickerList.length !== 0) {
+          this.loading = false;
+        }
         Object.keys(this.stickerSet).map((sectionItem) => {
           const url = this.stickerSet[sectionItem][0];
           this.categoryStickerUrl.push(url);
