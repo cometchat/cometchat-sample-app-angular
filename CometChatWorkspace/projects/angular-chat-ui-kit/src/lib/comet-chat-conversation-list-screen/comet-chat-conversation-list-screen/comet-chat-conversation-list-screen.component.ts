@@ -43,12 +43,12 @@ export class CometChatConversationListScreenComponent implements OnInit {
     let message = action.payLoad;
 
     switch (action.type) {
-      //   case "blockUser":
-      //     this.blockUser();
-      //   break;
-      //   case "unblockUser":
-      //     this.unblockUser();
-      //   break;
+      case "blockUser":
+        this.blockUser();
+        break;
+      case "unblockUser":
+        this.unblockUser();
+        break;
       //   case "audioCall":
       //     this.audioCall();
       //   break;
@@ -61,14 +61,15 @@ export class CometChatConversationListScreenComponent implements OnInit {
         break;
 
       //   // eslint-disable-next-line no-lone-blocks
-      //   case "menuClicked":{
-      //     this.toggleSideBar();
-      //     this.setState({ item: {} });
-      //   }
-      //     break;
-      //   case "closeMenuClicked":
-      //     this.toggleSideBar();
-      //   break;
+      case "menuClicked":
+        {
+          this.toggleSideBar();
+          this.item = {};
+        }
+        break;
+      case "closeMenuClicked":
+        this.toggleSideBar();
+        break;
       //   case "groupUpdated":
       //     this.groupUpdated(item, count, ...otherProps);
       //   break;
@@ -185,6 +186,36 @@ export class CometChatConversationListScreenComponent implements OnInit {
     // console.log("Conversationscreen toggleImageView ", message);
     this.imageView = message;
     this.fullScreenViewImage = !this.fullScreenViewImage;
+  }
+
+  /**
+   * When User Block someone
+   */
+  blockUser() {
+    let usersList = [this.item.uid];
+    CometChatManager.blockUsers(usersList)
+      .then((list) => {
+        this.item = { ...this.item, blockedByMe: true };
+        console.log("block success");
+      })
+      .catch((error) => {
+        console.log("Blocking user fails with error", error);
+      });
+  }
+
+  /**
+   * When User UnBlock someone
+   */
+  unblockUser() {
+    let usersList = [this.item.uid];
+    CometChatManager.unblockUsers(usersList)
+      .then((list) => {
+        this.item = { ...this.item, blockedByMe: false };
+        console.log("unblock success");
+      })
+      .catch((error) => {
+        console.log("unblocking user fails with error", error);
+      });
   }
 
   /**
