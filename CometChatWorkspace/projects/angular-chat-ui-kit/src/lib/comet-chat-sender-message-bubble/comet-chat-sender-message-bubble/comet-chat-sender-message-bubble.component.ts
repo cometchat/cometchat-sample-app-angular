@@ -49,13 +49,14 @@ export class CometChatSenderMessageBubbleComponent implements OnInit {
             const linkObject = linkPreviewObject["links"][0];
             this.linkTitle = linkObject.title;
             this.linkDescription = linkObject.description;
-            this.linkUrl = linkObject.url;
+
+            if (linkObject.url !== this.MessageDetails.data.text) {
+              this.linkUrl = this.MessageDetails.data.text;
+            } else {
+              this.linkUrl = linkObject.url;
+            }
+
             this.linkImage = linkObject.image;
-            console.log("sender link obj ", linkObject);
-            console.log(this.linkTitle !== "");
-
-            console.log("sender link url ", this.linkUrl);
-
             const pattern = /(http:|https:)?\/\/(www\.)?(youtube.com|youtu.be)(\S+)?/;
             const linkText = linkObject["url"].match(pattern)
               ? "View on Youtube"
