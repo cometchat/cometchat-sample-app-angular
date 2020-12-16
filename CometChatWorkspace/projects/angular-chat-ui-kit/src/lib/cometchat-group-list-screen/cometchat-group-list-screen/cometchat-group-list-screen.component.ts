@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "cometchat-group-list-screen",
@@ -12,6 +14,8 @@ export class CometchatGroupListScreenComponent implements OnInit {
   // Defines the types of item that was clicked --> that is .. if its a user or a group
   type = null;
 
+  loggedInUser = null;
+
   threadMessageView: boolean = false;
   threadMessageParent = null;
   threadMessageItem = null;
@@ -24,9 +28,15 @@ export class CometchatGroupListScreenComponent implements OnInit {
   //If clicked then only show image in full screen
   fullScreenViewImage: boolean = false;
 
+  groupToUpdate;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    CometChat.getLoggedinUser().then((user) => {
+      this.loggedInUser = user;
+    });
+  }
 
   /**
    * Listen to the group emitted by the groupList component
@@ -52,6 +62,8 @@ export class CometchatGroupListScreenComponent implements OnInit {
    */
   actionHandler(action) {
     let message = action.payLoad;
+
+    let data = action.payLoad;
 
     console.log("groupListScreen --> action generation is ", action);
 
@@ -89,6 +101,15 @@ export class CometchatGroupListScreenComponent implements OnInit {
           action.payLoad
         );
 
+        break;
+      }
+
+      case "memberScopeChanged": {
+        this.memberScopeChanged(action.payLoad);
+        break;
+      }
+      case "membersUpdated": {
+        this.updateMembersCount(data.item, data.count);
         break;
       }
     }
@@ -139,5 +160,40 @@ export class CometchatGroupListScreenComponent implements OnInit {
   toggleDetailView = () => {
     this.threadMessageView = false;
     this.viewDetailScreen = !this.viewDetailScreen;
+  };
+
+  /**
+   * updates the message list with a message notifying that , scope a some user is changed
+   * @param Any members
+   */
+  memberScopeChanged = (members) => {
+    const messageList = [];
+
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} made ${eachMember.name} ${eachMember.scope}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      // messageList.push(messageObj);
+
+      console.log("group list screen --> message to be dislayed ", messageObj);
+    });
+
+    // this.setState({ groupmessage: messageList });
+  };
+
+  /**
+   * updates The count of  number of members present in a group based on group activities , like adding a member or kicking a member
+   * @param Any members
+   */
+  updateMembersCount = (item, count) => {
+    const group = Object.assign({}, this.item, { membersCount: count });
+
+    this.item = group;
+    this.groupToUpdate = group;
   };
 }

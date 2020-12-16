@@ -33,6 +33,7 @@
       *ngIf="viewDetailScreen"
       [item]="item"
       [type]="type"
+      (actionGenerated)="actionHandler($event)"
     ></cometchat-group-detail>
   </div>
   <image-view
