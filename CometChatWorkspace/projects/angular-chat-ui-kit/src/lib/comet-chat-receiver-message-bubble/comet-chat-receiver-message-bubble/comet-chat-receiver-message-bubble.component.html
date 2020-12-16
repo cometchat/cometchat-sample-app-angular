@@ -29,19 +29,16 @@
               <div class="previewDataStyle">
                 <div class="previewTitleStyle" *ngIf="linkTitle !== ''">
                   <span>
-                    <!--titile-->
                     {{ linkTitle }}
                   </span>
                 </div>
                 <div class="previewDescStyle" *ngIf="linkDescription !== ''">
                   <span>
-                    <!--descript-->
                     {{ linkDescription }}
                   </span>
                 </div>
                 <div class="previewTextStyle">
-                  <!--actual msg-->
-                  {{ linkUrl }}
+                  <a [href]="linkUrl" target="_blank"> {{ linkUrl }} </a>
                 </div>
               </div>
               <div class="previewLinkStyle">
