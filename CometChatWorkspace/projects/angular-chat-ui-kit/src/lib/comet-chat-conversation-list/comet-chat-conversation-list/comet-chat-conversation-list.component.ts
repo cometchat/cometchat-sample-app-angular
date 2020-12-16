@@ -119,6 +119,66 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       })
     );
 
+    CometChat.addGroupListener(
+      this.groupListenerId,
+      new CometChat.GroupListener({
+        onGroupMemberScopeChanged: (
+          message,
+          changedUser,
+          newScope,
+          oldScope,
+          changedGroup
+        ) => {
+          callback(enums.GROUP_MEMBER_SCOPE_CHANGED, changedGroup, message, {
+            user: changedUser,
+            scope: newScope,
+          });
+        },
+        onGroupMemberKicked: (message, kickedUser, kickedBy, kickedFrom) => {
+          callback(enums.GROUP_MEMBER_KICKED, kickedFrom, message, {
+            user: kickedUser,
+            hasJoined: false,
+          });
+        },
+        onGroupMemberBanned: (message, bannedUser, bannedBy, bannedFrom) => {
+          callback(enums.GROUP_MEMBER_BANNED, bannedFrom, message, {
+            user: bannedUser,
+          });
+        },
+        onGroupMemberUnbanned: (
+          message,
+          unbannedUser,
+          unbannedBy,
+          unbannedFrom
+        ) => {
+          callback(enums.GROUP_MEMBER_UNBANNED, unbannedFrom, message, {
+            user: unbannedUser,
+          });
+        },
+        onMemberAddedToGroup: (
+          message,
+          userAdded,
+          userAddedBy,
+          userAddedIn
+        ) => {
+          callback(enums.GROUP_MEMBER_ADDED, userAddedIn, message, {
+            user: userAdded,
+            hasJoined: true,
+          });
+        },
+        onGroupMemberLeft: (message, leavingUser, group) => {
+          callback(enums.GROUP_MEMBER_LEFT, group, message, {
+            user: leavingUser,
+          });
+        },
+        onGroupMemberJoined: (message, joinedUser, joinedGroup) => {
+          callback(enums.GROUP_MEMBER_JOINED, joinedGroup, message, {
+            user: joinedUser,
+          });
+        },
+      })
+    );
+
     CometChat.addMessageListener(
       this.conversationListenerId,
       new CometChat.MessageListener({
@@ -136,6 +196,18 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         },
         onMessageEdited: (editedMessage) => {
           callback(enums.MESSAGE_EDITED, null, editedMessage);
+        },
+      })
+    );
+
+    CometChat.addCallListener(
+      this.callListenerId,
+      new CometChat.CallListener({
+        onIncomingCallReceived: (call) => {
+          callback(enums.INCOMING_CALL_RECEIVED, null, call);
+        },
+        onIncomingCallCancelled: (call) => {
+          callback(enums.INCOMING_CALL_CANCELLED, null, call);
         },
       })
     );
@@ -269,10 +341,10 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       case enums.CUSTOM_MESSAGE_RECEIVED:
         this.updateConversation(message);
         break;
-      // case enums.MESSAGE_EDITED:
-      // case enums.MESSAGE_DELETED:
-      //   this.conversationEditedDeleted(message);
-      //   break;
+      case enums.MESSAGE_EDITED:
+      case enums.MESSAGE_DELETED:
+        this.conversationEditedDeleted(message);
+        break;
       // case enums.INCOMING_CALL_RECEIVED:
       // case enums.INCOMING_CALL_CANCELLED:
       //   this.updateConversation(message, false);
@@ -460,6 +532,40 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         .catch((error) => reject(error));
     });
     return promise;
+  }
+
+  /**
+   * Updates Conversation View when message is edited or deleted
+   */
+  conversationEditedDeleted(message) {
+    this.makeConversation(message)
+      .then((response: any) => {
+        const conversationKey = response.conversationKey;
+        const conversationObj = response.conversationObj;
+        const conversationList = response.conversationList;
+        if (conversationKey > -1) {
+          let lastMessageObj = conversationObj.lastMessage;
+
+          if (lastMessageObj.id === message.id) {
+            const newLastMessageObj = Object.assign(
+              {},
+              lastMessageObj,
+              message
+            );
+            let newConversationObj = Object.assign({}, conversationObj, {
+              lastMessage: newLastMessageObj,
+            });
+            conversationList.splice(conversationKey, 1, newConversationObj);
+            this.conversationList = conversationList;
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(
+          "This is an error in converting message to conversation",
+          error
+        );
+      });
   }
 
   /**
