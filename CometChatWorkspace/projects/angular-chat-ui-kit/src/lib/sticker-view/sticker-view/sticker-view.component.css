@@ -26,11 +26,13 @@
   border-top: 1px solid #eaeaea;
   background-color: #c4c4c4;
 }
-.stickerSectionListStyle::-webkit-scrollbar {
+.stickerListStyle::-webkit-scrollbar {
   /* background: `${props.theme.backgroundColor.primary}` */
   background: #ffffff00;
+  width: 8px;
+  height: 4px;
 }
-.stickerSectionListStyle::-webkit-scrollbar-thumb {
+.stickerListStyle::-webkit-scrollbar-thumb {
   /* background: `${props.theme.backgroundColor.silver}`; */
   background: #ccc;
 }
