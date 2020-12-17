@@ -122,23 +122,6 @@ export class CometchatGroupListScreenComponent implements OnInit {
     }
   }
 
-  memberUnbanned(members) {
-    const messageList = [];
-    members.forEach((eachMember) => {
-      const message = "this.loggedInUser.name unbanned eachMember.name";
-      const sentAt = new Date();
-      const messageObj = {
-        category: "action",
-        message: message,
-        type: enums.ACTION_TYPE_GROUPMEMBER,
-        sentAt: sentAt,
-      };
-      messageList.push(messageObj);
-    });
-
-    this.groupMessage = messageList;
-  }
-
   /**
    * Sets All the Intial Conditions for the threaded View of Messages and Opens thread View
    * @param Any parentMessage
@@ -254,4 +237,25 @@ export class CometchatGroupListScreenComponent implements OnInit {
         break;
     }
   };
+
+  /**
+   *  Unbans the user
+   * @param
+   */
+  memberUnbanned(members) {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} unbanned ${eachMember.name}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
+  }
 }
