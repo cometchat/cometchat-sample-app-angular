@@ -7,6 +7,7 @@ import { CometChatManager } from "../../utils/controller";
 })
 export class CometChatConversationListScreenComponent implements OnInit {
   curentItem;
+  lastMessage;
   item = null;
   type = "";
   loggedInUser;
@@ -40,8 +41,9 @@ export class CometChatConversationListScreenComponent implements OnInit {
       });
   }
 
-  actionHandler(action = null, item = null, count = null, ...other) {
+  actionHandler(action = null, item = null, count = null) {
     let message = action.payLoad;
+    console.log("cls message ", message);
 
     switch (action.type) {
       case "blockUser":
@@ -126,14 +128,20 @@ export class CometChatConversationListScreenComponent implements OnInit {
       //   case "memberScopeChanged":
       //     this.memberScopeChanged(item);
       //     break;
-      //   case "messageComposed":
-      //   case "messageEdited":
-      //   case "messageDeleted":
-      //     this.updateLastMessage(item[0]);
-      //     break;
+      case "messageComposed":
+      case "messageEdited":
+      case "messageDeleted":
+        this.updateLastMessage(message);
+        break;
       default:
         break;
     }
+  }
+
+  updateLastMessage(message) {
+    console.log("last message upated ", message);
+
+    this.lastMessage = message;
   }
 
   toggleSideBar() {
@@ -197,6 +205,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
     CometChatManager.blockUsers(usersList)
       .then((list) => {
         this.item = { ...this.item, blockedByMe: true };
+        this.curentItem = this.item;
         console.log("block success");
       })
       .catch((error) => {
@@ -212,6 +221,8 @@ export class CometChatConversationListScreenComponent implements OnInit {
     CometChatManager.unblockUsers(usersList)
       .then((list) => {
         this.item = { ...this.item, blockedByMe: false };
+        this.curentItem = this.item;
+
         console.log("unblock success");
       })
       .catch((error) => {
@@ -224,7 +235,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
    * @param Event user
    */
   userClicked(event) {
-    // console.log("event is  ", event);
+    console.log("event in cls is  ", event);
     // this.item = event;
     // console.log("item is userclicked ", this.item);
 
@@ -232,6 +243,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
     this.viewDetailScreen = false;
     this.item = event.conversationWith;
     this.curentItem = this.item;
+    this.lastMessage = event.lastMessage;
     if (this.item.hasOwnProperty("uid")) {
       this.type = "user";
     } else {
