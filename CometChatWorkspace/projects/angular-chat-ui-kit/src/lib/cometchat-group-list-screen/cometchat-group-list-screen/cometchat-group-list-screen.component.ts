@@ -29,6 +29,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
   fullScreenViewImage: boolean = false;
 
   groupToUpdate = {};
+  groupToLeave = {};
   groupMessage = [];
 
   constructor() {}
@@ -120,6 +121,10 @@ export class CometchatGroupListScreenComponent implements OnInit {
       case "groupUpdated":
         this.groupUpdated(data.messages, data.key, data.group, data.options);
         break;
+      case enums.LEFT_GROUP: {
+        this.leaveGroup(data);
+        break;
+      }
     }
   }
 
@@ -260,5 +265,15 @@ export class CometchatGroupListScreenComponent implements OnInit {
       default:
         break;
     }
+  };
+
+  /**
+   * Closes group screen and all , after user has left the group
+   * @param
+   */
+  leaveGroup = (group) => {
+    this.groupToLeave = group;
+    this.toggleDetailView();
+    this.item = null;
   };
 }

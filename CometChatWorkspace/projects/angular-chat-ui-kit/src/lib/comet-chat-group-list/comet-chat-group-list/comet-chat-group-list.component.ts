@@ -21,6 +21,7 @@ export class CometChatGroupListComponent
   implements OnInit, OnDestroy, OnChanges {
   @Input() enableSelectedGroupStyling = false;
   @Input() groupToUpdate = null;
+  @Input() groupToLeave = null;
 
   timeout;
   loggedInUser = null;
@@ -79,6 +80,40 @@ export class CometChatGroupListComponent
           });
 
           groups.splice(groupKey, 1, newGroupObj);
+          // this.setState({grouplist: groups});
+
+          this.grouplist = groups;
+        }
+      }
+    }
+
+    if (change["groupToLeave"]) {
+      let prevProps = { groupToLeave: null };
+      let props = { groupToLeave: null };
+
+      prevProps["groupToLeave"] = change["groupToLeave"].previousValue;
+      props["groupToLeave"] = change["groupToLeave"].currentValue;
+
+      if (
+        prevProps.groupToLeave &&
+        prevProps.groupToLeave.guid !== props.groupToLeave.guid
+      ) {
+        const groups = [...this.grouplist];
+        const groupKey = groups.findIndex(
+          (member) => member.guid === props.groupToLeave.guid
+        );
+
+        if (groupKey > -1) {
+          const groupToLeave = props.groupToLeave;
+          const groupObj = { ...groups[groupKey] };
+          const membersCount = parseInt(groupToLeave["membersCount"]) - 1;
+
+          let newgroupObj = Object.assign({}, groupObj, {
+            membersCount: membersCount,
+            hasJoined: false,
+          });
+
+          groups.splice(groupKey, 1, newgroupObj);
           // this.setState({grouplist: groups});
 
           this.grouplist = groups;
