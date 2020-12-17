@@ -116,7 +116,27 @@ export class CometchatGroupListScreenComponent implements OnInit {
       case "groupUpdated":
         this.groupUpdated(data.messages, data.key, data.group, data.options);
         break;
+      case "memberUnbanned":
+        this.memberUnbanned(data);
+        break;
     }
+  }
+
+  memberUnbanned(members) {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = "this.loggedInUser.name unbanned eachMember.name";
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
   }
 
   /**
