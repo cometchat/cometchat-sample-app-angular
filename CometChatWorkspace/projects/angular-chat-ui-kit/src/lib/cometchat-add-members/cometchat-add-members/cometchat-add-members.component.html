@@ -1,7 +1,7 @@
 <div>
   <backdrop></backdrop>
   <div class="modalWrapperStyle">
-    <span class="modalCloseStyle"></span>
+    <span class="modalCloseStyle" (click)="closeAddMembersView()"></span>
     <div class="modalBodyStyle">
       <table class="modalTableStyle">
         <caption class="tableCaptionStyle">
@@ -13,18 +13,28 @@
             type="text"
             autoComplete="off"
             placeholder="Search"
+            (keyup)="searchUsers($event)"
           />
         </caption>
 
-        <caption class="contactMsgStyle">
-          <p class="contactMsgTxtStyle">test Decorated message</p>
+        <caption class="contactMsgStyle" *ngIf="decoratorMessage !== ''">
+          <p class="contactMsgTxtStyle">{{ decoratorMessage }}</p>
         </caption>
 
-        <tbody class="tableBodyStyle"></tbody>
+        <tbody class="tableBodyStyle" (scroll)="handleScroll($event)">
+          <add-member-view
+            *ngFor="let user of filteredlist"
+            [item]="item"
+            [type]="type"
+            [user]="user"
+            [members]="memberlist"
+            (actionGenerated)="actionHandler($event)"
+          ></add-member-view>
+        </tbody>
 
         <tfoot class="tableFootStyle">
           <tr>
-            <td colSpan="2"><button>Add</button></td>
+            <td colSpan="2" (click)="updateMembers()"><button>Add</button></td>
           </tr>
         </tfoot>
       </table>
