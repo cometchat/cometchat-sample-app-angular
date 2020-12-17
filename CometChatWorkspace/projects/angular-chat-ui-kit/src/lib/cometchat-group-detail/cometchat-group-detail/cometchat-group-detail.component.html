@@ -23,7 +23,9 @@
 
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">Banned Members</div>
+          <div class="itemLinkStyle" (click)="toggleBanMember()">
+            Banned Members
+          </div>
         </div>
       </div>
     </div>
@@ -64,7 +66,10 @@
 
   <!-- BANNED MEMBERS COMPONENT -->
   <comet-chat-ban-members
+    *ngIf="openBanMember"
     [item]="item"
+    [type]="type"
+    [bannedmemberlist]="bannedmemberlist"
     (actionGenerated)="actionHandler($event)"
   ></comet-chat-ban-members>
 </div>
