@@ -56,3 +56,6 @@ export const LIVE_REACTIONS = {
   clap: "👏",
   wink: "😉",
 };
+
+export const BLOCK_USER = "Block User";
+export const UNBLOCK_USER = "Unblock User";

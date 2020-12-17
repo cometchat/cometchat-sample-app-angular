@@ -32,6 +32,11 @@ export class SharedMediaViewComponent implements OnInit {
   scrollVariable = 0;
   scrolltoBottom: boolean;
 
+  //to apply css class when button is active
+  imageClick: boolean = true;
+  videoClick: boolean = false;
+  docsClick: boolean = false;
+
   constructor() {}
 
   ngOnInit() {
@@ -233,6 +238,20 @@ export class SharedMediaViewComponent implements OnInit {
    * @param
    */
   mediaClickHandler(type) {
+    if (type === "image") {
+      this.imageClick = true;
+      this.videoClick = false;
+      this.docsClick = false;
+    } else if (type === "video") {
+      this.imageClick = false;
+      this.videoClick = true;
+      this.docsClick = false;
+    } else if (type === "file") {
+      this.imageClick = false;
+      this.videoClick = false;
+      this.docsClick = true;
+    }
+
     this.checkMediaMessage = false;
     this.messageList = [];
     this.messageType = type;

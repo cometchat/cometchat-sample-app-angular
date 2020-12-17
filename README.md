@@ -10,6 +10,11 @@ Steps To Start The Project :
 
     5. ng serve angular-chat-app ( parent application to use the library )
 
+    6.  To Use emojis  for Angular 8.X  i.e
+        - npm install @ctrl/ngx-emoji-mart@1.0.6
+        - Also add style sheet of @ctrl/ngx-emoji-mart  in angular.json
+          'node_modules/@ctrl/ngx-emoji-mart/picker.css'
+
 Components And Description :
 
     1. UserList Component :

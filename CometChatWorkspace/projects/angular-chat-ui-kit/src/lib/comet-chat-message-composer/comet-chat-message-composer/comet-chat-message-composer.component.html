@@ -17,11 +17,14 @@
         contenteditable="true"
         placeholder="Enter your message here"
         dir="ltr"
-        oninput=""
-        onblur=""
+        (input)="changeHandler($event)"
+        (blur)="endTyping()"
         (keyup)="sendMessageOnEnter($event)"
         [value]="messageInput"
         #message
+        [ngClass]="{
+          messageInputDisabledStyle: disabled
+        }"
       />
       <div class="inputStickyStyle">
         <div class="stickyAttachmentStyle">
@@ -98,9 +101,26 @@
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
-          <span class="stickerBtnStyle" title="Add Emoji">&nbsp;</span>
-          <span class="emojiButtonStyle" title="Add Sticker">&nbsp;</span>
-
+          <span class="stickerBtnStyle" title="Add Sticker">&nbsp;</span>
+          <span
+            class="emojiButtonStyle"
+            title="Add Emoji"
+            (click)="emojiToggled = !emojiToggled"
+          >
+          </span>
+          <emoji-mart
+            (emojiSelect)="addEmoji($event)"
+            title="Pick your emoji"
+            emoji="point_up"
+            *ngIf="emojiToggled"
+            [style]="{
+              position: 'absolute',
+              bottom: '20px',
+              right: '50px',
+              width: '285px',
+              zIndex: '1'
+            }"
+          ></emoji-mart>
           <span
             id="send"
             title="send message"

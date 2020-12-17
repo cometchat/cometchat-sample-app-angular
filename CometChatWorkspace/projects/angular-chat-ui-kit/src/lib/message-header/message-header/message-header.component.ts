@@ -24,6 +24,11 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   userListenerId = "head_user_" + new Date().getTime();
   msgListenerId = "head_message_" + new Date().getTime();
   groupListenerId = "head_group_" + new Date().getTime();
+  status: string = "";
+  isTyping: boolean = true;
+
+  //displays audio and video call options
+  checkNotBlocked: boolean = true;
 
   constructor() {}
 
@@ -31,8 +36,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
     // console.log("Message Header --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
-      // if the person you are chatting with changes
+      //Check if user is blocked/unblocked
+      this.checkBlocked();
 
+      // if the person you are chatting with changes
       //Removing User Presence , typing and Group Listeners
       this.removeListeners();
 
@@ -117,6 +124,17 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
     CometChat.removeGroupListener(this.groupListenerId);
   }
 
+  /**
+   * If user blocked then doesnot display audio and video call else displays
+   */
+  checkBlocked() {
+    if (this.item.blockedByMe === true) {
+      this.checkNotBlocked = false;
+    } else {
+      this.checkNotBlocked = true;
+    }
+  }
+
   updateHeader(key = null, item = null, groupUser = null) {
     switch (key) {
       case enums.USER_ONLINE:
@@ -141,6 +159,7 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.guid === item.receiverId
         ) {
+          this.status = item.sender.name + " is typing...";
           // this.setState({ status: `${item.sender.name} is typing...` });
           // this.props.actionGenerated("showReaction", item);
         } else if (
@@ -148,6 +167,8 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.uid === item.sender.uid
         ) {
+          this.isTyping = false;
+          this.status = "typing...";
           // this.setState({ status: "typing..." });
           // this.props.actionGenerated("showReaction", item);
         }
@@ -166,6 +187,14 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.uid === item.sender.uid
         ) {
+          // this.status = this.item.status + "haha";
+          if (this.item.status === "online") {
+            console.log("typing online");
+            this.status = null;
+            this.isTyping = true;
+          } else {
+            this.getDate(item.lastActiveAt);
+          }
           // this.props.actionGenerated("stopReaction", item);
           // if(this.state.presence === "online") {
           //   this.setState({ status: "online", presence: "online" });

@@ -12,7 +12,7 @@ export class SenderImageBubbleComponent implements OnInit {
 
   timer = null;
   messageFrom = "sender";
-  imageLoader: boolean = true;
+  imageLoader: boolean = false;
 
   messageAssign = Object.assign({}, this.MessageDetails, {
     messageFrom: this.messageFrom,
@@ -85,6 +85,7 @@ export class SenderImageBubbleComponent implements OnInit {
     let img = new Image();
     img.src = this.MessageDetails.data.url;
     img.onload = () => {
+      this.imageLoader = false;
       this.imageUrl = img.src;
       // console.log("src ",img.src);
     };

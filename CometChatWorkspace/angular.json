@@ -63,7 +63,9 @@
               "projects/angular-chat-app/src/assets"
             ],
             "styles": [
-              "projects/angular-chat-app/src/styles.scss"
+              "projects/angular-chat-app/src/styles.scss",
+              "node_modules/@ctrl/ngx-emoji-mart/picker.css"
+
             ],
             "scripts": []
           },
@@ -128,8 +130,7 @@
               "projects/angular-chat-app/src/assets"
             ],
             "styles": [
-              "projects/angular-chat-app/src/styles.scss"
-            ],
+              "projects/angular-chat-app/src/styles.scss" ],
             "scripts": []
           }
         },
