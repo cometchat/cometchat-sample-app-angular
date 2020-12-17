@@ -56,3 +56,5 @@ export const LIVE_REACTIONS = {
   clap: "👏",
   wink: "😉",
 };
+
+export const LEFT_GROUP = "leftGroup";
