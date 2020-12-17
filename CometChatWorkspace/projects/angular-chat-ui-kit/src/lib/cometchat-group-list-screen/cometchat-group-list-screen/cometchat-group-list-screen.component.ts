@@ -28,7 +28,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
   //If clicked then only show image in full screen
   fullScreenViewImage: boolean = false;
 
-  groupToUpdate;
+  groupToUpdate = {};
   groupMessage = [];
 
   constructor() {}
@@ -107,6 +107,10 @@ export class CometchatGroupListScreenComponent implements OnInit {
 
       case "memberScopeChanged": {
         this.memberScopeChanged(action.payLoad);
+        break;
+      }
+      case "membersAdded": {
+        this.membersAdded(data);
         break;
       }
       case "membersUpdated": {
@@ -193,10 +197,33 @@ export class CometchatGroupListScreenComponent implements OnInit {
   };
 
   /**
+   * updates the messageList with messages about the members that were added
+   * @param Any members
+   */
+  membersAdded = (members) => {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} added ${eachMember.name}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
+  };
+
+  /**
    * updates The count of  number of members present in a group based on group activities , like adding a member or kicking a member
    * @param Any members
    */
   updateMembersCount = (item, count) => {
+    console.log("changing group member count to ", count);
+
     const group = Object.assign({}, this.item, { membersCount: count });
 
     this.item = group;
