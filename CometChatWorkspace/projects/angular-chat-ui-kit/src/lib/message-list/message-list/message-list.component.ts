@@ -576,7 +576,11 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      if (message.hasOwnProperty("metadata")) {
+      if (
+        message.hasOwnProperty("metadata") &&
+        message.type !== enums.CUSTOM_TYPE_STICKER &&
+        message.type !== enums.CUSTOM_TYPE_POLL
+      ) {
         this.actionGenerated.emit({
           type: "customMessageReceived",
           payLoad: [message],
@@ -608,7 +612,11 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      if (message.hasOwnProperty("metadata")) {
+      if (
+        message.hasOwnProperty("metadata") &&
+        message.type !== enums.CUSTOM_TYPE_STICKER &&
+        message.type !== enums.CUSTOM_TYPE_POLL
+      ) {
         this.actionGenerated.emit({
           type: "customMessageReceived",
           payLoad: [message],
