@@ -10,6 +10,10 @@
     [replyPreview]="replyPreview"
     (actionGenerated)="actionHandler($event)"
   ></reply-preview>
+  <sticker-view
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="stickerViewer"
+  ></sticker-view>
   <div class="composerInputStyle">
     <div class="inputInnerStyle" tabindex="-1">
       <input
@@ -100,7 +104,12 @@
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
-          <span class="stickerBtnStyle" title="Add Sticker">&nbsp;</span>
+          <span
+            class="stickerBtnStyle"
+            title="Add Sticker"
+            (click)="toggleStickerPicker()"
+            >&nbsp;</span
+          >
           <span
             class="emojiButtonStyle"
             title="Add Emoji"
@@ -128,7 +137,12 @@
             (click)="sendTextMessage()"
           >
           </span>
-          <span class="reactionBtnStyle" id="reaction" *ngIf="reactdisable">
+          <span
+            class="reactionBtnStyle"
+            id="reaction"
+            *ngIf="reactdisable"
+            (click)="sendReaction($event)"
+          >
           </span>
         </div>
       </div>

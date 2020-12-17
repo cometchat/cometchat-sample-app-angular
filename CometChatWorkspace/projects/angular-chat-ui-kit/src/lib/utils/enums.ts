@@ -57,5 +57,39 @@ export const LIVE_REACTIONS = {
   wink: "😉",
 };
 
-export const BLOCK_USER = "Block User";
-export const UNBLOCK_USER = "Unblock User";
+export const BLOCK_USER_TEXT = "Block User";
+export const UNBLOCK_USER_TEXT = "Unblock User";
+
+export const SEND_SMART_REPLY = "sendSmartReply";
+export const SEND_STICKER = "sendSticker";
+export const CLOSE_STICKER = "closeSticker";
+
+export const CUSTOM_MESSAGE_RECEIVE = "customMessageReceived";
+export const MESSAGE_RECEIVED = "messageReceived";
+export const MESSAGE_FETCHED = "messageFetched";
+export const OLDER_MESSAGES_FETCHED = "olderMessagesFetched";
+export const MESSAGE_COMPOSED = "messageComposed";
+export const MESSAGE_UPDATED = "messageUpdated";
+export const VIEW_ACTUAL_IMAGE = "viewActualImage";
+export const NEW_CONVERSATION_OPENED = "newConversationOpened";
+export const VIEW_MESSAGE_THREAD = "viewMessageThread";
+export const DELETE_MESSAGE = "deleteMessage";
+export const EDIT_MESSAGE = "editMessage";
+export const MESSAGE_EDIT = "messageEdited";
+export const AUDIO_CALL = "audioCall";
+export const VIDEO_CALL = "videoCall";
+export const VIEW_DETAIL = "viewDetail";
+export const MENU_CLICKED = "menuClicked";
+export const SEND_REACTION = "sendReaction";
+export const SHOW_REACTION = "showReaction";
+export const STOP_REACTION = "stopReaction";
+export const CLEAR_MESSAGE_TO_BE_UPDATED = "clearMessageToBeEdited";
+export const MESSAGE_DELETE = "messageDeleted";
+
+export const CLOSE_THREAD_CLICKED = "closeThreadClicked";
+export const CLOSE_FULL_SCREEN_IMAGE = "closeFullScreenImage";
+export const CLOSE_DETAIL_CLICKED = "closeDetailClicked";
+export const CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT =
+  "changeThreadParentMessageReplyCount";
+export const BLOCK_USER = "blockUser";
+export const UNBLOCK_USER = "unblockUser";
