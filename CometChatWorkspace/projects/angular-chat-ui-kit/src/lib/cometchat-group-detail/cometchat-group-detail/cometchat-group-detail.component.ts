@@ -37,6 +37,7 @@ export class CometchatGroupDetailComponent
   loggedInUser = null;
 
   openViewMember: boolean = false;
+  openBanMember: boolean = false;
 
   constructor() {}
 
@@ -57,7 +58,7 @@ export class CometchatGroupDetailComponent
     this.groupMemberRequest = this.createGroupMemberRequest(this.item.guid);
     this.getGroupMembers();
 
-    this.bannedGroupMemberRequest = this.createGroupMemberRequest(
+    this.bannedGroupMemberRequest = this.createBannedMemberRequest(
       this.item.guid
     );
     this.getBannedGroupMembers();
@@ -92,6 +93,12 @@ export class CometchatGroupDetailComponent
         this.removeParticipants(data);
         break;
       }
+      case "banmember": {
+        this.toggleBanMember();
+      }
+      case "unbanGroupMembers":
+        this.unbanMembers(data);
+        break;
     }
   }
 
@@ -276,15 +283,17 @@ export class CometchatGroupDetailComponent
         this.fetchNextBannedGroupMembers()
           .then((bannedMembers) => {
             // bannedMembers.forEach(member => this.setAvatar(member));
+            console.log("bann working");
 
             this.bannedmemberlist = [
               ...this.bannedmemberlist,
               ...bannedMembers,
             ];
+            console.log("bannnned members ", bannedMembers);
 
             console.log(
               "Group Details --> Banned members  ",
-              this.moderatorslist
+              this.bannedmemberlist
             );
           })
           .catch((error) => {
@@ -375,7 +384,35 @@ export class CometchatGroupDetailComponent
     }
   };
 
+  /**
+   * Unbans the member
+   * @param
+   */
+  unbanMembers(members) {
+    const bannedMembers = [...this.bannedmemberlist];
+    const unbannedMembers = [];
+
+    const filteredBannedMembers = bannedMembers.filter((bannedmember) => {
+      const found = members.find((member) => bannedmember.uid === member.uid);
+      if (found) {
+        unbannedMembers.push(found);
+        return false;
+      }
+      return true;
+    });
+
+    this.actionGenerated.emit({
+      type: "memberUnbanned",
+      payLoad: unbannedMembers,
+    });
+
+    this.bannedmemberlist = [...filteredBannedMembers];
+  }
+
   toggleViewMember() {
     this.openViewMember = !this.openViewMember;
+  }
+  toggleBanMember() {
+    this.openBanMember = !this.openBanMember;
   }
 }
