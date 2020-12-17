@@ -20,6 +20,7 @@ import { CometChatManager } from "../../utils/controller";
 export class CometChatConversationListComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
+  @Input() lastMessage;
 
   decoratorMessage: string;
   loggedInUser = null;
@@ -27,6 +28,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   onItemClick = null;
   selectedConversation = undefined;
   ConversationListManager;
+  curentItem;
 
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
   // @Output() curentType: EventEmitter<any> = new EventEmitter();
@@ -49,6 +51,10 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         this.ref.detectChanges();
       }
     }, 1500);
+  }
+
+  ngOnDestroy() {
+    this.removeListeners();
   }
 
   ngOnChanges(change: SimpleChanges) {
@@ -82,7 +88,63 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
             conversationlist.splice(conversationKey, 1, newConversationObj);
             this.conversationList = conversationlist;
             this.selectedConversation = newConversationObj;
-            // console.log("selected2 ", this.selectedConversation);
+          }
+        }
+
+        // if user is blocked/unblocked, update conversationlist i.e user is removed from conversationList
+        if (
+          change["item"].previousValue &&
+          Object.keys(change["item"].previousValue).length &&
+          change["item"].previousValue.uid ===
+            change["item"].currentValue.uid &&
+          change["item"].previousValue.blockedByMe !==
+            change["item"].currentValue.blockedByMe
+        ) {
+          let conversationlist = [...this.conversationList];
+
+          //search for user
+          let convKey = conversationlist.findIndex(
+            (c, k) =>
+              c.conversationType === "user" &&
+              c.conversationWith.uid === change["item"].currentValue.uid
+          );
+          if (convKey > -1) {
+            conversationlist.splice(convKey, 1);
+            this.conversationList = conversationlist;
+            // this.setState({ conversationlist: conversationlist });
+          }
+        }
+      }
+    }
+
+    /**
+     * When user sends message conversationList is updated with latest message
+     */
+    if (change["lastMessage"]) {
+      if (change["lastMessage"].previousValue !== undefined) {
+        if (
+          change["lastMessage"].previousValue !==
+          change["lastMessage"].currentValue
+        ) {
+          const lastMessage = change["lastMessage"].currentValue[0];
+
+          const conversationList = [...this.conversationList];
+          const conversationKey = conversationList.findIndex((c) => {
+            return c.conversationId == lastMessage.conversationId;
+          });
+          // console.log("convo key", conversationKey);
+
+          if (conversationKey > -1) {
+            const conversationObj = conversationList[conversationKey];
+            let newConversationObj = {
+              ...conversationObj,
+              lastMessage: lastMessage,
+            };
+            // console.log("updated last message ", lastMessage);
+
+            conversationList.splice(conversationKey, 1);
+            conversationList.unshift(newConversationObj);
+            this.conversationList = conversationList;
           }
         }
       }
@@ -294,7 +356,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       });
   }
 
-  ///////////////////////////////////////////////////////VERIFY
   /**
    * Sets User Avatar If Avatar is not present
    * @param
