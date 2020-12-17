@@ -98,6 +98,7 @@
             title="Create Poll"
             class="fileItemStyle"
             id="poll"
+            (click)="openCreatePollPreview()"
             [@FadeInFadeOut]="checkAnimatedState"
           >
           </span>
@@ -148,7 +149,14 @@
       </div>
     </div>
   </div>
-  <!--poll will come here-->
+  <!-- POLL component Below -->
+  <create-poll-view
+    [item]="item"
+    [type]="type"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="createPollView"
+  ></create-poll-view>
+  <!-- POLL component Below -->
 </div>
 
 <!-- oninput onblur onkeydown to be inplemented -->

@@ -29,6 +29,9 @@ import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-mes
 import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 import { ReplyCountModule } from "./reply-count/reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
+import { CreatePollViewModule } from "./create-poll-view/create-poll-view.module";
+import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
+import { ReceiverPollBubbleModule } from "./receiver-poll-bubble/receiver-poll-bubble.module";
 import { LiveReactionModule } from "./live-reaction/live-reaction.module";
 import { StickerViewModule } from "./sticker-view/sticker-view.module";
 import { SenderStickerBubbleModule } from "./sender-sticker-bubble/sender-sticker-bubble.module";
@@ -63,6 +66,9 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    CreatePollViewModule,
+    SenderPollBubbleModule,
+    ReceiverPollBubbleModule,
     LiveReactionModule,
     StickerViewModule,
     SenderStickerBubbleModule,
@@ -97,6 +103,9 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    CreatePollViewModule,
+    SenderPollBubbleModule,
+    ReceiverPollBubbleModule,
     LiveReactionModule,
     StickerViewModule,
     SenderStickerBubbleModule,

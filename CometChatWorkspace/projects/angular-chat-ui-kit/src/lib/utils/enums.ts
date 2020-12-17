@@ -93,3 +93,7 @@ export const CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT =
   "changeThreadParentMessageReplyCount";
 export const BLOCK_USER = "blockUser";
 export const UNBLOCK_USER = "unblockUser";
+
+export const CLOSE_POLL_VIEW = "closePollView";
+
+export const POLL_CREATED = "pollCreated";
