@@ -97,3 +97,4 @@ export const UNBLOCK_USER = "unblockUser";
 export const CLOSE_POLL_VIEW = "closePollView";
 
 export const POLL_CREATED = "pollCreated";
+export const POLL_ANSWERED = "pollAnswered";

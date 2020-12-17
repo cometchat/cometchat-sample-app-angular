@@ -223,11 +223,11 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.removeMessages(messages);
         break;
       }
-      case "pollCreated": {
+      case enums.POLL_CREATED: {
         this.appendPollMessage(messages);
         break;
       }
-      case "pollAnswered": {
+      case enums.POLL_ANSWERED: {
         console.log("Mesasge List screen -->Answer poll case ");
         this.updatePollMessage(messages);
         break;
