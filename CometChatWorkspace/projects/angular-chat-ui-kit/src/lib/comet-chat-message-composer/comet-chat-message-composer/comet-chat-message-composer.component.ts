@@ -11,6 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+// import {SEND_SMART_REPLY,SEND_STICKER,CLOSE_STICKER} from '../../utils/enums'
 
 import {
   trigger,
@@ -111,17 +112,17 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     console.log("Message Composer --> action generation is ", action);
 
     switch (action.type) {
-      case "sendSmartReply": {
+      case enums.SEND_SMART_REPLY: {
         this.sendTextMessage(message);
 
         //closing smartReply preview window
         this.replyPreview = null;
         break;
       }
-      case "sendSticker":
+      case enums.SEND_STICKER:
         this.sendSticker(message);
         break;
-      case "closeSticker":
+      case enums.CLOSE_STICKER:
         this.toggleStickerPicker();
         break;
     }
