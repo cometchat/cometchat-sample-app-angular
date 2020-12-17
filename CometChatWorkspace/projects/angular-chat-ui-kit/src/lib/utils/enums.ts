@@ -58,3 +58,4 @@ export const LIVE_REACTIONS = {
 };
 
 export const LEFT_GROUP = "leftGroup";
+export const DELETE_GROUP = "groupDeleted";

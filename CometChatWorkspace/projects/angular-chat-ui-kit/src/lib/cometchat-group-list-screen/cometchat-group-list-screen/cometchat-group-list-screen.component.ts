@@ -30,6 +30,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
 
   groupToUpdate = {};
   groupToLeave = {};
+  groupToDelete = {};
   groupMessage = [];
 
   constructor() {}
@@ -123,6 +124,10 @@ export class CometchatGroupListScreenComponent implements OnInit {
         break;
       case enums.LEFT_GROUP: {
         this.leaveGroup(data);
+        break;
+      }
+      case enums.DELETE_GROUP: {
+        this.deleteGroup(data);
         break;
       }
     }
@@ -273,6 +278,16 @@ export class CometchatGroupListScreenComponent implements OnInit {
    */
   leaveGroup = (group) => {
     this.groupToLeave = group;
+    this.toggleDetailView();
+    this.item = null;
+  };
+
+  /**
+   * Closes group screen and all , after user has deleted the group
+   * @param
+   */
+  deleteGroup = (group) => {
+    this.groupToDelete = group;
     this.toggleDetailView();
     this.item = null;
   };
