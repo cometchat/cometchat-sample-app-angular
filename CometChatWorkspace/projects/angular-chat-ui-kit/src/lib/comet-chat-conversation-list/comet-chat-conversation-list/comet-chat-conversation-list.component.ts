@@ -28,12 +28,8 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   onItemClick = null;
   selectedConversation = undefined;
   ConversationListManager;
-  curentItem;
-
+  checkItemChange: boolean = false;
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
-  // @Output() curentType: EventEmitter<any> = new EventEmitter();
-
-  // this.theme = Object.assign({}, theme, this.props.theme);
 
   // this.audio = new Audio(incomingOtherMessageAlert);
 
@@ -59,6 +55,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
 
   ngOnChanges(change: SimpleChanges) {
     if (change["item"]) {
+      this.checkItemChange = true;
       if (change["item"].previousValue !== change["item"].currentValue) {
         if (Object.keys(change["item"].currentValue).length === 0) {
           // this.chatListRef.scrollTop = 0;
@@ -120,14 +117,19 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
     /**
      * When user sends message conversationList is updated with latest message
      */
-    if (change["lastMessage"]) {
-      if (change["lastMessage"].previousValue !== undefined) {
+    if (this.checkItemChange === false) {
+      if (change["lastMessage"]) {
+        // console.log("message changed ", change["lastMessage"]);
+        // console.log(
+        //   "current message changed ",
+        //   change["lastMessage"].currentValue
+        // );
         if (
           change["lastMessage"].previousValue !==
           change["lastMessage"].currentValue
         ) {
           const lastMessage = change["lastMessage"].currentValue[0];
-
+          console.log("last message", lastMessage);
           const conversationList = [...this.conversationList];
           const conversationKey = conversationList.findIndex((c) => {
             return c.conversationId == lastMessage.conversationId;
@@ -149,6 +151,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         }
       }
     }
+    this.checkItemChange = false;
   }
   ngOnInit() {
     this.conversationRequest = new CometChat.ConversationsRequestBuilder()
