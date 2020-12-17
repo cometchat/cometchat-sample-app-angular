@@ -31,13 +31,30 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message Header --> ngOnChanges -->  ", change);
+    console.log("Message Header --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
       // if the person you are chatting with changes
 
       //Removing User Presence , typing and Group Listeners
       this.removeListeners();
+
+      if (this.type == "group") {
+        let prevProps = {
+          item:
+            change["item"].previousValue == null
+              ? { guid: "" }
+              : change["item"].previousValue,
+        };
+        let props = { item: change["item"].currentValue };
+
+        if (
+          prevProps.item.guid === props.item.guid &&
+          prevProps.item.membersCount !== props.item.membersCount
+        ) {
+          this.updateHeader(enums.GROUP_MEMBER_ADDED, props.item);
+        }
+      }
 
       //Attaching new listeners
       this.userListenerId = "head_user_" + new Date().getTime();
