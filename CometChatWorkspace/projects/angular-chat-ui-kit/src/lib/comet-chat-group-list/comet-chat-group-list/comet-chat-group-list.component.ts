@@ -22,6 +22,7 @@ export class CometChatGroupListComponent
   @Input() enableSelectedGroupStyling = false;
   @Input() groupToUpdate = null;
   @Input() groupToLeave = null;
+  @Input() groupToDelete = null;
 
   timeout;
   loggedInUser = null;
@@ -117,6 +118,34 @@ export class CometChatGroupListComponent
           // this.setState({grouplist: groups});
 
           this.grouplist = groups;
+        }
+      }
+    }
+
+    if (change["groupToDelete"]) {
+      let prevProps = { groupToDelete: null };
+      let props = { groupToDelete: null };
+
+      prevProps["groupToDelete"] = change["groupToDelete"].previousValue;
+      props["groupToDelete"] = change["groupToDelete"].currentValue;
+
+      if (
+        prevProps.groupToDelete &&
+        prevProps.groupToDelete.guid !== props.groupToDelete.guid
+      ) {
+        const groups = [...this.grouplist];
+        const groupKey = groups.findIndex(
+          (member) => member.guid === props.groupToDelete.guid
+        );
+        if (groupKey > -1) {
+          groups.splice(groupKey, 1);
+          // this.setState({grouplist: groups});
+
+          this.grouplist = groups;
+
+          if (groups.length === 0) {
+            this.decoratorMessage = "No groups found";
+          }
         }
       }
     }
