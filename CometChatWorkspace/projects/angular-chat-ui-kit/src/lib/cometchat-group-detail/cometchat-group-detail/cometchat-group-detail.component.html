@@ -17,7 +17,9 @@
 
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">Add Members</div>
+          <div class="itemLinkStyle" (click)="toggleAddMemberView(true)">
+            Add Members
+          </div>
         </div>
       </div>
 
@@ -61,6 +63,15 @@
   ></cometchat-view-members>
 
   <!-- ADD MEMBERS COMPONENT -->
+  <cometchat-add-members
+    *ngIf="openAddMemberView"
+    [item]="item"
+    [type]="type"
+    [friendsOnly]="false"
+    [memberlist]="memberlist"
+    [bannedmemberlist]="bannedmemberlist"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-add-members>
 
   <!-- BANNED MEMBERS COMPONENT -->
 </div>

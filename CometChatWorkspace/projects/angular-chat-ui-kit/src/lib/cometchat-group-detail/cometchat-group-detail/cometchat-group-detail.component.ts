@@ -37,6 +37,7 @@ export class CometchatGroupDetailComponent
   loggedInUser = null;
 
   openViewMember: boolean = false;
+  openAddMemberView: boolean = false;
 
   constructor() {}
 
@@ -84,8 +85,16 @@ export class CometchatGroupDetailComponent
         this.toggleViewMember();
         break;
       }
+      case "closeAddMembersView": {
+        this.toggleAddMemberView(false);
+        break;
+      }
       case "updateGroupParticipants": {
         this.updateParticipants(data);
+        break;
+      }
+      case "addGroupParticipants": {
+        this.addParticipants(data);
         break;
       }
       case "removeGroupParticipants": {
@@ -323,6 +332,24 @@ export class CometchatGroupDetailComponent
   }
 
   /**
+   * Add Particpants to the current group
+   * @param
+   */
+  addParticipants = (members, triggerUpdate = true) => {
+    const memberlist = [...this.memberlist, ...members];
+
+    this.memberlist = memberlist;
+
+    this.actionGenerated.emit({ type: "membersAdded", payLoad: members });
+    if (triggerUpdate) {
+      this.actionGenerated.emit({
+        type: "membersUpdated",
+        payLoad: { item: this.item, count: memberlist.length },
+      });
+    }
+  };
+
+  /**
    * Updates Group Participant's data according to the group activities
    * @param
    */
@@ -377,5 +404,9 @@ export class CometchatGroupDetailComponent
 
   toggleViewMember() {
     this.openViewMember = !this.openViewMember;
+  }
+
+  toggleAddMemberView(show) {
+    this.openAddMemberView = show;
   }
 }
