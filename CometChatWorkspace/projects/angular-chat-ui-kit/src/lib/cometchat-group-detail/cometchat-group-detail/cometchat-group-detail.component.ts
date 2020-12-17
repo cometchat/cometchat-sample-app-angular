@@ -421,6 +421,25 @@ export class CometchatGroupDetailComponent
       });
   };
 
+  /**
+   * helps the user (that is admin of the group) to delete the group
+   * @param
+   */
+  deleteGroup = () => {
+    const guid = this.item.guid;
+    CometChat.deleteGroup(guid)
+      .then((response) => {
+        console.log("Groups deleted successfully:", response);
+        this.actionGenerated.emit({
+          type: enums.DELETE_GROUP,
+          payLoad: this.item,
+        });
+      })
+      .catch((error) => {
+        console.log("Group delete failed with exception:", error);
+      });
+  };
+
   toggleViewMember() {
     this.openViewMember = !this.openViewMember;
   }
