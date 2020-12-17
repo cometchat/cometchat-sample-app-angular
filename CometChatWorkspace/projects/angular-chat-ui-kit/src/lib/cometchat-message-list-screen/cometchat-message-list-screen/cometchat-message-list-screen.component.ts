@@ -98,8 +98,8 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
-      case "customMessageReceived":
-      case "messageReceived": {
+      case enums.CUSTOM_MESSAGE_RECEIVE:
+      case enums.MESSAGE_RECEIVED: {
         const message = messages[0];
         if (message.parentMessageId) {
           // Implement while doing the threaded message feature
@@ -123,11 +123,11 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         break;
       }
 
-      case "messageFetched": {
+      case enums.MESSAGE_FETCHED: {
         this.prependMessages(messages);
         break;
       }
-      case "olderMessagesFetched": {
+      case enums.OLDER_MESSAGES_FETCHED: {
         this.reachedTopOfConversation = false;
 
         //No Need for below actions if there is nothing to prepend
@@ -144,7 +144,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
         break;
       }
-      case "messageComposed": {
+      case enums.MESSAGE_COMPOSED: {
         this.appendMessage(messages);
         this.actionGenerated.emit({
           type: "messageComposed",
@@ -152,71 +152,71 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         });
         break;
       }
-      case "messageUpdated": {
+      case enums.MESSAGE_UPDATED: {
         this.updateMessages(messages);
         break;
       }
-      case "viewActualImage": {
+      case enums.VIEW_ACTUAL_IMAGE: {
         this.actionGenerated.emit({
           type: "viewActualImage",
           payLoad: messages,
         });
         break;
       }
-      case "newConversationOpened": {
+      case enums.NEW_CONVERSATION_OPENED: {
         this.resetPage();
         this.setMessages(messages);
 
         break;
       }
-      case "viewMessageThread": {
+      case enums.VIEW_MESSAGE_THREAD: {
         this.actionGenerated.emit({
           type: "viewMessageThread",
           payLoad: messages,
         });
         break;
       }
-      case "deleteMessage": {
+      case enums.DELETE_MESSAGE: {
         this.deleteMessage(messages);
         break;
       }
-      case "editMessage": {
+      case enums.EDIT_MESSAGE: {
         this.editMessage(messages);
         break;
       }
-      case "messageEdited": {
+      case enums.MESSAGE_EDIT: {
         this.messageEdited(messages);
         break;
       }
-      case "audioCall":
-      case "videoCall":
-      case "viewDetail":
-      case "menuClicked": {
+      case enums.AUDIO_CALL:
+      case enums.VIDEO_CALL:
+      case enums.VIEW_DETAIL:
+      case enums.MENU_CLICKED: {
         this.actionGenerated.emit(action);
         break;
       }
-      case "sendReaction": {
+      case enums.SEND_REACTION: {
         this.toggleReaction(true);
         break;
       }
-      case "showReaction": {
+      case enums.SHOW_REACTION: {
         this.showReaction(messages);
         break;
       }
-      case "stopReaction": {
+      case enums.STOP_REACTION: {
         this.toggleReaction(false);
         break;
       }
-      case "clearMessageToBeEdited": {
+      case enums.CLEAR_MESSAGE_TO_BE_UPDATED: {
         this.messageToBeEdited = null;
         break;
       }
-      case "messageUpdated": {
+      case enums.MESSAGE_UPDATED: {
         this.updateMessages(messages);
         break;
       }
 
-      case "messageDeleted": {
+      case enums.MESSAGE_DELETE: {
         this.removeMessages(messages);
         break;
       }
