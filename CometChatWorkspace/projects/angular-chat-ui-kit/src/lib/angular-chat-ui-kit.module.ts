@@ -37,6 +37,8 @@ import { CometchatGroupDetailModule } from "./cometchat-group-detail/cometchat-g
 import { CometchatViewMembersModule } from "./cometchat-view-members/cometchat-view-members.module";
 import { MemberViewModule } from "./member-view/member-view.module";
 import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add-members.module";
+import { CometChatBanMembersModule } from "./comet-chat-ban-members/comet-chat-ban-members.module";
+import { BanMemberViewModule } from "./ban-member-view/ban-member-view.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -75,6 +77,8 @@ import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add
     CometchatViewMembersModule,
     MemberViewModule,
     CometchatAddMembersModule,
+    CometChatBanMembersModule,
+    BanMemberViewModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -113,6 +117,8 @@ import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add
     CometchatViewMembersModule,
     MemberViewModule,
     CometchatAddMembersModule,
+    CometChatBanMembersModule,
+    BanMemberViewModule,
   ],
 })
 export class AngularChatUiKitModule {}
