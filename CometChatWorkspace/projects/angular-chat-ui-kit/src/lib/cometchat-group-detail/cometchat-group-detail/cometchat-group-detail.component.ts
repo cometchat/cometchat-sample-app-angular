@@ -58,7 +58,7 @@ export class CometchatGroupDetailComponent
     this.groupMemberRequest = this.createGroupMemberRequest(this.item.guid);
     this.getGroupMembers();
 
-    this.bannedGroupMemberRequest = this.createGroupMemberRequest(
+    this.bannedGroupMemberRequest = this.createBannedMemberRequest(
       this.item.guid
     );
     this.getBannedGroupMembers();
@@ -400,6 +400,25 @@ export class CometchatGroupDetailComponent
         },
       });
     }
+  };
+
+  /**
+   * helps the user to leave the group
+   * @param
+   */
+  leaveGroup = () => {
+    const guid = this.item.guid;
+    CometChat.leaveGroup(guid)
+      .then((hasLeft) => {
+        console.log("Group left successfully:", hasLeft);
+        this.actionGenerated.emit({
+          type: enums.LEFT_GROUP,
+          payLoad: this.item,
+        });
+      })
+      .catch((error) => {
+        console.log("Group leaving failed with exception:", error);
+      });
   };
 
   toggleViewMember() {
