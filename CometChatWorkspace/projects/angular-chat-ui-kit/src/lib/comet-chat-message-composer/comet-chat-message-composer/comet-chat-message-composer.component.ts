@@ -10,6 +10,8 @@ import {
   ElementRef,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
+// import {SEND_SMART_REPLY,SEND_STICKER,CLOSE_STICKER} from '../../utils/enums'
 
 import {
   trigger,
@@ -112,20 +114,23 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     console.log("Message Composer --> action generation is ", action);
 
     switch (action.type) {
-      case "sendSmartReply": {
+      case enums.SEND_SMART_REPLY: {
         this.sendTextMessage(message);
 
         //closing smartReply preview window
         this.replyPreview = null;
         break;
       }
-      case "closePollView": {
+      case enums.CLOSE_POLL_VIEW: {
         this.closeCreatePollPreview();
         break;
       }
-      case "pollCreated": {
+      case enums.POLL_CREATED: {
         this.closeCreatePollPreview();
-        this.actionGenerated.emit({ type: "pollCreated", payLoad: [message] });
+        this.actionGenerated.emit({
+          type: enums.POLL_CREATED,
+          payLoad: [message],
+        });
 
         //temporary check; custom data listener working for sender too
         // if (this.type === "user") {
@@ -134,6 +139,12 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
         break;
       }
+      case enums.SEND_STICKER:
+        this.sendSticker(message);
+        break;
+      case enums.CLOSE_STICKER:
+        this.toggleStickerPicker();
+        break;
     }
   }
 
@@ -596,5 +607,73 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
     clearTimeout(this.isTyping);
     this.isTyping = null;
+  }
+  /**
+   * Sends Live Reaction
+   */
+
+  sendReaction(event) {
+    const typingInterval = 1000;
+    console.log("send reaction");
+
+    const typingMetadata = {
+      type: enums.LIVE_REACTION_KEY,
+      reaction: "heart",
+    };
+
+    this.startTyping(typingInterval, typingMetadata);
+    this.actionGenerated.emit({
+      type: "sendReaction",
+    });
+    // event.persist();
+    setTimeout(() => {
+      this.endTyping(typingMetadata);
+      this.actionGenerated.emit({
+        type: "stopReaction",
+      });
+    }, typingInterval);
+  }
+
+  /**
+   * Toggles Sticker Window
+   */
+  toggleStickerPicker() {
+    const stickerViewer = this.stickerViewer;
+    this.stickerViewer = !stickerViewer;
+  }
+
+  /**
+   * Sends Sticker Message
+   * @param
+   */
+  sendSticker(stickerMessage) {
+    this.messageSending = true;
+    const { receiverId, receiverType } = this.getReceiverDetails();
+    const customData = {
+      sticker_url: stickerMessage.stickerUrl,
+      sticker_name: stickerMessage.stickerName,
+    };
+    const customType = enums.CUSTOM_TYPE_STICKER;
+    const customMessage = new CometChat.CustomMessage(
+      receiverId,
+      receiverType,
+      customType,
+      customData
+    );
+    CometChat.sendCustomMessage(customMessage)
+      .then((message) => {
+        console.log("custom msg ", message);
+
+        this.messageSending = false;
+        this.playAudio();
+        this.actionGenerated.emit({
+          type: "messageComposed",
+          payLoad: [message],
+        });
+      })
+      .catch((error) => {
+        this.messageSending = false;
+        console.log("custom message sending failed with error", error);
+      });
   }
 }

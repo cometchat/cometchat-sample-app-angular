@@ -8,7 +8,7 @@ import {
   OnChanges,
 } from "@angular/core";
 
-import { BLOCK_USER, UNBLOCK_USER } from "../../utils/enums";
+import { BLOCK_USER_TEXT, UNBLOCK_USER_TEXT } from "../../utils/enums";
 
 @Component({
   selector: "comet-chat-user-detail",
@@ -40,9 +40,9 @@ export class CometChatUserDetailComponent implements OnInit, OnChanges {
 
   getBlockStatus(item) {
     if (item.blockedByMe) {
-      this.blockUserText = UNBLOCK_USER;
+      this.blockUserText = UNBLOCK_USER_TEXT;
     } else {
-      this.blockUserText = BLOCK_USER;
+      this.blockUserText = BLOCK_USER_TEXT;
     }
     // return this.blockUserText;
   }

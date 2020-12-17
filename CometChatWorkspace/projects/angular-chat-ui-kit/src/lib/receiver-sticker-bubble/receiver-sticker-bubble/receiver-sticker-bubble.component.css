@@ -11,7 +11,6 @@
   flex-shrink: 0;
   float: left;
 }
-
 .messageContainerStyle:hover > .tool {
   display: flex;
 }
@@ -39,35 +38,28 @@
   display: flex;
   flex-direction: column;
 }
-/*
-Styling for name will come
-*/
+
 .nameWrapperStyle {
-  padding: 3px 5px;
   align-self: flex-start;
 }
 
 .nameStyle {
   font-size: 10px;
-  color: rgba(20, 20, 20, 0.6);
 }
 
-.messageAudioContainerStyle {
+.messageImgContainerStyle {
   width: auto;
   flex: 1 1;
   align-self: flex-start;
   display: flex;
 }
 
-.messageAudioWrapperStyle {
+.messageImgWrapperStyle {
   display: inline-block;
-  border-radius: 12px;
   align-self: flex-start;
-}
-.messageAudioWrapperStyle > audio {
-  max-width: 250px;
-  display: inherit;
-  outline: 0 !important;
+  max-width: 128px;
+  height: 128px;
+  cursor: pointer;
 }
 
 .messageInfoWrapperStyle {
@@ -84,8 +76,10 @@ Styling for name will come
   /* color: `${props.theme.color.helpText}`; */
 }
 
-.avatarStyle {
-  border-radius: 50%;
-  border-width: 1px;
-  /* border-color: props.theme.color.secondary; */
+@media (min-width: 320px) and (max-width: 767px) {
+  .messageImgWrapperStyle {
+    max-width: 128px;
+    height: 128px;
+    padding: 2px 2px;
+  }
 }

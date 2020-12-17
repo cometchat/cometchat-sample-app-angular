@@ -19,7 +19,10 @@
       (actionGenerated)="actionHandler($event)"
     ></message-list>
   </div>
-
+  <live-reaction
+    [reactionName]="reactionName"
+    *ngIf="liveReaction"
+  ></live-reaction>
   <comet-chat-message-composer
     [item]="item"
     [type]="type"

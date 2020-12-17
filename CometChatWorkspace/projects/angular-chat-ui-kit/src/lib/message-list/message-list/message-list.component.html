@@ -91,6 +91,23 @@
           </div>
           <!--CASE FOR AUDIO ENDS -->
 
+          <!--CASE FOR STICKER -->
+          <div *ngSwitchCase="'extension_sticker'">
+            <sender-sticker-bubble
+              *ngIf="msg.sender.uid === loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </sender-sticker-bubble>
+            <receiver-sticker-bubble
+              *ngIf="msg.sender.uid !== loggedInUser.uid"
+              [MessageDetails]="msg"
+              (actionGenerated)="actionHandler($event)"
+            >
+            </receiver-sticker-bubble>
+          </div>
+          <!--CASE FOR STICKER ENDS -->
+
           <!--CASE FOR POLLS -->
           <div *ngSwitchCase="'extension_poll'">
             <sender-poll-bubble
@@ -107,7 +124,7 @@
             >
             </receiver-poll-bubble>
           </div>
-          <!--CASE FOR AUDIO POLLS -->
+          <!--CASE FOR  POLLS -->
         </div>
       </ng-template>
     </div>

@@ -373,13 +373,9 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         this.messageEdited(message);
         break;
       }
-      case enums.CUSTOM_MESSAGE_RECEIVED: {
-        console.log(
-          "Message List --> custom message received in message updated function"
-        );
+      case enums.CUSTOM_MESSAGE_RECEIVED:
         this.customMessageReceived(message);
         break;
-      }
     }
   }
 
@@ -566,12 +562,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     }
   };
 
-  /**
-   * Handles all the customed messaged that are received by current user
-   * @param Any message
-   */
-  customMessageReceived = (message) => {
-    //new messages
+  customMessageReceived(message) {
     if (
       this.type === "group" &&
       message.getReceiverType() === "group" &&
@@ -585,11 +576,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      if (
-        message.hasOwnProperty("metadata") &&
-        message.type !== enums.CUSTOM_TYPE_STICKER &&
-        message.type !== enums.CUSTOM_TYPE_POLL
-      ) {
+      if (message.hasOwnProperty("metadata")) {
         this.actionGenerated.emit({
           type: "customMessageReceived",
           payLoad: [message],
@@ -601,10 +588,6 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         });
       } else if (message.type === enums.CUSTOM_TYPE_POLL) {
         //customdata (poll extension) does not have metadata
-
-        console.log(
-          "Message List --> custom poll message for group ,  received in customMessageReceived function"
-        );
 
         const newMessage = this.addMetadataToCustomData(message);
         this.actionGenerated.emit({
@@ -625,11 +608,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      if (
-        message.hasOwnProperty("metadata") &&
-        message.type !== enums.CUSTOM_TYPE_STICKER &&
-        message.type !== enums.CUSTOM_TYPE_POLL
-      ) {
+      if (message.hasOwnProperty("metadata")) {
         this.actionGenerated.emit({
           type: "customMessageReceived",
           payLoad: [message],
@@ -642,10 +621,6 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       } else if (message.type === enums.CUSTOM_TYPE_POLL) {
         //customdata (poll extension) does not have metadata
 
-        console.log(
-          "Message List --> custom poll message for user ,  received in customMessageReceived function"
-        );
-
         const newMessage = this.addMetadataToCustomData(message);
         this.actionGenerated.emit({
           type: "customMessageReceived",
@@ -653,8 +628,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         });
       }
     }
-  };
-
+  }
   addMetadataToCustomData = (message) => {
     console.log("Message List --> adding metadata to custom message");
 
