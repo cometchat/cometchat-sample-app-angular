@@ -11,7 +11,7 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
-import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
+// import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
 
 @Component({
   selector: "comet-chat-conversation-list",

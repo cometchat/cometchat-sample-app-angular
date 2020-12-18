@@ -14,6 +14,15 @@
     (actionGenerated)="actionHandler($event)"
     *ngIf="stickerViewer"
   ></sticker-view>
+  <div class="blockedUserPopup" *ngIf="disabled">
+    <p>You have blocked this contact</p>
+    <p>
+      <span
+        >To start conversations, click on the icon at the top right corner and
+        unblock the user</span
+      >
+    </p>
+  </div>
   <div class="composerInputStyle">
     <div class="inputInnerStyle" tabindex="-1">
       <input
