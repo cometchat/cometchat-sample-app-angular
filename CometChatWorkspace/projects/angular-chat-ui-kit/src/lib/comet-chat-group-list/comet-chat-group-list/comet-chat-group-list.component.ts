@@ -292,11 +292,11 @@ export class CometChatGroupListComponent implements OnInit, OnDestroy {
     console.log("Comet Chat Group List --> action generation is ", action);
 
     switch (action.type) {
-      case "closeCreateGroupView": {
+      case enums.CLOSE_CREATE_GROUP_VIEW: {
         this.toggleCreateGroupView();
         break;
       }
-      case "groupCreated": {
+      case enums.GROUP_CREATED: {
         console.log(" GroupList --> group created", data);
         this.toggleCreateGroupView();
         this.createGroupActionHandler(data);

@@ -98,3 +98,14 @@ export const CLOSE_POLL_VIEW = "closePollView";
 
 export const POLL_CREATED = "pollCreated";
 export const POLL_ANSWERED = "pollAnswered";
+
+export const CLOSE_CREATE_GROUP_VIEW = "closeCreateGroupView";
+export const GROUP_CREATED = "groupCreated";
+
+export const PUBLIC_GROUP = "public";
+export const PRIVATE_GROUP = "private";
+export const PROTECTED_GROUP = "protected";
+
+export const GROUP_NAME_BLANK_ERROR = "Group name cannnot be blank.";
+export const GROUP_TYPE_BLANK_ERROR = "Group type cannnot be blank.";
+export const GROUP_PASSWORD_BLANK_ERROR = "Group password cannnot be blank.";
