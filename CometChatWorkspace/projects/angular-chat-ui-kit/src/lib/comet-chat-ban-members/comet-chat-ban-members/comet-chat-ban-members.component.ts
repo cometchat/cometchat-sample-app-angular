@@ -8,20 +8,29 @@ import { CometChat } from "@cometchat-pro/chat";
 })
 export class CometChatBanMembersComponent implements OnInit {
   @Input() item = null;
-  @Input() type = null;
   @Input() bannedmemberlist = [];
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   decoratorMessage = "Loading...";
+  displayDecoratorMessage: boolean = true;
   membersToBan = [];
   membersToUnban = [];
 
   constructor() {}
 
   ngOnInit() {
-    console.log("memberList", this.bannedmemberlist);
+    // console.log("BannedmemberList", this.bannedmemberlist);
+    if (this.bannedmemberlist.length === 0) {
+      this.decoratorMessage = "No banned members found";
+    } else if (this.bannedmemberlist.length > 0) {
+      this.displayDecoratorMessage = false;
+    }
   }
 
+  /**
+   * Get the detail of member to be unbanned
+   * @param
+   */
   unbanMember(memberToUnBan) {
     // const group = this.context;
     console.log("member to unban ", memberToUnBan);
@@ -42,6 +51,10 @@ export class CometChatBanMembersComponent implements OnInit {
       });
   }
 
+  /**
+   * Handles all the actions emitted by the child components that make the current component
+   * @param Event action
+   */
   actionHandler(action) {
     let data = action.payLoad;
 
@@ -53,6 +66,10 @@ export class CometChatBanMembersComponent implements OnInit {
         break;
     }
   }
+  /**
+   * If User scrolls to the bottom of the current Contact list than fetch next items of the contact list and append
+   * @param Event e
+   */
   handleScroll(e) {
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
@@ -64,8 +81,11 @@ export class CometChatBanMembersComponent implements OnInit {
     }
   }
 
+  /**
+   * Emits action to Close Ban member Window
+   */
   closeBanMemberModal() {
-    console.log("cometchat ban member --> close ban member clicked");
+    //console.log("cometchat ban member --> close ban member clicked");
 
     this.actionGenerated.emit({ type: "banmember", payLoad: null });
   }
