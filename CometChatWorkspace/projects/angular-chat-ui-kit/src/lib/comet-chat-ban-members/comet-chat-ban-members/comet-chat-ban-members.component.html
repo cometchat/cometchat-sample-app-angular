@@ -9,19 +9,19 @@
         <caption class="tableCaptionStyle">
           Banned Members
         </caption>
-        <!-- <thread> -->
-        <tr>
-          <th>Name</th>
-          <th class="roleColumnStyle">Scope</th>
-          <th class="actionColumnStyle">Unban</th>
-        </tr>
-        <!-- </thread> -->
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="roleColumnStyle">Scope</th>
+            <th class="actionColumnStyle">Unban</th>
+          </tr>
+        </thead>
         <!--message container-->
-        <!-- <caption class="contactMsgStyle">
+        <caption class="contactMsgStyle" *ngIf="displayDecoratorMessage">
           <p class="contactMsgTxtStyle">
             {{ decoratorMessage }}
           </p>
-        </caption> -->
+        </caption>
         <tbody class="tableBodyStyle" (scroll)="handleScroll($event)">
           <!--banned members-->
           <ban-member-view
