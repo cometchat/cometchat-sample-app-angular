@@ -385,7 +385,7 @@ export class CometchatGroupDetailComponent
   };
 
   /**
-   * Unbans the member
+   * Removes the participant from the banned member list , when the member is unbanned
    * @param
    */
   unbanMembers(members) {
