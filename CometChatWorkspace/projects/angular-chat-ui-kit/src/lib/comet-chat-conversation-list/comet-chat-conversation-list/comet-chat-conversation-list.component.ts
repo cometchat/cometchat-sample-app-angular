@@ -5,10 +5,13 @@ import {
   OnInit,
   SimpleChanges,
   ChangeDetectorRef,
+  Output,
+  EventEmitter,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
+import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
 
 @Component({
   selector: "comet-chat-conversation-list",
@@ -18,15 +21,16 @@ import { CometChatManager } from "../../utils/controller";
 export class CometChatConversationListComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
+  @Input() lastMessage;
+  @Output() onUserClick: EventEmitter<any> = new EventEmitter();
 
-  decoratorMessage: string;
+  decoratorMessage: string = "Loading...";
   loggedInUser = null;
   conversationList = [];
   onItemClick = null;
   selectedConversation = undefined;
   ConversationListManager;
-
-  // this.theme = Object.assign({}, theme, this.props.theme);
+  checkItemChange: boolean = false;
 
   // this.audio = new Audio(incomingOtherMessageAlert);
 
@@ -43,10 +47,113 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       if (!this.ref["destroyed"]) {
         this.ref.detectChanges();
       }
-    }, 5000);
+    }, 1500);
   }
 
-  ngOnChanges(change: SimpleChanges) {}
+  ngOnDestroy() {
+    this.removeListeners();
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change["item"]) {
+      this.checkItemChange = true;
+      if (change["item"].previousValue !== change["item"].currentValue) {
+        if (Object.keys(change["item"].currentValue).length === 0) {
+          // this.chatListRef.scrollTop = 0;
+          this.selectedConversation = {};
+        } else {
+          const conversationlist = [...this.conversationList];
+
+          const conversationObj = conversationlist.find((c) => {
+            if (
+              (c.conversationType === this.type &&
+                this.type === "user" &&
+                c.conversationWith.uid === this.item.uid) ||
+              (c.conversationType === this.type &&
+                this.type === "group" &&
+                c.conversationWith.guid === this.item.guid)
+            ) {
+              return c;
+            }
+            return false;
+          });
+          if (conversationObj) {
+            let conversationKey = conversationlist.indexOf(conversationObj);
+            let newConversationObj = {
+              ...conversationObj,
+              unreadMessageCount: 0,
+            };
+            conversationlist.splice(conversationKey, 1, newConversationObj);
+            this.conversationList = conversationlist;
+            this.selectedConversation = newConversationObj;
+          }
+        }
+
+        // if user is blocked/unblocked, update conversationlist i.e user is removed from conversationList
+        if (
+          change["item"].previousValue &&
+          Object.keys(change["item"].previousValue).length &&
+          change["item"].previousValue.uid ===
+            change["item"].currentValue.uid &&
+          change["item"].previousValue.blockedByMe !==
+            change["item"].currentValue.blockedByMe
+        ) {
+          let conversationlist = [...this.conversationList];
+
+          //search for user
+          let convKey = conversationlist.findIndex(
+            (c, k) =>
+              c.conversationType === "user" &&
+              c.conversationWith.uid === change["item"].currentValue.uid
+          );
+          if (convKey > -1) {
+            conversationlist.splice(convKey, 1);
+            this.conversationList = conversationlist;
+            // this.setState({ conversationlist: conversationlist });
+          }
+        }
+      }
+    }
+
+    /**
+     * When user sends message conversationList is updated with latest message
+     */
+    if (this.checkItemChange === false) {
+      if (change["lastMessage"]) {
+        // console.log("message changed ", change["lastMessage"]);
+        // console.log(
+        //   "current message changed ",
+        //   change["lastMessage"].currentValue
+        // );
+        if (
+          change["lastMessage"].previousValue !==
+          change["lastMessage"].currentValue
+        ) {
+          const lastMessage = change["lastMessage"].currentValue[0];
+          console.log("last message", lastMessage);
+          const conversationList = [...this.conversationList];
+          const conversationKey = conversationList.findIndex((c) => {
+            return c.conversationId == lastMessage.conversationId;
+          });
+          // console.log("convo key", conversationKey);
+
+          if (conversationKey > -1) {
+            const conversationObj = conversationList[conversationKey];
+            let newConversationObj = {
+              ...conversationObj,
+              lastMessage: lastMessage,
+            };
+            // console.log("updated last message ", lastMessage);
+
+            conversationList.splice(conversationKey, 1);
+            conversationList.unshift(newConversationObj);
+            this.conversationList = conversationList;
+          }
+        }
+      }
+    }
+    this.checkItemChange = false;
+  }
   ngOnInit() {
     this.conversationRequest = new CometChat.ConversationsRequestBuilder()
       .setLimit(30)
@@ -192,9 +299,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         this.loggedInUser = user;
         this.fetchNextConversation()
           .then((conversationList) => {
-            if (conversationList.length === 0) {
-              this.decoratorMessage = "No chats found";
-            }
             conversationList.forEach((conversation) => {
               if (
                 conversation.conversationType === "user" &&
@@ -231,6 +335,11 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
               ...this.conversationList,
               ...conversationList,
             ];
+            if (this.conversationList.length === 0) {
+              this.decoratorMessage = "No chats found";
+            } else {
+              this.decoratorMessage = "";
+            }
             // console.log(
             //   "ConversationList-> conversationList  ",
             //   this.conversationList
@@ -284,7 +393,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
     options = null
   ) => {
     // console.log("key ", key);
-    // console.log("item ", item);
+    //console.log("item ", item);
     // console.log("message ", message);
     // console.log("options ", options);
 
@@ -294,15 +403,15 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         this.updateUser(item);
         break;
       }
-      // case enums.TEXT_MESSAGE_RECEIVED:
-      // case enums.MEDIA_MESSAGE_RECEIVED:
-      // case enums.CUSTOM_MESSAGE_RECEIVED:
-      //   this.updateConversation(message);
-      //   break;
-      // case enums.MESSAGE_EDITED:
-      // case enums.MESSAGE_DELETED:
-      //   this.conversationEditedDeleted(message);
-      //   break;
+      case enums.TEXT_MESSAGE_RECEIVED:
+      case enums.MEDIA_MESSAGE_RECEIVED:
+      case enums.CUSTOM_MESSAGE_RECEIVED:
+        this.updateConversation(message);
+        break;
+      case enums.MESSAGE_EDITED:
+      case enums.MESSAGE_DELETED:
+        this.conversationEditedDeleted(message);
+        break;
       // case enums.INCOMING_CALL_RECEIVED:
       // case enums.INCOMING_CALL_CANCELLED:
       //   this.updateConversation(message, false);
@@ -360,4 +469,201 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       this.conversationList = conversationlist;
     }
   }
+
+  /**
+   *
+   * Gets the last message
+   * @param conversation
+   */
+  makeLastMessage(message, conversation = {}) {
+    const newMessage = Object.assign({}, message);
+    return newMessage;
+  }
+
+  /**
+   *
+   * Updates Conversations as Text/Custom Messages are received
+   * @param
+   *
+   */
+  updateConversation(message, notification = true) {
+    this.makeConversation(message)
+      .then((response: any) => {
+        const conversationKey = response.conversationKey;
+        const conversationObj = response.conversationObj;
+        const conversationList = response.conversationList;
+
+        if (conversationKey > -1) {
+          let unreadMessageCount = this.makeUnreadMessageCount(conversationObj);
+          let lastMessageObj = this.makeLastMessage(message, conversationObj);
+          let newConversationObj = {
+            ...conversationObj,
+            lastMessage: lastMessageObj,
+            unreadMessageCount: unreadMessageCount,
+          };
+
+          conversationList.splice(conversationKey, 1);
+          conversationList.unshift(newConversationObj);
+          this.conversationList = conversationList;
+
+          if (notification) {
+            // this.playAudio();
+          }
+        } else {
+          let unreadMessageCount = this.makeUnreadMessageCount();
+          let lastMessageObj = this.makeLastMessage(message);
+          let newConversationObj = {
+            ...conversationObj,
+            lastMessage: lastMessageObj,
+            unreadMessageCount: unreadMessageCount,
+          };
+          conversationList.unshift(newConversationObj);
+          this.conversationList = conversationList;
+
+          if (notification) {
+            // this.playAudio();
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(
+          "This is an error in converting message to conversation",
+          error
+        );
+      });
+  }
+
+  /**
+   *
+   * Gets The Count of Unread Messages
+   * @param
+   */
+  makeUnreadMessageCount(conversation: any = {}, operator = null) {
+    if (Object.keys(conversation).length === 0) {
+      return 1;
+    }
+    // console.log("selected convo", this.selectedConversation);
+
+    let unreadMessageCount = parseInt(conversation.unreadMessageCount);
+    if (
+      this.selectedConversation &&
+      this.selectedConversation.conversationId === conversation.conversationId
+    ) {
+      unreadMessageCount = 0;
+    } else if (
+      (this.item &&
+        this.item.hasOwnProperty("guid") &&
+        conversation.conversationWith.hasOwnProperty("guid") &&
+        this.item.guid === conversation.conversationWith.guid) ||
+      (this.item &&
+        this.item.hasOwnProperty("uid") &&
+        conversation.conversationWith.hasOwnProperty("uid") &&
+        this.item.uid === conversation.conversationWith.uid)
+    ) {
+      unreadMessageCount = 0;
+    } else {
+      if (operator && operator === "decrement") {
+        unreadMessageCount = unreadMessageCount ? unreadMessageCount - 1 : 0;
+      } else {
+        unreadMessageCount = unreadMessageCount + 1;
+      }
+    }
+
+    return unreadMessageCount;
+  }
+
+  /**
+   * Changes detail of conversations
+   * @param
+   */
+  makeConversation(message) {
+    const promise = new Promise((resolve, reject) => {
+      CometChat.CometChatHelper.getConversationFromMessage(message)
+        .then((conversation: any) => {
+          let conversationList = [...this.conversationList];
+          let conversationKey = conversationList.findIndex(
+            (c) => c.conversationId === conversation.conversationId
+          );
+
+          let conversationObj = { ...conversation };
+          if (conversationKey > -1) {
+            conversationObj = { ...conversationList[conversationKey] };
+          }
+
+          resolve({
+            conversationKey: conversationKey,
+            conversationObj: conversationObj,
+            conversationList: conversationList,
+          });
+        })
+        .catch((error) => reject(error));
+    });
+    return promise;
+  }
+
+  /**
+   * Updates Conversation View when message is edited or deleted
+   */
+  conversationEditedDeleted(message) {
+    this.makeConversation(message)
+      .then((response: any) => {
+        const conversationKey = response.conversationKey;
+        const conversationObj = response.conversationObj;
+        const conversationList = response.conversationList;
+        if (conversationKey > -1) {
+          let lastMessageObj = conversationObj.lastMessage;
+
+          if (lastMessageObj.id === message.id) {
+            const newLastMessageObj = Object.assign(
+              {},
+              lastMessageObj,
+              message
+            );
+            let newConversationObj = Object.assign({}, conversationObj, {
+              lastMessage: newLastMessageObj,
+            });
+            conversationList.splice(conversationKey, 1, newConversationObj);
+            this.conversationList = conversationList;
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(
+          "This is an error in converting message to conversation",
+          error
+        );
+      });
+  }
+
+  /**
+   * If User scrolls to the bottom of the current Conversation list than fetch next items of the Conversation list and append
+   * @param Event e
+   */
+  handleScroll(e) {
+    const bottom =
+      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
+      Math.round(e.currentTarget.clientHeight);
+    if (bottom) {
+      this.decoratorMessage = "Loading...";
+      this.getConversation();
+    }
+  }
+
+  /**
+   * Emits User on User Click
+   * @param user
+   */
+
+  userClicked(user) {
+    console.log("ConversationList selected user ->> ", user);
+    this.onUserClick.emit(user);
+  }
+  /**
+   * Plays Audio When Message is Sent
+   */
+  // playAudio() {
+  //   let audio = new Audio();
+  //   audio.src = INCOMING_OTHER_MESSAGE_SOUND;
+  //   audio.play();
+  // }
 }

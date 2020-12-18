@@ -1,8 +1,8 @@
-<div class="listItem">
+<div class="listItem" (click)="onUserClicked(ConversationDetails)">
   <div class="itemThumbnailStyle">
     <!--Avatar-->
     <avatar
-      [avatar]="getAvatar(ConversationDetails)"
+      [item]="getAvatar(ConversationDetails)"
       [userStatus]="ConversationDetails.conversationWith.status"
     ></avatar>
   </div>

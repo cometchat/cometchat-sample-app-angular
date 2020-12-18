@@ -1,23 +1,23 @@
-.chatsWrapperStyle {
+.chatWrapperStyle {
   display: flex;
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
 }
-.chatsWrapperStyle * {
+.chatWrapperStyle * {
   box-sizing: border-box;
 }
-.chatsWrapperStyle::-webkit-scrollbar {
+.chatWrapperStyle *::-webkit-scrollbar {
   width: 8px;
   height: 4px;
 }
-.chatsWrapperStyle::-webkit-scrollbar-track {
+.chatWrapperStyle *::-webkit-scrollbar-track {
   background: #ffffff00;
 }
-.chatsWrapperStyle::-webkit-slider-thumb {
+.chatWrapperStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
-.chatsWrapperStyle::-webkit-scrollbar-thumb:hover {
+.chatWrapperStyle *::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }
 
@@ -26,14 +26,9 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eaeaea;
-  /* borderBottom: `1px solid ${theme.color.darkSecondary}` */
 }
 
 .chatsHeaderTitleStyle {
-  /* const alignment = (props.hasOwnProperty("enableCloseMenu") && props.enableCloseMenu.length > 0) ? {
-        width: "33%",
-        textAlign: "center"
-    } : {}; */
   margin: 0;
   display: inline-block;
   width: 66%;
@@ -54,13 +49,13 @@
 .chatsMsgTxtStyle {
   margin: 0;
   height: 30px;
-  /* color: `${theme.color.secondary}`; */
   font-size: 24px !important;
   font-weight: 600;
+  color: #cccccc;
 }
 
 .chatsListStyle {
-  height: calc(100% - 75px);
+  height: calc(100% - 65px);
   width: 100%;
   overflow-y: auto;
   margin: 0;

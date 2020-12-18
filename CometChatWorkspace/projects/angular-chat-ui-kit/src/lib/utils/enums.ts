@@ -114,3 +114,5 @@ export const MESSAGE = "message";
 export const CALL = "call";
 export const ACTION = "action";
 export const CUSTOM = "custom";
+
+export const CLOSE_MENU_CLICKED = "closeMenuClicked";

@@ -21,7 +21,7 @@ export class AvatarComponent implements OnInit {
 
   setAvatarIfNotPresent() {
     if (this.item) {
-      this.avatar = this.item.avatar;
+      this.avatar = this.item.avatar || this.item.icon;
       this.userStatus = this.item.status;
 
       if (this.avatar === undefined || this.avatar === null) {

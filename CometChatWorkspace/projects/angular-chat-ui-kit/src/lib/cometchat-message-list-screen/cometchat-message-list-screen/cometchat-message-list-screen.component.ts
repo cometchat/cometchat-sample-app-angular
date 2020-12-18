@@ -43,10 +43,10 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     // console.log("Message List --> ngOnChanges -->  ", change);
 
     if (change["composedthreadmessage"]) {
-      console.log(
-        "Message List Screen --> a thread Parent was updated ",
-        change["composedthreadmessage"]
-      );
+      // console.log(
+      //   "Message List Screen --> a thread Parent was updated ",
+      //   change["composedthreadmessage"]
+      // );
 
       // There is a valid Thread parent message , than update it's reply count
       if (change["composedthreadmessage"].currentValue) {
@@ -95,7 +95,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     // action.payLoad has the array of messages that is received
     let messages = action.payLoad;
 
-    console.log("MessageListScreen --> action generation is ", action);
+    // console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
       case enums.CUSTOM_MESSAGE_RECEIVE:
@@ -109,7 +109,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
           this.smartReplyPreview(messages);
 
           setTimeout(() => {
-            console.log("scroll to bottom after getting smart reply");
+            // console.log("scroll to bottom after getting smart reply");
 
             this.scrollToBottomOfChatWindow();
           }, 2500);
@@ -339,7 +339,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       .then((deletedMessage) => {
         this.removeMessages([deletedMessage]);
 
-        console.log(" MessageList screen --> Message Deleted successfully");
+        // console.log(" MessageList screen --> Message Deleted successfully");
 
         const messageList = [...this.messageList];
         let messageKey = messageList.findIndex((m) => m.id === message.id);

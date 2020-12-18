@@ -1,21 +1,22 @@
-<div class="chasWrapperStyle">
+<div class="chatWrapperStyle">
   <div class="chatsHeaderStyle">
     <!--Close Btn-->
     <h4 class="chatsHeaderTitleStyle">Chats</h4>
     <div></div>
   </div>
   <!--Message Container-->
-  <div class="chatsMsgStyle">
+  <div class="chatsMsgStyle" *ngIf="decoratorMessage !== ''">
     <p class="chatsMsgTxtStyle">
       {{ decoratorMessage }}
     </p>
   </div>
-  <div class="chatsListStyle">
+  <div class="chatsListStyle" (scroll)="handleScroll($event)">
     <!--Conversation List-->
     <div *ngFor="let conversation of conversationList">
       <conversation-view
         [ConversationDetails]="conversation"
         [loggedInUser]="loggedInUser"
+        (onUserClick)="userClicked($event)"
       >
       </conversation-view>
     </div>
