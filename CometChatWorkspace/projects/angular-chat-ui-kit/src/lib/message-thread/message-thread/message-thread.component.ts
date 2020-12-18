@@ -10,6 +10,8 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
+
 @Component({
   selector: "message-thread",
   templateUrl: "./message-thread.component.html",
@@ -67,12 +69,12 @@ export class MessageThreadComponent implements OnInit, OnChanges {
     console.log("MessageThread --> action generation is ", action);
 
     switch (action.type) {
-      case "newConversationOpened": {
+      case enums.NEW_CONVERSATION_OPENED: {
         this.setMessages(messages);
         this.replyCount = messages.length;
         break;
       }
-      case "messageComposed": {
+      case enums.MESSAGE_COMPOSED: {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;
 
@@ -84,13 +86,13 @@ export class MessageThreadComponent implements OnInit, OnChanges {
         });
         break;
       }
-      case "messageUpdated": {
+      case enums.MESSAGE_UPDATED: {
         this.updateMessages(messages);
         break;
       }
 
-      case "customMessageReceived":
-      case "messageReceived": {
+      case enums.CUSTOM_MESSAGE_RECEIVE:
+      case enums.MESSAGE_RECEIVED: {
         const message = messages[0];
         if (message.parentMessageId === this.parentMessage.id) {
           // const replyCount = this.state.replyCount + 1;
@@ -105,7 +107,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
         }
         break;
       }
-      case "olderMessagesFetched": {
+      case enums.OLDER_MESSAGES_FETCHED: {
         this.reachedTopOfConversation = false;
 
         //No Need for below actions if there is nothing to prepend
@@ -122,19 +124,19 @@ export class MessageThreadComponent implements OnInit, OnChanges {
 
         break;
       }
-      case "editMessage": {
+      case enums.EDIT_MESSAGE: {
         this.editMessage(messages);
         break;
       }
-      case "messageEdited": {
+      case enums.MESSAGE_EDIT: {
         this.messageEdited(messages);
         break;
       }
-      case "deleteMessage": {
+      case enums.DELETE_MESSAGE: {
         this.deleteMessage(messages);
         break;
       }
-      case "messageDeleted":
+      case enums.MESSAGE_DELETE:
         this.removeMessages(messages);
         break;
     }

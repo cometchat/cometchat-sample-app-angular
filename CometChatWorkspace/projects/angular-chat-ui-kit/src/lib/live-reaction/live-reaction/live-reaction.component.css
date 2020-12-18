@@ -1,0 +1,18 @@
+.reactionContainerStyle {
+  width: 100px;
+  height: calc(100% - 120px);
+  overflow: hidden;
+  top: 70px;
+  float: right;
+}
+
+.reactionEmojiStyle {
+  position: absolute;
+  z-index: 4;
+  color: #dd4144;
+  visibility: hidden;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt" height="15.000000pt" viewBox="0 0 61.000000 61.000000" preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,61.000000) scale(0.100000,-0.100000)" fill="rgba(255,0,0)" stroke="none"> <path d="M103 591 c-26 -12 -52 -35 -70 -62 -25 -38 -28 -51 -28 -128 0 -74 4 -94 28 -143 16 -32 51 -83 79 -114 55 -60 166 -144 191 -144 20 0 122 77 174 131 114 119 159 278 107 379 -32 64 -105 105 -167 93 -39 -7 -94 -39 -106 -61 -8 -13 -13 -11 -40 16 -28 27 -84 52 -116 52 -5 0 -29 -9 -52 -19z"/> </g> </svg>')
+    no-repeat;
+}

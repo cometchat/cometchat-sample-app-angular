@@ -5,6 +5,7 @@ import { KitchenSinkAppComponent } from "./Components/kitchen-sink-app/kitchen-s
 import { CometChatConversationListPageComponent } from "./Components/Pages/comet-chat-conversation-list-page/comet-chat-conversation-list-page.component";
 import { CometChatConversationListScreenPageComponent } from "./Components/Pages/comet-chat-conversation-list-screen-page/comet-chat-conversation-list-screen-page.component";
 import { CometChatMessageComposerPageComponent } from "./Components/Pages/comet-chat-message-composer-page/comet-chat-message-composer-page.component";
+import { GroupListComponent } from "./Components/Pages/group-list/group-list.component";
 import { UserListPageComponent } from "./Components/user-list-page/user-list-page.component";
 import { UserListScreenPageComponent } from "./Components/user-list-screen-page/user-list-screen-page.component";
 
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: "conversation-screen",
     component: CometChatConversationListScreenPageComponent,
+  },
+  {
+    path: "group-list",
+    component: GroupListComponent,
   },
 ];
 

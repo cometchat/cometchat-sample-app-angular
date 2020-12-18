@@ -1,0 +1,37 @@
+<div class="messageContainerStyle">
+  <tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <avatar [avatar]="avatar" class="avatarStyle"></avatar>
+    </div>
+
+    <div class="messageDetailStyle">
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ name }}
+        </span>
+      </div>
+      <div class="messageImgContainerStyle">
+        <div class="messageImgWrapperStyle">
+          <img [src]="stickerUrl" [alt]="stickerName" />
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle">
+          {{ getTime() }}
+        </span>
+        <reply-count
+          *ngIf="showReplyCount"
+          [MessageDetails]="MessageDetails"
+          (actionGenerated)="actionHandler($event)"
+        >
+        </reply-count>
+      </div>
+    </div>
+  </div>
+</div>

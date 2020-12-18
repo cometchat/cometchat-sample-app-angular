@@ -56,3 +56,61 @@ export const LIVE_REACTIONS = {
   clap: "👏",
   wink: "😉",
 };
+
+export const BLOCK_USER_TEXT = "Block User";
+export const UNBLOCK_USER_TEXT = "Unblock User";
+
+export const SEND_SMART_REPLY = "sendSmartReply";
+export const SEND_STICKER = "sendSticker";
+export const CLOSE_STICKER = "closeSticker";
+
+export const CUSTOM_MESSAGE_RECEIVE = "customMessageReceived";
+export const MESSAGE_RECEIVED = "messageReceived";
+export const MESSAGE_FETCHED = "messageFetched";
+export const OLDER_MESSAGES_FETCHED = "olderMessagesFetched";
+export const MESSAGE_COMPOSED = "messageComposed";
+export const MESSAGE_UPDATED = "messageUpdated";
+export const VIEW_ACTUAL_IMAGE = "viewActualImage";
+export const NEW_CONVERSATION_OPENED = "newConversationOpened";
+export const VIEW_MESSAGE_THREAD = "viewMessageThread";
+export const DELETE_MESSAGE = "deleteMessage";
+export const EDIT_MESSAGE = "editMessage";
+export const MESSAGE_EDIT = "messageEdited";
+export const AUDIO_CALL = "audioCall";
+export const VIDEO_CALL = "videoCall";
+export const VIEW_DETAIL = "viewDetail";
+export const MENU_CLICKED = "menuClicked";
+export const SEND_REACTION = "sendReaction";
+export const SHOW_REACTION = "showReaction";
+export const STOP_REACTION = "stopReaction";
+export const CLEAR_MESSAGE_TO_BE_UPDATED = "clearMessageToBeEdited";
+export const MESSAGE_DELETE = "messageDeleted";
+
+export const CLOSE_THREAD_CLICKED = "closeThreadClicked";
+export const CLOSE_FULL_SCREEN_IMAGE = "closeFullScreenImage";
+export const CLOSE_DETAIL_CLICKED = "closeDetailClicked";
+export const CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT =
+  "changeThreadParentMessageReplyCount";
+export const BLOCK_USER = "blockUser";
+export const UNBLOCK_USER = "unblockUser";
+
+export const CLOSE_POLL_VIEW = "closePollView";
+
+export const POLL_CREATED = "pollCreated";
+export const POLL_ANSWERED = "pollAnswered";
+
+export const CLOSE_CREATE_GROUP_VIEW = "closeCreateGroupView";
+export const GROUP_CREATED = "groupCreated";
+
+export const PUBLIC_GROUP = "public";
+export const PRIVATE_GROUP = "private";
+export const PROTECTED_GROUP = "protected";
+
+export const GROUP_NAME_BLANK_ERROR = "Group name cannnot be blank.";
+export const GROUP_TYPE_BLANK_ERROR = "Group type cannnot be blank.";
+export const GROUP_PASSWORD_BLANK_ERROR = "Group password cannnot be blank.";
+
+export const MESSAGE = "message";
+export const CALL = "call";
+export const ACTION = "action";
+export const CUSTOM = "custom";

@@ -163,16 +163,14 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         onTextMessageReceived: (textMessage) => {
           console.log("Text message received successfully", textMessage);
           this.messageUpdated(enums.TEXT_MESSAGE_RECEIVED, textMessage);
-          // Handle text message
         },
         onMediaMessageReceived: (mediaMessage) => {
           console.log("Media message received successfully", mediaMessage);
           this.messageUpdated(enums.MEDIA_MESSAGE_RECEIVED, mediaMessage);
-
-          // Handle media message
         },
         onCustomMessageReceived: (customMessage) => {
           console.log("Custom message received successfully", customMessage);
+          this.messageUpdated(enums.CUSTOM_MESSAGE_RECEIVED, customMessage);
           // Handle custom message
         },
         onMessagesDelivered: (messageReceipt) => {
@@ -341,7 +339,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
               });
             }
 
-            // console.log("Message list fetched:", messageList);
+            console.log("Message list -->> fetched messages:", messageList);
             // Handle the list of messages
           },
           (error) => {
@@ -375,6 +373,9 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         this.messageEdited(message);
         break;
       }
+      case enums.CUSTOM_MESSAGE_RECEIVED:
+        this.customMessageReceived(message);
+        break;
     }
   }
 
@@ -559,5 +560,111 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         payLoad: messageList,
       });
     }
+  };
+
+  customMessageReceived(message) {
+    if (
+      this.type === "group" &&
+      message.getReceiverType() === "group" &&
+      message.getReceiverId() === this.item.guid
+    ) {
+      if (!message.getReadAt()) {
+        CometChat.markAsRead(
+          message.getId().toString(),
+          message.getReceiverId(),
+          message.getReceiverType()
+        );
+      }
+
+      if (
+        message.hasOwnProperty("metadata") &&
+        message.type !== enums.CUSTOM_TYPE_STICKER &&
+        message.type !== enums.CUSTOM_TYPE_POLL
+      ) {
+        this.actionGenerated.emit({
+          type: "customMessageReceived",
+          payLoad: [message],
+        });
+      } else if (message.type === enums.CUSTOM_TYPE_STICKER) {
+        this.actionGenerated.emit({
+          type: "customMessageReceived",
+          payLoad: [message],
+        });
+      } else if (message.type === enums.CUSTOM_TYPE_POLL) {
+        //customdata (poll extension) does not have metadata
+
+        const newMessage = this.addMetadataToCustomData(message);
+        this.actionGenerated.emit({
+          type: "customMessageReceived",
+          payLoad: [newMessage],
+        });
+      }
+    } else if (
+      this.type === "user" &&
+      message.getReceiverType() === "user" &&
+      message.getSender().uid === this.item.uid
+    ) {
+      if (!message.getReadAt()) {
+        CometChat.markAsRead(
+          message.getId().toString(),
+          message.getSender().uid,
+          message.getReceiverType()
+        );
+      }
+
+      if (
+        message.hasOwnProperty("metadata") &&
+        message.type !== enums.CUSTOM_TYPE_STICKER &&
+        message.type !== enums.CUSTOM_TYPE_POLL
+      ) {
+        this.actionGenerated.emit({
+          type: "customMessageReceived",
+          payLoad: [message],
+        });
+      } else if (message.type === enums.CUSTOM_TYPE_STICKER) {
+        this.actionGenerated.emit({
+          type: "customMessageReceived",
+          payLoad: [message],
+        });
+      } else if (message.type === enums.CUSTOM_TYPE_POLL) {
+        //customdata (poll extension) does not have metadata
+
+        const newMessage = this.addMetadataToCustomData(message);
+        this.actionGenerated.emit({
+          type: "customMessageReceived",
+          payLoad: [newMessage],
+        });
+      }
+    }
+  }
+  addMetadataToCustomData = (message) => {
+    console.log("Message List --> adding metadata to custom message");
+
+    const customData = message.data.customData;
+    const options = customData.options;
+
+    const resultOptions = {};
+    for (const option in options) {
+      resultOptions[option] = {
+        text: options[option],
+        count: 0,
+      };
+    }
+
+    const polls = {
+      id: message.id,
+      options: options,
+      results: {
+        total: 0,
+        options: resultOptions,
+        question: customData.question,
+      },
+      question: customData.question,
+    };
+
+    return {
+      ...message,
+      metadata: { "@injected": { extensions: { polls: polls } } },
+    };
   };
 }

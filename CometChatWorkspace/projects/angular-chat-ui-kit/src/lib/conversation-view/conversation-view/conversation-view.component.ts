@@ -92,16 +92,16 @@ export class ConversationViewComponent implements OnInit, OnChanges {
           : "⚠ This message was deleted.";
     } else {
       switch (lastMessage.category) {
-        case "message":
+        case enums.MESSAGE:
           message = this.getMessage(lastMessage);
           break;
-        case "call":
+        case enums.CALL:
           message = this.getCallMessage(lastMessage);
           break;
-        case "action":
+        case enums.ACTION:
           message = lastMessage.message;
           break;
-        case "custom":
+        case enums.CUSTOM:
           message = this.getCustomMessage(lastMessage);
           break;
         default:
