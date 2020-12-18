@@ -55,9 +55,9 @@ export class ConversationViewComponent implements OnInit, OnChanges {
    */
   getAvatar(data) {
     if (data.conversationType === "user") {
-      this.setAvatar = data.conversationWith.avatar;
+      this.setAvatar = data.conversationWith;
     } else if (data.conversationType === "group") {
-      this.setAvatar = data.conversationWith.icon;
+      this.setAvatar = data.conversationWith;
     }
     return this.setAvatar;
   }
