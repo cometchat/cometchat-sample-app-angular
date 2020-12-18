@@ -61,6 +61,11 @@
   display: block;
 }
 
+.messageInputDisabledStyle {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
 .inputStickyStyle {
   padding: 7px 10px;
   height: 35px;
