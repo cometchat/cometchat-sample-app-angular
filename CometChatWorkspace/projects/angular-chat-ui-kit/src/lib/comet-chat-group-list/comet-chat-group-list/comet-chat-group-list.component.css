@@ -9,16 +9,16 @@
   box-sizing: border-box;
 }
 
-.userScreenStyle *::-webkit-scrollbar {
+.groupWrapperStyle *::-webkit-scrollbar {
   width: 8px;
   height: 4px;
 }
 
-.userScreenStyle *::-webkit-scrollbar-track {
+.groupWrapperStyle *::-webkit-scrollbar-track {
   background: #ffffff00;
 }
 
-.userScreenStyle *::-webkit-scrollbar-thumb {
+.groupWrapperStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
 
