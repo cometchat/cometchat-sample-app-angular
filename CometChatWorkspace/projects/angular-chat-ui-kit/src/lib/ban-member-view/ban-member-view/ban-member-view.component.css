@@ -1,5 +1,5 @@
 .tableRowStyle {
-  /* border: `1px solid ${props.theme.borderColor.primary}`; */
+  border: 1px solid #eaeaea;
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -29,6 +29,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-left: 4px;
 }
 
 .roleStyle {
@@ -38,6 +39,7 @@
 
 .actionStyle {
   width: 70px;
+  cursor: pointer;
 }
 .actionStyle > img {
   width: 20px !important;
