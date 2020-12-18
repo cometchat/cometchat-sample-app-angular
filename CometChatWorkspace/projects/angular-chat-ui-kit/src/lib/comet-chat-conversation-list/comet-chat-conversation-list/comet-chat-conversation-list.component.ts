@@ -11,6 +11,7 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
+import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
 
 @Component({
   selector: "comet-chat-conversation-list",
@@ -21,15 +22,15 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() lastMessage;
+  @Output() onUserClick: EventEmitter<any> = new EventEmitter();
 
-  decoratorMessage: string;
+  decoratorMessage: string = "Loading...";
   loggedInUser = null;
   conversationList = [];
   onItemClick = null;
   selectedConversation = undefined;
   ConversationListManager;
   checkItemChange: boolean = false;
-  @Output() onUserClick: EventEmitter<any> = new EventEmitter();
 
   // this.audio = new Audio(incomingOtherMessageAlert);
 
@@ -298,9 +299,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         this.loggedInUser = user;
         this.fetchNextConversation()
           .then((conversationList) => {
-            if (conversationList.length === 0) {
-              this.decoratorMessage = "No chats found";
-            }
             conversationList.forEach((conversation) => {
               if (
                 conversation.conversationType === "user" &&
@@ -337,6 +335,11 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
               ...this.conversationList,
               ...conversationList,
             ];
+            if (this.conversationList.length === 0) {
+              this.decoratorMessage = "No chats found";
+            } else {
+              this.decoratorMessage = "";
+            }
             // console.log(
             //   "ConversationList-> conversationList  ",
             //   this.conversationList
@@ -504,7 +507,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (notification) {
-            // this.playAudio(message);
+            // this.playAudio();
           }
         } else {
           let unreadMessageCount = this.makeUnreadMessageCount();
@@ -518,7 +521,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (notification) {
-            // this.playAudio(message);
+            // this.playAudio();
           }
         }
       })
@@ -633,6 +636,20 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   }
 
   /**
+   * If User scrolls to the bottom of the current Conversation list than fetch next items of the Conversation list and append
+   * @param Event e
+   */
+  handleScroll(e) {
+    const bottom =
+      Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
+      Math.round(e.currentTarget.clientHeight);
+    if (bottom) {
+      this.decoratorMessage = "Loading...";
+      this.getConversation();
+    }
+  }
+
+  /**
    * Emits User on User Click
    * @param user
    */
@@ -641,4 +658,12 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
     console.log("ConversationList selected user ->> ", user);
     this.onUserClick.emit(user);
   }
+  /**
+   * Plays Audio When Message is Sent
+   */
+  // playAudio() {
+  //   let audio = new Audio();
+  //   audio.src = INCOMING_OTHER_MESSAGE_SOUND;
+  //   audio.play();
+  // }
 }
