@@ -2,10 +2,11 @@
   <td>
     <div class="avatarStyle">
       <!--avatar-->
+      <avatar [avatar]="member?.avatar" [userStatus]="member?.status"></avatar>
     </div>
     <div class="nameStyle">
       <!--name-->
-      {{ member.name }}
+      {{ member?.name }}
     </div>
   </td>
   <td class="roleStyle">
