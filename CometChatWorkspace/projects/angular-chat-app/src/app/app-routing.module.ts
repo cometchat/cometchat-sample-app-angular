@@ -23,7 +23,7 @@ const routes: Routes = [
     component: UserListPageComponent,
   },
   {
-    path: "test",
+    path: "conversations-list",
     component: CometChatConversationListPageComponent,
   },
   {

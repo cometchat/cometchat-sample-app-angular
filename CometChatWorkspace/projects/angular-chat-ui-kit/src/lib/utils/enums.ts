@@ -109,3 +109,8 @@ export const PROTECTED_GROUP = "protected";
 export const GROUP_NAME_BLANK_ERROR = "Group name cannnot be blank.";
 export const GROUP_TYPE_BLANK_ERROR = "Group type cannnot be blank.";
 export const GROUP_PASSWORD_BLANK_ERROR = "Group password cannnot be blank.";
+
+export const MESSAGE = "message";
+export const CALL = "call";
+export const ACTION = "action";
+export const CUSTOM = "custom";
