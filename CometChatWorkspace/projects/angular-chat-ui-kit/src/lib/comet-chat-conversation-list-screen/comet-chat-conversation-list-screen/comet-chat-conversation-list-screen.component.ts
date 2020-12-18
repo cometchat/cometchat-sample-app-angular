@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
+import * as enums from "../../utils/enums";
+
 @Component({
   selector: "comet-chat-conversation-list-screen",
   templateUrl: "./comet-chat-conversation-list-screen.component.html",
@@ -46,10 +48,10 @@ export class CometChatConversationListScreenComponent implements OnInit {
     console.log("cls message ", message);
 
     switch (action.type) {
-      case "blockUser":
+      case enums.BLOCK_USER:
         this.blockUser();
         break;
-      case "unblockUser":
+      case enums.UNBLOCK_USER:
         this.unblockUser();
         break;
       //   case "audioCall":
@@ -58,19 +60,19 @@ export class CometChatConversationListScreenComponent implements OnInit {
       //   case "videoCall":
       //     this.videoCall();
       //   break;
-      case "viewDetail":
-      case "closeDetailClicked":
+      case enums.VIEW_DETAIL:
+      case enums.CLOSE_DETAIL_CLICKED:
         this.toggleDetailView();
         break;
 
       //   // eslint-disable-next-line no-lone-blocks
-      case "menuClicked":
+      case enums.MENU_CLICKED:
         {
           this.toggleSideBar();
           this.item = {};
         }
         break;
-      case "closeMenuClicked":
+      case enums.CLOSE_MENU_CLICKED:
         this.toggleSideBar();
         break;
       //   case "groupUpdated":
@@ -85,10 +87,10 @@ export class CometChatConversationListScreenComponent implements OnInit {
       //   case "membersUpdated":
       //     this.updateMembersCount(item, count);
       //   break;
-      case "viewMessageThread":
+      case enums.VIEW_MESSAGE_THREAD:
         this.viewMessageThread(message);
         break;
-      case "closeThreadClicked":
+      case enums.CLOSE_THREAD_CLICKED:
         this.closeThreadMessages();
         break;
       //   case "threadMessageComposed":
@@ -113,10 +115,10 @@ export class CometChatConversationListScreenComponent implements OnInit {
       //   case "userLeftCall":
       //     this.appendCallMessage(item);
       //     break;
-      case "viewActualImage":
+      case enums.VIEW_ACTUAL_IMAGE:
         this.toggleImageView(message);
         break;
-      case "closeFullScreenImage": {
+      case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
       }
       //   case "membersAdded":
@@ -128,9 +130,9 @@ export class CometChatConversationListScreenComponent implements OnInit {
       //   case "memberScopeChanged":
       //     this.memberScopeChanged(item);
       //     break;
-      case "messageComposed":
-      case "messageEdited":
-      case "messageDeleted":
+      case enums.MESSAGE_COMPOSED:
+      case enums.MESSAGE_EDIT:
+      case enums.MESSAGE_DELETE:
         this.updateLastMessage(message);
         break;
       default:
