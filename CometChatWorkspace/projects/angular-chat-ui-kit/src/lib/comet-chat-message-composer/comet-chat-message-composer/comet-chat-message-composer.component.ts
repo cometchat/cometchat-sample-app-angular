@@ -37,7 +37,7 @@ import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSou
       state(
         "animated",
         style({
-          width: "22px",
+          width: "26px",
           margin: "auto 1px",
         })
       ),
