@@ -21,16 +21,13 @@ export class BanMemberViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // console.log("members are  ", this.member);
-    // console.log("yoyo items are ", this.item);
-
     this.roles[CometChat.GROUP_MEMBER_SCOPE.ADMIN] = "Administrator";
     this.roles[CometChat.GROUP_MEMBER_SCOPE.MODERATOR] = "Moderator";
     this.roles[CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT] = "Participant";
     this.scope = this.roles[this.member.scope];
   }
   unbanMember() {
-    console.log("unban clciked");
+    //console.log("unban clciked");
 
     this.actionGenerated.emit({
       type: "unban",
