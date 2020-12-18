@@ -1,0 +1,36 @@
+<div class="groupWrapperStyle">
+  <div class="groupHeaderStyle">
+    <!-- enableCloseMenu -->
+    <div class="groupHeaderCloseStyle"></div>
+
+    <h4 class="groupHeaderTitleStyle">Groups</h4>
+    <div class="groupAddStyle" (click)="toggleCreateGroupView()"></div>
+  </div>
+  <div class="groupSearchStyle">
+    <input
+      class="groupSearchInputStyle"
+      type="text"
+      autoComplete="off"
+      placeholder="Search"
+      (keyup)="searchGroup($event)"
+    />
+  </div>
+  <div class="groupMsgStyle">
+    <p class="groupMsgTxtStyle">{{ decoratorMessage }}</p>
+  </div>
+  <div class="groupListStyle" (scroll)="handleScroll($event)">
+    <div *ngFor="let group of grouplist">
+      <group-view
+        [group]="group"
+        [selectedGroup]="this.selectedGroup"
+        (onGroupClick)="groupClicked($event)"
+      ></group-view>
+    </div>
+  </div>
+  <!-- create group component -->
+  <comet-chat-create-group
+    *ngIf="openCreateGroupView"
+    (actionGenerated)="actionHandler($event)"
+  ></comet-chat-create-group>
+  <!-- create group component -->
+</div>

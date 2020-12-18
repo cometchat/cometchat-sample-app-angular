@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
+import * as enums from "../../utils/enums";
+
 @Component({
   selector: "cometchat-user-list-screen",
   templateUrl: "./cometchat-user-list-screen.component.html",
@@ -37,7 +39,7 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.curentItem = user;
 
     //Close Thread And User Detail Screen When Chat Window Is Changed
-    this.closeThreadMessages();
+    // this.closeThreadMessages();
     this.viewDetailScreen = false;
 
     if (this.curentItem.hasOwnProperty("uid")) {
@@ -61,23 +63,23 @@ export class CometchatUserListScreenComponent implements OnInit {
     console.log("UserListScreen --> action generation is ", action);
 
     switch (action.type) {
-      case "viewMessageThread": {
+      case enums.VIEW_MESSAGE_THREAD: {
         this.viewMessageThread(message);
         break;
       }
-      case "closeThreadClicked": {
+      case enums.CLOSE_THREAD_CLICKED: {
         this.closeThreadMessages();
         break;
       }
-      case "viewActualImage": {
+      case enums.VIEW_ACTUAL_IMAGE: {
         this.toggleImageView(action.payLoad);
         break;
       }
-      case "closeFullScreenImage": {
+      case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
       }
-      case "viewDetail":
-      case "closeDetailClicked": {
+      case enums.VIEW_DETAIL:
+      case enums.CLOSE_DETAIL_CLICKED: {
         this.toggleDetailView();
         break;
       }
@@ -96,11 +98,11 @@ export class CometchatUserListScreenComponent implements OnInit {
 
         break;
       }
-      case "blockUser": {
+      case enums.BLOCK_USER: {
         this.blockUser();
         break;
       }
-      case "unblockUser":
+      case enums.UNBLOCK_USER:
         this.unblockUser();
         break;
     }

@@ -32,7 +32,6 @@ export class SharedMediaViewComponent implements OnInit {
   scrollVariable = 0;
   scrolltoBottom: boolean;
 
-  //to apply css class when button is active
   imageClick: boolean = true;
   videoClick: boolean = false;
   docsClick: boolean = false;

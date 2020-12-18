@@ -11,7 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import { INCOMING_MESSAGE_SOUND } from "../../resources/audio/incomingMessageSound";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-message-list-screen",
   templateUrl: "./cometchat-message-list-screen.component.html",
@@ -35,16 +35,18 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   reachedTopOfConversation = false;
   scrollVariable = 0;
 
+  reactionName = "heart";
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
     // console.log("Message List --> ngOnChanges -->  ", change);
 
     if (change["composedthreadmessage"]) {
-      console.log(
-        "Message List Screen --> a thread Parent was updated ",
-        change["composedthreadmessage"]
-      );
+      // console.log(
+      //   "Message List Screen --> a thread Parent was updated ",
+      //   change["composedthreadmessage"]
+      // );
 
       // There is a valid Thread parent message , than update it's reply count
       if (change["composedthreadmessage"].currentValue) {
@@ -93,11 +95,11 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     // action.payLoad has the array of messages that is received
     let messages = action.payLoad;
 
-    console.log("MessageListScreen --> action generation is ", action);
+    // console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
-      case "customMessageReceived":
-      case "messageReceived": {
+      case enums.CUSTOM_MESSAGE_RECEIVE:
+      case enums.MESSAGE_RECEIVED: {
         const message = messages[0];
         if (message.parentMessageId) {
           // Implement while doing the threaded message feature
@@ -107,14 +109,14 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
           this.smartReplyPreview(messages);
 
           setTimeout(() => {
-            console.log("scroll to bottom after getting smart reply");
+            // console.log("scroll to bottom after getting smart reply");
 
             this.scrollToBottomOfChatWindow();
           }, 2500);
 
-          // console.log(
-          //   "received a message from the user , u r chatting with , going to append it"
-          // );
+          console.log(
+            " MessageListScreen -->  received a message from the user , u r chatting with , going to append it"
+          );
           this.appendMessage(messages);
         }
 
@@ -124,11 +126,11 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         break;
       }
 
-      case "messageFetched": {
+      case enums.MESSAGE_FETCHED: {
         this.prependMessages(messages);
         break;
       }
-      case "olderMessagesFetched": {
+      case enums.OLDER_MESSAGES_FETCHED: {
         this.reachedTopOfConversation = false;
 
         //No Need for below actions if there is nothing to prepend
@@ -145,7 +147,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
         break;
       }
-      case "messageComposed": {
+      case enums.MESSAGE_COMPOSED: {
         this.appendMessage(messages);
         this.actionGenerated.emit({
           type: "messageComposed",
@@ -153,60 +155,81 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         });
         break;
       }
-      case "messageUpdated": {
+      case enums.MESSAGE_UPDATED: {
         this.updateMessages(messages);
         break;
       }
-      case "viewActualImage": {
+      case enums.VIEW_ACTUAL_IMAGE: {
         this.actionGenerated.emit({
           type: "viewActualImage",
           payLoad: messages,
         });
         break;
       }
-      case "newConversationOpened": {
+      case enums.NEW_CONVERSATION_OPENED: {
         this.resetPage();
         this.setMessages(messages);
 
         break;
       }
-      case "viewMessageThread": {
+      case enums.VIEW_MESSAGE_THREAD: {
         this.actionGenerated.emit({
           type: "viewMessageThread",
           payLoad: messages,
         });
         break;
       }
-      case "deleteMessage": {
+      case enums.DELETE_MESSAGE: {
         this.deleteMessage(messages);
         break;
       }
-      case "editMessage": {
+      case enums.EDIT_MESSAGE: {
         this.editMessage(messages);
         break;
       }
-      case "messageEdited": {
+      case enums.MESSAGE_EDIT: {
         this.messageEdited(messages);
         break;
       }
-      case "audioCall":
-      case "videoCall":
-      case "viewDetail":
-      case "menuClicked": {
+      case enums.AUDIO_CALL:
+      case enums.VIDEO_CALL:
+      case enums.VIEW_DETAIL:
+      case enums.MENU_CLICKED: {
         this.actionGenerated.emit(action);
         break;
       }
-      case "clearMessageToBeEdited": {
+      case enums.SEND_REACTION: {
+        this.toggleReaction(true);
+        break;
+      }
+      case enums.SHOW_REACTION: {
+        this.showReaction(messages);
+        break;
+      }
+      case enums.STOP_REACTION: {
+        this.toggleReaction(false);
+        break;
+      }
+      case enums.CLEAR_MESSAGE_TO_BE_UPDATED: {
         this.messageToBeEdited = null;
         break;
       }
-      case "messageUpdated": {
+      case enums.MESSAGE_UPDATED: {
         this.updateMessages(messages);
         break;
       }
 
-      case "messageDeleted": {
+      case enums.MESSAGE_DELETE: {
         this.removeMessages(messages);
+        break;
+      }
+      case enums.POLL_CREATED: {
+        this.appendPollMessage(messages);
+        break;
+      }
+      case enums.POLL_ANSWERED: {
+        console.log("Mesasge List screen -->Answer poll case ");
+        this.updatePollMessage(messages);
         break;
       }
     }
@@ -228,7 +251,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   setMessages(messages) {
     this.messageList = [...messages];
 
-    console.log("MessageListScreen->> ", this.messageList);
+    // console.log("MessageListScreen->> ", this.messageList);
 
     this.scrollToBottomOfChatWindow();
   }
@@ -256,6 +279,46 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   };
 
   /**
+   * append Poll Messages that are sent
+   * @param Any messages
+   */
+  appendPollMessage(messages) {
+    console.log("MessageListScreen->> Appending poll message ", messages);
+
+    this.appendMessage(messages);
+  }
+
+  /**
+   * updates Poll Messages depending on answer given by user
+   * @param Any messages
+   */
+  updatePollMessage(message) {
+    console.log("Mesasge List screen --> starting to update poll message ");
+
+    const messageList = [...this.messageList];
+    const messageId = message.poll.id;
+    let messageKey = messageList.findIndex((m, k) => m.id === messageId);
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+
+      const metadataObj = {
+        "@injected": { extensions: { polls: message.poll } },
+      };
+
+      const newMessageObj = { ...messageObj, metadata: metadataObj };
+
+      // messageList.splice(messageKey, 1, newMessageObj);
+
+      console.log(
+        "Mesasge List screen --> updated poll message ",
+        newMessageObj
+      );
+
+      this.messageEdited(newMessageObj);
+    }
+  }
+
+  /**
    * update status of message ie. read or deliv
    * @param Any messages
    */
@@ -276,7 +339,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       .then((deletedMessage) => {
         this.removeMessages([deletedMessage]);
 
-        console.log(" MessageList screen --> Message Deleted successfully");
+        // console.log(" MessageList screen --> Message Deleted successfully");
 
         const messageList = [...this.messageList];
         let messageKey = messageList.findIndex((m) => m.id === message.id);
@@ -369,21 +432,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   }
 
   handleScroll(e) {
-    // console.log(`Message List Screen --> user started scrollling `, e);
-
-    // console.log(
-    //   `Message List Screen --> e.currentTarget.scrollHeight `,
-    //   e.currentTarget.scrollHeight
-    // );
-    // console.log(
-    //   `Message List Screen --> e.currentTarget.scrollTop `,
-    //   e.currentTarget.scrollTop
-    // );
-    // console.log(
-    //   `Message List Screen --> e.currentTarget.clientHeight `,
-    //   e.currentTarget.clientHeight
-    // );
-
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
@@ -395,23 +443,46 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     if (top) {
       this.reachedTopOfConversation = top;
     }
-
-    // console.log(
-    //   "Message List Screen --> reached top of chat , fetch old conversation ",
-    //   this.reachedTopOfConversation
-    // );
   }
 
   scrollToBottomOfChatWindow() {
-    // console.log(
-    //   "Message List Screen --> Making The Chat Window Scroll to Bottom "
-    // );
-
     setTimeout(() => {
       this.scrollVariable =
         this.chatWindow.nativeElement.scrollHeight -
         this.chatWindow.nativeElement.clientHeight;
     }, 1);
+  }
+
+  /**
+   * Toggle Reaction -> true/false
+   * @param
+   */
+  toggleReaction(flag) {
+    this.liveReaction = flag;
+  }
+
+  /**
+   * Shows Reaction on receiving end
+   * @param
+   */
+  showReaction(reaction) {
+    if (!reaction.hasOwnProperty("metadata")) {
+      return false;
+    }
+    if (
+      !reaction.metadata.hasOwnProperty("type") ||
+      !reaction.metadata.hasOwnProperty("reaction")
+    ) {
+      return false;
+    }
+    if (!enums.LIVE_REACTIONS.hasOwnProperty(reaction.metadata.reaction)) {
+      return false;
+    }
+
+    if (reaction.metadata.type === enums.LIVE_REACTION_KEY) {
+      this.reactionName = reaction.metadata.reaction;
+      this.liveReaction = true;
+    }
   }
 
   /**
