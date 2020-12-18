@@ -28,7 +28,6 @@
             *ngFor="let member of bannedmemberlist"
             [member]="member"
             [item]="item"
-            [type]="type"
             (actionGenerated)="actionHandler($event)"
           >
           </ban-member-view>
