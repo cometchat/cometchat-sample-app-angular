@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
@@ -6,7 +12,7 @@ import { DomSanitizer } from "@angular/platform-browser";
   templateUrl: "./avatar.component.html",
   styleUrls: ["./avatar.component.scss"],
 })
-export class AvatarComponent implements OnInit {
+export class AvatarComponent implements OnInit, OnChanges {
   @Input() item = null;
 
   @Input() avatar: any =
@@ -14,6 +20,14 @@ export class AvatarComponent implements OnInit {
   @Input() userStatus = "";
 
   constructor(private _sanitizer: DomSanitizer) {}
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change["item"]) {
+      if (change["item"].previousValue !== change["item"].currentValue) {
+        this.setAvatarIfNotPresent();
+      }
+    }
+  }
 
   ngOnInit() {
     this.setAvatarIfNotPresent();
