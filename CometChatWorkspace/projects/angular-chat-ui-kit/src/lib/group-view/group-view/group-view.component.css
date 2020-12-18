@@ -1,0 +1,88 @@
+.listItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 0px 20px;
+
+  /* selected style */
+}
+
+.listItem:hover {
+  background: #e6e6e6;
+  cursor: pointer;
+}
+
+.selectedGroupStyle {
+  background: #e6e6e6;
+}
+
+.listItemName {
+  max-width: calc(100% - 30px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listItemIcon {
+  width: 16px;
+  height: 16px;
+  margin: 0px 5px;
+}
+
+.shieldIcon {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA0gAAANIBBp0MHQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFRSURBVDiNlZO9SgNBFIW/2biNj5AqZRqxEMI2IhGsBYtAdirTpLAQrHwCwSaFXTohzGxcUBHBUhsLJQ8ggrWFdRTJulybNeyP2SSnvPc7Z+78QYmCIKgFQVArY9R/RWPMBnAItAEHuFNKnfq+/zgzIAzDShRFe8AR4AEjoAcEKf4J6Lmue9VqtWKSdACiKHoDhsC7UmpTa93QWg9zC3pAmLAArKSaNWBfa31etucUS2aCRJ8LmDPKByytdEC0hG/KTs9AKfUhIqExJkNqrTNXba09FpGDwgQiMlpkaRHZAZ4LAcDFPPNgMFgHttLsNGA8Hl+KyMsscxiGFcdxzoDXarV6XQjodrsR0AG+8+Z+v+9OJhMLNBzH6TSbzZ+/XuEvGGN2AQusJqVt4ARYU0q1fd+/TfOFd6C1vhERD3hISvfAVxzHXt48V9baurW2Xsb8Ag7Sb1fmNEFRAAAAAElFTkSuQmCC");
+
+  background-size: 16px 16px;
+  cursor: pointer;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0px 5px;
+}
+
+.lockIcon {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA0gAAANIBBp0MHQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFFSURBVDiNpZG9SkNBEIW/WbQSrMTKP0JeQB/AUl9AJWZvEBHstdTKQsFGG1/A5O4leEHt7YJdCPYi2FinsNSwY7Mp7mWTiB6YYs6ZPfOz8E/IKCFN0w0R2QUQkaxerz/F6kyMzLJsX0TugT7QV9WHNE33YrVTMVJVz1T1MEmSLBi+AOfA7cQJms3mDLDovX8ecoPBoAMsBa2Awg1arVbVGLMTul0An0GaBU6AU+/9XaPReIuuYIzJQ3EP2Cw16wEHxpgtYC1qAMwBx9baHMA51wCw1rZCvg1cjb1BCeshRiL6C845CxwByyFfBa6Br3JtdAJVfQVy4D1EHrjfTZAkSRfoOueqANbayzDJykQDVZ13zlUAjDGP4WFlqInIWIOOiNwME+99QRQRVDUtcKXu0m63F7z307HVjDHftVrtQ0Q0pv8JPy5aeNSzVlFhAAAAAElFTkSuQmCC");
+  background-size: 16px 16px;
+  cursor: pointer;
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0px 5px;
+}
+
+.itemThumbnailStyle {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.itemDetailStyle {
+  width: calc(100% - 70px);
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.itemNameWrapperStyle {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 100;
+  margin: 0;
+}
+
+.itemDescStyle {
+  border-bottom: 1px solid #eaeaea;
+  padding: 0px 0px 5px 0px;
+  font-size: 12px;
+  color: rgba(20, 20, 20, 0.4);
+}
+
+.itemDescStyle:hover {
+  background: #e6e6e6;
+  cursor: pointer;
+}

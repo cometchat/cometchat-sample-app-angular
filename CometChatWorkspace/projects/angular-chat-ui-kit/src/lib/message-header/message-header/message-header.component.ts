@@ -27,14 +27,19 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   status: string = "";
   isTyping: boolean = true;
 
+  //displays audio and video call options
+  checkNotBlocked: boolean = true;
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
     // console.log("Message Header --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
-      // if the person you are chatting with changes
+      //Check if user is blocked/unblocked
+      this.checkBlocked();
 
+      // if the person you are chatting with changes
       //Removing User Presence , typing and Group Listeners
       this.removeListeners();
 
@@ -119,6 +124,17 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
     CometChat.removeGroupListener(this.groupListenerId);
   }
 
+  /**
+   * If user blocked then doesnot display audio and video call else displays
+   */
+  checkBlocked() {
+    if (this.item.blockedByMe === true) {
+      this.checkNotBlocked = false;
+    } else {
+      this.checkNotBlocked = true;
+    }
+  }
+
   updateHeader(key = null, item = null, groupUser = null) {
     switch (key) {
       case enums.USER_ONLINE:
@@ -144,8 +160,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.item.guid === item.receiverId
         ) {
           this.status = item.sender.name + " is typing...";
-          // this.setState({ status: `${item.sender.name} is typing...` });
-          // this.props.actionGenerated("showReaction", item);
+          this.actionGenerated.emit({
+            type: "showReaction",
+            payLoad: item,
+          });
         } else if (
           this.type === "user" &&
           this.type === item.receiverType &&
@@ -153,8 +171,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
         ) {
           this.isTyping = false;
           this.status = "typing...";
-          // this.setState({ status: "typing..." });
-          // this.props.actionGenerated("showReaction", item);
+          this.actionGenerated.emit({
+            type: "showReaction",
+            payLoad: item,
+          });
         }
         break;
       }
@@ -165,13 +185,15 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.item.guid === item.receiverId
         ) {
           // this.setStatusForGroup();
-          // this.props.actionGenerated("stopReaction", item);
+          this.actionGenerated.emit({
+            type: "stopReaction",
+            payLoad: item,
+          });
         } else if (
           this.type === "user" &&
           this.type === item.receiverType &&
           this.item.uid === item.sender.uid
         ) {
-          // this.status = this.item.status + "haha";
           if (this.item.status === "online") {
             console.log("typing online");
             this.status = null;
@@ -179,18 +201,19 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           } else {
             this.getDate(item.lastActiveAt);
           }
-          // this.props.actionGenerated("stopReaction", item);
-          // if(this.state.presence === "online") {
-          //   this.setState({ status: "online", presence: "online" });
-          // } else {
-          //   this.setStatusForUser();
-          // }
+          this.actionGenerated.emit({
+            type: "stopReaction",
+            payLoad: item,
+          });
         }
         break;
       }
     }
   }
-
+  /**
+   * Get Last Active Date
+   * @param
+   */
   getDate(date) {
     let lastActiveDate = "Last Active At: ";
 

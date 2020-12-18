@@ -13,6 +13,8 @@ export class ToolTipComponent implements OnInit {
 
   @Input() showToolTip: boolean = true;
 
+  @Input() pollView: boolean = false;
+
   loggedInUser;
 
   showOnlyReplyButton: boolean = false;
