@@ -8,7 +8,6 @@ import { CometChat } from "@cometchat-pro/chat";
 })
 export class BanMemberViewComponent implements OnInit {
   @Input() item = null;
-  @Input() type = null;
   @Input() member = null;
   @Input() loggedInUser = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
