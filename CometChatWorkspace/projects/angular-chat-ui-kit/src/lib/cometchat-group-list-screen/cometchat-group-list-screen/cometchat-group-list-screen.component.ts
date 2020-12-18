@@ -191,8 +191,6 @@ export class CometchatGroupListScreenComponent implements OnInit {
     });
 
     this.groupMessage = messageList;
-
-    // this.setState({ groupmessage: messageList });
   };
 
   /**
