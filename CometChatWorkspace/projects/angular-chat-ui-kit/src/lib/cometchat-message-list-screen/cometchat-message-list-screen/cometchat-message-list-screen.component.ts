@@ -43,10 +43,10 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     // console.log("Message List --> ngOnChanges -->  ", change);
 
     if (change["composedthreadmessage"]) {
-      console.log(
-        "Message List Screen --> a thread Parent was updated ",
-        change["composedthreadmessage"]
-      );
+      // console.log(
+      //   "Message List Screen --> a thread Parent was updated ",
+      //   change["composedthreadmessage"]
+      // );
 
       // There is a valid Thread parent message , than update it's reply count
       if (change["composedthreadmessage"].currentValue) {
@@ -95,7 +95,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     // action.payLoad has the array of messages that is received
     let messages = action.payLoad;
 
-    console.log("MessageListScreen --> action generation is ", action);
+    // console.log("MessageListScreen --> action generation is ", action);
 
     switch (action.type) {
       case enums.CUSTOM_MESSAGE_RECEIVE:
@@ -109,11 +109,14 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
           this.smartReplyPreview(messages);
 
           setTimeout(() => {
-            console.log("scroll to bottom after getting smart reply");
+            // console.log("scroll to bottom after getting smart reply");
 
             this.scrollToBottomOfChatWindow();
           }, 2500);
 
+          console.log(
+            " MessageListScreen -->  received a message from the user , u r chatting with , going to append it"
+          );
           this.appendMessage(messages);
         }
 
@@ -220,6 +223,15 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.removeMessages(messages);
         break;
       }
+      case enums.POLL_CREATED: {
+        this.appendPollMessage(messages);
+        break;
+      }
+      case enums.POLL_ANSWERED: {
+        console.log("Mesasge List screen -->Answer poll case ");
+        this.updatePollMessage(messages);
+        break;
+      }
     }
   }
 
@@ -239,7 +251,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   setMessages(messages) {
     this.messageList = [...messages];
 
-    console.log("MessageListScreen->> ", this.messageList);
+    // console.log("MessageListScreen->> ", this.messageList);
 
     this.scrollToBottomOfChatWindow();
   }
@@ -267,6 +279,46 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   };
 
   /**
+   * append Poll Messages that are sent
+   * @param Any messages
+   */
+  appendPollMessage(messages) {
+    console.log("MessageListScreen->> Appending poll message ", messages);
+
+    this.appendMessage(messages);
+  }
+
+  /**
+   * updates Poll Messages depending on answer given by user
+   * @param Any messages
+   */
+  updatePollMessage(message) {
+    console.log("Mesasge List screen --> starting to update poll message ");
+
+    const messageList = [...this.messageList];
+    const messageId = message.poll.id;
+    let messageKey = messageList.findIndex((m, k) => m.id === messageId);
+    if (messageKey > -1) {
+      const messageObj = messageList[messageKey];
+
+      const metadataObj = {
+        "@injected": { extensions: { polls: message.poll } },
+      };
+
+      const newMessageObj = { ...messageObj, metadata: metadataObj };
+
+      // messageList.splice(messageKey, 1, newMessageObj);
+
+      console.log(
+        "Mesasge List screen --> updated poll message ",
+        newMessageObj
+      );
+
+      this.messageEdited(newMessageObj);
+    }
+  }
+
+  /**
    * update status of message ie. read or deliv
    * @param Any messages
    */
@@ -287,7 +339,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       .then((deletedMessage) => {
         this.removeMessages([deletedMessage]);
 
-        console.log(" MessageList screen --> Message Deleted successfully");
+        // console.log(" MessageList screen --> Message Deleted successfully");
 
         const messageList = [...this.messageList];
         let messageKey = messageList.findIndex((m) => m.id === message.id);

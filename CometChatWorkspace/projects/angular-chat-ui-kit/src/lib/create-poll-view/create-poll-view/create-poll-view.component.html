@@ -1,0 +1,107 @@
+<div>
+  <backdrop></backdrop>
+  <form [formGroup]="pollFormData" (ngSubmit)="createPoll(pollFormData.value)">
+    <div class="modalWrapperStyle">
+      <span class="modalCloseStyle" (click)="closePollView()"></span>
+      <div class="modalBodyStyle">
+        <table class="modalTableStyle">
+          <caption class="tableCaptionStyle">
+            Create Poll
+          </caption>
+          <tbody class="tableBodyStyle">
+            <tr class="tableRowStyle">
+              <td colSpan="3" class="tableDataStyle">
+                <div class="modalErrorStyle">{{ errorText }}</div>
+              </td>
+            </tr>
+
+            <tr class="tableRowStyle">
+              <td class="tableDataStyle tableDataWidthStyle">
+                <label class="tableDataLabelStyle">Question</label>
+              </td>
+              <td colSpan="2" class="tableDataStyle">
+                <input
+                  class="tableDataInputStyle"
+                  type="text"
+                  autoFocus
+                  tabIndex="1"
+                  placeholder="Enter your question"
+                  formControlName="question"
+                />
+              </td>
+            </tr>
+            <tr class="tableRowStyle">
+              <td class="tableDataStyle tableDataWidthStyle">
+                <label class="tableDataLabelStyle">Options</label>
+              </td>
+              <td colSpan="2" class="tableDataStyle">
+                <input
+                  class="tableDataInputStyle"
+                  type="text"
+                  placeholder="Enter your option"
+                  formControlName="firstOption"
+                />
+              </td>
+            </tr>
+
+            <tr class="tableRowStyle">
+              <td class="tableDataStyle tableDataWidthStyle">&nbsp;</td>
+              <td colSpan="2" class="tableDataStyle">
+                <input
+                  class="tableDataInputStyle"
+                  type="text"
+                  placeholder="Enter your option"
+                  formControlName="secondOption"
+                />
+              </td>
+            </tr>
+
+            <!--  POLL OPTION VIEW BELOW -->
+            <tr
+              class="tableRowStyle"
+              *ngFor="let option of getOptionsFormControls(); let i = index"
+            >
+              <td class="tableDataStyle tableDataWidthStyle">&nbsp;</td>
+              <td colSpan="2" class="tableDataStyle">
+                <input
+                  class="tableDataInputStyle"
+                  type="text"
+                  placeholder="Enter your option"
+                  [formControl]="option"
+                />
+              </td>
+              <td class="iconWrapperStyle tableDataStyle">
+                <!-- Remove Icon -->
+                <span
+                  class="optionIconStyle removeIcon"
+                  (click)="removePollOption(i)"
+                ></span>
+              </td>
+            </tr>
+            <!--  POLL OPTION VIEW ABOVE -->
+            <tr class="tableRowStyle">
+              <td class="tableDataStyle tableDataWidthStyle">&nbsp;</td>
+              <td class="tableDataStyle">
+                <label class="tableDataLabelStyle">Add new option</label>
+              </td>
+              <td class="iconWrapperStyle tableDataStyle">
+                <!-- Add Icon -->
+                <span
+                  class="optionIconStyle addIcon"
+                  (click)="addPollOption()"
+                ></span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot class="tableFootStyle">
+            <tr>
+              <td colSpan="2">
+                <button type="submit">Create</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

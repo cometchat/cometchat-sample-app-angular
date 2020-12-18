@@ -93,3 +93,26 @@ export const CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT =
   "changeThreadParentMessageReplyCount";
 export const BLOCK_USER = "blockUser";
 export const UNBLOCK_USER = "unblockUser";
+
+export const CLOSE_POLL_VIEW = "closePollView";
+
+export const POLL_CREATED = "pollCreated";
+export const POLL_ANSWERED = "pollAnswered";
+
+export const CLOSE_CREATE_GROUP_VIEW = "closeCreateGroupView";
+export const GROUP_CREATED = "groupCreated";
+
+export const PUBLIC_GROUP = "public";
+export const PRIVATE_GROUP = "private";
+export const PROTECTED_GROUP = "protected";
+
+export const GROUP_NAME_BLANK_ERROR = "Group name cannnot be blank.";
+export const GROUP_TYPE_BLANK_ERROR = "Group type cannnot be blank.";
+export const GROUP_PASSWORD_BLANK_ERROR = "Group password cannnot be blank.";
+
+export const MESSAGE = "message";
+export const CALL = "call";
+export const ACTION = "action";
+export const CUSTOM = "custom";
+
+export const CLOSE_MENU_CLICKED = "closeMenuClicked";

@@ -163,13 +163,10 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         onTextMessageReceived: (textMessage) => {
           console.log("Text message received successfully", textMessage);
           this.messageUpdated(enums.TEXT_MESSAGE_RECEIVED, textMessage);
-          // Handle text message
         },
         onMediaMessageReceived: (mediaMessage) => {
           console.log("Media message received successfully", mediaMessage);
           this.messageUpdated(enums.MEDIA_MESSAGE_RECEIVED, mediaMessage);
-
-          // Handle media message
         },
         onCustomMessageReceived: (customMessage) => {
           console.log("Custom message received successfully", customMessage);
@@ -342,7 +339,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
               });
             }
 
-            // console.log("Message list fetched:", messageList);
+            console.log("Message list -->> fetched messages:", messageList);
             // Handle the list of messages
           },
           (error) => {
@@ -579,7 +576,11 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      if (message.hasOwnProperty("metadata")) {
+      if (
+        message.hasOwnProperty("metadata") &&
+        message.type !== enums.CUSTOM_TYPE_STICKER &&
+        message.type !== enums.CUSTOM_TYPE_POLL
+      ) {
         this.actionGenerated.emit({
           type: "customMessageReceived",
           payLoad: [message],
@@ -611,7 +612,11 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         );
       }
 
-      if (message.hasOwnProperty("metadata")) {
+      if (
+        message.hasOwnProperty("metadata") &&
+        message.type !== enums.CUSTOM_TYPE_STICKER &&
+        message.type !== enums.CUSTOM_TYPE_POLL
+      ) {
         this.actionGenerated.emit({
           type: "customMessageReceived",
           payLoad: [message],

@@ -71,6 +71,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   stickerViewer = false;
   checkAnimatedState = "normal";
   openEditMessageWindow: boolean = false;
+  createPollView: boolean = false;
+
   emojiToggled: boolean = false;
   isTyping: any;
   disabled: boolean = false;
@@ -117,6 +119,24 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
         //closing smartReply preview window
         this.replyPreview = null;
+        break;
+      }
+      case enums.CLOSE_POLL_VIEW: {
+        this.closeCreatePollPreview();
+        break;
+      }
+      case enums.POLL_CREATED: {
+        this.closeCreatePollPreview();
+        this.actionGenerated.emit({
+          type: enums.POLL_CREATED,
+          payLoad: [message],
+        });
+
+        //temporary check; custom data listener working for sender too
+        // if (this.type === "user") {
+        //   this.actionGenerated.emit({ type :  "pollCreated", payLoad : [message]});
+        // }
+
         break;
       }
       case enums.SEND_STICKER:
@@ -518,6 +538,21 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   /**
+   * opens the create poll Modal
+   * @param
+   */
+  openCreatePollPreview() {
+    this.createPollView = true;
+  }
+
+  /**
+   * Closes the create poll Modal
+   * @param
+   */
+  closeCreatePollPreview() {
+    this.createPollView = false;
+  }
+  /**
    * Plays Audio When Message is Sent
    */
   playAudio() {
@@ -529,7 +564,6 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   /**
    *  When user starts typing
    */
-
   startTyping(timer = null, metadata = null) {
     let typingInterval = timer || 5000;
 
