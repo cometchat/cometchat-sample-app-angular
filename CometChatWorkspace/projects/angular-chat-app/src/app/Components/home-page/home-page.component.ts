@@ -24,6 +24,14 @@ export class HomePageComponent implements OnInit {
   }
 
   /**
+   * Go to Group list page
+   *
+   */
+  navigateToGroupListPage() {
+    this.router.navigate(["/group-list"]);
+  }
+
+  /**
    * Go to contact screen
    *
    */

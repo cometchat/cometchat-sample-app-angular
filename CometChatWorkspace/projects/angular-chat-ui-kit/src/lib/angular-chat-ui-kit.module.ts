@@ -29,6 +29,9 @@ import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-mes
 import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
 import { ReplyCountModule } from "./reply-count/reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
+import { CometChatGroupListModule } from "./comet-chat-group-list/comet-chat-group-list.module";
+import { GroupViewModule } from "./group-view/group-view.module";
+import { CometChatCreateGroupModule } from "./comet-chat-create-group/comet-chat-create-group.module";
 import { CreatePollViewModule } from "./create-poll-view/create-poll-view.module";
 import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
 import { ReceiverPollBubbleModule } from "./receiver-poll-bubble/receiver-poll-bubble.module";
@@ -66,6 +69,9 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    CometChatGroupListModule,
+    GroupViewModule,
+    CometChatCreateGroupModule,
     CreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,
@@ -103,6 +109,9 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     ReplyPreviewModule,
     ReplyCountModule,
     SharedMediaViewModule,
+    CometChatGroupListModule,
+    GroupViewModule,
+    CometChatCreateGroupModule,
     CreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,

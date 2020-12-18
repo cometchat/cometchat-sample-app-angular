@@ -1,0 +1,130 @@
+.modalWrapperStyle {
+  display: block;
+  min-width: 350px;
+  min-height: 350px;
+  width: 40%;
+  height: 40%;
+  overflow: hidden;
+  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1002;
+  margin: 0 auto;
+  box-shadow: rgba(20, 20, 20, 0.2) 0 16px 32px,
+    rgba(20, 20, 20, 0.04) 0 0 0 1px;
+  border-radius: 12px;
+}
+
+.modalCloseStyle {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  top: 16px;
+  right: 16px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>')
+    center center no-repeat;
+  cursor: pointer;
+}
+
+.modalBodyStyle {
+  padding: 25px;
+  height: 100%;
+  width: 100%;
+}
+
+.modalTableStyle {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 90%;
+}
+
+.modalTableStyle tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.tableCaptionStyle {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tableBodyStyle {
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  display: block;
+}
+
+.tableBodyStyle tr td {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.tableBodyStyle tr td input {
+  width: 100%;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+}
+
+.tableBodyStyle tr td select {
+  outline: none;
+  padding: 10px;
+}
+
+.tableErrorStyle {
+  font-size: 12px;
+  color: red;
+  text-align: center;
+  display: block;
+}
+
+.tableFootStyle {
+  display: inline-block;
+}
+
+.tableFootStyle button {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #39f;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: 0;
+  border: 0;
+}
+
+.tableFootStyle tr {
+  border: none;
+}
+
+.tableFootStyle tr td {
+  text-align: center;
+}
+
+.inputStyle {
+  display: block;
+  width: 100%;
+  border: 0;
+  box-shadow: rgba(20, 20, 20, 0.04) 0 0 0 1px inset;
+  border-radius: 8px;
+  background-color: rgba(20, 20, 20, 0.04);
+  padding: 6px 8px 6px 30px;
+  color: rgba(20, 20, 20, 0.6);
+  font-size: 15px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .modalWrapperStyle {
+    width: 100%;
+    height: 100%;
+  }
+}
