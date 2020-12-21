@@ -77,6 +77,7 @@ export class CometchatUserListScreenComponent implements OnInit {
       }
       case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
+        break;
       }
       case enums.VIEW_DETAIL:
       case enums.CLOSE_DETAIL_CLICKED: {
