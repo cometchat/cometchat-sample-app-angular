@@ -14,7 +14,7 @@
     (actionGenerated)="actionHandler($event)"
     *ngIf="stickerViewer"
   ></sticker-view>
-  <div class="blockedUserPopup" *ngIf="disabled">
+  <div class="blockedUserPopup" *ngIf="userBlocked">
     <p>You have blocked this contact</p>
     <p>
       <span
@@ -36,7 +36,7 @@
         [value]="messageInput"
         #message
         [ngClass]="{
-          messageInputDisabledStyle: disabled
+          messageInputDisabledStyle: userBlocked
         }"
       />
       <div class="inputStickyStyle">
