@@ -1,11 +1,35 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
 import * as enums from "../../utils/enums";
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
 
 @Component({
   selector: "comet-chat-conversation-list-screen",
   templateUrl: "./comet-chat-conversation-list-screen.component.html",
   styleUrls: ["./comet-chat-conversation-list-screen.component.css"],
+  animations: [
+    trigger("FadeInFadeOut", [
+      state(
+        "normal",
+        style({
+          left: "0%",
+        })
+      ),
+      state(
+        "animated",
+        style({
+          left: "-100%",
+        })
+      ),
+      transition("normal<=>animated", animate(300)),
+    ]),
+  ],
 })
 export class CometChatConversationListScreenComponent implements OnInit {
   curentItem;
@@ -24,6 +48,9 @@ export class CometChatConversationListScreenComponent implements OnInit {
   // To display image in full screen
   imageView = null;
 
+  checkAnimatedState;
+  innerWidth;
+
   constructor() {}
 
   ngOnInit() {
@@ -33,6 +60,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
     // if (!Object.keys(this.item).length) {
     //   this.toggleSideBar();
     // }
+    this.onResize();
     new CometChatManager()
       .getLoggedInUser()
       .then((user) => {
@@ -41,6 +69,18 @@ export class CometChatConversationListScreenComponent implements OnInit {
       .catch((error) => {
         console.log("[CometChatUnified] getLoggedInUser error", error);
       });
+  }
+
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      console.log("inner ", this.innerWidth);
+      this.checkAnimatedState = "normal";
+      console.log("state initail ", this.checkAnimatedState);
+    } else {
+      this.checkAnimatedState = null;
+    }
   }
 
   actionHandler(action = null, item = null, count = null) {
@@ -66,12 +106,13 @@ export class CometChatConversationListScreenComponent implements OnInit {
         break;
 
       //   // eslint-disable-next-line no-lone-blocks
-      case enums.MENU_CLICKED:
-        {
-          this.toggleSideBar();
-          this.item = null;
-        }
+      case enums.MENU_CLICKED: {
+        console.log("before animation ", this.checkAnimatedState);
+        this.checkAnimatedState = "normal";
+        this.toggleSideBar();
+        this.item = null;
         break;
+      }
       case enums.CLOSE_MENU_CLICKED:
         this.toggleSideBar();
         break;
@@ -239,6 +280,12 @@ export class CometChatConversationListScreenComponent implements OnInit {
    * @param Event user
    */
   userClicked(event) {
+    if (this.checkAnimatedState !== null) {
+      this.checkAnimatedState == "normal"
+        ? (this.checkAnimatedState = "animated")
+        : (this.checkAnimatedState = "normal");
+      console.log("animated state is ", this.checkAnimatedState);
+    }
     console.log("event in cls is  ", event);
     // this.item = event;
     // console.log("item is userclicked ", this.item);
