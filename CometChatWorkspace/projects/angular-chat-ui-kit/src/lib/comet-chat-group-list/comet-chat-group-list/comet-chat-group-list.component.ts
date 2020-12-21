@@ -335,12 +335,57 @@ export class CometChatGroupListComponent
    * @param Any group
    */
   groupClicked(group) {
-    console.log("group List --> group clicked is ", group);
-    this.onGroupClick.emit(group);
+    if (group.hasJoined === false) {
+      let password = "";
+      if (group.type === CometChat.GROUP_TYPE.PASSWORD) {
+        password = prompt("Enter your password");
+      }
 
-    if (this.enableSelectedGroupStyling) {
-      this.selectedGroup = group;
+      const guid = group.guid;
+      const groupType = group.type;
+
+      this.joinGroup(guid, groupType, password);
+    } else {
+      console.log("group List --> group clicked is ", group);
+      this.onGroupClick.emit(group);
+
+      if (this.enableSelectedGroupStyling) {
+        this.selectedGroup = group;
+      }
     }
+  }
+
+  /**
+   * Helps the current user to join a password protected group , if the password entered by the user is correct
+   * @param Event event
+   */
+  joinGroup(guid: any, groupType: any, password: string) {
+    CometChat.joinGroup(guid, groupType, password)
+      .then((response) => {
+        console.log("Group joining success with response", response);
+
+        const groups = [...this.grouplist];
+
+        let groupKey = groups.findIndex((g, k) => g.guid === guid);
+        if (groupKey > -1) {
+          const groupObj = groups[groupKey];
+          const newGroupObj = Object.assign({}, groupObj, response, {
+            scope: CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT,
+          });
+
+          groups.splice(groupKey, 1, newGroupObj);
+
+          this.grouplist = groups;
+          if (this.enableSelectedGroupStyling) {
+            this.selectedGroup = newGroupObj;
+          }
+
+          this.onGroupClick.emit(newGroupObj);
+        }
+      })
+      .catch((error) => {
+        console.log("Group joining failed with exception:", error);
+      });
   }
 
   /**
