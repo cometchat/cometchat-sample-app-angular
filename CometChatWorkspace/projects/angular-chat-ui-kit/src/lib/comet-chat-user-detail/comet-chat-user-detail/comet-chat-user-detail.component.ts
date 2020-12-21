@@ -59,4 +59,13 @@ export class CometChatUserDetailComponent implements OnInit, OnChanges {
       });
     }
   }
+
+  /**
+   * Close thread when opened in small screen
+   */
+  closeThreadView() {
+    this.actionGenerated.emit({
+      type: "closeDetailClicked",
+    });
+  }
 }
