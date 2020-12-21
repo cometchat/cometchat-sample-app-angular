@@ -251,8 +251,8 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
     //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
-    if (this.emojiViewer) {
-      this.emojiViewer = false;
+    if (this.emojiToggled) {
+      this.emojiToggled = false;
     }
 
     // Dont Send Blank text messages -- i.e --- messages that only contain spaces
@@ -337,6 +337,10 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   toggleFilePicker() {
+    //If user you are chatting with is blocked then return false
+    if (this.disabled) {
+      return false;
+    }
     this.checkAnimatedState == "normal"
       ? (this.checkAnimatedState = "animated")
       : (this.checkAnimatedState = "normal");
@@ -613,6 +617,10 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    */
 
   sendReaction(event) {
+    //If user you are chatting with is blocked then return false
+    if (this.disabled) {
+      return false;
+    }
     const typingInterval = 1000;
     console.log("send reaction");
 
@@ -638,6 +646,10 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    * Toggles Sticker Window
    */
   toggleStickerPicker() {
+    //If user you are chatting with is blocked then return false
+    if (this.disabled) {
+      return false;
+    }
     const stickerViewer = this.stickerViewer;
     this.stickerViewer = !stickerViewer;
   }
@@ -675,5 +687,16 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
         this.messageSending = false;
         console.log("custom message sending failed with error", error);
       });
+  }
+
+  /**
+   * Toggle emoji window when emoji button is clicked
+   */
+  toggleEmoji() {
+    //If user you are chatting with is blocked then return false
+    if (this.disabled) {
+      return false;
+    }
+    this.emojiToggled = !this.emojiToggled;
   }
 }
