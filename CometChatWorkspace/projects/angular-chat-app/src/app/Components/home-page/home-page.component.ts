@@ -24,11 +24,27 @@ export class HomePageComponent implements OnInit {
   }
 
   /**
+   * Go to Group list page
+   *
+   */
+  navigateToGroupListPage() {
+    this.router.navigate(["/group-list"]);
+  }
+
+  /**
    * Go to contact screen
    *
    */
   navigateToContactScreen() {
     this.router.navigate(["/contact-screen"]);
+  }
+
+  navigateToConversationList() {
+    this.router.navigate(["/conversations-list"]);
+  }
+
+  navigateToConversationListScreen() {
+    this.router.navigate(["/conversation-screen"]);
   }
 
   /**

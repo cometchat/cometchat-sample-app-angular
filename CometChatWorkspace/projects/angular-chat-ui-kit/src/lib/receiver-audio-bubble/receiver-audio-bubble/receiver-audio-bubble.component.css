@@ -67,7 +67,7 @@ Styling for name will come
 .messageAudioWrapperStyle > audio {
   max-width: 250px;
   display: inherit;
-  outline: none;
+  outline: 0 !important;
 }
 
 .messageInfoWrapperStyle {
