@@ -1,12 +1,12 @@
-// Sohail
+//SOHAIL
 // export const COMETCHAT_CONSTANTS = {
-//   APP_ID: "2566144de92d0f3",
+//   APP_ID: "2744304bf4076af",
 //   REGION: "eu",
-//   API_KEY: "c522f91ab8fa8129143fc5d9a1d1c13143d06aad",
+//   API_KEY: "ed94db6b23bdc3943b98722de1505942ed034d23",
 // };
 
 export const COMETCHAT_CONSTANTS = {
-  APP_ID: "2575989843b6228",
+  APP_ID: "27441899beb21ec",
   REGION: "eu",
-  API_KEY: "8d68eb3ac0a494cd3eff9c241bc8be84a95ced77",
+  API_KEY: "0d7cc0602b79af5f2c219d920869874c7196457f",
 };

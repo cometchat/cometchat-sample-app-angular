@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "comet-chat-create-group",
@@ -63,12 +64,12 @@ export class CometChatCreateGroupComponent implements OnInit {
     const groupType = this.type.trim();
 
     if (!groupName) {
-      this.error = "Group name cannnot be blank.";
+      this.error = enums.GROUP_NAME_BLANK_ERROR;
       return false;
     }
 
     if (!groupType) {
-      this.error = "Group type cannnot be blank.";
+      this.error = enums.GROUP_TYPE_BLANK_ERROR;
 
       return false;
     }
@@ -78,7 +79,7 @@ export class CometChatCreateGroupComponent implements OnInit {
       const password = this.password;
 
       if (!password.length) {
-        this.error = "Group password cannnot be blank.";
+        this.error = enums.GROUP_PASSWORD_BLANK_ERROR;
 
         return false;
       }
@@ -103,13 +104,13 @@ export class CometChatCreateGroupComponent implements OnInit {
     let type = CometChat.GROUP_TYPE.PUBLIC;
 
     switch (groupType) {
-      case "public":
+      case enums.PUBLIC_GROUP:
         type = CometChat.GROUP_TYPE.PUBLIC;
         break;
-      case "private":
+      case enums.PRIVATE_GROUP:
         type = CometChat.GROUP_TYPE.PRIVATE;
         break;
-      case "protected":
+      case enums.PROTECTED_GROUP:
         type = CometChat.GROUP_TYPE.PASSWORD;
         break;
       default:

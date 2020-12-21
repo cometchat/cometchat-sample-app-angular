@@ -15,8 +15,39 @@
       <div class="messageTxtContainerStyle">
         <!--messageTxt-->
 
-        <div class="messageTxtWrapperStyle" id="check">
-          <p class="messageTxtStyle">{{ MessageDetails.data.text }}</p>
+        <div class="messageWrapperStyle" id="check">
+          <div class="messageTxtWrapperStyle" *ngIf="linkPreview === false">
+            <p class="messageTxtStyle">
+              {{ MessageDetails.data.text }}
+            </p>
+          </div>
+          <div class="messagePreviewContainerStyle" *ngIf="linkPreview">
+            <div class="messagePreviewWrapperStyle">
+              <div class="previewImageStyle">
+                <img [src]="linkImage" />
+              </div>
+              <div class="previewDataStyle">
+                <div class="previewTitleStyle" *ngIf="linkTitle !== ''">
+                  <span>
+                    {{ linkTitle }}
+                  </span>
+                </div>
+                <div class="previewDescStyle" *ngIf="linkDescription !== ''">
+                  <span>
+                    {{ linkDescription }}
+                  </span>
+                </div>
+                <div class="previewTextStyle">
+                  <a [href]="linkUrl" target="_blank"> {{ linkUrl }} </a>
+                </div>
+              </div>
+              <div class="previewLinkStyle">
+                <a [href]="linkUrl" target="_blank">
+                  {{ linkText }}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="messageInfoWrapperStyle">

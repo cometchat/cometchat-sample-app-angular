@@ -6,13 +6,19 @@
   (click)="groupClicked(group)"
 >
   <div class="itemThumbnailStyle">
-    <avatar [avatar]="group.icon"></avatar>
+    <avatar [item]="group"></avatar>
   </div>
   <div class="itemDetailStyle">
     <div class="itemNameWrapperStyle">
       <span class="listItemName">{{ group.name }}</span>
-      <span class="shieldIcon" *ngIf="group.type === 'private'"></span>
-      <span class="lockIcon" *ngIf="group.type === 'password'"></span>
+      <div [ngSwitch]="group?.type">
+        <div *ngSwitchCase="'private'">
+          <span class="shieldIcon"></span>
+        </div>
+        <div *ngSwitchCase="'password'">
+          <span class="lockIcon"></span>
+        </div>
+      </div>
     </div>
     <div class="itemDescStyle" *ngIf="group.membersCount == 1">
       {{ group?.membersCount }} member
