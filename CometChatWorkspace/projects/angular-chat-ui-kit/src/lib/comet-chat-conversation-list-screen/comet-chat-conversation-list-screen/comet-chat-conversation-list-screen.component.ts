@@ -69,7 +69,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
       case enums.MENU_CLICKED:
         {
           this.toggleSideBar();
-          this.item = {};
+          this.item = null;
         }
         break;
       case enums.CLOSE_MENU_CLICKED:
@@ -147,6 +147,8 @@ export class CometChatConversationListScreenComponent implements OnInit {
   }
 
   toggleSideBar() {
+    console.log("sidebar toggle works");
+
     const sidebarview = this.sidebarview;
     this.sidebarview = !sidebarview;
   }
