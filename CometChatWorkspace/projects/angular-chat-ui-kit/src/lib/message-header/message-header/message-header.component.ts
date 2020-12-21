@@ -243,4 +243,8 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   openUserDetail() {
     this.actionGenerated.emit({ type: "viewDetail", payLoad: null });
   }
+
+  closeChatWindow() {
+    this.actionGenerated.emit({ type: "menuClicked" });
+  }
 }
