@@ -132,7 +132,7 @@ export class CreatePollViewComponent implements OnInit {
       })
       .catch((error) => {
         console.log("error", error);
-        this.errorText = error;
+        this.errorText = error.message.message;
       });
 
     //this.resetPollFormData();
