@@ -1,16 +1,40 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
 import * as enums from "../../utils/enums";
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
 
 @Component({
   selector: "cometchat-user-list-screen",
   templateUrl: "./cometchat-user-list-screen.component.html",
   styleUrls: ["./cometchat-user-list-screen.component.css"],
+  animations: [
+    trigger("FadeInFadeOut", [
+      state(
+        "normal",
+        style({
+          left: "0%",
+        })
+      ),
+      state(
+        "animated",
+        style({
+          left: "-100%",
+        })
+      ),
+      transition("normal<=>animated", animate(300)),
+    ]),
+  ],
 })
 export class CometchatUserListScreenComponent implements OnInit {
   //It can be a user or a group
   curentItem = null;
-
+  item;
   // Defines the types of item that was clicked --> that is .. if its a user or a group
   type = null;
 
@@ -26,17 +50,41 @@ export class CometchatUserListScreenComponent implements OnInit {
   //If clicked then only show image in full screen
   fullScreenViewImage: boolean = false;
 
+  checkAnimatedState;
+  innerWidth;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onResize();
+  }
+
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      console.log("inner ", this.innerWidth);
+      this.checkAnimatedState = "normal";
+      console.log("state initail ", this.checkAnimatedState);
+    } else {
+      this.checkAnimatedState = null;
+    }
+  }
 
   /**
    * Listen to the user emitted by the userList component
    * @param Event user
    */
   userClicked(user) {
+    if (this.checkAnimatedState !== null) {
+      this.checkAnimatedState == "normal"
+        ? (this.checkAnimatedState = "animated")
+        : (this.checkAnimatedState = "normal");
+      console.log("animated state is ", this.checkAnimatedState);
+    }
     // console.log(`user in parent component  `, user);
     this.curentItem = user;
+    this.item = this.curentItem;
 
     //Close Thread And User Detail Screen When Chat Window Is Changed
     // this.closeThreadMessages();
@@ -97,6 +145,13 @@ export class CometchatUserListScreenComponent implements OnInit {
           action.payLoad
         );
 
+        break;
+      }
+      case enums.MENU_CLICKED: {
+        // console.log("before animation ", this.checkAnimatedState);
+        this.checkAnimatedState = "normal";
+        // this.toggleSideBar();
+        this.curentItem = null;
         break;
       }
       case enums.BLOCK_USER: {
@@ -164,6 +219,7 @@ export class CometchatUserListScreenComponent implements OnInit {
     CometChatManager.blockUsers(usersList)
       .then((list) => {
         this.curentItem = { ...this.curentItem, blockedByMe: true };
+        this.item = this.curentItem;
         console.log("block success");
       })
       .catch((error) => {
@@ -179,6 +235,7 @@ export class CometchatUserListScreenComponent implements OnInit {
     CometChatManager.unblockUsers(usersList)
       .then((list) => {
         this.curentItem = { ...this.curentItem, blockedByMe: false };
+        this.item = this.curentItem;
         console.log("unblock success");
       })
       .catch((error) => {
