@@ -25,6 +25,7 @@ import {
         "animated",
         style({
           left: "-100%",
+          zIndex: "0",
         })
       ),
       transition("normal<=>animated", animate(300)),
@@ -49,6 +50,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
   imageView = null;
 
   checkAnimatedState;
+  checkIfAnimated: boolean = false;
   innerWidth;
 
   constructor() {}
@@ -75,11 +77,16 @@ export class CometChatConversationListScreenComponent implements OnInit {
   onResize() {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      if (this.checkIfAnimated === true) {
+        return false;
+      }
       console.log("inner ", this.innerWidth);
       this.checkAnimatedState = "normal";
       console.log("state initail ", this.checkAnimatedState);
+      this.checkIfAnimated = true;
     } else {
       this.checkAnimatedState = null;
+      this.checkIfAnimated = false;
     }
   }
 
