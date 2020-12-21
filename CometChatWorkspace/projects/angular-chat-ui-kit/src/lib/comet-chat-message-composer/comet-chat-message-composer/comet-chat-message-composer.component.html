@@ -104,6 +104,7 @@
           </span>
 
           <span
+            *ngIf="!parentMessageId"
             title="Create Poll"
             class="fileItemStyle"
             id="poll"
@@ -123,7 +124,7 @@
           <span
             class="emojiButtonStyle"
             title="Add Emoji"
-            (click)="emojiToggled = !emojiToggled"
+            (click)="toggleEmoji()"
           >
           </span>
           <emoji-mart
@@ -150,7 +151,7 @@
           <span
             class="reactionBtnStyle"
             id="reaction"
-            *ngIf="reactdisable"
+            *ngIf="reactdisable && !parentMessageId"
             (click)="sendReaction($event)"
           >
           </span>
