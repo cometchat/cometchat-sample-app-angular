@@ -54,6 +54,20 @@ export class CometchatGroupDetailComponent
         this.groupListenerId = "group_detail_group_" + new Date().getTime();
 
         this.addEventListeners(this.groupUpdated);
+
+        this.currentMemberScope = this.checkMemberScope(
+          change["item"].currentValue
+        );
+
+        this.groupMemberRequest = this.createGroupMemberRequest(
+          change["item"].currentValue.guid
+        );
+        this.getGroupMembers();
+
+        this.bannedGroupMemberRequest = this.createBannedMemberRequest(
+          change["item"].currentValue.guid
+        );
+        this.getBannedGroupMembers();
       }
     }
   }
@@ -68,6 +82,8 @@ export class CometchatGroupDetailComponent
       this.item.guid
     );
     this.getBannedGroupMembers();
+
+    this.currentMemberScope = this.checkMemberScope(this.item);
 
     this.addEventListeners(this.groupUpdated);
   }
@@ -452,6 +468,22 @@ export class CometchatGroupDetailComponent
       .catch((error) => {
         console.log("Group delete failed with exception:", error);
       });
+  };
+
+  /**
+   * Returns the role/scope that the current user has , for the group that is currently opened
+   * @param Any member
+   */
+  checkMemberScope = (group) => {
+    //group.scope is key which holds the role of the current user in this group
+
+    if (group.scope == CometChat.GROUP_MEMBER_SCOPE.ADMIN) {
+      return "admin";
+    } else if (group.scope == CometChat.GROUP_MEMBER_SCOPE.MODERATOR) {
+      return "moderator";
+    } else {
+      return "participant";
+    }
   };
 
   toggleViewMember() {

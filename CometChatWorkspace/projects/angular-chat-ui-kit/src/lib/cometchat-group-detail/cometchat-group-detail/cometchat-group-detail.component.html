@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="sectionContentStyle">
+      <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
         <div class="contentItemStyle">
           <div class="itemLinkStyle" (click)="toggleAddMemberView(true)">
             Add Members
@@ -23,7 +23,12 @@
         </div>
       </div>
 
-      <div class="sectionContentStyle">
+      <div
+        class="sectionContentStyle"
+        *ngIf="
+          currentMemberScope == 'admin' || currentMemberScope == 'moderator'
+        "
+      >
         <div class="contentItemStyle">
           <div class="itemLinkStyle">Banned Members</div>
         </div>
@@ -40,7 +45,7 @@
         </div>
       </div>
 
-      <div class="sectionContentStyle">
+      <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
         <div class="contentItemStyle">
           <div
             class="itemLinkStyle itemDeleteLinkStyle"
