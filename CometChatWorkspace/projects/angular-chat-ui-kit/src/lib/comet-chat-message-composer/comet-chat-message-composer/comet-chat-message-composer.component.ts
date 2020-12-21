@@ -75,7 +75,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
   emojiToggled: boolean = false;
   isTyping: any;
-  disabled: boolean = false;
+  userBlocked: boolean = false;
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -153,9 +153,9 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    */
   checkBlocked() {
     if (this.item.blockedByMe) {
-      this.disabled = true;
+      this.userBlocked = true;
     } else {
-      this.disabled = false;
+      this.userBlocked = false;
     }
   }
   /**
@@ -248,6 +248,10 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    * @param
    */
   sendTextMessage(textMsg = null) {
+    //If user you are chatting with is blocked then return false
+    if (this.userBlocked) {
+      return false;
+    }
     //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
@@ -338,7 +342,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
   toggleFilePicker() {
     //If user you are chatting with is blocked then return false
-    if (this.disabled) {
+    if (this.userBlocked) {
       return false;
     }
     this.checkAnimatedState == "normal"
@@ -618,7 +622,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
 
   sendReaction(event) {
     //If user you are chatting with is blocked then return false
-    if (this.disabled) {
+    if (this.userBlocked) {
       return false;
     }
     const typingInterval = 1000;
@@ -647,7 +651,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    */
   toggleStickerPicker() {
     //If user you are chatting with is blocked then return false
-    if (this.disabled) {
+    if (this.userBlocked) {
       return false;
     }
     const stickerViewer = this.stickerViewer;
@@ -694,7 +698,7 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
    */
   toggleEmoji() {
     //If user you are chatting with is blocked then return false
-    if (this.disabled) {
+    if (this.userBlocked) {
       return false;
     }
     this.emojiToggled = !this.emojiToggled;
