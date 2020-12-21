@@ -59,6 +59,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
         ) {
           this.updateHeader(enums.GROUP_MEMBER_ADDED, props.item);
         }
+
+        if (prevProps.item.guid !== props.item.guid) {
+          this.setGroupMemeberCountStatus(this.item.membersCount);
+        }
       }
 
       //Attaching new listeners
