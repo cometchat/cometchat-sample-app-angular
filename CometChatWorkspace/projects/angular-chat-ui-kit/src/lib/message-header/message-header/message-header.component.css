@@ -102,3 +102,21 @@
   padding: 0px 30px 0px 0px;
   margin-left: -5px;
 }
+
+.chatSideBarBtnStyle {
+  cursor: pointer;
+  display: none;
+  /* background: `url(${img}) center center no-repeat`; */
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAW0lEQVRIS2NkoDFgpLH5DKMWEAxh+gbR0qVL/xN0EhEKoqOj4Q5H8QHNLSDCcSQroW8ckOw8IjTQNw5GIxlblNA3FdE8DmhuARHJmmQl9I0Dkp1HhIZRHxAMJAAC5RgZMxAd6wAAAABJRU5ErkJggg==")
+    center center no-repeat;
+  padding: 20px;
+  width: 24px;
+  height: 24px;
+  float: left;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .chatSideBarBtnStyle {
+    display: block;
+  }
+}
