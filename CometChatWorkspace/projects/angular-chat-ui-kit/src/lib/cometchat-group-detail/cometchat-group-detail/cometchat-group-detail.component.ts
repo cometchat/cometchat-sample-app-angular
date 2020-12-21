@@ -39,6 +39,8 @@ export class CometchatGroupDetailComponent
   openViewMember: boolean = false;
   openAddMemberView: boolean = false;
 
+  currentMemberScope = "";
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -46,8 +48,12 @@ export class CometchatGroupDetailComponent
 
     if (change["item"]) {
       if (change["item"].currentValue != change["item"].previousValue) {
-        CometChat.removeUserListener(this.userListenerId);
-        CometChat.removeGroupListener(this.groupListenerId);
+        this.removeListeners();
+
+        this.userListenerId = "group_detail_user_" + new Date().getTime();
+        this.groupListenerId = "group_detail_group_" + new Date().getTime();
+
+        this.addEventListeners(this.groupUpdated);
       }
     }
   }
@@ -67,8 +73,7 @@ export class CometchatGroupDetailComponent
   }
 
   ngOnDestroy() {
-    CometChat.removeUserListener(this.userListenerId);
-    CometChat.removeGroupListener(this.groupListenerId);
+    this.removeListeners();
   }
 
   /**
@@ -193,6 +198,15 @@ export class CometchatGroupDetailComponent
         },
       })
     );
+  }
+
+  /**
+   * Removes all the real time group listeners attached to the group that is opened
+   * @param
+   */
+  removeListeners() {
+    CometChat.removeUserListener(this.userListenerId);
+    CometChat.removeGroupListener(this.groupListenerId);
   }
 
   /**
