@@ -1,5 +1,5 @@
 <div class="chatScreenStyle">
-  <div class="chatScreenSidebarStyle">
+  <div class="chatScreenSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
     <comet-chat-conversation-list
       (onUserClick)="userClicked($event)"
       [item]="curentItem"
