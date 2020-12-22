@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "comet-chat-ban-members",
@@ -41,7 +42,7 @@ export class CometChatBanMembersComponent implements OnInit {
         if (response) {
           console.log("Group member unbanning success with response", response);
           this.actionGenerated.emit({
-            type: "unbanGroupMembers",
+            type: enums.UNBAN_GROUP_MEMBERS,
             payLoad: [memberToUnBan],
           });
         }
@@ -59,7 +60,7 @@ export class CometChatBanMembersComponent implements OnInit {
     let data = action.payLoad;
 
     switch (action.type) {
-      case "unban":
+      case enums.UNBAN:
         this.unbanMember(data.member);
         break;
       default:
@@ -76,7 +77,7 @@ export class CometChatBanMembersComponent implements OnInit {
       Math.round(e.currentTarget.clientHeight);
     if (bottom) {
       this.actionGenerated.emit({
-        type: "fetchBannedMembers",
+        type: enums.FETCH_BANNED_MEMBERS,
       });
     }
   }
@@ -87,6 +88,6 @@ export class CometChatBanMembersComponent implements OnInit {
   closeBanMemberModal() {
     //console.log("cometchat ban member --> close ban member clicked");
 
-    this.actionGenerated.emit({ type: "banmember", payLoad: null });
+    this.actionGenerated.emit({ type: enums.BAN_MEMBER, payLoad: null });
   }
 }
