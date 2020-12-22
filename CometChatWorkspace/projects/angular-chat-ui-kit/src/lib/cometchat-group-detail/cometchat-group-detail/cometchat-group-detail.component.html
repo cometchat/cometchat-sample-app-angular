@@ -15,13 +15,20 @@
         </div>
       </div>
 
-      <div class="sectionContentStyle">
+      <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">Add Members</div>
+          <div class="itemLinkStyle" (click)="toggleAddMemberView(true)">
+            Add Members
+          </div>
         </div>
       </div>
 
-      <div class="sectionContentStyle">
+      <div
+        class="sectionContentStyle"
+        *ngIf="
+          currentMemberScope == 'admin' || currentMemberScope == 'moderator'
+        "
+      >
         <div class="contentItemStyle">
           <div class="itemLinkStyle" (click)="toggleBanMember()">
             Banned Members
@@ -36,13 +43,18 @@
       <h6 class="sectionHeaderStyle">Options</h6>
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">Leave Group</div>
+          <div class="itemLinkStyle" (click)="leaveGroup()">Leave Group</div>
         </div>
       </div>
 
-      <div class="sectionContentStyle">
+      <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle itemDeleteLinkStyle">Delete and Exit</div>
+          <div
+            class="itemLinkStyle itemDeleteLinkStyle"
+            (click)="deleteGroup()"
+          >
+            Delete and Exit
+          </div>
         </div>
       </div>
     </div>
@@ -63,6 +75,15 @@
   ></cometchat-view-members>
 
   <!-- ADD MEMBERS COMPONENT -->
+  <cometchat-add-members
+    *ngIf="openAddMemberView"
+    [item]="item"
+    [type]="type"
+    [friendsOnly]="false"
+    [memberlist]="memberlist"
+    [bannedmemberlist]="bannedmemberlist"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-add-members>
 
   <!-- BANNED MEMBERS COMPONENT -->
   <comet-chat-ban-members

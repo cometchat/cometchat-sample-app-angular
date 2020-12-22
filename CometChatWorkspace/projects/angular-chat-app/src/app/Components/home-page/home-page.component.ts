@@ -24,6 +24,14 @@ export class HomePageComponent implements OnInit {
   }
 
   /**
+   * Go to Group list page
+   *
+   */
+  navigateToGroupListPage() {
+    this.router.navigate(["/group-list"]);
+  }
+
+  /**
    * Go to contact screen
    *
    */
@@ -34,6 +42,18 @@ export class HomePageComponent implements OnInit {
    * Go to group screen
    *
    */
+  navigateToGroupListScreen() {
+    this.router.navigate(["/group-screen"]);
+  }
+
+  navigateToConversationList() {
+    this.router.navigate(["/conversations-list"]);
+  }
+
+  navigateToConversationListScreen() {
+    this.router.navigate(["/conversation-screen"]);
+  }
+
   navigateToGroupListScreen() {
     this.router.navigate(["/group-screen"]);
   }

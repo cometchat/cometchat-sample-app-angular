@@ -2,14 +2,32 @@
   <h6 class="sectionHeaderStyle">Shared Media</h6>
   <div class="sectionContentStyle">
     <div class="mediaBtnStyle">
-      <span class="buttonStyle" (click)="mediaClickHandler('image')"
+      <span
+        class="buttonStyle"
+        (click)="mediaClickHandler('image')"
+        [ngClass]="{
+          buttonActiveStyle: imageClick
+        }"
         >Photos
       </span>
 
-      <span class="buttonStyle" (click)="mediaClickHandler('video')"
+      <span
+        class="buttonStyle"
+        (click)="mediaClickHandler('video')"
+        [ngClass]="{
+          buttonActiveStyle: videoClick
+        }"
         >Videos
       </span>
-      <span class="buttonStyle" (click)="mediaClickHandler('file')">Docs </span>
+
+      <span
+        class="buttonStyle"
+        (click)="mediaClickHandler('file')"
+        [ngClass]="{
+          buttonActiveStyle: docsClick
+        }"
+        >Docs
+      </span>
     </div>
 
     <div

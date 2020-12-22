@@ -28,7 +28,9 @@ export class CometchatGroupListScreenComponent implements OnInit {
   //If clicked then only show image in full screen
   fullScreenViewImage: boolean = false;
 
-  groupToUpdate;
+  groupToUpdate = {};
+  groupToLeave = {};
+  groupToDelete = {};
   groupMessage = [];
 
   constructor() {}
@@ -69,27 +71,27 @@ export class CometchatGroupListScreenComponent implements OnInit {
     console.log("groupListScreen --> action generation is ", action);
 
     switch (action.type) {
-      case "viewMessageThread": {
+      case enums.VIEW_MESSAGE_THREAD: {
         this.viewMessageThread(message);
         break;
       }
-      case "closeThreadClicked": {
+      case enums.CLOSE_THREAD_CLICKED: {
         this.closeThreadMessages();
         break;
       }
-      case "viewActualImage": {
+      case enums.VIEW_ACTUAL_IMAGE: {
         this.toggleImageView(action.payLoad);
         break;
       }
-      case "closeFullScreenImage": {
+      case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
       }
-      case "viewDetail":
-      case "closeDetailClicked": {
+      case enums.VIEW_DETAIL:
+      case enums.CLOSE_DETAIL_CLICKED: {
         this.toggleDetailView();
         break;
       }
-      case "changeThreadParentMessageReplyCount": {
+      case enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT: {
         // this.toggleDetailView();
 
         this.composedthreadmessage = {
@@ -105,20 +107,32 @@ export class CometchatGroupListScreenComponent implements OnInit {
         break;
       }
 
-      case "memberScopeChanged": {
+      case enums.MEMBER_SCOPE_CHANGED: {
         this.memberScopeChanged(action.payLoad);
         break;
       }
-      case "membersUpdated": {
+      case enums.MEMBERS_ADDED: {
+        this.membersAdded(data);
+        break;
+      }
+      case enums.MEMBERS_UPDATED: {
         this.updateMembersCount(data.item, data.count);
         break;
       }
-      case "groupUpdated":
+      case enums.GROUP_UPDATED:
         this.groupUpdated(data.messages, data.key, data.group, data.options);
         break;
       case "memberUnbanned":
         this.memberUnbanned(data);
         break;
+      case enums.LEFT_GROUP: {
+        this.leaveGroup(data);
+        break;
+      }
+      case enums.DELETE_GROUP: {
+        this.deleteGroup(data);
+        break;
+      }
     }
   }
 
@@ -194,10 +208,33 @@ export class CometchatGroupListScreenComponent implements OnInit {
   };
 
   /**
+   * updates the messageList with messages about the members that were added
+   * @param Any members
+   */
+  membersAdded = (members) => {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} added ${eachMember.name}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
+  };
+
+  /**
    * updates The count of  number of members present in a group based on group activities , like adding a member or kicking a member
    * @param Any members
    */
   updateMembersCount = (item, count) => {
+    console.log("changing group member count to ", count);
+
     const group = Object.assign({}, this.item, { membersCount: count });
 
     this.item = group;
@@ -256,4 +293,22 @@ export class CometchatGroupListScreenComponent implements OnInit {
 
     this.groupMessage = messageList;
   }
+  /* Closes group screen and all , after user has left the group
+   * @param
+   */
+  leaveGroup = (group) => {
+    this.groupToLeave = group;
+    this.toggleDetailView();
+    this.item = null;
+  };
+
+  /**
+   * Closes group screen and all , after user has deleted the group
+   * @param
+   */
+  deleteGroup = (group) => {
+    this.groupToDelete = group;
+    this.toggleDetailView();
+    this.item = null;
+  };
 }

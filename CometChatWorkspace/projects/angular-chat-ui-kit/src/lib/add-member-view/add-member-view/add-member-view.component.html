@@ -1,12 +1,13 @@
 <tr class="tableRowStyle">
   <td class="tableColumnStyle">
     <div class="avatarStyle">
-      <avatar></avatar>
+      <avatar [item]="user" [userStatus]="user?.status"></avatar>
     </div>
-    <div class="nameStyle">testName</div>
+    <div class="nameStyle">{{ user?.name }}</div>
   </td>
   <td class="selectionColumnStyle">
-    <input class="selectionBoxStyle" type="checkbox" />
+    <!-- selectionBoxStyle -->
+    <input class="" type="checkbox" (change)="handleCheck($event)" />
     <label></label>
   </td>
 </tr>

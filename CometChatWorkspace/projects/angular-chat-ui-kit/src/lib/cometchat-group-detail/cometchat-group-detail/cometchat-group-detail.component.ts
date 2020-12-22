@@ -2,9 +2,7 @@ import {
   Component,
   Input,
   OnInit,
-  OnChanges,
   OnDestroy,
-  SimpleChanges,
   Output,
   EventEmitter,
 } from "@angular/core";
@@ -16,8 +14,7 @@ import * as enums from "../../utils/enums";
   templateUrl: "./cometchat-group-detail.component.html",
   styleUrls: ["./cometchat-group-detail.component.css"],
 })
-export class CometchatGroupDetailComponent
-  implements OnInit, OnDestroy, OnChanges {
+export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   @Input() item = null;
   @Input() type = null;
 
@@ -38,19 +35,11 @@ export class CometchatGroupDetailComponent
 
   openViewMember: boolean = false;
   openBanMember: boolean = false;
+  openAddMemberView: boolean = false;
+
+  currentMemberScope = "";
 
   constructor() {}
-
-  ngOnChanges(change: SimpleChanges) {
-    // console.log("Message List --> ngOnChanges -->  ", change);
-
-    if (change["item"]) {
-      if (change["item"].currentValue != change["item"].previousValue) {
-        CometChat.removeUserListener(this.userListenerId);
-        CometChat.removeGroupListener(this.groupListenerId);
-      }
-    }
-  }
 
   ngOnInit() {
     console.log(" Group Detail --> group data is  ", this.item);
@@ -63,12 +52,13 @@ export class CometchatGroupDetailComponent
     );
     this.getBannedGroupMembers();
 
+    this.currentMemberScope = this.checkMemberScope(this.item);
+
     this.addEventListeners(this.groupUpdated);
   }
 
   ngOnDestroy() {
-    CometChat.removeUserListener(this.userListenerId);
-    CometChat.removeGroupListener(this.groupListenerId);
+    this.removeListeners();
   }
 
   /**
@@ -81,15 +71,23 @@ export class CometchatGroupDetailComponent
     console.log("Group Detail --> action generation is ", action);
 
     switch (action.type) {
-      case "openViewMember": {
+      case enums.OPEN_VIEW_MEMBER: {
         this.toggleViewMember();
         break;
       }
-      case "updateGroupParticipants": {
+      case enums.CLOSE_ADD_VIEW_MEMBER: {
+        this.toggleAddMemberView(false);
+        break;
+      }
+      case enums.UPDATE_GROUP_PARTICIPANTS: {
         this.updateParticipants(data);
         break;
       }
-      case "removeGroupParticipants": {
+      case enums.ADD_GROUP_PARTICIPANTS: {
+        this.addParticipants(data);
+        break;
+      }
+      case enums.REMOVE_GROUP_PARTICIPANTS: {
         this.removeParticipants(data);
         break;
       }
@@ -191,6 +189,15 @@ export class CometchatGroupDetailComponent
         },
       })
     );
+  }
+
+  /**
+   * Removes all the real time group listeners attached to the group that is opened
+   * @param
+   */
+  removeListeners() {
+    CometChat.removeUserListener(this.userListenerId);
+    CometChat.removeGroupListener(this.groupListenerId);
   }
 
   /**
@@ -332,6 +339,24 @@ export class CometchatGroupDetailComponent
   }
 
   /**
+   * Add Particpants to the current group
+   * @param
+   */
+  addParticipants = (members, triggerUpdate = true) => {
+    const memberlist = [...this.memberlist, ...members];
+
+    this.memberlist = memberlist;
+
+    this.actionGenerated.emit({ type: enums.MEMBERS_ADDED, payLoad: members });
+    if (triggerUpdate) {
+      this.actionGenerated.emit({
+        type: enums.MEMBERS_UPDATED,
+        payLoad: { item: this.item, count: memberlist.length },
+      });
+    }
+  };
+
+  /**
    * Updates Group Participant's data according to the group activities
    * @param
    */
@@ -350,7 +375,7 @@ export class CometchatGroupDetailComponent
       memberlist.splice(memberKey, 1, newMemberObj);
 
       this.actionGenerated.emit({
-        type: "memberScopeChanged",
+        type: enums.MEMBER_SCOPE_CHANGED,
         payLoad: [newMemberObj],
       });
 
@@ -375,7 +400,7 @@ export class CometchatGroupDetailComponent
 
     if (triggerUpdate) {
       this.actionGenerated.emit({
-        type: "membersUpdated",
+        type: enums.MEMBERS_UPDATED,
         payLoad: {
           item: this.item,
           count: filteredMembers.length,
@@ -408,11 +433,66 @@ export class CometchatGroupDetailComponent
 
     this.bannedmemberlist = [...filteredBannedMembers];
   }
+  /* helps the user to leave the group
+   * @param
+   */
+  leaveGroup = () => {
+    const guid = this.item.guid;
+    CometChat.leaveGroup(guid)
+      .then((hasLeft) => {
+        console.log("Group left successfully:", hasLeft);
+        this.actionGenerated.emit({
+          type: enums.LEFT_GROUP,
+          payLoad: this.item,
+        });
+      })
+      .catch((error) => {
+        console.log("Group leaving failed with exception:", error);
+      });
+  };
+
+  /**
+   * helps the user (that is admin of the group) to delete the group
+   * @param
+   */
+  deleteGroup = () => {
+    const guid = this.item.guid;
+    CometChat.deleteGroup(guid)
+      .then((response) => {
+        console.log("Groups deleted successfully:", response);
+        this.actionGenerated.emit({
+          type: enums.DELETE_GROUP,
+          payLoad: this.item,
+        });
+      })
+      .catch((error) => {
+        console.log("Group delete failed with exception:", error);
+      });
+  };
+
+  /**
+   * Returns the role/scope that the current user has , for the group that is currently opened
+   * @param Any member
+   */
+  checkMemberScope = (group) => {
+    //group.scope is key which holds the role of the current user in this group
+
+    if (group.scope == CometChat.GROUP_MEMBER_SCOPE.ADMIN) {
+      return "admin";
+    } else if (group.scope == CometChat.GROUP_MEMBER_SCOPE.MODERATOR) {
+      return "moderator";
+    } else {
+      return "participant";
+    }
+  };
 
   toggleViewMember() {
     this.openViewMember = !this.openViewMember;
   }
   toggleBanMember() {
     this.openBanMember = !this.openBanMember;
+  }
+  toggleAddMemberView(show) {
+    this.openAddMemberView = show;
   }
 }

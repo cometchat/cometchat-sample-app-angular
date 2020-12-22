@@ -1,25 +1,60 @@
-import { Component, Input, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "avatar",
   templateUrl: "./avatar.component.html",
   styleUrls: ["./avatar.component.scss"],
 })
-export class AvatarComponent implements OnInit {
-  @Input() avatar =
+export class AvatarComponent implements OnInit, OnChanges {
+  @Input() item = null;
+
+  @Input() avatar: any =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
   @Input() userStatus = "";
 
-  constructor() {}
+  constructor(private _sanitizer: DomSanitizer) {}
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change["item"]) {
+      if (change["item"].previousValue !== change["item"].currentValue) {
+        this.setAvatarIfNotPresent();
+      }
+    }
+  }
 
   ngOnInit() {
-    if (this.avatar === undefined || this.avatar === null) {
-      this.avatar =
-        "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
+    this.setAvatarIfNotPresent();
+  }
 
-      // console.log("Avatar --> Avatar generated using initails is ");
-      // console.log(this.getAvatar("A", "A"));
-      // this.avatar = this.getAvatar("A", "A");
+  setAvatarIfNotPresent() {
+    if (this.item) {
+      this.avatar = this.item.avatar || this.item.icon;
+      this.userStatus = this.item.status;
+
+      if (this.avatar === undefined || this.avatar === null) {
+        if (this.item.hasOwnProperty("guid")) {
+          this.avatar = this._sanitizer.bypassSecurityTrustResourceUrl(
+            this.getAvatar(
+              this.item.guid,
+              this.item.name.charAt(0).toUpperCase()
+            )
+          );
+        } else {
+          this.avatar = this._sanitizer.bypassSecurityTrustResourceUrl(
+            this.getAvatar(
+              this.item.uid,
+              this.item.name.charAt(0).toUpperCase()
+            )
+          );
+        }
+      }
     }
   }
 

@@ -33,6 +33,7 @@
 .messageAudioWrapperStyle > audio {
   max-width: 250px;
   display: inherit;
+  outline: 0 !important;
 }
 
 .messageInfoWrapperStyle {

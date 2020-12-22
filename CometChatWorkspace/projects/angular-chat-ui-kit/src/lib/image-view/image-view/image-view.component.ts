@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "image-view",
@@ -26,7 +27,7 @@ export class ImageViewComponent implements OnInit {
 
   close() {
     this.actionGenerated.emit({
-      type: "closeFullScreenImage",
+      type: enums.CLOSE_FULL_SCREEN_IMAGE,
     });
   }
 }

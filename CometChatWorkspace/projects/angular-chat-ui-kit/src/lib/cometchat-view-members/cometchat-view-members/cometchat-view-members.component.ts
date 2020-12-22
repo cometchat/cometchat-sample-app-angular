@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-view-members",
   templateUrl: "./cometchat-view-members.component.html",
@@ -28,15 +29,15 @@ export class CometchatViewMembersComponent implements OnInit {
     console.log("cometchat view member --> action generation is ", action);
 
     switch (action.type) {
-      case "changescope": {
+      case enums.CHANGE_SCOPE: {
         this.changeScope(data.member, data.scope);
         break;
       }
-      case "ban": {
+      case enums.BAN: {
         this.banMember(data.member);
         break;
       }
-      case "kick": {
+      case enums.KICK: {
         this.kickMember(data.member);
         break;
       }
@@ -59,7 +60,7 @@ export class CometchatViewMembersComponent implements OnInit {
           );
           const updatedMember = Object.assign({}, member, { scope: scope });
           this.actionGenerated.emit({
-            type: "updateGroupParticipants",
+            type: enums.UPDATE_GROUP_PARTICIPANTS,
             payLoad: updatedMember,
           });
         }
@@ -80,7 +81,7 @@ export class CometchatViewMembersComponent implements OnInit {
         if (response) {
           console.log("banGroupMember success with response: ", response);
           this.actionGenerated.emit({
-            type: "removeGroupParticipants",
+            type: enums.REMOVE_GROUP_PARTICIPANTS,
             payLoad: memberToBan,
           });
         }
@@ -101,7 +102,7 @@ export class CometchatViewMembersComponent implements OnInit {
         if (response) {
           console.log("kickGroupMember success with response: ", response);
           this.actionGenerated.emit({
-            type: "removeGroupParticipants",
+            type: enums.REMOVE_GROUP_PARTICIPANTS,
             payLoad: memberToKick,
           });
         }
@@ -117,6 +118,6 @@ export class CometchatViewMembersComponent implements OnInit {
    */
   closeViewMemberModal() {
     console.log("cometchat view member --> close view member clicked");
-    this.actionGenerated.emit({ type: "openViewMember", payLoad: null });
+    this.actionGenerated.emit({ type: enums.OPEN_VIEW_MEMBER, payLoad: null });
   }
 }

@@ -3,6 +3,9 @@
     <!-- Group List left side bar -->
     <comet-chat-group-list
       [enableSelectedGroupStyling]="true"
+      [groupToUpdate]="groupToUpdate"
+      [groupToLeave]="groupToLeave"
+      [groupToDelete]="groupToDelete"
       (onGroupClick)="groupClicked($event)"
     ></comet-chat-group-list>
   </div>

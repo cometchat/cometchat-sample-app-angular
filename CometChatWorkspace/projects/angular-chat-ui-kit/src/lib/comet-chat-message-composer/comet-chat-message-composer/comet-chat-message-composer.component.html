@@ -10,6 +10,19 @@
     [replyPreview]="replyPreview"
     (actionGenerated)="actionHandler($event)"
   ></reply-preview>
+  <sticker-view
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="stickerViewer"
+  ></sticker-view>
+  <div class="blockedUserPopup" *ngIf="userBlocked">
+    <p>You have blocked this contact</p>
+    <p>
+      <span
+        >To start conversations, click on the icon at the top right corner and
+        unblock the user</span
+      >
+    </p>
+  </div>
   <div class="composerInputStyle">
     <div class="inputInnerStyle" tabindex="-1">
       <input
@@ -22,6 +35,9 @@
         (keyup)="sendMessageOnEnter($event)"
         [value]="messageInput"
         #message
+        [ngClass]="{
+          messageInputDisabledStyle: userBlocked
+        }"
       />
       <div class="inputStickyStyle">
         <div class="stickyAttachmentStyle">
@@ -88,20 +104,27 @@
           </span>
 
           <span
+            *ngIf="!parentMessageId"
             title="Create Poll"
             class="fileItemStyle"
             id="poll"
+            (click)="openCreatePollPreview()"
             [@FadeInFadeOut]="checkAnimatedState"
           >
           </span>
         </div>
         <div class="stickyButtonStyle">
           <!-- all buttons will come here-->
-          <span class="stickerBtnStyle" title="Add Sticker">&nbsp;</span>
+          <span
+            class="stickerBtnStyle"
+            title="Add Sticker"
+            (click)="toggleStickerPicker()"
+            >&nbsp;</span
+          >
           <span
             class="emojiButtonStyle"
             title="Add Emoji"
-            (click)="emojiToggled = !emojiToggled"
+            (click)="toggleEmoji()"
           >
           </span>
           <emoji-mart
@@ -125,13 +148,25 @@
             (click)="sendTextMessage()"
           >
           </span>
-          <span class="reactionBtnStyle" id="reaction" *ngIf="reactdisable">
+          <span
+            class="reactionBtnStyle"
+            id="reaction"
+            *ngIf="reactdisable && !parentMessageId"
+            (click)="sendReaction($event)"
+          >
           </span>
         </div>
       </div>
     </div>
   </div>
-  <!--poll will come here-->
+  <!-- POLL component Below -->
+  <create-poll-view
+    [item]="item"
+    [type]="type"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="createPollView"
+  ></create-poll-view>
+  <!-- POLL component Below -->
 </div>
 
 <!-- oninput onblur onkeydown to be inplemented -->

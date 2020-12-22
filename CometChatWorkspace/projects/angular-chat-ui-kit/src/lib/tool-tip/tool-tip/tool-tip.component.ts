@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "tool-tip",
@@ -12,6 +13,8 @@ export class ToolTipComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   @Input() showToolTip: boolean = true;
+
+  @Input() pollView: boolean = false;
 
   loggedInUser;
 
@@ -47,7 +50,7 @@ export class ToolTipComponent implements OnInit {
   replyToMessage() {
     console.log("reply to ", this.MessageDetails);
     this.actionGenerated.emit({
-      type: "viewMessageThread",
+      type: enums.VIEW_MESSAGE_THREAD,
       payLoad: this.MessageDetails,
     });
   }
