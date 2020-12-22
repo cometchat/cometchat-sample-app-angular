@@ -137,3 +137,8 @@ export const MODERATOR = "Moderator";
 export const PARTICIPANT = "Participant";
 
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
+
+export const BAN_MEMBER = "banmember";
+export const UNBAN_GROUP_MEMBERS = "unbanGroupMembers";
+export const UNBAN = "unban";
+export const FETCH_BANNED_MEMBERS = "fetchBannedMembers";
