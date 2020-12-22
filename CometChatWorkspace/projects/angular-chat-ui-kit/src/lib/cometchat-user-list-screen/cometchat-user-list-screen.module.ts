@@ -7,6 +7,7 @@ import { MessageThreadModule } from "../message-thread/message-thread.module";
 import { ImageViewModule } from "../image-view/image-view.module";
 import { CometChatUserDetailModule } from "../comet-chat-user-detail/comet-chat-user-detail.module";
 import { CallAlertModule } from "../call-alert/call-alert.module";
+import { CallScreenModule } from "../call-screen/call-screen.module";
 
 @NgModule({
   declarations: [CometchatUserListScreenComponent],
@@ -18,6 +19,7 @@ import { CallAlertModule } from "../call-alert/call-alert.module";
     ImageViewModule,
     CometChatUserDetailModule,
     CallAlertModule,
+    CallScreenModule,
   ],
   exports: [CometchatUserListScreenComponent],
 })
