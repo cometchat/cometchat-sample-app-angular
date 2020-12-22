@@ -22,15 +22,9 @@
         </option>
       </select>
 
-      <img
-        (click)="updateMemberScope()"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAiElEQVRIie3RMQrCQBBG4U+DeBXvYpdGb2Jp7HIWwUNYeCZDELTZoBFUEner7CtnmTc7/5DJDGSVUr5Gg/q1OI8oP2GJayRnT97gjn1seYl2WvIFjtimkMMmNLZB9E1eDZV37ILgpr9J1MzfhyQ5aOUZ19+xfKLbZPTPix/vF8xwxmHMgMwEeADr0i1iN/+DAgAAAABJRU5ErkJggg=="
-      />
+      <img (click)="updateMemberScope()" [src]="rightTick" />
 
-      <img
-        (click)="toggleChangeScope(false)"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAgklEQVRIie2UMQ6AIAxFX7wDiUdwwPtPxDvI4HF0KQkxhlChi/Inht//Sz8UBn6LBdiAuYLrgACsGoMAnEAUgZJ4FG7QGDhgl8KD55vUcF6bNIuXhLqJ5yZpzvF2LuWjNkldqzqfenXQAtMRmYZs+kzNP5r5qvBSUBNiWnZeYzDwIVwgcD9FngsRrwAAAABJRU5ErkJggg=="
-      />
+      <img (click)="toggleChangeScope(false)" [src]="closeIcon" />
     </div>
 
     <!-- Change Scope Above -->
@@ -42,26 +36,20 @@
     <img
       *ngIf="!showChangeScope && item?.scope !== PARTICIPANT"
       (click)="toggleChangeScope(true)"
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAkklEQVRIie3TQQrCMBBG4a8eTrrwDvUWQhceQUFX9Yy6Li5ENwnEoiI4dpUfhiSEvBfChJoZ0uKCHZpo+BIj7qlO0ZK+gOfaR4BbdGm+nQjOEfARN6wnkjHt/wzPty0lfST8iE0h6T6c+ypltwxY4JDWV6wqvMLngfPc500aQ35oTv6hf4GXglwhz/JOEA6veZkHoPlbbhTFVpcAAAAASUVORK5CYII="
+      [src]="editScopeIcon"
     />
     <!-- Current Scope -->
   </td>
   <td class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
     <span>
       <!-- ban icon -->
-      <img
-        (click)="banMember()"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABd0lEQVRIid2VQU4CQRBFX4YwCyDuSLwC6iWUuFUIClfQREK8ATuVeAsJx/ACugKiiHoCVwYXsmFYdE26GXqmZ2bJTzqTdP36VV3dVQO7Dh/oACNgBvzJmsleWzi50AK+gcCxvoBmFuEC8GgIjIEecAiUgRJQA26AicEbAF6aAKH4P3DtcPKAvhHkwSXeMsSPUyRTZfMUAdCII/voml9lFJ+gT/JJzMV30DV31TIqXhWfcO/S5jQSYy+HeIiu7A9tjh9iPMgpDuqlBag+2cJCjJUE8bFw3oF9C6cs9kVSgFJOcYA94fzajGGJahbxpLKYOCJSIvO1vMq3HhF/FscpcAL8JAQ4le+Lzdg2svQyZg5qxEyFf2Ej+KjBFaCaJos46Cc6B4pxpCabbZ9WvA4sgRVw5iIPjAB9kru6IJkvhX+XIhk81FQ0T9FFj+sK6tJv0TVfAfeOZLbQQA0u1w9nDpxnETZRRA2uIarBFrLegCfUa4m90N3AGloCjaVBgMwnAAAAAElFTkSuQmCC"
-      />
+      <img (click)="banMember()" [src]="banIcon" />
     </span>
   </td>
   <td class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
     <span>
       <!-- kick icon -->
-      <img
-        (click)="kickMember()"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAcElEQVRIie3VMQ4CIRSE4W+N57DwNHr/2kL0HthYsQvLEkks3iQvJATmZ6aB0A90wQO5mCeue5eXyn4efMzK7zRo9D+qVcTxmja9pld07jjTSslO0ukJAhCAALQB7+9a/gPlwGsEfkfqACTcRgAh8AFeJh0lsree7QAAAABJRU5ErkJggg=="
-      />
+      <img (click)="kickMember()" [src]="kickIcon" />
     </span>
   </td>
 </tr>

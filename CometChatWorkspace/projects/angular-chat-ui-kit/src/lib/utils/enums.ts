@@ -132,4 +132,8 @@ export const CALL = "call";
 export const ACTION = "action";
 export const CUSTOM = "custom";
 
+export const ADMINISTRATOR = "Administrator";
+export const MODERATOR = "Moderator";
+export const PARTICIPANT = "Participant";
+
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
