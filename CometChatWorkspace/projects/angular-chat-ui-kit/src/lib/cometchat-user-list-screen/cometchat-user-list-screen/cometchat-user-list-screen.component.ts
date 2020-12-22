@@ -119,10 +119,18 @@ export class CometchatUserListScreenComponent implements OnInit {
         this.audioCall();
         break;
       }
+      case enums.OUT_GOING_CALL_REJECTED:
       case enums.OUTGOING_CALL_REJECTED:
-      case enums.OUTGOING_CALL_REJECTED:
+      case enums.OUTGOING_CALL_CANCELLED:
+      case enums.CALL_ENDED_BY_USER:
       case enums.CALL_ENDED: {
+        console.log("user list screen --> our call was rejected ");
         this.outgoingCallEnded(message);
+        break;
+      }
+      case enums.USER_JOINED_CALL:
+      case enums.USER_LEFT_CALL: {
+        //this.appendCallMessage(item);
         break;
       }
       case enums.ACCEPT_INCOMING_CALL: {
@@ -135,6 +143,13 @@ export class CometchatUserListScreenComponent implements OnInit {
       }
       case enums.REJECTED_INCOMING_CALL: {
         this.rejectedIncomingCall(message);
+        break;
+      }
+      case enums.CALL_ERROR: {
+        console.log(
+          "User List screen --> call couldn't complete due to error",
+          action.payLoad
+        );
         break;
       }
     }
