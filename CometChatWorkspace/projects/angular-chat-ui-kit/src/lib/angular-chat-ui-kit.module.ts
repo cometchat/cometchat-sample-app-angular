@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { AngularChatUiKitComponent } from "./angular-chat-ui-kit.component";
 import { AvatarModule } from "./avatar/avatar.module";
 import { CometChatUserContactListModule } from "./comet-chat-user-list/comet-chat-user-contact-list.module";
-import { CometChatUserContactListComponent } from "./comet-chat-user-list/comet-chat-user-contact-list/comet-chat-user-contact-list.component";
 import { CometChatConversationListModule } from "./comet-chat-conversation-list/comet-chat-conversation-list.module";
 import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/cometchat-user-list-screen.module";
 import { MessageHeaderModule } from "./message-header/message-header.module";
@@ -33,6 +32,11 @@ import { CometChatConversationListScreenModule } from "./comet-chat-conversation
 import { CometChatGroupListModule } from "./comet-chat-group-list/comet-chat-group-list.module";
 import { GroupViewModule } from "./group-view/group-view.module";
 import { CometChatCreateGroupModule } from "./comet-chat-create-group/comet-chat-create-group.module";
+import { CometchatGroupListScreenModule } from "./cometchat-group-list-screen/cometchat-group-list-screen.module";
+import { CometchatGroupDetailModule } from "./cometchat-group-detail/cometchat-group-detail.module";
+import { CometchatViewMembersModule } from "./cometchat-view-members/cometchat-view-members.module";
+import { MemberViewModule } from "./member-view/member-view.module";
+import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add-members.module";
 import { CreatePollViewModule } from "./create-poll-view/create-poll-view.module";
 import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
 import { ReceiverPollBubbleModule } from "./receiver-poll-bubble/receiver-poll-bubble.module";
@@ -74,6 +78,11 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     CometChatGroupListModule,
     GroupViewModule,
     CometChatCreateGroupModule,
+    CometchatGroupListScreenModule,
+    CometchatGroupDetailModule,
+    CometchatViewMembersModule,
+    MemberViewModule,
+    CometchatAddMembersModule,
     CreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,
@@ -115,6 +124,11 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     CometChatGroupListModule,
     GroupViewModule,
     CometChatCreateGroupModule,
+    CometchatGroupListScreenModule,
+    CometchatGroupDetailModule,
+    CometchatViewMembersModule,
+    MemberViewModule,
+    CometchatAddMembersModule,
     CreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,

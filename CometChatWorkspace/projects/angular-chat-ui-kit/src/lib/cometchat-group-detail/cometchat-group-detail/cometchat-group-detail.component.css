@@ -1,0 +1,102 @@
+* {
+  font-family: Inter, sans-serif;
+}
+
+.detailStyle {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.detailStyle * {
+  box-sizing: border-box;
+}
+
+.headerStyle {
+  padding: 19px 16px;
+  position: relative;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.headerCloseStyle {
+  cursor: pointer;
+  display: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>')
+    center center no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.headerTitleStyle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.detailPaneStyle {
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: calc(100% - 70px);
+}
+
+.sectionStyle {
+  width: 100%;
+}
+
+.sectionHeaderStyle {
+  margin: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #cccccc;
+  text-transform: uppercase;
+}
+
+.sectionContentStyle {
+  width: 100%;
+  margin: 6px 0;
+}
+
+.sectionContentStyle:not(:last-of-type) {
+  margin-bottom: 16px;
+}
+
+.contentItemStyle {
+  position: relative;
+  display: flex;
+  clear: both;
+  width: 100%;
+  padding: 6px 0;
+}
+
+.contentItemStyle:first-of-type {
+  padding-top: 0;
+}
+
+.contentItemStyle:last-of-type {
+  padding-bottom: 0;
+}
+
+.itemLinkStyle {
+  font-size: 15px;
+  line-height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.itemDeleteLinkStyle {
+  color: #ff3b30;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .headerCloseStyle {
+    display: block;
+  }
+}

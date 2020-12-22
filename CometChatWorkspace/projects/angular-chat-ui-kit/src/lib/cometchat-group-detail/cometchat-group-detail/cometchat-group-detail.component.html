@@ -1,0 +1,87 @@
+<div class="detailStyle">
+  <div class="headerStyle">
+    <div class="headerCloseStyle"></div>
+    <h4 class="headerTitleStyle">Details</h4>
+  </div>
+  <div class="detailPaneStyle">
+    <!-- MEMBER SECTION BELOW-->
+    <div class="sectionStyle">
+      <h6 class="sectionHeaderStyle">Members</h6>
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle" (click)="toggleViewMember()">
+            View Members
+          </div>
+        </div>
+      </div>
+
+      <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle" (click)="toggleAddMemberView(true)">
+            Add Members
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="sectionContentStyle"
+        *ngIf="
+          currentMemberScope == 'admin' || currentMemberScope == 'moderator'
+        "
+      >
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle">Banned Members</div>
+        </div>
+      </div>
+    </div>
+    <!-- MEMBER SECTION ABOVE-->
+
+    <!-- OPTION SECTION BELOW-->
+    <div class="sectionStyle">
+      <h6 class="sectionHeaderStyle">Options</h6>
+      <div class="sectionContentStyle">
+        <div class="contentItemStyle">
+          <div class="itemLinkStyle" (click)="leaveGroup()">Leave Group</div>
+        </div>
+      </div>
+
+      <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
+        <div class="contentItemStyle">
+          <div
+            class="itemLinkStyle itemDeleteLinkStyle"
+            (click)="deleteGroup()"
+          >
+            Delete and Exit
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- OPTION SECTION ABOVE-->
+
+    <!-- SHARED MEDIA SECTION BELOW-->
+    <shared-media-view [item]="item" [type]="type"></shared-media-view>
+    <!-- SHARED MEDIA SECTION ABOVE-->
+  </div>
+
+  <!-- VIEW MEMBERS COMPONENT -->
+  <cometchat-view-members
+    *ngIf="openViewMember"
+    [item]="item"
+    [type]="type"
+    [memberlist]="memberlist"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-view-members>
+
+  <!-- ADD MEMBERS COMPONENT -->
+  <cometchat-add-members
+    *ngIf="openAddMemberView"
+    [item]="item"
+    [type]="type"
+    [friendsOnly]="false"
+    [memberlist]="memberlist"
+    [bannedmemberlist]="bannedmemberlist"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-add-members>
+
+  <!-- BANNED MEMBERS COMPONENT -->
+</div>

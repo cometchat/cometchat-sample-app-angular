@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import * as enums from "../../utils/enums";
 @Component({
   selector: "sender-image-bubble",
   templateUrl: "./sender-image-bubble.component.html",
@@ -97,7 +98,7 @@ export class SenderImageBubbleComponent implements OnInit {
    */
   open() {
     this.actionGenerated.emit({
-      type: "viewActualImage",
+      type: enums.VIEW_ACTUAL_IMAGE,
       payLoad: { ...this.message, ...this.MessageDetails },
     });
   }

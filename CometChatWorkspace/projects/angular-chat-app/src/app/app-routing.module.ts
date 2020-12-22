@@ -8,6 +8,7 @@ import { CometChatMessageComposerPageComponent } from "./Components/Pages/comet-
 import { GroupListComponent } from "./Components/Pages/group-list/group-list.component";
 import { UserListPageComponent } from "./Components/user-list-page/user-list-page.component";
 import { UserListScreenPageComponent } from "./Components/user-list-screen-page/user-list-screen-page.component";
+import { GroupListScreenPageComponent } from "./Components/Pages/group-list-screen-page/group-list-screen-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: "group-list",
     component: GroupListComponent,
+  },
+  {
+    path: "group-screen",
+    component: GroupListScreenPageComponent,
   },
 ];
 

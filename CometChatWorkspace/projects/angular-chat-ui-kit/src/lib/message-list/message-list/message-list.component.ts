@@ -34,6 +34,8 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   lastScrollTop = 0;
   loggedInUser;
   msgListenerId = "message_" + new Date().getTime();
+  groupListenerId = "group_" + new Date().getTime();
+  callListenerId = "call_" + new Date().getTime();
   prevUser;
 
   categories = [
@@ -70,13 +72,12 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     if (change["item"]) {
       //Removing Previous Conversation Listeners
       CometChat.removeMessageListener(this.msgListenerId);
-
-      // console.log(
-      //   "Message List --> the User to which we were conversing changed ",
-      //   change["item"]
-      // );
+      CometChat.removeGroupListener(this.groupListenerId);
+      CometChat.removeCallListener(this.callListenerId);
 
       this.msgListenerId = "message_" + new Date().getTime();
+      this.groupListenerId = "group_" + new Date().getTime();
+      this.callListenerId = "call_" + new Date().getTime();
 
       this.createMessageRequestObjectAndGetMessages();
 
@@ -127,6 +128,8 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
 
     //Removing Message Listeners
     CometChat.removeMessageListener(this.msgListenerId);
+    CometChat.removeGroupListener(this.groupListenerId);
+    CometChat.removeCallListener(this.callListenerId);
   }
 
   /**
@@ -188,6 +191,78 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         },
         onMessageEdited: (editedMessage) => {
           this.messageUpdated(enums.MESSAGE_EDITED, editedMessage);
+        },
+      })
+    );
+
+    CometChat.addGroupListener(
+      this.groupListenerId,
+      new CometChat.GroupListener({
+        onGroupMemberScopeChanged: (
+          message,
+          changedUser,
+          newScope,
+          oldScope,
+          changedGroup
+        ) => {
+          console.log("Message List --> group listener --> scope changed ");
+          this.messageUpdated(
+            enums.GROUP_MEMBER_SCOPE_CHANGED,
+            message,
+            changedGroup,
+            { user: changedUser, scope: newScope }
+          );
+        },
+        onGroupMemberKicked: (message, kickedUser, kickedBy, kickedFrom) => {
+          console.log("Message List --> group listener --> member kicked ");
+          this.messageUpdated(enums.GROUP_MEMBER_KICKED, message, kickedFrom, {
+            user: kickedUser,
+            hasJoined: false,
+          });
+        },
+        onGroupMemberBanned: (message, bannedUser, bannedBy, bannedFrom) => {
+          console.log("Message List --> group listener --> member banned ");
+          this.messageUpdated(enums.GROUP_MEMBER_BANNED, message, bannedFrom, {
+            user: bannedUser,
+          });
+        },
+        onGroupMemberUnbanned: (
+          message,
+          unbannedUser,
+          unbannedBy,
+          unbannedFrom
+        ) => {
+          console.log("Message List --> group listener --> member unbanned ");
+          this.messageUpdated(
+            enums.GROUP_MEMBER_UNBANNED,
+            message,
+            unbannedFrom,
+            { user: unbannedUser }
+          );
+        },
+        onMemberAddedToGroup: (
+          message,
+          userAdded,
+          userAddedBy,
+          userAddedIn
+        ) => {
+          console.log("Message List --> group listener --> member added ");
+          this.messageUpdated(enums.GROUP_MEMBER_ADDED, message, userAddedIn, {
+            user: userAdded,
+            hasJoined: true,
+          });
+        },
+        onGroupMemberLeft: (message, leavingUser, group) => {
+          console.log("Message List --> group listener --> member left ");
+          this.messageUpdated(enums.GROUP_MEMBER_LEFT, message, group, {
+            user: leavingUser,
+          });
+        },
+        onGroupMemberJoined: (message, joinedUser, joinedGroup) => {
+          console.log("Message List --> group listener --> member joined ");
+          this.messageUpdated(enums.GROUP_MEMBER_JOINED, message, joinedGroup, {
+            user: joinedUser,
+          });
         },
       })
     );
@@ -371,6 +446,16 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       }
       case enums.MESSAGE_EDITED: {
         this.messageEdited(message);
+        break;
+      }
+      case enums.GROUP_MEMBER_SCOPE_CHANGED:
+      case enums.GROUP_MEMBER_JOINED:
+      case enums.GROUP_MEMBER_LEFT:
+      case enums.GROUP_MEMBER_ADDED:
+      case enums.GROUP_MEMBER_KICKED:
+      case enums.GROUP_MEMBER_BANNED:
+      case enums.GROUP_MEMBER_UNBANNED: {
+        this.groupUpdated(key, message, group, options);
         break;
       }
       case enums.CUSTOM_MESSAGE_RECEIVED:
@@ -558,6 +643,23 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       this.actionGenerated.emit({
         type: "messageUpdated",
         payLoad: messageList,
+      });
+    }
+  };
+
+  /**
+   * Emits an Action Indicating that Group Data has been updated
+   * @param
+   */
+  groupUpdated = (key, message, group, options) => {
+    if (
+      this.type === "group" &&
+      message.getReceiverType() === "group" &&
+      message.getReceiver().guid === this.item.guid
+    ) {
+      this.actionGenerated.emit({
+        type: enums.GROUP_UPDATED,
+        payLoad: { message, key, group, options },
       });
     }
   };

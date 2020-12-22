@@ -23,6 +23,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() composedthreadmessage = null;
+  @Input() groupMessage = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -52,6 +53,17 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       if (change["composedthreadmessage"].currentValue) {
         //this.updateReplyCount(change["composedthreadmessage"].currentValue);
         this.messageEdited(change["composedthreadmessage"].currentValue);
+      }
+    }
+
+    if (change["groupMessage"]) {
+      console.log(
+        "Message List Screen --> group messageList added ",
+        change["groupMessage"]
+      );
+
+      if (change["groupMessage"].currentValue.length > 0) {
+        this.appendMessage(change["groupMessage"].currentValue);
       }
     }
   }
@@ -94,6 +106,8 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
     // action.payLoad has the array of messages that is received
     let messages = action.payLoad;
+
+    let data = action.payLoad;
 
     // console.log("MessageListScreen --> action generation is ", action);
 
@@ -161,7 +175,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       }
       case enums.VIEW_ACTUAL_IMAGE: {
         this.actionGenerated.emit({
-          type: "viewActualImage",
+          type: enums.VIEW_ACTUAL_IMAGE,
           payLoad: messages,
         });
         break;
@@ -174,7 +188,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       }
       case enums.VIEW_MESSAGE_THREAD: {
         this.actionGenerated.emit({
-          type: "viewMessageThread",
+          type: enums.VIEW_MESSAGE_THREAD,
           payLoad: messages,
         });
         break;
@@ -223,6 +237,8 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.removeMessages(messages);
         break;
       }
+      case enums.GROUP_UPDATED:
+        this.groupUpdated(data.message, data.key, data.group, data.options);
       case enums.POLL_CREATED: {
         this.appendPollMessage(messages);
         break;
@@ -493,4 +509,19 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     audio.src = INCOMING_MESSAGE_SOUND;
     audio.play();
   }
+
+  /**
+   * Emits an Action Indicating that Group Data has been updated
+   * @param
+   */
+  groupUpdated = (message, key, group, options) => {
+    console.log("Message List Screen --> group updated ", message);
+
+    this.appendMessage([message]);
+
+    this.actionGenerated.emit({
+      type: enums.GROUP_UPDATED,
+      payLoad: { message, key, group, options },
+    });
+  };
 }

@@ -91,6 +91,13 @@
           </div>
           <!--CASE FOR AUDIO ENDS -->
 
+          <!--CASE FOR Action Messages -->
+          <div *ngSwitchCase="'groupMember'">
+            <div class="actionMessageStyle">
+              <p class="actionMessageTxtStyle">{{ msg?.message }}</p>
+            </div>
+          </div>
+          <!--CASE FOR Action Messages -->
           <!--CASE FOR STICKER -->
           <div *ngSwitchCase="'extension_sticker'">
             <sender-sticker-bubble

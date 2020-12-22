@@ -6,6 +6,8 @@ import {
   Output,
   EventEmitter,
   Input,
+  OnChanges,
+  SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
@@ -15,8 +17,12 @@ import * as enums from "../../utils/enums";
   templateUrl: "./comet-chat-group-list.component.html",
   styleUrls: ["./comet-chat-group-list.component.css"],
 })
-export class CometChatGroupListComponent implements OnInit, OnDestroy {
+export class CometChatGroupListComponent
+  implements OnInit, OnDestroy, OnChanges {
   @Input() enableSelectedGroupStyling = false;
+  @Input() groupToUpdate = null;
+  @Input() groupToLeave = null;
+  @Input() groupToDelete = null;
 
   timeout;
   loggedInUser = null;
@@ -38,6 +44,111 @@ export class CometChatGroupListComponent implements OnInit, OnDestroy {
         this.ref.detectChanges();
       }
     }, 5000);
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change["groupToUpdate"]) {
+      let prevProps = { groupToUpdate: null };
+      let props = { groupToUpdate: null };
+
+      prevProps["groupToUpdate"] = change["groupToUpdate"].previousValue;
+      props["groupToUpdate"] = change["groupToUpdate"].currentValue;
+
+      if (
+        prevProps.groupToUpdate &&
+        (prevProps.groupToUpdate.guid !== props.groupToUpdate.guid ||
+          (prevProps.groupToUpdate.guid === props.groupToUpdate.guid &&
+            (prevProps.groupToUpdate.membersCount !==
+              props.groupToUpdate.membersCount ||
+              prevProps.groupToUpdate.scope !== props.groupToUpdate.scope)))
+      ) {
+        const groups = [...this.grouplist];
+        const groupToUpdate = this.groupToUpdate;
+
+        console.log(
+          "comet chat group list --> ngOnChanges --> changing group data ",
+          groupToUpdate
+        );
+
+        const groupKey = groups.findIndex(
+          (group) => group.guid === groupToUpdate.guid
+        );
+        if (groupKey > -1) {
+          const groupObj = groups[groupKey];
+          const newGroupObj = Object.assign({}, groupObj, groupToUpdate, {
+            scope: groupToUpdate["scope"],
+            membersCount: groupToUpdate["membersCount"],
+          });
+
+          groups.splice(groupKey, 1, newGroupObj);
+          // this.setState({grouplist: groups});
+
+          this.grouplist = groups;
+        }
+      }
+    }
+
+    if (change["groupToLeave"]) {
+      let prevProps = { groupToLeave: null };
+      let props = { groupToLeave: null };
+
+      prevProps["groupToLeave"] = change["groupToLeave"].previousValue;
+      props["groupToLeave"] = change["groupToLeave"].currentValue;
+
+      if (
+        prevProps.groupToLeave &&
+        prevProps.groupToLeave.guid !== props.groupToLeave.guid
+      ) {
+        const groups = [...this.grouplist];
+        const groupKey = groups.findIndex(
+          (member) => member.guid === props.groupToLeave.guid
+        );
+
+        if (groupKey > -1) {
+          const groupToLeave = props.groupToLeave;
+          const groupObj = { ...groups[groupKey] };
+          const membersCount = parseInt(groupToLeave["membersCount"]) - 1;
+
+          let newgroupObj = Object.assign({}, groupObj, {
+            membersCount: membersCount,
+            hasJoined: false,
+          });
+
+          groups.splice(groupKey, 1, newgroupObj);
+          // this.setState({grouplist: groups});
+
+          this.grouplist = groups;
+        }
+      }
+    }
+
+    if (change["groupToDelete"]) {
+      let prevProps = { groupToDelete: null };
+      let props = { groupToDelete: null };
+
+      prevProps["groupToDelete"] = change["groupToDelete"].previousValue;
+      props["groupToDelete"] = change["groupToDelete"].currentValue;
+
+      if (
+        prevProps.groupToDelete &&
+        prevProps.groupToDelete.guid !== props.groupToDelete.guid
+      ) {
+        const groups = [...this.grouplist];
+        const groupKey = groups.findIndex(
+          (member) => member.guid === props.groupToDelete.guid
+        );
+        if (groupKey > -1) {
+          groups.splice(groupKey, 1);
+          // this.setState({grouplist: groups});
+
+          this.grouplist = groups;
+
+          if (groups.length === 0) {
+            this.decoratorMessage = "No groups found";
+          }
+        }
+      }
+    }
   }
 
   ngOnInit() {
@@ -224,12 +335,57 @@ export class CometChatGroupListComponent implements OnInit, OnDestroy {
    * @param Any group
    */
   groupClicked(group) {
-    console.log("group List --> group clicked is ", group);
-    this.onGroupClick.emit(group);
+    if (group.hasJoined === false) {
+      let password = "";
+      if (group.type === CometChat.GROUP_TYPE.PASSWORD) {
+        password = prompt("Enter your password");
+      }
 
-    if (this.enableSelectedGroupStyling) {
-      this.selectedGroup = group;
+      const guid = group.guid;
+      const groupType = group.type;
+
+      this.joinGroup(guid, groupType, password);
+    } else {
+      console.log("group List --> group clicked is ", group);
+      this.onGroupClick.emit(group);
+
+      if (this.enableSelectedGroupStyling) {
+        this.selectedGroup = group;
+      }
     }
+  }
+
+  /**
+   * Helps the current user to join a password protected group , if the password entered by the user is correct
+   * @param Event event
+   */
+  joinGroup(guid: any, groupType: any, password: string) {
+    CometChat.joinGroup(guid, groupType, password)
+      .then((response) => {
+        console.log("Group joining success with response", response);
+
+        const groups = [...this.grouplist];
+
+        let groupKey = groups.findIndex((g, k) => g.guid === guid);
+        if (groupKey > -1) {
+          const groupObj = groups[groupKey];
+          const newGroupObj = Object.assign({}, groupObj, response, {
+            scope: CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT,
+          });
+
+          groups.splice(groupKey, 1, newGroupObj);
+
+          this.grouplist = groups;
+          if (this.enableSelectedGroupStyling) {
+            this.selectedGroup = newGroupObj;
+          }
+
+          this.onGroupClick.emit(newGroupObj);
+        }
+      })
+      .catch((error) => {
+        console.log("Group joining failed with exception:", error);
+      });
   }
 
   /**
@@ -255,7 +411,7 @@ export class CometChatGroupListComponent implements OnInit, OnDestroy {
   groupUpdated = (key, message, group, options) => {
     switch (key) {
       case enums.GROUP_MEMBER_SCOPE_CHANGED:
-        // this.updateMemberChanged(group, options);
+        this.updateMemberChanged(group, options);
         console.log(
           " comet chat group list -->  ",
           enums.GROUP_MEMBER_SCOPE_CHANGED
@@ -264,21 +420,153 @@ export class CometChatGroupListComponent implements OnInit, OnDestroy {
       case enums.GROUP_MEMBER_KICKED:
       case enums.GROUP_MEMBER_BANNED:
       case enums.GROUP_MEMBER_LEFT:
-        // this.updateMemberRemoved(group, options);
+        this.updateMemberRemoved(group, options);
         console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_KICKED);
         console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_BANNED);
         console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_LEFT);
         break;
       case enums.GROUP_MEMBER_ADDED:
-        // this.updateMemberAdded(group, options);
+        this.updateMemberAdded(group, options);
         console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_ADDED);
         break;
       case enums.GROUP_MEMBER_JOINED:
-        // this.updateMemberJoined(group, options);
+        this.updateMemberJoined(group, options);
         console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_JOINED);
         break;
       default:
         break;
+    }
+  };
+
+  updateMemberRemoved = (group, options) => {
+    let grouplist = [...this.grouplist];
+
+    //search for group
+    let groupKey = grouplist.findIndex((g, k) => g.guid === group.guid);
+
+    if (groupKey > -1) {
+      if (options && this.loggedInUser.uid === options.user.uid) {
+        let groupObj = { ...grouplist[groupKey] };
+
+        let newgroupObj = Object.assign({}, groupObj, group);
+
+        grouplist.splice(groupKey, 1, newgroupObj);
+        // this.setState({ grouplist: grouplist });
+
+        this.grouplist = grouplist;
+      } else {
+        let groupObj = { ...grouplist[groupKey] };
+        let membersCount = parseInt(group.membersCount);
+
+        let newgroupObj = Object.assign({}, groupObj, {
+          membersCount: membersCount,
+        });
+
+        grouplist.splice(groupKey, 1, newgroupObj);
+        // this.setState({ grouplist: grouplist });
+        this.grouplist = grouplist;
+      }
+    }
+  };
+
+  updateMemberAdded = (group, options) => {
+    let grouplist = [...this.grouplist];
+
+    //search for group
+    let groupKey = grouplist.findIndex((g, k) => g.guid === group.guid);
+
+    if (groupKey > -1) {
+      let groupObj = { ...grouplist[groupKey] };
+
+      let membersCount = parseInt(group.membersCount);
+
+      let scope = group.hasOwnProperty("scope") ? group.scope : "";
+      let hasJoined = group.hasOwnProperty("hasJoined")
+        ? group.hasJoined
+        : false;
+
+      if (options && this.loggedInUser.uid === options.user.uid) {
+        scope = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
+        hasJoined = true;
+      }
+
+      let newgroupObj = Object.assign({}, groupObj, {
+        membersCount: membersCount,
+        scope: scope,
+        hasJoined: hasJoined,
+      });
+
+      grouplist.splice(groupKey, 1, newgroupObj);
+      // this.setState({ grouplist: grouplist });
+      this.grouplist = grouplist;
+    } else {
+      let groupObj = { ...group };
+
+      let scope = groupObj.hasOwnProperty("scope") ? groupObj.scope : {};
+      let hasJoined = groupObj.hasOwnProperty("hasJoined")
+        ? groupObj.hasJoined
+        : false;
+      let membersCount = parseInt(groupObj.membersCount);
+      this.setAvatar(groupObj);
+      if (options && this.loggedInUser.uid === options.user.uid) {
+        scope = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
+        hasJoined = true;
+      }
+
+      let newgroupObj = Object.assign({}, groupObj, {
+        membersCount: membersCount,
+        scope: scope,
+        hasJoined: hasJoined,
+      });
+
+      const groupList = [newgroupObj, ...this.grouplist];
+      // this.setState({ grouplist: groupList });
+      this.grouplist = grouplist;
+    }
+  };
+
+  updateMemberJoined = (group, options) => {
+    let grouplist = [...this.grouplist];
+
+    //search for group
+    let groupKey = grouplist.findIndex((g, k) => g.guid === group.guid);
+
+    if (groupKey > -1) {
+      let groupObj = { ...grouplist[groupKey] };
+
+      let scope = groupObj.scope;
+      let membersCount = parseInt(group.membersCount);
+
+      if (options && this.loggedInUser.uid === options.user.uid) {
+        scope = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
+      }
+
+      let newgroupObj = Object.assign({}, groupObj, {
+        membersCount: membersCount,
+        scope: scope,
+      });
+
+      grouplist.splice(groupKey, 1, newgroupObj);
+      // this.setState({ grouplist: grouplist });
+      this.grouplist = grouplist;
+    }
+  };
+
+  updateMemberChanged = (group, options) => {
+    let grouplist = [...this.grouplist];
+
+    //search for group
+    let groupKey = grouplist.findIndex((g, k) => g.guid === group.guid);
+
+    if (groupKey > -1) {
+      let groupObj = { ...grouplist[groupKey] };
+      if (options && this.loggedInUser.uid === options.user.uid) {
+        let newgroupObj = Object.assign({}, groupObj, { scope: options.scope });
+
+        grouplist.splice(groupKey, 1, newgroupObj);
+        // this.setState({ grouplist: grouplist });
+        this.grouplist = grouplist;
+      }
     }
   };
 

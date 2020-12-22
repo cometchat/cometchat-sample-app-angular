@@ -84,7 +84,7 @@ export class CometchatUserListScreenComponent implements OnInit {
         this.toggleDetailView();
         break;
       }
-      case "changeThreadParentMessageReplyCount": {
+      case enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT: {
         // this.toggleDetailView();
 
         this.composedthreadmessage = {
