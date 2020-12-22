@@ -427,7 +427,7 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
     });
 
     this.actionGenerated.emit({
-      type: "memberUnbanned",
+      type: enums.MEMBER_UNBANNED,
       payLoad: unbannedMembers,
     });
 
