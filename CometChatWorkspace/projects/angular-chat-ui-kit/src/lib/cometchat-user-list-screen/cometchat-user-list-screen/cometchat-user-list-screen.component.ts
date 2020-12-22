@@ -134,7 +134,7 @@ export class CometchatUserListScreenComponent implements OnInit {
         break;
       }
       case enums.REJECTED_INCOMING_CALL: {
-        this.rejectedIncomingCall(message, null);
+        this.rejectedIncomingCall(message);
         break;
       }
     }
@@ -255,10 +255,10 @@ export class CometchatUserListScreenComponent implements OnInit {
   }
 
   /**
-   * ACCPETS INCOIMG CALL
+   * ACCPETS INCOMING CALL
    */
   acceptIncomingCall(call) {
-    console.log("incoming call");
+    // console.log("incoming call uls ", call);
 
     this.incomingCall = call;
 
@@ -277,7 +277,7 @@ export class CometchatUserListScreenComponent implements OnInit {
   }
 
   /**
-   * When call is accepted
+   * When call is accepted and connected
    * @param
    */
   callInitiated(message) {
@@ -287,7 +287,11 @@ export class CometchatUserListScreenComponent implements OnInit {
   /**
    * IncomingCall Rejected
    */
-  rejectedIncomingCall(incomingCallMessage, rejectedCallMessage) {
+  rejectedIncomingCall(call) {
+    console.log("rejection ", call);
+
+    let incomingCallMessage = call.incomingCall;
+    let rejectedCallMessage = call.rejectedCall;
     let receiverType = incomingCallMessage.receiverType;
     let receiverId =
       receiverType === "user"
