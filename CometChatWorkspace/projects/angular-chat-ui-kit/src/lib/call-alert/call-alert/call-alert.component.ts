@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import * as enums from "../../utils/enums";
 import { CometChat } from "@cometchat-pro/chat";
 import { CometChatManager } from "../../utils/controller";
-
+import { INCOMING_CALL_ALERT } from "../../resources/audio/incomingCallAlert";
 @Component({
   selector: "call-alert",
   templateUrl: "./call-alert.component.html",
@@ -14,6 +14,10 @@ export class CallAlertComponent implements OnInit {
   callListenerId = "incoming_call_" + new Date().getTime();
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
+  user;
+  name;
+  audio;
+
   constructor() {}
   ngOnDestroy() {
     this.removeListeners();
@@ -21,6 +25,7 @@ export class CallAlertComponent implements OnInit {
 
   ngOnInit() {
     this.attachListeners();
+    this.loadAudio();
   }
 
   attachListeners() {
@@ -60,7 +65,13 @@ export class CallAlertComponent implements OnInit {
     }
   }
 
+  /**
+   * When user receives a call
+   * @param
+   */
   incomingCallReceived(incomingCall) {
+    this.user = incomingCall.sender;
+    this.name = incomingCall.sender.name;
     const activeCall = CometChat.getActiveCall();
     console.log("incoming calllll ", incomingCall);
 
@@ -70,10 +81,9 @@ export class CallAlertComponent implements OnInit {
         .then((rejectedCall) => {
           //mark as read incoming call message
           this.markMessageAsRead(incomingCall);
-          // this.props.actionGenerated("rejectedIncomingCall", incomingCall, rejectedCall);
           this.actionGenerated.emit({
             type: "rejectedIncomingCall",
-            payLoad: { incomingCall, rejectedCall },
+            payLoad: { incomingCall, rejectedCall: rejectedCall },
           });
         })
         .catch((error) => {
@@ -82,18 +92,10 @@ export class CallAlertComponent implements OnInit {
           console.log("Call rejection failed with error:", error);
         });
     } else if (this.incomingCall === null) {
-      // this.playIncomingAlert();
-
-      if (incomingCall.sender.avatar === false) {
-        const uid = incomingCall.sender.uid;
-        const char = incomingCall.sender.name.charAt(0).toUpperCase();
-        console.log("name call ", char);
-
-        // incomingCall.sender.avatar = SvgAvatar.getAvatar(uid, char);
-      }
-
-      // this.setState({ incomingCall: incomingCall });
       this.incomingCall = incomingCall;
+      if (this.incomingCall !== null) {
+        this.playAudio();
+      }
     }
   }
 
@@ -109,7 +111,7 @@ export class CallAlertComponent implements OnInit {
 
   incomingCallCancelled(call) {
     //we are not marking this as read as it will done in messagelist component
-    // this.pauseIncomingAlert();
+    this.pauseAudio();
     this.incomingCall = null;
   }
 
@@ -117,7 +119,7 @@ export class CallAlertComponent implements OnInit {
    * Rejects call when user click reject
    */
   rejectCall() {
-    //this.pauseIncomingAlert();
+    this.pauseAudio();
     CometChatManager.rejectCall(
       this.incomingCall.sessionId,
       CometChat.CALL_STATUS.REJECTED
@@ -125,9 +127,11 @@ export class CallAlertComponent implements OnInit {
       .then((rejectedCall) => {
         this.actionGenerated.emit({
           type: "rejectedIncomingCall",
-          payLoad: { ...this.incomingCall, rejectedCall },
+          payLoad: {
+            incomingCall: this.incomingCall,
+            rejectedCall: rejectedCall,
+          },
         });
-        // this.props.actionGenerated("rejectedIncomingCall", this.state.incomingCall, rejectedCall);
         this.incomingCall = null;
       })
       .catch((error) => {
@@ -136,8 +140,12 @@ export class CallAlertComponent implements OnInit {
       });
   }
 
+  /**
+   * When user clicks on button to accept call it emits data
+   */
   acceptCall() {
     //this.pauseIncomingAlert();
+    this.pauseAudio();
     console.log("incoming call data", this.incomingCall);
 
     this.actionGenerated.emit({
@@ -146,5 +154,40 @@ export class CallAlertComponent implements OnInit {
     });
     this.incomingCall = null;
     //     this.callInProgress=this.callInProgress
+  }
+
+  /**
+   * Loads the audio
+   */
+  loadAudio() {
+    this.audio = new Audio();
+    this.audio.src = INCOMING_CALL_ALERT;
+  }
+
+  /**
+   * Plays Audio in loop
+   */
+  playAudio() {
+    this.audio.currentTime = 0;
+    if (typeof this.audio.loop == "boolean") {
+      this.audio.loop = true;
+    } else {
+      this.audio.addEventListener(
+        "ended",
+        function () {
+          this.currentTime = 0;
+          this.play();
+        },
+        false
+      );
+    }
+    this.audio.play();
+  }
+
+  /**
+   * Pauses audio
+   */
+  pauseAudio() {
+    this.audio.pause();
   }
 }
