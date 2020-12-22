@@ -1,16 +1,26 @@
-<div class="incomingCallWrapperStyle">
+<div class="incomingCallWrapperStyle" *ngIf="incomingCall !== null">
   <div class="callContainerStyle">
     <div class="headerWrapperStyle">
       <div class="callDetailStyle">
         <div class="nameStyle">
           <!--name-->
+          {{ name }}
         </div>
         <div class="callTypeStyle">
           <!--call type-->
+          <div *ngIf="incomingCall.type === 'audio'">
+            <span class="audioCall"></span>
+            <span>Incoming audio call</span>
+          </div>
+          <div *ngIf="incomingCall.type === 'video'">
+            <span class="videoCall"></span>
+            <span>Incoming video call</span>
+          </div>
         </div>
       </div>
       <div class="thumbnailStyle">
         <!--avatar-->
+        <avatar [item]="user"></avatar>
       </div>
     </div>
     <div class="headerButtonStyle">
