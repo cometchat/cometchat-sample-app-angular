@@ -65,6 +65,7 @@
     bottom: 0;
     width: 100% !important;
     background-color: white;
+    z-index: 2;
   }
   .userScreenMainStyle {
     width: 100% !important;
