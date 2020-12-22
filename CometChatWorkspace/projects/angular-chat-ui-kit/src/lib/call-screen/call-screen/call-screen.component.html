@@ -1,23 +1,23 @@
-<div class="callScreenWrapperStyle">
+<div class="callScreenWrapperStyle" *ngIf="callInProgress" #callScreenFrame>
   <!-- OUTGOING CALL SCREEN BELOW -->
-  <div class="callScreenContainerStyle">
+  <div class="callScreenContainerStyle" *ngIf="outgoingCallScreen">
     <div class="headerStyle">
       <span class="headerDurationStyle"> Calling...</span>
-      <h6 class="headerNameStyle">Receiver Name</h6>
+      <h6 class="headerNameStyle">{{ item?.name }}</h6>
     </div>
     <div class="thumbnailWrapperStyle">
       <div class="thumbnailStyle">
-        <avatar></avatar>
+        <avatar [item]="item" [enableUserStatus]="false"></avatar>
       </div>
     </div>
     <!-- ERROR SCREEN BELOW -->
-    <!-- <div class="errorContainerStyle">
-      <div>TestErrorMessage</div>
-    </div> -->
+    <div class="errorContainerStyle" *ngIf="errorScreen">
+      <div>{{ errorMessage }}</div>
+    </div>
     <!-- ERROR SCREEN ABOVE -->
     <div class="headerIconStyle">
       <div class="iconWrapperStyle">
-        <div class="iconStyle"></div>
+        <div class="iconStyle" (click)="cancelCall()"></div>
       </div>
     </div>
   </div>
