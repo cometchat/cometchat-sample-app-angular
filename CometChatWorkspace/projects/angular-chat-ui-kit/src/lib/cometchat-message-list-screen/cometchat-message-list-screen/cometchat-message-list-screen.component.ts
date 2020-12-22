@@ -232,6 +232,10 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.updatePollMessage(messages);
         break;
       }
+      case enums.CALL_UPDATED: {
+        this.callUpdated(messages);
+        break;
+      }
     }
   }
 
@@ -483,6 +487,10 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       this.reactionName = reaction.metadata.reaction;
       this.liveReaction = true;
     }
+  }
+
+  callUpdated(message) {
+    this.appendMessage([message]);
   }
 
   /**
