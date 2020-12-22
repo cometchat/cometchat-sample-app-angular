@@ -116,3 +116,8 @@ export const ACTION = "action";
 export const CUSTOM = "custom";
 
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
+
+export const ACCEPT_INCOMING_CALL = "acceptIncomingCall";
+export const ACCEPTED_INCOMING_CALL = "acceptedIncomingCall";
+export const REJECTED_INCOMING_CALL = "rejectedIncomingCall";
+export const CALL_UPDATED = "callUpdated";
