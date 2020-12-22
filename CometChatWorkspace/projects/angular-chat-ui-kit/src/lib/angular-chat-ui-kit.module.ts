@@ -40,6 +40,7 @@ import { LiveReactionModule } from "./live-reaction/live-reaction.module";
 import { StickerViewModule } from "./sticker-view/sticker-view.module";
 import { SenderStickerBubbleModule } from "./sender-sticker-bubble/sender-sticker-bubble.module";
 import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-sticker-bubble.module";
+import { CallAlertModule } from "./call-alert/call-alert.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -81,6 +82,7 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     StickerViewModule,
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
+    CallAlertModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -122,6 +124,7 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
     StickerViewModule,
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
+    CallAlertModule,
   ],
 })
 export class AngularChatUiKitModule {}
