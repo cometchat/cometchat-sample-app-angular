@@ -3,10 +3,20 @@ import * as enums from "../../utils/enums";
 import { CometChat } from "@cometchat-pro/chat";
 import { CometChatManager } from "../../utils/controller";
 import { INCOMING_CALL_ALERT } from "../../resources/audio/incomingCallAlert";
+import { trigger, style, transition, animate } from "@angular/animations";
+
 @Component({
   selector: "call-alert",
   templateUrl: "./call-alert.component.html",
   styleUrls: ["./call-alert.component.css"],
+  animations: [
+    trigger("slideInOut", [
+      transition(":enter", [
+        style({ transform: "translateY(-100%)" }),
+        animate("250ms ease-in", style({ transform: "translateY(0%)" })),
+      ]),
+    ]),
+  ],
 })
 export class CallAlertComponent implements OnInit {
   incomingCall = null;
@@ -15,7 +25,7 @@ export class CallAlertComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   user;
-  name;
+  name: string;
   audio;
 
   constructor() {}
@@ -109,6 +119,10 @@ export class CallAlertComponent implements OnInit {
     }
   }
 
+  /**
+   * When call is cancelled
+   * @param
+   */
   incomingCallCancelled(call) {
     //we are not marking this as read as it will done in messagelist component
     this.pauseAudio();
