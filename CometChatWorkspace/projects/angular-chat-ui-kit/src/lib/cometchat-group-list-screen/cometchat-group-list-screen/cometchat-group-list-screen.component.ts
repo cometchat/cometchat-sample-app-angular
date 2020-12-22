@@ -122,7 +122,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
       case enums.GROUP_UPDATED:
         this.groupUpdated(data.messages, data.key, data.group, data.options);
         break;
-      case "memberUnbanned":
+      case enums.MEMBER_UNBANNED:
         this.memberUnbanned(data);
         break;
       case enums.LEFT_GROUP: {
