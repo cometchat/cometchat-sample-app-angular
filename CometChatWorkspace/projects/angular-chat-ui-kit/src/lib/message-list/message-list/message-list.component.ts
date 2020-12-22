@@ -658,7 +658,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       message.getReceiver().guid === this.item.guid
     ) {
       this.actionGenerated.emit({
-        type: "groupUpdated",
+        type: enums.GROUP_UPDATED,
         payLoad: { message, key, group, options },
       });
     }

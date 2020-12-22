@@ -75,7 +75,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
       case enums.CLOSE_MENU_CLICKED:
         this.toggleSideBar();
         break;
-      //   case "groupUpdated":
+      //   case enums.GROUP_UPDATED:
       //     this.groupUpdated(item, count, ...otherProps);
       //   break;
       //   case "groupDeleted":
@@ -84,7 +84,7 @@ export class CometChatConversationListScreenComponent implements OnInit {
       //   case "leftGroup":
       //     this.leaveGroup(item, ...otherProps);
       //   break;
-      //   case "membersUpdated":
+      //   case enums.MEMBERS_UPDATED:
       //     this.updateMembersCount(item, count);
       //   break;
       case enums.VIEW_MESSAGE_THREAD:
@@ -121,15 +121,15 @@ export class CometChatConversationListScreenComponent implements OnInit {
       case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
       }
-      //   case "membersAdded":
+      //   case enums.MEMBERS_ADDED:
       //     this.membersAdded(item);
       //     break;
       //   case "memberUnbanned":
       //     this.memberUnbanned(item);
       //     break;
-      //   case "memberScopeChanged":
-      //     this.memberScopeChanged(item);
-      //     break;
+      // case enums.MEMBER_SCOPE_CHANGED:
+      //   this.memberScopeChanged(item);
+      //   break;
       case enums.MESSAGE_COMPOSED:
       case enums.MESSAGE_EDIT:
       case enums.MESSAGE_DELETE:

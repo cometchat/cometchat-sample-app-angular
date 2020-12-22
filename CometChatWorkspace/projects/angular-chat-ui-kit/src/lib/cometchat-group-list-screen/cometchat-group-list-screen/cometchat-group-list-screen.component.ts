@@ -71,27 +71,27 @@ export class CometchatGroupListScreenComponent implements OnInit {
     console.log("groupListScreen --> action generation is ", action);
 
     switch (action.type) {
-      case "viewMessageThread": {
+      case enums.VIEW_MESSAGE_THREAD: {
         this.viewMessageThread(message);
         break;
       }
-      case "closeThreadClicked": {
+      case enums.CLOSE_THREAD_CLICKED: {
         this.closeThreadMessages();
         break;
       }
-      case "viewActualImage": {
+      case enums.VIEW_ACTUAL_IMAGE: {
         this.toggleImageView(action.payLoad);
         break;
       }
-      case "closeFullScreenImage": {
+      case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
       }
-      case "viewDetail":
-      case "closeDetailClicked": {
+      case enums.VIEW_DETAIL:
+      case enums.CLOSE_DETAIL_CLICKED: {
         this.toggleDetailView();
         break;
       }
-      case "changeThreadParentMessageReplyCount": {
+      case enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT: {
         // this.toggleDetailView();
 
         this.composedthreadmessage = {
@@ -107,19 +107,19 @@ export class CometchatGroupListScreenComponent implements OnInit {
         break;
       }
 
-      case "memberScopeChanged": {
+      case enums.MEMBER_SCOPE_CHANGED: {
         this.memberScopeChanged(action.payLoad);
         break;
       }
-      case "membersAdded": {
+      case enums.MEMBERS_ADDED: {
         this.membersAdded(data);
         break;
       }
-      case "membersUpdated": {
+      case enums.MEMBERS_UPDATED: {
         this.updateMembersCount(data.item, data.count);
         break;
       }
-      case "groupUpdated":
+      case enums.GROUP_UPDATED:
         this.groupUpdated(data.messages, data.key, data.group, data.options);
         break;
       case enums.LEFT_GROUP: {

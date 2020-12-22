@@ -81,7 +81,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
         console.log("Message Thread --> new message added ", messages);
 
         this.actionGenerated.emit({
-          type: "changeThreadParentMessageReplyCount",
+          type: enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT,
           payLoad: this.replyCount,
         });
         break;
@@ -101,7 +101,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
           this.replyCount = this.replyCount + messages.length;
           this.appendMessage(messages);
           this.actionGenerated.emit({
-            type: "changeThreadParentMessageReplyCount",
+            type: enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT,
             payLoad: this.replyCount,
           });
         }
@@ -148,7 +148,10 @@ export class MessageThreadComponent implements OnInit, OnChanges {
    */
   closeThread() {
     console.log("close thread clicked");
-    this.actionGenerated.emit({ type: "closeThreadClicked", payLoad: null });
+    this.actionGenerated.emit({
+      type: enums.CLOSE_THREAD_CLICKED,
+      payLoad: null,
+    });
   }
 
   /**

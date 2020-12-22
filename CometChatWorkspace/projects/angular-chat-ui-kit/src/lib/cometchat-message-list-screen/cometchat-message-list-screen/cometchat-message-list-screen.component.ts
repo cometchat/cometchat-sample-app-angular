@@ -175,7 +175,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       }
       case enums.VIEW_ACTUAL_IMAGE: {
         this.actionGenerated.emit({
-          type: "viewActualImage",
+          type: enums.VIEW_ACTUAL_IMAGE,
           payLoad: messages,
         });
         break;
@@ -188,7 +188,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       }
       case enums.VIEW_MESSAGE_THREAD: {
         this.actionGenerated.emit({
-          type: "viewMessageThread",
+          type: enums.VIEW_MESSAGE_THREAD,
           payLoad: messages,
         });
         break;
@@ -237,7 +237,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.removeMessages(messages);
         break;
       }
-      case "groupUpdated":
+      case enums.GROUP_UPDATED:
         this.groupUpdated(data.message, data.key, data.group, data.options);
       case enums.POLL_CREATED: {
         this.appendPollMessage(messages);
@@ -520,7 +520,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     this.appendMessage([message]);
 
     this.actionGenerated.emit({
-      type: "groupUpdated",
+      type: enums.GROUP_UPDATED,
       payLoad: { message, key, group, options },
     });
   };

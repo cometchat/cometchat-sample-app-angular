@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 @Component({
   selector: "member-view",
   templateUrl: "./member-view.component.html",
@@ -68,7 +69,7 @@ export class MemberViewComponent implements OnInit {
    */
   updateMemberScope = () => {
     this.actionGenerated.emit({
-      type: "changescope",
+      type: enums.CHANGE_SCOPE,
       payLoad: { member: this.member, scope: this.scope },
     });
     this.toggleChangeScope(false);
@@ -80,7 +81,7 @@ export class MemberViewComponent implements OnInit {
    */
   banMember = () => {
     this.actionGenerated.emit({
-      type: "ban",
+      type: enums.BAN,
       payLoad: { member: this.member, scope: this.scope },
     });
   };
@@ -91,7 +92,7 @@ export class MemberViewComponent implements OnInit {
    */
   kickMember = () => {
     this.actionGenerated.emit({
-      type: "kick",
+      type: enums.KICK,
       payLoad: { member: this.member, scope: this.scope },
     });
   };

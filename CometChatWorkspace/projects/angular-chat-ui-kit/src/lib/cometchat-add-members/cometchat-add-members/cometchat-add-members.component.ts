@@ -7,6 +7,7 @@ import {
   EventEmitter,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "cometchat-add-members",
@@ -207,7 +208,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
     console.log("comet chat add members --> action generated is ", action);
 
     switch (action.type) {
-      case "memberUpdated": {
+      case enums.MEMBER_UPDATED: {
         this.membersUpdated(data.user, data.userState);
         break;
       }
@@ -274,7 +275,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
               }
             }
             this.actionGenerated.emit({
-              type: "addGroupParticipants",
+              type: enums.ADD_GROUP_PARTICIPANTS,
               payLoad: membersToAdd,
             });
           }
@@ -308,6 +309,9 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
   closeAddMembersView() {
     console.log("comet chat add member --> close add member view clicked");
 
-    this.actionGenerated.emit({ type: "closeAddMembersView", payLoad: null });
+    this.actionGenerated.emit({
+      type: enums.CLOSE_ADD_VIEW_MEMBER,
+      payLoad: null,
+    });
   }
 }

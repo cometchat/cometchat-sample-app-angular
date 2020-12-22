@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "add-member-view",
@@ -33,7 +34,7 @@ export class AddMemberViewComponent implements OnInit {
     console.log(`user is checked`, this.checked);
 
     this.actionGenerated.emit({
-      type: "memberUpdated",
+      type: enums.MEMBER_UPDATED,
       payLoad: { user: this.user, userState: this.checked },
     });
 

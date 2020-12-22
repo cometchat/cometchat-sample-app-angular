@@ -102,23 +102,23 @@ export class CometchatGroupDetailComponent
     console.log("Group Detail --> action generation is ", action);
 
     switch (action.type) {
-      case "openViewMember": {
+      case enums.OPEN_VIEW_MEMBER: {
         this.toggleViewMember();
         break;
       }
-      case "closeAddMembersView": {
+      case enums.CLOSE_ADD_VIEW_MEMBER: {
         this.toggleAddMemberView(false);
         break;
       }
-      case "updateGroupParticipants": {
+      case enums.UPDATE_GROUP_PARTICIPANTS: {
         this.updateParticipants(data);
         break;
       }
-      case "addGroupParticipants": {
+      case enums.ADD_GROUP_PARTICIPANTS: {
         this.addParticipants(data);
         break;
       }
-      case "removeGroupParticipants": {
+      case enums.REMOVE_GROUP_PARTICIPANTS: {
         this.removeParticipants(data);
         break;
       }
@@ -370,10 +370,10 @@ export class CometchatGroupDetailComponent
 
     this.memberlist = memberlist;
 
-    this.actionGenerated.emit({ type: "membersAdded", payLoad: members });
+    this.actionGenerated.emit({ type: enums.MEMBERS_ADDED, payLoad: members });
     if (triggerUpdate) {
       this.actionGenerated.emit({
-        type: "membersUpdated",
+        type: enums.MEMBERS_UPDATED,
         payLoad: { item: this.item, count: memberlist.length },
       });
     }
@@ -398,7 +398,7 @@ export class CometchatGroupDetailComponent
       memberlist.splice(memberKey, 1, newMemberObj);
 
       this.actionGenerated.emit({
-        type: "memberScopeChanged",
+        type: enums.MEMBER_SCOPE_CHANGED,
         payLoad: [newMemberObj],
       });
 
@@ -423,7 +423,7 @@ export class CometchatGroupDetailComponent
 
     if (triggerUpdate) {
       this.actionGenerated.emit({
-        type: "membersUpdated",
+        type: enums.MEMBERS_UPDATED,
         payLoad: {
           item: this.item,
           count: filteredMembers.length,
