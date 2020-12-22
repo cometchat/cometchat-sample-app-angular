@@ -1,0 +1,102 @@
+.incomingCallWrapperStyle {
+  /* position: positionValue;
+    top: topPos;
+    left: leftPos;
+    bottom: bottomPos;
+    right: rightPos; */
+  border-radius: 10px;
+  margin: 15px;
+  /* backgroundColor: `${props.theme.backgroundColor.callScreenGrey}`; */
+  /* z-index: zIndexValue; */
+  /* color: `${props.theme.color.white}`; */
+  text-align: center;
+  box-sizing: border-box;
+  /* fontFamily: `${props.theme.fontFamily}`;
+    animation: `${slideDown} 250ms ease`; */
+  width: 250px;
+}
+.incomingCallWrapperStyle * {
+  box-sizing: border-box;
+}
+
+.callContainerStyle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+}
+
+.headerWrapperStyle {
+  width: 100%;
+  display: flex;
+}
+
+.callDetailStyle {
+  width: calc(100% - 36px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.nameStyle {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.callTypeStyle {
+  font-size: 13px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: capitalize;
+  line-height: 20px;
+  color: #8a8a8a;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 2px 0 0 0px;
+}
+.callTypeStyle span {
+  padding: 0px 5px;
+}
+
+.thumbnailStyle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.headerButtonStyle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 0 0;
+}
+
+.ButtonStyle {
+  cursor: pointer;
+  padding: 6px 20px;
+  border-radius: 5px;
+  color: white;
+  /* color: `${props.theme.color.white}`; */
+  font-size: 14px;
+  outline: 0;
+  border: 0;
+  width: 45%;
+}
+.Accept {
+  background-color: blue;
+}
+.Decline {
+  background-color: red;
+}
