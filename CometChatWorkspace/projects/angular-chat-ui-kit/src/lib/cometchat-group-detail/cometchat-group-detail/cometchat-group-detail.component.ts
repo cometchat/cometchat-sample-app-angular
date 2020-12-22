@@ -2,9 +2,7 @@ import {
   Component,
   Input,
   OnInit,
-  OnChanges,
   OnDestroy,
-  SimpleChanges,
   Output,
   EventEmitter,
 } from "@angular/core";
@@ -16,8 +14,7 @@ import * as enums from "../../utils/enums";
   templateUrl: "./cometchat-group-detail.component.html",
   styleUrls: ["./cometchat-group-detail.component.css"],
 })
-export class CometchatGroupDetailComponent
-  implements OnInit, OnDestroy, OnChanges {
+export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   @Input() item = null;
   @Input() type = null;
 
@@ -42,35 +39,6 @@ export class CometchatGroupDetailComponent
   currentMemberScope = "";
 
   constructor() {}
-
-  ngOnChanges(change: SimpleChanges) {
-    // console.log("Message List --> ngOnChanges -->  ", change);
-
-    if (change["item"]) {
-      if (change["item"].currentValue != change["item"].previousValue) {
-        this.removeListeners();
-
-        this.userListenerId = "group_detail_user_" + new Date().getTime();
-        this.groupListenerId = "group_detail_group_" + new Date().getTime();
-
-        this.addEventListeners(this.groupUpdated);
-
-        this.currentMemberScope = this.checkMemberScope(
-          change["item"].currentValue
-        );
-
-        this.groupMemberRequest = this.createGroupMemberRequest(
-          change["item"].currentValue.guid
-        );
-        this.getGroupMembers();
-
-        this.bannedGroupMemberRequest = this.createBannedMemberRequest(
-          change["item"].currentValue.guid
-        );
-        this.getBannedGroupMembers();
-      }
-    }
-  }
 
   ngOnInit() {
     console.log(" Group Detail --> group data is  ", this.item);
