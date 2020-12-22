@@ -108,6 +108,37 @@ export class CometChatManager {
 
     return promise;
   }
+
+  /**
+   * Accepts a call
+   * @param
+   */
+  static acceptCall(sessionId) {
+    let promise = new Promise((resolve, reject) => {
+      CometChat.acceptCall(sessionId).then(
+        (call) => resolve(call),
+        (error) => reject(error)
+      );
+    });
+
+    return promise;
+  }
+
+  /**
+   * Starts a video call
+   * @param
+   */
+  static videoCall(receiverID, receiverType, callType) {
+    let promise = new Promise((resolve, reject) => {
+      const call = new CometChat.Call(receiverID, callType, receiverType);
+      CometChat.initiateCall(call).then(
+        (call) => resolve(call),
+        (error) => reject(error)
+      );
+    });
+
+    return promise;
+  }
 }
 
 export default CometChatManager;
