@@ -243,4 +243,11 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   openUserDetail() {
     this.actionGenerated.emit({ type: "viewDetail", payLoad: null });
   }
+
+  /**
+   * Starts audio call
+   */
+  audioCall() {
+    this.actionGenerated.emit({ type: "audioCall" });
+  }
 }
