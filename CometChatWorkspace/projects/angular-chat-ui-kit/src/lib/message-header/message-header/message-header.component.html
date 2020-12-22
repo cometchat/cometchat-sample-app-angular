@@ -34,7 +34,11 @@
       *ngIf="checkNotBlocked"
       (click)="audioCall()"
     ></div>
-    <div class="chatOptionStyle videoCallOption" *ngIf="checkNotBlocked"></div>
+    <div
+      class="chatOptionStyle videoCallOption"
+      *ngIf="checkNotBlocked"
+      (click)="videoCall()"
+    ></div>
     <div class="chatOptionStyle detailsOption" (click)="openUserDetail()"></div>
   </div>
 </div>

@@ -335,6 +335,13 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
    * Starts audio call
    */
   audioCall() {
-    this.actionGenerated.emit({ type: "audioCall" });
+    this.actionGenerated.emit({ type: enums.AUDIO_CALL });
+  }
+
+  /**
+   * Starts video call
+   */
+  videoCall() {
+    this.actionGenerated.emit({ type: enums.VIDEO_CALL });
   }
 }
