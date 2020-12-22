@@ -1,4 +1,8 @@
-<div class="incomingCallWrapperStyle" *ngIf="incomingCall !== null">
+<div
+  class="incomingCallWrapperStyle"
+  *ngIf="incomingCall !== null"
+  [@slideInOut]
+>
   <div class="callContainerStyle">
     <div class="headerWrapperStyle">
       <div class="callDetailStyle">
@@ -20,7 +24,7 @@
       </div>
       <div class="thumbnailStyle">
         <!--avatar-->
-        <avatar [item]="user"></avatar>
+        <avatar [item]="user" [enableUserStatus]="false"></avatar>
       </div>
     </div>
     <div class="headerButtonStyle">
