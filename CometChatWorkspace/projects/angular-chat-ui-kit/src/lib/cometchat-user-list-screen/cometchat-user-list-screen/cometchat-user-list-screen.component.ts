@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
 import * as enums from "../../utils/enums";
+import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
   selector: "cometchat-user-list-screen",
@@ -25,6 +26,14 @@ export class CometchatUserListScreenComponent implements OnInit {
 
   //If clicked then only show image in full screen
   fullScreenViewImage: boolean = false;
+
+  //for audio calling
+  outgoingCall = null;
+  incomingCall = null;
+  callMessage = {};
+  messageToMarkRead;
+
+  callInitialised: boolean = false;
 
   constructor() {}
 
@@ -106,6 +115,28 @@ export class CometchatUserListScreenComponent implements OnInit {
       case enums.UNBLOCK_USER:
         this.unblockUser();
         break;
+      case enums.AUDIO_CALL: {
+        this.audioCall();
+        break;
+      }
+      case enums.OUTGOING_CALL_REJECTED:
+      case enums.OUTGOING_CALL_REJECTED:
+      case enums.CALL_ENDED: {
+        this.outgoingCallEnded(message);
+        break;
+      }
+      case enums.ACCEPT_INCOMING_CALL: {
+        this.acceptIncomingCall(message);
+        break;
+      }
+      case enums.ACCEPTED_INCOMING_CALL: {
+        this.callInitiated(message);
+        break;
+      }
+      case enums.REJECTED_INCOMING_CALL: {
+        this.rejectedIncomingCall(message, null);
+        break;
+      }
     }
   }
 
@@ -184,5 +215,106 @@ export class CometchatUserListScreenComponent implements OnInit {
       .catch((error) => {
         console.log("unblocking user fails with error", error);
       });
+  }
+
+  /**
+   *
+   */
+  audioCall() {
+    console.log("audio call initiated");
+
+    let receiverId, receiverType;
+    if (this.type === "user") {
+      receiverId = this.curentItem.uid;
+      receiverType = CometChat.RECEIVER_TYPE.USER;
+    } else if (this.type === "group") {
+      receiverId = this.curentItem.guid;
+      receiverType = CometChat.RECEIVER_TYPE.GROUP;
+    }
+
+    CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.AUDIO)
+      .then((call) => {
+        this.appendCallMessage(call);
+        this.outgoingCall = call;
+      })
+      .catch((error) => {
+        console.log("Call initialization failed with exception:", error);
+      });
+  }
+
+  appendCallMessage(call) {
+    this.callMessage = call;
+  }
+
+  outgoingCallEnded(message) {
+    console.log("outgoing call ended");
+
+    this.outgoingCall = null;
+    this.incomingCall = null;
+    this.appendCallMessage(message);
+  }
+
+  /**
+   * ACCPETS INCOIMG CALL
+   */
+  acceptIncomingCall(call) {
+    console.log("incoming call");
+
+    this.incomingCall = call;
+
+    const type = call.receiverType;
+    const id = type === "user" ? call.sender.uid : call.receiverId;
+
+    CometChat.getConversation(id, type)
+      .then((conversation: any) => {
+        // this.itemClicked(conversation.conversationWith, type);
+        this.curentItem = { ...conversation.conversationWith };
+        this.type = type;
+      })
+      .catch((error) => {
+        console.log("error while fetching a conversation", error);
+      });
+  }
+
+  /**
+   * When call is accepted
+   * @param
+   */
+  callInitiated(message) {
+    this.appendCallMessage(message);
+  }
+
+  /**
+   * IncomingCall Rejected
+   */
+  rejectedIncomingCall(incomingCallMessage, rejectedCallMessage) {
+    let receiverType = incomingCallMessage.receiverType;
+    let receiverId =
+      receiverType === "user"
+        ? incomingCallMessage.sender.uid
+        : incomingCallMessage.receiverId;
+
+    //marking the incoming call message as read
+    if (incomingCallMessage.hasOwnProperty("readAt") === false) {
+      CometChat.markAsRead(incomingCallMessage.id, receiverId, receiverType);
+    }
+
+    //updating unreadcount in chats list
+    this.messageToMarkRead = incomingCallMessage;
+
+    let item = this.curentItem;
+    let type = this.type;
+
+    receiverType = rejectedCallMessage.receiverType;
+    receiverId = rejectedCallMessage.receiverId;
+
+    if (
+      (type === "group" &&
+        receiverType === "group" &&
+        receiverId === item.guid) ||
+      (type === "user" && receiverType === "user" && receiverId === item.uid)
+    ) {
+      this.appendCallMessage(rejectedCallMessage);
+    }
   }
 }

@@ -35,6 +35,7 @@
       (actionGenerated)="actionHandler($event)"
     ></comet-chat-user-detail>
   </div>
+  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
   <image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"

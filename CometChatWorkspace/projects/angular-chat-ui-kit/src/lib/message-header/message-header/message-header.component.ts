@@ -330,4 +330,11 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   openUserDetail() {
     this.actionGenerated.emit({ type: enums.VIEW_DETAIL, payLoad: null });
   }
+
+  /**
+   * Starts audio call
+   */
+  audioCall() {
+    this.actionGenerated.emit({ type: "audioCall" });
+  }
 }

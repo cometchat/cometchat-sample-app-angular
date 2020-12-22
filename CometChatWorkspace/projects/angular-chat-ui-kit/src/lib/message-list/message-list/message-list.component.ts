@@ -266,6 +266,24 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         },
       })
     );
+
+    CometChat.addCallListener(
+      this.callListenerId,
+      new CometChat.CallListener({
+        onIncomingCallReceived: (call) => {
+          this.messageUpdated(enums.INCOMING_CALL_RECEIVED, call);
+        },
+        onIncomingCallCancelled: (call) => {
+          this.messageUpdated(enums.INCOMING_CALL_CANCELLED, call);
+        },
+        onOutgoingCallAccepted: (call) => {
+          this.messageUpdated(enums.OUTGOING_CALL_ACCEPTED, call);
+        },
+        onOutgoingCallRejected: (call) => {
+          this.messageUpdated(enums.OUTGOING_CALL_REJECTED, call);
+        },
+      })
+    );
   }
 
   /**
@@ -460,6 +478,12 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       }
       case enums.CUSTOM_MESSAGE_RECEIVED:
         this.customMessageReceived(message);
+        break;
+      case enums.INCOMING_CALL_RECEIVED:
+      case enums.INCOMING_CALL_CANCELLED:
+      case enums.OUTGOING_CALL_ACCEPTED:
+      case enums.OUTGOING_CALL_REJECTED:
+        this.callUpdated(message);
         break;
     }
   }
@@ -769,4 +793,42 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       metadata: { "@injected": { extensions: { polls: polls } } },
     };
   };
+
+  callUpdated(message) {
+    if (
+      this.type === "group" &&
+      message.getReceiverType() === "group" &&
+      message.getReceiverId() === this.item.guid
+    ) {
+      if (!message.getReadAt()) {
+        CometChat.markAsRead(
+          message.getId().toString(),
+          message.getReceiverId(),
+          message.getReceiverType()
+        );
+      }
+
+      this.actionGenerated.emit({
+        type: "callUpdated",
+        payLoad: message,
+      });
+    } else if (
+      this.type === "user" &&
+      message.getReceiverType() === "user" &&
+      message.getSender().uid === this.item.uid
+    ) {
+      if (!message.getReadAt()) {
+        CometChat.markAsRead(
+          message.getId().toString(),
+          message.getSender().uid,
+          message.getReceiverType()
+        );
+      }
+
+      this.actionGenerated.emit({
+        type: "callUpdated",
+        payLoad: message,
+      });
+    }
+  }
 }
