@@ -119,6 +119,9 @@ export class CometchatUserListScreenComponent implements OnInit {
         this.audioCall();
         break;
       }
+      case enums.VIDEO_CALL:
+        this.videoCall();
+        break;
       case enums.OUT_GOING_CALL_REJECTED:
       case enums.OUTGOING_CALL_REJECTED:
       case enums.OUTGOING_CALL_CANCELLED:
@@ -233,7 +236,7 @@ export class CometchatUserListScreenComponent implements OnInit {
   }
 
   /**
-   *
+   * initiates an audio call with the person you are chatting with
    */
   audioCall() {
     console.log("audio call initiated");
@@ -256,6 +259,31 @@ export class CometchatUserListScreenComponent implements OnInit {
         console.log("Call initialization failed with exception:", error);
       });
   }
+
+  /**
+   * initiates an video call with the person you are chatting with
+   */
+  videoCall = () => {
+    let receiverId, receiverType;
+    if (this.type === "user") {
+      receiverId = this.curentItem.uid;
+      receiverType = CometChat.RECEIVER_TYPE.USER;
+    } else if (this.type === "group") {
+      receiverId = this.curentItem.guid;
+      receiverType = CometChat.RECEIVER_TYPE.GROUP;
+    }
+
+    CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.VIDEO)
+      .then((call) => {
+        this.appendCallMessage(call);
+        // this.setState({ outgoingCall: call });
+
+        this.outgoingCall = call;
+      })
+      .catch((error) => {
+        console.log("Call initialization failed with exception:", error);
+      });
+  };
 
   appendCallMessage(call) {
     this.callMessage = call;
