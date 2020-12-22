@@ -91,10 +91,10 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
         this.removeParticipants(data);
         break;
       }
-      case "banmember": {
+      case enums.BAN_MEMBER: {
         this.toggleBanMember();
       }
-      case "unbanGroupMembers":
+      case enums.UNBAN_GROUP_MEMBERS:
         this.unbanMembers(data);
         break;
     }
