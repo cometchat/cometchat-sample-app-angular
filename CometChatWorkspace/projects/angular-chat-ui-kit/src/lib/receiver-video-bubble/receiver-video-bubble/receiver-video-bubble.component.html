@@ -12,7 +12,7 @@
   <div class="messageWrapperStyle">
     <!--Avatar-->
     <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
-      <avatar [avatar]="avatar" class="avatarStyle"></avatar>
+      <avatar [item]="MessageDetails?.sender" class="avatarStyle"></avatar>
     </div>
     <!--Avatar Ends-->
     <div class="messageDetailStyle">
