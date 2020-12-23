@@ -59,35 +59,51 @@
           <!--CASE FOR IMAGE  ENDS-->
           <!--CASE FOR VIDEO -->
           <div *ngSwitchCase="'video'">
-            <sender-video-bubble
-              *ngIf="msg.sender.uid === loggedInUser.uid"
-              [MessageDetails]="msg"
-              (actionGenerated)="actionHandler($event)"
-            >
-            </sender-video-bubble>
-            <receiver-video-bubble
-              *ngIf="msg.sender.uid !== loggedInUser.uid"
-              [MessageDetails]="msg"
-              (actionGenerated)="actionHandler($event)"
-            >
-            </receiver-video-bubble>
+            <div *ngIf="msg.category !== 'call'; else callMessage">
+              <sender-video-bubble
+                *ngIf="msg.sender.uid === loggedInUser.uid"
+                [MessageDetails]="msg"
+                (actionGenerated)="actionHandler($event)"
+              >
+              </sender-video-bubble>
+              <receiver-video-bubble
+                *ngIf="msg.sender.uid !== loggedInUser.uid"
+                [MessageDetails]="msg"
+                (actionGenerated)="actionHandler($event)"
+              >
+              </receiver-video-bubble>
+            </div>
+            <ng-template #callMessage>
+              <call-message
+                [MessageDetails]="msg"
+                [loggedInUserUid]="loggedInUser.uid"
+              ></call-message>
+            </ng-template>
           </div>
           <!--CASE FOR VIDEO ENDS -->
 
           <!--CASE FOR AUDIO -->
           <div *ngSwitchCase="'audio'">
-            <sender-audio-bubble
-              *ngIf="msg.sender.uid === loggedInUser.uid"
-              [MessageDetails]="msg"
-              (actionGenerated)="actionHandler($event)"
-            >
-            </sender-audio-bubble>
-            <receiver-audio-bubble
-              *ngIf="msg.sender.uid !== loggedInUser.uid"
-              [MessageDetails]="msg"
-              (actionGenerated)="actionHandler($event)"
-            >
-            </receiver-audio-bubble>
+            <div *ngIf="msg.category !== 'call'; else callMessage">
+              <sender-audio-bubble
+                *ngIf="msg.sender.uid === loggedInUser.uid"
+                [MessageDetails]="msg"
+                (actionGenerated)="actionHandler($event)"
+              >
+              </sender-audio-bubble>
+              <receiver-audio-bubble
+                *ngIf="msg.sender.uid !== loggedInUser.uid"
+                [MessageDetails]="msg"
+                (actionGenerated)="actionHandler($event)"
+              >
+              </receiver-audio-bubble>
+            </div>
+            <ng-template #callMessage>
+              <call-message
+                [MessageDetails]="msg"
+                [loggedInUserUid]="loggedInUser.uid"
+              ></call-message>
+            </ng-template>
           </div>
           <!--CASE FOR AUDIO ENDS -->
 
@@ -131,7 +147,7 @@
             >
             </receiver-poll-bubble>
           </div>
-          <!--CASE FOR  POLLS -->
+          <!--CASE FOR  POLLS ENDS -->
         </div>
       </ng-template>
     </div>
