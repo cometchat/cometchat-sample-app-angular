@@ -29,9 +29,9 @@ export class CallAlertComponent implements OnInit {
   audio;
 
   constructor() {}
-  ngOnDestroy() {
-    this.removeListeners();
-  }
+  // ngOnDestroy() {
+  //   this.removeListeners();
+  // }
 
   ngOnInit() {
     this.attachListeners();
@@ -164,7 +164,7 @@ export class CallAlertComponent implements OnInit {
 
     this.actionGenerated.emit({
       type: "acceptIncomingCall",
-      payLoad: { ...this.incomingCall },
+      payLoad: this.incomingCall,
     });
     this.incomingCall = null;
     //     this.callInProgress=this.callInProgress
