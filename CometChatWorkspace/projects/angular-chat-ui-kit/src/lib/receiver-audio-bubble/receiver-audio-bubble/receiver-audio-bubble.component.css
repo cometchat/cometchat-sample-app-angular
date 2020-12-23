@@ -19,6 +19,10 @@
   display: none;
 }
 
+.toolGroup {
+  padding-left: 45px;
+}
+
 .messageWrapperStyle {
   width: auto;
   flex: 1 1;
