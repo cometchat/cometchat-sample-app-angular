@@ -41,7 +41,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(change: SimpleChanges) {
     if (change["outgoingCall"]) {
-      console.log("call Screen --> making an outgoing call");
+      // console.log("call Screen --> making an outgoing call");
 
       let prevProps = { outgoingCall: null };
       let props = { outgoingCall: null };
@@ -52,7 +52,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
       if (prevProps.outgoingCall !== props.outgoingCall && props.outgoingCall) {
         // this.playOutgoingAlert();
 
-        console.log("call Screen --> setting conditions to open call screen");
+        // console.log("call Screen --> setting conditions to open call screen");
 
         let call = props.outgoingCall;
         this.outgoingCallScreen = true;
@@ -63,8 +63,6 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     if (change["incomingCall"]) {
-      console.log("call Screen --> change of incoming call");
-
       let prevProps = { incomingCall: null };
       let props = { incomingCall: null };
 
@@ -72,7 +70,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
       props = { ...props, ...change["incomingCall"].currentValue };
 
       if (prevProps.incomingCall !== this.incomingCall && this.incomingCall) {
-        console.log("call Screen --> getting an incoming call");
+        // console.log("call Screen --> getting an incoming call");
         this.acceptCall();
       }
     }
@@ -120,7 +118,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    * Updates the callScreen on basis of call actions
    */
   callScreenUpdated = (key, call) => {
-    console.log("Call Screen --> should be updated coz ", key);
+    //console.log("Call Screen --> should be updated coz ", key);
 
     switch (key) {
       case enums.INCOMING_CALL_CANCELLED:
@@ -191,9 +189,8 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    */
   startCall(call) {
     const el = this.callScreenFrame.nativeElement;
-    console.log("call Screen el", el);
 
-    console.log("callScreen --> the call starts now , u may speak");
+    //console.log("callScreen --> the call starts now , u may speak");
 
     CometChat.startCall(
       call.getSessionId(),
@@ -299,8 +296,6 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    * @param
    */
   acceptCall() {
-    console.log("call Screen acceptCall");
-
     CometChatManager.acceptCall(this.incomingCall.sessionId)
       .then((call) => {
         this.actionGenerated.emit({
@@ -327,7 +322,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    * @param
    */
   cancelCall = () => {
-    console.log("Call Screen --> cancelling current outgoing call");
+    //console.log("Call Screen --> cancelling current outgoing call");
 
     // this.pauseOutgoingAlert();
     CometChatManager.rejectCall(
