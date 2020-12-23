@@ -239,6 +239,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       }
       case enums.GROUP_UPDATED:
         this.groupUpdated(data.message, data.key, data.group, data.options);
+        break;
       case enums.POLL_CREATED: {
         this.appendPollMessage(messages);
         break;
