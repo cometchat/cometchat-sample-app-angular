@@ -18,6 +18,10 @@
   display: none;
 }
 
+.toolGroup {
+  padding-left: 45px;
+}
+
 .messageWrapperStyle {
   width: auto;
   flex: 1 1;
@@ -40,12 +44,13 @@
 }
 
 .nameWrapperStyle {
+  padding: 3px 5px;
   align-self: flex-start;
 }
 
 .nameStyle {
   font-size: 10px;
-  /* color: `${props.theme.color.helpText}`, */
+  color: rgba(20, 20, 20, 0.6);
 }
 
 .messageFileContainerStyle {
