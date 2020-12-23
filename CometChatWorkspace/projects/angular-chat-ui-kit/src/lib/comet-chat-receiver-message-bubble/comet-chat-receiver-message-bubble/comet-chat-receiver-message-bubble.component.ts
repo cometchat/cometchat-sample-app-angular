@@ -6,6 +6,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./comet-chat-receiver-message-bubble.component.css"],
 })
 export class CometChatReceiverMessageBubbleComponent implements OnInit {
+  @Input() item = null;
+  @Input() type = "";
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
 

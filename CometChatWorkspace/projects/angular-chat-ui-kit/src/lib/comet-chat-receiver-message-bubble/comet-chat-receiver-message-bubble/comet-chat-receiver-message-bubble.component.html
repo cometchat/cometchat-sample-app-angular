@@ -2,6 +2,9 @@
   <!--ToolTip Component-->
   <tool-tip
     class="tool"
+    [ngClass]="{
+      toolGroup: type == 'group'
+    }"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
     *ngIf="showToolTip"
@@ -9,8 +12,14 @@
 
   <div class="messageWrapperStyle">
     <!--avatar component-->
+    <div class="messageThumbnailStyle">
+      <avatar [item]="MessageDetails?.sender"></avatar>
+    </div>
     <div class="messageDetailStyle">
       <!--name--->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle"> {{ MessageDetails?.sender?.name }} </span>
+      </div>
 
       <div class="messageTxtContainerStyle">
         <!--messageTxt-->
