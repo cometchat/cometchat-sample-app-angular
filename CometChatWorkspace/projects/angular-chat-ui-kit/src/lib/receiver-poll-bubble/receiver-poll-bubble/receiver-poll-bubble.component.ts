@@ -81,7 +81,7 @@ export class ReceiverPollBubbleComponent implements OnInit {
       let calculatedPercent = 0;
 
       if (this.totalVotes > 0) {
-        calculatedPercent = (vote / this.totalVotes) * 100;
+        calculatedPercent = Math.round((vote / this.totalVotes) * 100);
 
         // console.log(
         //   `reciver poll bubble --> percentage of ${this.pollExtensionData.options[currentItem]} is ${calculatedPercent} `
