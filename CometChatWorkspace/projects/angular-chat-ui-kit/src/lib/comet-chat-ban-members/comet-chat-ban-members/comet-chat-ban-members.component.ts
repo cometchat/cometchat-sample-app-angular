@@ -88,6 +88,6 @@ export class CometChatBanMembersComponent implements OnInit {
   closeBanMemberModal() {
     //console.log("cometchat ban member --> close ban member clicked");
 
-    this.actionGenerated.emit({ type: enums.BAN_MEMBER, payLoad: null });
+    this.actionGenerated.emit({ type: enums.BAN_MEMBER, payLoad: [] });
   }
 }
