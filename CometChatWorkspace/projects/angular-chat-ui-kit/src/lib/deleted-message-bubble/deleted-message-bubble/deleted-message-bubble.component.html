@@ -14,12 +14,25 @@
   class="messageContainerStyle deletedMessageReceivedStyle"
   *ngIf="!loggedInUserDeletedThisMessage"
 >
-  <div class="messageWrapperStyle deletedMessageWrapperStyle">
-    <div class="messageTxtWrapperStyle deletedMessageReceivedStyle">
-      <p class="messageTxtStyle">This message was deleted.</p>
+  <div class="deletedMessageWrapperStyle">
+    <div
+      class="messageThumbnailStyle"
+      *ngIf="MessageDetails?.receiverType == 'group'"
+    >
+      <avatar [item]="MessageDetails?.sender" class="avatarStyle"></avatar>
     </div>
-    <div class="messageInfoWrapperStyle deletedMessageReceivedStyle">
-      <span class="messageTimeStampStyle"> {{ getTime() }} </span>
+    <div class="messageDetailStyle">
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ MessageDetails?.sender?.name }}
+        </span>
+      </div>
+      <div class="messageTxtWrapperStyle deletedMessageReceivedStyle">
+        <p class="messageTxtStyle">This message was deleted.</p>
+      </div>
+      <div class="messageInfoWrapperStyle deletedMessageReceivedStyle">
+        <span class="messageTimeStampStyle"> {{ getTime() }} </span>
+      </div>
     </div>
   </div>
 </div>
