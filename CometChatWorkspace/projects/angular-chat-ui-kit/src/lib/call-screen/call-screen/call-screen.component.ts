@@ -63,13 +63,15 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     if (change["incomingCall"]) {
+      console.log("call Screen --> change of incoming call");
+
       let prevProps = { incomingCall: null };
       let props = { incomingCall: null };
 
       prevProps = { ...prevProps, ...change["incomingCall"].previousValue };
       props = { ...props, ...change["incomingCall"].currentValue };
 
-      if (prevProps.incomingCall !== props.incomingCall && props.incomingCall) {
+      if (prevProps.incomingCall !== this.incomingCall && this.incomingCall) {
         console.log("call Screen --> getting an incoming call");
         this.acceptCall();
       }
@@ -79,7 +81,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.setLoggedInUser();
 
-    this.attachListeners(this.callScreenUpdated);
+    this.attachListeners();
   }
 
   ngOnDestroy() {
@@ -90,18 +92,18 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    * Listener To Receive Call Actions in Real Time
    * @param function callback
    */
-  attachListeners(callback) {
+  attachListeners() {
     CometChat.addCallListener(
       this.callListenerId,
       new CometChat.CallListener({
         onOutgoingCallAccepted: (call) => {
-          callback(enums.OUTGOING_CALL_ACCEPTED, call);
+          this.callScreenUpdated(enums.OUTGOING_CALL_ACCEPTED, call);
         },
         onOutgoingCallRejected: (call) => {
-          callback(enums.OUTGOING_CALL_REJECTED, call);
+          this.callScreenUpdated(enums.OUTGOING_CALL_REJECTED, call);
         },
         onIncomingCallCancelled: (call) => {
-          callback(enums.INCOMING_CALL_CANCELLED, call);
+          this.callScreenUpdated(enums.INCOMING_CALL_CANCELLED, call);
         },
       })
     );
@@ -187,8 +189,9 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    * Starts the call , if the outgoing call is accepted by the person , that you are calling
    * @param any call
    */
-  startCall = (call) => {
+  startCall(call) {
     const el = this.callScreenFrame.nativeElement;
+    console.log("call Screen el", el);
 
     console.log("callScreen --> the call starts now , u may speak");
 
@@ -276,7 +279,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
         },
       })
     );
-  };
+  }
 
   /**
    * Marks messages as Read
@@ -295,7 +298,9 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    * Accepts the incoming call , if call is accpeted by the current user
    * @param
    */
-  acceptCall = () => {
+  acceptCall() {
+    console.log("call Screen acceptCall");
+
     CometChatManager.acceptCall(this.incomingCall.sessionId)
       .then((call) => {
         this.actionGenerated.emit({
@@ -307,14 +312,15 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
         this.callInProgress = call;
         this.errorScreen = false;
         this.errorMessage = null;
-
-        this.startCall(call);
+        setTimeout(() => {
+          this.startCall(call);
+        }, 1000);
       })
       .catch((error) => {
         console.log("[CallScreen] acceptCall -- error", error);
         this.actionGenerated.emit({ type: enums.CALL_ERROR, payLoad: error });
       });
-  };
+  }
 
   /**
    * Cancels the call , made by the current user
