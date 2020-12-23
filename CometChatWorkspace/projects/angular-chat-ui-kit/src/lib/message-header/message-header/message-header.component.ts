@@ -185,15 +185,6 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
       case enums.USER_ONLINE:
       case enums.USER_OFFLINE: {
         if (this.type === "user" && this.item.uid === item.uid) {
-          if (
-            this.widgetsettings &&
-            this.widgetsettings.hasOwnProperty("main") &&
-            this.widgetsettings.main.hasOwnProperty("show_user_presence") &&
-            this.widgetsettings.main["show_user_presence"] === false
-          ) {
-            return false;
-          }
-
           this.item = { ...item };
         }
         break;
