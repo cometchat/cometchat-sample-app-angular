@@ -17,6 +17,9 @@
 .tool {
   display: none;
 }
+.toolGroup {
+  padding-left: 45px;
+}
 
 .messageWrapperStyle {
   width: auto;
@@ -83,4 +86,14 @@
   height: 200px;
   float: right;
   border-radius: 20px;
+}
+
+.nameWrapperStyle {
+  padding: 3px 5px;
+  align-self: flex-start;
+}
+
+.nameStyle {
+  font-size: 10px;
+  color: rgba(20, 20, 20, 0.6);
 }

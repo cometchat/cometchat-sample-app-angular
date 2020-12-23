@@ -2,6 +2,9 @@
   <!--ToolTip-->
   <tool-tip
     class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
     *ngIf="showToolTip"
