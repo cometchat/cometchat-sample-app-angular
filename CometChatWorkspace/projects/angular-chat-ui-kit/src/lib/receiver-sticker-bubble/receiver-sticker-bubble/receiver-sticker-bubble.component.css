@@ -17,6 +17,9 @@
 .tool {
   display: none;
 }
+.toolGroup {
+  padding-left: 45px;
+}
 
 .messageWrapperStyle {
   width: auto;
