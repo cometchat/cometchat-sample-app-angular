@@ -22,6 +22,9 @@ export class MemberViewComponent implements OnInit {
   showChangeScope: boolean = false;
   roles = {};
   roleCodes = [];
+  mem;
+  hasGreaterRole: boolean = false;
+  loggedInUser = null;
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
 
   editScopeIcon = EDIT_SCOPE_ICON;
@@ -33,10 +36,52 @@ export class MemberViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.getLoggedInUserInfo();
+
     // console.log("member view --> member details ", this.member);
     this.scope = this.member.scope;
 
     this.setRoles();
+
+    if (
+      this.checkRoleAuthorityLevel(this.item) >
+      this.checkRoleAuthorityLevel(this.member)
+    ) {
+      this.hasGreaterRole = true;
+    }
+  }
+
+  getLoggedInUserInfo() {
+    CometChat.getLoggedinUser()
+      .then((user) => {
+        this.loggedInUser = user;
+      })
+      .catch((error) => {
+        console.error(
+          "Member view --> couldn't get logged in user information",
+          error
+        );
+      });
+  }
+
+  /**
+   * returns the level of authority on current item on the group
+   * @param
+   */
+  checkRoleAuthorityLevel(item) {
+    if (item.scope == CometChat.GROUP_MEMBER_SCOPE.ADMIN) {
+      return 3;
+    }
+
+    if (item.scope == CometChat.GROUP_MEMBER_SCOPE.MODERATOR) {
+      return 2;
+    }
+
+    if (item.scope == CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT) {
+      return 1;
+    }
+
+    return 4;
   }
 
   /**
