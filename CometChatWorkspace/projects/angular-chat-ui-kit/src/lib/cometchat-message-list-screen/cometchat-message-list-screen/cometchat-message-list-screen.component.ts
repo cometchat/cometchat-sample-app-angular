@@ -486,6 +486,11 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     if (!reaction.hasOwnProperty("metadata")) {
       return false;
     }
+
+    if (reaction.metadata == undefined) {
+      return false;
+    }
+
     if (
       !reaction.metadata.hasOwnProperty("type") ||
       !reaction.metadata.hasOwnProperty("reaction")
