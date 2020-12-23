@@ -34,6 +34,7 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   loggedInUser = null;
 
   openViewMember: boolean = false;
+  openBanMember: boolean = false;
   openAddMemberView: boolean = false;
 
   currentMemberScope = "";
@@ -90,6 +91,12 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
         this.removeParticipants(data);
         break;
       }
+      case enums.BAN_MEMBER: {
+        this.toggleBanMember();
+      }
+      case enums.UNBAN_GROUP_MEMBERS:
+        this.unbanMembers(data);
+        break;
     }
   }
 
@@ -283,15 +290,17 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
         this.fetchNextBannedGroupMembers()
           .then((bannedMembers) => {
             // bannedMembers.forEach(member => this.setAvatar(member));
+            console.log("bann working");
 
             this.bannedmemberlist = [
               ...this.bannedmemberlist,
               ...bannedMembers,
             ];
+            console.log("bannnned members ", bannedMembers);
 
             console.log(
               "Group Details --> Banned members  ",
-              this.moderatorslist
+              this.bannedmemberlist
             );
           })
           .catch((error) => {
@@ -401,7 +410,30 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   };
 
   /**
-   * helps the user to leave the group
+   * Removes the participant from the banned member list , when the member is unbanned
+   * @param
+   */
+  unbanMembers(members) {
+    const bannedMembers = [...this.bannedmemberlist];
+    const unbannedMembers = [];
+
+    const filteredBannedMembers = bannedMembers.filter((bannedmember) => {
+      const found = members.find((member) => bannedmember.uid === member.uid);
+      if (found) {
+        unbannedMembers.push(found);
+        return false;
+      }
+      return true;
+    });
+
+    this.actionGenerated.emit({
+      type: enums.MEMBER_UNBANNED,
+      payLoad: unbannedMembers,
+    });
+
+    this.bannedmemberlist = [...filteredBannedMembers];
+  }
+  /* helps the user to leave the group
    * @param
    */
   leaveGroup = () => {
@@ -457,7 +489,9 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   toggleViewMember() {
     this.openViewMember = !this.openViewMember;
   }
-
+  toggleBanMember() {
+    this.openBanMember = !this.openBanMember;
+  }
   toggleAddMemberView(show) {
     this.openAddMemberView = show;
   }

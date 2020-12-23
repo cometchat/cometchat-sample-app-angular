@@ -122,6 +122,9 @@ export class CometchatGroupListScreenComponent implements OnInit {
       case enums.GROUP_UPDATED:
         this.groupUpdated(data.messages, data.key, data.group, data.options);
         break;
+      case enums.MEMBER_UNBANNED:
+        this.memberUnbanned(data);
+        break;
       case enums.LEFT_GROUP: {
         this.leaveGroup(data);
         break;
@@ -202,8 +205,6 @@ export class CometchatGroupListScreenComponent implements OnInit {
     });
 
     this.groupMessage = messageList;
-
-    // this.setState({ groupmessage: messageList });
   };
 
   /**
@@ -273,7 +274,26 @@ export class CometchatGroupListScreenComponent implements OnInit {
   };
 
   /**
-   * Closes group screen and all , after user has left the group
+   *  Unbans the user
+   * @param
+   */
+  memberUnbanned(members) {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} unbanned ${eachMember.name}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
+  }
+  /* Closes group screen and all , after user has left the group
    * @param
    */
   leaveGroup = (group) => {
