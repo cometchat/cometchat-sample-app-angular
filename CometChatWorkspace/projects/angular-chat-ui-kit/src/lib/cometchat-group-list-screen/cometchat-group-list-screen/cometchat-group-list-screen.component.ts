@@ -120,7 +120,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
         break;
       }
       case enums.GROUP_UPDATED:
-        this.groupUpdated(data.messages, data.key, data.group, data.options);
+        this.groupUpdated(data.message, data.key, data.group, data.options);
         break;
       case enums.MEMBER_UNBANNED:
         this.memberUnbanned(data);
@@ -262,7 +262,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
             scope: options["scope"],
           });
 
-          this.item = {};
+          this.item = newObj;
           this.type = "group";
           this.viewDetailScreen = false;
         }
