@@ -13,7 +13,7 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
-
+import { OUTGOING_CALL_ALERT } from "../../resources/audio/outgoingCallAlert";
 @Component({
   selector: "call-screen",
   templateUrl: "./call-screen.component.html",
@@ -36,13 +36,13 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   loggedInUser = null;
+  audio;
 
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
     if (change["outgoingCall"]) {
       // console.log("call Screen --> making an outgoing call");
-
       let prevProps = { outgoingCall: null };
       let props = { outgoingCall: null };
 
@@ -51,6 +51,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
 
       if (prevProps.outgoingCall !== props.outgoingCall && props.outgoingCall) {
         // this.playOutgoingAlert();
+        this.playAudio();
 
         // console.log("call Screen --> setting conditions to open call screen");
 
@@ -80,6 +81,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
     this.setLoggedInUser();
 
     this.attachListeners();
+    this.loadAudio();
   }
 
   ngOnDestroy() {
@@ -151,7 +153,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
   outgoingCallAccepted = (call) => {
     if (this.outgoingCallScreen) {
       // this.pauseOutgoingAlert();
-
+      this.pauseAudio();
       this.outgoingCallScreen = false;
       this.callInProgress = call;
 
@@ -174,6 +176,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
       this.errorMessage = errorMessage;
     } else {
       // this.pauseOutgoingAlert();
+      this.pauseAudio();
       this.actionGenerated.emit({
         type: enums.OUT_GOING_CALL_REJECTED,
         payLoad: call,
@@ -323,7 +326,7 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
    */
   cancelCall = () => {
     //console.log("Call Screen --> cancelling current outgoing call");
-
+    this.pauseAudio();
     // this.pauseOutgoingAlert();
     CometChatManager.rejectCall(
       this.callInProgress.sessionId,
@@ -359,5 +362,39 @@ export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
       .catch((error) => {
         console.log("failed to get the loggedIn user", error);
       });
+  }
+  /**
+   * Loads the audio
+   */
+  loadAudio() {
+    this.audio = new Audio();
+    this.audio.src = OUTGOING_CALL_ALERT;
+  }
+
+  /**
+   * Plays Audio in loop
+   */
+  playAudio() {
+    this.audio.currentTime = 0;
+    if (typeof this.audio.loop == "boolean") {
+      this.audio.loop = true;
+    } else {
+      this.audio.addEventListener(
+        "ended",
+        function () {
+          this.currentTime = 0;
+          this.play();
+        },
+        false
+      );
+    }
+    this.audio.play();
+  }
+
+  /**
+   * Pauses audio
+   */
+  pauseAudio() {
+    this.audio.pause();
   }
 }
