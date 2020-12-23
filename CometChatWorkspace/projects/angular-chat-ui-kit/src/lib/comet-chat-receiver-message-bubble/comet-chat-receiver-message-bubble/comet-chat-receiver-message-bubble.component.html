@@ -12,12 +12,12 @@
 
   <div class="messageWrapperStyle">
     <!--avatar component-->
-    <div class="messageThumbnailStyle">
+    <div class="messageThumbnailStyle" *ngIf="type == 'group'">
       <avatar [item]="MessageDetails?.sender"></avatar>
     </div>
     <div class="messageDetailStyle">
       <!--name--->
-      <div class="nameWrapperStyle">
+      <div class="nameWrapperStyle" *ngIf="type == 'group'">
         <span class="nameStyle"> {{ MessageDetails?.sender?.name }} </span>
       </div>
 
