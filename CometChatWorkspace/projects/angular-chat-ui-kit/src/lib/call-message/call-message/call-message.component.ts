@@ -13,9 +13,6 @@ export class CallMessageComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log("loggedinid ", this.loggedInUserUid);
-    console.log("caller id", this.MessageDetails.callInitiator.uid);
-    console.log(this.loggedInUserUid === this.MessageDetails.callInitiator.uid);
     this.getMessage();
   }
 
