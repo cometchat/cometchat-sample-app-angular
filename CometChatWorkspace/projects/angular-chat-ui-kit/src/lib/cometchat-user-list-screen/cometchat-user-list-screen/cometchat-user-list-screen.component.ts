@@ -59,6 +59,9 @@ export class CometchatUserListScreenComponent implements OnInit {
     this.onResize();
   }
 
+  /**
+   * Checks when window size is changed in realtime
+   */
   @HostListener("window:resize", [])
   onResize() {
     this.innerWidth = window.innerWidth;
