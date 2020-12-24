@@ -7,11 +7,20 @@ import {
   Output,
   EventEmitter,
 } from "@angular/core";
+import { trigger, style, transition, animate } from "@angular/animations";
 
 @Component({
   selector: "reply-preview",
   templateUrl: "./reply-preview.component.html",
   styleUrls: ["./reply-preview.component.css"],
+  animations: [
+    trigger("slideInOut", [
+      transition(":enter", [
+        style({ transform: "translateY(100%)" }),
+        animate("400ms ease-in", style({ transform: "translateY(0%)" })),
+      ]),
+    ]),
+  ],
 })
 export class ReplyPreviewComponent implements OnInit {
   @Input() replyPreview = null;
