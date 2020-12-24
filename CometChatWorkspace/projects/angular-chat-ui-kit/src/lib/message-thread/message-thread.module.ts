@@ -13,6 +13,8 @@ import { SenderVideoBubbleModule } from "../sender-video-bubble/sender-video-bub
 import { ReceiverVideoBubbleModule } from "../receiver-video-bubble/receiver-video-bubble.module";
 import { SenderAudioBubbleModule } from "../sender-audio-bubble/sender-audio-bubble.module";
 import { ReceiverAudioBubbleModule } from "../receiver-audio-bubble/receiver-audio-bubble.module";
+import { SenderStickerBubbleModule } from "../sender-sticker-bubble/sender-sticker-bubble.module";
+import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver-sticker-bubble.module";
 
 @NgModule({
   declarations: [MessageThreadComponent],
@@ -30,6 +32,8 @@ import { ReceiverAudioBubbleModule } from "../receiver-audio-bubble/receiver-aud
     ReceiverVideoBubbleModule,
     MessageListModule,
     CometChatMessageComposerModule,
+    SenderStickerBubbleModule,
+    ReceiverStickerBubbleModule,
   ],
   exports: [MessageThreadComponent],
 })
