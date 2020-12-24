@@ -241,10 +241,10 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
    * @param
    */
   openUserDetail() {
-    this.actionGenerated.emit({ type: "viewDetail", payLoad: null });
+    this.actionGenerated.emit({ type: enums.VIEW_DETAIL, payLoad: null });
   }
 
   closeChatWindow() {
-    this.actionGenerated.emit({ type: "menuClicked" });
+    this.actionGenerated.emit({ type: enums.MENU_CLICKED });
   }
 }
