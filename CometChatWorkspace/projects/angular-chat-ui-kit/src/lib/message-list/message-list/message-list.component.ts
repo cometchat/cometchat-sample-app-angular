@@ -695,6 +695,14 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
       } else if (message.type === enums.CUSTOM_TYPE_POLL) {
         //customdata (poll extension) does not have metadata
 
+        console.log(" Message List --> poll data  ", message);
+
+        //The poll message that  is received by the message listeners , will not be appended to message list
+        //if the current loggedIn user is the sender/creator of the poll message
+        if (message.sender.uid === this.loggedInUser.uid) {
+          return false;
+        }
+
         const newMessage = this.addMetadataToCustomData(message);
         this.actionGenerated.emit({
           type: "customMessageReceived",
@@ -740,8 +748,6 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
   addMetadataToCustomData = (message) => {
-    console.log("Message List --> adding metadata to custom message");
-
     const customData = message.data.customData;
     const options = customData.options;
 
