@@ -320,6 +320,101 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
 
   groupUpdated = (key = null, message = null, group = null, options = null) => {
     console.log("Group Details --> Group should be updated because  ", key);
+
+    const guid = this.item.guid;
+    if (guid !== group.guid) {
+      return false;
+    }
+
+    switch (key) {
+      case enums.USER_ONLINE:
+      case enums.USER_OFFLINE:
+        this.groupMemberUpdated(options.user);
+        break;
+      case enums.GROUP_MEMBER_ADDED:
+      case enums.GROUP_MEMBER_JOINED:
+        {
+          const member = options.user;
+
+          const updatedMember = Object.assign({}, member, {
+            scope: CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT,
+          });
+
+          this.addParticipants([updatedMember], false);
+        }
+        break;
+      case enums.GROUP_MEMBER_LEFT:
+      case enums.GROUP_MEMBER_KICKED:
+        {
+          const member = options.user;
+          this.removeParticipants(member, false);
+        }
+        break;
+      case enums.GROUP_MEMBER_BANNED:
+        {
+          const member = options.user;
+          this.banMembers([member]);
+          this.removeParticipants(member, false);
+        }
+        break;
+      case enums.GROUP_MEMBER_UNBANNED:
+        {
+          const member = options.user;
+          this.unbanMembers([member]);
+        }
+        break;
+      case enums.GROUP_MEMBER_SCOPE_CHANGED:
+        {
+          const member = options.user;
+          const updatedMember = Object.assign({}, member, {
+            scope: options["scope"],
+          });
+          this.updateParticipants(updatedMember);
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  /**
+   * Adds the members that are banned to bannedMemberList
+   * @param any members
+   */
+  banMembers = (members) => {
+    this.bannedmemberlist = [...this.bannedmemberlist, ...members];
+  };
+
+  /**
+   * Updates group member data and information based on group actions
+   * @param any member
+   */
+  groupMemberUpdated = (member) => {
+    let memberlist = [...this.memberlist];
+    //search for user
+    let memberKey = memberlist.findIndex((m, k) => m.uid === member.uid);
+    //if found in the list, update user object
+    if (memberKey > -1) {
+      let memberObj = memberlist[memberKey];
+      let newMemberObj = Object.assign({}, memberObj, member);
+      memberlist.splice(memberKey, 1, newMemberObj);
+
+      this.memberlist = memberlist;
+    }
+
+    let bannedmemberlist = [...this.bannedmemberlist];
+    //search for user
+    let bannedMemberKey = bannedmemberlist.findIndex(
+      (m, k) => m.uid === member.uid
+    );
+    //if found in the list, update user object
+    if (bannedMemberKey > -1) {
+      let bannedMemberObj = bannedmemberlist[bannedMemberKey];
+      let newBannedMemberObj = Object.assign({}, bannedMemberObj, member);
+      bannedmemberlist.splice(bannedMemberKey, 1, newBannedMemberObj);
+
+      this.bannedmemberlist = bannedmemberlist;
+    }
   };
 
   /**

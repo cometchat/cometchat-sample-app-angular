@@ -5,7 +5,10 @@
       <avatar [item]="member" [userStatus]="member?.status"></avatar>
     </div>
 
-    <div class="nameStyle">{{ member?.name }}</div>
+    <div class="nameStyle" *ngIf="loggedInUser?.uid !== member?.uid">
+      {{ member?.name }}
+    </div>
+    <div class="nameStyle" *ngIf="loggedInUser?.uid == member?.uid">You</div>
   </td>
   <td class="scopeStyle">
     <!-- Change Scope Below -->
@@ -34,22 +37,22 @@
       {{ member?.scope }}
     </span>
     <img
-      *ngIf="!showChangeScope && item?.scope !== PARTICIPANT"
+      *ngIf="!showChangeScope && hasGreaterRole"
       (click)="toggleChangeScope(true)"
       [src]="editScopeIcon"
     />
     <!-- Current Scope -->
   </td>
-  <td class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
+  <td class="actionColumnStyle">
     <span>
       <!-- ban icon -->
-      <img (click)="banMember()" [src]="banIcon" />
+      <img *ngIf="hasGreaterRole" (click)="banMember()" [src]="banIcon" />
     </span>
   </td>
-  <td class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
+  <td class="actionColumnStyle">
     <span>
       <!-- kick icon -->
-      <img (click)="kickMember()" [src]="kickIcon" />
+      <img *ngIf="hasGreaterRole" (click)="kickMember()" [src]="kickIcon" />
     </span>
   </td>
 </tr>

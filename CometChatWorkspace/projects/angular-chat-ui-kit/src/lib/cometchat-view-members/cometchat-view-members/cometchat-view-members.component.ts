@@ -9,6 +9,7 @@ import * as enums from "../../utils/enums";
 export class CometchatViewMembersComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
+  @Input() loggedInUser = null;
   @Input() memberlist = [];
 
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;

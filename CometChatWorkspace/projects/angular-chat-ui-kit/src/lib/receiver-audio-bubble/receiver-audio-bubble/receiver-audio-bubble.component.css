@@ -19,6 +19,10 @@
   display: none;
 }
 
+.toolGroup {
+  padding-left: 45px;
+}
+
 .messageWrapperStyle {
   width: auto;
   flex: 1 1;
@@ -88,4 +92,21 @@ Styling for name will come
   border-radius: 50%;
   border-width: 1px;
   /* border-color: props.theme.color.secondary; */
+}
+
+.messageThumbnailStyle {
+  width: 36px;
+  height: 36px;
+  margin: 10px 5px;
+  float: left;
+  flex-shrink: 0;
+}
+
+.nameWrapperStyle {
+  align-self: flex-start;
+}
+
+.nameStyle {
+  font-size: 10px;
+  color: rgba(20, 20, 20, 0.6);
 }

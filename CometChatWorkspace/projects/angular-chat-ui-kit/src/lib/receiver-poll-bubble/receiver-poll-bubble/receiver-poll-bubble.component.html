@@ -1,8 +1,19 @@
 <div class="messageContainerStyle" *ngIf="isPollExtensionEnabled">
   <div class="messageWrapperStyle">
     <!-- Avatar for group -->
+    <div
+      class="messageThumbnailStyle"
+      *ngIf="MessageDetails?.receiverType == 'group'"
+    >
+      <avatar [item]="MessageDetails?.sender" class="avatarStyle"></avatar>
+    </div>
     <div class="messageDetailStyle">
       <!-- Name -->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ MessageDetails?.sender?.name }}
+        </span>
+      </div>
       <div class="messageTxtContainerStyle">
         <div class="messageTxtWrapperStyle">
           <p class="pollQuestionStyle">{{ pollExtensionData?.question }}</p>

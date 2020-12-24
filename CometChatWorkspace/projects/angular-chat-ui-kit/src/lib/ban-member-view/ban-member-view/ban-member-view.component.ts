@@ -14,20 +14,13 @@ export class BanMemberViewComponent implements OnInit {
   @Input() loggedInUser = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
-  roles = {};
   name: string;
-  scope;
   unban;
   banIcon = BAN_ICON;
 
   constructor() {}
 
-  ngOnInit() {
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.ADMIN] = enums.ADMINISTRATOR;
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.MODERATOR] = enums.MODERATOR;
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT] = enums.PARTICIPANT;
-    this.scope = this.roles[this.member.scope];
-  }
+  ngOnInit() {}
   unbanMember() {
     //console.log("unban clciked");
 

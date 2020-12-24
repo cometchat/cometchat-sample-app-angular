@@ -4,7 +4,7 @@
 .chatComposerStyle {
   padding: 14px 16px;
   background-color: white;
-  z-index: 1;
+  /* z-index: 1; */
   order: 3;
   position: relative;
   flex: none;
