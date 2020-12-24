@@ -250,7 +250,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
       case enums.GROUP_MEMBER_BANNED:
       case enums.GROUP_MEMBER_KICKED: {
         if (options.user.uid === this.loggedInUser.uid) {
-          this.item = {};
+          this.item = null;
           this.type = "group";
           this.viewDetailScreen = false;
         }
