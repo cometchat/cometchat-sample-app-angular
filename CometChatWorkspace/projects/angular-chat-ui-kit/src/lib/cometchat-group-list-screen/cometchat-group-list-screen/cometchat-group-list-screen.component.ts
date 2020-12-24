@@ -1,11 +1,35 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
-
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
 @Component({
   selector: "cometchat-group-list-screen",
   templateUrl: "./cometchat-group-list-screen.component.html",
   styleUrls: ["./cometchat-group-list-screen.component.css"],
+  animations: [
+    trigger("FadeInFadeOut", [
+      state(
+        "normal",
+        style({
+          left: "0%",
+        })
+      ),
+      state(
+        "animated",
+        style({
+          left: "-100%",
+          zIndex: "0",
+        })
+      ),
+      transition("normal<=>animated", animate(300)),
+    ]),
+  ],
 })
 export class CometchatGroupListScreenComponent implements OnInit {
   //It can be a user or a group
@@ -33,9 +57,15 @@ export class CometchatGroupListScreenComponent implements OnInit {
   groupToDelete = {};
   groupMessage = [];
 
+  checkAnimatedState;
+  checkIfAnimated: boolean = false;
+  innerWidth;
+
   constructor() {}
 
   ngOnInit() {
+    this.onResize();
+
     CometChat.getLoggedinUser().then((user) => {
       this.loggedInUser = user;
     });
@@ -46,6 +76,12 @@ export class CometchatGroupListScreenComponent implements OnInit {
    * @param Event user
    */
   groupClicked(group) {
+    if (this.checkAnimatedState !== null) {
+      this.checkAnimatedState == "normal"
+        ? (this.checkAnimatedState = "animated")
+        : (this.checkAnimatedState = "normal");
+      // console.log("animated state is ", this.checkAnimatedState);
+    }
     this.item = group;
 
     //Close Thread And User Detail Screen When Chat Window Is Changed
@@ -56,6 +92,25 @@ export class CometchatGroupListScreenComponent implements OnInit {
       this.type = "user";
     } else {
       this.type = "group";
+    }
+  }
+
+  /**
+   * Checks when window size is changed in realtime
+   */
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      if (this.checkIfAnimated === true) {
+        return false;
+      }
+      this.checkAnimatedState = "normal";
+      // console.log("state initail ", this.checkAnimatedState);
+      this.checkIfAnimated = true;
+    } else {
+      this.checkAnimatedState = null;
+      this.checkIfAnimated = false;
     }
   }
 
@@ -99,10 +154,10 @@ export class CometchatGroupListScreenComponent implements OnInit {
           replyCount: action.payLoad,
         };
 
-        console.log(
-          "groupListScreen --> thread Message Reply count updated ",
-          action.payLoad
-        );
+        // console.log(
+        //   "groupListScreen --> thread Message Reply count updated ",
+        //   action.payLoad
+        // );
 
         break;
       }
@@ -131,6 +186,12 @@ export class CometchatGroupListScreenComponent implements OnInit {
       }
       case enums.DELETE_GROUP: {
         this.deleteGroup(data);
+        break;
+      }
+      case enums.MENU_CLICKED: {
+        // console.log("before animation ", this.checkAnimatedState);
+        this.checkAnimatedState = "normal";
+        this.item = null;
         break;
       }
     }
@@ -169,7 +230,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
    * @param Any message
    */
   toggleImageView(message) {
-    console.log("userlistscreen toggleImageView ", message);
+    // console.log("userlistscreen toggleImageView ", message);
     this.imageView = message;
     this.fullScreenViewImage = !this.fullScreenViewImage;
   }
@@ -201,7 +262,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
       };
       messageList.push(messageObj);
 
-      console.log("group list screen --> message to be dislayed ", messageObj);
+      // console.log("group list screen --> message to be dislayed ", messageObj);
     });
 
     this.groupMessage = messageList;
@@ -233,7 +294,7 @@ export class CometchatGroupListScreenComponent implements OnInit {
    * @param Any members
    */
   updateMembersCount = (item, count) => {
-    console.log("changing group member count to ", count);
+    // console.log("changing group member count to ", count);
 
     const group = Object.assign({}, this.item, { membersCount: count });
 

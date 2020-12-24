@@ -590,4 +590,12 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   toggleAddMemberView(show) {
     this.openAddMemberView = show;
   }
+  /**
+   * Close thread when opened in small screen
+   */
+  closeThreadView() {
+    this.actionGenerated.emit({
+      type: enums.CLOSE_DETAIL_CLICKED,
+    });
+  }
 }
