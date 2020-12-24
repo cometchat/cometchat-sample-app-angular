@@ -23,7 +23,6 @@ export class MemberViewComponent implements OnInit {
   showChangeScope: boolean = false;
   roles = {};
   roleCodes = [];
-  mem;
   hasGreaterRole: boolean = false;
 
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
@@ -83,7 +82,7 @@ export class MemberViewComponent implements OnInit {
       return 1;
     }
 
-    return 4;
+    return 1;
   }
 
   /**
