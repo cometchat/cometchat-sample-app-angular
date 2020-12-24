@@ -11,7 +11,7 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
-// import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
+import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
 
 @Component({
   selector: "comet-chat-conversation-list",
@@ -507,7 +507,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (notification) {
-            // this.playAudio();
+            this.playAudio();
           }
         } else {
           let unreadMessageCount = this.makeUnreadMessageCount();
@@ -521,7 +521,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (notification) {
-            // this.playAudio();
+            this.playAudio();
           }
         }
       })
@@ -659,11 +659,11 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
     this.onUserClick.emit(user);
   }
   /**
-   * Plays Audio When Message is Sent
+   * Plays Audio When Message is Received
    */
-  // playAudio() {
-  //   let audio = new Audio();
-  //   audio.src = INCOMING_OTHER_MESSAGE_SOUND;
-  //   audio.play();
-  // }
+  playAudio() {
+    let audio = new Audio();
+    audio.src = INCOMING_OTHER_MESSAGE_SOUND;
+    audio.play();
+  }
 }
