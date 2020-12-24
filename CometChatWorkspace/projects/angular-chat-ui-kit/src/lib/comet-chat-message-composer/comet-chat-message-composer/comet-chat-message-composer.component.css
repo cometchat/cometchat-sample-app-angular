@@ -218,3 +218,9 @@
   text-align: center;
   margin: 0;
 }
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .chatComposerStyle {
+    z-index: 1;
+  }
+}
