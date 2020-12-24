@@ -248,6 +248,13 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.updatePollMessage(messages);
         break;
       }
+      case enums.AUDIO_CALL:
+      case enums.VIDEO_CALL:
+      case enums.VIEW_DETAIL:
+      case enums.MENU_CLICKED: {
+        this.actionGenerated.emit(action);
+        break;
+      }
     }
   }
 
