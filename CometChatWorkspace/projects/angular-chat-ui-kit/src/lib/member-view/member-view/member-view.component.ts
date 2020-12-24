@@ -15,6 +15,7 @@ export class MemberViewComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() member = null;
+  @Input() loggedInUser = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -24,7 +25,7 @@ export class MemberViewComponent implements OnInit {
   roleCodes = [];
   mem;
   hasGreaterRole: boolean = false;
-  loggedInUser = null;
+
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
 
   editScopeIcon = EDIT_SCOPE_ICON;
@@ -36,10 +37,20 @@ export class MemberViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.getLoggedInUserInfo();
+    //this.getLoggedInUserInfo();
 
     // console.log("member view --> member details ", this.member);
     this.scope = this.member.scope;
+
+    //checking if logged in user is owner
+    if (this.item.owner == this.loggedInUser.uid) {
+      this.item.scope = "owner";
+    }
+
+    // checking if the current member passed to member view is an owner
+    if (this.item.owner == this.member.uid) {
+      this.member.scope = "owner";
+    }
 
     this.setRoles();
 
@@ -69,6 +80,10 @@ export class MemberViewComponent implements OnInit {
    * @param
    */
   checkRoleAuthorityLevel(item) {
+    if (item.scope == "owner") {
+      return 4;
+    }
+
     if (item.scope == CometChat.GROUP_MEMBER_SCOPE.ADMIN) {
       return 3;
     }
