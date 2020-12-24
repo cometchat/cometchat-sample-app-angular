@@ -62,19 +62,6 @@ export class MemberViewComponent implements OnInit {
     }
   }
 
-  getLoggedInUserInfo() {
-    CometChat.getLoggedinUser()
-      .then((user) => {
-        this.loggedInUser = user;
-      })
-      .catch((error) => {
-        console.error(
-          "Member view --> couldn't get logged in user information",
-          error
-        );
-      });
-  }
-
   /**
    * returns the level of authority on current item on the group
    * @param
