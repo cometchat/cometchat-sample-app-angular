@@ -72,7 +72,9 @@ export class CometChatConversationListScreenComponent implements OnInit {
         console.log("[CometChatUnified] getLoggedInUser error", error);
       });
   }
-
+  /**
+   * Checks when window size is changed in realtime
+   */
   @HostListener("window:resize", [])
   onResize() {
     this.innerWidth = window.innerWidth;
