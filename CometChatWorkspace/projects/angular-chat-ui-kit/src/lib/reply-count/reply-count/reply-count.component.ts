@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import * as enums from "../../utils/enums";
 
 @Component({
   selector: "reply-count",
@@ -53,7 +54,7 @@ export class ReplyCountComponent implements OnInit {
    */
   openThreadMessage() {
     this.actionGenerated.emit({
-      type: "viewMessageThread",
+      type: enums.VIEW_MESSAGE_THREAD,
       payLoad: this.MessageDetails,
     });
   }

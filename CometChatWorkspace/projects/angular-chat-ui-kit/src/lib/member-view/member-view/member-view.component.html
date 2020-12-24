@@ -1,0 +1,55 @@
+<tr class="tableRowStyle">
+  <td class="tableColumnStyle">
+    <!-- TOOL TIP -->
+    <div class="avatarStyle">
+      <avatar [item]="member" [userStatus]="member?.status"></avatar>
+    </div>
+
+    <div class="nameStyle">{{ member?.name }}</div>
+  </td>
+  <td class="scopeStyle">
+    <!-- Change Scope Below -->
+
+    <!-- class="scopeWrapperStyle" -->
+    <div *ngIf="showChangeScope">
+      <select class="scopeSelectionStyle" (change)="scopeChangeHandler($event)">
+        <option
+          *ngFor="let currentRoleCode of roleCodes"
+          [value]="currentRoleCode"
+          [selected]="currentRoleCode == member?.scope"
+        >
+          {{ roles[currentRoleCode] }}
+        </option>
+      </select>
+
+      <img (click)="updateMemberScope()" [src]="rightTick" />
+
+      <img (click)="toggleChangeScope(false)" [src]="closeIcon" />
+    </div>
+
+    <!-- Change Scope Above -->
+
+    <!-- Current Scope -->
+    <span class="roleStyle" *ngIf="!showChangeScope">
+      {{ member?.scope }}
+    </span>
+    <img
+      *ngIf="!showChangeScope && item?.scope !== PARTICIPANT"
+      (click)="toggleChangeScope(true)"
+      [src]="editScopeIcon"
+    />
+    <!-- Current Scope -->
+  </td>
+  <td class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
+    <span>
+      <!-- ban icon -->
+      <img (click)="banMember()" [src]="banIcon" />
+    </span>
+  </td>
+  <td class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
+    <span>
+      <!-- kick icon -->
+      <img (click)="kickMember()" [src]="kickIcon" />
+    </span>
+  </td>
+</tr>

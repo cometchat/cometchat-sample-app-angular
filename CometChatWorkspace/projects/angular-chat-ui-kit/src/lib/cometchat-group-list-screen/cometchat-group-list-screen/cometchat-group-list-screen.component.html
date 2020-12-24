@@ -1,0 +1,50 @@
+<div class="groupScreenStyle">
+  <div class="groupScreenSidebarStyle">
+    <!-- Group List left side bar -->
+    <comet-chat-group-list
+      [enableSelectedGroupStyling]="true"
+      [groupToUpdate]="groupToUpdate"
+      [groupToLeave]="groupToLeave"
+      [groupToDelete]="groupToDelete"
+      (onGroupClick)="groupClicked($event)"
+    ></comet-chat-group-list>
+  </div>
+
+  <div class="groupScreenMainStyle" *ngIf="item !== null">
+    <cometchat-message-list-screen
+      [item]="item"
+      [type]="type"
+      [groupMessage]="groupMessage"
+      [composedthreadmessage]="composedthreadmessage"
+      (actionGenerated)="actionHandler($event)"
+    ></cometchat-message-list-screen>
+  </div>
+
+  <div
+    class="groupScreenSecondaryStyle"
+    *ngIf="threadMessageView || viewDetailScreen"
+  >
+    <!-- Message Thread Right side bar -->
+    <message-thread
+      *ngIf="threadMessageView"
+      [item]="threadMessageItem"
+      [type]="threadMessageType"
+      [parentMessage]="threadMessageParent"
+      (actionGenerated)="actionHandler($event)"
+    ></message-thread>
+
+    <!-- Detail sceen -->
+    <cometchat-group-detail
+      *ngIf="viewDetailScreen"
+      [item]="item"
+      [type]="type"
+      (actionGenerated)="actionHandler($event)"
+    ></cometchat-group-detail>
+  </div>
+  <image-view
+    *ngIf="fullScreenViewImage"
+    [MessageDetails]="imageView"
+    [open]="true"
+    (actionGenerated)="actionHandler($event)"
+  ></image-view>
+</div>

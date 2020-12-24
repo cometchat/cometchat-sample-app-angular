@@ -25,7 +25,8 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   msgListenerId = "head_message_" + new Date().getTime();
   groupListenerId = "head_group_" + new Date().getTime();
   status: string = "";
-  isTyping: boolean = true;
+  isTyping: boolean = false;
+  loggedInUser = null;
 
   //displays audio and video call options
   checkNotBlocked: boolean = true;
@@ -33,7 +34,7 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message Header --> ngOnChanges -->  ", change);
+    console.log("Message Header --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
       //Check if user is blocked/unblocked
@@ -42,6 +43,27 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
       // if the person you are chatting with changes
       //Removing User Presence , typing and Group Listeners
       this.removeListeners();
+
+      if (this.type == "group") {
+        let prevProps = {
+          item:
+            change["item"].previousValue == null
+              ? { guid: "" }
+              : change["item"].previousValue,
+        };
+        let props = { item: change["item"].currentValue };
+
+        if (
+          prevProps.item.guid === props.item.guid &&
+          prevProps.item.membersCount !== props.item.membersCount
+        ) {
+          this.updateHeader(enums.GROUP_MEMBER_ADDED, props.item);
+        }
+
+        if (prevProps.item.guid !== props.item.guid) {
+          this.setGroupMemeberCountStatus(this.item.membersCount);
+        }
+      }
 
       //Attaching new listeners
       this.userListenerId = "head_user_" + new Date().getTime();
@@ -53,11 +75,34 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.attachListeners();
+
+    this.getLoggedInUserInfo();
+
+    if (this.type == "group") {
+      this.setGroupMemeberCountStatus(this.item.membersCount);
+    }
   }
 
   ngOnDestroy() {
     //Removing User Presence , typing and Group Listeners
     this.removeListeners();
+  }
+
+  /**
+   * Gets Information of the currently logged in user
+   * @param
+   */
+  getLoggedInUserInfo() {
+    CometChat.getLoggedinUser()
+      .then((user) => {
+        this.loggedInUser = user;
+      })
+      .catch((error) => {
+        console.log(
+          "[CometChatGroupList] getUsers getLoggedInUser error",
+          error
+        );
+      });
   }
 
   attachListeners() {
@@ -153,6 +198,33 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
         }
         break;
       }
+      case enums.GROUP_MEMBER_KICKED:
+      case enums.GROUP_MEMBER_BANNED:
+      case enums.GROUP_MEMBER_LEFT:
+        if (
+          this.type === "group" &&
+          this.item.guid === item.guid &&
+          this.loggedInUser.uid !== groupUser.uid
+        ) {
+          let membersCount = parseInt(item.membersCount);
+          this.item.membersCount = membersCount;
+          this.setGroupMemeberCountStatus(membersCount);
+        }
+        break;
+      case enums.GROUP_MEMBER_JOINED:
+        if (this.type === "group" && this.item.guid === item.guid) {
+          let membersCount = parseInt(item.membersCount);
+          this.item.membersCount = membersCount;
+          this.setGroupMemeberCountStatus(membersCount);
+        }
+        break;
+      case enums.GROUP_MEMBER_ADDED:
+        if (this.type === "group" && this.item.guid === item.guid) {
+          let membersCount = parseInt(item.membersCount);
+          this.item.membersCount = membersCount;
+          this.setGroupMemeberCountStatus(membersCount);
+        }
+        break;
       case enums.TYPING_STARTED: {
         if (
           this.type === "group" &&
@@ -169,7 +241,7 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.uid === item.sender.uid
         ) {
-          this.isTyping = false;
+          this.isTyping = true;
           this.status = "typing...";
           this.actionGenerated.emit({
             type: "showReaction",
@@ -184,6 +256,8 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           this.type === item.receiverType &&
           this.item.guid === item.receiverId
         ) {
+          this.setGroupMemeberCountStatus(this.item.membersCount);
+
           // this.setStatusForGroup();
           this.actionGenerated.emit({
             type: "stopReaction",
@@ -197,7 +271,7 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
           if (this.item.status === "online") {
             console.log("typing online");
             this.status = null;
-            this.isTyping = true;
+            this.isTyping = false;
           } else {
             this.getDate(item.lastActiveAt);
           }
@@ -210,6 +284,19 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
       }
     }
   }
+
+  /**
+   * Sets status of the group according to its member count
+   * @param number membersCount
+   */
+  setGroupMemeberCountStatus(membersCount) {
+    if (membersCount > 1) {
+      this.status = membersCount + " members";
+    } else {
+      this.status = membersCount + " member";
+    }
+  }
+
   /**
    * Get Last Active Date
    * @param

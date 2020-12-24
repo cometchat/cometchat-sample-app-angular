@@ -57,6 +57,8 @@ export const LIVE_REACTIONS = {
   wink: "😉",
 };
 
+export const LEFT_GROUP = "leftGroup";
+export const DELETE_GROUP = "groupDeleted";
 export const BLOCK_USER_TEXT = "Block User";
 export const UNBLOCK_USER_TEXT = "Unblock User";
 
@@ -105,6 +107,21 @@ export const GROUP_CREATED = "groupCreated";
 export const PUBLIC_GROUP = "public";
 export const PRIVATE_GROUP = "private";
 export const PROTECTED_GROUP = "protected";
+export const MEMBER_SCOPE_CHANGED = "memberScopeChanged";
+export const MEMBERS_ADDED = "membersAdded";
+export const MEMBERS_UPDATED = "membersUpdated";
+export const MEMBER_UPDATED = "memberUpdated";
+export const GROUP_UPDATED = "groupUpdated";
+
+export const OPEN_VIEW_MEMBER = "openViewMember";
+export const CLOSE_ADD_VIEW_MEMBER = "closeAddMembersView";
+export const UPDATE_GROUP_PARTICIPANTS = "updateGroupParticipants";
+export const ADD_GROUP_PARTICIPANTS = "addGroupParticipants";
+export const REMOVE_GROUP_PARTICIPANTS = "removeGroupParticipants";
+
+export const CHANGE_SCOPE = "changescope";
+export const BAN = "ban";
+export const KICK = "kick";
 
 export const GROUP_NAME_BLANK_ERROR = "Group name cannnot be blank.";
 export const GROUP_TYPE_BLANK_ERROR = "Group type cannnot be blank.";
@@ -115,4 +132,14 @@ export const CALL = "call";
 export const ACTION = "action";
 export const CUSTOM = "custom";
 
+export const ADMINISTRATOR = "Administrator";
+export const MODERATOR = "Moderator";
+export const PARTICIPANT = "Participant";
+
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
+
+export const BAN_MEMBER = "banmember";
+export const UNBAN_GROUP_MEMBERS = "unbanGroupMembers";
+export const UNBAN = "unban";
+export const FETCH_BANNED_MEMBERS = "fetchBannedMembers";
+export const MEMBER_UNBANNED = "memberUnbanned";
