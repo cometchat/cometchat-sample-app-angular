@@ -233,13 +233,15 @@ export class ConversationsListComponent implements OnChanges, OnInit {
     if (!isReceipt) {
       CometChat.CometChatHelper.getConversationFromMessage(message).then((updatedConversation: CometChat.Conversation) => {
         updatedConversation = this.setProfileImage(updatedConversation);
+
         if (this.conversations.length > 0) {
+          let found: boolean = false;
           this.conversations.map((conversation: CometChat.Conversation, i: number) => {
             if (conversation.getConversationId() === updatedConversation.getConversationId()) {
+              found = true;
               updatedConversation.setConversationWith(conversation.getConversationWith());
               if (this.selectedConversation && this.selectedConversation.getConversationId() === updatedConversation.getConversationId()) {
                 updatedConversation.setUnreadMessageCount(0);
-
               } else {
                 // tslint:disable-next-line: radix
                 updatedConversation.setUnreadMessageCount(parseInt(conversation.getUnreadMessageCount()) + 1);
@@ -252,7 +254,13 @@ export class ConversationsListComponent implements OnChanges, OnInit {
               }
             }
           });
+          if (!found) {
+            console.log("here we are")
+            updatedConversation.setUnreadMessageCount(1);
+            this.conversations = [updatedConversation, ...this.conversations];
+          }
         } else {
+          updatedConversation.setUnreadMessageCount(1);
           this.conversations = [updatedConversation];
         }
         this.cdRef.detectChanges();
