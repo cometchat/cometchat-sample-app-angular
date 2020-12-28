@@ -1,0 +1,95 @@
+.userInfoScreenStyle {
+  display: flex;
+  flex-direction: column !important;
+  height: calc(100% - 40px);
+  /* fontFamily: `${theme.fontFamily}`; */
+}
+.userInfoScreenStyle * {
+  box-sizing: border-box;
+  /* fontFamily: `${theme.fontFamily}`; */
+}
+
+.headerStyle {
+  padding: 19px 16px;
+  position: relative;
+  /* borderBottom: `1px solid ${theme.borderColor.primary}` */
+}
+
+.headerTitleStyle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.detailStyle {
+  padding: 19px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.thumbnailStyle {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.userDetailStyle {
+  width: calc(100% - 45px);
+  flex-grow: 1;
+  padding-left: 15px;
+}
+
+.userNameStyle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userStatusStyle {
+  font-size: 13px;
+  margin: 0;
+  /* color: `${theme.color.blue}`; */
+}
+
+.optionsStyle {
+  height: calc(100% - 196px);
+  overflow-y: auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+.optionTitleStyle {
+  margin: 5px 0;
+  width: 100%;
+  font-size: 12px;
+  /* color: `${theme.color.secondary}`; */
+  text-transform: uppercase;
+}
+
+.optionListStyle {
+  padding: 10px 0;
+  width: 100%;
+  font-size: 15px;
+}
+
+.optionStyle {
+  width: 100%;
+  padding: 15px 15px 15px 48px;
+  font-weight: 600;
+  /* background: `url(${img}) 16px center no-repeat`; */
+}
+
+.optionNameStyle {
+  width: 100%;
+}
