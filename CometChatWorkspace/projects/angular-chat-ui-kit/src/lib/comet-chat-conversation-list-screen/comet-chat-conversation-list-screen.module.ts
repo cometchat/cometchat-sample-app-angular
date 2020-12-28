@@ -6,6 +6,7 @@ import { CometchatMessageListScreenModule } from "../cometchat-message-list-scre
 import { CometChatUserDetailModule } from "../comet-chat-user-detail/comet-chat-user-detail.module";
 import { MessageThreadModule } from "../message-thread/message-thread.module";
 import { ImageViewModule } from "../image-view/image-view.module";
+import { CometchatGroupDetailModule } from "../cometchat-group-detail/cometchat-group-detail.module";
 
 @NgModule({
   declarations: [CometChatConversationListScreenComponent],
@@ -14,6 +15,7 @@ import { ImageViewModule } from "../image-view/image-view.module";
     CometChatConversationListModule,
     CometchatMessageListScreenModule,
     CometChatUserDetailModule,
+    CometchatGroupDetailModule,
     MessageThreadModule,
     ImageViewModule,
   ],
