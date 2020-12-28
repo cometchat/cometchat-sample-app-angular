@@ -1,1 +1,73 @@
-<p>nav-bar works!</p>
+<div class="listStyle">
+  <div *ngIf="displayConversationList" class="listDisplayStyle">
+    <comet-chat-conversation-list
+      (onUserClick)="userClicked($event)"
+      [item]="item"
+      [lastMessage]="lastMessage"
+      [type]="type"
+    ></comet-chat-conversation-list>
+  </div>
+
+  <div *ngIf="displayGroupList" class="listDisplayStyle">
+    <comet-chat-group-list></comet-chat-group-list>
+  </div>
+
+  <div *ngIf="displayUserList" class="listDisplayStyle">
+    <comet-chat-user-list
+      [item]="item"
+      (onUserClick)="userClicked($event)"
+    ></comet-chat-user-list>
+  </div>
+
+  <div *ngIf="displayUserInfoScreen" class="listDisplayStyle">
+    <comet-chat-user-info-screen></comet-chat-user-info-screen>
+  </div>
+</div>
+
+<div class="footerStyle">
+  <div class="navbarStyle">
+    <!--ConversationList-->
+    <div class="itemStyle" (click)="openConversationList()">
+      <div
+        class="itemLinkStyle Chats"
+        [ngClass]="{
+          ChatsActiveStyle: displayConversationList
+        }"
+      ></div>
+    </div>
+    <!--ConversationList Ends-->
+
+    <!--GroupList-->
+    <div class="itemStyle" (click)="openGroupList()">
+      <div
+        class="itemLinkStyle Groups"
+        [ngClass]="{
+          GroupsActiveStyle: displayGroupList
+        }"
+      ></div>
+    </div>
+    <!--GroupList Ends-->
+
+    <!--UserList-->
+    <div class="itemStyle" (click)="openUserList()">
+      <div
+        class="itemLinkStyle Contacts"
+        [ngClass]="{
+          ContactsActiveStyle: displayUserList
+        }"
+      ></div>
+    </div>
+    <!--UserList Ends-->
+
+    <!--UserInfo Ends-->
+    <div class="itemStyle" (click)="openUserInfoScreen()">
+      <div
+        class="itemLinkStyle Info"
+        [ngClass]="{
+          InfoActiveStyle: displayUserInfoScreen
+        }"
+      ></div>
+    </div>
+    <!--UserInfo Ends-->
+  </div>
+</div>
