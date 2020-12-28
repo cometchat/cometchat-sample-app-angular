@@ -1,6 +1,6 @@
 <div class="detailStyle">
   <div class="headerStyle">
-    <div class="headerCloseStyle"></div>
+    <div class="headerCloseStyle" (click)="closeThreadView()"></div>
     <h4 class="headerTitleStyle">Details</h4>
   </div>
   <div class="detailPaneStyle">
@@ -30,7 +30,9 @@
         "
       >
         <div class="contentItemStyle">
-          <div class="itemLinkStyle">Banned Members</div>
+          <div class="itemLinkStyle" (click)="toggleBanMember()">
+            Banned Members
+          </div>
         </div>
       </div>
     </div>
@@ -55,12 +57,11 @@
           </div>
         </div>
       </div>
+      <!-- SHARED MEDIA SECTION BELOW-->
+      <shared-media-view [item]="item" [type]="type"></shared-media-view>
+      <!-- SHARED MEDIA SECTION ABOVE-->
     </div>
     <!-- OPTION SECTION ABOVE-->
-
-    <!-- SHARED MEDIA SECTION BELOW-->
-    <shared-media-view [item]="item" [type]="type"></shared-media-view>
-    <!-- SHARED MEDIA SECTION ABOVE-->
   </div>
 
   <!-- VIEW MEMBERS COMPONENT -->
@@ -69,6 +70,7 @@
     [item]="item"
     [type]="type"
     [memberlist]="memberlist"
+    [loggedInUser]="loggedInUser"
     (actionGenerated)="actionHandler($event)"
   ></cometchat-view-members>
 
@@ -84,4 +86,10 @@
   ></cometchat-add-members>
 
   <!-- BANNED MEMBERS COMPONENT -->
+  <comet-chat-ban-members
+    *ngIf="openBanMember"
+    [item]="item"
+    [bannedmemberlist]="bannedmemberlist"
+    (actionGenerated)="actionHandler($event)"
+  ></comet-chat-ban-members>
 </div>

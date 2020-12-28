@@ -1,0 +1,23 @@
+<tr class="tableRowStyle">
+  <td>
+    <div class="avatarStyle">
+      <!--avatar-->
+      <avatar [item]="member" [userStatus]="member?.status"></avatar>
+    </div>
+    <div class="nameStyle">
+      <!--name-->
+      {{ member?.name }}
+    </div>
+  </td>
+  <td class="roleStyle">
+    <!--scope-->
+    {{ member?.scope }}
+  </td>
+  <td class="actionStyle">
+    <!--Unban-->
+    <span (click)="unbanMember()">
+      <!-- ban icon -->
+      <img [src]="banIcon" />
+    </span>
+  </td>
+</tr>

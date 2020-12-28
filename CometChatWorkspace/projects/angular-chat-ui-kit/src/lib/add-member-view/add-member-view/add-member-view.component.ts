@@ -19,8 +19,6 @@ export class AddMemberViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log("add member view --> user ", this.user);
-
     this.checked = this.members.find((member) => member.uid === this.user.uid);
   }
 
@@ -30,8 +28,6 @@ export class AddMemberViewComponent implements OnInit {
    */
   handleCheck(event) {
     this.checked = !this.checked;
-
-    console.log(`user is checked`, this.checked);
 
     this.actionGenerated.emit({
       type: enums.MEMBER_UPDATED,

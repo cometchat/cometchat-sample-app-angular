@@ -18,6 +18,10 @@
   display: none;
 }
 
+.toolGroup {
+  padding-left: 45px;
+}
+
 .messageWrapperStyle {
   width: auto;
   flex: 1 1;
@@ -160,4 +164,22 @@
   color: #39f;
   font-weight: 700;
   text-decoration: none;
+}
+
+.nameWrapperStyle {
+  align-self: flex-start;
+  padding: 3px 5px;
+}
+
+.nameStyle {
+  font-size: 10px;
+  color: rgba(20, 20, 20, 0.6);
+}
+
+.messageThumbnailStyle {
+  width: 36px;
+  height: 36px;
+  margin: 10px 5px;
+  float: left;
+  flex-shrink: 0;
 }

@@ -1,7 +1,7 @@
 <div class="userScreenStyle">
-  <div class="userScreenSidebarStyle">
+  <div class="userScreenSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
     <comet-chat-user-list
-      [item]="curentItem"
+      [item]="item"
       (onUserClick)="userClicked($event)"
     ></comet-chat-user-list>
   </div>

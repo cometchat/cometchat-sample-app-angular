@@ -215,10 +215,10 @@ export class ConversationViewComponent implements OnInit, OnChanges {
     let message = null;
     switch (lastMessage.type) {
       case enums.CUSTOM_TYPE_POLL:
-        message = "Poll";
+        message = "📊 Poll";
         break;
       case enums.CUSTOM_TYPE_STICKER:
-        message = "Sticker";
+        message = "💟 Sticker";
         break;
       default:
         break;

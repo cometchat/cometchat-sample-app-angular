@@ -13,11 +13,11 @@
             <th class="scopeColumnStyle">Scope</th>
 
             <!-- EDIT ACCESS -->
-            <th class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
-              Ban
+            <th class="actionColumnStyle">
+              <div *ngIf="item?.scope !== PARTICIPANT">Ban</div>
             </th>
-            <th class="actionColumnStyle" *ngIf="item?.scope !== PARTICIPANT">
-              Kick
+            <th class="actionColumnStyle">
+              <div *ngIf="item?.scope !== PARTICIPANT">Kick</div>
             </th>
             <!-- EDIT ACCESS -->
           </tr>
@@ -28,6 +28,7 @@
             [member]="member"
             [item]="item"
             [type]="type"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></member-view>
         </tbody>

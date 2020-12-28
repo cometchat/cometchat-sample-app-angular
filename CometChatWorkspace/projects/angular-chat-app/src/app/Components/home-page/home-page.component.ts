@@ -38,6 +38,13 @@ export class HomePageComponent implements OnInit {
   navigateToContactScreen() {
     this.router.navigate(["/contact-screen"]);
   }
+  /**
+   * Go to group screen
+   *
+   */
+  navigateToGroupListScreen() {
+    this.router.navigate(["/group-screen"]);
+  }
 
   navigateToConversationList() {
     this.router.navigate(["/conversations-list"]);
@@ -45,10 +52,6 @@ export class HomePageComponent implements OnInit {
 
   navigateToConversationListScreen() {
     this.router.navigate(["/conversation-screen"]);
-  }
-
-  navigateToGroupListScreen() {
-    this.router.navigate(["/group-screen"]);
   }
 
   /**

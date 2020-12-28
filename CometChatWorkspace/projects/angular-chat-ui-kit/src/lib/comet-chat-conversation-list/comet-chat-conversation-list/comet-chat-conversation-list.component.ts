@@ -11,7 +11,7 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
-// import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
+import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
 
 @Component({
   selector: "comet-chat-conversation-list",
@@ -23,6 +23,9 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   @Input() type = null;
   @Input() lastMessage;
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
+  @Input() groupToUpdate = null;
+  @Input() groupToLeave = null;
+  @Input() groupToDelete = null;
 
   decoratorMessage: string = "Loading...";
   loggedInUser = null;
@@ -43,7 +46,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
 
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
-      //console.log("UserList --> detectchange called");
       if (!this.ref["destroyed"]) {
         this.ref.detectChanges();
       }
@@ -115,27 +117,120 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
       }
     }
 
+    if (change["groupToUpdate"]) {
+      let prevProps = { groupToUpdate: null };
+      let props = { groupToUpdate: null };
+
+      prevProps["groupToUpdate"] = change["groupToUpdate"].previousValue;
+      props["groupToUpdate"] = change["groupToUpdate"].currentValue;
+
+      if (
+        prevProps.groupToUpdate &&
+        (prevProps.groupToUpdate.guid !== props.groupToUpdate.guid ||
+          (prevProps.groupToUpdate.guid === props.groupToUpdate.guid &&
+            (prevProps.groupToUpdate.membersCount !==
+              props.groupToUpdate.membersCount ||
+              prevProps.groupToUpdate.scope !== props.groupToUpdate.scope)))
+      ) {
+        const conversationList = [...this.conversationList];
+        const groupToUpdate = this.groupToUpdate;
+
+        const groupKey = conversationList.findIndex(
+          (group) => group.conversationWith.guid === groupToUpdate.guid
+        );
+        if (groupKey > -1) {
+          const groupObj = conversationList[groupKey];
+          const newGroupObj = Object.assign({}, groupObj, groupToUpdate, {
+            scope: groupToUpdate["scope"],
+            membersCount: groupToUpdate["membersCount"],
+          });
+
+          conversationList.splice(groupKey, 1, newGroupObj);
+          // this.setState({grouplist: groups});
+
+          this.conversationList = conversationList;
+        }
+      }
+    }
+
+    if (change["groupToLeave"]) {
+      let prevProps = { groupToLeave: null };
+      let props = { groupToLeave: null };
+
+      prevProps["groupToLeave"] = change["groupToLeave"].previousValue;
+      props["groupToLeave"] = change["groupToLeave"].currentValue;
+
+      if (
+        prevProps.groupToLeave &&
+        prevProps.groupToLeave.guid !== props.groupToLeave.guid
+      ) {
+        const conversationList = [...this.conversationList];
+        const groupKey = conversationList.findIndex(
+          (group) => group.conversationWith.guid === props.groupToLeave.guid
+        );
+
+        if (groupKey > -1) {
+          const groupToLeave = props.groupToLeave;
+          const groupObj = { ...conversationList[groupKey] };
+          const membersCount = parseInt(groupToLeave["membersCount"]) - 1;
+
+          let newgroupObj = Object.assign({}, groupObj, {
+            membersCount: membersCount,
+            hasJoined: false,
+          });
+
+          conversationList.splice(groupKey, 1, newgroupObj);
+          // this.setState({grouplist: groups});
+
+          this.conversationList = conversationList;
+        }
+      }
+    }
+
+    if (change["groupToDelete"]) {
+      let prevProps = { groupToDelete: null };
+      let props = { groupToDelete: null };
+
+      prevProps["groupToDelete"] = change["groupToDelete"].previousValue;
+      props["groupToDelete"] = change["groupToDelete"].currentValue;
+
+      if (
+        prevProps.groupToDelete &&
+        prevProps.groupToDelete.guid !== props.groupToDelete.guid
+      ) {
+        const conversationList = [...this.conversationList];
+        const groupKey = conversationList.findIndex(
+          (group) => group.conversationWith.guid === props.groupToDelete.guid
+        );
+
+        if (groupKey > -1) {
+          conversationList.splice(groupKey, 1);
+          // this.setState({grouplist: groups});
+
+          this.conversationList = conversationList;
+
+          if (conversationList.length === 0) {
+            this.decoratorMessage = "No Chats found";
+          }
+        }
+      }
+    }
+
     /**
      * When user sends message conversationList is updated with latest message
      */
     if (this.checkItemChange === false) {
       if (change["lastMessage"]) {
-        // console.log("message changed ", change["lastMessage"]);
-        // console.log(
-        //   "current message changed ",
-        //   change["lastMessage"].currentValue
-        // );
         if (
           change["lastMessage"].previousValue !==
           change["lastMessage"].currentValue
         ) {
           const lastMessage = change["lastMessage"].currentValue[0];
-          console.log("last message", lastMessage);
+
           const conversationList = [...this.conversationList];
           const conversationKey = conversationList.findIndex((c) => {
             return c.conversationId == lastMessage.conversationId;
           });
-          // console.log("convo key", conversationKey);
 
           if (conversationKey > -1) {
             const conversationObj = conversationList[conversationKey];
@@ -143,7 +238,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
               ...conversationObj,
               lastMessage: lastMessage,
             };
-            // console.log("updated last message ", lastMessage);
 
             conversationList.splice(conversationKey, 1);
             conversationList.unshift(newConversationObj);
@@ -340,10 +434,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
             } else {
               this.decoratorMessage = "";
             }
-            // console.log(
-            //   "ConversationList-> conversationList  ",
-            //   this.conversationList
-            // );
           })
           .catch((error) => {
             this.decoratorMessage = "Error";
@@ -392,11 +482,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
     message = null,
     options = null
   ) => {
-    // console.log("key ", key);
-    //console.log("item ", item);
-    // console.log("message ", message);
-    // console.log("options ", options);
-
     switch (key) {
       case enums.USER_ONLINE:
       case enums.USER_OFFLINE: {
@@ -464,7 +549,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
         conversationWith: conversationWithObj,
       };
       conversationlist.splice(conversationKey, 1, newConversationObj);
-      // console.log("ConversationList -> new conversationList", conversationlist);
 
       this.conversationList = conversationlist;
     }
@@ -507,7 +591,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (notification) {
-            // this.playAudio();
+            this.playAudio();
           }
         } else {
           let unreadMessageCount = this.makeUnreadMessageCount();
@@ -521,7 +605,7 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (notification) {
-            // this.playAudio();
+            this.playAudio();
           }
         }
       })
@@ -542,7 +626,6 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
     if (Object.keys(conversation).length === 0) {
       return 1;
     }
-    // console.log("selected convo", this.selectedConversation);
 
     let unreadMessageCount = parseInt(conversation.unreadMessageCount);
     if (
@@ -655,15 +738,14 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
    */
 
   userClicked(user) {
-    console.log("ConversationList selected user ->> ", user);
     this.onUserClick.emit(user);
   }
   /**
-   * Plays Audio When Message is Sent
+   * Plays Audio When Message is Received
    */
-  // playAudio() {
-  //   let audio = new Audio();
-  //   audio.src = INCOMING_OTHER_MESSAGE_SOUND;
-  //   audio.play();
-  // }
+  playAudio() {
+    let audio = new Audio();
+    audio.src = INCOMING_OTHER_MESSAGE_SOUND;
+    audio.play();
+  }
 }

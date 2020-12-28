@@ -681,6 +681,11 @@ export class CometChatMessageComposerComponent implements OnInit, OnChanges {
       customType,
       customData
     );
+
+    if (this.parentMessageId) {
+      customMessage.setParentMessageId(this.parentMessageId);
+    }
+
     CometChat.sendCustomMessage(customMessage)
       .then((message) => {
         console.log("custom msg ", message);

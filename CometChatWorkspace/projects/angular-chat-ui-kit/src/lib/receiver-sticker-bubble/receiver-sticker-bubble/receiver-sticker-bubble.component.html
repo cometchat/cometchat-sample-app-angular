@@ -1,13 +1,16 @@
 <div class="messageContainerStyle">
   <tool-tip
     class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
     *ngIf="showToolTip"
   ></tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
-      <avatar [avatar]="avatar" class="avatarStyle"></avatar>
+      <avatar [item]="MessageDetails?.sender" class="avatarStyle"></avatar>
     </div>
 
     <div class="messageDetailStyle">

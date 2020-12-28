@@ -12,6 +12,25 @@
   <div class="messageContainerStyle">
     <div class="parentMessageStyle">
       <div [ngSwitch]="parentMessage?.type">
+        <!--CASE FOR STICKER -->
+        <div *ngSwitchCase="'extension_sticker'">
+          <sender-sticker-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </sender-sticker-bubble>
+          <receiver-sticker-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </receiver-sticker-bubble>
+        </div>
+        <!--CASE FOR STICKER ENDS -->
+
         <!-- CASE FOR TEXT -->
         <div *ngSwitchCase="'text'">
           <comet-chat-receiver-message-bubble

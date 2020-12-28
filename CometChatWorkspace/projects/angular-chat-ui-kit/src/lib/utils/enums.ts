@@ -132,6 +132,10 @@ export const CALL = "call";
 export const ACTION = "action";
 export const CUSTOM = "custom";
 
+export const ADMINISTRATOR = "Administrator";
+export const MODERATOR = "Moderator";
+export const PARTICIPANT = "Participant";
+
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
 
 export const ACCEPT_INCOMING_CALL = "acceptIncomingCall";
@@ -144,3 +148,8 @@ export const USER_LEFT_CALL = "userLeftCall";
 export const CALL_ENDED_BY_USER = "callEnded";
 export const CALL_ERROR = "callError";
 export const OUTGOING_CALL_CANCELLED = "outgoingCallCancelled";
+export const BAN_MEMBER = "banmember";
+export const UNBAN_GROUP_MEMBERS = "unbanGroupMembers";
+export const UNBAN = "unban";
+export const FETCH_BANNED_MEMBERS = "fetchBannedMembers";
+export const MEMBER_UNBANNED = "memberUnbanned";

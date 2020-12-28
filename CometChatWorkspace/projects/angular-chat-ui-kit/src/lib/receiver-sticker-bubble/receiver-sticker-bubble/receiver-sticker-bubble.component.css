@@ -17,6 +17,9 @@
 .tool {
   display: none;
 }
+.toolGroup {
+  padding-left: 45px;
+}
 
 .messageWrapperStyle {
   width: auto;
@@ -45,6 +48,7 @@
 
 .nameStyle {
   font-size: 10px;
+  color: rgba(20, 20, 20, 0.6);
 }
 
 .messageImgContainerStyle {

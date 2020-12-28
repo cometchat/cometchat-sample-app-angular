@@ -44,29 +44,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* order: 2; */
+  order: 2;
 }
-
-@media (min-width: 320px) and (max-width: 767px) {
-  /* Media query for  */
-  .userScreenSidebarStyle .userScreenSidebarStyle {
-    position: absolute !important;
-    left: -100%;
-    top: 0;
-    bottom: 0;
-    width: 100% !important;
-    z-index: 2;
-    /* backgroundColor: ${theme.backgroundColor.white}; */
-    /* transition: all 0.3s ease-out; */
-  }
-  .userScreenMainStyle {
-    width: 100% !important;
-  }
-}
-
-/* This Styling will be used while creating the Detail and threaded message View screen ( Right Side Bar ) */
-/* .chatScreenSecondaryStyle {
-} */
 
 .userScreenSecondaryStyle {
   float: right;
@@ -79,6 +58,19 @@
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
+  /* Media query for  */
+  .userScreenSidebarStyle {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    width: 100% !important;
+    background-color: white;
+    z-index: 2;
+  }
+  .userScreenMainStyle {
+    width: 100% !important;
+    background-color: white;
+  }
   .userScreenSecondaryStyle {
     position: absolute !important;
     right: 0 !important;
@@ -89,3 +81,6 @@
     background-color: white;
   }
 }
+
+/* This Styling will be used while creating the Detail and threaded message View screen ( Right Side Bar ) */
+/* .chatScreenSecondaryStyle */

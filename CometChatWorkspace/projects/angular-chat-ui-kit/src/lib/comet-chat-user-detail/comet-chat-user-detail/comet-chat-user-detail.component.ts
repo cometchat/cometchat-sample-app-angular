@@ -7,9 +7,7 @@ import {
   SimpleChanges,
   OnChanges,
 } from "@angular/core";
-
-import { BLOCK_USER_TEXT, UNBLOCK_USER_TEXT } from "../../utils/enums";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "comet-chat-user-detail",
   templateUrl: "./comet-chat-user-detail.component.html",
@@ -40,9 +38,9 @@ export class CometChatUserDetailComponent implements OnInit, OnChanges {
 
   getBlockStatus(item) {
     if (item.blockedByMe) {
-      this.blockUserText = UNBLOCK_USER_TEXT;
+      this.blockUserText = enums.UNBLOCK_USER_TEXT;
     } else {
-      this.blockUserText = BLOCK_USER_TEXT;
+      this.blockUserText = enums.BLOCK_USER_TEXT;
     }
     // return this.blockUserText;
   }
@@ -50,13 +48,22 @@ export class CometChatUserDetailComponent implements OnInit, OnChanges {
   toggleBlockUser() {
     if (this.blockUserText === "Block User") {
       this.actionGenerated.emit({
-        type: "blockUser",
+        type: enums.BLOCK_USER,
       });
       console.log("item is ", this.item);
     } else if (this.blockUserText === "Unblock User") {
       this.actionGenerated.emit({
-        type: "unblockUser",
+        type: enums.UNBLOCK_USER,
       });
     }
+  }
+
+  /**
+   * Close thread when opened in small screen
+   */
+  closeThreadView() {
+    this.actionGenerated.emit({
+      type: enums.CLOSE_DETAIL_CLICKED,
+    });
   }
 }

@@ -19,7 +19,7 @@
 .avatarStyle {
   /* participant view styling */
 
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   margin-right: 10px;
 }
@@ -43,9 +43,6 @@
   padding: 5px;
   float: left;
   font-size: 12px;
-}
-
-.scopeStyle {
 }
 
 .scopeStyle img {
@@ -97,14 +94,12 @@
   float: left;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
-  .avatarStyle {
-    /* participant view styling */
-  }
+@media (min-width: 340px) and (max-width: 767px) {
+  /* @media (min-width: 300px) and (max-width: 600px){ */
 
   .nameStyle {
     /* participant view styling */
-    width: 100%;
+    width: 60%;
   }
 
   .scopeStyle {

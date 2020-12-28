@@ -37,6 +37,8 @@ import { CometchatGroupDetailModule } from "./cometchat-group-detail/cometchat-g
 import { CometchatViewMembersModule } from "./cometchat-view-members/cometchat-view-members.module";
 import { MemberViewModule } from "./member-view/member-view.module";
 import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add-members.module";
+import { CometChatBanMembersModule } from "./comet-chat-ban-members/comet-chat-ban-members.module";
+import { BanMemberViewModule } from "./ban-member-view/ban-member-view.module";
 import { CreatePollViewModule } from "./create-poll-view/create-poll-view.module";
 import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
 import { ReceiverPollBubbleModule } from "./receiver-poll-bubble/receiver-poll-bubble.module";
@@ -86,6 +88,8 @@ import { CallMessageModule } from "./call-message/call-message.module";
     CometchatViewMembersModule,
     MemberViewModule,
     CometchatAddMembersModule,
+    CometChatBanMembersModule,
+    BanMemberViewModule,
     CreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,
@@ -135,6 +139,8 @@ import { CallMessageModule } from "./call-message/call-message.module";
     CometchatViewMembersModule,
     MemberViewModule,
     CometchatAddMembersModule,
+    CometChatBanMembersModule,
+    BanMemberViewModule,
     CreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,

@@ -34,6 +34,7 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   loggedInUser = null;
 
   openViewMember: boolean = false;
+  openBanMember: boolean = false;
   openAddMemberView: boolean = false;
 
   currentMemberScope = "";
@@ -90,6 +91,12 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
         this.removeParticipants(data);
         break;
       }
+      case enums.BAN_MEMBER: {
+        this.toggleBanMember();
+      }
+      case enums.UNBAN_GROUP_MEMBERS:
+        this.unbanMembers(data);
+        break;
     }
   }
 
@@ -283,15 +290,17 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
         this.fetchNextBannedGroupMembers()
           .then((bannedMembers) => {
             // bannedMembers.forEach(member => this.setAvatar(member));
+            console.log("bann working");
 
             this.bannedmemberlist = [
               ...this.bannedmemberlist,
               ...bannedMembers,
             ];
+            console.log("bannnned members ", bannedMembers);
 
             console.log(
               "Group Details --> Banned members  ",
-              this.moderatorslist
+              this.bannedmemberlist
             );
           })
           .catch((error) => {
@@ -311,6 +320,101 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
 
   groupUpdated = (key = null, message = null, group = null, options = null) => {
     console.log("Group Details --> Group should be updated because  ", key);
+
+    const guid = this.item.guid;
+    if (guid !== group.guid) {
+      return false;
+    }
+
+    switch (key) {
+      case enums.USER_ONLINE:
+      case enums.USER_OFFLINE:
+        this.groupMemberUpdated(options.user);
+        break;
+      case enums.GROUP_MEMBER_ADDED:
+      case enums.GROUP_MEMBER_JOINED:
+        {
+          const member = options.user;
+
+          const updatedMember = Object.assign({}, member, {
+            scope: CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT,
+          });
+
+          this.addParticipants([updatedMember], false);
+        }
+        break;
+      case enums.GROUP_MEMBER_LEFT:
+      case enums.GROUP_MEMBER_KICKED:
+        {
+          const member = options.user;
+          this.removeParticipants(member, false);
+        }
+        break;
+      case enums.GROUP_MEMBER_BANNED:
+        {
+          const member = options.user;
+          this.banMembers([member]);
+          this.removeParticipants(member, false);
+        }
+        break;
+      case enums.GROUP_MEMBER_UNBANNED:
+        {
+          const member = options.user;
+          this.unbanMembers([member]);
+        }
+        break;
+      case enums.GROUP_MEMBER_SCOPE_CHANGED:
+        {
+          const member = options.user;
+          const updatedMember = Object.assign({}, member, {
+            scope: options["scope"],
+          });
+          this.updateParticipants(updatedMember);
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
+  /**
+   * Adds the members that are banned to bannedMemberList
+   * @param any members
+   */
+  banMembers = (members) => {
+    this.bannedmemberlist = [...this.bannedmemberlist, ...members];
+  };
+
+  /**
+   * Updates group member data and information based on group actions
+   * @param any member
+   */
+  groupMemberUpdated = (member) => {
+    let memberlist = [...this.memberlist];
+    //search for user
+    let memberKey = memberlist.findIndex((m, k) => m.uid === member.uid);
+    //if found in the list, update user object
+    if (memberKey > -1) {
+      let memberObj = memberlist[memberKey];
+      let newMemberObj = Object.assign({}, memberObj, member);
+      memberlist.splice(memberKey, 1, newMemberObj);
+
+      this.memberlist = memberlist;
+    }
+
+    let bannedmemberlist = [...this.bannedmemberlist];
+    //search for user
+    let bannedMemberKey = bannedmemberlist.findIndex(
+      (m, k) => m.uid === member.uid
+    );
+    //if found in the list, update user object
+    if (bannedMemberKey > -1) {
+      let bannedMemberObj = bannedmemberlist[bannedMemberKey];
+      let newBannedMemberObj = Object.assign({}, bannedMemberObj, member);
+      bannedmemberlist.splice(bannedMemberKey, 1, newBannedMemberObj);
+
+      this.bannedmemberlist = bannedmemberlist;
+    }
   };
 
   /**
@@ -401,7 +505,30 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   };
 
   /**
-   * helps the user to leave the group
+   * Removes the participant from the banned member list , when the member is unbanned
+   * @param
+   */
+  unbanMembers(members) {
+    const bannedMembers = [...this.bannedmemberlist];
+    const unbannedMembers = [];
+
+    const filteredBannedMembers = bannedMembers.filter((bannedmember) => {
+      const found = members.find((member) => bannedmember.uid === member.uid);
+      if (found) {
+        unbannedMembers.push(found);
+        return false;
+      }
+      return true;
+    });
+
+    this.actionGenerated.emit({
+      type: enums.MEMBER_UNBANNED,
+      payLoad: unbannedMembers,
+    });
+
+    this.bannedmemberlist = [...filteredBannedMembers];
+  }
+  /* helps the user to leave the group
    * @param
    */
   leaveGroup = () => {
@@ -457,8 +584,18 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   toggleViewMember() {
     this.openViewMember = !this.openViewMember;
   }
-
+  toggleBanMember() {
+    this.openBanMember = !this.openBanMember;
+  }
   toggleAddMemberView(show) {
     this.openAddMemberView = show;
+  }
+  /**
+   * Close thread when opened in small screen
+   */
+  closeThreadView() {
+    this.actionGenerated.emit({
+      type: enums.CLOSE_DETAIL_CLICKED,
+    });
   }
 }

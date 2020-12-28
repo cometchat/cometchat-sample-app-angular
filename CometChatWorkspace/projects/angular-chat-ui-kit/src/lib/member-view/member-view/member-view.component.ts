@@ -1,6 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { EDIT_SCOPE_ICON } from "../../resources/icons/editScopeIcon";
+import { BAN_ICON } from "../../resources/icons/banIcon";
+import { KICK_ICON } from "../../resources/icons/kickIcon";
+import { RIGHT_TICK_ICON } from "../../resources/icons/rightTickIcon";
+import { CLOSE_ICON } from "../../resources/icons/closeIcon";
 @Component({
   selector: "member-view",
   templateUrl: "./member-view.component.html",
@@ -10,6 +15,7 @@ export class MemberViewComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() member = null;
+  @Input() loggedInUser = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -17,15 +23,66 @@ export class MemberViewComponent implements OnInit {
   showChangeScope: boolean = false;
   roles = {};
   roleCodes = [];
+  hasGreaterRole: boolean = false;
+
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
+
+  editScopeIcon = EDIT_SCOPE_ICON;
+  banIcon = BAN_ICON;
+  kickIcon = KICK_ICON;
+  rightTick = RIGHT_TICK_ICON;
+  closeIcon = CLOSE_ICON;
 
   constructor() {}
 
   ngOnInit() {
+    //this.getLoggedInUserInfo();
+
     // console.log("member view --> member details ", this.member);
     this.scope = this.member.scope;
 
+    //checking if logged in user is owner
+    if (this.item.owner == this.loggedInUser.uid) {
+      this.item.scope = "owner";
+    }
+
+    // checking if the current member passed to member view is an owner
+    if (this.item.owner == this.member.uid) {
+      this.member.scope = "owner";
+    }
+
     this.setRoles();
+
+    if (
+      this.checkRoleAuthorityLevel(this.item) >
+      this.checkRoleAuthorityLevel(this.member)
+    ) {
+      this.hasGreaterRole = true;
+    }
+  }
+
+  /**
+   * returns the level of authority on current item on the group
+   * @param
+   */
+  checkRoleAuthorityLevel(item) {
+    if (item.scope == "owner") {
+      return 4;
+    }
+
+    if (item.scope == CometChat.GROUP_MEMBER_SCOPE.ADMIN) {
+      return 3;
+    }
+
+    if (item.scope == CometChat.GROUP_MEMBER_SCOPE.MODERATOR) {
+      return 2;
+    }
+
+    if (item.scope == CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT) {
+      return 1;
+    }
+
+    return 1;
   }
 
   /**
@@ -33,9 +90,9 @@ export class MemberViewComponent implements OnInit {
    * @param
    */
   setRoles() {
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.ADMIN] = "Administrator";
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.MODERATOR] = "Moderator";
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT] = "Participant";
+    this.roles[CometChat.GROUP_MEMBER_SCOPE.ADMIN] = enums.ADMINISTRATOR;
+    this.roles[CometChat.GROUP_MEMBER_SCOPE.MODERATOR] = enums.MODERATOR;
+    this.roles[CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT] = enums.PARTICIPANT;
 
     this.roleCodes = [
       CometChat.GROUP_MEMBER_SCOPE.ADMIN,
