@@ -47,6 +47,7 @@ import { StickerViewModule } from "./sticker-view/sticker-view.module";
 import { SenderStickerBubbleModule } from "./sender-sticker-bubble/sender-sticker-bubble.module";
 import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-sticker-bubble.module";
 import { CometChatUnifiedModule } from "./comet-chat-unified/comet-chat-unified.module";
+import { NavBarModule } from "./nav-bar/nav-bar.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -96,6 +97,7 @@ import { CometChatUnifiedModule } from "./comet-chat-unified/comet-chat-unified.
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
     CometChatUnifiedModule,
+    NavBarModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -145,6 +147,7 @@ import { CometChatUnifiedModule } from "./comet-chat-unified/comet-chat-unified.
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
     CometChatUnifiedModule,
+    NavBarModule,
   ],
 })
 export class AngularChatUiKitModule {}
