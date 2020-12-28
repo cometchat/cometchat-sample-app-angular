@@ -1,1 +1,43 @@
-<p>comet-chat-unified works!</p>
+<div class="unifiedStyle">
+  <div class="unifiedSidebarStyle">
+    <nav-bar (onUserClick)="userClicked($event)"></nav-bar>
+  </div>
+  <div class="unifiedMainStyle" *ngIf="item !== null">
+    <cometchat-message-list-screen
+      [item]="item"
+      [type]="type"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </cometchat-message-list-screen>
+  </div>
+  <!--Detail Screen-->
+  <div
+    class="unifiedSecondaryStyle"
+    *ngIf="threadMessageView || viewDetailScreen"
+  >
+    <div *ngIf="type === 'user'">
+      <comet-chat-user-detail
+        *ngIf="viewDetailScreen"
+        [item]="item"
+        [type]="type"
+        (actionGenerated)="actionHandler($event)"
+      >
+      </comet-chat-user-detail>
+    </div>
+    <div *ngIf="type === 'group'"></div>
+
+    <message-thread
+      *ngIf="threadMessageView"
+      [item]="threadMessageItem"
+      [type]="threadMessageType"
+      [parentMessage]="threadMessageParent"
+      (actionGenerated)="actionHandler($event)"
+    ></message-thread>
+  </div>
+  <image-view
+    *ngIf="fullScreenViewImage"
+    [MessageDetails]="imageView"
+    [open]="true"
+    (actionGenerated)="actionHandler($event)"
+  ></image-view>
+</div>
