@@ -4,11 +4,11 @@
   </div>
   <div class="detailStyle">
     <div class="thumbnailStyle">
-      <!--avatar-->
+      <avatar [item]="user"></avatar>
     </div>
     <div class="userDetailStyle">
       <div class="userNameStyle">
-        <!--user name-->
+        {{ name }}
       </div>
       <p class="userStatusStyle">Online</p>
     </div>
@@ -16,22 +16,22 @@
   <div class="optionsStyle">
     <div class="optionTitleStyle">Preferences</div>
     <div class="optionListStyle">
-      <div class="optionStyle">
+      <div class="optionStyle Notifications">
         <div class="optionNameStyle">Notifications</div>
       </div>
-      <div class="optionStyle">
+      <div class="optionStyle Privacy">
         <div class="optionNameStyle">Privacy and Security</div>
       </div>
-      <div class="optionStyle">
+      <div class="optionStyle Chats">
         <div class="optionNameStyle">Chats</div>
       </div>
     </div>
-    <div class="optionTitleStyle">Other</div>
+    <div class="optionTitleStyle Other">Other</div>
     <div class="optionListStyle">
-      <div class="optionStyle">
+      <div class="optionStyle Help">
         <div class="optionNameStyle">Help</div>
       </div>
-      <div class="optionStyle">
+      <div class="optionStyle Report">
         <div class="optionNameStyle">Report a Problem</div>
       </div>
     </div>
