@@ -16,13 +16,21 @@ export class NavBarComponent implements OnInit {
   displayConversationList: boolean = true;
   displayGroupList: boolean = false;
   displayUserList: boolean = false;
-
   displayUserInfoScreen: boolean = false;
+
+  groupToUpdate = {};
+  groupToLeave = {};
+  groupToDelete = {};
+  groupMessage = [];
 
   constructor() {}
 
   ngOnInit() {}
 
+  /**
+   * Toggles the List to be opened on user clicked
+   * @param
+   */
   checkScreen(type) {
     this.displayConversationList = type === "conversationList" ? true : false;
     this.displayGroupList = type === "groupList" ? true : false;
@@ -31,41 +39,49 @@ export class NavBarComponent implements OnInit {
   }
 
   /**
-   *
+   * Opens ConversationList
    */
   openConversationList() {
-    // this.displayConversationList = true;
     this.checkScreen("conversationList");
-    this.actionGenerated.emit({
-      type: "tabChanged",
-    });
+    // this.actionGenerated.emit({
+    //   type: "tabChanged",
+    // });
   }
 
+  /**
+   * Opens GroupList
+   */
   openGroupList() {
     this.checkScreen("groupList");
-
-    // this.displayGroupList = true;
-    this.actionGenerated.emit({
-      type: "tabChanged",
-    });
+    // this.actionGenerated.emit({
+    //   type: "tabChanged",
+    // });
   }
+
+  /**
+   * Opens userlist
+   */
   openUserList() {
     this.checkScreen("userList");
-
-    // this.displayUserList = true;
-    this.actionGenerated.emit({
-      type: "tabChanged",
-    });
+    // this.actionGenerated.emit({
+    //   type: "tabChanged",
+    // });
   }
+
+  /**
+   * Opens User Info Screnn
+   */
   openUserInfoScreen() {
     this.checkScreen("infoScreen");
-
-    // this.displayUserInfoScreen = true;
-    this.actionGenerated.emit({
-      type: "tabChanged",
-    });
+    // this.actionGenerated.emit({
+    //   type: "tabChanged",
+    // });
   }
 
+  /**
+   * Listen to the user emitted by the userList component
+   * @param Event user
+   */
   userClicked(user) {
     if (user.hasOwnProperty("conversationWith")) {
       this.item = user.conversationWith;
@@ -78,9 +94,25 @@ export class NavBarComponent implements OnInit {
       this.type = "group";
     }
     this.lastMessage = user.lastMessage;
-
-    // this.curentItem = this.item;
-    console.log("navBar ", this.item);
     this.onUserClick.emit(this.item);
+  }
+
+  /**
+   * Listen to the group emitted by the groupList component
+   * @param Event user
+   */
+  groupClicked(group) {
+    this.item = group;
+    console.log("navbar group ", group);
+
+    //Close Thread And User Detail Screen When Chat Window Is Changed
+    //this.closeThreadMessages();
+    //this.viewDetailScreen = false;
+
+    if (this.item.hasOwnProperty("uid")) {
+      this.type = "user";
+    } else {
+      this.type = "group";
+    }
   }
 }
