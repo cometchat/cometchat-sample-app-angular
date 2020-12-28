@@ -70,6 +70,12 @@
     (actionGenerated)="actionHandler($event)"
   ></image-view>
 
-  <!--Call Alert-->
-  <!--CallScreen-->
+  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <call-screen
+    [item]="item"
+    [type]="type"
+    [incomingCall]="incomingCall"
+    [outgoingCall]="outgoingCall"
+    (actionGenerated)="actionHandler($event)"
+  ></call-screen>
 </div>
