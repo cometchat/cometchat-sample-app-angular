@@ -14,9 +14,11 @@
 .avatarStyle {
   /* participant view styling */
 
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   margin-right: 10px;
+  height: 35px;
+  width: 35px;
 }
 
 .nameStyle {
