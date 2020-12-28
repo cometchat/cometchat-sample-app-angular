@@ -8,6 +8,7 @@ import { CometChatManager } from "../../utils/controller";
 })
 export class CometChatUserInfoScreenComponent implements OnInit {
   user;
+  name: string;
   constructor() {}
 
   ngOnInit() {
@@ -18,8 +19,8 @@ export class CometChatUserInfoScreenComponent implements OnInit {
     new CometChatManager()
       .getLoggedInUser()
       .then((user) => {
-        // this.setAvatar(user);
         this.user = user;
+        this.name = this.user.name;
       })
       .catch((error) => {
         console.log(
