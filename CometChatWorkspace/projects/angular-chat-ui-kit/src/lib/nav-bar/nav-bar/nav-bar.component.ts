@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 
 @Component({
   selector: "nav-bar",
@@ -6,6 +6,10 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./nav-bar.component.css"],
 })
 export class NavBarComponent implements OnInit {
+  @Input() item = null;
+  @Input() type = null;
+  @Input() lastMessage;
+
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
 
@@ -14,11 +18,6 @@ export class NavBarComponent implements OnInit {
   displayUserList: boolean = false;
 
   displayUserInfoScreen: boolean = false;
-
-  item;
-  // curentItem;
-  lastMessage;
-  type;
 
   constructor() {}
 
