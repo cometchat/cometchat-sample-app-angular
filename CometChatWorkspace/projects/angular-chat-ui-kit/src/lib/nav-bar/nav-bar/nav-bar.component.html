@@ -9,7 +9,13 @@
   </div>
 
   <div *ngIf="displayGroupList" class="listDisplayStyle">
-    <comet-chat-group-list></comet-chat-group-list>
+    <comet-chat-group-list
+      [enableSelectedGroupStyling]="true"
+      [groupToUpdate]="groupToUpdate"
+      [groupToLeave]="groupToLeave"
+      [groupToDelete]="groupToDelete"
+      (onGroupClick)="groupClicked($event)"
+    ></comet-chat-group-list>
   </div>
 
   <div *ngIf="displayUserList" class="listDisplayStyle">
@@ -37,17 +43,6 @@
     </div>
     <!--ConversationList Ends-->
 
-    <!--GroupList-->
-    <div class="itemStyle" (click)="openGroupList()">
-      <div
-        class="itemLinkStyle Groups"
-        [ngClass]="{
-          GroupsActiveStyle: displayGroupList
-        }"
-      ></div>
-    </div>
-    <!--GroupList Ends-->
-
     <!--UserList-->
     <div class="itemStyle" (click)="openUserList()">
       <div
@@ -58,6 +53,17 @@
       ></div>
     </div>
     <!--UserList Ends-->
+
+    <!--GroupList-->
+    <div class="itemStyle" (click)="openGroupList()">
+      <div
+        class="itemLinkStyle Groups"
+        [ngClass]="{
+          GroupsActiveStyle: displayGroupList
+        }"
+      ></div>
+    </div>
+    <!--GroupList Ends-->
 
     <!--UserInfo Ends-->
     <div class="itemStyle" (click)="openUserInfoScreen()">
