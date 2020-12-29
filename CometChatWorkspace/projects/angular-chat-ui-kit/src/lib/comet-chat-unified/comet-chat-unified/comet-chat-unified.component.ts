@@ -18,7 +18,11 @@ export class CometChatUnifiedComponent implements OnInit {
   threadMessageParent = null;
   lastMessage;
   loggedInUser;
-
+  groupToUpdate = {};
+  groupToLeave = {};
+  groupToDelete = {};
+  groupMessage = [];
+  composedthreadmessage = null;
   fullScreenViewImage: boolean = false;
   // To display image in full screen
   imageView = null;
@@ -38,6 +42,9 @@ export class CometChatUnifiedComponent implements OnInit {
 
   actionHandler(action = null, item = null, count = null) {
     let message = action.payLoad;
+
+    let data = action.payLoad;
+
     switch (action.type) {
       case enums.BLOCK_USER:
         this.blockUser();
@@ -66,6 +73,53 @@ export class CometChatUnifiedComponent implements OnInit {
       case enums.MESSAGE_DELETE:
         this.updateLastMessage(message);
         break;
+      case enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT: {
+        // this.toggleDetailView();
+
+        this.composedthreadmessage = {
+          ...this.threadMessageParent,
+          replyCount: action.payLoad,
+        };
+
+        // console.log(
+        //   "groupListScreen --> thread Message Reply count updated ",
+        //   action.payLoad
+        // );
+
+        break;
+      }
+
+      case enums.MEMBER_SCOPE_CHANGED: {
+        this.memberScopeChanged(action.payLoad);
+        break;
+      }
+      case enums.MEMBERS_ADDED: {
+        this.membersAdded(data);
+        break;
+      }
+      case enums.MEMBERS_UPDATED: {
+        this.updateMembersCount(data.item, data.count);
+        break;
+      }
+      case enums.GROUP_UPDATED:
+        this.groupUpdated(data.message, data.key, data.group, data.options);
+        break;
+      case enums.MEMBER_UNBANNED:
+        this.memberUnbanned(data);
+        break;
+      case enums.LEFT_GROUP: {
+        this.leaveGroup(data);
+        break;
+      }
+      case enums.DELETE_GROUP: {
+        this.deleteGroup(data);
+        break;
+      }
+      case enums.MENU_CLICKED: {
+        // this.checkAnimatedState = "normal";
+        this.item = null;
+        break;
+      }
       default:
         break;
     }
@@ -162,5 +216,137 @@ export class CometChatUnifiedComponent implements OnInit {
     } else {
       this.type = "group";
     }
+
+    //close detail screen when switching between users/groups
+    this.viewDetailScreen = false;
   }
+
+  /**
+   * updates the message list with a message notifying that , scope a some user is changed
+   * @param Any members
+   */
+  memberScopeChanged = (members) => {
+    const messageList = [];
+
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} made ${eachMember.name} ${eachMember.scope}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+
+      // console.log("group list screen --> message to be dislayed ", messageObj);
+    });
+
+    this.groupMessage = messageList;
+  };
+
+  /**
+   * updates the messageList with messages about the members that were added
+   * @param Any members
+   */
+  membersAdded = (members) => {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} added ${eachMember.name}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
+  };
+
+  /**
+   * updates The count of  number of members present in a group based on group activities , like adding a member or kicking a member
+   * @param Any members
+   */
+  updateMembersCount = (item, count) => {
+    // console.log("changing group member count to ", count);
+
+    const group = Object.assign({}, this.item, { membersCount: count });
+
+    this.item = group;
+    this.groupToUpdate = group;
+  };
+
+  /**
+   * Updates Current Group Information
+   * @param
+   */
+  groupUpdated = (message, key, group, options) => {
+    switch (key) {
+      case enums.GROUP_MEMBER_BANNED:
+      case enums.GROUP_MEMBER_KICKED: {
+        if (options.user.uid === this.loggedInUser.uid) {
+          this.item = null;
+          this.type = "group";
+          this.viewDetailScreen = false;
+        }
+        break;
+      }
+      case enums.GROUP_MEMBER_SCOPE_CHANGED: {
+        if (options.user.uid === this.loggedInUser.uid) {
+          const newObj = Object.assign({}, this.item, {
+            scope: options["scope"],
+          });
+
+          this.item = newObj;
+          this.type = "group";
+          this.viewDetailScreen = false;
+        }
+        break;
+      }
+      default:
+        break;
+    }
+  };
+
+  /**
+   *  Unbans the user
+   * @param
+   */
+  memberUnbanned(members) {
+    const messageList = [];
+    members.forEach((eachMember) => {
+      const message = `${this.loggedInUser.name} unbanned ${eachMember.name}`;
+      const sentAt = new Date();
+      const messageObj = {
+        category: "action",
+        message: message,
+        type: enums.ACTION_TYPE_GROUPMEMBER,
+        sentAt: sentAt,
+      };
+      messageList.push(messageObj);
+    });
+
+    this.groupMessage = messageList;
+  }
+  /* Closes group screen and all , after user has left the group
+   * @param
+   */
+  leaveGroup = (group) => {
+    this.groupToLeave = group;
+    this.toggleDetailView();
+    this.item = null;
+  };
+
+  /**
+   * Closes group screen and all , after user has deleted the group
+   * @param
+   */
+  deleteGroup = (group) => {
+    this.groupToDelete = group;
+    this.toggleDetailView();
+    this.item = null;
+  };
 }

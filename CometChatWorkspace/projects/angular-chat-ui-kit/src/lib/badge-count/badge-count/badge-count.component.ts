@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./badge-count.component.css"],
 })
 export class BadgeCountComponent implements OnInit {
-  @Input() UnreadMessageCount = null;
+  @Input() count = null;
 
   constructor() {}
 

@@ -9,6 +9,10 @@ export class NavBarComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() lastMessage;
+  @Input() enableSelectedGroupStyling = false;
+  @Input() groupToUpdate = null;
+  @Input() groupToLeave = null;
+  @Input() groupToDelete = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
@@ -18,9 +22,6 @@ export class NavBarComponent implements OnInit {
   displayUserList: boolean = false;
   displayUserInfoScreen: boolean = false;
 
-  groupToUpdate = {};
-  groupToLeave = {};
-  groupToDelete = {};
   groupMessage = [];
 
   constructor() {}
@@ -114,5 +115,7 @@ export class NavBarComponent implements OnInit {
     } else {
       this.type = "group";
     }
+
+    this.onUserClick.emit(this.item);
   }
 }

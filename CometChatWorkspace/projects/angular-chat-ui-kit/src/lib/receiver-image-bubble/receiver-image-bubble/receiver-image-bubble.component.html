@@ -24,7 +24,7 @@
       <div class="messageImgContainerStyle">
         <div class="messageImgWrapperStyle" (click)="open()">
           <div *ngIf="imageLoader" class="imageLoaderStyle">&nbsp;</div>
-          <img [src]="imageUrl" />
+          <img [src]="imageUrl" loading="lazy" />
         </div>
       </div>
       <div class="messageInfoWrapperStyle">
