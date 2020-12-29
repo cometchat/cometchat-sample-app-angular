@@ -21,7 +21,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessageId = null;
-  @Input() widgetSettings = null;
+
   @Input() messages = [];
   @Input() reachedTopOfConversation = [];
 
@@ -139,14 +139,12 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
   createMessageRequestObjectAndGetMessages() {
     if (this.parentMessageId) {
       this.messagesRequest = this.buildMessageRequestObject(
-        this.widgetSettings,
         this.item,
         this.type,
         this.parentMessageId
       );
     } else {
       this.messagesRequest = this.buildMessageRequestObject(
-        this.widgetSettings,
         this.item,
         this.type
       );
@@ -290,12 +288,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
    * This Build Message Request Configuration Object , that helps in getting messages of a particular conversation
    * @param
    */
-  buildMessageRequestObject(
-    widgetSettings = null,
-    item = null,
-    type = null,
-    parentMessageId = null
-  ) {
+  buildMessageRequestObject(item = null, type = null, parentMessageId = null) {
     let messageRequestBuilt;
 
     if (type === "user") {

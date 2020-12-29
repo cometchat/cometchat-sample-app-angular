@@ -18,7 +18,6 @@ import { CometChat } from "@cometchat-pro/chat";
 export class CometChatUserContactListComponent
   implements OnInit, OnDestroy, OnChanges {
   @Input() friendsOnly = false;
-  @Input() widgetsettings = null;
   @Input() hasActions = false;
   @Input() item = null;
 
@@ -75,20 +74,6 @@ export class CometChatUserContactListComponent
 
   ngOnInit() {
     //console.log(`friends only status is `, this.friendsOnly);
-
-    if (
-      this.widgetsettings &&
-      this.widgetsettings.hasOwnProperty("sidebar") &&
-      this.widgetsettings.sidebar.hasOwnProperty("user_listing")
-    ) {
-      switch (this.widgetsettings.sidebar["user_listing"]) {
-        case "friends":
-          this.friendsOnly = true;
-          break;
-        default:
-          break;
-      }
-    }
 
     this.usersRequest = new CometChat.UsersRequestBuilder()
       .friendsOnly(this.friendsOnly)

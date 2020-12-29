@@ -12,7 +12,11 @@
   <div class="messageWrapperStyle">
     <!--Avatar-->
     <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
-      <avatar [item]="MessageDetails?.sender" class="avatarStyle"></avatar>
+      <avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+        class="avatarStyle"
+      ></avatar>
     </div>
     <div class="messageDetailStyle">
       <!--name-->
@@ -24,7 +28,7 @@
       <div class="messageImgContainerStyle">
         <div class="messageImgWrapperStyle" (click)="open()">
           <div *ngIf="imageLoader" class="imageLoaderStyle">&nbsp;</div>
-          <img [src]="imageUrl" />
+          <img [src]="imageUrl" loading="lazy" />
         </div>
       </div>
       <div class="messageInfoWrapperStyle">

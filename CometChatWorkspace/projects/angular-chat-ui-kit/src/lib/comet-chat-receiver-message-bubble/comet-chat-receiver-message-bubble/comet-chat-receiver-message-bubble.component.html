@@ -13,7 +13,10 @@
   <div class="messageWrapperStyle">
     <!--avatar component-->
     <div class="messageThumbnailStyle" *ngIf="type == 'group'">
-      <avatar [item]="MessageDetails?.sender"></avatar>
+      <avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+      ></avatar>
     </div>
     <div class="messageDetailStyle">
       <!--name--->
@@ -33,7 +36,7 @@
           <div class="messagePreviewContainerStyle" *ngIf="linkPreview">
             <div class="messagePreviewWrapperStyle">
               <div class="previewImageStyle">
-                <img [src]="linkImage" />
+                <img [src]="linkImage" loading="lazy" />
               </div>
               <div class="previewDataStyle">
                 <div class="previewTitleStyle" *ngIf="linkTitle !== ''">

@@ -49,6 +49,8 @@ import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-
 import { CallAlertModule } from "./call-alert/call-alert.module";
 import { CallScreenModule } from "./call-screen/call-screen.module";
 import { CallMessageModule } from "./call-message/call-message.module";
+import { CometChatUnifiedModule } from "./comet-chat-unified/comet-chat-unified.module";
+import { NavBarModule } from "./nav-bar/nav-bar.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -100,6 +102,8 @@ import { CallMessageModule } from "./call-message/call-message.module";
     CallAlertModule,
     CallScreenModule,
     CallMessageModule,
+    CometChatUnifiedModule,
+    NavBarModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -151,6 +155,8 @@ import { CallMessageModule } from "./call-message/call-message.module";
     CallAlertModule,
     CallScreenModule,
     CallMessageModule,
+    CometChatUnifiedModule,
+    NavBarModule,
   ],
 })
 export class AngularChatUiKitModule {}

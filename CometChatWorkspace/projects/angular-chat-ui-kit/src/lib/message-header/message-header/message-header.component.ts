@@ -18,7 +18,7 @@ import * as enums from "../../utils/enums";
 export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
   @Input() item = null;
   @Input() type = null;
-  @Input() widgetsettings = null;
+
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   userListenerId = "head_user_" + new Date().getTime();
