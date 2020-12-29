@@ -15,6 +15,7 @@ import { CometChatGroupListScreenPageComponent } from "./Components/Pages/comet-
 import { CometChatConversationListScreenPageComponent } from "./Components/Pages/comet-chat-conversation-list-screen-page/comet-chat-conversation-list-screen-page.component";
 import { GroupListComponent } from "./Components/Pages/group-list/group-list.component";
 import { GroupListScreenPageComponent } from "./Components/Pages/group-list-screen-page/group-list-screen-page.component";
+import { CometChatUnifiedPageComponent } from './Components/Pages/comet-chat-unified-page/comet-chat-unified-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { GroupListScreenPageComponent } from "./Components/Pages/group-list-scre
     CometChatConversationListScreenPageComponent,
     GroupListComponent,
     GroupListScreenPageComponent,
+    CometChatUnifiedPageComponent,
   ],
   imports: [
     BrowserModule,
