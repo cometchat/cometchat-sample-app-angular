@@ -1,7 +1,7 @@
 .messageContainerStyle {
   align-self: flex-start;
   margin-bottom: 16px;
-  padding-left: 16px;
+  /* padding-left: 16px; */
   padding-right: 16px;
   max-width: 65%;
   clear: both;
@@ -59,12 +59,7 @@
 .messageImgWrapperStyle img {
   border-radius: 8px;
   height: 100%;
-  /* [`@media ${mq[0]}`]: {
-                minWidth: 50px";
-                maxWidth: "150px";
-                height: "100px";
-                padding: "2px 2px";
-            } */
+  max-width: 100%;
 }
 
 .messageInfoWrapperStyle {
@@ -78,7 +73,7 @@
   font-weight: 500;
   line-height: 12px;
   text-transform: uppercase;
-  /* color: `${props.theme.color.helpText}`; */
+  color: rgba(20, 20, 20, 0.6);
 }
 .imageLoaderStyle {
   width: 200px;
@@ -96,4 +91,13 @@
 .nameStyle {
   font-size: 10px;
   color: rgba(20, 20, 20, 0.6);
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .messageImgWrapperStyle {
+    min-width: 50px;
+    max-width: 150px;
+    height: 100px;
+    padding: 2px 2px;
+  }
 }

@@ -37,6 +37,10 @@
   order: 2;
 }
 
+.unifiedMainSecondaryStyle {
+  width: calc(100% - 680px);
+}
+
 .unifiedSecondaryStyle {
   float: right;
   border-left: 1px solid #eaeaea;

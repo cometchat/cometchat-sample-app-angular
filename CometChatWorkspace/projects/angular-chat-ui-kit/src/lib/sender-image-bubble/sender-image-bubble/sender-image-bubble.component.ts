@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  HostListener,
+} from "@angular/core";
 import * as enums from "../../utils/enums";
 @Component({
   selector: "sender-image-bubble",
@@ -10,6 +17,8 @@ export class SenderImageBubbleComponent implements OnInit {
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
+  innerWidth;
+  checkScreenSize: boolean = false;
 
   timer = null;
   messageFrom = "sender";
@@ -26,8 +35,30 @@ export class SenderImageBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.onResize();
+
     this.setImage();
   }
+
+  /**
+   * Checks when window size is changed in realtime
+   */
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      console.log("sender image bubble size less");
+      this.checkScreenSize = true;
+    } else {
+      if (this.checkScreenSize === true) {
+        console.log("sender image bubble size");
+
+        this.setImage();
+      }
+      this.checkScreenSize = false;
+    }
+  }
+
   /**
    * Checks if thumnail-generation extension is present And then Sets the image
    *
