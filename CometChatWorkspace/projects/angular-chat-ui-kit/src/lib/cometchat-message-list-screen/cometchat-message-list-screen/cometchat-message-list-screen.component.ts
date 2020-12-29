@@ -155,9 +155,11 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.prependMessages(messages);
 
         setTimeout(() => {
-          this.scrollVariable =
+          this.chatWindow.nativeElement.scrollTop =
             this.chatWindow.nativeElement.scrollHeight - prevScrollHeight;
-        }, 1);
+          // this.scrollVariable =
+          //   this.chatWindow.nativeElement.scrollHeight - prevScrollHeight;
+        });
 
         break;
       }
@@ -471,10 +473,14 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
   scrollToBottomOfChatWindow() {
     setTimeout(() => {
-      this.scrollVariable =
+      this.chatWindow.nativeElement.scrollTop =
         this.chatWindow.nativeElement.scrollHeight -
         this.chatWindow.nativeElement.clientHeight;
-    }, 1);
+
+      // this.scrollVariable =
+      //   this.chatWindow.nativeElement.scrollHeight -
+      //   this.chatWindow.nativeElement.clientHeight;
+    });
   }
 
   /**
