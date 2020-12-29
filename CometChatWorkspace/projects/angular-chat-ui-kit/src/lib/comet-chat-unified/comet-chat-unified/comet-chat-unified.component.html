@@ -3,6 +3,9 @@
     <nav-bar
       [item]="item"
       [type]="type"
+      [groupToUpdate]="groupToUpdate"
+      [groupToLeave]="groupToLeave"
+      [groupToDelete]="groupToDelete"
       [lastMessage]="lastMessage"
       (onUserClick)="userClicked($event)"
     ></nav-bar>
@@ -11,6 +14,8 @@
     <cometchat-message-list-screen
       [item]="item"
       [type]="type"
+      [composedthreadmessage]="composedthreadmessage"
+      [groupMessage]="groupMessage"
       (actionGenerated)="actionHandler($event)"
     >
     </cometchat-message-list-screen>
@@ -29,7 +34,14 @@
       >
       </comet-chat-user-detail>
     </div>
-    <div *ngIf="type === 'group'"></div>
+    <div *ngIf="type === 'group'">
+      <cometchat-group-detail
+        *ngIf="viewDetailScreen"
+        [item]="item"
+        [type]="type"
+        (actionGenerated)="actionHandler($event)"
+      ></cometchat-group-detail>
+    </div>
 
     <message-thread
       *ngIf="threadMessageView"
