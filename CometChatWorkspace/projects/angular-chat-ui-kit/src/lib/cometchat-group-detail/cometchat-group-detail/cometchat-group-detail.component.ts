@@ -573,6 +573,10 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   checkMemberScope = (group) => {
     //group.scope is key which holds the role of the current user in this group
 
+    if (group.scope == "owner") {
+      return "admin";
+    }
+
     if (group.scope == CometChat.GROUP_MEMBER_SCOPE.ADMIN) {
       return "admin";
     } else if (group.scope == CometChat.GROUP_MEMBER_SCOPE.MODERATOR) {
