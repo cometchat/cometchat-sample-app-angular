@@ -41,12 +41,15 @@
   height: 100%;
   order: 2;
 }
+.chatScreenMainSecondaryStyle {
+  width: calc(100% - 680px);
+}
 
 .chatScreenSecondaryStyle {
   float: right;
   border-left: 1px solid #eaeaea;
   height: 100%;
-  width: 30%;
+  width: 400px;
   display: flex;
   flex-direction: column;
   order: 3;

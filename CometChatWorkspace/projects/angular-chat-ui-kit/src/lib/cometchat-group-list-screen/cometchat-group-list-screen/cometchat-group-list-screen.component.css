@@ -51,11 +51,10 @@
   width: calc(100% - 280px);
   height: 100%;
   order: 2;
-
-  /* for thread and detail View */
-  /* width: calc(100% - 680px); */
 }
-
+.groupScreenMainSecondaryStyle {
+  width: calc(100% - 680px);
+}
 .groupScreenSecondaryStyle {
   float: right;
   border-left: 1px solid #eaeaea;

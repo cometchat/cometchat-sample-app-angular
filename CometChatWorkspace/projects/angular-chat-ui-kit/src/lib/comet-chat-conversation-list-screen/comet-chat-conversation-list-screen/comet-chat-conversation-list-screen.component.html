@@ -10,7 +10,13 @@
       [groupToDelete]="groupToDelete"
     ></comet-chat-conversation-list>
   </div>
-  <div class="chatScreenMainStyle" *ngIf="item !== null">
+  <div
+    class="chatScreenMainStyle"
+    *ngIf="item !== null"
+    [ngClass]="{
+      chatScreenMainSecondaryStyle: threadMessageView || viewDetailScreen
+    }"
+  >
     <!--Message List Screen-->
     <cometchat-message-list-screen
       [item]="item"
