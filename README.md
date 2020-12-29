@@ -13,10 +13,7 @@ CometChat Kitchen Sink Sample App is a real-time messaging app capable of **one-
 
 ## Prerequisite
 
-1. To run this app, you must have the **Node Package Manager (NPM)** and **Angular CLI** already installed and setup . If you don't, this documentation will help you in setting up **NPM** and **Angular CLI**
-
-   - <a href="https://jasonwatmore.com/post/2020/06/02/angular-setup-development-environment" target="_blank">Angular - Setup Development Environment (For Windows) </a>
-   - <a href="https://www.zeolearn.com/magazine/setup-angular-mac" target="_blank">Angular - Setup Development Environment (For Mac) </a>
+1. To run this app, you must have the **Node Package Manager (NPM)** and **Angular CLI** already installed and setup . If you don't, this documentation will help you in setting up **NPM** and **Angular CLI** <a href="https://jasonwatmore.com/post/2020/06/02/angular-setup-development-environment" target="_blank">Angular - Setup Development Environment (For Windows) </a> and <a href="https://www.zeolearn.com/magazine/setup-angular-mac" target="_blank">Angular - Setup Development Environment (For Mac) </a>
 
 2. To run this app, you must create an account with CometChat and obtain your `App ID`, `Auth Key` and `Region`. If you don't have an account, you can create one from <a href="https://app.cometchat.io/" target="_blank">CometChat Dashboard</a>.
 
