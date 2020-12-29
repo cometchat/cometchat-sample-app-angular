@@ -29,23 +29,7 @@ export class ReplyCountComponent implements OnInit {
     if (this.MessageDetails.hasOwnProperty("replyCount") === false) {
       this.replies = null;
     }
-    if (
-      this.MessageDetails.hasOwnProperty("widgetconfig") &&
-      this.MessageDetails.widgetconfig &&
-      this.MessageDetails.hasOwnProperty("threaded-chats") &&
-      this.MessageDetails["threaded-chats"] === false
-    ) {
-      this.replies = null;
-    }
-    if (
-      this.MessageDetails.hasOwnProperty("widgetsettings") &&
-      this.MessageDetails.widgetsettings &&
-      this.MessageDetails.hasOwnProperty("main") &&
-      this.MessageDetails.main.hasOwnProperty("enable_threaded_replies") &&
-      this.MessageDetails.main["enable_threaded_replies"] === false
-    ) {
-      this.replies = null;
-    }
+
     this.replies = this.MessageDetails.replyCount;
     return this.replies;
   }
