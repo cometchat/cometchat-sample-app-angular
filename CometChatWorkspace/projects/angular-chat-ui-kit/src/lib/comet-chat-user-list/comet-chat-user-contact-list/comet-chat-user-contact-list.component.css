@@ -147,3 +147,10 @@
   width: 100%;
   padding: 10px 20px;
 }
+
+.itemThumbnailStyle {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}

@@ -138,6 +138,16 @@ export const PARTICIPANT = "Participant";
 
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
 
+export const ACCEPT_INCOMING_CALL = "acceptIncomingCall";
+export const ACCEPTED_INCOMING_CALL = "acceptedIncomingCall";
+export const REJECTED_INCOMING_CALL = "rejectedIncomingCall";
+export const CALL_UPDATED = "callUpdated";
+export const OUT_GOING_CALL_REJECTED = "outgoingCallRejected";
+export const USER_JOINED_CALL = "userJoinedCall";
+export const USER_LEFT_CALL = "userLeftCall";
+export const CALL_ENDED_BY_USER = "callEnded";
+export const CALL_ERROR = "callError";
+export const OUTGOING_CALL_CANCELLED = "outgoingCallCancelled";
 export const BAN_MEMBER = "banmember";
 export const UNBAN_GROUP_MEMBERS = "unbanGroupMembers";
 export const UNBAN = "unban";

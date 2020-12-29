@@ -46,6 +46,9 @@ import { LiveReactionModule } from "./live-reaction/live-reaction.module";
 import { StickerViewModule } from "./sticker-view/sticker-view.module";
 import { SenderStickerBubbleModule } from "./sender-sticker-bubble/sender-sticker-bubble.module";
 import { ReceiverStickerBubbleModule } from "./receiver-sticker-bubble/receiver-sticker-bubble.module";
+import { CallAlertModule } from "./call-alert/call-alert.module";
+import { CallScreenModule } from "./call-screen/call-screen.module";
+import { CallMessageModule } from "./call-message/call-message.module";
 import { CometChatUnifiedModule } from "./comet-chat-unified/comet-chat-unified.module";
 import { NavBarModule } from "./nav-bar/nav-bar.module";
 @NgModule({
@@ -96,6 +99,9 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     StickerViewModule,
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
+    CallAlertModule,
+    CallScreenModule,
+    CallMessageModule,
     CometChatUnifiedModule,
     NavBarModule,
   ],
@@ -146,6 +152,9 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     StickerViewModule,
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
+    CallAlertModule,
+    CallScreenModule,
+    CallMessageModule,
     CometChatUnifiedModule,
     NavBarModule,
   ],

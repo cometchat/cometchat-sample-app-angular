@@ -47,11 +47,14 @@
 
       <div class="contactNameStyle" (click)="onUserClicked(user)">
         <div class="listItem">
-          <avatar
-            [item]="user"
-            [userStatus]="user.status"
-            class="avatarContact"
-          ></avatar>
+          <div class="itemThumbnailStyle">
+            <avatar
+              [item]="user"
+              [userStatus]="user.status"
+              class="avatarContact"
+            ></avatar>
+          </div>
+
           <div class="itemDetailStyle">
             <div class="itemNameStyle">
               {{ user.name }}

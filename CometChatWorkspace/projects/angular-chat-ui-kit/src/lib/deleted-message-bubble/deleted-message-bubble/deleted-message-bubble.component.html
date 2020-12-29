@@ -19,7 +19,11 @@
       class="messageThumbnailStyle"
       *ngIf="MessageDetails?.receiverType == 'group'"
     >
-      <avatar [item]="MessageDetails?.sender" class="avatarStyle"></avatar>
+      <avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+        class="avatarStyle"
+      ></avatar>
     </div>
     <div class="messageDetailStyle">
       <div class="nameWrapperStyle">

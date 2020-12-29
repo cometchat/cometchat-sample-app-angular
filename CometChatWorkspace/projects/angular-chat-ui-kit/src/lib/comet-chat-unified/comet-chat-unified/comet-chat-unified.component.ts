@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
 import * as enums from "../../utils/enums";
+import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
   selector: "comet-chat-unified",
@@ -27,6 +28,12 @@ export class CometChatUnifiedComponent implements OnInit {
   // To display image in full screen
   imageView = null;
 
+  //for audio calling
+  outgoingCall = null;
+  incomingCall = null;
+  callMessage = {};
+  messageToMarkRead;
+
   constructor() {}
 
   ngOnInit() {
@@ -41,6 +48,8 @@ export class CometChatUnifiedComponent implements OnInit {
   }
 
   actionHandler(action = null, item = null, count = null) {
+    console.log("chat-unified  --> action generated is ", action);
+
     let message = action.payLoad;
 
     let data = action.payLoad;
@@ -114,6 +123,45 @@ export class CometChatUnifiedComponent implements OnInit {
       case enums.DELETE_GROUP: {
         this.deleteGroup(data);
         break;
+      }
+      case enums.AUDIO_CALL: {
+        this.audioCall();
+        break;
+      }
+      case enums.VIDEO_CALL:
+        this.videoCall();
+        break;
+      case enums.OUT_GOING_CALL_REJECTED:
+      case enums.OUTGOING_CALL_REJECTED:
+      case enums.OUTGOING_CALL_CANCELLED:
+      case enums.CALL_ENDED_BY_USER:
+      case enums.CALL_ENDED: {
+        console.log("user list screen --> our call was rejected ");
+        this.outgoingCallEnded(message);
+        break;
+      }
+      case enums.USER_JOINED_CALL:
+      case enums.USER_LEFT_CALL: {
+        //this.appendCallMessage(item);
+        break;
+      }
+      case enums.ACCEPT_INCOMING_CALL: {
+        this.acceptIncomingCall(message);
+        break;
+      }
+      case enums.ACCEPTED_INCOMING_CALL: {
+        this.callInitiated(message);
+        break;
+      }
+      case enums.REJECTED_INCOMING_CALL: {
+        this.rejectedIncomingCall(message);
+        break;
+      }
+      case enums.CALL_ERROR: {
+        console.log(
+          "User List screen --> call couldn't complete due to error",
+          action.payLoad
+        );
       }
       case enums.MENU_CLICKED: {
         // this.checkAnimatedState = "normal";
@@ -349,4 +397,134 @@ export class CometChatUnifiedComponent implements OnInit {
     this.toggleDetailView();
     this.item = null;
   };
+
+  /**
+   * initiates an audio call with the person you are chatting with
+   */
+  audioCall() {
+    console.log("audio call initiated");
+
+    let receiverId, receiverType;
+    if (this.type === "user") {
+      receiverId = this.item.uid;
+      receiverType = CometChat.RECEIVER_TYPE.USER;
+    } else if (this.type === "group") {
+      receiverId = this.item.guid;
+      receiverType = CometChat.RECEIVER_TYPE.GROUP;
+    }
+
+    CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.AUDIO)
+      .then((call) => {
+        this.appendCallMessage(call);
+        this.outgoingCall = call;
+      })
+      .catch((error) => {
+        console.log("Call initialization failed with exception:", error);
+      });
+  }
+
+  /**
+   * initiates an video call with the person you are chatting with
+   */
+  videoCall = () => {
+    let receiverId, receiverType;
+    if (this.type === "user") {
+      receiverId = this.item.uid;
+      receiverType = CometChat.RECEIVER_TYPE.USER;
+    } else if (this.type === "group") {
+      receiverId = this.item.guid;
+      receiverType = CometChat.RECEIVER_TYPE.GROUP;
+    }
+
+    CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.VIDEO)
+      .then((call) => {
+        this.appendCallMessage(call);
+        // this.setState({ outgoingCall: call });
+
+        this.outgoingCall = call;
+      })
+      .catch((error) => {
+        console.log("Call initialization failed with exception:", error);
+      });
+  };
+
+  appendCallMessage(call) {
+    this.callMessage = call;
+  }
+
+  outgoingCallEnded(message) {
+    console.log("outgoing call ended");
+
+    this.outgoingCall = null;
+    this.incomingCall = null;
+    this.appendCallMessage(message);
+  }
+
+  /**
+   * ACCPETS INCOMING CALL
+   */
+  acceptIncomingCall(call) {
+    // console.log("incoming call uls ", call);
+
+    this.incomingCall = call;
+
+    const type = call.receiverType;
+    const id = type === "user" ? call.sender.uid : call.receiverId;
+
+    CometChat.getConversation(id, type)
+      .then((conversation: any) => {
+        // this.itemClicked(conversation.conversationWith, type);
+        this.item = { ...conversation.conversationWith };
+        this.type = type;
+      })
+      .catch((error) => {
+        console.log("error while fetching a conversation", error);
+      });
+  }
+
+  /**
+   * When call is accepted and connected
+   * @param
+   */
+  callInitiated(message) {
+    this.appendCallMessage(message);
+  }
+
+  /**
+   * IncomingCall Rejected
+   */
+  rejectedIncomingCall(call) {
+    console.log("rejection ", call);
+
+    let incomingCallMessage = call.incomingCall;
+    let rejectedCallMessage = call.rejectedCall;
+    let receiverType = incomingCallMessage.receiverType;
+    let receiverId =
+      receiverType === "user"
+        ? incomingCallMessage.sender.uid
+        : incomingCallMessage.receiverId;
+
+    //marking the incoming call message as read
+    if (incomingCallMessage.hasOwnProperty("readAt") === false) {
+      CometChat.markAsRead(incomingCallMessage.id, receiverId, receiverType);
+    }
+
+    //updating unreadcount in chats list
+    this.messageToMarkRead = incomingCallMessage;
+
+    let item = this.item;
+    let type = this.type;
+
+    receiverType = rejectedCallMessage.receiverType;
+    receiverId = rejectedCallMessage.receiverId;
+
+    if (
+      (type === "group" &&
+        receiverType === "group" &&
+        receiverId === item.guid) ||
+      (type === "user" && receiverType === "user" && receiverId === item.uid)
+    ) {
+      this.appendCallMessage(rejectedCallMessage);
+    }
+  }
 }

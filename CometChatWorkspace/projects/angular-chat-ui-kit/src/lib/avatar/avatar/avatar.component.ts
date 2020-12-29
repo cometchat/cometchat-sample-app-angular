@@ -18,6 +18,7 @@ export class AvatarComponent implements OnInit, OnChanges {
   @Input() avatar: any =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
   @Input() userStatus = "";
+  @Input() enableUserStatus: boolean = true;
 
   constructor(private _sanitizer: DomSanitizer) {}
 

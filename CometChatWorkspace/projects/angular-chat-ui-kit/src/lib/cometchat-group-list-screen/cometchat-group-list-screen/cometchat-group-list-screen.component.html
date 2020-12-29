@@ -53,4 +53,12 @@
     [open]="true"
     (actionGenerated)="actionHandler($event)"
   ></image-view>
+  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <call-screen
+    [item]="item"
+    [type]="type"
+    [incomingCall]="incomingCall"
+    [outgoingCall]="outgoingCall"
+    (actionGenerated)="actionHandler($event)"
+  ></call-screen>
 </div>

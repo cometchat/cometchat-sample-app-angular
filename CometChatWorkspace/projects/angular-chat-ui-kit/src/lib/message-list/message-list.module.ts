@@ -16,6 +16,7 @@ import { SenderPollBubbleModule } from "../sender-poll-bubble/sender-poll-bubble
 import { ReceiverPollBubbleModule } from "../receiver-poll-bubble/receiver-poll-bubble.module";
 import { SenderStickerBubbleModule } from "../sender-sticker-bubble/sender-sticker-bubble.module";
 import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver-sticker-bubble.module";
+import { CallMessageModule } from "../call-message/call-message.module";
 
 @NgModule({
   declarations: [MessageListComponent],
@@ -36,6 +37,7 @@ import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver
     ReceiverPollBubbleModule,
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
+    CallMessageModule,
   ],
   exports: [MessageListComponent],
 })
