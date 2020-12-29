@@ -10,7 +10,13 @@
     ></comet-chat-group-list>
   </div>
 
-  <div class="groupScreenMainStyle" *ngIf="item !== null">
+  <div
+    class="groupScreenMainStyle"
+    *ngIf="item !== null"
+    [ngClass]="{
+      groupScreenMainSecondaryStyle: threadMessageView || viewDetailScreen
+    }"
+  >
     <cometchat-message-list-screen
       [item]="item"
       [type]="type"

@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  HostListener,
+} from "@angular/core";
 import * as enums from "../../utils/enums";
 
 @Component({
@@ -17,6 +24,8 @@ export class ReceiverImageBubbleComponent implements OnInit {
     messageFrom: this.messageFrom,
   });
   imageLoader: boolean = false;
+  innerWidth;
+  checkScreenSize: boolean = false;
 
   avatar = null;
   //Sets Username of Avatar
@@ -36,19 +45,29 @@ export class ReceiverImageBubbleComponent implements OnInit {
      */
     if (this.MessageDetails.receiverType === "group") {
       this.avatarIfGroup = true;
-
-      if (!this.MessageDetails.sender.avatar) {
-        const uid = this.MessageDetails.sender.getUid();
-        const char = this.MessageDetails.sender
-          .getName()
-          .charAt(0)
-          .toUpperCase();
-        // this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid, char));
-      }
       this.name = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;
     }
     this.setImage();
+  }
+
+  /**
+   * Checks when window size is changed in realtime
+   */
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      console.log("sender image bubble size less");
+      this.checkScreenSize = true;
+    } else {
+      if (this.checkScreenSize === true) {
+        console.log("sender image bubble size");
+
+        this.setImage();
+      }
+      this.checkScreenSize = false;
+    }
   }
   /**
    * Checks if thumnail-generation extension is present or not And then Sets the image
