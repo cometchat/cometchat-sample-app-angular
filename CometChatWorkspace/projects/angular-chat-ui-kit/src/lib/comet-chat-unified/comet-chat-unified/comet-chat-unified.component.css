@@ -51,6 +51,10 @@
   order: 3;
 }
 
+.detailScreenStyle {
+  height: 100%;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
   .unifiedSidebarStyle {
     position: absolute !important;
