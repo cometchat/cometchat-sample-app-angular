@@ -181,9 +181,10 @@ export class SharedMediaViewComponent implements OnInit {
 
                 setTimeout(() => {
                   this.scrollVariable =
+                    this.mediaWindow.nativeElement.scrollTop +
                     this.mediaWindow.nativeElement.scrollHeight -
                     prevScrollHeight;
-                }, 3000);
+                });
               }
             }
           })
@@ -218,7 +219,7 @@ export class SharedMediaViewComponent implements OnInit {
       this.scrollVariable =
         this.mediaWindow.nativeElement.scrollHeight -
         this.mediaWindow.nativeElement.clientHeight;
-    }, 1);
+    });
   }
 
   /**
@@ -228,6 +229,7 @@ export class SharedMediaViewComponent implements OnInit {
   handleScroll(e) {
     const top = Math.round(e.currentTarget.scrollTop) === 0;
     if (top && this.messageList.length) {
+      console.log("SharedMediaView --> scroll event ", e);
       this.getMessages();
     }
   }
