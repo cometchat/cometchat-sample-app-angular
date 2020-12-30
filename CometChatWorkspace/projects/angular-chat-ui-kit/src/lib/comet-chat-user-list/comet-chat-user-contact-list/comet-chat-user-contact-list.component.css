@@ -25,6 +25,9 @@
 .contactWrapperStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
+.contactWrapperStyle *::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
 
 .contactHeaderStyle {
   padding: 19px 16px;

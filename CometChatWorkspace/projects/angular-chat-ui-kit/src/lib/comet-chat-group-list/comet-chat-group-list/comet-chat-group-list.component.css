@@ -21,6 +21,9 @@
 .groupWrapperStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
+.groupWrapperStyle *::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
 
 .groupHeaderStyle {
   padding: 19px 16px;
