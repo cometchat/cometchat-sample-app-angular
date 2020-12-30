@@ -54,6 +54,10 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(["/conversation-screen"]);
   }
 
+  navigateToUnifiedScreen() {
+    this.router.navigate(["/embedded-app"]);
+  }
+
   /**
    * Logout the user that is currently logged in
    * @param

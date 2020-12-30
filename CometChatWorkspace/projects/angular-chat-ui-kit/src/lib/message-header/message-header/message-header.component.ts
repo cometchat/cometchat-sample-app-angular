@@ -322,6 +322,19 @@ export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
     this.actionGenerated.emit({ type: enums.VIEW_DETAIL, payLoad: null });
   }
 
+  /**
+   * Starts audio call
+   */
+  audioCall() {
+    this.actionGenerated.emit({ type: enums.AUDIO_CALL });
+  }
+
+  /**
+   * Starts video call
+   */
+  videoCall() {
+    this.actionGenerated.emit({ type: enums.VIDEO_CALL });
+  }
   closeChatWindow() {
     this.actionGenerated.emit({ type: enums.MENU_CLICKED });
   }

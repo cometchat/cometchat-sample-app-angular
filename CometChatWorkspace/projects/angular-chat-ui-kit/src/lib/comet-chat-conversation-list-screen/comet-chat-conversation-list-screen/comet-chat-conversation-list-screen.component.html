@@ -10,7 +10,13 @@
       [groupToDelete]="groupToDelete"
     ></comet-chat-conversation-list>
   </div>
-  <div class="chatScreenMainStyle" *ngIf="item !== null">
+  <div
+    class="chatScreenMainStyle"
+    *ngIf="item !== null"
+    [ngClass]="{
+      chatScreenMainSecondaryStyle: threadMessageView || viewDetailScreen
+    }"
+  >
     <!--Message List Screen-->
     <cometchat-message-list-screen
       [item]="item"
@@ -70,6 +76,12 @@
     (actionGenerated)="actionHandler($event)"
   ></image-view>
 
-  <!--Call Alert-->
-  <!--CallScreen-->
+  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <call-screen
+    [item]="item"
+    [type]="type"
+    [incomingCall]="incomingCall"
+    [outgoingCall]="outgoingCall"
+    (actionGenerated)="actionHandler($event)"
+  ></call-screen>
 </div>

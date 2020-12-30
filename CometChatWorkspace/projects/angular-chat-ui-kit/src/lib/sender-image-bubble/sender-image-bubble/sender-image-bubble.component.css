@@ -2,7 +2,7 @@
   align-self: flex-end;
   margin-bottom: 16px;
   padding-left: 16px;
-  padding-right: 16px;
+  /* padding-right: 16px; */
   max-width: 65%;
   clear: both;
   position: relative;
@@ -28,7 +28,7 @@
 .messageImgWrapper {
   display: inline-block;
   align-self: flex-end;
-  max-width: 300px;
+  width: 300px;
   height: 200px;
   cursor: pointer;
   flex-shrink: 0;
@@ -36,15 +36,8 @@
 .messageImgWrapper img {
   border-radius: 8px;
   height: 100%;
+  max-width: 100%;
 }
-/* .messageImgWrapper{
-    [`@media ${mq[0]}`]: {
-        minWidth: "50px",
-        maxWidth: "150px",
-        height: "100px",
-        padding: "2px 2px",
-    }
-} */
 
 .messageInfoWrapperStyle {
   /* align-self: flex-end; */
@@ -58,4 +51,13 @@
   height: 200px;
   float: right;
   border-radius: 20px;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .messageImgWrapper {
+    min-width: 50px;
+    max-width: 150px;
+    height: 100px;
+    padding: 2px 2px;
+  }
 }

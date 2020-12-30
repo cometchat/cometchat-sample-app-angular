@@ -10,7 +10,13 @@
     ></comet-chat-group-list>
   </div>
 
-  <div class="groupScreenMainStyle" *ngIf="item !== null">
+  <div
+    class="groupScreenMainStyle"
+    *ngIf="item !== null"
+    [ngClass]="{
+      groupScreenMainSecondaryStyle: threadMessageView || viewDetailScreen
+    }"
+  >
     <cometchat-message-list-screen
       [item]="item"
       [type]="type"
@@ -47,4 +53,12 @@
     [open]="true"
     (actionGenerated)="actionHandler($event)"
   ></image-view>
+  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <call-screen
+    [item]="item"
+    [type]="type"
+    [incomingCall]="incomingCall"
+    [outgoingCall]="outgoingCall"
+    (actionGenerated)="actionHandler($event)"
+  ></call-screen>
 </div>

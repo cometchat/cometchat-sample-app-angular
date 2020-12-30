@@ -6,7 +6,13 @@
     ></comet-chat-user-list>
   </div>
   <!-- Render this Chat Screen only if a user or a group is clicked -->
-  <div class="userScreenMainStyle" *ngIf="curentItem !== null">
+  <div
+    class="userScreenMainStyle"
+    *ngIf="curentItem !== null"
+    [ngClass]="{
+      userScreenMainSecondaryStyle: threadMessageView || viewDetailScreen
+    }"
+  >
     <cometchat-message-list-screen
       [item]="curentItem"
       [type]="type"
@@ -35,6 +41,14 @@
       (actionGenerated)="actionHandler($event)"
     ></comet-chat-user-detail>
   </div>
+  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <call-screen
+    [item]="curentItem"
+    [type]="type"
+    [incomingCall]="incomingCall"
+    [outgoingCall]="outgoingCall"
+    (actionGenerated)="actionHandler($event)"
+  ></call-screen>
   <image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"

@@ -17,6 +17,8 @@
 .avatarStyle {
   /* display: inline-block; */
   float: left;
+  height: 35px;
+  width: 35px;
 }
 .avatarStyle > span {
   top: 26px;
