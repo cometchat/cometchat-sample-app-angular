@@ -11,6 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+
 // import {SEND_SMART_REPLY,SEND_STICKER,CLOSE_STICKER} from '../../utils/enums'
 
 import {
@@ -42,6 +43,12 @@ import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSou
         })
       ),
       transition("normal=>animated", animate(500)),
+    ]),
+    trigger("slideInOut", [
+      transition(":enter", [
+        style({ transform: "translateY(100%)" }),
+        animate("400ms ease-in", style({ transform: "translateY(0%)" })),
+      ]),
     ]),
   ],
 })

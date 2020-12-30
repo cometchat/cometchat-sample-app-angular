@@ -1,5 +1,9 @@
 <div class="chatComposerStyle">
-  <div class="editPreviewContainerStyle" *ngIf="openEditMessageWindow">
+  <div
+    class="editPreviewContainerStyle"
+    *ngIf="openEditMessageWindow"
+    [@slideInOut]
+  >
     <div class="previewHeadingStyle">
       <div class="previewTextStyle">Edit message</div>
       <span class="previewCloseStyle" (click)="closeEditPreview()"></span>
