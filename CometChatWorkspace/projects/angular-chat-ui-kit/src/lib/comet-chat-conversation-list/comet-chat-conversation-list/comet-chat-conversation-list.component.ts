@@ -59,7 +59,10 @@ export class CometChatConversationListComponent implements OnInit, OnChanges {
   ngOnChanges(change: SimpleChanges) {
     if (change["item"]) {
       this.checkItemChange = true;
-      if (change["item"].previousValue !== change["item"].currentValue) {
+      if (
+        change["item"].previousValue !== change["item"].currentValue &&
+        change["item"].currentValue
+      ) {
         if (Object.keys(change["item"].currentValue).length === 0) {
           // this.chatListRef.scrollTop = 0;
           this.selectedConversation = {};

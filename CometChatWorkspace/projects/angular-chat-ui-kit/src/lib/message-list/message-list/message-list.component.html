@@ -2,7 +2,17 @@
   <!--Message Container-->
   <div class="listWrapperStyle">
     <!--message-->
-    <div *ngFor="let msg of messages">
+    <div *ngFor="let msg of messages; let i = index">
+      <div
+        class="messageDateContainerStyle"
+        *ngIf="
+          i > 0 && isDateDifferent(messages[i - 1]?.sentAt, messages[i]?.sentAt)
+        "
+      >
+        <span class="messageDateStyle">{{
+          msg?.sentAt * 1000 | date: "dd/MM/yyyy"
+        }}</span>
+      </div>
       <!--CASE FOR CALL MESSAGES-->
       <div *ngIf="msg?.category == 'call'">
         <call-message
@@ -11,7 +21,6 @@
         ></call-message>
       </div>
       <!--CASE FOR CALL MESSAGES ENDS-->
-
       <!-- CASE FOR DELETED MESSAGES -->
       <div *ngIf="msg?.deletedAt; else elseBlock">
         <deleted-message-bubble

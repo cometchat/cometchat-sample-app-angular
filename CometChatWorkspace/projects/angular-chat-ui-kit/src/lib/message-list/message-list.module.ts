@@ -17,6 +17,7 @@ import { ReceiverPollBubbleModule } from "../receiver-poll-bubble/receiver-poll-
 import { SenderStickerBubbleModule } from "../sender-sticker-bubble/sender-sticker-bubble.module";
 import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver-sticker-bubble.module";
 import { CallMessageModule } from "../call-message/call-message.module";
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   declarations: [MessageListComponent],
@@ -40,5 +41,6 @@ import { CallMessageModule } from "../call-message/call-message.module";
     CallMessageModule,
   ],
   exports: [MessageListComponent],
+  providers: [DatePipe],
 })
 export class MessageListModule {}
