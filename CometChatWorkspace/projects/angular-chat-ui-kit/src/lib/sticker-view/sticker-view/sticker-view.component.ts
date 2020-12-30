@@ -28,8 +28,6 @@ export class StickerViewComponent implements OnInit {
   getStickers() {
     CometChat.callExtension("stickers", "GET", "v1/fetch", null)
       .then((stickers) => {
-        console.log("stickers ", stickers);
-
         // Stickers received
         let activeStickerSet = null;
         const customStickers = stickers.hasOwnProperty("customStickers")
@@ -78,8 +76,6 @@ export class StickerViewComponent implements OnInit {
         this.activeStickerList = activeStickerList;
         this.activeStickerSet = activeStickerSet;
 
-        // console.log("map ", this.stickerSet);
-        // this.decoratorMessage = "";
         if (stickerList.length !== 0) {
           this.loading = false;
         }
@@ -108,8 +104,6 @@ export class StickerViewComponent implements OnInit {
     const activeStickerList = stickerSet[sectionItem];
     this.activeStickerSet = sectionItem;
     this.activeStickerList = activeStickerList;
-    console.log("active set ", this.activeStickerSet);
-    console.log("active list ", this.activeStickerList);
   }
 
   /**
