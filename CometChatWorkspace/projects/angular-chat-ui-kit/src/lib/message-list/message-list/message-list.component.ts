@@ -11,6 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "message-list",
@@ -57,7 +58,7 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
     enums.CALL_TYPE_VIDEO,
   ];
 
-  constructor(private ref: ChangeDetectorRef) {
+  constructor(private ref: ChangeDetectorRef, public datepipe: DatePipe) {
     setInterval(() => {
       //console.log("detectchange called");
       if (!this.ref["destroyed"]) {
@@ -829,5 +830,15 @@ export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
         payLoad: message,
       });
     }
+  }
+
+  /**
+   * Compares two dates and return true if they are not equal
+   */
+  isDateDifferent(firstDate, secondDate) {
+    return (
+      this.datepipe.transform(firstDate, "d mm yyyy").toString() !==
+      this.datepipe.transform(secondDate, "d mm yyyy").toString()
+    );
   }
 }
