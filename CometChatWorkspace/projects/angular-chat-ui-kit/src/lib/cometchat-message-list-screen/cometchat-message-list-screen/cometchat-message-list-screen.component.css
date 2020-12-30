@@ -25,6 +25,9 @@
 .chatWrapperStyle *::-webkit-scrollbar-thumb {
   background: #ccc;
 }
+.chatWrapperStyle *::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
 
 .messageWindowStyle {
   padding: 20px;

@@ -24,7 +24,6 @@
   flex-shrink: 0;
 }
 
-/* Add Media Query to this */
 .chatUserStyle {
   width: calc(100% - 50px);
   padding: 0px 14px;
@@ -56,6 +55,8 @@
 }
 .lastActive {
   color: rgba(20, 20, 20, 0.6);
+  white-space: normal;
+  line-height: 0px;
 }
 
 .groupMemberCountStatusStyle {
@@ -123,5 +124,9 @@
 @media (min-width: 320px) and (max-width: 767px) {
   .chatSideBarBtnStyle {
     display: block;
+  }
+
+  .chatUserStyle {
+    width: calc(100% - 80px) !important;
   }
 }
