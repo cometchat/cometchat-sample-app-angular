@@ -63,13 +63,13 @@
 }
 
 .mediaItemStyle {
-  /* height: calc(100% - 45px); */
+  height: calc(100% - 45px);
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
-  height: 588px;
+  /* height: 588px; */
   width: auto;
 }
 
