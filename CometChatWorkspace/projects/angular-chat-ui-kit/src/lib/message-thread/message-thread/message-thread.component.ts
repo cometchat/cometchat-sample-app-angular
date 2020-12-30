@@ -33,6 +33,8 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   loggedInUser = null;
   messageToBeEdited = null;
   replyPreview = null;
+  imageView = null;
+  fullScreenViewImage: boolean = false;
 
   constructor() {}
 
@@ -66,7 +68,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
   actionHandler(action) {
     let messages = action.payLoad;
 
-    console.log("MessageThread --> action generation is ", action);
+    // console.log("MessageThread --> action generation is ", action);
 
     switch (action.type) {
       case enums.NEW_CONVERSATION_OPENED: {
@@ -78,7 +80,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;
 
-        console.log("Message Thread --> new message added ", messages);
+        //console.log("Message Thread --> new message added ", messages);
 
         this.actionGenerated.emit({
           type: enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT,
@@ -139,6 +141,20 @@ export class MessageThreadComponent implements OnInit, OnChanges {
       case enums.MESSAGE_DELETE:
         this.removeMessages(messages);
         break;
+      case enums.VIEW_ACTUAL_IMAGE: {
+        this.actionGenerated.emit({
+          type: enums.VIEW_ACTUAL_IMAGE,
+          payLoad: messages,
+        });
+        break;
+      }
+      case enums.CLOSE_FULL_SCREEN_IMAGE: {
+        this.actionGenerated.emit({
+          type: enums.VIEW_ACTUAL_IMAGE,
+          payLoad: null,
+        });
+        break;
+      }
     }
   }
 
@@ -147,7 +163,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
    * @param
    */
   closeThread() {
-    console.log("close thread clicked");
+    //console.log("close thread clicked");
     this.actionGenerated.emit({
       type: enums.CLOSE_THREAD_CLICKED,
       payLoad: null,
@@ -237,7 +253,7 @@ export class MessageThreadComponent implements OnInit, OnChanges {
       .then((deletedMessage) => {
         this.removeMessages([deletedMessage]);
 
-        console.log(" MessageList screen --> Message Deleted successfully");
+        //console.log(" MessageList screen --> Message Deleted successfully");
 
         const messageList = [...this.messageList];
         let messageKey = messageList.findIndex((m) => m.id === message.id);
@@ -295,6 +311,16 @@ export class MessageThreadComponent implements OnInit, OnChanges {
         }
       }
     }
+  }
+
+  /**
+   * Opens the clicked Image in full screen mode
+   * @param Any message
+   */
+  toggleImageView(message) {
+    // console.log("MessageThread toggleImageView ", message);
+    this.imageView = message;
+    this.fullScreenViewImage = !this.fullScreenViewImage;
   }
 
   handleScroll(e) {

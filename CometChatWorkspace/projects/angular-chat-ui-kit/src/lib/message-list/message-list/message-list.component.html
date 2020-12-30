@@ -13,6 +13,14 @@
           msg?.sentAt * 1000 | date: "dd/MM/yyyy"
         }}</span>
       </div>
+      <!--CASE FOR CALL MESSAGES-->
+      <div *ngIf="msg?.category == 'call'">
+        <call-message
+          [MessageDetails]="msg"
+          [loggedInUserUid]="loggedInUser.uid"
+        ></call-message>
+      </div>
+      <!--CASE FOR CALL MESSAGES ENDS-->
       <!-- CASE FOR DELETED MESSAGES -->
       <div *ngIf="msg?.deletedAt; else elseBlock">
         <deleted-message-bubble
@@ -21,6 +29,7 @@
         ></deleted-message-bubble>
       </div>
       <!-- CASE FOR DELETED MESSAGES ENDS -->
+
       <ng-template #elseBlock>
         <!-- NgSwitchCase for different Types Of Bubble -->
         <div [ngSwitch]="msg.type">
@@ -71,7 +80,7 @@
           <!--CASE FOR IMAGE  ENDS-->
           <!--CASE FOR VIDEO -->
           <div *ngSwitchCase="'video'">
-            <div *ngIf="msg.category !== 'call'; else callMessage">
+            <div *ngIf="msg.category !== 'call'">
               <sender-video-bubble
                 *ngIf="msg.sender.uid === loggedInUser.uid"
                 [MessageDetails]="msg"
@@ -85,18 +94,12 @@
               >
               </receiver-video-bubble>
             </div>
-            <ng-template #callMessage>
-              <call-message
-                [MessageDetails]="msg"
-                [loggedInUserUid]="loggedInUser.uid"
-              ></call-message>
-            </ng-template>
           </div>
           <!--CASE FOR VIDEO ENDS -->
 
           <!--CASE FOR AUDIO -->
           <div *ngSwitchCase="'audio'">
-            <div *ngIf="msg.category !== 'call'; else callMessage">
+            <div *ngIf="msg.category !== 'call'">
               <sender-audio-bubble
                 *ngIf="msg.sender.uid === loggedInUser.uid"
                 [MessageDetails]="msg"
@@ -110,12 +113,6 @@
               >
               </receiver-audio-bubble>
             </div>
-            <ng-template #callMessage>
-              <call-message
-                [MessageDetails]="msg"
-                [loggedInUserUid]="loggedInUser.uid"
-              ></call-message>
-            </ng-template>
           </div>
           <!--CASE FOR AUDIO ENDS -->
 

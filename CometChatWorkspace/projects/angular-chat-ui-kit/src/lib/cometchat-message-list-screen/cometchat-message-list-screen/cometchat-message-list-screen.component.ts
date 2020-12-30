@@ -24,6 +24,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   @Input() type = null;
   @Input() composedthreadmessage = null;
   @Input() groupMessage = null;
+  @Input() callMessage = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -64,6 +65,22 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
       if (change["groupMessage"].currentValue.length > 0) {
         this.appendMessage(change["groupMessage"].currentValue);
+      }
+    }
+
+    // When There is call display proper call messages
+    if (change["callMessage"]) {
+      let prevProps = { callMessage: null };
+      let props = { callMessage: null };
+
+      prevProps["callMessage"] = change["callMessage"].previousValue;
+      props["callMessage"] = change["callMessage"].currentValue;
+
+      if (prevProps.callMessage !== props.callMessage && props.callMessage) {
+        this.actionHandler({
+          type: enums.CALL_UPDATED,
+          payLoad: change["callMessage"].currentValue,
+        });
       }
     }
   }
@@ -247,7 +264,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         break;
       }
       case enums.POLL_ANSWERED: {
-        console.log("Mesasge List screen -->Answer poll case ");
         this.updatePollMessage(messages);
         break;
       }
@@ -297,7 +313,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
    * append Messages that are sent
    * @param Any messages
    */
-  appendMessage = (messages) => {
+  appendMessage(messages) {
     let dummy = [...this.messageList];
 
     this.messageList = [...dummy, ...messages];
@@ -305,15 +321,13 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     this.scrollToBottomOfChatWindow();
 
     //console.log("appending the sent message ", this.messageList);
-  };
+  }
 
   /**
    * append Poll Messages that are sent
    * @param Any messages
    */
   appendPollMessage(messages) {
-    console.log("MessageListScreen->> Appending poll message ", messages);
-
     this.appendMessage(messages);
   }
 
@@ -322,8 +336,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
    * @param Any messages
    */
   updatePollMessage(message) {
-    console.log("Mesasge List screen --> starting to update poll message ");
-
     const messageList = [...this.messageList];
     const messageId = message.poll.id;
     let messageKey = messageList.findIndex((m, k) => m.id === messageId);
@@ -337,12 +349,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       const newMessageObj = { ...messageObj, metadata: metadataObj };
 
       // messageList.splice(messageKey, 1, newMessageObj);
-
-      console.log(
-        "Mesasge List screen --> updated poll message ",
-        newMessageObj
-      );
-
       this.messageEdited(newMessageObj);
     }
   }
@@ -541,8 +547,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
    * @param
    */
   groupUpdated = (message, key, group, options) => {
-    console.log("Message List Screen --> group updated ", message);
-
     this.appendMessage([message]);
 
     this.actionGenerated.emit({
