@@ -1,12 +1,36 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { CometChatManager } from "../../utils/controller";
 import * as enums from "../../utils/enums";
 import { CometChat } from "@cometchat-pro/chat";
-
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from "@angular/animations";
 @Component({
   selector: "comet-chat-unified",
   templateUrl: "./comet-chat-unified.component.html",
   styleUrls: ["./comet-chat-unified.component.css"],
+  animations: [
+    trigger("FadeInFadeOut", [
+      state(
+        "normal",
+        style({
+          left: "0%",
+        })
+      ),
+      state(
+        "animated",
+        style({
+          left: "-100%",
+          zIndex: "0",
+        })
+      ),
+      transition("normal<=>animated", animate(300)),
+    ]),
+  ],
 })
 export class CometChatUnifiedComponent implements OnInit {
   item = null;
@@ -34,9 +58,14 @@ export class CometChatUnifiedComponent implements OnInit {
   callMessage = {};
   messageToMarkRead;
 
+  checkAnimatedState;
+  checkIfAnimated: boolean = false;
+  innerWidth;
+
   constructor() {}
 
   ngOnInit() {
+    this.onResize();
     new CometChatManager()
       .getLoggedInUser()
       .then((user) => {
@@ -47,8 +76,26 @@ export class CometChatUnifiedComponent implements OnInit {
       });
   }
 
+  /**
+   * Checks when window size is changed in realtime
+   */
+  @HostListener("window:resize", [])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth >= "320" && this.innerWidth <= "767") {
+      if (this.checkIfAnimated === true) {
+        return false;
+      }
+      this.checkAnimatedState = "normal";
+      this.checkIfAnimated = true;
+    } else {
+      this.checkAnimatedState = null;
+      this.checkIfAnimated = false;
+    }
+  }
+
   actionHandler(action = null, item = null, count = null) {
-    console.log("chat-unified  --> action generated is ", action);
+    // console.log("chat-unified  --> action generated is ", action);
 
     let message = action.payLoad;
 
@@ -83,18 +130,10 @@ export class CometChatUnifiedComponent implements OnInit {
         this.updateLastMessage(message);
         break;
       case enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT: {
-        // this.toggleDetailView();
-
         this.composedthreadmessage = {
           ...this.threadMessageParent,
           replyCount: action.payLoad,
         };
-
-        // console.log(
-        //   "groupListScreen --> thread Message Reply count updated ",
-        //   action.payLoad
-        // );
-
         break;
       }
 
@@ -136,7 +175,7 @@ export class CometChatUnifiedComponent implements OnInit {
       case enums.OUTGOING_CALL_CANCELLED:
       case enums.CALL_ENDED_BY_USER:
       case enums.CALL_ENDED: {
-        console.log("user list screen --> our call was rejected ");
+        // console.log("user list screen --> our call was rejected ");
         this.outgoingCallEnded(message);
         break;
       }
@@ -165,6 +204,7 @@ export class CometChatUnifiedComponent implements OnInit {
       }
       case enums.MENU_CLICKED: {
         // this.checkAnimatedState = "normal";
+        this.checkAnimatedState = "normal";
         this.item = null;
         break;
       }
@@ -174,8 +214,6 @@ export class CometChatUnifiedComponent implements OnInit {
   }
 
   updateLastMessage(message) {
-    console.log("last message upated ", message);
-
     this.lastMessage = message;
   }
 
@@ -232,7 +270,6 @@ export class CometChatUnifiedComponent implements OnInit {
       .then((list) => {
         this.item = { ...this.item, blockedByMe: true };
         this.curentItem = this.item;
-        console.log("block success");
       })
       .catch((error) => {
         console.log("Blocking user fails with error", error);
@@ -257,7 +294,11 @@ export class CometChatUnifiedComponent implements OnInit {
   }
 
   userClicked(user) {
-    console.log("unified event", user);
+    if (this.checkAnimatedState !== null) {
+      this.checkAnimatedState == "normal"
+        ? (this.checkAnimatedState = "animated")
+        : (this.checkAnimatedState = "normal");
+    }
     this.item = user;
     if (this.item.hasOwnProperty("uid")) {
       this.type = "user";
@@ -402,8 +443,6 @@ export class CometChatUnifiedComponent implements OnInit {
    * initiates an audio call with the person you are chatting with
    */
   audioCall() {
-    console.log("audio call initiated");
-
     let receiverId, receiverType;
     if (this.type === "user") {
       receiverId = this.item.uid;
@@ -453,8 +492,6 @@ export class CometChatUnifiedComponent implements OnInit {
   }
 
   outgoingCallEnded(message) {
-    console.log("outgoing call ended");
-
     this.outgoingCall = null;
     this.incomingCall = null;
     this.appendCallMessage(message);
@@ -494,8 +531,6 @@ export class CometChatUnifiedComponent implements OnInit {
    * IncomingCall Rejected
    */
   rejectedIncomingCall(call) {
-    console.log("rejection ", call);
-
     let incomingCallMessage = call.incomingCall;
     let rejectedCallMessage = call.rejectedCall;
     let receiverType = incomingCallMessage.receiverType;
