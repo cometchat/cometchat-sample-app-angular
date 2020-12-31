@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
-  selector: "receiver-poll-bubble",
-  templateUrl: "./receiver-poll-bubble.component.html",
-  styleUrls: ["./receiver-poll-bubble.component.css"],
+  selector: "cometchat-receiver-poll-bubble",
+  templateUrl: "./cometchat-receiver-poll-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-poll-bubble.component.css"],
 })
-export class ReceiverPollBubbleComponent implements OnInit {
+export class CometchatReceiverPollBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
 

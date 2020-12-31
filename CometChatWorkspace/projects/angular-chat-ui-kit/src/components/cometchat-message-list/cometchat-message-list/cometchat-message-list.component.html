@@ -153,13 +153,13 @@
               (actionGenerated)="actionHandler($event)"
             >
             </sender-poll-bubble>
-            <receiver-poll-bubble
+            <cometchat-receiver-poll-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [loggedInUserUid]="loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             >
-            </receiver-poll-bubble>
+            </cometchat-receiver-poll-bubble>
           </div>
           <!--CASE FOR  POLLS ENDS -->
         </div>
