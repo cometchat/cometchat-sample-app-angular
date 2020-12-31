@@ -10,9 +10,9 @@ import {
 import { trigger, style, transition, animate } from "@angular/animations";
 
 @Component({
-  selector: "reply-preview",
-  templateUrl: "./reply-preview.component.html",
-  styleUrls: ["./reply-preview.component.css"],
+  selector: "cometchat-reply-preview",
+  templateUrl: "./cometchat-reply-preview.component.html",
+  styleUrls: ["./cometchat-reply-preview.component.css"],
   animations: [
     trigger("slideInOut", [
       transition(":enter", [
@@ -22,7 +22,7 @@ import { trigger, style, transition, animate } from "@angular/animations";
     ]),
   ],
 })
-export class ReplyPreviewComponent implements OnInit {
+export class CometchatReplyPreviewComponent implements OnInit {
   @Input() replyPreview = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

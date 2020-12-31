@@ -10,10 +10,10 @@
     </div>
     <div>{{ this.messageToBeEdited?.data?.text }}</div>
   </div>
-  <reply-preview
+  <cometchat-reply-preview
     [replyPreview]="replyPreview"
     (actionGenerated)="actionHandler($event)"
-  ></reply-preview>
+  ></cometchat-reply-preview>
   <sticker-view
     (actionGenerated)="actionHandler($event)"
     *ngIf="stickerViewer"

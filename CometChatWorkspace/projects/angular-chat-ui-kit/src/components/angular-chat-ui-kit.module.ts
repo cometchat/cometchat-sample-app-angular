@@ -25,7 +25,7 @@ import { CometchatUserDetailModule } from "./cometchat-user-detail/cometchat-use
 import { CometchatSenderAudioBubbleModule } from "./cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.module";
 import { CometchatReceiverAudioBubbleModule } from "./cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.module";
 import { CometchatDeletedMessageBubbleModule } from "./cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.module";
-import { ReplyPreviewModule } from "./reply-preview/reply-preview.module";
+import { CometchatReplyPreviewModule } from "./cometchat-reply-preview/cometchat-reply-preview.module";
 import { CometchatReplyCountModule } from "./cometchat-reply-count/cometchat-reply-count.module";
 import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
 import { CometchatConversationListScreenModule } from "./cometchat-conversation-list-screen/cometchat-conversation-list-screen.module";
@@ -78,7 +78,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatReceiverAudioBubbleModule,
     CometchatUserDetailModule,
     CometchatDeletedMessageBubbleModule,
-    ReplyPreviewModule,
+    CometchatReplyPreviewModule,
     CometchatReplyCountModule,
     SharedMediaViewModule,
     CometchatConversationListScreenModule,
@@ -131,7 +131,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatReceiverAudioBubbleModule,
     CometchatUserDetailModule,
     CometchatDeletedMessageBubbleModule,
-    ReplyPreviewModule,
+    CometchatReplyPreviewModule,
     CometchatReplyCountModule,
     SharedMediaViewModule,
     CometchatConversationListScreenModule,
