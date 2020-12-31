@@ -12,9 +12,9 @@ import {
 } from "@angular/animations";
 
 @Component({
-  selector: "comet-chat-conversation-list-screen",
-  templateUrl: "./comet-chat-conversation-list-screen.component.html",
-  styleUrls: ["./comet-chat-conversation-list-screen.component.css"],
+  selector: "cometchat-conversation-list-screen",
+  templateUrl: "./cometchat-conversation-list-screen.component.html",
+  styleUrls: ["./cometchat-conversation-list-screen.component.css"],
   animations: [
     trigger("FadeInFadeOut", [
       state(
@@ -34,7 +34,7 @@ import {
     ]),
   ],
 })
-export class CometChatConversationListScreenComponent implements OnInit {
+export class CometchatConversationListScreenComponent implements OnInit {
   curentItem;
   lastMessage;
   item = null;
