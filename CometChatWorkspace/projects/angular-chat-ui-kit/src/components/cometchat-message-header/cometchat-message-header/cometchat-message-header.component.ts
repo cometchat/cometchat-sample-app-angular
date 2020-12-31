@@ -11,11 +11,12 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 @Component({
-  selector: "message-header",
-  templateUrl: "./message-header.component.html",
-  styleUrls: ["./message-header.component.css"],
+  selector: "cometchat-message-header",
+  templateUrl: "./cometchat-message-header.component.html",
+  styleUrls: ["./cometchat-message-header.component.css"],
 })
-export class MessageHeaderComponent implements OnInit, OnChanges, OnDestroy {
+export class CometchatMessageHeaderComponent
+  implements OnInit, OnChanges, OnDestroy {
   @Input() item = null;
   @Input() type = null;
 

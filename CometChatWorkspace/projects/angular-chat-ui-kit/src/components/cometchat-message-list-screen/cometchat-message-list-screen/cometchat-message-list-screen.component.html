@@ -1,10 +1,10 @@
 <div class="chatWrapperStyle">
   <!-- Add the Action To header to make it Dynamic -->
-  <message-header
+  <cometchat-message-header
     [item]="item"
     [type]="type"
     (actionGenerated)="actionHandler($event)"
-  ></message-header>
+  ></cometchat-message-header>
   <div
     class="messageWindowStyle"
     (scroll)="handleScroll($event)"

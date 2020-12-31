@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CometchatMessageListScreenComponent } from "./cometchat-message-list-screen/cometchat-message-list-screen.component";
-import { MessageHeaderModule } from "../message-header/message-header.module";
+import { CometchatMessageHeaderModule } from "../cometchat-message-header/cometchat-message-header.module";
 import { MessageListModule } from "../message-list/message-list.module";
 import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
 import { CometchatLiveReactionModule } from "../cometchat-live-reaction/cometchat-live-reaction.module";
@@ -10,7 +10,7 @@ import { CometchatLiveReactionModule } from "../cometchat-live-reaction/cometcha
   declarations: [CometchatMessageListScreenComponent],
   imports: [
     CommonModule,
-    MessageHeaderModule,
+    CometchatMessageHeaderModule,
     CometchatMessageComposerModule,
     MessageListModule,
     CometchatLiveReactionModule,
