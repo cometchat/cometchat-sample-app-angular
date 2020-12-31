@@ -39,13 +39,13 @@
         (actionGenerated)="actionHandler($event)"
       ></cometchat-user-detail>
     </div>
-    <message-thread
+    <cometchat-message-thread
       *ngIf="threadMessageView"
       [item]="threadMessageItem"
       [type]="threadMessageType"
       [parentMessage]="threadMessageParent"
       (actionGenerated)="actionHandler($event)"
-    ></message-thread>
+    ></cometchat-message-thread>
   </div>
   <cometchat-call-alert
     (actionGenerated)="actionHandler($event)"

@@ -14,7 +14,7 @@ import { ReadRecieptModule } from "./read-reciept/read-reciept.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SenderFileBubbleModule } from "./sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "./receiver-file-bubble/receiver-file-bubble.module";
-import { MessageThreadModule } from "./message-thread/message-thread.module";
+import { CometchatMessageThreadModule } from "./cometchat-message-thread/cometchat-message-thread.module";
 import { ToolTipModule } from "./tool-tip/tool-tip.module";
 import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubble.module";
 import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-image-bubble.module";
@@ -67,7 +67,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     BrowserAnimationsModule,
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
-    MessageThreadModule,
+    CometchatMessageThreadModule,
     ToolTipModule,
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,
@@ -120,7 +120,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     ReadRecieptModule,
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
-    MessageThreadModule,
+    CometchatMessageThreadModule,
     ToolTipModule,
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,

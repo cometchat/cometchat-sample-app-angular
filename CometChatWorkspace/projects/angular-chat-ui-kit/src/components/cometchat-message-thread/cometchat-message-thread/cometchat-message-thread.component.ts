@@ -13,11 +13,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "message-thread",
-  templateUrl: "./message-thread.component.html",
-  styleUrls: ["./message-thread.component.css"],
+  selector: "cometchat-message-thread",
+  templateUrl: "./cometchat-message-thread.component.html",
+  styleUrls: ["./cometchat-message-thread.component.css"],
 })
-export class MessageThreadComponent implements OnInit, OnChanges {
+export class CometchatMessageThreadComponent implements OnInit, OnChanges {
   @ViewChild("messageWindow", null) chatWindow: ElementRef;
 
   @Input() item = null;

@@ -55,13 +55,13 @@
       ></cometchat-group-detail>
     </div>
 
-    <message-thread
+    <cometchat-message-thread
       *ngIf="threadMessageView"
       [item]="threadMessageItem"
       [type]="threadMessageType"
       [parentMessage]="threadMessageParent"
       (actionGenerated)="actionHandler($event)"
-    ></message-thread>
+    ></cometchat-message-thread>
   </div>
   <cometchat-image-view
     *ngIf="fullScreenViewImage"
