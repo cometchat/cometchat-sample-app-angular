@@ -18,7 +18,7 @@ import { MessageThreadModule } from "./message-thread/message-thread.module";
 import { ToolTipModule } from "./tool-tip/tool-tip.module";
 import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubble.module";
 import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-image-bubble.module";
-import { BackdropModule } from "./backdrop/backdrop.module";
+import { CometchatBackdropModule } from "./cometchat-backdrop/cometchat-backdrop.module";
 import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-video-bubble.module";
 import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-user-detail.module";
@@ -71,7 +71,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     ToolTipModule,
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,
-    BackdropModule,
+    CometchatBackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     SenderAudioBubbleModule,
@@ -124,7 +124,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     ToolTipModule,
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,
-    BackdropModule,
+    CometchatBackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     SenderAudioBubbleModule,
