@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "comet-chat-ban-members",
-  templateUrl: "./comet-chat-ban-members.component.html",
-  styleUrls: ["./comet-chat-ban-members.component.css"],
+  selector: "cometchat-ban-members",
+  templateUrl: "./cometchat-ban-members.component.html",
+  styleUrls: ["./cometchat-ban-members.component.css"],
 })
-export class CometChatBanMembersComponent implements OnInit {
+export class CometchatBanMembersComponent implements OnInit {
   @Input() item = null;
   @Input() bannedmemberlist = [];
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
