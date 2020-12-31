@@ -19,11 +19,11 @@
   </div>
   <div class="groupListStyle" (scroll)="handleScroll($event)">
     <div *ngFor="let group of grouplist">
-      <group-view
+      <cometchat-group-view
         [group]="group"
         [selectedGroup]="this.selectedGroup"
         (onGroupClick)="groupClicked($event)"
-      ></group-view>
+      ></cometchat-group-view>
     </div>
   </div>
   <!-- create group component -->

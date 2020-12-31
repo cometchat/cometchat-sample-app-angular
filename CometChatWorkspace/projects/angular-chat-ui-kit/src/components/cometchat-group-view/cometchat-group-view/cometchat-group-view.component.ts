@@ -1,11 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "group-view",
-  templateUrl: "./group-view.component.html",
-  styleUrls: ["./group-view.component.css"],
+  selector: "cometchat-group-view",
+  templateUrl: "./cometchat-group-view.component.html",
+  styleUrls: ["./cometchat-group-view.component.css"],
 })
-export class GroupViewComponent implements OnInit {
+export class CometchatGroupViewComponent implements OnInit {
   @Input() group = null;
   @Input() selectedGroup = null;
 
