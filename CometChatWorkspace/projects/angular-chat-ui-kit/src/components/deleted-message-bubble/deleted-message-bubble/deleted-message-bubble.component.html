@@ -19,11 +19,11 @@
       class="messageThumbnailStyle"
       *ngIf="MessageDetails?.receiverType == 'group'"
     >
-      <avatar
+      <cometchat-avatar
         [item]="MessageDetails?.sender"
         [enableUserStatus]="false"
         class="avatarStyle"
-      ></avatar>
+      ></cometchat-avatar>
     </div>
     <div class="messageDetailStyle">
       <div class="nameWrapperStyle">

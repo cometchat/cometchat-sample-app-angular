@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { ReceiverStickerBubbleComponent } from "./receiver-sticker-bubble/receiver-sticker-bubble.component";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
 import { ReplyCountModule } from "../reply-count/reply-count.module";
-import { AvatarModule } from "../avatar/avatar.module";
+import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 
 @NgModule({
   declarations: [ReceiverStickerBubbleComponent],
@@ -11,7 +11,7 @@ import { AvatarModule } from "../avatar/avatar.module";
     CommonModule,
     ToolTipModule,
     ReplyCountModule,
-    AvatarModule,
+    CometchatAvatarModule,
     ReplyCountModule,
   ],
   exports: [ReceiverStickerBubbleComponent],

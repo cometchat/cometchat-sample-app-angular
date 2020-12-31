@@ -1,7 +1,10 @@
 <tr class="tableRowStyle">
   <td class="tableColumnStyle">
     <div class="avatarStyle">
-      <avatar [item]="user" [userStatus]="user?.status"></avatar>
+      <cometchat-avatar
+        [item]="user"
+        [userStatus]="user?.status"
+      ></cometchat-avatar>
     </div>
     <div class="nameStyle">{{ user?.name }}</div>
   </td>

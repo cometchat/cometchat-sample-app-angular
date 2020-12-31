@@ -8,11 +8,11 @@ import {
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-  selector: "avatar",
-  templateUrl: "./avatar.component.html",
-  styleUrls: ["./avatar.component.scss"],
+  selector: "cometchat-avatar",
+  templateUrl: "./cometchat-avatar.component.html",
+  styleUrls: ["./cometchat-avatar.component.scss"],
 })
-export class AvatarComponent implements OnInit, OnChanges {
+export class CometchatAvatarComponent implements OnInit, OnChanges {
   @Input() item = null;
 
   @Input() avatar: any =

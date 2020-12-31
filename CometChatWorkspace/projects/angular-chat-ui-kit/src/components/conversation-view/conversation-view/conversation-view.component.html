@@ -1,10 +1,10 @@
 <div class="listItem" (click)="onUserClicked(ConversationDetails)">
   <div class="itemThumbnailStyle">
     <!--Avatar-->
-    <avatar
+    <cometchat-avatar
       [item]="getAvatar(ConversationDetails)"
       [userStatus]="ConversationDetails.conversationWith.status"
-    ></avatar>
+    ></cometchat-avatar>
   </div>
   <div class="itemDetailStyle">
     <div class="itemRowStyle">

@@ -1,11 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { GroupViewComponent } from "./group-view/group-view.component";
-import { AvatarModule } from "../avatar/avatar.module";
-
+import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 @NgModule({
   declarations: [GroupViewComponent],
-  imports: [CommonModule, AvatarModule],
+  imports: [CommonModule, CometchatAvatarModule],
   exports: [GroupViewComponent],
 })
 export class GroupViewModule {}

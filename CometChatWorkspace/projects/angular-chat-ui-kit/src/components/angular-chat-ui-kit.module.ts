@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { AngularChatUiKitComponent } from "./angular-chat-ui-kit.component";
-import { AvatarModule } from "./avatar/avatar.module";
+import { CometchatAvatarModule } from "./cometchat-avatar/cometchat-avatar.module";
 import { CometChatUserContactListModule } from "./comet-chat-user-list/comet-chat-user-contact-list.module";
 import { CometChatConversationListModule } from "./comet-chat-conversation-list/comet-chat-conversation-list.module";
 import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/cometchat-user-list-screen.module";
@@ -55,7 +55,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
   declarations: [AngularChatUiKitComponent],
   imports: [
     CometChatUserContactListModule,
-    AvatarModule,
+    CometchatAvatarModule,
     CometChatConversationListModule,
     CometchatUserListScreenModule,
     MessageHeaderModule,
@@ -108,7 +108,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
   exports: [
     AngularChatUiKitComponent,
     CometChatUserContactListModule,
-    AvatarModule,
+    CometchatAvatarModule,
     CometChatConversationListModule,
     CometchatUserListScreenModule,
     MessageHeaderModule,
