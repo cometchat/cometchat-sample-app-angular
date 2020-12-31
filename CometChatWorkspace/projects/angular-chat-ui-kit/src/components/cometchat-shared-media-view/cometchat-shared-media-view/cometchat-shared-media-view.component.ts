@@ -4,11 +4,11 @@ import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
 
 @Component({
-  selector: "shared-media-view",
-  templateUrl: "./shared-media-view.component.html",
-  styleUrls: ["./shared-media-view.component.css"],
+  selector: "cometchat-shared-media-view",
+  templateUrl: "./cometchat-shared-media-view.component.html",
+  styleUrls: ["./cometchat-shared-media-view.component.css"],
 })
-export class SharedMediaViewComponent implements OnInit {
+export class CometchatSharedMediaViewComponent implements OnInit {
   @ViewChild("mediaContainer", null) mediaWindow: ElementRef;
 
   @Input() type = null;

@@ -27,7 +27,7 @@ import { CometchatReceiverAudioBubbleModule } from "./cometchat-receiver-audio-b
 import { CometchatDeletedMessageBubbleModule } from "./cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.module";
 import { CometchatReplyPreviewModule } from "./cometchat-reply-preview/cometchat-reply-preview.module";
 import { CometchatReplyCountModule } from "./cometchat-reply-count/cometchat-reply-count.module";
-import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.module";
+import { CometchatSharedMediaViewModule } from "./cometchat-shared-media-view/cometchat-shared-media-view.module";
 import { CometchatConversationListScreenModule } from "./cometchat-conversation-list-screen/cometchat-conversation-list-screen.module";
 import { CometchatGroupListModule } from "./cometchat-group-list/cometchat-group-list.module";
 import { CometchatGroupViewModule } from "./cometchat-group-view/cometchat-group-view.module";
@@ -80,7 +80,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatDeletedMessageBubbleModule,
     CometchatReplyPreviewModule,
     CometchatReplyCountModule,
-    SharedMediaViewModule,
+    CometchatSharedMediaViewModule,
     CometchatConversationListScreenModule,
     CometchatGroupListModule,
     CometchatGroupViewModule,
@@ -133,7 +133,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatDeletedMessageBubbleModule,
     CometchatReplyPreviewModule,
     CometchatReplyCountModule,
-    SharedMediaViewModule,
+    CometchatSharedMediaViewModule,
     CometchatConversationListScreenModule,
     CometchatGroupListModule,
     CometchatGroupViewModule,
