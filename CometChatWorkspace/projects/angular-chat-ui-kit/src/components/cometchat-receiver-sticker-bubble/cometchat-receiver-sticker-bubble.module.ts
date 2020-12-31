@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ReceiverStickerBubbleComponent } from "./receiver-sticker-bubble/receiver-sticker-bubble.component";
+import { CometchatReceiverStickerBubbleComponent } from "./cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.component";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
 import { ReplyCountModule } from "../reply-count/reply-count.module";
 import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 
 @NgModule({
-  declarations: [ReceiverStickerBubbleComponent],
+  declarations: [CometchatReceiverStickerBubbleComponent],
   imports: [
     CommonModule,
     ToolTipModule,
@@ -14,6 +14,6 @@ import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.modu
     CometchatAvatarModule,
     ReplyCountModule,
   ],
-  exports: [ReceiverStickerBubbleComponent],
+  exports: [CometchatReceiverStickerBubbleComponent],
 })
-export class ReceiverStickerBubbleModule {}
+export class CometchatReceiverStickerBubbleModule {}

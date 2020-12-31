@@ -15,7 +15,7 @@ import { CometchatDeletedMessageBubbleModule } from "../cometchat-deleted-messag
 import { SenderPollBubbleModule } from "../sender-poll-bubble/sender-poll-bubble.module";
 import { CometchatReceiverPollBubbleModule } from "../cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble.module";
 import { SenderStickerBubbleModule } from "../sender-sticker-bubble/sender-sticker-bubble.module";
-import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver-sticker-bubble.module";
+import { CometchatReceiverStickerBubbleModule } from "../cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.module";
 import { CometchatCallMessageModule } from "../cometchat-call-message/call-message.module";
 import { DatePipe } from "@angular/common";
 
@@ -37,7 +37,7 @@ import { DatePipe } from "@angular/common";
     SenderPollBubbleModule,
     CometchatReceiverPollBubbleModule,
     SenderStickerBubbleModule,
-    ReceiverStickerBubbleModule,
+    CometchatReceiverStickerBubbleModule,
     CometchatCallMessageModule,
   ],
   exports: [CometchatMessageListComponent],

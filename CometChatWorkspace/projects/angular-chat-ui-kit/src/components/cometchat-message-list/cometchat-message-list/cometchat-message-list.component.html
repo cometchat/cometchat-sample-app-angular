@@ -136,12 +136,12 @@
               (actionGenerated)="actionHandler($event)"
             >
             </sender-sticker-bubble>
-            <receiver-sticker-bubble
+            <cometchat-receiver-sticker-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             >
-            </receiver-sticker-bubble>
+            </cometchat-receiver-sticker-bubble>
           </div>
           <!--CASE FOR STICKER ENDS -->
 

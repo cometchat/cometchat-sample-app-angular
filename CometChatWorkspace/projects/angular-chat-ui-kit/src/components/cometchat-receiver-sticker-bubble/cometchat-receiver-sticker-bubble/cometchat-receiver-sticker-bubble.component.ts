@@ -9,11 +9,12 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "receiver-sticker-bubble",
-  templateUrl: "./receiver-sticker-bubble.component.html",
-  styleUrls: ["./receiver-sticker-bubble.component.css"],
+  selector: "cometchat-receiver-sticker-bubble",
+  templateUrl: "./cometchat-receiver-sticker-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-sticker-bubble.component.css"],
 })
-export class ReceiverStickerBubbleComponent implements OnInit, OnChanges {
+export class CometchatReceiverStickerBubbleComponent
+  implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
 
