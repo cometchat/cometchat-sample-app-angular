@@ -39,7 +39,7 @@ import { MemberViewModule } from "./member-view/member-view.module";
 import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add-members.module";
 import { CometchatBanMembersModule } from "./cometchat-ban-members/cometchat-ban-members.module";
 import { CometchatBanMemberViewModule } from "./cometchat-ban-member-view/ban-member-view.module";
-import { CreatePollViewModule } from "./create-poll-view/create-poll-view.module";
+import { CometchatCreatePollViewModule } from "./cometchat-create-poll-view/cometchat-create-poll-view.module";
 import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
 import { ReceiverPollBubbleModule } from "./receiver-poll-bubble/receiver-poll-bubble.module";
 import { LiveReactionModule } from "./live-reaction/live-reaction.module";
@@ -92,7 +92,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatAddMembersModule,
     CometchatBanMembersModule,
     CometchatBanMemberViewModule,
-    CreatePollViewModule,
+    CometchatCreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,
     LiveReactionModule,
@@ -145,7 +145,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatAddMembersModule,
     CometchatBanMembersModule,
     CometchatBanMemberViewModule,
-    CreatePollViewModule,
+    CometchatCreatePollViewModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,
     LiveReactionModule,

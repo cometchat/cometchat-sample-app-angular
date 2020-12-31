@@ -9,11 +9,11 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
-  selector: "create-poll-view",
-  templateUrl: "./create-poll-view.component.html",
-  styleUrls: ["./create-poll-view.component.css"],
+  selector: "cometchat-create-poll-view",
+  templateUrl: "./cometchat-create-poll-view.component.html",
+  styleUrls: ["./cometchat-create-poll-view.component.css"],
 })
-export class CreatePollViewComponent implements OnInit {
+export class CometchatCreatePollViewComponent implements OnInit {
   pollFormData: FormGroup;
   errorText = "";
   @Input() item = null;
