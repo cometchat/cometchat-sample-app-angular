@@ -43,7 +43,7 @@ import { CometchatCreatePollViewModule } from "./cometchat-create-poll-view/come
 import { CometchatSenderPollBubbleModule } from "./cometchat-sender-poll-bubble/cometchat-sender-poll-bubble.module";
 import { CometchatReceiverPollBubbleModule } from "./cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble.module";
 import { CometchatLiveReactionModule } from "./cometchat-live-reaction/cometchat-live-reaction.module";
-import { StickerViewModule } from "./sticker-view/sticker-view.module";
+import { CometchatStickerViewModule } from "./cometchat-sticker-view/cometchat-sticker-view.module";
 import { CometchatSenderStickerBubbleModule } from "./cometchat-sender-sticker-bubble/cometchat-sender-sticker-bubble.module";
 import { CometchatReceiverStickerBubbleModule } from "./cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.module";
 import { CometchatCallAlertModule } from "./cometchat-call-alert/cometchat-call-alert.module";
@@ -96,7 +96,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatSenderPollBubbleModule,
     CometchatReceiverPollBubbleModule,
     CometchatLiveReactionModule,
-    StickerViewModule,
+    CometchatStickerViewModule,
     CometchatSenderStickerBubbleModule,
     CometchatReceiverStickerBubbleModule,
     CometchatCallAlertModule,
@@ -149,7 +149,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatSenderPollBubbleModule,
     CometchatReceiverPollBubbleModule,
     CometchatLiveReactionModule,
-    StickerViewModule,
+    CometchatStickerViewModule,
     CometchatSenderStickerBubbleModule,
     CometchatReceiverStickerBubbleModule,
     CometchatCallAlertModule,

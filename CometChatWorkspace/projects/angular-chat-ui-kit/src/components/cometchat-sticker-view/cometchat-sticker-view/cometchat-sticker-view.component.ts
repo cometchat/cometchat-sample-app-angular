@@ -2,11 +2,11 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
-  selector: "sticker-view",
-  templateUrl: "./sticker-view.component.html",
-  styleUrls: ["./sticker-view.component.css"],
+  selector: "cometchat-sticker-view",
+  templateUrl: "./cometchat-sticker-view.component.html",
+  styleUrls: ["./cometchat-sticker-view.component.css"],
 })
-export class StickerViewComponent implements OnInit {
+export class CometchatStickerViewComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   decoratorMessage: string = "Loading...";

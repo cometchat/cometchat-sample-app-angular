@@ -14,10 +14,10 @@
     [replyPreview]="replyPreview"
     (actionGenerated)="actionHandler($event)"
   ></cometchat-reply-preview>
-  <sticker-view
+  <cometchat-sticker-view
     (actionGenerated)="actionHandler($event)"
     *ngIf="stickerViewer"
-  ></sticker-view>
+  ></cometchat-sticker-view>
   <div class="blockedUserPopup" *ngIf="userBlocked">
     <p>You have blocked this contact</p>
     <p>
