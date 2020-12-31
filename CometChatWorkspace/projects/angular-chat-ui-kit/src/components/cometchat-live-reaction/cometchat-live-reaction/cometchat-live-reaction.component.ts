@@ -8,9 +8,9 @@ import {
   animate,
 } from "@angular/animations";
 @Component({
-  selector: "live-reaction",
-  templateUrl: "./live-reaction.component.html",
-  styleUrls: ["./live-reaction.component.css"],
+  selector: "cometchat-live-reaction",
+  templateUrl: "./cometchat-live-reaction.component.html",
+  styleUrls: ["./cometchat-live-reaction.component.css"],
   animations: [
     trigger("FadeInFadeOut", [
       state(
@@ -30,7 +30,7 @@ import {
     ]),
   ],
 })
-export class LiveReactionComponent implements OnInit {
+export class CometchatLiveReactionComponent implements OnInit {
   @Input() reactionName = null;
   counter;
   verticalSpeed;

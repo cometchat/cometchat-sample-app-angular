@@ -4,7 +4,7 @@ import { CometchatMessageListScreenComponent } from "./cometchat-message-list-sc
 import { MessageHeaderModule } from "../message-header/message-header.module";
 import { MessageListModule } from "../message-list/message-list.module";
 import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
-import { LiveReactionModule } from "../live-reaction/live-reaction.module";
+import { CometchatLiveReactionModule } from "../cometchat-live-reaction/cometchat-live-reaction.module";
 
 @NgModule({
   declarations: [CometchatMessageListScreenComponent],
@@ -13,7 +13,7 @@ import { LiveReactionModule } from "../live-reaction/live-reaction.module";
     MessageHeaderModule,
     CometchatMessageComposerModule,
     MessageListModule,
-    LiveReactionModule,
+    CometchatLiveReactionModule,
   ],
   exports: [CometchatMessageListScreenComponent],
 })
