@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import { CometChatManager } from "../../utils/controller";
 @Component({
-  selector: "comet-chat-user-info-screen",
-  templateUrl: "./comet-chat-user-info-screen.component.html",
-  styleUrls: ["./comet-chat-user-info-screen.component.css"],
+  selector: "cometchat-user-info-screen",
+  templateUrl: "./cometchat-user-info-screen.component.html",
+  styleUrls: ["./cometchat-user-info-screen.component.css"],
 })
-export class CometChatUserInfoScreenComponent implements OnInit {
+export class CometchatUserInfoScreenComponent implements OnInit {
   user;
   name: string;
   constructor() {}
