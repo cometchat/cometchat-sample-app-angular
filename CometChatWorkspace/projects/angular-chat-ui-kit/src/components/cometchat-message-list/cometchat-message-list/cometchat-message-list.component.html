@@ -86,12 +86,12 @@
           <!--CASE FOR VIDEO -->
           <div *ngSwitchCase="'video'">
             <div *ngIf="msg.category !== 'call'">
-              <sender-video-bubble
+              <cometchat-sender-video-bubble
                 *ngIf="msg.sender.uid === loggedInUser.uid"
                 [MessageDetails]="msg"
                 (actionGenerated)="actionHandler($event)"
               >
-              </sender-video-bubble>
+              </cometchat-sender-video-bubble>
               <cometchat-receiver-video-bubble
                 *ngIf="msg.sender.uid !== loggedInUser.uid"
                 [MessageDetails]="msg"

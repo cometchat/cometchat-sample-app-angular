@@ -19,7 +19,7 @@ import { ToolTipModule } from "./tool-tip/tool-tip.module";
 import { CometchatSenderImageBubbleModule } from "./cometchat-sender-image-bubble/cometchat-sender-image-bubble.module";
 import { CometchatReceiverImageBubbleModule } from "./cometchat-receiver-image-bubble/cometchat-receiver-image-bubble.module";
 import { CometchatBackdropModule } from "./cometchat-backdrop/cometchat-backdrop.module";
-import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
+import { CometchatSenderVideoBubbleModule } from "./cometchat-sender-video-bubble/cometchat-sender-video-bubble.module";
 import { CometchatReceiverVideoBubbleModule } from "./cometchat-receiver-video-bubble/cometchat-receiver-video-bubble.module";
 import { CometchatUserDetailModule } from "./cometchat-user-detail/cometchat-user-detail.module";
 import { CometchatSenderAudioBubbleModule } from "./cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.module";
@@ -72,7 +72,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatSenderImageBubbleModule,
     CometchatReceiverImageBubbleModule,
     CometchatBackdropModule,
-    SenderVideoBubbleModule,
+    CometchatSenderVideoBubbleModule,
     CometchatReceiverVideoBubbleModule,
     CometchatSenderAudioBubbleModule,
     CometchatReceiverAudioBubbleModule,
@@ -125,7 +125,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatSenderImageBubbleModule,
     CometchatReceiverImageBubbleModule,
     CometchatBackdropModule,
-    SenderVideoBubbleModule,
+    CometchatSenderVideoBubbleModule,
     CometchatReceiverVideoBubbleModule,
     CometchatSenderAudioBubbleModule,
     CometchatReceiverAudioBubbleModule,
