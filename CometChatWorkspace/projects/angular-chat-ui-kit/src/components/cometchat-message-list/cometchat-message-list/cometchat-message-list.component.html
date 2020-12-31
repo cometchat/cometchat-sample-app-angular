@@ -92,12 +92,12 @@
                 (actionGenerated)="actionHandler($event)"
               >
               </sender-video-bubble>
-              <receiver-video-bubble
+              <cometchat-receiver-video-bubble
                 *ngIf="msg.sender.uid !== loggedInUser.uid"
                 [MessageDetails]="msg"
                 (actionGenerated)="actionHandler($event)"
               >
-              </receiver-video-bubble>
+              </cometchat-receiver-video-bubble>
             </div>
           </div>
           <!--CASE FOR VIDEO ENDS -->

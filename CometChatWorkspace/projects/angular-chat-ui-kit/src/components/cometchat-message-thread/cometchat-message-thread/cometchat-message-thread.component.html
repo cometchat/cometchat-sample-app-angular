@@ -91,12 +91,12 @@
 
         <!-- CASE FOR VIDEO -->
         <div *ngSwitchCase="'video'">
-          <receiver-video-bubble
+          <cometchat-receiver-video-bubble
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             (actionGenerated)="actionHandler($event)"
-          ></receiver-video-bubble>
+          ></cometchat-receiver-video-bubble>
 
           <sender-video-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
