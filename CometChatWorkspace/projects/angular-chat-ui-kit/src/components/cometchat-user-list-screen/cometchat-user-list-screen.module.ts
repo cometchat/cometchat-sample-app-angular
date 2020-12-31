@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CometchatUserListScreenComponent } from "./cometchat-user-list-screen/cometchat-user-list-screen.component";
-import { CometChatUserContactListModule } from "../comet-chat-user-list/comet-chat-user-contact-list.module";
+import { CometchatUserListModule } from "../cometchat-user-list/cometchat-user-list.module";
 import { CometchatMessageListScreenModule } from "../cometchat-message-list-screen/cometchat-message-list-screen.module";
 import { MessageThreadModule } from "../message-thread/message-thread.module";
 import { ImageViewModule } from "../image-view/image-view.module";
@@ -13,7 +13,7 @@ import { CometchatCallScreenModule } from "../cometchat-call-screen/call-screen.
   declarations: [CometchatUserListScreenComponent],
   imports: [
     CommonModule,
-    CometChatUserContactListModule,
+    CometchatUserListModule,
     CometchatMessageListScreenModule,
     MessageThreadModule,
     ImageViewModule,

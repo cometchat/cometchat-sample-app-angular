@@ -1,9 +1,9 @@
 <div class="userScreenStyle">
   <div class="userScreenSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
-    <comet-chat-user-list
+    <cometchat-user-list
       [item]="item"
       (onUserClick)="userClicked($event)"
-    ></comet-chat-user-list>
+    ></cometchat-user-list>
   </div>
   <!-- Render this Chat Screen only if a user or a group is clicked -->
   <div

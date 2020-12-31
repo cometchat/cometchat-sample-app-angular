@@ -11,11 +11,11 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 @Component({
-  selector: "comet-chat-user-list",
-  templateUrl: "./comet-chat-user-contact-list.component.html",
-  styleUrls: ["./comet-chat-user-contact-list.component.css"],
+  selector: "cometchat-user-list",
+  templateUrl: "./cometchat-user-list.component.html",
+  styleUrls: ["./cometchat-user-list.component.css"],
 })
-export class CometChatUserContactListComponent
+export class CometchatUserListComponent
   implements OnInit, OnDestroy, OnChanges {
   @Input() friendsOnly = false;
   @Input() hasActions = false;
