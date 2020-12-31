@@ -9,11 +9,11 @@ import {
 } from "@angular/core";
 import * as enums from "../../utils/enums";
 @Component({
-  selector: "comet-chat-user-detail",
-  templateUrl: "./comet-chat-user-detail.component.html",
-  styleUrls: ["./comet-chat-user-detail.component.css"],
+  selector: "cometchat-user-detail",
+  templateUrl: "./cometchat-user-detail.component.html",
+  styleUrls: ["./cometchat-user-detail.component.css"],
 })
-export class CometChatUserDetailComponent implements OnInit, OnChanges {
+export class CometchatUserDetailComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

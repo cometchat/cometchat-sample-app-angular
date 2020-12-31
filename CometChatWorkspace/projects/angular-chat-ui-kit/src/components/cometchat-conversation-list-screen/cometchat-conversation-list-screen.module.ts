@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { CometchatConversationListScreenComponent } from "./cometchat-conversation-list-screen/cometchat-conversation-list-screen.component";
 import { CometchatConversationListModule } from "../cometchat-conversation-list/cometchat-conversation-list.module";
 import { CometchatMessageListScreenModule } from "../cometchat-message-list-screen/cometchat-message-list-screen.module";
-import { CometChatUserDetailModule } from "../comet-chat-user-detail/comet-chat-user-detail.module";
+import { CometchatUserDetailModule } from "../cometchat-user-detail/cometchat-user-detail.module";
 import { MessageThreadModule } from "../message-thread/message-thread.module";
 import { ImageViewModule } from "../image-view/image-view.module";
 import { CometchatGroupDetailModule } from "../cometchat-group-detail/cometchat-group-detail.module";
@@ -16,7 +16,7 @@ import { CometchatCallScreenModule } from "../cometchat-call-screen/call-screen.
     CommonModule,
     CometchatConversationListModule,
     CometchatMessageListScreenModule,
-    CometChatUserDetailModule,
+    CometchatUserDetailModule,
     CometchatGroupDetailModule,
     MessageThreadModule,
     ImageViewModule,

@@ -21,7 +21,7 @@ import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-imag
 import { CometchatBackdropModule } from "./cometchat-backdrop/cometchat-backdrop.module";
 import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-video-bubble.module";
-import { CometChatUserDetailModule } from "./comet-chat-user-detail/comet-chat-user-detail.module";
+import { CometchatUserDetailModule } from "./cometchat-user-detail/cometchat-user-detail.module";
 import { SenderAudioBubbleModule } from "./sender-audio-bubble/sender-audio-bubble.module";
 import { ReceiverAudioBubbleModule } from "./receiver-audio-bubble/receiver-audio-bubble.module";
 import { DeletedMessageBubbleModule } from "./deleted-message-bubble/deleted-message-bubble.module";
@@ -76,7 +76,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     ReceiverVideoBubbleModule,
     SenderAudioBubbleModule,
     ReceiverAudioBubbleModule,
-    CometChatUserDetailModule,
+    CometchatUserDetailModule,
     DeletedMessageBubbleModule,
     ReplyPreviewModule,
     ReplyCountModule,
@@ -129,7 +129,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     ReceiverVideoBubbleModule,
     SenderAudioBubbleModule,
     ReceiverAudioBubbleModule,
-    CometChatUserDetailModule,
+    CometchatUserDetailModule,
     DeletedMessageBubbleModule,
     ReplyPreviewModule,
     ReplyCountModule,
