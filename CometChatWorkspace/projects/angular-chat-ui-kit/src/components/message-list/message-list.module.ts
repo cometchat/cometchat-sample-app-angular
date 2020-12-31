@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MessageListComponent } from "./message-list/message-list.component";
-import { CometChatSenderMessageBubbleModule } from "../comet-chat-sender-message-bubble/comet-chat-sender-message-bubble.module";
+import { CometchatSenderMessageBubbleModule } from "../cometchat-sender-message-bubble/cometchat-sender-message-bubble.module";
 import { CometchatReceiverMessageBubbleModule } from "../cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
 import { SenderFileBubbleModule } from "../sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "../receiver-file-bubble/receiver-file-bubble.module";
@@ -23,7 +23,7 @@ import { DatePipe } from "@angular/common";
   declarations: [MessageListComponent],
   imports: [
     CommonModule,
-    CometChatSenderMessageBubbleModule,
+    CometchatSenderMessageBubbleModule,
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     SenderImageBubbleModule,

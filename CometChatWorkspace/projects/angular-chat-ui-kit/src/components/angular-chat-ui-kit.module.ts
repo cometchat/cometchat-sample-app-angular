@@ -7,7 +7,7 @@ import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/come
 import { MessageHeaderModule } from "./message-header/message-header.module";
 import { CometchatMessageListScreenModule } from "./cometchat-message-list-screen/cometchat-message-list-screen.module";
 import { CometchatMessageComposerModule } from "./cometchat-message-composer/cometchat-message-composer.module";
-import { CometChatSenderMessageBubbleModule } from "./comet-chat-sender-message-bubble/comet-chat-sender-message-bubble.module";
+import { CometchatSenderMessageBubbleModule } from "./cometchat-sender-message-bubble/cometchat-sender-message-bubble.module";
 import { CometchatReceiverMessageBubbleModule } from "./cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
 import { MessageListModule } from "./message-list/message-list.module";
 import { ReadRecieptModule } from "./read-reciept/read-reciept.module";
@@ -60,7 +60,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatUserListScreenModule,
     MessageHeaderModule,
     CometchatMessageComposerModule,
-    CometChatSenderMessageBubbleModule,
+    CometchatSenderMessageBubbleModule,
     CometchatReceiverMessageBubbleModule,
     MessageListModule,
     ReadRecieptModule,
@@ -114,7 +114,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     MessageHeaderModule,
     CometchatMessageListScreenModule,
     CometchatMessageComposerModule,
-    CometChatSenderMessageBubbleModule,
+    CometchatSenderMessageBubbleModule,
     CometchatReceiverMessageBubbleModule,
     MessageListModule,
     ReadRecieptModule,
