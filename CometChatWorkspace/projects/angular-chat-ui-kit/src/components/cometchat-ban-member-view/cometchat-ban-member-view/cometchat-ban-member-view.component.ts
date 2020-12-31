@@ -4,11 +4,11 @@ import { BAN_ICON } from "../../resources/icons/banIcon";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "ban-member-view",
-  templateUrl: "./ban-member-view.component.html",
-  styleUrls: ["./ban-member-view.component.css"],
+  selector: "cometchat-ban-member-view",
+  templateUrl: "./cometchat-ban-member-view.component.html",
+  styleUrls: ["./cometchat-ban-member-view.component.css"],
 })
-export class BanMemberViewComponent implements OnInit {
+export class CometchatBanMemberViewComponent implements OnInit {
   @Input() item = null;
   @Input() member = null;
   @Input() loggedInUser = null;

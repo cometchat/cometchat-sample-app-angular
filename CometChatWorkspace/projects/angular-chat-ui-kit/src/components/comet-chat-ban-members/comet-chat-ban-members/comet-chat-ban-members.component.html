@@ -24,13 +24,13 @@
         </caption>
         <tbody class="tableBodyStyle" (scroll)="handleScroll($event)">
           <!--banned members-->
-          <ban-member-view
+          <cometchat-ban-member-view
             *ngFor="let member of bannedmemberlist"
             [member]="member"
             [item]="item"
             (actionGenerated)="actionHandler($event)"
           >
-          </ban-member-view>
+          </cometchat-ban-member-view>
         </tbody>
       </table>
     </div>
