@@ -22,11 +22,11 @@
     [reactionName]="reactionName"
     *ngIf="liveReaction"
   ></live-reaction>
-  <comet-chat-message-composer
+  <cometchat-message-composer
     [item]="item"
     [type]="type"
     [replyPreview]="replyPreview"
     [messageToBeEdited]="messageToBeEdited"
     (actionGenerated)="actionHandler($event)"
-  ></comet-chat-message-composer>
+  ></cometchat-message-composer>
 </div>

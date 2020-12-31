@@ -24,9 +24,9 @@ import {
 
 import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSound";
 @Component({
-  selector: "comet-chat-message-composer",
-  templateUrl: "./comet-chat-message-composer.component.html",
-  styleUrls: ["./comet-chat-message-composer.component.css"],
+  selector: "cometchat-message-composer",
+  templateUrl: "./cometchat-message-composer.component.html",
+  styleUrls: ["./cometchat-message-composer.component.css"],
   animations: [
     trigger("FadeInFadeOut", [
       state(
@@ -52,7 +52,7 @@ import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSou
     ]),
   ],
 })
-export class CometChatMessageComposerComponent implements OnInit, OnChanges {
+export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   @Input() parentMessageId = null;
 
   // can be user or a group

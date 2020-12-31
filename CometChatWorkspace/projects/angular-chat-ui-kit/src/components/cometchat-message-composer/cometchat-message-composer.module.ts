@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometChatMessageComposerComponent } from "./comet-chat-message-composer/comet-chat-message-composer.component";
+import { CometchatMessageComposerComponent } from "./cometchat-message-composer/cometchat-message-composer.component";
 import { ReplyPreviewModule } from "../reply-preview/reply-preview.module";
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { StickerViewModule } from "../sticker-view/sticker-view.module";
 import { CreatePollViewModule } from "../create-poll-view/create-poll-view.module";
 @NgModule({
-  declarations: [CometChatMessageComposerComponent],
+  declarations: [CometchatMessageComposerComponent],
   imports: [
     CommonModule,
     ReplyPreviewModule,
@@ -14,6 +14,6 @@ import { CreatePollViewModule } from "../create-poll-view/create-poll-view.modul
     StickerViewModule,
     CreatePollViewModule,
   ],
-  exports: [CometChatMessageComposerComponent],
+  exports: [CometchatMessageComposerComponent],
 })
-export class CometChatMessageComposerModule {}
+export class CometchatMessageComposerModule {}

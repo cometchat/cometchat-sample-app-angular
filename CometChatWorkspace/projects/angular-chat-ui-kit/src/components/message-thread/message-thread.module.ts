@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { MessageThreadComponent } from "./message-thread/message-thread.component";
 import { CometChatSenderMessageBubbleModule } from "../comet-chat-sender-message-bubble/comet-chat-sender-message-bubble.module";
 import { MessageListModule } from "../message-list/message-list.module";
-import { CometChatMessageComposerModule } from "../comet-chat-message-composer/comet-chat-message-composer.module";
+import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
 import { CometChatReceiverMessageBubbleModule } from "../comet-chat-receiver-message-bubble/comet-chat-receiver-message-bubble.module";
 import { SenderFileBubbleModule } from "../sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "../receiver-file-bubble/receiver-file-bubble.module";
@@ -31,7 +31,7 @@ import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     MessageListModule,
-    CometChatMessageComposerModule,
+    CometchatMessageComposerModule,
     SenderStickerBubbleModule,
     ReceiverStickerBubbleModule,
   ],
