@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "image-view",
-  templateUrl: "./image-view.component.html",
-  styleUrls: ["./image-view.component.css"],
+  selector: "cometchat-image-view",
+  templateUrl: "./cometchat-image-view.component.html",
+  styleUrls: ["./cometchat-image-view.component.css"],
 })
-export class ImageViewComponent implements OnInit {
+export class CometchatImageViewComponent implements OnInit {
   @Input() MessageDetails;
   @Input() open;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

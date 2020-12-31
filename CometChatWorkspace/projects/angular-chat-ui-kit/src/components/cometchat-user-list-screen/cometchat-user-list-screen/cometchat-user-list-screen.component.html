@@ -57,10 +57,10 @@
     [outgoingCall]="outgoingCall"
     (actionGenerated)="actionHandler($event)"
   ></cometchat-call-screen>
-  <image-view
+  <cometchat-image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"
     [open]="true"
     (actionGenerated)="actionHandler($event)"
-  ></image-view>
+  ></cometchat-image-view>
 </div>

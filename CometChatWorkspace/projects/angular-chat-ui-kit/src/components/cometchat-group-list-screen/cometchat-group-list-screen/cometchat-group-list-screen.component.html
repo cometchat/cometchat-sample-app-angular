@@ -48,12 +48,12 @@
       (actionGenerated)="actionHandler($event)"
     ></cometchat-group-detail>
   </div>
-  <image-view
+  <cometchat-image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"
     [open]="true"
     (actionGenerated)="actionHandler($event)"
-  ></image-view>
+  ></cometchat-image-view>
   <cometchat-call-alert
     (actionGenerated)="actionHandler($event)"
   ></cometchat-call-alert>
