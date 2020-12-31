@@ -7,11 +7,11 @@ import { KICK_ICON } from "../../resources/icons/kickIcon";
 import { RIGHT_TICK_ICON } from "../../resources/icons/rightTickIcon";
 import { CLOSE_ICON } from "../../resources/icons/closeIcon";
 @Component({
-  selector: "member-view",
-  templateUrl: "./member-view.component.html",
-  styleUrls: ["./member-view.component.css"],
+  selector: "cometchat-member-view",
+  templateUrl: "./cometchat-member-view.component.html",
+  styleUrls: ["./cometchat-member-view.component.css"],
 })
-export class MemberViewComponent implements OnInit {
+export class CometchatMemberViewComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() member = null;

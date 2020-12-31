@@ -35,7 +35,7 @@ import { CometchatCreateGroupModule } from "./cometchat-create-group/cometchat-c
 import { CometchatGroupListScreenModule } from "./cometchat-group-list-screen/cometchat-group-list-screen.module";
 import { CometchatGroupDetailModule } from "./cometchat-group-detail/cometchat-group-detail.module";
 import { CometchatViewMembersModule } from "./cometchat-view-members/cometchat-view-members.module";
-import { MemberViewModule } from "./member-view/member-view.module";
+import { CometchatMemberViewModule } from "./cometchat-member-view/cometchat-member-view.module";
 import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add-members.module";
 import { CometchatBanMembersModule } from "./cometchat-ban-members/cometchat-ban-members.module";
 import { CometchatBanMemberViewModule } from "./cometchat-ban-member-view/ban-member-view.module";
@@ -88,7 +88,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatGroupListScreenModule,
     CometchatGroupDetailModule,
     CometchatViewMembersModule,
-    MemberViewModule,
+    CometchatMemberViewModule,
     CometchatAddMembersModule,
     CometchatBanMembersModule,
     CometchatBanMemberViewModule,
@@ -141,7 +141,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatGroupListScreenModule,
     CometchatGroupDetailModule,
     CometchatViewMembersModule,
-    MemberViewModule,
+    CometchatMemberViewModule,
     CometchatAddMembersModule,
     CometchatBanMembersModule,
     CometchatBanMemberViewModule,
