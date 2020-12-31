@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 
 @Component({
-  selector: "nav-bar",
-  templateUrl: "./nav-bar.component.html",
-  styleUrls: ["./nav-bar.component.css"],
+  selector: "cometchat-nav-bar",
+  templateUrl: "./cometchat-nav-bar.component.html",
+  styleUrls: ["./cometchat-nav-bar.component.css"],
 })
-export class NavBarComponent implements OnInit {
+export class CometchatNavBarComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() lastMessage;

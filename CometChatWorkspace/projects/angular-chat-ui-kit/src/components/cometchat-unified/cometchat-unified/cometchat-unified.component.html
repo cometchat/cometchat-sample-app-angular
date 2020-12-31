@@ -1,6 +1,6 @@
 <div class="unifiedStyle">
   <div class="unifiedSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
-    <nav-bar
+    <cometchat-nav-bar
       [item]="item"
       [type]="type"
       [groupToUpdate]="groupToUpdate"
@@ -8,7 +8,7 @@
       [groupToDelete]="groupToDelete"
       [lastMessage]="lastMessage"
       (onUserClick)="userClicked($event)"
-    ></nav-bar>
+    ></cometchat-nav-bar>
   </div>
   <div
     class="unifiedMainStyle"
