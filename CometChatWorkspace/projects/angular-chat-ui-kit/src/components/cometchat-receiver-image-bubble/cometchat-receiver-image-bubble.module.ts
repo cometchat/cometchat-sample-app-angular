@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CometchatReceiverImageBubbleComponent } from "./cometchat-receiver-image-bubble/cometchat-receiver-image-bubble.component";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
-import { ReplyCountModule } from "../reply-count/reply-count.module";
+import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
 import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 
 @NgModule({
@@ -11,7 +11,7 @@ import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.modu
     CommonModule,
     ToolTipModule,
     CometchatAvatarModule,
-    ReplyCountModule,
+    CometchatReplyCountModule,
   ],
   exports: [CometchatReceiverImageBubbleComponent],
 })

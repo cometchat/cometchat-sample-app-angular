@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "reply-count",
-  templateUrl: "./reply-count.component.html",
-  styleUrls: ["./reply-count.component.css"],
+  selector: "cometchat-reply-count",
+  templateUrl: "./cometchat-reply-count.component.html",
+  styleUrls: ["./cometchat-reply-count.component.css"],
 })
-export class ReplyCountComponent implements OnInit {
+export class CometchatReplyCountComponent implements OnInit {
   @Input() MessageDetails = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 

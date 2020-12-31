@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { SenderPollBubbleComponent } from "./sender-poll-bubble/sender-poll-bubble.component";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
-import { ReplyCountModule } from "../reply-count/reply-count.module";
+import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
 
 @NgModule({
   declarations: [SenderPollBubbleComponent],
@@ -11,7 +11,7 @@ import { ReplyCountModule } from "../reply-count/reply-count.module";
     CommonModule,
     ToolTipModule,
     CometchatReadRecieptModule,
-    ReplyCountModule,
+    CometchatReplyCountModule,
   ],
   exports: [SenderPollBubbleComponent],
 })

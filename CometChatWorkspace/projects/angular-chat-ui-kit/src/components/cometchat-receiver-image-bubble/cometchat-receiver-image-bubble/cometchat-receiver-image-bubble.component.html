@@ -36,12 +36,12 @@
           {{ getTime() }}
         </span>
         <!--ReplyCount-->
-        <reply-count
+        <cometchat-reply-count
           *ngIf="showReplyCount"
           [MessageDetails]="MessageDetails"
           (actionGenerated)="actionHandler($event)"
         >
-        </reply-count>
+        </cometchat-reply-count>
       </div>
     </div>
   </div>

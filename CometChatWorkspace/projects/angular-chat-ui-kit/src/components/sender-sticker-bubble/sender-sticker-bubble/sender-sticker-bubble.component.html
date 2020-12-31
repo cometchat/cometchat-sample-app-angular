@@ -12,12 +12,12 @@
     </div>
   </div>
   <div class="messageInfoWrapperStyle">
-    <reply-count
+    <cometchat-reply-count
       *ngIf="showReplyCount"
       [MessageDetails]="MessageDetails"
       (actionGenerated)="actionHandler($event)"
     >
-    </reply-count>
+    </cometchat-reply-count>
     <cometchat-read-reciept
       [MessageDetails]="MessageDetails"
     ></cometchat-read-reciept>
