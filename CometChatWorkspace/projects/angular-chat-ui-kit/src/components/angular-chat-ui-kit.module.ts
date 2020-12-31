@@ -31,7 +31,7 @@ import { SharedMediaViewModule } from "./shared-media-view/shared-media-view.mod
 import { CometchatConversationListScreenModule } from "./cometchat-conversation-list-screen/cometchat-conversation-list-screen.module";
 import { CometChatGroupListModule } from "./comet-chat-group-list/comet-chat-group-list.module";
 import { GroupViewModule } from "./group-view/group-view.module";
-import { CometChatCreateGroupModule } from "./comet-chat-create-group/comet-chat-create-group.module";
+import { CometchatCreateGroupModule } from "./cometchat-create-group/cometchat-create-group.module";
 import { CometchatGroupListScreenModule } from "./cometchat-group-list-screen/cometchat-group-list-screen.module";
 import { CometchatGroupDetailModule } from "./cometchat-group-detail/cometchat-group-detail.module";
 import { CometchatViewMembersModule } from "./cometchat-view-members/cometchat-view-members.module";
@@ -84,7 +84,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatConversationListScreenModule,
     CometChatGroupListModule,
     GroupViewModule,
-    CometChatCreateGroupModule,
+    CometchatCreateGroupModule,
     CometchatGroupListScreenModule,
     CometchatGroupDetailModule,
     CometchatViewMembersModule,
@@ -137,7 +137,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     CometchatConversationListScreenModule,
     CometChatGroupListModule,
     GroupViewModule,
-    CometChatCreateGroupModule,
+    CometchatCreateGroupModule,
     CometchatGroupListScreenModule,
     CometchatGroupDetailModule,
     CometchatViewMembersModule,

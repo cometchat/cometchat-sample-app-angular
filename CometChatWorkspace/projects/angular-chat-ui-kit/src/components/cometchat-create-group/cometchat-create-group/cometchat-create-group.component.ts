@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "comet-chat-create-group",
-  templateUrl: "./comet-chat-create-group.component.html",
-  styleUrls: ["./comet-chat-create-group.component.css"],
+  selector: "cometchat-create-group",
+  templateUrl: "./cometchat-create-group.component.html",
+  styleUrls: ["./cometchat-create-group.component.css"],
 })
-export class CometChatCreateGroupComponent implements OnInit {
+export class CometchatCreateGroupComponent implements OnInit {
   error = null;
   passwordInput: boolean = false;
   name: String = "";
