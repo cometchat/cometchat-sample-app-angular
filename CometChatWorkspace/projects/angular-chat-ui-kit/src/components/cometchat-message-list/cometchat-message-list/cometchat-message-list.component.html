@@ -61,11 +61,11 @@
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             ></sender-file-bubble>
-            <receiver-file-bubble
+            <cometchat-receiver-file-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
-            ></receiver-file-bubble>
+            ></cometchat-receiver-file-bubble>
           </div>
           <!--CASE FOR FILE ENDS-->
           <!--CASE FOR IMAGE -->

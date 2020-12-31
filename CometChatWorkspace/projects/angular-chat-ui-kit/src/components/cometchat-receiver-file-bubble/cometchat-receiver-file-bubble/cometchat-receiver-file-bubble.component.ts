@@ -1,11 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "receiver-file-bubble",
-  templateUrl: "./receiver-file-bubble.component.html",
-  styleUrls: ["./receiver-file-bubble.component.css"],
+  selector: "cometchat-receiver-file-bubble",
+  templateUrl: "./cometchat-receiver-file-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-file-bubble.component.css"],
 })
-export class ReceiverFileBubbleComponent implements OnInit {
+export class CometchatReceiverFileBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   name: string;
   url: string;

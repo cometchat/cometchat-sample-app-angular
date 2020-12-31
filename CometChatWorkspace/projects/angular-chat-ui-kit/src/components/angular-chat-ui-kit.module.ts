@@ -13,7 +13,7 @@ import { CometchatMessageListModule } from "./cometchat-message-list/cometchat-m
 import { CometchatReadRecieptModule } from "./cometchat-read-reciept/cometchat-read-reciept.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SenderFileBubbleModule } from "./sender-file-bubble/sender-file-bubble.module";
-import { ReceiverFileBubbleModule } from "./receiver-file-bubble/receiver-file-bubble.module";
+import { CometchatReceiverFileBubbleModule } from "./cometchat-receiver-file-bubble/cometchat-receiver-file-bubble.module";
 import { CometchatMessageThreadModule } from "./cometchat-message-thread/cometchat-message-thread.module";
 import { ToolTipModule } from "./tool-tip/tool-tip.module";
 import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubble.module";
@@ -66,7 +66,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatReadRecieptModule,
     BrowserAnimationsModule,
     SenderFileBubbleModule,
-    ReceiverFileBubbleModule,
+    CometchatReceiverFileBubbleModule,
     CometchatMessageThreadModule,
     ToolTipModule,
     SenderImageBubbleModule,
@@ -119,7 +119,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatMessageListModule,
     CometchatReadRecieptModule,
     SenderFileBubbleModule,
-    ReceiverFileBubbleModule,
+    CometchatReceiverFileBubbleModule,
     CometchatMessageThreadModule,
     ToolTipModule,
     SenderImageBubbleModule,
