@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReceiverFileBubbleComponent } from "./receiver-file-bubble/receiver-file-bubble.component";
-import { ReadRecieptModule } from "../read-reciept/read-reciept.module";
+import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
 import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 

@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
-  selector: "read-reciept",
-  templateUrl: "./read-reciept.component.html",
-  styleUrls: ["./read-reciept.component.css"],
+  selector: "cometchat-read-reciept",
+  templateUrl: "./cometchat-read-reciept.component.html",
+  styleUrls: ["./cometchat-read-reciept.component.css"],
 })
-export class ReadRecieptComponent implements OnInit {
+export class CometchatReadRecieptComponent implements OnInit {
   @Input() MessageDetails = null;
   msgSent: boolean = false;
   msgRead: boolean = false;

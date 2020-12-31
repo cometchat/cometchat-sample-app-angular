@@ -10,7 +10,7 @@ import { CometchatMessageComposerModule } from "./cometchat-message-composer/com
 import { CometchatSenderMessageBubbleModule } from "./cometchat-sender-message-bubble/cometchat-sender-message-bubble.module";
 import { CometchatReceiverMessageBubbleModule } from "./cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
 import { CometchatMessageListModule } from "./cometchat-message-list/cometchat-message-list.module";
-import { ReadRecieptModule } from "./read-reciept/read-reciept.module";
+import { CometchatReadRecieptModule } from "./cometchat-read-reciept/cometchat-read-reciept.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SenderFileBubbleModule } from "./sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "./receiver-file-bubble/receiver-file-bubble.module";
@@ -63,7 +63,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatSenderMessageBubbleModule,
     CometchatReceiverMessageBubbleModule,
     CometchatMessageListModule,
-    ReadRecieptModule,
+    CometchatReadRecieptModule,
     BrowserAnimationsModule,
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
@@ -117,7 +117,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatSenderMessageBubbleModule,
     CometchatReceiverMessageBubbleModule,
     CometchatMessageListModule,
-    ReadRecieptModule,
+    CometchatReadRecieptModule,
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     CometchatMessageThreadModule,
