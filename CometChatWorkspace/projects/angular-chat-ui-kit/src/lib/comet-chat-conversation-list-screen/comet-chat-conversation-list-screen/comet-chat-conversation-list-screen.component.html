@@ -37,7 +37,12 @@
     class="chatScreenSecondaryStyle"
   >
     <!--IF USER-->
-    <div *ngIf="type === 'user'">
+    <div
+      *ngIf="type === 'user'"
+      [ngClass]="{
+        detailScreenStyle: viewDetailScreen
+      }"
+    >
       <comet-chat-user-detail
         *ngIf="viewDetailScreen"
         [item]="item"

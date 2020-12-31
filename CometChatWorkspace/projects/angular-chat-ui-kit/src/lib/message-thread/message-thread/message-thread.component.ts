@@ -340,6 +340,18 @@ export class MessageThreadComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Sets the text for Reply Count
+   * @param
+   */
+  getReplyCountText(replyCount) {
+    if (replyCount === 1) {
+      return replyCount + " reply";
+    } else if (replyCount > 1) {
+      return replyCount + " replies";
+    }
+  }
+
   scrollToBottomOfChatWindow() {
     setTimeout(() => {
       this.scrollVariable =

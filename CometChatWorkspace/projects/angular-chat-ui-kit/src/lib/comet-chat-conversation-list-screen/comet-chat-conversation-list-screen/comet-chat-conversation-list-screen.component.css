@@ -55,6 +55,10 @@
   order: 3;
 }
 
+.detailScreenStyle {
+  height: 100%;
+}
+
 /** MEDIA TAG*/
 @media (min-width: 320px) and (max-width: 767px) {
   .chatScreenSidebarStyle {

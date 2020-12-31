@@ -3,6 +3,11 @@
   <div class="listWrapperStyle">
     <!--message-->
     <div *ngFor="let msg of messages; let i = index">
+      <div class="messageDateContainerStyle" *ngIf="i === 0">
+        <span class="messageDateStyle">{{
+          msg?.sentAt * 1000 | date: "dd/MM/yyyy"
+        }}</span>
+      </div>
       <div
         class="messageDateContainerStyle"
         *ngIf="

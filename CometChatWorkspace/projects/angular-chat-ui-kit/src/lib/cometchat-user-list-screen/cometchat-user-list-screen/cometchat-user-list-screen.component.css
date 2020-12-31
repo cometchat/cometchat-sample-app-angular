@@ -60,6 +60,9 @@
   flex-direction: column;
   order: 3;
 }
+.detailScreenStyle {
+  height: 100%;
+}
 
 @media (min-width: 320px) and (max-width: 767px) {
   /* Media query for  */

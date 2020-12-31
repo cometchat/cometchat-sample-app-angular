@@ -47,6 +47,7 @@
 
 .sectionStyle {
   width: 100%;
+  height: 100%;
 }
 
 .sectionHeaderStyle {
@@ -93,6 +94,11 @@
 
 .itemDeleteLinkStyle {
   color: #ff3b30;
+}
+
+.sharedMedia {
+  height: 100%;
+  width: 100%;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {

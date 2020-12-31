@@ -3,6 +3,26 @@
   height: calc(100% - 50px);
 }
 
+sectionStyle * {
+  box-sizing: border-box;
+}
+
+.sectionStyle *::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+
+.sectionStyle *::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+.sectionStyle *::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+.sectionStyle *::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
 .sectionHeaderStyle {
   margin: 0;
   width: 100%;
@@ -63,13 +83,13 @@
 }
 
 .mediaItemStyle {
-  /* height: calc(100% - 45px); */
+  height: calc(100% - 45px);
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
-  height: 588px;
+  /* height: 588px; */
   width: auto;
 }
 

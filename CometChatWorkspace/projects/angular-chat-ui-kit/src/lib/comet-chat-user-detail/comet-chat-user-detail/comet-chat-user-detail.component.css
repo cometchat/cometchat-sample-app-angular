@@ -3,8 +3,8 @@
 }
 
 .userDetailStyle {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
   box-sizing: border-box;
 }
@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: flex-start; */
+  align-items: flex-start;
   height: calc(100% - 70px);
 
   /* '&:not(:last-of-type)': {
@@ -91,6 +91,11 @@
   font-weight: 600;
   display: inline-block;
   color: #ff3b30;
+}
+
+.sharedMedia {
+  height: 100%;
+  width: 100%;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
