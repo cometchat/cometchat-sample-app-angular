@@ -71,13 +71,13 @@
 
         <!-- CASE FOR IMAGE -->
         <div *ngSwitchCase="'image'">
-          <receiver-image-bubble
+          <cometchat-receiver-image-bubble
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
-          ></receiver-image-bubble>
+          ></cometchat-receiver-image-bubble>
 
           <sender-image-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"

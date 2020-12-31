@@ -17,7 +17,7 @@ import { CometchatReceiverFileBubbleModule } from "./cometchat-receiver-file-bub
 import { CometchatMessageThreadModule } from "./cometchat-message-thread/cometchat-message-thread.module";
 import { ToolTipModule } from "./tool-tip/tool-tip.module";
 import { SenderImageBubbleModule } from "./sender-image-bubble/sender-image-bubble.module";
-import { ReceiverImageBubbleModule } from "./receiver-image-bubble/receiver-image-bubble.module";
+import { CometchatReceiverImageBubbleModule } from "./cometchat-receiver-image-bubble/cometchat-receiver-image-bubble.module";
 import { CometchatBackdropModule } from "./cometchat-backdrop/cometchat-backdrop.module";
 import { SenderVideoBubbleModule } from "./sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "./receiver-video-bubble/receiver-video-bubble.module";
@@ -70,7 +70,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatMessageThreadModule,
     ToolTipModule,
     SenderImageBubbleModule,
-    ReceiverImageBubbleModule,
+    CometchatReceiverImageBubbleModule,
     CometchatBackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
@@ -123,7 +123,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatMessageThreadModule,
     ToolTipModule,
     SenderImageBubbleModule,
-    ReceiverImageBubbleModule,
+    CometchatReceiverImageBubbleModule,
     CometchatBackdropModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,

@@ -75,12 +75,12 @@
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             ></sender-image-bubble>
-            <receiver-image-bubble
+            <cometchat-receiver-image-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             >
-            </receiver-image-bubble>
+            </cometchat-receiver-image-bubble>
           </div>
           <!--CASE FOR IMAGE  ENDS-->
           <!--CASE FOR VIDEO -->

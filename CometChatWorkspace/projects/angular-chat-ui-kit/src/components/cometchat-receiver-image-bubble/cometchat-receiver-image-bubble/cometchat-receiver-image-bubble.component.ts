@@ -9,11 +9,11 @@ import {
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "receiver-image-bubble",
-  templateUrl: "./receiver-image-bubble.component.html",
-  styleUrls: ["./receiver-image-bubble.component.css"],
+  selector: "cometchat-receiver-image-bubble",
+  templateUrl: "./cometchat-receiver-image-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-image-bubble.component.css"],
 })
-export class ReceiverImageBubbleComponent implements OnInit {
+export class CometchatReceiverImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
