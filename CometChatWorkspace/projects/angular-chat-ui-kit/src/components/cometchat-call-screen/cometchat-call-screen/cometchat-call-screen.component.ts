@@ -15,11 +15,12 @@ import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
 import { OUTGOING_CALL_ALERT } from "../../resources/audio/outgoingCallAlert";
 @Component({
-  selector: "call-screen",
-  templateUrl: "./call-screen.component.html",
-  styleUrls: ["./call-screen.component.css"],
+  selector: "cometchat-call-screen",
+  templateUrl: "./cometchat-call-screen.component.html",
+  styleUrls: ["./cometchat-call-screen.component.css"],
 })
-export class CallScreenComponent implements OnInit, OnChanges, OnDestroy {
+export class CometchatCallScreenComponent
+  implements OnInit, OnChanges, OnDestroy {
   @ViewChild("callScreenFrame", null) callScreenFrame: ElementRef;
 
   @Input() item = null;

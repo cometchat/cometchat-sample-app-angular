@@ -50,13 +50,13 @@
   <cometchat-call-alert
     (actionGenerated)="actionHandler($event)"
   ></cometchat-call-alert>
-  <call-screen
+  <cometchat-call-screen
     [item]="curentItem"
     [type]="type"
     [incomingCall]="incomingCall"
     [outgoingCall]="outgoingCall"
     (actionGenerated)="actionHandler($event)"
-  ></call-screen>
+  ></cometchat-call-screen>
   <image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"
