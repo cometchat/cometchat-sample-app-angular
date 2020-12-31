@@ -27,6 +27,18 @@
     class="userScreenSecondaryStyle"
     *ngIf="threadMessageView || viewDetailScreen"
   >
+    <div
+      [ngClass]="{
+        detailScreenStyle: viewDetailScreen
+      }"
+    >
+      <comet-chat-user-detail
+        *ngIf="viewDetailScreen"
+        [item]="curentItem"
+        [type]="type"
+        (actionGenerated)="actionHandler($event)"
+      ></comet-chat-user-detail>
+    </div>
     <message-thread
       *ngIf="threadMessageView"
       [item]="threadMessageItem"
@@ -34,13 +46,6 @@
       [parentMessage]="threadMessageParent"
       (actionGenerated)="actionHandler($event)"
     ></message-thread>
-
-    <comet-chat-user-detail
-      *ngIf="viewDetailScreen"
-      [item]="curentItem"
-      [type]="type"
-      (actionGenerated)="actionHandler($event)"
-    ></comet-chat-user-detail>
   </div>
   <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
   <call-screen
