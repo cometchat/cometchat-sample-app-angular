@@ -1,11 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "sender-audio-bubble",
-  templateUrl: "./sender-audio-bubble.component.html",
-  styleUrls: ["./sender-audio-bubble.component.css"],
+  selector: "cometchat-sender-audio-bubble",
+  templateUrl: "./cometchat-sender-audio-bubble.component.html",
+  styleUrls: ["./cometchat-sender-audio-bubble.component.css"],
 })
-export class SenderAudioBubbleComponent implements OnInit {
+export class CometchatSenderAudioBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
 

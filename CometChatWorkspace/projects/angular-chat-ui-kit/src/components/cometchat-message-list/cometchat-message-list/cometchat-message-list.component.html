@@ -105,12 +105,12 @@
           <!--CASE FOR AUDIO -->
           <div *ngSwitchCase="'audio'">
             <div *ngIf="msg.category !== 'call'">
-              <sender-audio-bubble
+              <cometchat-sender-audio-bubble
                 *ngIf="msg.sender.uid === loggedInUser.uid"
                 [MessageDetails]="msg"
                 (actionGenerated)="actionHandler($event)"
               >
-              </sender-audio-bubble>
+              </cometchat-sender-audio-bubble>
               <cometchat-receiver-audio-bubble
                 *ngIf="msg.sender.uid !== loggedInUser.uid"
                 [MessageDetails]="msg"
