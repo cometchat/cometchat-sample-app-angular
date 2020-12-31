@@ -14,11 +14,11 @@ import { CometChatManager } from "../../utils/controller";
 import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
 
 @Component({
-  selector: "comet-chat-conversation-list",
-  templateUrl: "./comet-chat-conversation-list.component.html",
-  styleUrls: ["./comet-chat-conversation-list.component.css"],
+  selector: "cometchat-conversation-list",
+  templateUrl: "./cometchat-conversation-list.component.html",
+  styleUrls: ["./cometchat-conversation-list.component.css"],
 })
-export class CometChatConversationListComponent implements OnInit, OnChanges {
+export class CometchatConversationListComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() lastMessage;

@@ -1,11 +1,11 @@
 <div class="listStyle">
   <div *ngIf="displayConversationList" class="listDisplayStyle">
-    <comet-chat-conversation-list
+    <cometchat-conversation-list
       (onUserClick)="userClicked($event)"
       [item]="item"
       [lastMessage]="lastMessage"
       [type]="type"
-    ></comet-chat-conversation-list>
+    ></cometchat-conversation-list>
   </div>
 
   <div *ngIf="displayGroupList" class="listDisplayStyle">

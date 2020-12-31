@@ -4,7 +4,7 @@ import { NavBarComponent } from "./nav-bar/nav-bar.component";
 import { CometChatUserInfoScreenModule } from "../comet-chat-user-info-screen/comet-chat-user-info-screen.module";
 import { CometChatUserContactListModule } from "../comet-chat-user-list/comet-chat-user-contact-list.module";
 import { CometChatGroupListModule } from "../comet-chat-group-list/comet-chat-group-list.module";
-import { CometChatConversationListModule } from "../comet-chat-conversation-list/comet-chat-conversation-list.module";
+import { CometchatConversationListModule } from "../cometchat-conversation-list/cometchat-conversation-list.module";
 
 @NgModule({
   declarations: [NavBarComponent],
@@ -13,7 +13,7 @@ import { CometChatConversationListModule } from "../comet-chat-conversation-list
     CometChatUserInfoScreenModule,
     CometChatUserContactListModule,
     CometChatGroupListModule,
-    CometChatConversationListModule,
+    CometchatConversationListModule,
   ],
   exports: [NavBarComponent],
 })

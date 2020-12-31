@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { AngularChatUiKitComponent } from "./angular-chat-ui-kit.component";
 import { CometchatAvatarModule } from "./cometchat-avatar/cometchat-avatar.module";
 import { CometChatUserContactListModule } from "./comet-chat-user-list/comet-chat-user-contact-list.module";
-import { CometChatConversationListModule } from "./comet-chat-conversation-list/comet-chat-conversation-list.module";
+import { CometchatConversationListModule } from "./cometchat-conversation-list/cometchat-conversation-list.module";
 import { CometchatUserListScreenModule } from "./cometchat-user-list-screen/cometchat-user-list-screen.module";
 import { MessageHeaderModule } from "./message-header/message-header.module";
 import { CometchatMessageListScreenModule } from "./cometchat-message-list-screen/cometchat-message-list-screen.module";
@@ -37,7 +37,7 @@ import { CometchatGroupDetailModule } from "./cometchat-group-detail/cometchat-g
 import { CometchatViewMembersModule } from "./cometchat-view-members/cometchat-view-members.module";
 import { MemberViewModule } from "./member-view/member-view.module";
 import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add-members.module";
-import { CometchatBanMembersModule } from "./cometchat-ban-members/comet-chat-ban-members.module";
+import { CometchatBanMembersModule } from "./cometchat-ban-members/cometchat-ban-members.module";
 import { CometchatBanMemberViewModule } from "./cometchat-ban-member-view/ban-member-view.module";
 import { CreatePollViewModule } from "./create-poll-view/create-poll-view.module";
 import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
@@ -56,7 +56,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
   imports: [
     CometChatUserContactListModule,
     CometchatAvatarModule,
-    CometChatConversationListModule,
+    CometchatConversationListModule,
     CometchatUserListScreenModule,
     MessageHeaderModule,
     CometChatMessageComposerModule,
@@ -109,7 +109,7 @@ import { NavBarModule } from "./nav-bar/nav-bar.module";
     AngularChatUiKitComponent,
     CometChatUserContactListModule,
     CometchatAvatarModule,
-    CometChatConversationListModule,
+    CometchatConversationListModule,
     CometchatUserListScreenModule,
     MessageHeaderModule,
     CometchatMessageListScreenModule,

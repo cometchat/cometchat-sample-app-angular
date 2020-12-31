@@ -1,6 +1,6 @@
 <div class="chatScreenStyle">
   <div class="chatScreenSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
-    <comet-chat-conversation-list
+    <cometchat-conversation-list
       (onUserClick)="userClicked($event)"
       [item]="curentItem"
       [lastMessage]="lastMessage"
@@ -8,7 +8,7 @@
       [groupToUpdate]="groupToUpdate"
       [groupToLeave]="groupToLeave"
       [groupToDelete]="groupToDelete"
-    ></comet-chat-conversation-list>
+    ></cometchat-conversation-list>
   </div>
   <div
     class="chatScreenMainStyle"
