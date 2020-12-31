@@ -11,11 +11,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "conversation-view",
-  templateUrl: "./conversation-view.component.html",
-  styleUrls: ["./conversation-view.component.css"],
+  selector: "cometchat-conversation-view",
+  templateUrl: "./cometchat-conversation-view.component.html",
+  styleUrls: ["./cometchat-conversation-view.component.css"],
 })
-export class ConversationViewComponent implements OnInit, OnChanges {
+export class CometchatConversationViewComponent implements OnInit, OnChanges {
   @Input() ConversationDetails = null;
   @Input() loggedInUser = null;
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();

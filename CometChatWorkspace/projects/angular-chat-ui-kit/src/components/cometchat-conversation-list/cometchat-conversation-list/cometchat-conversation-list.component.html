@@ -13,12 +13,12 @@
   <div class="chatsListStyle" (scroll)="handleScroll($event)">
     <!--Conversation List-->
     <div *ngFor="let conversation of conversationList">
-      <conversation-view
+      <cometchat-conversation-view
         [ConversationDetails]="conversation"
         [loggedInUser]="loggedInUser"
         (onUserClick)="userClicked($event)"
       >
-      </conversation-view>
+      </cometchat-conversation-view>
     </div>
   </div>
 </div>
