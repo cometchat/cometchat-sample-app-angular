@@ -109,12 +109,12 @@
 
         <!-- CASE FOR AUDIO -->
         <div *ngSwitchCase="'audio'">
-          <receiver-audio-bubble
+          <cometchat-receiver-audio-bubble
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             (actionGenerated)="actionHandler($event)"
-          ></receiver-audio-bubble>
+          ></cometchat-receiver-audio-bubble>
 
           <sender-audio-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"

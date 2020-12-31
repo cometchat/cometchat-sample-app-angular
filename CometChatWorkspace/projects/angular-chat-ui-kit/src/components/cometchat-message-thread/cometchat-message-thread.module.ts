@@ -12,7 +12,7 @@ import { ReceiverImageBubbleModule } from "../receiver-image-bubble/receiver-ima
 import { SenderVideoBubbleModule } from "../sender-video-bubble/sender-video-bubble.module";
 import { ReceiverVideoBubbleModule } from "../receiver-video-bubble/receiver-video-bubble.module";
 import { SenderAudioBubbleModule } from "../sender-audio-bubble/sender-audio-bubble.module";
-import { ReceiverAudioBubbleModule } from "../receiver-audio-bubble/receiver-audio-bubble.module";
+import { CometchatReceiverAudioBubbleModule } from "../cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.module";
 import { SenderStickerBubbleModule } from "../sender-sticker-bubble/sender-sticker-bubble.module";
 import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver-sticker-bubble.module";
 
@@ -27,7 +27,7 @@ import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver
     SenderImageBubbleModule,
     ReceiverImageBubbleModule,
     SenderAudioBubbleModule,
-    ReceiverAudioBubbleModule,
+    CometchatReceiverAudioBubbleModule,
     SenderVideoBubbleModule,
     ReceiverVideoBubbleModule,
     CometchatMessageListModule,

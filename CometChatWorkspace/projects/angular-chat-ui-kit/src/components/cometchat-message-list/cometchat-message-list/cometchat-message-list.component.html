@@ -111,12 +111,12 @@
                 (actionGenerated)="actionHandler($event)"
               >
               </sender-audio-bubble>
-              <receiver-audio-bubble
+              <cometchat-receiver-audio-bubble
                 *ngIf="msg.sender.uid !== loggedInUser.uid"
                 [MessageDetails]="msg"
                 (actionGenerated)="actionHandler($event)"
               >
-              </receiver-audio-bubble>
+              </cometchat-receiver-audio-bubble>
             </div>
           </div>
           <!--CASE FOR AUDIO ENDS -->
