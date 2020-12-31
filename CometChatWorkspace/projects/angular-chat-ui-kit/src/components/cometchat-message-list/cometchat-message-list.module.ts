@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { CometchatMessageListComponent } from "./cometchat-message-list/cometchat-message-list.component";
 import { CometchatSenderMessageBubbleModule } from "../cometchat-sender-message-bubble/cometchat-sender-message-bubble.module";
 import { CometchatReceiverMessageBubbleModule } from "../cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
-import { SenderFileBubbleModule } from "../sender-file-bubble/sender-file-bubble.module";
+import { CometchatSenderFileBubbleModule } from "../cometchat-sender-file-bubble/cometchat-sender-file-bubble.module";
 import { CometchatReceiverFileBubbleModule } from "../cometchat-receiver-file-bubble/cometchat-receiver-file-bubble.module";
 import { SenderImageBubbleModule } from "../sender-image-bubble/sender-image-bubble.module";
 import { CometchatReceiverImageBubbleModule } from "../cometchat-receiver-image-bubble/cometchat-receiver-image-bubble.module";
@@ -24,7 +24,7 @@ import { DatePipe } from "@angular/common";
   imports: [
     CommonModule,
     CometchatSenderMessageBubbleModule,
-    SenderFileBubbleModule,
+    CometchatSenderFileBubbleModule,
     CometchatReceiverFileBubbleModule,
     SenderImageBubbleModule,
     CometchatReceiverImageBubbleModule,

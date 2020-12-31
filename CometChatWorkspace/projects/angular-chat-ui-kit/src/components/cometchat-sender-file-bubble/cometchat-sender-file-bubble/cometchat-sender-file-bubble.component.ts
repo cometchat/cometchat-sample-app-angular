@@ -1,11 +1,11 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "sender-file-bubble",
-  templateUrl: "./sender-file-bubble.component.html",
-  styleUrls: ["./sender-file-bubble.component.css"],
+  selector: "cometchat-sender-file-bubble",
+  templateUrl: "./cometchat-sender-file-bubble.component.html",
+  styleUrls: ["./cometchat-sender-file-bubble.component.css"],
 })
-export class SenderFileBubbleComponent implements OnInit {
+export class CometchatSenderFileBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

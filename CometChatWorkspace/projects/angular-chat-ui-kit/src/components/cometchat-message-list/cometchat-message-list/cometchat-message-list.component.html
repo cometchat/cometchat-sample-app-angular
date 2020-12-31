@@ -56,11 +56,11 @@
           <!--CASE FOR TEXT ENDS -->
           <!--CASE FOR FILE-->
           <div *ngSwitchCase="'file'">
-            <sender-file-bubble
+            <cometchat-sender-file-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
-            ></sender-file-bubble>
+            ></cometchat-sender-file-bubble>
             <cometchat-receiver-file-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"
