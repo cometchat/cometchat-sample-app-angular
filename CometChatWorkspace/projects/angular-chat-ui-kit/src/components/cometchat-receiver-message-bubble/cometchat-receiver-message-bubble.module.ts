@@ -1,18 +1,18 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometChatReceiverMessageBubbleComponent } from "./comet-chat-receiver-message-bubble/comet-chat-receiver-message-bubble.component";
+import { CometchatReceiverMessageBubbleComponent } from "./cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.component";
 import { ToolTipModule } from "../tool-tip/tool-tip.module";
 import { ReplyCountModule } from "../reply-count/reply-count.module";
 import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 
 @NgModule({
-  declarations: [CometChatReceiverMessageBubbleComponent],
+  declarations: [CometchatReceiverMessageBubbleComponent],
   imports: [
     CommonModule,
     ToolTipModule,
     ReplyCountModule,
     CometchatAvatarModule,
   ],
-  exports: [CometChatReceiverMessageBubbleComponent],
+  exports: [CometchatReceiverMessageBubbleComponent],
 })
-export class CometChatReceiverMessageBubbleModule {}
+export class CometchatReceiverMessageBubbleModule {}

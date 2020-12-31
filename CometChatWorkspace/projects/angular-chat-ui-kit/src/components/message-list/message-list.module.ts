@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MessageListComponent } from "./message-list/message-list.component";
 import { CometChatSenderMessageBubbleModule } from "../comet-chat-sender-message-bubble/comet-chat-sender-message-bubble.module";
-import { CometChatReceiverMessageBubbleModule } from "../comet-chat-receiver-message-bubble/comet-chat-receiver-message-bubble.module";
+import { CometchatReceiverMessageBubbleModule } from "../cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
 import { SenderFileBubbleModule } from "../sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "../receiver-file-bubble/receiver-file-bubble.module";
 import { SenderImageBubbleModule } from "../sender-image-bubble/sender-image-bubble.module";
@@ -32,7 +32,7 @@ import { DatePipe } from "@angular/common";
     ReceiverVideoBubbleModule,
     SenderAudioBubbleModule,
     ReceiverAudioBubbleModule,
-    CometChatReceiverMessageBubbleModule,
+    CometchatReceiverMessageBubbleModule,
     DeletedMessageBubbleModule,
     SenderPollBubbleModule,
     ReceiverPollBubbleModule,

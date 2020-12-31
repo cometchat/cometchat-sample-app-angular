@@ -40,13 +40,13 @@
         <div [ngSwitch]="msg.type">
           <!-- CASE FOR TEXT -->
           <div *ngSwitchCase="'text'">
-            <comet-chat-receiver-message-bubble
+            <cometchat-receiver-message-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [item]="item"
               [type]="type"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
-            ></comet-chat-receiver-message-bubble>
+            ></cometchat-receiver-message-bubble>
             <comet-chat-sender-message-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"

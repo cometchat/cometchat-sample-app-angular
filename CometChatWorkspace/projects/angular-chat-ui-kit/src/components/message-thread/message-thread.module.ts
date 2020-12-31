@@ -4,7 +4,7 @@ import { MessageThreadComponent } from "./message-thread/message-thread.componen
 import { CometChatSenderMessageBubbleModule } from "../comet-chat-sender-message-bubble/comet-chat-sender-message-bubble.module";
 import { MessageListModule } from "../message-list/message-list.module";
 import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
-import { CometChatReceiverMessageBubbleModule } from "../comet-chat-receiver-message-bubble/comet-chat-receiver-message-bubble.module";
+import { CometchatReceiverMessageBubbleModule } from "../cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
 import { SenderFileBubbleModule } from "../sender-file-bubble/sender-file-bubble.module";
 import { ReceiverFileBubbleModule } from "../receiver-file-bubble/receiver-file-bubble.module";
 import { SenderImageBubbleModule } from "../sender-image-bubble/sender-image-bubble.module";
@@ -21,7 +21,7 @@ import { ReceiverStickerBubbleModule } from "../receiver-sticker-bubble/receiver
   imports: [
     CommonModule,
     CometChatSenderMessageBubbleModule,
-    CometChatReceiverMessageBubbleModule,
+    CometchatReceiverMessageBubbleModule,
     SenderFileBubbleModule,
     ReceiverFileBubbleModule,
     SenderImageBubbleModule,
