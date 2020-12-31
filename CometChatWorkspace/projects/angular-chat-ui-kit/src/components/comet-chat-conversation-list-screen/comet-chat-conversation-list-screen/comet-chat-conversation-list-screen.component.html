@@ -82,7 +82,9 @@
     (actionGenerated)="actionHandler($event)"
   ></image-view>
 
-  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <cometchat-call-alert
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-call-alert>
   <call-screen
     [item]="item"
     [type]="type"

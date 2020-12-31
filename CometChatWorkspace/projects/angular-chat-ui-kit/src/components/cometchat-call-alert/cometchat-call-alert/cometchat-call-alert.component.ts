@@ -6,9 +6,9 @@ import { INCOMING_CALL_ALERT } from "../../resources/audio/incomingCallAlert";
 import { trigger, style, transition, animate } from "@angular/animations";
 
 @Component({
-  selector: "call-alert",
-  templateUrl: "./call-alert.component.html",
-  styleUrls: ["./call-alert.component.css"],
+  selector: "cometchat-call-alert",
+  templateUrl: "./cometchat-call-alert.component.html",
+  styleUrls: ["./cometchat-call-alert.component.css"],
   animations: [
     trigger("slideInOut", [
       transition(":enter", [
@@ -18,7 +18,7 @@ import { trigger, style, transition, animate } from "@angular/animations";
     ]),
   ],
 })
-export class CallAlertComponent implements OnInit {
+export class CometchatCallAlertComponent implements OnInit {
   incomingCall = null;
   callInProgress = null;
   callListenerId = "incoming_call_" + new Date().getTime();

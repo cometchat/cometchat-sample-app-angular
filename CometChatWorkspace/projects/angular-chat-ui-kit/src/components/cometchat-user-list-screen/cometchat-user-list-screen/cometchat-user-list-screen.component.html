@@ -47,7 +47,9 @@
       (actionGenerated)="actionHandler($event)"
     ></message-thread>
   </div>
-  <call-alert (actionGenerated)="actionHandler($event)"></call-alert>
+  <cometchat-call-alert
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-call-alert>
   <call-screen
     [item]="curentItem"
     [type]="type"
