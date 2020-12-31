@@ -1,11 +1,11 @@
 <div class="messageContainerStyle">
   <!--ToolTip Component-->
-  <tool-tip
+  <cometchat-tool-tip
     class="tool"
     *ngIf="showToolTip"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
-  ></tool-tip>
+  ></cometchat-tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageTxtWrapperStyle" *ngIf="linkPreview === false">
       <p class="messageTxtStyle message__txt">

@@ -1,11 +1,11 @@
 <div class="messageContainerStyle">
   <!--ToolTip-->
-  <tool-tip
+  <cometchat-tool-tip
     class="tool"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
     *ngIf="showToolTip"
-  ></tool-tip>
+  ></cometchat-tool-tip>
   <div class="messageWrapperStyle">
     <div class="messageVideoWrapperStyle">
       <video controls>
