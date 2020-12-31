@@ -22,14 +22,14 @@
         </caption>
 
         <tbody class="tableBodyStyle" (scroll)="handleScroll($event)">
-          <add-member-view
+          <cometchat-add-member-view
             *ngFor="let user of filteredlist"
             [item]="item"
             [type]="type"
             [user]="user"
             [members]="memberlist"
             (actionGenerated)="actionHandler($event)"
-          ></add-member-view>
+          ></cometchat-add-member-view>
         </tbody>
 
         <tfoot class="tableFootStyle">

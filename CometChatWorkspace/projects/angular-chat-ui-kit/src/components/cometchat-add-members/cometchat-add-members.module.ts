@@ -2,11 +2,11 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CometchatAddMembersComponent } from "./cometchat-add-members/cometchat-add-members.component";
 import { BackdropModule } from "../backdrop/backdrop.module";
-import { AddMemberViewModule } from "../add-member-view/add-member-view.module";
+import { CometchatAddMemberViewModule } from "../cometchat-add-member-view/cometchat-add-member-view.module";
 
 @NgModule({
   declarations: [CometchatAddMembersComponent],
-  imports: [CommonModule, BackdropModule, AddMemberViewModule],
+  imports: [CommonModule, BackdropModule, CometchatAddMemberViewModule],
   exports: [CometchatAddMembersComponent],
 })
 export class CometchatAddMembersModule {}
