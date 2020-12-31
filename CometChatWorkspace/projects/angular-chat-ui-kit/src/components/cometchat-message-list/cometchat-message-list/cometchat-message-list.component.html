@@ -130,12 +130,12 @@
           <!--CASE FOR Action Messages -->
           <!--CASE FOR STICKER -->
           <div *ngSwitchCase="'extension_sticker'">
-            <sender-sticker-bubble
+            <cometchat-sender-sticker-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             >
-            </sender-sticker-bubble>
+            </cometchat-sender-sticker-bubble>
             <cometchat-receiver-sticker-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"

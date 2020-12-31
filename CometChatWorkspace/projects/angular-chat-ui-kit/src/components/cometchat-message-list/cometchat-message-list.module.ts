@@ -14,7 +14,7 @@ import { CometchatReceiverAudioBubbleModule } from "../cometchat-receiver-audio-
 import { CometchatDeletedMessageBubbleModule } from "../cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.module";
 import { CometchatSenderPollBubbleModule } from "../cometchat-sender-poll-bubble/cometchat-sender-poll-bubble.module";
 import { CometchatReceiverPollBubbleModule } from "../cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble.module";
-import { SenderStickerBubbleModule } from "../sender-sticker-bubble/sender-sticker-bubble.module";
+import { CometchatSenderStickerBubbleModule } from "../cometchat-sender-sticker-bubble/cometchat-sender-sticker-bubble.module";
 import { CometchatReceiverStickerBubbleModule } from "../cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.module";
 import { CometchatCallMessageModule } from "../cometchat-call-message/call-message.module";
 import { DatePipe } from "@angular/common";
@@ -36,7 +36,7 @@ import { DatePipe } from "@angular/common";
     CometchatDeletedMessageBubbleModule,
     CometchatSenderPollBubbleModule,
     CometchatReceiverPollBubbleModule,
-    SenderStickerBubbleModule,
+    CometchatSenderStickerBubbleModule,
     CometchatReceiverStickerBubbleModule,
     CometchatCallMessageModule,
   ],
