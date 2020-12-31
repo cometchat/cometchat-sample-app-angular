@@ -79,13 +79,13 @@
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-image-bubble>
 
-          <sender-image-bubble
+          <cometchat-sender-image-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
-          ></sender-image-bubble>
+          ></cometchat-sender-image-bubble>
         </div>
         <!--CASE FOR IMAGE ENDS -->
 

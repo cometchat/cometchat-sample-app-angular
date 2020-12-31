@@ -70,11 +70,11 @@
           <!--CASE FOR FILE ENDS-->
           <!--CASE FOR IMAGE -->
           <div *ngSwitchCase="'image'">
-            <sender-image-bubble
+            <cometchat-sender-image-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
-            ></sender-image-bubble>
+            ></cometchat-sender-image-bubble>
             <cometchat-receiver-image-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [MessageDetails]="msg"

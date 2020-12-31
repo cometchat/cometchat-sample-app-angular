@@ -8,11 +8,11 @@ import {
 } from "@angular/core";
 import * as enums from "../../utils/enums";
 @Component({
-  selector: "sender-image-bubble",
-  templateUrl: "./sender-image-bubble.component.html",
-  styleUrls: ["./sender-image-bubble.component.css"],
+  selector: "cometchat-sender-image-bubble",
+  templateUrl: "./cometchat-sender-image-bubble.component.html",
+  styleUrls: ["./cometchat-sender-image-bubble.component.css"],
 })
-export class SenderImageBubbleComponent implements OnInit {
+export class CometchatSenderImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
