@@ -14,11 +14,12 @@ import * as enums from "../../utils/enums";
 import { DatePipe } from "@angular/common";
 
 @Component({
-  selector: "message-list",
-  templateUrl: "./message-list.component.html",
-  styleUrls: ["./message-list.component.css"],
+  selector: "cometchat-message-list",
+  templateUrl: "./cometchat-message-list.component.html",
+  styleUrls: ["./cometchat-message-list.component.css"],
 })
-export class MessageListComponent implements OnInit, OnDestroy, OnChanges {
+export class CometchatMessageListComponent
+  implements OnInit, OnDestroy, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessageId = null;

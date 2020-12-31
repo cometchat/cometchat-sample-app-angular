@@ -10,13 +10,13 @@
     (scroll)="handleScroll($event)"
     #messageWindow
   >
-    <message-list
+    <cometchat-message-list
       [item]="item"
       [type]="type"
       [messages]="messageList"
       [reachedTopOfConversation]="reachedTopOfConversation"
       (actionGenerated)="actionHandler($event)"
-    ></message-list>
+    ></cometchat-message-list>
   </div>
   <cometchat-live-reaction
     [reactionName]="reactionName"

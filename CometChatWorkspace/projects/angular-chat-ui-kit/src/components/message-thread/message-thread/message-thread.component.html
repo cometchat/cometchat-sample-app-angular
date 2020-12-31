@@ -139,14 +139,14 @@
       #messageWindow
       [scrollTop]="scrollVariable"
     >
-      <message-list
+      <cometchat-message-list
         [item]="item"
         [type]="type"
         [parentMessageId]="parentMessage?.id"
         [messages]="messageList"
         [reachedTopOfConversation]="reachedTopOfConversation"
         (actionGenerated)="actionHandler($event)"
-      ></message-list>
+      ></cometchat-message-list>
     </div>
 
     <cometchat-message-composer
