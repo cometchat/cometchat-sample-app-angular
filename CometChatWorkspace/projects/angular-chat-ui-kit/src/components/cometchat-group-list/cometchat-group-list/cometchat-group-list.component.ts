@@ -13,11 +13,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 
 @Component({
-  selector: "comet-chat-group-list",
-  templateUrl: "./comet-chat-group-list.component.html",
-  styleUrls: ["./comet-chat-group-list.component.css"],
+  selector: "cometchat-group-list",
+  templateUrl: "./cometchat-group-list.component.html",
+  styleUrls: ["./cometchat-group-list.component.css"],
 })
-export class CometChatGroupListComponent
+export class CometchatGroupListComponent
   implements OnInit, OnDestroy, OnChanges {
   @Input() enableSelectedGroupStyling = false;
   @Input() groupToUpdate = null;

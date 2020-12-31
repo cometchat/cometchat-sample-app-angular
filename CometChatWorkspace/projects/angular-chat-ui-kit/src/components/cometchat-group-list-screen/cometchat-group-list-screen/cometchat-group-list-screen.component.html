@@ -1,13 +1,13 @@
 <div class="groupScreenStyle">
   <div class="groupScreenSidebarStyle" [@FadeInFadeOut]="checkAnimatedState">
     <!-- Group List left side bar -->
-    <comet-chat-group-list
+    <cometchat-group-list
       [enableSelectedGroupStyling]="true"
       [groupToUpdate]="groupToUpdate"
       [groupToLeave]="groupToLeave"
       [groupToDelete]="groupToDelete"
       (onGroupClick)="groupClicked($event)"
-    ></comet-chat-group-list>
+    ></cometchat-group-list>
   </div>
 
   <div
