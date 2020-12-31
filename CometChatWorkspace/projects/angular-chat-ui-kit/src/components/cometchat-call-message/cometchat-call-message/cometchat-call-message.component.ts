@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 
 @Component({
-  selector: "call-message",
-  templateUrl: "./call-message.component.html",
-  styleUrls: ["./call-message.component.css"],
+  selector: "cometchat-call-message",
+  templateUrl: "./cometchat-call-message.component.html",
+  styleUrls: ["./cometchat-call-message.component.css"],
 })
-export class CallMessageComponent implements OnInit {
+export class CometchatCallMessageComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() loggedInUserUid;
   message;
