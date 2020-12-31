@@ -40,7 +40,7 @@ import { CometchatAddMembersModule } from "./cometchat-add-members/cometchat-add
 import { CometchatBanMembersModule } from "./cometchat-ban-members/cometchat-ban-members.module";
 import { CometchatBanMemberViewModule } from "./cometchat-ban-member-view/ban-member-view.module";
 import { CometchatCreatePollViewModule } from "./cometchat-create-poll-view/cometchat-create-poll-view.module";
-import { SenderPollBubbleModule } from "./sender-poll-bubble/sender-poll-bubble.module";
+import { CometchatSenderPollBubbleModule } from "./cometchat-sender-poll-bubble/cometchat-sender-poll-bubble.module";
 import { CometchatReceiverPollBubbleModule } from "./cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble.module";
 import { CometchatLiveReactionModule } from "./cometchat-live-reaction/cometchat-live-reaction.module";
 import { StickerViewModule } from "./sticker-view/sticker-view.module";
@@ -93,7 +93,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatBanMembersModule,
     CometchatBanMemberViewModule,
     CometchatCreatePollViewModule,
-    SenderPollBubbleModule,
+    CometchatSenderPollBubbleModule,
     CometchatReceiverPollBubbleModule,
     CometchatLiveReactionModule,
     StickerViewModule,
@@ -146,7 +146,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatBanMembersModule,
     CometchatBanMemberViewModule,
     CometchatCreatePollViewModule,
-    SenderPollBubbleModule,
+    CometchatSenderPollBubbleModule,
     CometchatReceiverPollBubbleModule,
     CometchatLiveReactionModule,
     StickerViewModule,

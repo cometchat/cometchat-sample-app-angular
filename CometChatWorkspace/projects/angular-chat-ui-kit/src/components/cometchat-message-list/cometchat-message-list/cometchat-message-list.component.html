@@ -147,12 +147,12 @@
 
           <!--CASE FOR POLLS -->
           <div *ngSwitchCase="'extension_poll'">
-            <sender-poll-bubble
+            <cometchat-sender-poll-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
               (actionGenerated)="actionHandler($event)"
             >
-            </sender-poll-bubble>
+            </cometchat-sender-poll-bubble>
             <cometchat-receiver-poll-bubble
               *ngIf="msg.sender.uid !== loggedInUser.uid"
               [loggedInUserUid]="loggedInUser.uid"
