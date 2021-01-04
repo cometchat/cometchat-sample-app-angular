@@ -11,6 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-group-list",
@@ -144,7 +145,7 @@ export class CometchatGroupListComponent
           this.grouplist = groups;
 
           if (groups.length === 0) {
-            this.decoratorMessage = "No groups found";
+            this.decoratorMessage = STRING_MESSAGES.NO_GROUPS_FOUND;
           }
         }
       }
@@ -265,7 +266,7 @@ export class CometchatGroupListComponent
   }
 
   getGroups = () => {
-    this.decoratorMessage = "Loading...";
+    this.decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
 
     CometChat.getLoggedinUser()
       .then((user) => {
@@ -273,7 +274,7 @@ export class CometchatGroupListComponent
         this.fetchNextGroups()
           .then((groupList) => {
             if (groupList.length === 0) {
-              this.decoratorMessage = "No groups found";
+              this.decoratorMessage = STRING_MESSAGES.NO_GROUPS_FOUND;
             }
 
             console.log(
@@ -289,11 +290,11 @@ export class CometchatGroupListComponent
             this.decoratorMessage = "";
 
             if (this.grouplist.length === 0) {
-              this.decoratorMessage = "No groups found";
+              this.decoratorMessage = STRING_MESSAGES.NO_GROUPS_FOUND;
             }
           })
           .catch((error) => {
-            this.decoratorMessage = "Error";
+            this.decoratorMessage = STRING_MESSAGES.ERROR;
             console.error(
               "[CometChatGroupList] getGroups fetchNextGroups error",
               error
@@ -301,7 +302,7 @@ export class CometchatGroupListComponent
           });
       })
       .catch((error) => {
-        this.decoratorMessage = "Error";
+        this.decoratorMessage = STRING_MESSAGES.ERROR;
         console.log(
           "[CometChatGroupList] getUsers getLoggedInUser error",
           error
