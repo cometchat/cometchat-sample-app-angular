@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-reply-count",
@@ -17,9 +18,9 @@ export class CometchatReplyCountComponent implements OnInit {
   ngOnInit() {
     let replyCount = this.getReplyCount();
     if (replyCount === 1) {
-      this.reply = replyCount + " reply";
+      this.reply = replyCount + " " + STRING_MESSAGES.REPLY;
     } else if (replyCount > 1) {
-      this.reply = replyCount + " replies";
+      this.reply = replyCount + " " + STRING_MESSAGES.REPLIES;
     }
   }
   /**
