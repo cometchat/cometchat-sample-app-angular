@@ -53,11 +53,6 @@ export class CometchatReceiverMessageBubbleComponent implements OnInit {
             this.linkDescription = linkObject.description;
             this.linkUrl = linkObject.url;
             this.linkImage = linkObject.image;
-            console.log("sender link obj ", linkObject);
-            console.log(this.linkTitle !== "");
-
-            console.log("sender link url ", this.linkUrl);
-
             const pattern = /(http:|https:)?\/\/(www\.)?(youtube.com|youtu.be)(\S+)?/;
             const linkText = linkObject["url"].match(pattern)
               ? "View on Youtube"
@@ -70,27 +65,11 @@ export class CometchatReceiverMessageBubbleComponent implements OnInit {
     }
   }
 
-  getTime() {
-    let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    return timeStamp;
-  }
-
-  toggleToolTip() {
-    //console.log("toggle tool tip");
-    //this.showToolTip = !this.showToolTip;
-  }
-
   /**
    * Handles all the actions emitted by the child components that make the current component
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

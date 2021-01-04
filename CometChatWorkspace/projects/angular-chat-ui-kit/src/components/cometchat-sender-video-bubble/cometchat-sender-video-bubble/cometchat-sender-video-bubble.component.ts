@@ -8,6 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class CometchatSenderVideoBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() showReplyCount = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   //Sets Video Url to be displayed
   videoUrl: string;
@@ -33,7 +34,6 @@ export class CometchatSenderVideoBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

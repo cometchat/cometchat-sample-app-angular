@@ -10,6 +10,8 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { DatePipe } from "@angular/common";
+
 @Component({
   selector: "cometchat-message-header",
   templateUrl: "./cometchat-message-header.component.html",
@@ -32,10 +34,10 @@ export class CometchatMessageHeaderComponent
   //displays audio and video call options
   checkNotBlocked: boolean = true;
 
-  constructor() {}
+  constructor(public datepipe: DatePipe) {}
 
   ngOnChanges(change: SimpleChanges) {
-    console.log("Message Header --> ngOnChanges -->  ", change);
+    // console.log("Message Header --> ngOnChanges -->  ", change);
 
     if (change["item"]) {
       //Check if user is blocked/unblocked
@@ -112,13 +114,13 @@ export class CometchatMessageHeaderComponent
       new CometChat.UserListener({
         onUserOnline: (onlineUser) => {
           /* when someuser/friend comes online, user will be received here */
-          console.log("Message Header --> user came online ", onlineUser);
+          // console.log("Message Header --> user came online ", onlineUser);
 
           this.updateHeader(enums.USER_ONLINE, onlineUser);
         },
         onUserOffline: (offlineUser) => {
           /* when someuser/friend went offline, user will be received here */
-          console.log("Message Header --> user Went offline ", offlineUser);
+          // console.log("Message Header --> user Went offline ", offlineUser);
           this.updateHeader(enums.USER_OFFLINE, offlineUser);
         },
       })
@@ -128,7 +130,7 @@ export class CometchatMessageHeaderComponent
       this.msgListenerId,
       new CometChat.MessageListener({
         onTypingStarted: (typingIndicator) => {
-          console.log("Message Header --> Current Friend Stated Typing");
+          // console.log("Message Header --> Current Friend Stated Typing");
           this.updateHeader(enums.TYPING_STARTED, typingIndicator);
         },
         onTypingEnded: (typingIndicator) => {
@@ -225,7 +227,7 @@ export class CometchatMessageHeaderComponent
         ) {
           this.status = item.sender.name + " is typing...";
           this.actionGenerated.emit({
-            type: "showReaction",
+            type: enums.SHOW_REACTION,
             payLoad: item,
           });
         } else if (
@@ -236,7 +238,7 @@ export class CometchatMessageHeaderComponent
           this.isTyping = true;
           this.status = "typing...";
           this.actionGenerated.emit({
-            type: "showReaction",
+            type: enums.SHOW_REACTION,
             payLoad: item,
           });
         }
@@ -252,7 +254,7 @@ export class CometchatMessageHeaderComponent
 
           // this.setStatusForGroup();
           this.actionGenerated.emit({
-            type: "stopReaction",
+            type: enums.STOP_REACTION,
             payLoad: item,
           });
         } else if (
@@ -261,14 +263,14 @@ export class CometchatMessageHeaderComponent
           this.item.uid === item.sender.uid
         ) {
           if (this.item.status === "online") {
-            console.log("typing online");
+            // console.log("typing online");
             this.status = null;
             this.isTyping = false;
           } else {
             this.getDate(item.lastActiveAt);
           }
           this.actionGenerated.emit({
-            type: "stopReaction",
+            type: enums.STOP_REACTION,
             payLoad: item,
           });
         }
@@ -300,17 +302,10 @@ export class CometchatMessageHeaderComponent
       lastActiveDate = "Offline";
       return lastActiveDate;
     }
-
+    date = date * 1000;
     lastActiveDate =
-      lastActiveDate +
-      new Date(date * 1000).toLocaleTimeString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
+      lastActiveDate + this.datepipe.transform(date, "dd MMMM yyyy, h:mm a");
+
     // console.log("z->>>>>> ", lastActiveDate);
     return lastActiveDate;
   }

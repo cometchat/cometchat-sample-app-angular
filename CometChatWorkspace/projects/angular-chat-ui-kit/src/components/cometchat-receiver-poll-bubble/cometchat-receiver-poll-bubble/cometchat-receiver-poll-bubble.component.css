@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  float: left;
 }
 
 .messageContainerStyle:hover > .tool {
@@ -204,6 +205,7 @@
 .messageInfoWrapperStyle {
   align-self: flex-start;
   padding: "3px 5px";
+  display: inherit;
 }
 
 .messageTimestampStyle {

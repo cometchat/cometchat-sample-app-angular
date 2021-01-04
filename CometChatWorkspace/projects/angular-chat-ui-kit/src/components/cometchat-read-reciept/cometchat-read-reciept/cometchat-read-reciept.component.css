@@ -1,7 +1,11 @@
 .recieptContainer {
   width: 68px;
-  display: flex;
-  align-items: flex-end;
+  /* display: flex;
+  align-items: flex-end; */
+}
+
+.recieptContainerSecondaryStyle {
+  width: 50px;
 }
 
 .msgTimestampStyle {
@@ -10,6 +14,9 @@
   font-weight: 500;
   line-height: 12px;
   text-transform: uppercase;
+}
+.msgTimestampSecondaryStyle {
+  color: rgba(20, 20, 20, 0.6);
 }
 
 .tick {

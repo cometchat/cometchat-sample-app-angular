@@ -13,6 +13,23 @@
   box-sizing: border-box;
 }
 
+.wrapperStyle * {
+  box-sizing: border-box;
+}
+.wrapperStyle *::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+.wrapperStyle *::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+.wrapperStyle *::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+.wrapperStyle *::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
 .headerStyle {
   padding: 10px 10px;
   width: 100%;
