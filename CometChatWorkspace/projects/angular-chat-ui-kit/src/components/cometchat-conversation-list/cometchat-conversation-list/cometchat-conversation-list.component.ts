@@ -45,6 +45,8 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
   groupListenerId = "chatlist_group_" + new Date().getTime();
   callListenerId = "chatlist_call_" + new Date().getTime();
 
+  CHATS: String = STRING_MESSAGES.CHATS;
+
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
       if (!this.ref["destroyed"]) {
