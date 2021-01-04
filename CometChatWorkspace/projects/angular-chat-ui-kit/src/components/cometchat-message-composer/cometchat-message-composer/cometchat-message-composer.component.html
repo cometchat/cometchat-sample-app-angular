@@ -5,7 +5,7 @@
     [@slideInOut]
   >
     <div class="previewHeadingStyle">
-      <div class="previewTextStyle">Edit message</div>
+      <div class="previewTextStyle">{{ EDIT_MESSAGE }}</div>
       <span class="previewCloseStyle" (click)="closeEditPreview()"></span>
     </div>
     <div>{{ this.messageToBeEdited?.data?.text }}</div>
@@ -32,7 +32,7 @@
       <input
         class="messageInputStyle"
         contenteditable="true"
-        placeholder="Enter your message here"
+        [placeholder]="ENTER_YOUR_MESSAGE_HERE"
         dir="ltr"
         (input)="changeHandler($event)"
         (blur)="endTyping()"
@@ -51,7 +51,7 @@
           </div>
 
           <span
-            title="Attach Video"
+            [title]="ATTACH_VIDEO"
             (click)="getVideo()"
             class="fileItemStyle"
             id="video"
@@ -65,7 +65,7 @@
             />
           </span>
           <span
-            title="Attach Audio"
+            [title]="ATTACH_AUDIO"
             (click)="getAudio()"
             class="fileItemStyle"
             id="audio"
@@ -79,7 +79,7 @@
             />
           </span>
           <span
-            title="Attach Image"
+            [title]="ATTACH_IMAGE"
             (click)="getImage()"
             class="fileItemStyle"
             id="image"
@@ -93,7 +93,7 @@
             />
           </span>
           <span
-            title="Attach File"
+            [title]="ATTACH_FILE"
             (click)="getFile()"
             class="fileItemStyle"
             id="file"
@@ -127,13 +127,13 @@
           >
           <span
             class="emojiButtonStyle"
-            title="Add Emoji"
+            [title]="ADD_EMOJI"
             (click)="toggleEmoji()"
           >
           </span>
           <emoji-mart
             (emojiSelect)="addEmoji($event)"
-            title="Pick your emoji"
+            [title]="PICK_YOUR_EMOJI"
             emoji="point_up"
             *ngIf="emojiToggled"
             [style]="{
