@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-ban-members",
@@ -12,7 +13,7 @@ export class CometchatBanMembersComponent implements OnInit {
   @Input() bannedmemberlist = [];
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
-  decoratorMessage = "Loading...";
+  decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
   displayDecoratorMessage: boolean = true;
   membersToBan = [];
   membersToUnban = [];
@@ -22,7 +23,7 @@ export class CometchatBanMembersComponent implements OnInit {
   ngOnInit() {
     // console.log("BannedmemberList", this.bannedmemberlist);
     if (this.bannedmemberlist.length === 0) {
-      this.decoratorMessage = "No banned members found";
+      this.decoratorMessage = STRING_MESSAGES.NO_BANNED_MEMBERS_FOUND;
     } else if (this.bannedmemberlist.length > 0) {
       this.displayDecoratorMessage = false;
     }
