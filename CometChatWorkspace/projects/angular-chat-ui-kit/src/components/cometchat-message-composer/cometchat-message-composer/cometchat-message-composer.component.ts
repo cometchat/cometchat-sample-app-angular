@@ -60,6 +60,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   @Input() type = null;
   @Input() messageToBeEdited = null;
   @Input() replyPreview = null;
+  @Input() messageToReact = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -99,6 +100,15 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       //edit message only if its not null or undefined
       if (change["messageToBeEdited"].currentValue) {
         this.openEditPreview();
+      }
+    }
+    if (change["messageToReact"]) {
+      const previousMessage = change["messageToReact"].previousValue;
+      const currentMessage = change["messageToReact"].currentValue;
+      if (previousMessage !== currentMessage) {
+        this.messageToReact = change["messageToReact"].currentValue;
+        // console.log("message composer reaction changed", this.messageToReact);
+        this.toggleEmoji();
       }
     }
   }
@@ -528,6 +538,10 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
    * @param
    */
   addEmoji($event) {
+    if (this.messageToReact) {
+      this.reactToMessages($event.emoji);
+      return;
+    }
     this.senddisable = true;
     this.reactdisable = false;
     let emoji = $event.emoji.native;
@@ -719,5 +733,23 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       return false;
     }
     this.emojiToggled = !this.emojiToggled;
+  }
+
+  reactToMessages(emoji) {
+    CometChat.callExtension("reactions", "POST", "v1/react", {
+      msgId: this.messageToReact.id,
+      emoji: emoji.colons,
+    })
+      .then((response) => {
+        if (
+          response.hasOwnProperty("success") &&
+          response["success"] === true
+        ) {
+          this.toggleEmoji();
+        }
+      })
+      .catch((error) => {
+        // Some error occured
+      });
   }
 }
