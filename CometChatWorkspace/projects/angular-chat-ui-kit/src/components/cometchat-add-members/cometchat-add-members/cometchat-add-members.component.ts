@@ -30,6 +30,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
   membersToRemove = [];
   filteredlist = [];
   timeout;
+  addBtnText: String = STRING_MESSAGES.ADD;
 
   membersRequest = null;
   userListenerId = "userlist_" + new Date().getTime();
@@ -244,6 +245,12 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
    * @param
    */
   updateMembers = () => {
+    if (this.addBtnText == STRING_MESSAGES.ADDING_MESSSAGE) {
+      return;
+    }
+
+    this.addBtnText = STRING_MESSAGES.ADDING_MESSSAGE;
+
     const guid = this.item.guid;
     const membersList = [];
 
@@ -284,6 +291,9 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
         })
         .catch((error) => {
           console.log("addMembersToGroup failed with exception:", error);
+        })
+        .finally(() => {
+          this.addBtnText = STRING_MESSAGES.ADD;
         });
     }
   };
