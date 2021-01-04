@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 @Component({
   selector: "cometchat-view-members",
   templateUrl: "./cometchat-view-members.component.html",
@@ -13,6 +14,11 @@ export class CometchatViewMembersComponent implements OnInit {
   @Input() memberlist = [];
 
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
+  NAME: String = STRING_MESSAGES.NAME;
+  SCOPE: String = STRING_MESSAGES.SCOPE;
+  GROUP_MEMBERS: String = STRING_MESSAGES.GROUP_MEMBERS;
+  BAN: String = STRING_MESSAGES.BAN;
+  KICK: String = STRING_MESSAGES.KICK;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
