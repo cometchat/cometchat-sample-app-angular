@@ -620,30 +620,25 @@ export class CometchatMessageListComponent
    */
   messageEdited = (message) => {
     if (
-      message.category === enums.CATEGORY_CUSTOM &&
-      message.type === enums.CUSTOM_TYPE_POLL
+      this.type === "group" &&
+      message.getReceiverType() === "group" &&
+      message.getReceiver().guid === this.item.guid
     ) {
-      if (
-        (this.type === "group" &&
-          message.getReceiverType() === "group" &&
-          message.getReceiver().guid === this.item.guid) ||
-        (this.type === "user" &&
-          message.getReceiverType() === "user" &&
-          message.getReceiver().uid === this.item.uid)
-      ) {
-        this.updateEditedMessage(message);
-      }
-    } else {
-      if (
-        (this.type === "group" &&
-          message.getReceiverType() === "group" &&
-          message.getReceiver().guid === this.item.guid) ||
-        (this.type === "user" &&
-          message.getReceiverType() === "user" &&
-          message.getSender().uid === this.item.uid)
-      ) {
-        this.updateEditedMessage(message);
-      }
+      this.updateEditedMessage(message);
+    } else if (
+      this.type === "user" &&
+      message.getReceiverType() === "user" &&
+      this.loggedInUser.uid === message.getReceiverId() &&
+      message.getSender().uid === this.item.uid
+    ) {
+      this.updateEditedMessage(message);
+    } else if (
+      this.type === "user" &&
+      message.getReceiverType() === "user" &&
+      this.loggedInUser.uid === message.getSender().uid &&
+      message.getReceiverId() === this.item.uid
+    ) {
+      this.updateEditedMessage(message);
     }
   };
 
