@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class CometchatReadRecieptComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() displayReadReciept = true;
   msgSent: boolean = false;
   msgRead: boolean = false;
   msgDeliv: boolean = false;
@@ -21,13 +22,9 @@ export class CometchatReadRecieptComponent implements OnInit {
    */
   getTime() {
     let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    // console.log("time is ", timeStamp);
-    return timeStamp;
+    msgSentAt = msgSentAt * 1000;
+
+    return msgSentAt;
   }
   /**
    * Get Read/Deliv/Sent Status
