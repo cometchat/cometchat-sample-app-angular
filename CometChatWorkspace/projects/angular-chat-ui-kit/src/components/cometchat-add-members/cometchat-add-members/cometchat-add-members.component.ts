@@ -35,6 +35,9 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
   membersRequest = null;
   userListenerId = "userlist_" + new Date().getTime();
 
+  CONTACTS: String = STRING_MESSAGES.CONTACTS;
+  SEARCH: String = STRING_MESSAGES.SEARCH;
+
   constructor() {}
 
   ngOnInit() {

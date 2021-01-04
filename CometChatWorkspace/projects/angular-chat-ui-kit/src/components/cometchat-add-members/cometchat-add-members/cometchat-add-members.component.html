@@ -5,14 +5,16 @@
     <div class="modalBodyStyle">
       <table class="modalTableStyle">
         <caption class="tableCaptionStyle">
-          Contacts
+          {{
+            CONTACTS
+          }}
         </caption>
         <caption class="tableSearchStyle">
           <input
             class="searchInputStyle"
             type="text"
             autoComplete="off"
-            placeholder="Search"
+            [placeholder]="SEARCH"
             (keyup)="searchUsers($event)"
           />
         </caption>
