@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-create-group",
@@ -64,12 +65,12 @@ export class CometchatCreateGroupComponent implements OnInit {
     const groupType = this.type.trim();
 
     if (!groupName) {
-      this.error = enums.GROUP_NAME_BLANK_ERROR;
+      this.error = STRING_MESSAGES.GROUP_NAME_BLANK;
       return false;
     }
 
     if (!groupType) {
-      this.error = enums.GROUP_TYPE_BLANK_ERROR;
+      this.error = STRING_MESSAGES.GROUP_TYPE_BLANK;
 
       return false;
     }
@@ -79,7 +80,7 @@ export class CometchatCreateGroupComponent implements OnInit {
       const password = this.password;
 
       if (!password.length) {
-        this.error = enums.GROUP_PASSWORD_BLANK_ERROR;
+        this.error = STRING_MESSAGES.GROUP_PASSWORD_BLANK;
 
         return false;
       }

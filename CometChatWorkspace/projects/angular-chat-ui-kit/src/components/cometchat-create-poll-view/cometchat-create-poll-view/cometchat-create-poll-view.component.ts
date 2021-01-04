@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 
 import { CometChat } from "@cometchat-pro/chat";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-create-poll-view",
@@ -62,7 +63,7 @@ export class CometchatCreatePollViewComponent implements OnInit {
     console.log("create Poll View --> create poll with below data", values);
 
     if (values.question.trim().length === 0) {
-      this.errorText = "Question cannnot be blank.";
+      this.errorText = STRING_MESSAGES.POLL_QUESTION_BLANK;
       return false;
     }
 
@@ -70,7 +71,7 @@ export class CometchatCreatePollViewComponent implements OnInit {
       values.firstOption.trim().length === 0 ||
       values.secondOption.trim().length === 0
     ) {
-      this.errorText = "Option cannnot be blank.";
+      this.errorText = STRING_MESSAGES.POLL_OPTION_BLANK;
       return false;
     }
 

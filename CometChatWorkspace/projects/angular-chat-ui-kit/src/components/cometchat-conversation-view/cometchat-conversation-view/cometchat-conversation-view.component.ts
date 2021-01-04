@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-conversation-view",
@@ -164,7 +165,7 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
         message = lastMessage.text;
         break;
       case CometChat.MESSAGE_TYPE.MEDIA:
-        message = "Media message";
+        message = STRING_MESSAGES.MEDIA_MESSAGE;
         break;
       case CometChat.MESSAGE_TYPE.IMAGE:
         message = "📷 Image ";

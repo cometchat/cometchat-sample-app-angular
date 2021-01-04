@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-add-members",
@@ -23,7 +24,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
-  decoratorMessage = "Loading...";
+  decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
   userlist = [];
   membersToAdd = [];
   membersToRemove = [];
@@ -128,7 +129,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
 
     let val = e.target.value;
     this.timeout = setTimeout(() => {
-      this.decoratorMessage = "Loading...";
+      this.decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
 
       this.membersRequest = this.createMemberRequest(val);
 
@@ -176,13 +177,13 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
             );
 
             if (this.filteredlist.length === 0) {
-              this.decoratorMessage = "No users found";
+              this.decoratorMessage = STRING_MESSAGES.NO_USERS_FOUND;
             } else {
               this.decoratorMessage = "";
             }
           })
           .catch((error) => {
-            this.decoratorMessage = "Error";
+            this.decoratorMessage = STRING_MESSAGES.ERROR;
             console.error(
               "[CometChatAddMembers] getUsers fetchNext error",
               error
@@ -190,7 +191,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
           });
       })
       .catch((error) => {
-        this.decoratorMessage = "Error";
+        this.decoratorMessage = STRING_MESSAGES.ERROR;
         console.log(
           "[CometChatAddMembers] getUsers getLoggedInUser error",
           error

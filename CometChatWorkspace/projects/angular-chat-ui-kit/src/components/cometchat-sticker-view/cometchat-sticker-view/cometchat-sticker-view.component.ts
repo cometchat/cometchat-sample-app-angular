@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-sticker-view",
@@ -9,7 +10,7 @@ import { CometChat } from "@cometchat-pro/chat";
 export class CometchatStickerViewComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
-  decoratorMessage: string = "Loading...";
+  decoratorMessage: string = STRING_MESSAGES.LOADING_MESSSAGE;
   loading: boolean = true;
   stickerList = [];
   stickerSet = {};
@@ -47,7 +48,7 @@ export class CometchatStickerViewComponent implements OnInit {
         const stickerList = [...defaultStickers, ...customStickers];
 
         if (stickerList.length === 0) {
-          this.decoratorMessage = "No stickers found";
+          this.decoratorMessage = STRING_MESSAGES.NO_STICKERS_FOUND;
         }
 
         const stickerSet = stickerList.reduce((r, sticker, index) => {
@@ -87,7 +88,7 @@ export class CometchatStickerViewComponent implements OnInit {
       .catch((error) => {
         // Some error occured
         console.warn("Error: ", error);
-        this.decoratorMessage = "No stickers found";
+        this.decoratorMessage = STRING_MESSAGES.NO_STICKERS_FOUND;
         this.activeStickerList = [];
         this.stickerSet = {};
       });
