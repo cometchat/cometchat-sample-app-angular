@@ -26,11 +26,6 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(
-      "receiver Poll bubble --> message details ",
-      this.MessageDetails
-    );
-
     this.checkPollExtension();
   }
 
@@ -49,7 +44,7 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
               "extensions"
             ].hasOwnProperty("polls")
           ) {
-            console.log("receiver Poll bubble --> Enable poll extension ");
+            // console.log("receiver Poll bubble --> Enable poll extension ");
             this.isPollExtensionEnabled = true;
             this.setPollExtensionData();
           }
@@ -82,17 +77,10 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
 
       if (this.totalVotes > 0) {
         calculatedPercent = Math.round((vote / this.totalVotes) * 100);
-
-        // console.log(
-        //   `reciver poll bubble --> percentage of ${this.pollExtensionData.options[currentItem]} is ${calculatedPercent} `
-        // );
       }
 
       let selectedByLoggedInUser = false;
       if (optionData.hasOwnProperty("voters")) {
-        console.log(this.loggedInUserUid);
-        console.log(optionData.voters);
-        console.log(optionData.voters.hasOwnProperty(this.loggedInUserUid));
         if (optionData.voters.hasOwnProperty(this.loggedInUserUid)) {
           selectedByLoggedInUser = true;
         }
@@ -108,7 +96,7 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
 
     this.pollOptions = [...optionList];
 
-    console.log(`reciver poll bubble --> option list `, optionList);
+    // console.log(`reciver poll bubble --> option list `, optionList);
   }
 
   /**
@@ -117,18 +105,13 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
    */
   answerPollQuestion(selectedOption) {
     this.selectedOption = selectedOption;
-    console.log(" receiver poll bubble -->> option selected ", selectedOption);
+    // console.log(" receiver poll bubble -->> option selected ", selectedOption);
 
     CometChat.callExtension("polls", "POST", "v1/vote", {
       vote: selectedOption.id,
       id: this.pollId,
     })
       .then((response) => {
-        console.log(
-          " receiver poll bubble -->> poll answered sucessfully ",
-          response
-        );
-
         this.actionGenerated.emit({
           type: "pollAnswered",
           payLoad: response,
@@ -140,25 +123,10 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
   }
 
   /**
-   * gets the time at which the current message was sent
-   * @param
-   */
-  getTime() {
-    let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    return timeStamp;
-  }
-
-  /**
    * Handles all the actions emitted by the child components that make the current component
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Poll Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 
