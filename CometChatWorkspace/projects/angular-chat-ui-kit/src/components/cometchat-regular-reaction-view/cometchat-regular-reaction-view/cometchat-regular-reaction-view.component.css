@@ -1,0 +1,31 @@
+.messageReactionsStyle {
+  font-size: 11px;
+  padding: 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  /* backgroundColor: `${props.theme.backgroundColor.secondary}`; */
+  border-radius: 12px;
+  margin: 4px 4px 0 0;
+  cursor: pointer;
+}
+
+.emojiButtonStyle {
+  outline: 0;
+  border: 0;
+  border-radius: 4px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+}
+.emojiButtonStyle span {
+  height: 20px;
+  width: 20px;
+  /* background: `url(${img}) center center / 20px 19px no-repeat`; */
+}
+
+.reactionCountStyle {
+  /* color: `${props.theme.color.primary}`; */
+  padding: 0 1px 0 3px;
+}
