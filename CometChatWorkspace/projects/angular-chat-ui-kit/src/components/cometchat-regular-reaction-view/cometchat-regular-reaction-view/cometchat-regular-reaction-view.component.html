@@ -1,1 +1,17 @@
-<p>cometchat-regular-reaction-view works!</p>
+<div
+  *ngFor="let reaction of messageReactions"
+  class="messageReactionsStyle"
+  (click)="triggerEmojiClick($event)"
+  [title]="reaction?.reactionTitle"
+>
+  <ngx-emoji
+    [emoji]="reaction?.reactionName"
+    size="16"
+    (click)="reactToMessages(reaction)"
+  ></ngx-emoji>
+  <span class="reactionCountStyle">
+    {{ reaction?.reactionCount }}
+  </span>
+</div>
+
+<!-- <button class="emojiButtonStyle" (click)="sendReaction()"></button> -->
