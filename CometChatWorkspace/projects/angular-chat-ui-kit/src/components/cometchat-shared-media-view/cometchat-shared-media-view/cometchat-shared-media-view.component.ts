@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-shared-media-view",
@@ -35,6 +36,11 @@ export class CometchatSharedMediaViewComponent implements OnInit {
   imageClick: boolean = true;
   videoClick: boolean = false;
   docsClick: boolean = false;
+
+  SHARED_MEDIA: String = STRING_MESSAGES.SHARED_MEDIA;
+  PHOTOS: String = STRING_MESSAGES.PHOTOS;
+  VIDEOS: String = STRING_MESSAGES.VIDEOS;
+  DOCUMENT: String = STRING_MESSAGES.DOCUMENT;
 
   constructor() {}
 
@@ -164,7 +170,7 @@ export class CometchatSharedMediaViewComponent implements OnInit {
             // console.log("SharedMediaView messageList check  ", messageList);
             if (messageList.length === 0) {
               this.checkMediaMessage = true;
-              this.displayMessage = "No records found.";
+              this.displayMessage = STRING_MESSAGES.NO_RECORDS_FOUND;
             }
             if (scrollToBottom) {
               this.messageList = messageList;

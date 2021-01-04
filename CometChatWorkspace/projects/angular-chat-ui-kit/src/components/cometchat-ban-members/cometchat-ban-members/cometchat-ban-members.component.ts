@@ -18,6 +18,11 @@ export class CometchatBanMembersComponent implements OnInit {
   membersToBan = [];
   membersToUnban = [];
 
+  BANNED_MEMBERS: String = STRING_MESSAGES.BANNED_MEMBERS;
+  NAME: String = STRING_MESSAGES.NAME;
+  SCOPE: String = STRING_MESSAGES.SCOPE;
+  UNBAN: String = STRING_MESSAGES.UNBAN;
+
   constructor() {}
 
   ngOnInit() {

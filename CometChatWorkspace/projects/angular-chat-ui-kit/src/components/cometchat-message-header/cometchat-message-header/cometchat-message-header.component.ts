@@ -10,6 +10,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 import { DatePipe } from "@angular/common";
 
 @Component({
@@ -225,7 +226,7 @@ export class CometchatMessageHeaderComponent
           this.type === item.receiverType &&
           this.item.guid === item.receiverId
         ) {
-          this.status = item.sender.name + " is typing...";
+          this.status = item.sender.name + STRING_MESSAGES.IS_TYPING;
           this.actionGenerated.emit({
             type: enums.SHOW_REACTION,
             payLoad: item,
@@ -236,7 +237,7 @@ export class CometchatMessageHeaderComponent
           this.item.uid === item.sender.uid
         ) {
           this.isTyping = true;
-          this.status = "typing...";
+          this.status = STRING_MESSAGES.TYPING;
           this.actionGenerated.emit({
             type: enums.SHOW_REACTION,
             payLoad: item,

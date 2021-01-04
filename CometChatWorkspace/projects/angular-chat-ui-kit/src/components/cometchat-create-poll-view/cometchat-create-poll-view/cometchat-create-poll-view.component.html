@@ -6,7 +6,9 @@
       <div class="modalBodyStyle">
         <table class="modalTableStyle">
           <caption class="tableCaptionStyle">
-            Create Poll
+            {{
+              CREATE_POLL
+            }}
           </caption>
           <tbody class="tableBodyStyle">
             <tr class="tableRowStyle">
@@ -17,7 +19,7 @@
 
             <tr class="tableRowStyle">
               <td class="tableDataStyle tableDataWidthStyle">
-                <label class="tableDataLabelStyle">Question</label>
+                <label class="tableDataLabelStyle">{{ QUESTION }}</label>
               </td>
               <td colSpan="2" class="tableDataStyle">
                 <input
@@ -25,20 +27,20 @@
                   type="text"
                   autoFocus
                   tabIndex="1"
-                  placeholder="Enter your question"
+                  [placeholder]="ENTER_YOUR_QUESTION"
                   formControlName="question"
                 />
               </td>
             </tr>
             <tr class="tableRowStyle">
               <td class="tableDataStyle tableDataWidthStyle">
-                <label class="tableDataLabelStyle">Options</label>
+                <label class="tableDataLabelStyle">{{ OPTIONS }}</label>
               </td>
               <td colSpan="2" class="tableDataStyle">
                 <input
                   class="tableDataInputStyle"
                   type="text"
-                  placeholder="Enter your option"
+                  [placeholder]="ENTER_YOUR_OPTION"
                   formControlName="firstOption"
                 />
               </td>
@@ -50,7 +52,7 @@
                 <input
                   class="tableDataInputStyle"
                   type="text"
-                  placeholder="Enter your option"
+                  [placeholder]="ENTER_YOUR_OPTION"
                   formControlName="secondOption"
                 />
               </td>
@@ -66,7 +68,7 @@
                 <input
                   class="tableDataInputStyle"
                   type="text"
-                  placeholder="Enter your option"
+                  [placeholder]="ENTER_YOUR_OPTION"
                   [formControl]="option"
                 />
               </td>
@@ -82,7 +84,7 @@
             <tr class="tableRowStyle">
               <td class="tableDataStyle tableDataWidthStyle">&nbsp;</td>
               <td class="tableDataStyle">
-                <label class="tableDataLabelStyle">Add new option</label>
+                <label class="tableDataLabelStyle">{{ ADD_NEW_OPTION }}</label>
               </td>
               <td class="iconWrapperStyle tableDataStyle">
                 <!-- Add Icon -->
@@ -96,7 +98,7 @@
           <tfoot class="tableFootStyle">
             <tr>
               <td colSpan="2">
-                <button type="submit">Create</button>
+                <button type="submit">{{ createBtnText }}</button>
               </td>
             </tr>
           </tfoot>

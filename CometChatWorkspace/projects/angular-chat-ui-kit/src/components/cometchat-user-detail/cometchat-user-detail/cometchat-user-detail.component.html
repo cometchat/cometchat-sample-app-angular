@@ -1,12 +1,12 @@
 <div class="userDetailStyle">
   <div class="headerStyle">
     <div class="headerCloseStyle" (click)="closeThreadView()"></div>
-    <h4 class="headerTitleStyle">Details</h4>
+    <h4 class="headerTitleStyle">{{ DETAILS }}</h4>
   </div>
   <div class="sectionStyle">
     <!-- BLOCKED USER VIEW -->
     <div class="privacySectionStyle">
-      <h6 class="sectionHeaderStyle">Options</h6>
+      <h6 class="sectionHeaderStyle">{{ OPTIONS }}</h6>
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
           <div class="itemLinkStyle" (click)="toggleBlockUser()">

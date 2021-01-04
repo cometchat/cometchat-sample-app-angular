@@ -35,6 +35,8 @@ export class CometchatGroupListComponent
   groupListenerId = "grouplist_" + new Date().getTime();
 
   openCreateGroupView: boolean = false;
+  GROUPS: String = STRING_MESSAGES.GROUPS;
+  SEARCH: String = STRING_MESSAGES.SEARCH;
 
   @Output() onGroupClick: EventEmitter<any> = new EventEmitter();
 

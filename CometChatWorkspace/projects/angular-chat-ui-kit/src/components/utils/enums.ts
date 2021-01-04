@@ -59,8 +59,6 @@ export const LIVE_REACTIONS = {
 
 export const LEFT_GROUP = "leftGroup";
 export const DELETE_GROUP = "groupDeleted";
-export const BLOCK_USER_TEXT = "Block User";
-export const UNBLOCK_USER_TEXT = "Unblock User";
 
 export const SEND_SMART_REPLY = "sendSmartReply";
 export const SEND_STICKER = "sendSticker";
@@ -127,10 +125,6 @@ export const MESSAGE = "message";
 export const CALL = "call";
 export const ACTION = "action";
 export const CUSTOM = "custom";
-
-export const ADMINISTRATOR = "Administrator";
-export const MODERATOR = "Moderator";
-export const PARTICIPANT = "Participant";
 
 export const CLOSE_MENU_CLICKED = "closeMenuClicked";
 

@@ -38,6 +38,9 @@ export class CometchatUserListComponent
   defaultAvatarImage =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
 
+  CONTACTS: String = STRING_MESSAGES.CONTACTS;
+  SEARCH: String = STRING_MESSAGES.SEARCH;
+
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
       //console.log("UserList --> detectchange called");

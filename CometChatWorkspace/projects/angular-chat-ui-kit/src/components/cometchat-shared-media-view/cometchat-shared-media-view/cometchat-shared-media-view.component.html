@@ -1,5 +1,5 @@
 <div class="sectionStyle">
-  <h6 class="sectionHeaderStyle">Shared Media</h6>
+  <h6 class="sectionHeaderStyle">{{ SHARED_MEDIA }}</h6>
   <div class="sectionContentStyle">
     <div class="mediaBtnStyle">
       <span
@@ -8,7 +8,7 @@
         [ngClass]="{
           buttonActiveStyle: imageClick
         }"
-        >Photos
+        >{{ PHOTOS }}
       </span>
 
       <span
@@ -17,7 +17,7 @@
         [ngClass]="{
           buttonActiveStyle: videoClick
         }"
-        >Videos
+        >{{ VIDEOS }}
       </span>
 
       <span
@@ -26,7 +26,8 @@
         [ngClass]="{
           buttonActiveStyle: docsClick
         }"
-        >Docs
+      >
+        {{ DOCUMENT }}
       </span>
     </div>
 
