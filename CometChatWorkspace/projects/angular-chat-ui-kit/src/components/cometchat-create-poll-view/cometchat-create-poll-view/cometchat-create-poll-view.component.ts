@@ -22,6 +22,8 @@ export class CometchatCreatePollViewComponent implements OnInit {
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
+  createBtnText = STRING_MESSAGES.CREATE;
+
   constructor(private fb: FormBuilder) {
     this.pollFormData = this.fb.group({
       question: "",
@@ -89,6 +91,12 @@ export class CometchatCreatePollViewComponent implements OnInit {
       receiverId = this.item.guid;
     }
 
+    if (this.createBtnText == STRING_MESSAGES.CREATING_MESSSAGE) {
+      return;
+    }
+
+    this.createBtnText = STRING_MESSAGES.CREATING_MESSSAGE;
+
     CometChat.callExtension("polls", "POST", "v1/create", {
       question: values.question,
       options: optionList,
@@ -134,6 +142,9 @@ export class CometchatCreatePollViewComponent implements OnInit {
       .catch((error) => {
         console.log("error", error);
         this.errorText = error.message.message;
+      })
+      .finally(() => {
+        this.createBtnText = STRING_MESSAGES.CREATE;
       });
 
     //this.resetPollFormData();
