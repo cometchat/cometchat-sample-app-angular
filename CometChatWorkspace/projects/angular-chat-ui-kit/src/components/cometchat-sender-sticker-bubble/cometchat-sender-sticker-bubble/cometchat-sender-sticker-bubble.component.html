@@ -1,0 +1,25 @@
+<div class="messageContainerStyle">
+  <cometchat-tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageImgWrapper">
+      <!--sticker img-->
+      <img [src]="stickerUrl" [alt]="stickerName" loading="lazy" />
+    </div>
+  </div>
+  <div class="messageInfoWrapperStyle">
+    <cometchat-reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </cometchat-reply-count>
+    <cometchat-read-reciept
+      [MessageDetails]="MessageDetails"
+    ></cometchat-read-reciept>
+  </div>
+</div>

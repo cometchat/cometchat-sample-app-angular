@@ -1,0 +1,44 @@
+<div class="messageContainerStyle">
+  <cometchat-tool-tip
+    class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <cometchat-avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+        class="avatarStyle"
+      ></cometchat-avatar>
+    </div>
+
+    <div class="messageDetailStyle">
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ name }}
+        </span>
+      </div>
+      <div class="messageImgContainerStyle">
+        <div class="messageImgWrapperStyle">
+          <img [src]="stickerUrl" [alt]="stickerName" loading="lazy" />
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle">
+          {{ getTime() }}
+        </span>
+        <cometchat-reply-count
+          *ngIf="showReplyCount"
+          [MessageDetails]="MessageDetails"
+          (actionGenerated)="actionHandler($event)"
+        >
+        </cometchat-reply-count>
+      </div>
+    </div>
+  </div>
+</div>

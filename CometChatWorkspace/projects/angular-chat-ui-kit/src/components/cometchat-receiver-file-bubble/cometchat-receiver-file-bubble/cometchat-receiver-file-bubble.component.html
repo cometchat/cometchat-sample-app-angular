@@ -1,0 +1,41 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <cometchat-tool-tip
+    class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <!--Avatar-->
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <cometchat-avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+        class="avatarStyle"
+      ></cometchat-avatar>
+    </div>
+    <div class="messageDetailStyle">
+      <!--name-->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ avatarName }}
+        </span>
+      </div>
+      <div class="messageFileContainerStyle">
+        <div class="messageFileWrapperStyle">
+          <a [href]="url" target="_blank"
+            >{{ name }}
+            <span id="file">&nbsp;</span>
+          </a>
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle">{{ getTime() }}</span>
+      </div>
+    </div>
+  </div>
+</div>

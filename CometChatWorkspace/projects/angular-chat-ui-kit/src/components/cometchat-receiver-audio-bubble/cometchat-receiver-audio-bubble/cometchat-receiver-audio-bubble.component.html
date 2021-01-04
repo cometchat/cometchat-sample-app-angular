@@ -1,0 +1,43 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <cometchat-tool-tip
+    class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <!--Avatar-->
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <cometchat-avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+        class="avatarStyle"
+      ></cometchat-avatar>
+    </div>
+    <div class="messageDetailStyle">
+      <!--name-->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ name }}
+        </span>
+      </div>
+      <div class="messageAudioContainerStyle">
+        <div class="messageAudioWrapperStyle">
+          <audio controls>
+            <source [src]="audioUrl" />
+          </audio>
+        </div>
+      </div>
+      <div class="messageInfoWrapperStyle">
+        <span class="messageTimestampStyle">
+          {{ getTime() }}
+        </span>
+        <!--ReplyCount-->
+      </div>
+    </div>
+  </div>
+</div>

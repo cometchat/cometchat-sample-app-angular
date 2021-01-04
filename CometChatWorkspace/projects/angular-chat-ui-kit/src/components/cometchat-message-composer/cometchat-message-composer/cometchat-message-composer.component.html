@@ -1,0 +1,176 @@
+<div class="chatComposerStyle">
+  <div
+    class="editPreviewContainerStyle"
+    *ngIf="openEditMessageWindow"
+    [@slideInOut]
+  >
+    <div class="previewHeadingStyle">
+      <div class="previewTextStyle">Edit message</div>
+      <span class="previewCloseStyle" (click)="closeEditPreview()"></span>
+    </div>
+    <div>{{ this.messageToBeEdited?.data?.text }}</div>
+  </div>
+  <cometchat-reply-preview
+    [replyPreview]="replyPreview"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-reply-preview>
+  <cometchat-sticker-view
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="stickerViewer"
+  ></cometchat-sticker-view>
+  <div class="blockedUserPopup" *ngIf="userBlocked">
+    <p>You have blocked this contact</p>
+    <p>
+      <span
+        >To start conversations, click on the icon at the top right corner and
+        unblock the user</span
+      >
+    </p>
+  </div>
+  <div class="composerInputStyle">
+    <div class="inputInnerStyle" tabindex="-1">
+      <input
+        class="messageInputStyle"
+        contenteditable="true"
+        placeholder="Enter your message here"
+        dir="ltr"
+        (input)="changeHandler($event)"
+        (blur)="endTyping()"
+        (keyup)="sendMessageOnEnter($event)"
+        [value]="messageInput"
+        #message
+        [ngClass]="{
+          messageInputDisabledStyle: userBlocked
+        }"
+      />
+      <div class="inputStickyStyle">
+        <div class="stickyAttachmentStyle">
+          <!--All file upload options starts here-->
+          <div class="attachmentIconStyle" (click)="toggleFilePicker()">
+            <span>&nbsp;</span>
+          </div>
+
+          <span
+            title="Attach Video"
+            (click)="getVideo()"
+            class="fileItemStyle"
+            id="video"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+            <input
+              type="file"
+              accept="video/*"
+              #vidPicker
+              (change)="onVideoChange($event)"
+            />
+          </span>
+          <span
+            title="Attach Audio"
+            (click)="getAudio()"
+            class="fileItemStyle"
+            id="audio"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+            <input
+              type="file"
+              accept="audio/*"
+              #audPicker
+              (change)="onAudChange($event)"
+            />
+          </span>
+          <span
+            title="Attach Image"
+            (click)="getImage()"
+            class="fileItemStyle"
+            id="image"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+            <input
+              type="file"
+              accept="image/*"
+              #imgPicker
+              (change)="onImgChange($event)"
+            />
+          </span>
+          <span
+            title="Attach File"
+            (click)="getFile()"
+            class="fileItemStyle"
+            id="file"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+            <input
+              type="file"
+              accept="file/*"
+              #filePicker
+              (change)="onFileChange($event)"
+            />
+          </span>
+
+          <span
+            *ngIf="!parentMessageId"
+            title="Create Poll"
+            class="fileItemStyle"
+            id="poll"
+            (click)="openCreatePollPreview()"
+            [@FadeInFadeOut]="checkAnimatedState"
+          >
+          </span>
+        </div>
+        <div class="stickyButtonStyle">
+          <!-- all buttons will come here-->
+          <span
+            class="stickerBtnStyle"
+            title="Add Sticker"
+            (click)="toggleStickerPicker()"
+            >&nbsp;</span
+          >
+          <span
+            class="emojiButtonStyle"
+            title="Add Emoji"
+            (click)="toggleEmoji()"
+          >
+          </span>
+          <emoji-mart
+            (emojiSelect)="addEmoji($event)"
+            title="Pick your emoji"
+            emoji="point_up"
+            *ngIf="emojiToggled"
+            [style]="{
+              position: 'absolute',
+              bottom: '20px',
+              right: '45px',
+              width: '285px',
+              zIndex: '1'
+            }"
+          ></emoji-mart>
+          <span
+            id="send"
+            title="send message"
+            *ngIf="senddisable"
+            class="sendButtonStyle"
+            (click)="sendTextMessage()"
+          >
+          </span>
+          <span
+            class="reactionBtnStyle"
+            id="reaction"
+            *ngIf="reactdisable && !parentMessageId"
+            (click)="sendReaction($event)"
+          >
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- POLL component Below -->
+  <cometchat-create-poll-view
+    [item]="item"
+    [type]="type"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="createPollView"
+  ></cometchat-create-poll-view>
+  <!-- POLL component Below -->
+</div>
+
+<!-- oninput onblur onkeydown to be inplemented -->

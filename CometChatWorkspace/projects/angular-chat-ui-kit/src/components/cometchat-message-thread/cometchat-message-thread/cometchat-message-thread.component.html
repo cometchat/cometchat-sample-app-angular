@@ -1,0 +1,161 @@
+<div class="wrapperStyle">
+  <div class="headerStyle">
+    <div class="headerWrapperStyle">
+      <div class="headerDetailStyle">
+        <h6 class="headerTitleStyle">Thread</h6>
+        <span class="headerNameStyle">{{ item.name }}</span>
+      </div>
+      <div class="headerCloseStyle" (click)="closeThread()"></div>
+    </div>
+  </div>
+
+  <div class="messageContainerStyle">
+    <div class="parentMessageStyle">
+      <div [ngSwitch]="parentMessage?.type">
+        <!--CASE FOR STICKER -->
+        <div *ngSwitchCase="'extension_sticker'">
+          <cometchat-sender-sticker-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </cometchat-sender-sticker-bubble>
+          <cometchat-receiver-sticker-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </cometchat-receiver-sticker-bubble>
+        </div>
+        <!--CASE FOR STICKER ENDS -->
+
+        <!-- CASE FOR TEXT -->
+        <div *ngSwitchCase="'text'">
+          <cometchat-receiver-message-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            [showReplyCount]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-receiver-message-bubble>
+
+          <cometchat-sender-message-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            [showReplyCount]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-sender-message-bubble>
+        </div>
+        <!--CASE FOR TEXT ENDS -->
+
+        <!-- CASE FOR FILE -->
+        <div *ngSwitchCase="'file'">
+          <cometchat-receiver-file-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-receiver-file-bubble>
+
+          <cometchat-sender-file-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-sender-file-bubble>
+        </div>
+        <!--CASE FOR FILE ENDS -->
+
+        <!-- CASE FOR IMAGE -->
+        <div *ngSwitchCase="'image'">
+          <cometchat-receiver-image-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            [showReplyCount]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-receiver-image-bubble>
+
+          <cometchat-sender-image-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            [showReplyCount]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-sender-image-bubble>
+        </div>
+        <!--CASE FOR IMAGE ENDS -->
+
+        <!-- CASE FOR VIDEO -->
+        <div *ngSwitchCase="'video'">
+          <cometchat-receiver-video-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-receiver-video-bubble>
+
+          <cometchat-sender-video-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-sender-video-bubble>
+        </div>
+        <!--CASE FOR VIDEO ENDS -->
+
+        <!-- CASE FOR AUDIO -->
+        <div *ngSwitchCase="'audio'">
+          <cometchat-receiver-audio-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-receiver-audio-bubble>
+
+          <cometchat-sender-audio-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showToolTip]="false"
+            (actionGenerated)="actionHandler($event)"
+          ></cometchat-sender-audio-bubble>
+        </div>
+        <!--CASE FOR AUDIO ENDS -->
+      </div>
+    </div>
+
+    <div class="messageSeparatorStyle">
+      <span class="messageReplyStyle" *ngIf="replyCount > 0">
+        {{ getReplyCountText(replyCount) }}</span
+      >
+      <hr />
+    </div>
+    <div
+      class="messageWindowStyle"
+      (scroll)="handleScroll($event)"
+      #messageWindow
+      [scrollTop]="scrollVariable"
+    >
+      <cometchat-message-list
+        [item]="item"
+        [type]="type"
+        [parentMessageId]="parentMessage?.id"
+        [messages]="messageList"
+        [reachedTopOfConversation]="reachedTopOfConversation"
+        (actionGenerated)="actionHandler($event)"
+      ></cometchat-message-list>
+    </div>
+
+    <cometchat-message-composer
+      [item]="item"
+      [type]="type"
+      [parentMessageId]="parentMessage?.id"
+      [replyPreview]="replyPreview"
+      [messageToBeEdited]="messageToBeEdited"
+      (actionGenerated)="actionHandler($event)"
+    ></cometchat-message-composer>
+  </div>
+</div>

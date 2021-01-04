@@ -1,0 +1,22 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <cometchat-tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageVideoWrapperStyle">
+      <video controls>
+        <source [src]="videoUrl" />
+      </video>
+    </div>
+  </div>
+  <div class="messageInfoWrapperStyle">
+    <!--ReplyCount-->
+    <cometchat-read-reciept
+      [MessageDetails]="MessageDetails"
+    ></cometchat-read-reciept>
+  </div>
+</div>
