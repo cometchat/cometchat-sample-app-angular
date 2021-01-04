@@ -63,11 +63,10 @@
         </div>
       </div>
       <div class="messageInfoWrapperStyle">
-        <span class="messageTimestampStyle">
-          <!--Date-->
-          {{ getTime() }}
-        </span>
-        <!--ReplyCount component-->
+        <cometchat-read-reciept
+          [MessageDetails]="MessageDetails"
+          [displayReadReciept]="false"
+        ></cometchat-read-reciept>
         <cometchat-reply-count
           *ngIf="showReplyCount"
           [MessageDetails]="MessageDetails"
