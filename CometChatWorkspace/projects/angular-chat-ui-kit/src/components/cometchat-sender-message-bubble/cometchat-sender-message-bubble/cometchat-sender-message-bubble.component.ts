@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-
+import { checkMessageForExtensionsData } from "../../utils/common";
 @Component({
   selector: "cometchat-sender-message-bubble",
   templateUrl: "./cometchat-sender-message-bubble.component.html",
@@ -19,11 +19,15 @@ export class CometchatSenderMessageBubbleComponent implements OnInit {
   linkUrl: string;
   linkText: string;
   linkImage: string;
-
+  checkReaction: boolean = false;
   constructor() {}
 
   ngOnInit() {
     this.checkLinkPreview();
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
   }
 
   /**
