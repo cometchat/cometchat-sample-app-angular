@@ -89,8 +89,8 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
     if (lastMessage.hasOwnProperty("deletedAt")) {
       message =
         this.loggedInUser.uid === lastMessage.sender.uid
-          ? "⚠ You deleted this message."
-          : "⚠ This message was deleted.";
+          ? STRING_MESSAGES.YOU_DELETED_THIS_MESSAGE
+          : STRING_MESSAGES.THIS_MESSAGE_DELETED;
     } else {
       switch (lastMessage.category) {
         case enums.MESSAGE:
@@ -140,7 +140,7 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
         hour12: true,
       });
     } else if (diffTimestamp < 48 * 60 * 60 * 1000) {
-      timestamp = "Yesterday";
+      timestamp = STRING_MESSAGES.YESTERDAY;
     } else if (diffTimestamp < 7 * 24 * 60 * 60 * 1000) {
       timestamp = messageTimestamp.toLocaleString("en-US", { weekday: "long" });
     } else {
@@ -168,19 +168,19 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
         message = STRING_MESSAGES.MEDIA_MESSAGE;
         break;
       case CometChat.MESSAGE_TYPE.IMAGE:
-        message = "📷 Image ";
+        message = STRING_MESSAGES.MESSAGE_IMAGE;
         break;
       case CometChat.MESSAGE_TYPE.FILE:
-        message = "📁 File";
+        message = STRING_MESSAGES.MESSAGE_FILE;
         break;
       case CometChat.MESSAGE_TYPE.VIDEO:
-        message = "🎥 Video";
+        message = STRING_MESSAGES.MESSAGE_VIDEO;
         break;
       case CometChat.MESSAGE_TYPE.AUDIO:
-        message = "🎵 Audio";
+        message = STRING_MESSAGES.MESSAGE_AUDIO;
         break;
       case CometChat.MESSAGE_TYPE.CUSTOM:
-        message = "Custom message";
+        message = STRING_MESSAGES.CUSTOM_MESSAGE;
         break;
       default:
         break;
@@ -196,10 +196,10 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
     let message = null;
     switch (lastMessage.type) {
       case CometChat.MESSAGE_TYPE.VIDEO:
-        message = "Video call";
+        message = STRING_MESSAGES.VIDEO_CALL;
         break;
       case CometChat.MESSAGE_TYPE.AUDIO:
-        message = "Audio call";
+        message = STRING_MESSAGES.AUDIO_CALL;
         break;
       default:
         break;
@@ -216,10 +216,10 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
     let message = null;
     switch (lastMessage.type) {
       case enums.CUSTOM_TYPE_POLL:
-        message = "📊 Poll";
+        message = STRING_MESSAGES.CUSTOM_MESSAGE_POLL;
         break;
       case enums.CUSTOM_TYPE_STICKER:
-        message = "💟 Sticker";
+        message = STRING_MESSAGES.CUSTOM_MESSAGE_STICKER;
         break;
       default:
         break;
