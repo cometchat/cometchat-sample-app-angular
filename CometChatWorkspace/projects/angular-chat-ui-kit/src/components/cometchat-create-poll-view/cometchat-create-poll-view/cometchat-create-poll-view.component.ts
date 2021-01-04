@@ -23,6 +23,12 @@ export class CometchatCreatePollViewComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   createBtnText = STRING_MESSAGES.CREATE;
+  CREATE_POLL: String = STRING_MESSAGES.CREATE_POLL;
+  QUESTION: String = STRING_MESSAGES.QUESTION;
+  ENTER_YOUR_QUESTION: String = STRING_MESSAGES.ENTER_YOUR_QUESTION;
+  OPTIONS: String = STRING_MESSAGES.OPTIONS;
+  ENTER_YOUR_OPTION: String = STRING_MESSAGES.ENTER_YOUR_OPTION;
+  ADD_NEW_OPTION: String = STRING_MESSAGES.ADD_NEW_OPTION;
 
   constructor(private fb: FormBuilder) {
     this.pollFormData = this.fb.group({
