@@ -38,6 +38,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   scrollVariable = 0;
 
   reactionName = "heart";
+  messageToReact = null;
 
   constructor() {}
 
@@ -183,7 +184,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
       case enums.MESSAGE_COMPOSED: {
         this.appendMessage(messages);
         this.actionGenerated.emit({
-          type: "messageComposed",
+          type: enums.MESSAGE_COMPOSED,
           payLoad: messages,
         });
         break;
@@ -277,7 +278,19 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         this.actionGenerated.emit(action);
         break;
       }
+      case enums.REACT_TO_MESSAGE:
+        this.reactToMessage(messages);
+        break;
     }
+  }
+
+  /**
+   * Sets the message to which reaction has to be set
+   * @param
+   */
+  reactToMessage(message) {
+    // console.log("message list screen reaction works ", message);
+    this.messageToReact = message;
   }
 
   /**
