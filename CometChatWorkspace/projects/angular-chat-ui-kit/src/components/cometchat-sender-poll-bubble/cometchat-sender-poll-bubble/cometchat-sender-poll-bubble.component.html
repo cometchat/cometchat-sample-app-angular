@@ -3,7 +3,6 @@
     class="tool"
     *ngIf="showToolTip"
     [MessageDetails]="MessageDetails"
-    [pollView]="true"
     (actionGenerated)="actionHandler($event)"
   ></cometchat-tool-tip>
   <div class="messageWrapperStyle">
