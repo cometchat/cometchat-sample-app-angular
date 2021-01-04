@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-sender-message-bubble",
@@ -59,8 +60,8 @@ export class CometchatSenderMessageBubbleComponent implements OnInit {
             this.linkImage = linkObject.image;
             const pattern = /(http:|https:)?\/\/(www\.)?(youtube.com|youtu.be)(\S+)?/;
             const linkText = linkObject["url"].match(pattern)
-              ? "View on Youtube"
-              : "Visit";
+              ? STRING_MESSAGES.VIEW_ON_YOUTUBE
+              : STRING_MESSAGES.VISIT;
             this.linkText = linkText;
             // const actualMessage = messageText;
           }
