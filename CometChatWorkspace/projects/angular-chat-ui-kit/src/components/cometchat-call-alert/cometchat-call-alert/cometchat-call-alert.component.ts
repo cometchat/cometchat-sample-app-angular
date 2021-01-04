@@ -4,6 +4,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import { CometChatManager } from "../../utils/controller";
 import { INCOMING_CALL_ALERT } from "../../resources/audio/incomingCallAlert";
 import { trigger, style, transition, animate } from "@angular/animations";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-call-alert",
@@ -27,6 +28,11 @@ export class CometchatCallAlertComponent implements OnInit {
   user;
   name: string;
   audio;
+
+  INCOMING_AUDIO_CALL: String = STRING_MESSAGES.INCOMING_AUDIO_CALL;
+  INCOMING_VIDEO_CALL: String = STRING_MESSAGES.INCOMING_VIDEO_CALL;
+  DECLINE: String = STRING_MESSAGES.DECLINE;
+  ACCEPT: String = STRING_MESSAGES.ACCEPT;
 
   constructor() {}
   // ngOnDestroy() {
