@@ -91,25 +91,10 @@ export class CometchatReceiverStickerBubbleComponent
   }
 
   /**
-   * Set Time-Stamp for receiving sticker
-   *
-   */
-  getTime() {
-    let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    return timeStamp;
-  }
-
-  /**
    * Handles all the actions emitted by the child components that make the current component
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Sticker Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }
