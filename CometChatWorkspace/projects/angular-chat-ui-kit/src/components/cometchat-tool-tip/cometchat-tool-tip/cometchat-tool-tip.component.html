@@ -30,6 +30,13 @@
           (click)="deleteMessage()"
         ></button>
       </li>
+      <li class="actionGroupStyle" *ngIf="!showOnlyReplyButton">
+        <button
+          type="button"
+          class="groupButtonStyle regularReactionIcon"
+          (click)="sendReaction()"
+        ></button>
+      </li>
     </div>
   </ul>
 </div>
