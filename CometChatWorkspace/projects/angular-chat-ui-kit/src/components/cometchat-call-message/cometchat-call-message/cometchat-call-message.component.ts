@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-call-message",
@@ -20,19 +21,19 @@ export class CometchatCallMessageComponent implements OnInit {
     const call = this.MessageDetails;
     switch (call.status) {
       case CometChat.CALL_STATUS.INITIATED: {
-        this.message = "Call initiated";
+        this.message = STRING_MESSAGES.CALL_INITIATED;
         if (call.type === "audio") {
           if (call.receiverType === "user") {
             this.message =
               call.callInitiator.uid === this.loggedInUserUid
-                ? "Outgoing audio call"
-                : "Incoming audio call";
+                ? STRING_MESSAGES.OUTGOING_AUDIO_CALL
+                : STRING_MESSAGES.INCOMING_AUDIO_CALL;
           } else if (call.receiverType === "group") {
             if (call.action === CometChat.CALL_STATUS.INITIATED) {
               this.message =
                 call.callInitiator.uid === this.loggedInUserUid
-                  ? "Outgoing audio call"
-                  : "Incoming audio call";
+                  ? STRING_MESSAGES.OUTGOING_AUDIO_CALL
+                  : STRING_MESSAGES.INCOMING_AUDIO_CALL;
             } else if (call.action === CometChat.CALL_STATUS.REJECTED) {
               this.message =
                 call.sender.uid === this.loggedInUserUid
@@ -44,14 +45,14 @@ export class CometchatCallMessageComponent implements OnInit {
           if (call.receiverType === "user") {
             this.message =
               call.callInitiator.uid === this.loggedInUserUid
-                ? "Outgoing video call"
-                : "Incoming video call";
+                ? STRING_MESSAGES.OUTGOING_VIDEO_CALL
+                : STRING_MESSAGES.INCOMING_VIDEO_CALL;
           } else if (call.receiverType === "group") {
             if (call.action === CometChat.CALL_STATUS.INITIATED) {
               this.message =
                 call.callInitiator.uid === this.loggedInUserUid
-                  ? "Outgoing video call"
-                  : "Incoming video call";
+                  ? STRING_MESSAGES.OUTGOING_VIDEO_CALL
+                  : STRING_MESSAGES.INCOMING_VIDEO_CALL;
             } else if (call.action === CometChat.CALL_STATUS.REJECTED) {
               this.message =
                 call.sender.uid === this.loggedInUserUid
@@ -64,12 +65,12 @@ export class CometchatCallMessageComponent implements OnInit {
       }
       case CometChat.CALL_STATUS.ONGOING: {
         if (call.receiverType === "user") {
-          this.message = "Call accepted";
+          this.message = STRING_MESSAGES.CALL_ACCEPTED;
         } else if (call.receiverType === "group") {
           if (call.action === CometChat.CALL_STATUS.ONGOING) {
             this.message =
               call.sender.uid === this.loggedInUserUid
-                ? "Call accepted"
+                ? STRING_MESSAGES.CALL_ACCEPTED
                 : `${call.sender.name} joined`;
           } else if (call.action === CometChat.CALL_STATUS.REJECTED) {
             this.message =
@@ -94,7 +95,7 @@ export class CometchatCallMessageComponent implements OnInit {
         ) {
           this.message =
             call.callInitiator.uid === this.loggedInUserUid
-              ? "Unanswered audio call"
+              ? STRING_MESSAGES.UNANSWERED_AUDIO_CALL
               : "Missed audio call";
         } else if (
           call.type === "video" &&
@@ -102,7 +103,7 @@ export class CometchatCallMessageComponent implements OnInit {
         ) {
           this.message =
             call.callInitiator.uid === this.loggedInUserUid
-              ? "Unanswered video call"
+              ? STRING_MESSAGES.UNANSWERED_VIDEO_CALL
               : "Missed video call";
         }
         break;
@@ -112,13 +113,13 @@ export class CometchatCallMessageComponent implements OnInit {
         break;
       }
       case CometChat.CALL_STATUS.ENDED:
-        this.message = "Call ended";
+        this.message = STRING_MESSAGES.CALL_ENDED;
         break;
       case CometChat.CALL_STATUS.CANCELLED:
-        this.message = "Call cancelled";
+        this.message = STRING_MESSAGES.CALL_CANCELLED;
         break;
       case CometChat.CALL_STATUS.BUSY:
-        this.message = "Call busy";
+        this.message = STRING_MESSAGES.CALL_BUSY;
         break;
       default:
         break;
