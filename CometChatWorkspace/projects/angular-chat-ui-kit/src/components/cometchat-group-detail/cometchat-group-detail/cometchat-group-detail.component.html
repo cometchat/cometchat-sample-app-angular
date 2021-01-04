@@ -1,7 +1,7 @@
 <div class="detailStyle">
   <div class="headerStyle">
     <div class="headerCloseStyle" (click)="closeThreadView()"></div>
-    <h4 class="headerTitleStyle">Details</h4>
+    <h4 class="headerTitleStyle">{{ DETAILS }}</h4>
   </div>
   <div class="detailPaneStyle">
     <!-- MEMBER SECTION BELOW-->
@@ -10,7 +10,7 @@
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
           <div class="itemLinkStyle" (click)="toggleViewMember()">
-            View Members
+            {{ VIEW_MEMBERS }}
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
       <div class="sectionContentStyle" *ngIf="currentMemberScope == 'admin'">
         <div class="contentItemStyle">
           <div class="itemLinkStyle" (click)="toggleAddMemberView(true)">
-            Add Members
+            {{ ADD_MEMBERS }}
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
       >
         <div class="contentItemStyle">
           <div class="itemLinkStyle" (click)="toggleBanMember()">
-            Banned Members
+            {{ BANNED_MEMBERS }}
           </div>
         </div>
       </div>
@@ -40,10 +40,12 @@
 
     <!-- OPTION SECTION BELOW-->
     <div class="sectionStyle">
-      <h6 class="sectionHeaderStyle">Options</h6>
+      <h6 class="sectionHeaderStyle">{{ OPTIONS }}</h6>
       <div class="sectionContentStyle">
         <div class="contentItemStyle">
-          <div class="itemLinkStyle" (click)="leaveGroup()">Leave Group</div>
+          <div class="itemLinkStyle" (click)="leaveGroup()">
+            {{ LEAVE_GROUP }}
+          </div>
         </div>
       </div>
 
@@ -53,7 +55,7 @@
             class="itemLinkStyle itemDeleteLinkStyle"
             (click)="deleteGroup()"
           >
-            Delete and Exit
+            {{ DELETE_AND_EXIT }}
           </div>
         </div>
       </div>

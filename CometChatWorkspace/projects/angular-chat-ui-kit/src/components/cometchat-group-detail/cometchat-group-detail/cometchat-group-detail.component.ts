@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-group-detail",
@@ -38,6 +39,14 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   openAddMemberView: boolean = false;
 
   currentMemberScope = "";
+
+  ADD_MEMBERS: String = STRING_MESSAGES.ADD_MEMBERS;
+  DELETE_AND_EXIT: String = STRING_MESSAGES.DELETE_AND_EXIT;
+  LEAVE_GROUP: String = STRING_MESSAGES.LEAVE_GROUP;
+  BANNED_MEMBERS: String = STRING_MESSAGES.BANNED_MEMBERS;
+  OPTIONS: String = STRING_MESSAGES.OPTIONS;
+  VIEW_MEMBERS: String = STRING_MESSAGES.VIEW_MEMBERS;
+  DETAILS: String = STRING_MESSAGES.DETAILS;
 
   constructor() {}
 
@@ -573,7 +582,7 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   checkMemberScope = (group) => {
     //group.scope is key which holds the role of the current user in this group
 
-    if (group.scope == "owner") {
+    if (group.scope == STRING_MESSAGES.OWNER) {
       return "admin";
     }
 
