@@ -94,15 +94,15 @@ export class CometchatCreateGroupComponent implements OnInit {
    * @param
    */
   createGroup() {
+    if (!this.validate()) {
+      return false;
+    }
+
     if (this.createBtnText == STRING_MESSAGES.CREATING_MESSSAGE) {
       return;
     }
 
     this.createBtnText = STRING_MESSAGES.CREATING_MESSSAGE;
-
-    if (!this.validate()) {
-      return false;
-    }
 
     const groupType = this.type.trim();
 
