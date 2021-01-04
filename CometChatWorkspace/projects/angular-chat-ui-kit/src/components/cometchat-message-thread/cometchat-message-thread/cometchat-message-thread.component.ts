@@ -11,6 +11,7 @@ import {
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-message-thread",
@@ -35,6 +36,8 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
   replyPreview = null;
   imageView = null;
   fullScreenViewImage: boolean = false;
+
+  THREAD: String = STRING_MESSAGES.THREAD;
 
   constructor() {}
 
