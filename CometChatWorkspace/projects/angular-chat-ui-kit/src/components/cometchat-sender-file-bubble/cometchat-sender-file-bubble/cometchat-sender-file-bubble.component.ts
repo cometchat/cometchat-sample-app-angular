@@ -8,6 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class CometchatSenderFileBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() showReplyCount = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   url: string;
   name: string;
@@ -22,7 +23,6 @@ export class CometchatSenderFileBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }
