@@ -64,4 +64,5 @@
 
 .messageInfoWrapperStyle {
   align-self: flex-end;
+  display: flex;
 }
