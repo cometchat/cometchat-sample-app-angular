@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-receiver-poll-bubble",
   templateUrl: "./cometchat-receiver-poll-bubble.component.html",
@@ -113,7 +113,7 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
     })
       .then((response) => {
         this.actionGenerated.emit({
-          type: "pollAnswered",
+          type: enums.POLL_ANSWERED,
           payLoad: response,
         });
       })
