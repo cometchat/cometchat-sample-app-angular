@@ -14,7 +14,15 @@ export class CometchatCreateGroupComponent implements OnInit {
   name: String = "";
   type: String = "";
   password = "";
-  createBtnText = STRING_MESSAGES.CREATE;
+
+  createBtnText: String = STRING_MESSAGES.CREATE;
+  SELECT_GROUP_TYPE: String = STRING_MESSAGES.SELECT_GROUP_TYPE;
+  ENTER_GROUP_NAME: String = STRING_MESSAGES.ENTER_GROUP_NAME;
+  PUBLIC: String = STRING_MESSAGES.PUBLIC;
+  PRIVATE: String = STRING_MESSAGES.PRIVATE;
+  PASSWORD_PROTECTED: String = STRING_MESSAGES.PASSWORD_PROTECTED;
+  ENTER_GROUP_PASSWORD: String = STRING_MESSAGES.ENTER_GROUP_PASSWORD;
+  CREATE_GROUP: String = STRING_MESSAGES.CREATE_GROUP;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
