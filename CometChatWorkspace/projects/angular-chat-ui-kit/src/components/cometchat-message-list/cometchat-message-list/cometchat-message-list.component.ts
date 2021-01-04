@@ -12,6 +12,7 @@ import {
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { DatePipe } from "@angular/common";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-message-list",
@@ -31,7 +32,7 @@ export class CometchatMessageListComponent
 
   messagesRequest;
   limit = 50;
-  decoratorMessage = "Loading...";
+  decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
   times = 0;
   lastScrollTop = 0;
   loggedInUser;
@@ -354,7 +355,7 @@ export class CometchatMessageListComponent
           (messageList) => {
             // No Messages Found
             if (messageList.length === 0) {
-              this.decoratorMessage = "No messages found";
+              this.decoratorMessage = STRING_MESSAGES.NO_MESSAGES_FOUND;
             }
 
             messageList.forEach((message) => {
