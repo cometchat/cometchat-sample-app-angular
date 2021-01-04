@@ -10,6 +10,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 @Component({
   selector: "cometchat-user-list",
   templateUrl: "./cometchat-user-list.component.html",
@@ -26,7 +27,7 @@ export class CometchatUserListComponent
 
   userListenerId = "userlist_" + new Date().getTime();
 
-  decoratorMsg: string = "Loading...";
+  decoratorMsg: string = STRING_MESSAGES.LOADING_MESSSAGE;
   userSearches: boolean = false;
   loader: Boolean = true;
   contactsNotFound: Boolean = false;
@@ -128,7 +129,7 @@ export class CometchatUserListComponent
   searchUsers(searchKey) {
     //console.log("search user based on key = ", searchKey);
     this.contactsNotFound = false;
-    this.decoratorMsg = "Loading...";
+    this.decoratorMsg = STRING_MESSAGES.LOADING_MESSSAGE;
 
     if (this.timeout) {
       clearTimeout(this.timeout);
@@ -177,7 +178,7 @@ export class CometchatUserListComponent
 
         if (userList.length === 0 && this.userSearches === true) {
           this.contactsNotFound = true;
-          this.decoratorMsg = "No Users Found";
+          this.decoratorMsg = STRING_MESSAGES.NO_USERS_FOUND;
         } else {
           this.userSearches = false;
           /* userList will be the list of User class. */
