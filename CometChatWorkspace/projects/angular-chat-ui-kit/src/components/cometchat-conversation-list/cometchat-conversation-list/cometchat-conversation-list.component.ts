@@ -12,6 +12,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
 import { INCOMING_OTHER_MESSAGE_SOUND } from "../../resources/audio/incomingOtherMessageSound";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-conversation-list",
@@ -27,7 +28,7 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
   @Input() groupToLeave = null;
   @Input() groupToDelete = null;
 
-  decoratorMessage: string = "Loading...";
+  decoratorMessage: string = STRING_MESSAGES.LOADING_MESSSAGE;
   loggedInUser = null;
   conversationList = [];
   onItemClick = null;
@@ -213,7 +214,7 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
           this.conversationList = conversationList;
 
           if (conversationList.length === 0) {
-            this.decoratorMessage = "No Chats found";
+            this.decoratorMessage = STRING_MESSAGES.NO_CHATS_FOUND;
           }
         }
       }
@@ -433,13 +434,13 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
               ...conversationList,
             ];
             if (this.conversationList.length === 0) {
-              this.decoratorMessage = "No chats found";
+              this.decoratorMessage = STRING_MESSAGES.NO_CHATS_FOUND;
             } else {
               this.decoratorMessage = "";
             }
           })
           .catch((error) => {
-            this.decoratorMessage = "Error";
+            this.decoratorMessage = STRING_MESSAGES.ERROR;
             console.error(
               "[CometChatConversationList] getConversations fetchNext error",
               error
@@ -447,7 +448,7 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
           });
       })
       .catch((error) => {
-        this.decoratorMessage = "Error";
+        this.decoratorMessage = STRING_MESSAGES.ERROR;
         console.log(
           "[CometChatConversationList] getConversations getLoggedInUser error",
           error
@@ -730,7 +731,7 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
     if (bottom) {
-      this.decoratorMessage = "Loading...";
+      this.decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
       this.getConversation();
     }
   }
