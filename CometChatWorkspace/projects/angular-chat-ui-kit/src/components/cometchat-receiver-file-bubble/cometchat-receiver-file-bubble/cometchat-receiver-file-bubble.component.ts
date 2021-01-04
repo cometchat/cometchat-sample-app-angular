@@ -14,6 +14,7 @@ export class CometchatReceiverFileBubbleComponent implements OnInit {
   avatarName: string = null;
   //If Group then only show avatar
   avatarIfGroup: boolean = false;
+  @Input() showReplyCount = true;
 
   @Input() showToolTip = true;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
@@ -42,24 +43,10 @@ export class CometchatReceiverFileBubbleComponent implements OnInit {
   }
 
   /**
-   * Get Time Of file receieved
-   */
-  getTime() {
-    let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    return timeStamp;
-  }
-
-  /**
    * Handles all the actions emitted by the child components that make the current component
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

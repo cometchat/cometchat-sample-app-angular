@@ -1,4 +1,13 @@
 <div class="messageContainerStyle" *ngIf="isPollExtensionEnabled">
+  <cometchat-tool-tip
+    class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
   <div class="messageWrapperStyle">
     <!-- Avatar for group -->
     <div
@@ -13,7 +22,10 @@
     </div>
     <div class="messageDetailStyle">
       <!-- Name -->
-      <div class="nameWrapperStyle">
+      <div
+        class="nameWrapperStyle"
+        *ngIf="MessageDetails?.receiverType == 'group'"
+      >
         <span class="nameStyle">
           {{ MessageDetails?.sender?.name }}
         </span>
@@ -58,8 +70,18 @@
           </p>
         </div>
       </div>
-      <div css="{messageInfoWrapperStyle()}" className="message__info__wrapper">
-        <span class="messageTimestampStyle">{{ getTime() }}</span>
+      <div class="messageInfoWrapperStyle" className="message__info__wrapper">
+        <cometchat-read-reciept
+          [MessageDetails]="MessageDetails"
+          [displayReadReciept]="false"
+        ></cometchat-read-reciept>
+        <!--ReplyCount-->
+        <cometchat-reply-count
+          *ngIf="showReplyCount"
+          [MessageDetails]="MessageDetails"
+          (actionGenerated)="actionHandler($event)"
+        >
+        </cometchat-reply-count>
       </div>
     </div>
   </div>

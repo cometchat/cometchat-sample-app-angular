@@ -3,7 +3,6 @@
     class="tool"
     *ngIf="showToolTip"
     [MessageDetails]="MessageDetails"
-    [pollView]="true"
     (actionGenerated)="actionHandler($event)"
   ></cometchat-tool-tip>
   <div class="messageWrapperStyle">
@@ -32,6 +31,12 @@
     </div>
   </div>
   <div class="messageInfoWrapperStyle">
+    <cometchat-reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </cometchat-reply-count>
     <cometchat-read-reciept
       [MessageDetails]="MessageDetails"
     ></cometchat-read-reciept>

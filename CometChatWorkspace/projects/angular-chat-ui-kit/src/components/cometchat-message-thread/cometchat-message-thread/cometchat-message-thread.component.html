@@ -18,6 +18,7 @@
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-sender-sticker-bubble>
@@ -25,11 +26,32 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-receiver-sticker-bubble>
         </div>
         <!--CASE FOR STICKER ENDS -->
+
+        <!--CASE FOR POLL -->
+        <div *ngSwitchCase="'extension_poll'">
+          <cometchat-sender-poll-bubble
+            *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showReplyCount]="false"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </cometchat-sender-poll-bubble>
+          <cometchat-receiver-poll-bubble
+            *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
+            [loggedInUserUid]="loggedInUser?.uid"
+            [MessageDetails]="parentMessage"
+            [showReplyCount]="false"
+            (actionGenerated)="actionHandler($event)"
+          >
+          </cometchat-receiver-poll-bubble>
+        </div>
+        <!--CASE FOR POLL ENDS -->
 
         <!-- CASE FOR TEXT -->
         <div *ngSwitchCase="'text'">
@@ -57,6 +79,7 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-file-bubble>
 
@@ -64,6 +87,7 @@
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-file-bubble>
         </div>
@@ -95,6 +119,7 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-video-bubble>
 
@@ -102,6 +127,7 @@
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-video-bubble>
         </div>
@@ -113,6 +139,7 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-audio-bubble>
 
@@ -120,6 +147,7 @@
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
+            [showReplyCount]="false"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-audio-bubble>
         </div>

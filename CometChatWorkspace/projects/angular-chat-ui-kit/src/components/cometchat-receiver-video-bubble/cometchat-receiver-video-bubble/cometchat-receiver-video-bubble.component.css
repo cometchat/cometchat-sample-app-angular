@@ -74,6 +74,7 @@
 .messageInfoWrapperStyle {
   align-self: flex-start;
   padding: 3px 5px;
+  display: inherit;
 }
 
 .messageTimestampStyle {

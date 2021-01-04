@@ -8,6 +8,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class CometchatReceiverAudioBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() showReplyCount = true;
+
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   audioUrl: string;
@@ -32,25 +34,11 @@ export class CometchatReceiverAudioBubbleComponent implements OnInit {
           .getName()
           .charAt(0)
           .toUpperCase();
-        // this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid, char));
       }
       this.name = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;
     }
     this.getUrl();
-  }
-
-  /**
-   * Gets time when the audio message was received
-   */
-  getTime() {
-    let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    return timeStamp;
   }
 
   /**
@@ -65,7 +53,6 @@ export class CometchatReceiverAudioBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

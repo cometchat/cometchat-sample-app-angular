@@ -8,6 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class CometchatSenderAudioBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() showReplyCount = true;
 
   audioUrl: string;
   message = Object.assign({}, this.MessageDetails, { messageFrom: "sender" });
@@ -26,7 +27,6 @@ export class CometchatSenderAudioBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }
