@@ -60,6 +60,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-message-bubble>
 
@@ -68,6 +69,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-message-bubble>
         </div>
@@ -183,6 +185,7 @@
       [parentMessageId]="parentMessage?.id"
       [replyPreview]="replyPreview"
       [messageToBeEdited]="messageToBeEdited"
+      [messageToReact]="messageToReact"
       (actionGenerated)="actionHandler($event)"
     ></cometchat-message-composer>
   </div>
