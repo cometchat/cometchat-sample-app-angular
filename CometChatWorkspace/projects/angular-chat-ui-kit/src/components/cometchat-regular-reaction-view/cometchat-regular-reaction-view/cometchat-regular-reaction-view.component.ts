@@ -3,6 +3,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { checkMessageForExtensionsData } from "../../utils/common";
 import { REACTION_ICON } from "../../resources/icons/reaction";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-regular-reaction-view",
@@ -13,9 +14,7 @@ export class CometchatRegularReactionViewComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
-  selectedEmoji = ":grinning:";
-  test;
-  test1;
+  extensionData;
   reactionsName;
   messageReactions = [];
   reactionIcon = REACTION_ICON;
@@ -23,10 +22,11 @@ export class CometchatRegularReactionViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.test = checkMessageForExtensionsData(this.MessageDetails, "reactions");
-    console.log("reaction view test ", this.test);
-
-    this.test1 = this.getMessageReactions(this.test);
+    this.extensionData = checkMessageForExtensionsData(
+      this.MessageDetails,
+      STRING_MESSAGES.REACTIONS
+    );
+    this.getMessageReactions(this.extensionData);
   }
 
   getMessageReactions(reaction) {
@@ -37,7 +37,6 @@ export class CometchatRegularReactionViewComponent implements OnInit {
     Object.keys(reaction).map((data, key) => {
       const reactionData = reaction[data];
       const reactionCount = Object.keys(reactionData).length;
-      console.log("reactionCount ", reactionCount);
 
       let showBlueOutline = false;
       if (reactionData.hasOwnProperty(this.loggedInUser.uid)) {
@@ -77,14 +76,15 @@ export class CometchatRegularReactionViewComponent implements OnInit {
   }
 
   reactToMessages(emoji = null) {
-    // console.log("Regular reaction -> event ", $event);
-
-    // console.log("reactToMessages");
-
-    CometChat.callExtension("reactions", "POST", "v1/react", {
-      msgId: this.MessageDetails.id,
-      emoji: emoji.colons || emoji.reactionName,
-    })
+    CometChat.callExtension(
+      STRING_MESSAGES.REACTIONS,
+      STRING_MESSAGES.POST,
+      STRING_MESSAGES.V1_REACT,
+      {
+        msgId: this.MessageDetails.id,
+        emoji: emoji.colons || emoji.reactionName,
+      }
+    )
       .then((response) => {
         // Reaction added successfully
       })
@@ -94,10 +94,7 @@ export class CometchatRegularReactionViewComponent implements OnInit {
   }
 
   triggerEmojiClick(event) {
-    console.log("triggerEmojiClick");
-
     event.stopPropagation();
-    event.currentTarget.querySelector(".emoji-mart-emoji").click();
   }
 
   sendReaction() {
