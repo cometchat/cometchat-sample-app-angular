@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 
 @Component({
   selector: "cometchat-receiver-message-bubble",
@@ -10,6 +11,7 @@ export class CometchatReceiverMessageBubbleComponent implements OnInit {
   @Input() type = "";
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
+  @Input() loggedInUser;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -21,11 +23,16 @@ export class CometchatReceiverMessageBubbleComponent implements OnInit {
   linkUrl: string;
   linkText: string;
   linkImage: string;
+  checkReaction: boolean = false;
 
   constructor() {}
 
   ngOnInit() {
     this.checkLinkPreview();
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
   }
 
   /**
