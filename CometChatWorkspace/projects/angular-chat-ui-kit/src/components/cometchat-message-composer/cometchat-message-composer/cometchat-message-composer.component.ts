@@ -777,6 +777,20 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
    * @param
    */
   emojiStyle(val) {
-    return val ? "15px" : "45px";
+    return val
+      ? {
+          position: "absolute",
+          bottom: "20px",
+          right: "15px",
+          width: "285px",
+          zIndex: "1",
+        }
+      : {
+          position: "absolute",
+          bottom: "20px",
+          right: "45px",
+          width: "285px",
+          zIndex: "1",
+        };
   }
 }
