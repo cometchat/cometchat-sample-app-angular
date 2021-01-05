@@ -34,6 +34,12 @@
           </video>
         </div>
       </div>
+      <cometchat-regular-reaction-view
+        *ngIf="checkReaction"
+        [MessageDetails]="MessageDetails"
+        [loggedInUser]="loggedInUser"
+        (actionGenerated)="actionHandler($event)"
+      ></cometchat-regular-reaction-view>
       <div class="messageInfoWrapperStyle">
         <cometchat-read-reciept
           [MessageDetails]="MessageDetails"

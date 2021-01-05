@@ -6,6 +6,7 @@ import {
   EventEmitter,
   HostListener,
 } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 import * as enums from "../../utils/enums";
 
 @Component({
@@ -17,6 +18,7 @@ export class CometchatReceiverImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
+  @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   messageFrom = "receiver";
 
@@ -26,6 +28,7 @@ export class CometchatReceiverImageBubbleComponent implements OnInit {
   imageLoader: boolean = false;
   innerWidth;
   checkScreenSize: boolean = false;
+  checkReaction: boolean = false;
 
   avatar = null;
   //Sets Username of Avatar
@@ -40,6 +43,11 @@ export class CometchatReceiverImageBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
+
     /**
      *  If Group then displays Avatar And Name
      */
