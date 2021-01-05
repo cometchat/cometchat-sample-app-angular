@@ -5,6 +5,7 @@ import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip
 import { CometchatAvatarModule } from "../cometchat-avatar/cometchat-avatar.module";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
+import { CometchatRegularReactionViewModule } from "../cometchat-regular-reaction-view/cometchat-regular-reaction-view.module";
 
 @NgModule({
   declarations: [CometchatReceiverAudioBubbleComponent],
@@ -14,6 +15,7 @@ import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-re
     CometchatAvatarModule,
     CometchatReadRecieptModule,
     CometchatReplyCountModule,
+    CometchatRegularReactionViewModule,
   ],
   exports: [CometchatReceiverAudioBubbleComponent],
 })
