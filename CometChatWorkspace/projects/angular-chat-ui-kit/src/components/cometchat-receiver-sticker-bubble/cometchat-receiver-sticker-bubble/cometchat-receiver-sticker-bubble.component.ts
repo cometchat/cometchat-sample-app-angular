@@ -8,6 +8,7 @@ import {
   OnChanges,
 } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../utils/common";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-receiver-sticker-bubble",
@@ -57,7 +58,7 @@ export class CometchatReceiverStickerBubbleComponent
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
 
     /**

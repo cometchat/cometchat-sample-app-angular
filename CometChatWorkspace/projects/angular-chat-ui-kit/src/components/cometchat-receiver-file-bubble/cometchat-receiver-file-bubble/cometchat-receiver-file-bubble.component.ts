@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../utils/common";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-receiver-file-bubble",
@@ -27,7 +28,7 @@ export class CometchatReceiverFileBubbleComponent implements OnInit {
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
 
     //If Group then displays Avatar And Name

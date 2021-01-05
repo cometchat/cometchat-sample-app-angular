@@ -145,3 +145,4 @@ export const FETCH_BANNED_MEMBERS = "fetchBannedMembers";
 export const MEMBER_UNBANNED = "memberUnbanned";
 
 export const REACT_TO_MESSAGE = "reactToMessage";
+export const MESSAGE__READ = "messageRead";
