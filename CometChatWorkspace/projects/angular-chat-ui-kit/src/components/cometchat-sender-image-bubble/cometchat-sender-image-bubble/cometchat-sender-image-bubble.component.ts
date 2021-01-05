@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import * as enums from "../../utils/enums";
 import { checkMessageForExtensionsData } from "../../utils/common";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-sender-image-bubble",
@@ -45,7 +46,7 @@ export class CometchatSenderImageBubbleComponent implements OnInit {
     this.setImage();
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
   }
 
