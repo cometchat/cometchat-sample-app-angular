@@ -61,6 +61,7 @@
             <cometchat-sender-file-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
+              [loggedInUser]="loggedInUser"
               (actionGenerated)="actionHandler($event)"
             ></cometchat-sender-file-bubble>
             <cometchat-receiver-file-bubble
@@ -75,6 +76,7 @@
             <cometchat-sender-image-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
+              [loggedInUser]="loggedInUser"
               (actionGenerated)="actionHandler($event)"
             ></cometchat-sender-image-bubble>
             <cometchat-receiver-image-bubble
@@ -91,6 +93,7 @@
               <cometchat-sender-video-bubble
                 *ngIf="msg.sender.uid === loggedInUser.uid"
                 [MessageDetails]="msg"
+                [loggedInUser]="loggedInUser"
                 (actionGenerated)="actionHandler($event)"
               >
               </cometchat-sender-video-bubble>
@@ -110,6 +113,7 @@
               <cometchat-sender-audio-bubble
                 *ngIf="msg.sender.uid === loggedInUser.uid"
                 [MessageDetails]="msg"
+                [loggedInUser]="loggedInUser"
                 (actionGenerated)="actionHandler($event)"
               >
               </cometchat-sender-audio-bubble>
@@ -135,6 +139,7 @@
             <cometchat-sender-sticker-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
+              [loggedInUser]="loggedInUser"
               (actionGenerated)="actionHandler($event)"
             >
             </cometchat-sender-sticker-bubble>
@@ -152,6 +157,7 @@
             <cometchat-sender-poll-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
+              [loggedInUser]="loggedInUser"
               (actionGenerated)="actionHandler($event)"
             >
             </cometchat-sender-poll-bubble>
