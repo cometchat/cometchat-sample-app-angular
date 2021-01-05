@@ -4,7 +4,6 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {
-  AngularChatUiKitModule,
   CometchatConversationListModule,
   CometchatConversationListScreenModule,
   CometchatGroupListModule,
@@ -45,7 +44,6 @@ import { CometChatUnifiedPageComponent } from "./Components/Pages/comet-chat-uni
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularChatUiKitModule,
     CometchatUnifiedModule,
     CometchatConversationListScreenModule,
     CometchatGroupListScreenModule,

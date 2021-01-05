@@ -2,8 +2,6 @@
  * Public API Surface of angular-chat-ui-kit
  */
 
-import { fromEventPattern } from "rxjs";
-
 export * from "./components/angular-chat-ui-kit.service";
 export * from "./components/angular-chat-ui-kit.component";
 export * from "./components/angular-chat-ui-kit.module";
