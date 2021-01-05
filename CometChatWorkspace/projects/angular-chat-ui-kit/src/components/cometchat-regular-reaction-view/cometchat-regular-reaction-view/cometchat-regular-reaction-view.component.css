@@ -20,7 +20,7 @@
 }
 
 .messageReactionsSecondaryStyle {
-  border: 1px solid blue;
+  border: 1px solid #39f;
 }
 
 .emojiButtonStyle {
@@ -35,7 +35,6 @@
 }
 
 .reactionCountStyle {
-  /* color: `${props.theme.color.primary}`; */
   padding: 0 1px 0 3px;
 }
 .regularReactionIcon {
