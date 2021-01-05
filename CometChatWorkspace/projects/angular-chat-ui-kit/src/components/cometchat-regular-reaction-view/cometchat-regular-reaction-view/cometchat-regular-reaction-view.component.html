@@ -19,18 +19,14 @@
   <div
     *ngFor="let reaction of messageReactions"
     class="messageReactionsStyle"
-    (click)="triggerEmojiClick($event)"
+    (click)="reactToMessages(reaction)"
     [title]="reaction?.reactionTitle"
     [ngClass]="{
       messageReactionsSecondaryStyle: reaction?.showBlueOutline,
       messageReactionsHoverStyle: !reaction?.showBlueOutline
     }"
   >
-    <ngx-emoji
-      [emoji]="reaction?.reactionName"
-      size="16"
-      (click)="reactToMessages(reaction)"
-    ></ngx-emoji>
+    <ngx-emoji [emoji]="reaction?.reactionName" size="16"></ngx-emoji>
     <span class="reactionCountStyle">
       {{ reaction?.reactionCount }}
     </span>
