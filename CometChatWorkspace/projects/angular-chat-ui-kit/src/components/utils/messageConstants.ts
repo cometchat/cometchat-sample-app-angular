@@ -163,4 +163,7 @@ export const STRING_MESSAGES = {
   NO_DOCUMENTS: "No Documents",
   NO_RECORDS_FOUND: "No records found.",
   JOIN: "Join",
+  REACTIONS: "reactions",
+  POST: "POST",
+  V1_REACT: "v1/react",
 };
