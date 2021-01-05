@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
-
+import { REACTION_ICON } from "../../resources/icons/reaction";
 @Component({
   selector: "cometchat-tool-tip",
   templateUrl: "./cometchat-tool-tip.component.html",
@@ -22,6 +22,7 @@ export class CometchatToolTipComponent implements OnInit {
   receivedMessage: boolean = false;
   showReplyOption: boolean = true;
   threadView: boolean = false;
+  reactionIcon = REACTION_ICON;
 
   constructor() {}
 
