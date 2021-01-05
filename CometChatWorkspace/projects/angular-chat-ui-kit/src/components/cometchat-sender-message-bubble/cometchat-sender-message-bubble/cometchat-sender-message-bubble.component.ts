@@ -80,7 +80,6 @@ export class CometchatSenderMessageBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

@@ -57,12 +57,9 @@ export class CometchatSenderImageBubbleComponent implements OnInit {
   onResize() {
     this.innerWidth = window.innerWidth;
     if (this.innerWidth >= "320" && this.innerWidth <= "767") {
-      console.log("sender image bubble size less");
       this.checkScreenSize = true;
     } else {
       if (this.checkScreenSize === true) {
-        console.log("sender image bubble size");
-
         this.setImage();
       }
       this.checkScreenSize = false;
@@ -129,7 +126,6 @@ export class CometchatSenderImageBubbleComponent implements OnInit {
     img.onload = () => {
       this.imageLoader = false;
       this.imageUrl = img.src;
-      // console.log("src ",img.src);
     };
   }
 
@@ -148,7 +144,6 @@ export class CometchatSenderImageBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("receiver Message Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

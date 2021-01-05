@@ -26,8 +26,6 @@ export class CometchatSenderPollBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // console.log("sener Poll bubble --> message details ", this.MessageDetails);
-
     this.checkPollExtension();
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
@@ -50,7 +48,6 @@ export class CometchatSenderPollBubbleComponent implements OnInit {
               "extensions"
             ].hasOwnProperty("polls")
           ) {
-            console.log("sender Poll bubble --> Enable poll extension ");
             this.isPollExtensionEnabled = true;
             this.setPollExtensionData();
           }
@@ -81,10 +78,6 @@ export class CometchatSenderPollBubbleComponent implements OnInit {
 
       if (this.totalVotes > 0) {
         calculatedPercent = Math.round((vote / this.totalVotes) * 100);
-
-        // console.log(
-        //   `sender poll bubble --> percentage of ${this.pollExtensionData.options[currentItem]} is ${calculatedPercent} `
-        // );
       }
 
       optionList.push({
@@ -102,7 +95,6 @@ export class CometchatSenderPollBubbleComponent implements OnInit {
    * @param Event action
    */
   actionHandler(action) {
-    console.log("Sender Poll Bubble --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 }

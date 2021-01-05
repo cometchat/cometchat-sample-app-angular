@@ -18,8 +18,6 @@ export class CometchatImageViewComponent implements OnInit {
     this.getUrl();
   }
   getUrl() {
-    // console.log("dei", this.MessageDetails);
-
     let img = new Image();
     img.src = this.MessageDetails.data.url;
     this.imageUrl = img.src;

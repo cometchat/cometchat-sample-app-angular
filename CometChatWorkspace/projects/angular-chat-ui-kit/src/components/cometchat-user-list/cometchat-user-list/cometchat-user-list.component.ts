@@ -43,7 +43,6 @@ export class CometchatUserListComponent
 
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
-      //console.log("UserList --> detectchange called");
       if (!this.ref["destroyed"]) {
         this.ref.detectChanges();
       }
@@ -51,8 +50,6 @@ export class CometchatUserListComponent
   }
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message List --> ngOnChanges -->  ", change);
-
     if (change["item"]) {
       if (change["item"].previousValue !== change["item"].currentValue) {
         const userlist = [...this.usersList];
@@ -77,8 +74,6 @@ export class CometchatUserListComponent
   }
 
   ngOnInit() {
-    //console.log(`friends only status is `, this.friendsOnly);
-
     this.usersRequest = new CometChat.UsersRequestBuilder()
       .friendsOnly(this.friendsOnly)
       .setLimit(60)
@@ -86,8 +81,6 @@ export class CometchatUserListComponent
 
     let user = CometChat.getLoggedinUser().then(
       (user) => {
-        //console.log("Inside library user details:", { user });
-
         this.fetchNextContactList();
       },
       (error) => {
@@ -102,13 +95,11 @@ export class CometchatUserListComponent
         onUserOnline: (onlineUser) => {
           /* when someuser/friend comes online, user will be received here */
 
-          // console.log("On User Online:", { onlineUser });
           this.userUpdated(onlineUser);
         },
         onUserOffline: (offlineUser) => {
           /* when someuser/friend went offline, user will be received here */
 
-          // console.log("On User Offline:", { offlineUser });
           this.userUpdated(offlineUser);
         },
       })
@@ -119,7 +110,6 @@ export class CometchatUserListComponent
     // removinf the changeDetector Ref
     this.ref.detach();
 
-    // console.log("Removing Listeners just before destroying this component");
     CometChat.removeUserListener(this.userListenerId);
     this.userListenerId = null;
     this.usersRequest = null;
@@ -130,7 +120,6 @@ export class CometchatUserListComponent
    * @param String searchKey
    */
   searchUsers(searchKey) {
-    //console.log("search user based on key = ", searchKey);
     this.contactsNotFound = false;
     this.decoratorMsg = STRING_MESSAGES.LOADING_MESSSAGE;
 
@@ -141,8 +130,6 @@ export class CometchatUserListComponent
     this.loader = true;
     let val = searchKey;
     this.timeout = setTimeout(() => {
-      //console.log("Searching for user");
-
       //Empty Intial User List before searching user list according to search key
       this.usersList = [];
 
@@ -151,7 +138,7 @@ export class CometchatUserListComponent
         .setSearchKeyword(searchKey)
         .setLimit(30)
         .build();
-      // console.log(this.usersRequest);
+
       this.fetchNextContactList();
     }, 500);
   }
@@ -165,8 +152,6 @@ export class CometchatUserListComponent
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
 
-    // console.log("reached bottom ", bottom);
-
     if (bottom) this.fetchNextContactList();
   }
 
@@ -177,15 +162,13 @@ export class CometchatUserListComponent
   fetchNextContactList() {
     this.usersRequest.fetchNext().then(
       (userList) => {
-        // console.log(userList.length);
-
         if (userList.length === 0 && this.userSearches === true) {
           this.contactsNotFound = true;
           this.decoratorMsg = STRING_MESSAGES.NO_USERS_FOUND;
         } else {
           this.userSearches = false;
           /* userList will be the list of User class. */
-          // console.log("User list received:", userList);
+
           this.usersList = [...this.usersList, ...userList];
           this.loader = false;
         }
@@ -214,11 +197,6 @@ export class CometchatUserListComponent
       userlist.splice(userKey, 1, newUserObj);
 
       this.usersList = [...userlist];
-
-      // console.log(
-      //   "user list updated on someone online/offline ",
-      //   this.usersList
-      // );
     }
   };
 
@@ -227,7 +205,6 @@ export class CometchatUserListComponent
    * @param Any userToEmit
    */
   onUserClicked(userToEmit) {
-    // console.log(`user clicked is `, userToEmit);
     this.onUserClick.emit(userToEmit);
   }
 

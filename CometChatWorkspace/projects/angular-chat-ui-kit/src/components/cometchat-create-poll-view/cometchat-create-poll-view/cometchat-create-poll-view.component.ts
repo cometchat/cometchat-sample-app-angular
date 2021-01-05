@@ -68,8 +68,6 @@ export class CometchatCreatePollViewComponent implements OnInit {
    * @param Any values
    */
   createPoll(values) {
-    console.log("create Poll View --> create poll with below data", values);
-
     if (values.question.trim().length === 0) {
       this.errorText = STRING_MESSAGES.POLL_QUESTION_BLANK;
       return false;
@@ -140,8 +138,6 @@ export class CometchatCreatePollViewComponent implements OnInit {
           metadata: { "@injected": { extensions: { polls: polls } } },
         };
 
-        console.log(" create poll view --> poll created ", message);
-
         this.actionGenerated.emit({ type: "pollCreated", payLoad: message });
         this.errorText = "";
       })
@@ -169,8 +165,6 @@ export class CometchatCreatePollViewComponent implements OnInit {
    * @param
    */
   closePollView() {
-    console.log("create poll view --> close poll view");
-
     this.actionGenerated.emit({ type: "closePollView", payLoad: null });
   }
 }

@@ -46,7 +46,6 @@ export class CometchatCallScreenComponent
 
   ngOnChanges(change: SimpleChanges) {
     if (change["outgoingCall"]) {
-      // console.log("call Screen --> making an outgoing call");
       let prevProps = { outgoingCall: null };
       let props = { outgoingCall: null };
 
@@ -56,8 +55,6 @@ export class CometchatCallScreenComponent
       if (prevProps.outgoingCall !== props.outgoingCall && props.outgoingCall) {
         // this.playOutgoingAlert();
         this.playAudio();
-
-        // console.log("call Screen --> setting conditions to open call screen");
 
         let call = props.outgoingCall;
         this.outgoingCallScreen = true;
@@ -75,7 +72,6 @@ export class CometchatCallScreenComponent
       props = { ...props, ...change["incomingCall"].currentValue };
 
       if (prevProps.incomingCall !== this.incomingCall && this.incomingCall) {
-        // console.log("call Screen --> getting an incoming call");
         this.acceptCall();
       }
     }
@@ -124,8 +120,6 @@ export class CometchatCallScreenComponent
    * Updates the callScreen on basis of call actions
    */
   callScreenUpdated = (key, call) => {
-    //console.log("Call Screen --> should be updated coz ", key);
-
     switch (key) {
       case enums.INCOMING_CALL_CANCELLED:
         this.incomingCallCancelled(call);
@@ -197,15 +191,12 @@ export class CometchatCallScreenComponent
   startCall(call) {
     const el = this.callScreenFrame.nativeElement;
 
-    //console.log("callScreen --> the call starts now , u may speak");
-
     CometChat.startCall(
       call.getSessionId(),
       el,
       new CometChat.OngoingCallListener({
         onUserJoined: (user) => {
           /* Notification received here if another user joins the call. */
-          //console.log("User joined call:", enums.USER_JOINED, user);
           /* this method can be use to display message or perform any actions if someone joining the call */
 
           //call initiator gets the same info in outgoingcallaccpeted event
@@ -235,7 +226,7 @@ export class CometchatCallScreenComponent
         },
         onUserLeft: (user) => {
           /* Notification received here if another user left the call. */
-          //console.log("User left call:", enums.USER_LEFT, user);
+
           /* this method can be use to display message or perform any actions if someone leaving the call */
 
           //call initiator gets the same info in outgoingcallaccpeted event
@@ -329,7 +320,6 @@ export class CometchatCallScreenComponent
    * @param
    */
   cancelCall = () => {
-    //console.log("Call Screen --> cancelling current outgoing call");
     this.pauseAudio();
     // this.pauseOutgoingAlert();
     CometChatManager.rejectCall(

@@ -104,7 +104,6 @@ export class CometchatNavBarComponent implements OnInit {
    */
   groupClicked(group) {
     this.item = group;
-    console.log("navbar group ", group);
 
     //Close Thread And User Detail Screen When Chat Window Is Changed
     //this.closeThreadMessages();

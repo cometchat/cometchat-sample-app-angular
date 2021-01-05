@@ -55,7 +55,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    //console.log("Message Thread --> parent message ", this.parentMessage);
     if (this.parentMessage.hasOwnProperty("replyCount")) {
       this.replyCount = this.parentMessage.replyCount;
     }
@@ -83,8 +82,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
       case enums.MESSAGE_COMPOSED: {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;
-
-        //console.log("Message Thread --> new message added ", messages);
 
         this.actionGenerated.emit({
           type: enums.CHANGE_THREAD_PARENT_MESSAGE_REPLY_COUNT,
@@ -170,7 +167,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
    * @param
    */
   closeThread() {
-    //console.log("close thread clicked");
     this.actionGenerated.emit({
       type: enums.CLOSE_THREAD_CLICKED,
       payLoad: null,
@@ -260,8 +256,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
       .then((deletedMessage) => {
         this.removeMessages([deletedMessage]);
 
-        //console.log(" MessageList screen --> Message Deleted successfully");
-
         const messageList = [...this.messageList];
         let messageKey = messageList.findIndex((m) => m.id === message.id);
 
@@ -325,17 +319,11 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
    * @param Any message
    */
   toggleImageView(message) {
-    // console.log("MessageThread toggleImageView ", message);
     this.imageView = message;
     this.fullScreenViewImage = !this.fullScreenViewImage;
   }
 
   handleScroll(e) {
-    console.log(
-      `Message Thread --> e.currentTarget.clientHeight `,
-      e.currentTarget.clientHeight
-    );
-
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);

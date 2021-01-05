@@ -16,10 +16,6 @@ export class CometchatDeletedMessageBubbleComponent implements OnInit {
 
   ngOnInit() {
     if (this.MessageDetails.deletedBy === this.loggedInUser.uid) {
-      // console.log(
-      //   "Delete Message Bubble --> logged In user ",
-      //   this.loggedInUser
-      // );
       this.loggedInUserDeletedThisMessage = true;
     }
   }
@@ -31,7 +27,7 @@ export class CometchatDeletedMessageBubbleComponent implements OnInit {
       minute: "numeric",
       hour12: true,
     });
-    // console.log("time is ", timeStamp);
+
     return timeStamp;
   }
 }

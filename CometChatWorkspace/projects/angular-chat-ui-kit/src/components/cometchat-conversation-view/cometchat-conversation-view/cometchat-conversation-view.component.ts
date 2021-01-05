@@ -29,7 +29,6 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Conversation View ngOnChanges ->> ", change);
     if (change["ConversationDetails"]) {
       if (
         change["ConversationDetails"].currentValue !==
@@ -44,7 +43,6 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
     }
   }
   ngOnInit() {
-    // console.log("ConversationView -> ngOnInit  ", this.ConversationDetails);
     this.getLastMessage(this.ConversationDetails);
     this.getLastMessageTimestamp(this.ConversationDetails);
     this.getName(this.ConversationDetails);
@@ -233,7 +231,6 @@ export class CometchatConversationViewComponent implements OnInit, OnChanges {
    * @param Any userToEmit
    */
   onUserClicked(userToEmit) {
-    // console.log(`user clicked is `, userToEmit);
     this.onUserClick.emit(userToEmit);
   }
 }

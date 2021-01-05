@@ -20,7 +20,6 @@ export class CometchatGroupViewComponent implements OnInit {
    * @param Any group
    */
   groupClicked(group) {
-    console.log("group view --> group clicked is ", group);
     this.onGroupClick.emit(group);
   }
 }

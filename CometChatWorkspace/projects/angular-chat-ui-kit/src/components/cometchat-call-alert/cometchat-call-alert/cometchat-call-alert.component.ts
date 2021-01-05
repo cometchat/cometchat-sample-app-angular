@@ -66,7 +66,6 @@ export class CometchatCallAlertComponent implements OnInit {
     switch (key) {
       case enums.INCOMING_CALL_RECEIVED: {
         //occurs at the callee end
-        console.log("recieved call inside callscreen updated function");
         this.incomingCallReceived(call);
         break;
       }
@@ -89,7 +88,6 @@ export class CometchatCallAlertComponent implements OnInit {
     this.user = incomingCall.sender;
     this.name = incomingCall.sender.name;
     const activeCall = CometChat.getActiveCall();
-    console.log("incoming calllll ", incomingCall);
 
     //if there is another call in progress
     if (activeCall) {
@@ -166,7 +164,6 @@ export class CometchatCallAlertComponent implements OnInit {
   acceptCall() {
     //this.pauseIncomingAlert();
     this.pauseAudio();
-    console.log("incoming call data", this.incomingCall);
 
     this.actionGenerated.emit({
       type: "acceptIncomingCall",

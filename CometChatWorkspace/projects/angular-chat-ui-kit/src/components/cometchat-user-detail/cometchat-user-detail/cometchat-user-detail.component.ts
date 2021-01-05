@@ -26,19 +26,11 @@ export class CometchatUserDetailComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message List --> ngOnChanges -->  ", change);
-
     if (change["item"]) {
       this.getBlockStatus(change["item"].currentValue);
-      console.log(
-        "userDetailScreen ->> new user obj ",
-        change["item"].currentValue
-      );
     }
   }
-  ngOnInit() {
-    console.log("item is ", this.item);
-  }
+  ngOnInit() {}
 
   getBlockStatus(item) {
     if (item.blockedByMe) {
@@ -54,7 +46,6 @@ export class CometchatUserDetailComponent implements OnInit, OnChanges {
       this.actionGenerated.emit({
         type: enums.BLOCK_USER,
       });
-      console.log("item is ", this.item);
     } else if (this.blockUserText === STRING_MESSAGES.UNBLOCK_USER) {
       this.actionGenerated.emit({
         type: enums.UNBLOCK_USER,

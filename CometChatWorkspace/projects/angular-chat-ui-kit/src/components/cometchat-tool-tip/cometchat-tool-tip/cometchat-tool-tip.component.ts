@@ -49,7 +49,6 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   replyToMessage() {
-    // console.log("reply to ", this.MessageDetails);
     this.actionGenerated.emit({
       type: enums.VIEW_MESSAGE_THREAD,
       payLoad: this.MessageDetails,
@@ -61,7 +60,6 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   editMessage() {
-    // console.log("edit message ", this.MessageDetails);
     this.actionGenerated.emit({
       type: enums.EDIT_MESSAGE,
       payLoad: this.MessageDetails,
@@ -73,7 +71,6 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   deleteMessage() {
-    // console.log("Delete ", this.MessageDetails);
     this.actionGenerated.emit({
       type: enums.DELETE_MESSAGE,
       payLoad: this.MessageDetails,
@@ -85,8 +82,6 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   sendReaction() {
-    // console.log("reaction");
-
     this.actionGenerated.emit({
       type: enums.REACT_TO_MESSAGE,
       payLoad: this.MessageDetails,

@@ -42,7 +42,6 @@ export class CometchatGroupListComponent
 
   constructor(private ref: ChangeDetectorRef) {
     setInterval(() => {
-      //console.log("UserList --> detectchange called");
       if (!this.ref["destroyed"]) {
         this.ref.detectChanges();
       }
@@ -67,11 +66,6 @@ export class CometchatGroupListComponent
       ) {
         const groups = [...this.grouplist];
         const groupToUpdate = this.groupToUpdate;
-
-        console.log(
-          "comet chat group list --> ngOnChanges --> changing group data ",
-          groupToUpdate
-        );
 
         const groupKey = groups.findIndex(
           (group) => group.guid === groupToUpdate.guid
@@ -242,8 +236,6 @@ export class CometchatGroupListComponent
     let groupRequest = null;
 
     if (searchKey !== "") {
-      console.log(`Group List --> setting search key ${searchKey} `);
-
       groupRequest = new CometChat.GroupsRequestBuilder()
         .setLimit(30)
         .setSearchKeyword(searchKey)
@@ -279,16 +271,10 @@ export class CometchatGroupListComponent
               this.decoratorMessage = STRING_MESSAGES.NO_GROUPS_FOUND;
             }
 
-            console.log(
-              "group list fetched now --> group list fetched ",
-              groupList
-            );
-
             groupList.forEach((group) => (group = this.setAvatar(group)));
             // this.setState({ grouplist: [...this.state.grouplist, ...groupList] });
             this.grouplist = [...this.grouplist, ...groupList];
 
-            console.log("group list --> group list fetched ", this.grouplist);
             this.decoratorMessage = "";
 
             if (this.grouplist.length === 0) {
@@ -349,7 +335,6 @@ export class CometchatGroupListComponent
 
       this.joinGroup(guid, groupType, password);
     } else {
-      console.log("group List --> group clicked is ", group);
       this.onGroupClick.emit(group);
 
       if (this.enableSelectedGroupStyling) {
@@ -404,8 +389,6 @@ export class CometchatGroupListComponent
     this.timeout = setTimeout(() => {
       this.groupRequest = this.groupListRequestBuilder(val);
 
-      console.log("group List --> message request ", this.groupRequest);
-
       this.grouplist = [];
       this.getGroups();
     }, 1000);
@@ -415,26 +398,20 @@ export class CometchatGroupListComponent
     switch (key) {
       case enums.GROUP_MEMBER_SCOPE_CHANGED:
         this.updateMemberChanged(group, options);
-        console.log(
-          " comet chat group list -->  ",
-          enums.GROUP_MEMBER_SCOPE_CHANGED
-        );
         break;
       case enums.GROUP_MEMBER_KICKED:
       case enums.GROUP_MEMBER_BANNED:
       case enums.GROUP_MEMBER_LEFT:
         this.updateMemberRemoved(group, options);
-        console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_KICKED);
-        console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_BANNED);
-        console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_LEFT);
+
         break;
       case enums.GROUP_MEMBER_ADDED:
         this.updateMemberAdded(group, options);
-        console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_ADDED);
+
         break;
       case enums.GROUP_MEMBER_JOINED:
         this.updateMemberJoined(group, options);
-        console.log(" comet chat group list -->  ", enums.GROUP_MEMBER_JOINED);
+
         break;
       default:
         break;
@@ -580,7 +557,7 @@ export class CometchatGroupListComponent
   actionHandler(action) {
     let data = action.payLoad;
 
-    console.log("Comet Chat Group List --> action generation is ", action);
+    // console.log("Comet Chat Group List --> action generation is ", action);
 
     switch (action.type) {
       case enums.CLOSE_CREATE_GROUP_VIEW: {
@@ -588,7 +565,6 @@ export class CometchatGroupListComponent
         break;
       }
       case enums.GROUP_CREATED: {
-        console.log(" GroupList --> group created", data);
         this.toggleCreateGroupView();
         this.createGroupActionHandler(data);
         break;
@@ -605,7 +581,6 @@ export class CometchatGroupListComponent
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
 
-    console.log("Group List --> reached bottom ", bottom);
     if (bottom) this.getGroups();
   }
 

@@ -167,7 +167,7 @@ export class CometchatSharedMediaViewComponent implements OnInit {
         this.fetchPreviousMessages()
           .then((messages) => {
             const messageList = [...messages, ...this.messageList];
-            // console.log("SharedMediaView messageList check  ", messageList);
+
             if (messageList.length === 0) {
               this.checkMediaMessage = true;
               this.displayMessage = STRING_MESSAGES.NO_RECORDS_FOUND;
@@ -235,7 +235,6 @@ export class CometchatSharedMediaViewComponent implements OnInit {
   handleScroll(e) {
     const top = Math.round(e.currentTarget.scrollTop) === 0;
     if (top && this.messageList.length) {
-      console.log("SharedMediaView --> scroll event ", e);
       this.getMessages();
     }
   }
