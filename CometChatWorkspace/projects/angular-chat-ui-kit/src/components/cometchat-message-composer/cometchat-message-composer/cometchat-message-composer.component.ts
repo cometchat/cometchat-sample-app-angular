@@ -771,4 +771,12 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
         // Some error occured
       });
   }
+
+  /**
+   * To set style for emoji selector
+   * @param
+   */
+  emojiStyle(val) {
+    return val ? "15px" : "45px";
+  }
 }

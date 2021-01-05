@@ -131,36 +131,19 @@
             (click)="toggleEmoji()"
           >
           </span>
-          <div *ngIf="!parentMessageId">
-            <emoji-mart
-              (emojiSelect)="addEmoji($event)"
-              [title]="PICK_YOUR_EMOJI"
-              emoji="point_up"
-              *ngIf="emojiToggled"
-              [style]="{
-                position: 'absolute',
-                bottom: '20px',
-                right: '45px',
-                width: '285px',
-                zIndex: '1'
-              }"
-            ></emoji-mart>
-          </div>
-          <div *ngIf="parentMessageId">
-            <emoji-mart
-              (emojiSelect)="addEmoji($event)"
-              [title]="PICK_YOUR_EMOJI"
-              emoji="point_up"
-              *ngIf="emojiToggled"
-              [style]="{
-                position: 'absolute',
-                bottom: '20px',
-                right: '15px',
-                width: '285px',
-                zIndex: '1'
-              }"
-            ></emoji-mart>
-          </div>
+          <emoji-mart
+            (emojiSelect)="addEmoji($event)"
+            [title]="PICK_YOUR_EMOJI"
+            emoji="point_up"
+            *ngIf="emojiToggled"
+            [style]="{
+              position: 'absolute',
+              bottom: '20px',
+              right: emojiStyle(parentMessageId),
+              width: '285px',
+              zIndex: '1'
+            }"
+          ></emoji-mart>
           <span
             id="send"
             title="send message"
