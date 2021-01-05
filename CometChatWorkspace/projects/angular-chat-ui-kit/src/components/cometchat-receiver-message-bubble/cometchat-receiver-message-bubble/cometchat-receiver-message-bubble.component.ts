@@ -32,7 +32,7 @@ export class CometchatReceiverMessageBubbleComponent implements OnInit {
     this.checkLinkPreview();
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
   }
 

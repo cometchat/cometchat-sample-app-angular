@@ -386,7 +386,7 @@ export class CometchatMessageListComponent
                 }
 
                 this.actionGenerated.emit({
-                  type: "messageRead",
+                  type: enums.MESSAGE__READ,
                   payLoad: message,
                 });
               }
@@ -414,7 +414,7 @@ export class CometchatMessageListComponent
               (this.times > 1 && actionMessages.length === 30)
             ) {
               this.actionGenerated.emit({
-                type: "messageFetched",
+                type: enums.MESSAGE_FETCHED,
                 payLoad: messageList,
               });
               this.getMessages(true, false);
@@ -502,7 +502,7 @@ export class CometchatMessageListComponent
       }
 
       this.actionGenerated.emit({
-        type: "messageReceived",
+        type: enums.MESSAGE_RECEIVED,
         payLoad: [message],
       });
     } else if (
@@ -526,7 +526,7 @@ export class CometchatMessageListComponent
       // console.log("after adding the received message ", this.messages);
 
       this.actionGenerated.emit({
-        type: "messageReceived",
+        type: enums.MESSAGE_RECEIVED,
         payLoad: [message],
       });
     }
@@ -563,7 +563,7 @@ export class CometchatMessageListComponent
           messageList.splice(messageKey, 1, newMessageObj);
 
           this.actionGenerated.emit({
-            type: "messageUpdated",
+            type: enums.MESSAGE_UPDATED,
             payLoad: messageList,
           });
         }
@@ -581,7 +581,7 @@ export class CometchatMessageListComponent
           messageList.splice(messageKey, 1, newMessageObj);
 
           this.actionGenerated.emit({
-            type: "messageUpdated",
+            type: enums.MESSAGE_UPDATED,
             payLoad: messageList,
           });
         }
@@ -604,13 +604,19 @@ export class CometchatMessageListComponent
       message.getReceiverType() === "group" &&
       message.getReceiver().guid === this.item.guid
     ) {
-      this.actionGenerated.emit({ type: "messageDeleted", payLoad: [message] });
+      this.actionGenerated.emit({
+        type: enums.MESSAGE_DELETE,
+        payLoad: [message],
+      });
     } else if (
       this.type === "user" &&
       message.getReceiverType() === "user" &&
       message.getSender().uid === this.item.uid
     ) {
-      this.actionGenerated.emit({ type: "messageDeleted", payLoad: [message] });
+      this.actionGenerated.emit({
+        type: enums.MESSAGE_DELETE,
+        payLoad: [message],
+      });
     }
   }
 
@@ -656,7 +662,7 @@ export class CometchatMessageListComponent
 
       messageList.splice(messageKey, 1, newMessageObj);
       this.actionGenerated.emit({
-        type: "messageUpdated",
+        type: enums.MESSAGE_UPDATED,
         payLoad: messageList,
       });
     }
@@ -720,7 +726,7 @@ export class CometchatMessageListComponent
 
         const newMessage = this.addMetadataToCustomData(message);
         this.actionGenerated.emit({
-          type: "customMessageReceived",
+          type: enums.CUSTOM_MESSAGE_RECEIVE,
           payLoad: [newMessage],
         });
       }
@@ -743,12 +749,12 @@ export class CometchatMessageListComponent
         message.type !== enums.CUSTOM_TYPE_POLL
       ) {
         this.actionGenerated.emit({
-          type: "customMessageReceived",
+          type: enums.CUSTOM_MESSAGE_RECEIVE,
           payLoad: [message],
         });
       } else if (message.type === enums.CUSTOM_TYPE_STICKER) {
         this.actionGenerated.emit({
-          type: "customMessageReceived",
+          type: enums.CUSTOM_MESSAGE_RECEIVE,
           payLoad: [message],
         });
       } else if (message.type === enums.CUSTOM_TYPE_POLL) {
@@ -756,7 +762,7 @@ export class CometchatMessageListComponent
 
         const newMessage = this.addMetadataToCustomData(message);
         this.actionGenerated.emit({
-          type: "customMessageReceived",
+          type: enums.CUSTOM_MESSAGE_RECEIVE,
           payLoad: [newMessage],
         });
       }
@@ -806,7 +812,7 @@ export class CometchatMessageListComponent
       }
 
       this.actionGenerated.emit({
-        type: "callUpdated",
+        type: enums.CALL_UPDATED,
         payLoad: message,
       });
     } else if (
@@ -823,7 +829,7 @@ export class CometchatMessageListComponent
       }
 
       this.actionGenerated.emit({
-        type: "callUpdated",
+        type: enums.CALL_UPDATED,
         payLoad: message,
       });
     }

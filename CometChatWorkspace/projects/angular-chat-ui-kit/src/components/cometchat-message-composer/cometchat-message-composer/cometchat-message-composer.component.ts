@@ -750,10 +750,15 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   }
 
   reactToMessages(emoji) {
-    CometChat.callExtension("reactions", "POST", "v1/react", {
-      msgId: this.messageToReact.id,
-      emoji: emoji.colons,
-    })
+    CometChat.callExtension(
+      STRING_MESSAGES.REACTIONS,
+      STRING_MESSAGES.POST,
+      STRING_MESSAGES.V1_REACT,
+      {
+        msgId: this.messageToReact.id,
+        emoji: emoji.colons,
+      }
+    )
       .then((response) => {
         if (
           response.hasOwnProperty("success") &&
