@@ -37,6 +37,7 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
   imageView = null;
   fullScreenViewImage: boolean = false;
 
+  messageToReact = null;
   THREAD: String = STRING_MESSAGES.THREAD;
 
   constructor() {}
@@ -158,6 +159,9 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
         });
         break;
       }
+      case enums.REACT_TO_MESSAGE:
+        this.reactToMessage(messages);
+        break;
     }
   }
 
@@ -361,5 +365,9 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
         this.chatWindow.nativeElement.scrollHeight -
         this.chatWindow.nativeElement.clientHeight;
     }, 1);
+  }
+
+  reactToMessage(message) {
+    this.messageToReact = message;
   }
 }

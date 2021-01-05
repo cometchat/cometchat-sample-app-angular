@@ -6,6 +6,7 @@
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
   ></cometchat-tool-tip>
+
   <div class="messageWrapperStyle">
     <div class="messageTxtWrapperStyle" *ngIf="linkPreview === false">
       <p class="messageTxtStyle message__txt">
@@ -43,7 +44,12 @@
       </div>
     </div>
   </div>
-
+  <cometchat-regular-reaction-view
+    *ngIf="checkReaction"
+    [MessageDetails]="MessageDetails"
+    [loggedInUser]="loggedInUser"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-regular-reaction-view>
   <div class="messageInfoWrapperStyle">
     <!--ReplyCount component-->
     <cometchat-reply-count

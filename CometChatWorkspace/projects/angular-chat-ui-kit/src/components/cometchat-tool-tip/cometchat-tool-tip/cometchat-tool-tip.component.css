@@ -51,7 +51,17 @@
     center center no-repeat;
 }
 
+.regularReactionIcon {
+  height: 23px;
+  width: 24px;
+  background-color: white;
+}
+
 .tool {
   justify-content: flex-end;
+  display: flex;
+  padding: 5px;
+}
+.toolTip {
   display: flex;
 }

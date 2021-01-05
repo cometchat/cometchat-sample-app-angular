@@ -5,7 +5,12 @@
       showToolTip && (!receivedMessage || (receivedMessage && !threadView))
     "
   >
-    <div [class.tool]="!receivedMessage">
+    <div [class.tool]="!receivedMessage" class="toolTip">
+      <li class="actionGroupStyle">
+        <button type="button" class="groupButtonStyle" (click)="sendReaction()">
+          <img [src]="reactionIcon" class="regularReactionIcon" />
+        </button>
+      </li>
       <li class="actionGroupStyle" *ngIf="showReplyOption">
         <button
           type="button"

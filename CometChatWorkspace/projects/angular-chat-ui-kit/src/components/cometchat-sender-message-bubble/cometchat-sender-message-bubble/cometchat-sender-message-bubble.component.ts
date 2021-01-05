@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
@@ -9,7 +10,7 @@ import { STRING_MESSAGES } from "../../utils/messageConstants";
 export class CometchatSenderMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
-
+  @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   @Input() showToolTip = true;
@@ -20,11 +21,15 @@ export class CometchatSenderMessageBubbleComponent implements OnInit {
   linkUrl: string;
   linkText: string;
   linkImage: string;
-
+  checkReaction: boolean = false;
   constructor() {}
 
   ngOnInit() {
     this.checkLinkPreview();
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
   }
 
   /**

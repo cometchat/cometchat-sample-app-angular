@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 
 @Component({
   selector: "cometchat-receiver-file-bubble",
@@ -14,16 +15,22 @@ export class CometchatReceiverFileBubbleComponent implements OnInit {
   avatarName: string = null;
   //If Group then only show avatar
   avatarIfGroup: boolean = false;
+  checkReaction: boolean = false;
+
   @Input() showReplyCount = true;
 
   @Input() showToolTip = true;
+  @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
   ngOnInit() {
-    /**
-     *  If Group then displays Avatar And Name
-     */
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
+
+    //If Group then displays Avatar And Name
     if (this.MessageDetails.receiverType === "group") {
       this.avatarIfGroup = true;
       if (!this.MessageDetails.sender.avatar) {

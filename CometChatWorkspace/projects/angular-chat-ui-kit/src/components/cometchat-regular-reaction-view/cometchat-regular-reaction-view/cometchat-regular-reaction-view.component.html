@@ -1,0 +1,25 @@
+<div
+  *ngFor="let reaction of messageReactions"
+  class="messageReactionsStyle"
+  (click)="triggerEmojiClick($event)"
+  [title]="reaction?.reactionTitle"
+  [ngClass]="{
+    messageReactionsSecondaryStyle: reaction?.showBlueOutline,
+    messageReactionsHoverStyle: !reaction?.showBlueOutline
+  }"
+>
+  <ngx-emoji
+    [emoji]="reaction?.reactionName"
+    size="16"
+    (click)="reactToMessages(reaction)"
+  ></ngx-emoji>
+  <span class="reactionCountStyle">
+    {{ reaction?.reactionCount }}
+  </span>
+</div>
+
+<div class="messageReactionStyle" *ngIf="messageReactions?.length > 0">
+  <button class="emojiButtonStyle" (click)="sendReaction()">
+    <img [src]="reactionIcon" class="regularReactionIcon" />
+  </button>
+</div>

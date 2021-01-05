@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
+import { checkMessageForExtensionsData } from "../../utils/common";
 import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-receiver-poll-bubble",
@@ -11,6 +12,7 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
   @Input() showReplyCount = true;
 
   @Input() loggedInUserUid = "";
+  @Input() loggedInUser;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -22,10 +24,16 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
   pollOptions = [];
   totalVotes = 0;
   selectedOption = null;
+  checkReaction: boolean = false;
 
   constructor() {}
 
   ngOnInit() {
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
+
     this.checkPollExtension();
   }
 

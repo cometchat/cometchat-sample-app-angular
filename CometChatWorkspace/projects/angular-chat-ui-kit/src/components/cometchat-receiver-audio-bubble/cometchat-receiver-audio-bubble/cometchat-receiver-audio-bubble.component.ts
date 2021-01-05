@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 
 @Component({
   selector: "cometchat-receiver-audio-bubble",
@@ -9,6 +10,7 @@ export class CometchatReceiverAudioBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
+  @Input() loggedInUser;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
@@ -20,9 +22,16 @@ export class CometchatReceiverAudioBubbleComponent implements OnInit {
   //If Group then only show avatar
   avatarIfGroup: boolean = false;
 
+  checkReaction: boolean = false;
+
   constructor() {}
 
   ngOnInit() {
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
+
     /**
      *  If Group then displays Avatar And Name
      */

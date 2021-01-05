@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
-
+import { REACTION_ICON } from "../../resources/icons/reaction";
 @Component({
   selector: "cometchat-tool-tip",
   templateUrl: "./cometchat-tool-tip.component.html",
@@ -22,6 +22,7 @@ export class CometchatToolTipComponent implements OnInit {
   receivedMessage: boolean = false;
   showReplyOption: boolean = true;
   threadView: boolean = false;
+  reactionIcon = REACTION_ICON;
 
   constructor() {}
 
@@ -48,7 +49,7 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   replyToMessage() {
-    console.log("reply to ", this.MessageDetails);
+    // console.log("reply to ", this.MessageDetails);
     this.actionGenerated.emit({
       type: enums.VIEW_MESSAGE_THREAD,
       payLoad: this.MessageDetails,
@@ -60,9 +61,9 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   editMessage() {
-    console.log("edit message ", this.MessageDetails);
+    // console.log("edit message ", this.MessageDetails);
     this.actionGenerated.emit({
-      type: "editMessage",
+      type: enums.EDIT_MESSAGE,
       payLoad: this.MessageDetails,
     });
   }
@@ -72,9 +73,22 @@ export class CometchatToolTipComponent implements OnInit {
    *
    */
   deleteMessage() {
-    console.log("Delete ", this.MessageDetails);
+    // console.log("Delete ", this.MessageDetails);
     this.actionGenerated.emit({
-      type: "deleteMessage",
+      type: enums.DELETE_MESSAGE,
+      payLoad: this.MessageDetails,
+    });
+  }
+
+  /**
+   * Generates an action to send Regular Reactions the current message
+   *
+   */
+  sendReaction() {
+    // console.log("reaction");
+
+    this.actionGenerated.emit({
+      type: enums.REACT_TO_MESSAGE,
       payLoad: this.MessageDetails,
     });
   }

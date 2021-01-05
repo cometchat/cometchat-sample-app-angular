@@ -7,6 +7,8 @@ import {
   HostListener,
 } from "@angular/core";
 import * as enums from "../../utils/enums";
+import { checkMessageForExtensionsData } from "../../utils/common";
+
 @Component({
   selector: "cometchat-sender-image-bubble",
   templateUrl: "./cometchat-sender-image-bubble.component.html",
@@ -16,9 +18,12 @@ export class CometchatSenderImageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
+  @Input() loggedInUser;
+
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   innerWidth;
   checkScreenSize: boolean = false;
+  checkReaction: boolean = false;
 
   timer = null;
   messageFrom = "sender";
@@ -38,6 +43,10 @@ export class CometchatSenderImageBubbleComponent implements OnInit {
     this.onResize();
 
     this.setImage();
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
   }
 
   /**

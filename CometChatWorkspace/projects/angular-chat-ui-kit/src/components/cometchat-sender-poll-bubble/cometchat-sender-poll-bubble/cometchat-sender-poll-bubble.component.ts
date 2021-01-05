@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 
 @Component({
   selector: "cometchat-sender-poll-bubble",
@@ -8,12 +9,15 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class CometchatSenderPollBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
+  @Input() loggedInUser;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   @Input() showToolTip = true;
 
   isPollExtensionEnabled: boolean = false;
+  checkReaction: boolean = false;
+
   pollExtensionData = null;
   pollOptions = [];
   totalVotes = 0;
@@ -21,9 +25,13 @@ export class CometchatSenderPollBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log("sener Poll bubble --> message details ", this.MessageDetails);
+    // console.log("sener Poll bubble --> message details ", this.MessageDetails);
 
     this.checkPollExtension();
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
   }
 
   /**

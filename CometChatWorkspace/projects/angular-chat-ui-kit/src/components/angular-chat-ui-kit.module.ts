@@ -51,6 +51,7 @@ import { CometchatCallScreenModule } from "./cometchat-call-screen/call-screen.m
 import { CometchatCallMessageModule } from "./cometchat-call-message/call-message.module";
 import { CometchatUnifiedModule } from "./cometchat-unified/cometchat-unified.module";
 import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.module";
+import { CometchatRegularReactionViewModule } from "./cometchat-regular-reaction-view/cometchat-regular-reaction-view.module";
 @NgModule({
   declarations: [AngularChatUiKitComponent],
   imports: [
@@ -104,6 +105,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatCallMessageModule,
     CometchatUnifiedModule,
     CometchatNavBarModule,
+    CometchatRegularReactionViewModule,
   ],
   exports: [
     AngularChatUiKitComponent,
@@ -157,6 +159,7 @@ import { CometchatNavBarModule } from "./cometchat-nav-bar/cometchat-nav-bar.mod
     CometchatCallMessageModule,
     CometchatUnifiedModule,
     CometchatNavBarModule,
+    CometchatRegularReactionViewModule,
   ],
 })
 export class AngularChatUiKitModule {}
