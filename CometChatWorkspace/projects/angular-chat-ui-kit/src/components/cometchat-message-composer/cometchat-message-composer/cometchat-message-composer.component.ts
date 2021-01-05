@@ -102,7 +102,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
         this.openEditPreview();
       }
     }
-    if (change["messageToReact"]) {
+    if (change["messageToReact"] && change["messageToReact"].currentValue) {
       const previousMessage = change["messageToReact"].previousValue;
       const currentMessage = change["messageToReact"].currentValue;
       if (previousMessage !== currentMessage) {
@@ -733,6 +733,9 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       return false;
     }
     this.emojiToggled = !this.emojiToggled;
+    if (!this.emojiToggled) {
+      this.messageToReact = null;
+    }
   }
 
   reactToMessages(emoji) {
