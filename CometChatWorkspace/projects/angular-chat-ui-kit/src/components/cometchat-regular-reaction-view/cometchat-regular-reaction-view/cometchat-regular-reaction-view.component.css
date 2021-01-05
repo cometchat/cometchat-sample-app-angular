@@ -47,5 +47,8 @@
 
 .regularReaction {
   display: flex;
+}
+
+.regularReactionSecondaryStyle {
   justify-content: flex-end;
 }

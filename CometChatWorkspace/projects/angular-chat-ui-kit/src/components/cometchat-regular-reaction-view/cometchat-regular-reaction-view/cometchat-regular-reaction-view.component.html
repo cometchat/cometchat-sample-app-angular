@@ -1,4 +1,10 @@
-<div class="regularReaction">
+<div
+  class="regularReaction"
+  [ngClass]="{
+    regularReactionSecondaryStyle:
+      MessageDetails.sender.uid === loggedInUser.uid
+  }"
+>
   <div
     class="messageReactionStyle"
     *ngIf="
