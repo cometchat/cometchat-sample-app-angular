@@ -6,6 +6,7 @@ import { BAN_ICON } from "../../resources/icons/banIcon";
 import { KICK_ICON } from "../../resources/icons/kickIcon";
 import { RIGHT_TICK_ICON } from "../../resources/icons/rightTickIcon";
 import { CLOSE_ICON } from "../../resources/icons/closeIcon";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 @Component({
   selector: "cometchat-member-view",
   templateUrl: "./cometchat-member-view.component.html",
@@ -26,6 +27,7 @@ export class CometchatMemberViewComponent implements OnInit {
   hasGreaterRole: boolean = false;
 
   PARTICIPANT = CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT;
+  YOU: String = STRING_MESSAGES.YOU;
 
   editScopeIcon = EDIT_SCOPE_ICON;
   banIcon = BAN_ICON;
@@ -43,12 +45,12 @@ export class CometchatMemberViewComponent implements OnInit {
 
     //checking if logged in user is owner
     if (this.item.owner == this.loggedInUser.uid) {
-      this.item.scope = "owner";
+      this.item.scope = STRING_MESSAGES.OWNER;
     }
 
     // checking if the current member passed to member view is an owner
     if (this.item.owner == this.member.uid) {
-      this.member.scope = "owner";
+      this.member.scope = STRING_MESSAGES.OWNER;
     }
 
     this.setRoles();
@@ -66,7 +68,7 @@ export class CometchatMemberViewComponent implements OnInit {
    * @param
    */
   checkRoleAuthorityLevel(item) {
-    if (item.scope == "owner") {
+    if (item.scope == STRING_MESSAGES.OWNER) {
       return 4;
     }
 
@@ -90,9 +92,12 @@ export class CometchatMemberViewComponent implements OnInit {
    * @param
    */
   setRoles() {
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.ADMIN] = enums.ADMINISTRATOR;
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.MODERATOR] = enums.MODERATOR;
-    this.roles[CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT] = enums.PARTICIPANT;
+    this.roles[CometChat.GROUP_MEMBER_SCOPE.ADMIN] =
+      STRING_MESSAGES.ADMINISTRATOR;
+    this.roles[CometChat.GROUP_MEMBER_SCOPE.MODERATOR] =
+      STRING_MESSAGES.MODERATOR;
+    this.roles[CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT] =
+      STRING_MESSAGES.PARTICIPANT;
 
     this.roleCodes = [
       CometChat.GROUP_MEMBER_SCOPE.ADMIN,

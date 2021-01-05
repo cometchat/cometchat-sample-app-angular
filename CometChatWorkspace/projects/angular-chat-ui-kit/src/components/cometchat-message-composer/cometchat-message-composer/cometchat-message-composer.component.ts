@@ -23,6 +23,7 @@ import {
 } from "@angular/animations";
 
 import { OUTGOING_MESSAGE_SOUND } from "../../resources/audio/outgoingMessageSound";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 @Component({
   selector: "cometchat-message-composer",
   templateUrl: "./cometchat-message-composer.component.html",
@@ -84,6 +85,16 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   emojiToggled: boolean = false;
   isTyping: any;
   userBlocked: boolean = false;
+
+  PICK_YOUR_EMOJI: String = STRING_MESSAGES.PICK_YOUR_EMOJI;
+  ATTACH_FILE: String = STRING_MESSAGES.ATTACH_FILE;
+  ATTACH_VIDEO: String = STRING_MESSAGES.ATTACH_VIDEO;
+  ATTACH_AUDIO: String = STRING_MESSAGES.ATTACH_AUDIO;
+  ATTACH_IMAGE: String = STRING_MESSAGES.ATTACH_IMAGE;
+  ADD_EMOJI: String = STRING_MESSAGES.ADD_EMOJI;
+  ENTER_YOUR_MESSAGE_HERE: String = STRING_MESSAGES.ENTER_YOUR_MESSAGE_HERE;
+  EDIT_MESSAGE: String = STRING_MESSAGES.EDIT_MESSAGE;
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {

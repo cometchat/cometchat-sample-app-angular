@@ -14,6 +14,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { CometChatManager } from "../../utils/controller";
 import { OUTGOING_CALL_ALERT } from "../../resources/audio/outgoingCallAlert";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 @Component({
   selector: "cometchat-call-screen",
   templateUrl: "./cometchat-call-screen.component.html",
@@ -38,6 +39,8 @@ export class CometchatCallScreenComponent
 
   loggedInUser = null;
   audio;
+
+  CALLING: String = STRING_MESSAGES.CALLING;
 
   constructor() {}
 

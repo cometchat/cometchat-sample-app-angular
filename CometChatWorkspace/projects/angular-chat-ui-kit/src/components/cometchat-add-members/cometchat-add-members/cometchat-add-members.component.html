@@ -5,14 +5,16 @@
     <div class="modalBodyStyle">
       <table class="modalTableStyle">
         <caption class="tableCaptionStyle">
-          Contacts
+          {{
+            CONTACTS
+          }}
         </caption>
         <caption class="tableSearchStyle">
           <input
             class="searchInputStyle"
             type="text"
             autoComplete="off"
-            placeholder="Search"
+            [placeholder]="SEARCH"
             (keyup)="searchUsers($event)"
           />
         </caption>
@@ -34,7 +36,9 @@
 
         <tfoot class="tableFootStyle">
           <tr>
-            <td colSpan="2" (click)="updateMembers()"><button>Add</button></td>
+            <td colSpan="2" (click)="updateMembers()">
+              <button>{{ addBtnText }}</button>
+            </td>
           </tr>
         </tfoot>
       </table>

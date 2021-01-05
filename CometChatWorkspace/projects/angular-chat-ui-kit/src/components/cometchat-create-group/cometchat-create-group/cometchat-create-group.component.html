@@ -6,7 +6,9 @@
     <div class="modalBodyStyle">
       <table class="modalTableStyle">
         <caption class="tableCaptionStyle">
-          Create Group
+          {{
+            CREATE_GROUP
+          }}
         </caption>
         <tbody class="tableBodyStyle">
           <tr>
@@ -19,7 +21,7 @@
               <input
                 class="inputStyle"
                 autoComplete="off"
-                placeholder="Enter group name"
+                [placeholder]="ENTER_GROUP_NAME"
                 type="text"
                 tabIndex="1"
                 (keyup)="nameChangeHandler($event)"
@@ -33,10 +35,10 @@
                 tabIndex="2"
                 (change)="typeChangeHandler($event)"
               >
-                <option value="">Select group type</option>
-                <option value="public">Public</option>
-                <option value="private">Private</option>
-                <option value="protected">Password Protected</option>
+                <option value="">{{ SELECT_GROUP_TYPE }}</option>
+                <option value="public">{{ PUBLIC }}</option>
+                <option value="private">{{ PRIVATE }}</option>
+                <option value="protected">{{ PASSWORD_PROTECTED }}</option>
               </select>
             </td>
           </tr>
@@ -46,7 +48,7 @@
               <input
                 class="inputStyle"
                 autoComplete="off"
-                placeholder="Enter group password"
+                [placeholder]="ENTER_GROUP_PASSWORD"
                 type="password"
                 tabIndex="3"
                 (keyup)="passwordChangeHandler($event)"
@@ -58,7 +60,9 @@
         <tfoot class="tableFootStyle">
           <tr>
             <td>
-              <button tabIndex="4" (click)="createGroup()">Create</button>
+              <button tabIndex="4" (click)="createGroup()">
+                {{ createBtnText }}
+              </button>
             </td>
           </tr>
         </tfoot>

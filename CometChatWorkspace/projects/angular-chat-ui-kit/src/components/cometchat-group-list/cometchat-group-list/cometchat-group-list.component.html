@@ -2,7 +2,7 @@
   <div class="groupHeaderStyle">
     <!-- enableCloseMenu -->
 
-    <h4 class="groupHeaderTitleStyle">Groups</h4>
+    <h4 class="groupHeaderTitleStyle">{{ GROUPS }}</h4>
     <div class="groupAddStyle" (click)="toggleCreateGroupView()"></div>
   </div>
   <div class="groupSearchStyle">
@@ -10,7 +10,7 @@
       class="groupSearchInputStyle"
       type="text"
       autoComplete="off"
-      placeholder="Search"
+      [placeholder]="SEARCH"
       (keyup)="searchGroup($event)"
     />
   </div>

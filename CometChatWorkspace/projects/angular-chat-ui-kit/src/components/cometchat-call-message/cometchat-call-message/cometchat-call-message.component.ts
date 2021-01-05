@@ -37,8 +37,8 @@ export class CometchatCallMessageComponent implements OnInit {
             } else if (call.action === CometChat.CALL_STATUS.REJECTED) {
               this.message =
                 call.sender.uid === this.loggedInUserUid
-                  ? "Call rejected"
-                  : `${call.sender.name} rejected call`;
+                  ? STRING_MESSAGES.CALL_REJECTED
+                  : `${call.sender.name} ` + STRING_MESSAGES.REJECTED_CALL;
             }
           }
         } else if (call.type === "video") {
@@ -56,8 +56,8 @@ export class CometchatCallMessageComponent implements OnInit {
             } else if (call.action === CometChat.CALL_STATUS.REJECTED) {
               this.message =
                 call.sender.uid === this.loggedInUserUid
-                  ? "Call rejected"
-                  : `${call.sender.name} rejected call`;
+                  ? STRING_MESSAGES.CALL_REJECTED
+                  : `${call.sender.name} ` + STRING_MESSAGES.REJECTED_CALL;
             }
           }
         }
@@ -71,17 +71,17 @@ export class CometchatCallMessageComponent implements OnInit {
             this.message =
               call.sender.uid === this.loggedInUserUid
                 ? STRING_MESSAGES.CALL_ACCEPTED
-                : `${call.sender.name} joined`;
+                : `${call.sender.name} ` + STRING_MESSAGES.JOINED;
           } else if (call.action === CometChat.CALL_STATUS.REJECTED) {
             this.message =
               call.sender.uid === this.loggedInUserUid
-                ? "Call rejected"
-                : `${call.sender.name} rejected call`;
+                ? STRING_MESSAGES.CALL_REJECTED
+                : `${call.sender.name} ` + STRING_MESSAGES.REJECTED_CALL;
           } else if (call.action === "left") {
             this.message =
               call.sender.uid === this.loggedInUserUid
-                ? "You left the call"
-                : `${call.sender.name} left the call`;
+                ? "You " + STRING_MESSAGES.LEFT_THE_CALL
+                : `${call.sender.name} ` + STRING_MESSAGES.LEFT_THE_CALL;
           }
         }
 
@@ -109,7 +109,7 @@ export class CometchatCallMessageComponent implements OnInit {
         break;
       }
       case CometChat.CALL_STATUS.REJECTED: {
-        this.message = "Call rejected";
+        this.message = STRING_MESSAGES.CALL_REJECTED;
         break;
       }
       case CometChat.CALL_STATUS.ENDED:

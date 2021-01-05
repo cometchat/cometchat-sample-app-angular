@@ -7,13 +7,15 @@
     <div class="modalBodyStyle">
       <table class="modalTableStyle">
         <caption class="tableCaptionStyle">
-          Banned Members
+          {{
+            BANNED_MEMBERS
+          }}
         </caption>
         <thead>
           <tr>
-            <th>Name</th>
-            <th class="roleColumnStyle">Scope</th>
-            <th class="actionColumnStyle">Unban</th>
+            <th>{{ NAME }}</th>
+            <th class="roleColumnStyle">{{ SCOPE }}</th>
+            <th class="actionColumnStyle">{{ UNBAN }}</th>
           </tr>
         </thead>
         <!--message container-->

@@ -15,6 +15,15 @@ export class CometchatCreateGroupComponent implements OnInit {
   type: String = "";
   password = "";
 
+  createBtnText: String = STRING_MESSAGES.CREATE;
+  SELECT_GROUP_TYPE: String = STRING_MESSAGES.SELECT_GROUP_TYPE;
+  ENTER_GROUP_NAME: String = STRING_MESSAGES.ENTER_GROUP_NAME;
+  PUBLIC: String = STRING_MESSAGES.PUBLIC;
+  PRIVATE: String = STRING_MESSAGES.PRIVATE;
+  PASSWORD_PROTECTED: String = STRING_MESSAGES.PASSWORD_PROTECTED;
+  ENTER_GROUP_PASSWORD: String = STRING_MESSAGES.ENTER_GROUP_PASSWORD;
+  CREATE_GROUP: String = STRING_MESSAGES.CREATE_GROUP;
+
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
@@ -97,6 +106,12 @@ export class CometchatCreateGroupComponent implements OnInit {
       return false;
     }
 
+    if (this.createBtnText == STRING_MESSAGES.CREATING_MESSSAGE) {
+      return;
+    }
+
+    this.createBtnText = STRING_MESSAGES.CREATING_MESSSAGE;
+
     const groupType = this.type.trim();
 
     const password = this.password;
@@ -129,6 +144,9 @@ export class CometchatCreateGroupComponent implements OnInit {
       .catch((error) => {
         console.log("Group creation failed with exception:", error);
         this.error = error;
+      })
+      .finally(() => {
+        this.createBtnText = STRING_MESSAGES.CREATE;
       });
   }
 

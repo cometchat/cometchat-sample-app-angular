@@ -1,13 +1,12 @@
 <div class="contactWrapperStyle">
   <div class="contactHeaderStyle">
-    <!-- CLOSE BUTTOM - In react it is there ... but was not visible , hence not implemented right now  -->
-    <h4 class="contactHeaderTitleStyle">Contacts</h4>
+    <h4 class="contactHeaderTitleStyle">{{ CONTACTS }}</h4>
     <div></div>
   </div>
   <div class="contactSearchStyle">
     <input
       class="contactSearchInputStyle"
-      placeholder="Search"
+      [placeholder]="SEARCH"
       #search
       type="text"
       (keyup)="searchUsers(search.value)"

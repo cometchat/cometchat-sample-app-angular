@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../utils/common";
+import { STRING_MESSAGES } from "../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-receiver-message-bubble",
@@ -62,8 +63,8 @@ export class CometchatReceiverMessageBubbleComponent implements OnInit {
             this.linkImage = linkObject.image;
             const pattern = /(http:|https:)?\/\/(www\.)?(youtube.com|youtu.be)(\S+)?/;
             const linkText = linkObject["url"].match(pattern)
-              ? "View on Youtube"
-              : "Visit";
+              ? STRING_MESSAGES.VIEW_ON_YOUTUBE
+              : STRING_MESSAGES.VISIT;
             this.linkText = linkText;
             // const actualMessage = messageText;
           }
