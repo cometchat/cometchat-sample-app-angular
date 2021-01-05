@@ -3,6 +3,10 @@
   class="messageReactionsStyle"
   (click)="triggerEmojiClick($event)"
   [title]="reaction?.reactionTitle"
+  [ngClass]="{
+    messageReactionsSecondaryStyle: reaction?.showBlueOutline,
+    messageReactionsHoverStyle: !reaction?.showBlueOutline
+  }"
 >
   <ngx-emoji
     [emoji]="reaction?.reactionName"
@@ -14,4 +18,8 @@
   </span>
 </div>
 
-<!-- <button class="emojiButtonStyle" (click)="sendReaction()"></button> -->
+<div class="messageReactionStyle" *ngIf="messageReactions?.length > 0">
+  <button class="emojiButtonStyle" (click)="sendReaction()">
+    <img [src]="reactionIcon" class="regularReactionIcon" />
+  </button>
+</div>
