@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 
 @Component({
   selector: "cometchat-receiver-video-bubble",
@@ -9,6 +10,7 @@ export class CometchatReceiverVideoBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
+  @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   //Sets the User Avatar if group
@@ -18,6 +20,8 @@ export class CometchatReceiverVideoBubbleComponent implements OnInit {
 
   videoUrl: string;
 
+  checkReaction: boolean = false;
+
   //if group then only show avatar
   avatarIfGroup: boolean = false;
 
@@ -26,6 +30,11 @@ export class CometchatReceiverVideoBubbleComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
+
     /**
      *  If Group then displays Avatar And Name
      */
