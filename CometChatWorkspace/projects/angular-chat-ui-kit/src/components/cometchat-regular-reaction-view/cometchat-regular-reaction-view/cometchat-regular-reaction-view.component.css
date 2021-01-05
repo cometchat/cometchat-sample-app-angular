@@ -26,12 +26,15 @@
 .emojiButtonStyle {
   outline: 0;
   border: 0;
-  border-radius: 4px;
+  border-radius: 10px;
   align-items: center;
   display: inline-flex;
   justify-content: center;
   position: relative;
   height: 30px;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #f6f6f6;
 }
 
 .reactionCountStyle {
@@ -40,4 +43,9 @@
 .regularReactionIcon {
   height: 23px;
   width: 24px;
+}
+
+.regularReaction {
+  display: flex;
+  justify-content: flex-end;
 }
