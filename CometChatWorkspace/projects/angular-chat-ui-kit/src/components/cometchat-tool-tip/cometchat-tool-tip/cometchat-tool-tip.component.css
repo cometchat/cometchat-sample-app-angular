@@ -16,6 +16,9 @@
   top: -15px;
 }
 
+.messageActionStyleSecondaryStyle {
+  right: 0;
+}
 .actionGroupStyle {
   display: flex;
   position: relative;

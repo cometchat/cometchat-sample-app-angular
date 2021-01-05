@@ -24,14 +24,13 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() parentMessage = null;
-
+  @Input() loggedInUser = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   messageList = [];
   replyCount: number = 0;
   reachedTopOfConversation = false;
   scrollVariable = 0;
-  loggedInUser = null;
   messageToBeEdited = null;
   replyPreview = null;
   imageView = null;
@@ -357,5 +356,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
 
   reactToMessage(message) {
     this.messageToReact = message;
+    console.log("Message Thread changing messageToReact ", this.messageToReact);
   }
 }

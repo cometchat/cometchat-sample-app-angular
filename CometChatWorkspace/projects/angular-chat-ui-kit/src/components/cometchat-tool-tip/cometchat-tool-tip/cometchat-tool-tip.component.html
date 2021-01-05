@@ -4,9 +4,12 @@
     *ngIf="
       showToolTip && (!receivedMessage || (receivedMessage && !threadView))
     "
+    [ngClass]="{
+      messageActionStyleSecondaryStyle: !receivedMessage
+    }"
   >
     <div [class.tool]="!receivedMessage" class="toolTip">
-      <li class="actionGroupStyle">
+      <li class="actionGroupStyle" *ngIf="!receivedMessage">
         <button type="button" class="groupButtonStyle" (click)="sendReaction()">
           <img [src]="reactionIcon" class="regularReactionIcon" />
         </button>
@@ -34,6 +37,12 @@
           class="groupButtonStyle deleteIcon"
           (click)="deleteMessage()"
         ></button>
+      </li>
+
+      <li class="actionGroupStyle" *ngIf="receivedMessage">
+        <button type="button" class="groupButtonStyle" (click)="sendReaction()">
+          <img [src]="reactionIcon" class="regularReactionIcon" />
+        </button>
       </li>
     </div>
   </ul>

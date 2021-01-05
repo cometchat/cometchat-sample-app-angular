@@ -54,6 +54,7 @@ export class CometchatUserListScreenComponent implements OnInit {
   //for audio calling
   outgoingCall = null;
   incomingCall = null;
+  loggedInUser;
   callMessage = {};
   messageToMarkRead;
 
@@ -67,6 +68,9 @@ export class CometchatUserListScreenComponent implements OnInit {
 
   ngOnInit() {
     this.onResize();
+    CometChat.getLoggedinUser().then((user) => {
+      this.loggedInUser = user;
+    });
   }
 
   /**

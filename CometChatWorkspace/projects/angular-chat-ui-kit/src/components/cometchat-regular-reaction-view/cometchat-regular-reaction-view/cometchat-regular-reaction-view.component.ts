@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  SimpleChanges,
+  OnChanges,
+} from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { checkMessageForExtensionsData } from "../../utils/common";
@@ -10,7 +18,8 @@ import { STRING_MESSAGES } from "../../utils/messageConstants";
   templateUrl: "./cometchat-regular-reaction-view.component.html",
   styleUrls: ["./cometchat-regular-reaction-view.component.css"],
 })
-export class CometchatRegularReactionViewComponent implements OnInit {
+export class CometchatRegularReactionViewComponent
+  implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
@@ -20,6 +29,24 @@ export class CometchatRegularReactionViewComponent implements OnInit {
   reactionIcon = REACTION_ICON;
 
   constructor() {}
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change["MessageDetails"]) {
+      console.log("regular reaction change");
+
+      if (
+        change["MessageDetails"].previousValue !==
+        change["MessageDetails"].currentValue
+      ) {
+        let extensionData = checkMessageForExtensionsData(
+          this.MessageDetails,
+          STRING_MESSAGES.REACTIONS
+        );
+        this.getMessageReactions(extensionData);
+        // this.MessageDetails = change["MessageDetails"].currentValue;
+      }
+    }
+  }
 
   ngOnInit() {
     this.extensionData = checkMessageForExtensionsData(

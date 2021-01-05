@@ -19,6 +19,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-sender-sticker-bubble>
@@ -27,6 +28,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-receiver-sticker-bubble>
@@ -38,7 +40,9 @@
           <cometchat-sender-poll-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
+            [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-sender-poll-bubble>
@@ -46,7 +50,9 @@
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [loggedInUserUid]="loggedInUser?.uid"
             [MessageDetails]="parentMessage"
+            [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-receiver-poll-bubble>
@@ -82,6 +88,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-file-bubble>
 
@@ -90,6 +97,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-file-bubble>
         </div>
@@ -102,6 +110,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-image-bubble>
 
@@ -110,6 +119,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-image-bubble>
         </div>
@@ -122,6 +132,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-video-bubble>
 
@@ -130,6 +141,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-video-bubble>
         </div>
@@ -142,6 +154,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-audio-bubble>
 
@@ -150,6 +163,7 @@
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
+            [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           ></cometchat-sender-audio-bubble>
         </div>
