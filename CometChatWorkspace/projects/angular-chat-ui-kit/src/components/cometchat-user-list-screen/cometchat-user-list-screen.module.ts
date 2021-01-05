@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CometchatUserListScreenComponent } from "./cometchat-user-list-screen/cometchat-user-list-screen.component";
 import { CometchatUserListModule } from "../cometchat-user-list/cometchat-user-list.module";
 import { CometchatMessageListScreenModule } from "../cometchat-message-list-screen/cometchat-message-list-screen.module";
@@ -20,6 +22,8 @@ import { CometchatCallScreenModule } from "../cometchat-call-screen/call-screen.
     CometchatUserDetailModule,
     CometchatCallAlertModule,
     CometchatCallScreenModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
   exports: [CometchatUserListScreenComponent],
 })
