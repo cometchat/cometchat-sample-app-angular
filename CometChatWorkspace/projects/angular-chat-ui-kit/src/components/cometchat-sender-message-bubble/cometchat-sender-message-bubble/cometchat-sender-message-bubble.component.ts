@@ -8,7 +8,7 @@ import { checkMessageForExtensionsData } from "../../utils/common";
 export class CometchatSenderMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
-
+  @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   @Input() showToolTip = true;
