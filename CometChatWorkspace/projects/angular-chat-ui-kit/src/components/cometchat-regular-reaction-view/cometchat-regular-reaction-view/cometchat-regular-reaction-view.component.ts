@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../utils/enums";
 import { checkMessageForExtensionsData } from "../../utils/common";
+import { REACTION_ICON } from "../../resources/icons/reaction";
+
 @Component({
   selector: "cometchat-regular-reaction-view",
   templateUrl: "./cometchat-regular-reaction-view.component.html",
@@ -9,12 +11,15 @@ import { checkMessageForExtensionsData } from "../../utils/common";
 })
 export class CometchatRegularReactionViewComponent implements OnInit {
   @Input() MessageDetails = null;
+  @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
   selectedEmoji = ":grinning:";
   test;
   test1;
   reactionsName;
   messageReactions = [];
+  reactionIcon = REACTION_ICON;
+
   constructor() {}
 
   ngOnInit() {
@@ -28,19 +33,19 @@ export class CometchatRegularReactionViewComponent implements OnInit {
     if (reaction === null) {
       return null;
     }
-    console.log("reaction viewwwwwww ", reaction);
     let messageReactions = [];
     Object.keys(reaction).map((data, key) => {
       const reactionData = reaction[data];
       const reactionCount = Object.keys(reactionData).length;
       console.log("reactionCount ", reactionCount);
 
-      console.log("reactionData ", reactionData);
+      let showBlueOutline = false;
+      if (reactionData.hasOwnProperty(this.loggedInUser.uid)) {
+        showBlueOutline = true;
+      }
 
       const reactionName = data;
       let messageReaction;
-
-      console.log("reaction viewwwwwww name ", reactionName);
 
       const userList = [];
       let reactionTitle = "";
@@ -55,30 +60,30 @@ export class CometchatRegularReactionViewComponent implements OnInit {
       }
 
       if (reactionCount) {
-        messageReaction = { reactionName, reactionCount, reactionTitle };
+        messageReaction = {
+          reactionName,
+          reactionCount,
+          reactionTitle,
+          showBlueOutline,
+        };
       } else {
-        messageReaction = { reactionName, reactionTitle };
+        messageReaction = { reactionName, reactionTitle, showBlueOutline };
       }
-      // console.log(
-      //   "regular reaction -> individual reaction data ",
-      //   messageReaction
-      // );
 
       messageReactions.push(messageReaction);
     });
     this.messageReactions = messageReactions;
-    console.log("reaction view messageReactions ", this.messageReactions);
     return;
   }
 
   reactToMessages(emoji = null) {
-    console.log("Regular reaction -> event ", emoji);
+    // console.log("Regular reaction -> event ", $event);
 
-    console.log("reactToMessages");
+    // console.log("reactToMessages");
 
     CometChat.callExtension("reactions", "POST", "v1/react", {
       msgId: this.MessageDetails.id,
-      emoji: emoji.colons,
+      emoji: emoji.colons || emoji.reactionName,
     })
       .then((response) => {
         // Reaction added successfully
