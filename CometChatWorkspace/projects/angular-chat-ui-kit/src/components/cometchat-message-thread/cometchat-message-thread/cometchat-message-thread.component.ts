@@ -367,7 +367,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
   }
 
   reactToMessage(message) {
-    this.messageToReact = null;
     this.messageToReact = message;
     console.log("Message Thread changing messageToReact ", this.messageToReact);
   }
