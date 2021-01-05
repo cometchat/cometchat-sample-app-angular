@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   OnChanges,
 } from "@angular/core";
+import { checkMessageForExtensionsData } from "../../utils/common";
 
 @Component({
   selector: "cometchat-sender-sticker-bubble",
@@ -17,6 +18,7 @@ export class CometchatSenderStickerBubbleComponent
   implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
+  @Input() loggedInUser;
 
   @Input() showReplyCount = true;
 
@@ -26,6 +28,8 @@ export class CometchatSenderStickerBubbleComponent
   message;
   stickerUrl: string;
   stickerName: string;
+  checkReaction: boolean = false;
+
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
@@ -56,6 +60,10 @@ export class CometchatSenderStickerBubbleComponent
         this.stickerUrl = stickerData.sticker_url;
       }
     }
+    this.checkReaction = checkMessageForExtensionsData(
+      this.MessageDetails,
+      "reactions"
+    );
   }
   actionHandler(action) {
     this.actionGenerated.emit(action);
