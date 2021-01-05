@@ -4,6 +4,7 @@ import { CometchatSenderFileBubbleComponent } from "./cometchat-sender-file-bubb
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
+import { CometchatRegularReactionViewModule } from "../cometchat-regular-reaction-view/cometchat-regular-reaction-view.module";
 
 @NgModule({
   declarations: [CometchatSenderFileBubbleComponent],
@@ -12,6 +13,7 @@ import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-re
     CometchatReadRecieptModule,
     CometchatToolTipModule,
     CometchatReplyCountModule,
+    CometchatRegularReactionViewModule,
   ],
   exports: [CometchatSenderFileBubbleComponent],
 })
