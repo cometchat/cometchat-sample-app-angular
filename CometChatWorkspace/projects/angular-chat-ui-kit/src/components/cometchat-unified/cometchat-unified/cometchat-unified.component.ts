@@ -175,13 +175,11 @@ export class CometchatUnifiedComponent implements OnInit {
       case enums.OUTGOING_CALL_CANCELLED:
       case enums.CALL_ENDED_BY_USER:
       case enums.CALL_ENDED: {
-        // console.log("user list screen --> our call was rejected ");
         this.outgoingCallEnded(message);
         break;
       }
       case enums.USER_JOINED_CALL:
       case enums.USER_LEFT_CALL: {
-        //this.appendCallMessage(item);
         break;
       }
       case enums.ACCEPT_INCOMING_CALL: {
@@ -224,7 +222,6 @@ export class CometchatUnifiedComponent implements OnInit {
   viewMessageThread(parentMessage) {
     //Open Thread Screen
     this.threadMessageView = true;
-    // console.log("parent ", parentMessage);
 
     //close user ( the person you are chatting with ) Detail screen
     this.viewDetailScreen = false;
@@ -257,7 +254,6 @@ export class CometchatUnifiedComponent implements OnInit {
    * @param Any message
    */
   toggleImageView(message) {
-    // console.log("Conversationscreen toggleImageView ", message);
     this.imageView = message;
     this.fullScreenViewImage = !this.fullScreenViewImage;
   }
@@ -327,8 +323,6 @@ export class CometchatUnifiedComponent implements OnInit {
         sentAt: sentAt,
       };
       messageList.push(messageObj);
-
-      // console.log("group list screen --> message to be dislayed ", messageObj);
     });
 
     this.groupMessage = messageList;
@@ -360,8 +354,6 @@ export class CometchatUnifiedComponent implements OnInit {
    * @param Any members
    */
   updateMembersCount = (item, count) => {
-    // console.log("changing group member count to ", count);
-
     const group = Object.assign({}, this.item, { membersCount: count });
 
     this.item = group;
@@ -501,8 +493,6 @@ export class CometchatUnifiedComponent implements OnInit {
    * ACCPETS INCOMING CALL
    */
   acceptIncomingCall(call) {
-    // console.log("incoming call uls ", call);
-
     this.incomingCall = call;
 
     const type = call.receiverType;

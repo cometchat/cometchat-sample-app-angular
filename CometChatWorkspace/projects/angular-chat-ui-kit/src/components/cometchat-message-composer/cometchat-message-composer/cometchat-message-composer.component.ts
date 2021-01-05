@@ -98,16 +98,10 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message Composer --> ngOnChanges -->  ", change);
     if (change["item"]) {
       this.checkBlocked();
     }
     if (change["messageToBeEdited"]) {
-      console.log(
-        "Message Composer --> Message to Be edited changed -->  ",
-        change["messageToBeEdited"]
-      );
-
       //edit message only if its not null or undefined
       if (change["messageToBeEdited"].currentValue) {
         this.openEditPreview();
@@ -118,19 +112,13 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       const currentMessage = change["messageToReact"].currentValue;
       if (previousMessage !== currentMessage) {
         this.messageToReact = change["messageToReact"].currentValue;
-        // console.log("message composer reaction changed", this.messageToReact);
+
         this.toggleEmoji();
       }
     }
   }
 
-  ngOnInit() {
-    // console.log(
-    //   "MessageComposer -> user to which , message will be sent ",
-    //   this.item
-    // );
-    //console.log("MessageComposer -> Type of User ", this.type);
-  }
+  ngOnInit() {}
 
   /**
    * Handles all the actions emitted by the child components that make the current component
@@ -139,7 +127,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   actionHandler(action) {
     let message = action.payLoad;
 
-    console.log("Message Composer --> action generation is ", action);
+    // console.log("Message Composer --> action generation is ", action);
 
     switch (action.type) {
       case enums.SEND_SMART_REPLY: {
@@ -198,11 +186,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       receiverId = this.item.uid;
       receiverType = CometChat.RECEIVER_TYPE.USER;
     } else if (this.type == "group") {
-      console.log(
-        ` Message Composer --> see user receing the message details `,
-        this.item
-      );
-
       receiverId = this.item.guid;
       receiverType = CometChat.RECEIVER_TYPE.GROUP;
     }
@@ -285,7 +268,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
     if (this.userBlocked) {
       return false;
     }
-    //console.log("Send Text Message Button Clicked");
 
     // Close Emoji Viewer if it is open while sending the message
     if (this.emojiToggled) {
@@ -312,10 +294,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
 
     let { receiverId, receiverType } = this.getReceiverDetails();
 
-    // console.log(
-    //   `receiverID = ${receiverId}  and receiverType = ${receiverType} `
-    // );
-
     let messageInput;
 
     if (textMsg !== null) {
@@ -323,8 +301,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
     } else {
       messageInput = this.messageInput.trim();
     }
-
-    console.log("message composer --> sending message ", messageInput);
 
     let textMessage = new CometChat.TextMessage(
       receiverId,
@@ -364,8 +340,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
           this.reactdisable = true;
           this.senddisable = false;
         }, 500);
-
-        //console.log("Message Sent Successfull to ", this.item);
       })
       .catch((error) => {
         console.log("Message sending failed with error:", error);
@@ -487,7 +461,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       },
       false
     );
-    console.log("reader is ", reader);
 
     reader.readAsArrayBuffer(uploadedFile);
 
@@ -510,24 +483,14 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       receiverType
     );
 
-    console.log(`Message Composer --> setting parent for media message`);
-
     if (this.parentMessageId) {
-      console.log(`Message Composer --> setting parent for media message`);
       mediaMessage.setParentMessageId(this.parentMessageId);
     }
 
     this.endTyping();
-    // console.log(
-    //   "sendMediaMessage mediaMessage Message_Composer ->>>",
-    //   mediaMessage
-    // );
+
     CometChat.sendMessage(mediaMessage)
       .then((response) => {
-        // console.log(
-        //   "sendMediaMessage response Message_Composer ->>>",
-        //   response
-        // );
         this.messageSending = false;
         this.playAudio();
         this.actionGenerated.emit({
@@ -612,8 +575,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   startTyping(timer = null, metadata = null) {
     let typingInterval = timer || 5000;
 
-    //console.log("typing interval ", typingInterval);
-
     if (this.isTyping > 0) {
       return false;
     }
@@ -626,7 +587,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       typingMetadata
     );
     CometChat.startTyping(typingNotification);
-    // console.log("start notification ", typingNotification);
+
     this.isTyping = setTimeout(() => {
       this.endTyping();
     }, typingInterval);
@@ -646,9 +607,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       typingMetadata
     );
     CometChat.endTyping(typingNotification);
-    console.log("end notification ", typingNotification);
-
-    // console.log("end notification typing ", this.istyping);
 
     clearTimeout(this.isTyping);
     this.isTyping = null;
@@ -663,7 +621,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
       return false;
     }
     const typingInterval = 1000;
-    console.log("send reaction");
 
     const typingMetadata = {
       type: enums.LIVE_REACTION_KEY,
@@ -720,8 +677,6 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
 
     CometChat.sendCustomMessage(customMessage)
       .then((message) => {
-        console.log("custom msg ", message);
-
         this.messageSending = false;
         this.playAudio();
         this.actionGenerated.emit({

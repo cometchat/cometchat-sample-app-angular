@@ -83,11 +83,9 @@ export class CometchatUserListScreenComponent implements OnInit {
       if (this.checkIfAnimated === true) {
         return false;
       }
-      console.log("inner ", this.innerWidth);
+
       this.checkAnimatedState = "normal";
       this.checkIfAnimated = true;
-
-      console.log("state initail ", this.checkAnimatedState);
     } else {
       this.checkAnimatedState = null;
       this.checkIfAnimated = false;
@@ -103,9 +101,8 @@ export class CometchatUserListScreenComponent implements OnInit {
       this.checkAnimatedState == "normal"
         ? (this.checkAnimatedState = "animated")
         : (this.checkAnimatedState = "normal");
-      console.log("animated state is ", this.checkAnimatedState);
     }
-    // console.log(`user in parent component  `, user);
+
     this.curentItem = user;
     this.item = this.curentItem;
 
@@ -118,8 +115,6 @@ export class CometchatUserListScreenComponent implements OnInit {
     } else {
       this.type = "group";
     }
-
-    //console.log("UserListScreen -> Type of User ", this.type);
   }
   /**
    * Handles all the actions emitted by the child components that make the current component
@@ -131,7 +126,7 @@ export class CometchatUserListScreenComponent implements OnInit {
     // action.payLoad has the array of messages that is received
     let message = action.payLoad;
 
-    console.log("UserListScreen --> action generation is ", action);
+    // console.log("UserListScreen --> action generation is ", action);
 
     switch (action.type) {
       case enums.VIEW_MESSAGE_THREAD: {
@@ -163,15 +158,9 @@ export class CometchatUserListScreenComponent implements OnInit {
           replyCount: action.payLoad,
         };
 
-        console.log(
-          "UserListScreen --> thread Message Reply count updated ",
-          action.payLoad
-        );
-
         break;
       }
       case enums.MENU_CLICKED: {
-        // console.log("before animation ", this.checkAnimatedState);
         this.checkAnimatedState = "normal";
         // this.toggleSideBar();
         this.curentItem = null;
@@ -196,7 +185,6 @@ export class CometchatUserListScreenComponent implements OnInit {
       case enums.OUTGOING_CALL_CANCELLED:
       case enums.CALL_ENDED_BY_USER:
       case enums.CALL_ENDED: {
-        console.log("user list screen --> our call was rejected ");
         this.outgoingCallEnded(message);
         break;
       }
@@ -260,7 +248,6 @@ export class CometchatUserListScreenComponent implements OnInit {
    * @param Any message
    */
   toggleImageView(message) {
-    console.log("userlistscreen toggleImageView ", message);
     this.imageView = message;
     this.fullScreenViewImage = !this.fullScreenViewImage;
   }
@@ -310,8 +297,6 @@ export class CometchatUserListScreenComponent implements OnInit {
    * initiates an audio call with the person you are chatting with
    */
   audioCall() {
-    console.log("audio call initiated");
-
     let receiverId, receiverType;
     if (this.type === "user") {
       receiverId = this.curentItem.uid;
@@ -361,8 +346,6 @@ export class CometchatUserListScreenComponent implements OnInit {
   }
 
   outgoingCallEnded(message) {
-    console.log("outgoing call ended");
-
     this.outgoingCall = null;
     this.incomingCall = null;
     this.appendCallMessage(message);
@@ -372,8 +355,6 @@ export class CometchatUserListScreenComponent implements OnInit {
    * ACCPETS INCOMING CALL
    */
   acceptIncomingCall(call) {
-    // console.log("incoming call uls ", call);
-
     this.incomingCall = call;
 
     const type = call.receiverType;
@@ -402,8 +383,6 @@ export class CometchatUserListScreenComponent implements OnInit {
    * IncomingCall Rejected
    */
   rejectedIncomingCall(call) {
-    console.log("rejection ", call);
-
     let incomingCallMessage = call.incomingCall;
     let rejectedCallMessage = call.rejectedCall;
     let receiverType = incomingCallMessage.receiverType;

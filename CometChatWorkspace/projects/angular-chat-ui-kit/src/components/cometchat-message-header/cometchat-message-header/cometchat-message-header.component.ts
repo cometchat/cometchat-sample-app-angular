@@ -38,8 +38,6 @@ export class CometchatMessageHeaderComponent
   constructor(public datepipe: DatePipe) {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message Header --> ngOnChanges -->  ", change);
-
     if (change["item"]) {
       //Check if user is blocked/unblocked
       this.checkBlocked();
@@ -115,13 +113,12 @@ export class CometchatMessageHeaderComponent
       new CometChat.UserListener({
         onUserOnline: (onlineUser) => {
           /* when someuser/friend comes online, user will be received here */
-          // console.log("Message Header --> user came online ", onlineUser);
 
           this.updateHeader(enums.USER_ONLINE, onlineUser);
         },
         onUserOffline: (offlineUser) => {
           /* when someuser/friend went offline, user will be received here */
-          // console.log("Message Header --> user Went offline ", offlineUser);
+
           this.updateHeader(enums.USER_OFFLINE, offlineUser);
         },
       })
@@ -131,7 +128,6 @@ export class CometchatMessageHeaderComponent
       this.msgListenerId,
       new CometChat.MessageListener({
         onTypingStarted: (typingIndicator) => {
-          // console.log("Message Header --> Current Friend Stated Typing");
           this.updateHeader(enums.TYPING_STARTED, typingIndicator);
         },
         onTypingEnded: (typingIndicator) => {
@@ -264,7 +260,6 @@ export class CometchatMessageHeaderComponent
           this.item.uid === item.sender.uid
         ) {
           if (this.item.status === "online") {
-            // console.log("typing online");
             this.status = null;
             this.isTyping = false;
           } else {
@@ -307,7 +302,6 @@ export class CometchatMessageHeaderComponent
     lastActiveDate =
       lastActiveDate + this.datepipe.transform(date, "dd MMMM yyyy, h:mm a");
 
-    // console.log("z->>>>>> ", lastActiveDate);
     return lastActiveDate;
   }
 

@@ -65,11 +65,11 @@ export class HomePageComponent implements OnInit {
   onLogout() {
     CometChat.logout().then(
       (user) => {
-        //console.log("Logout successfull:");
+        console.log("Logout successfull:");
         this.router.navigate(["/login"]);
       },
       (error) => {
-        //console.log("Logout failed", { error });
+        console.log("Logout failed", { error });
       }
     );
   }

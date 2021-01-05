@@ -32,8 +32,6 @@ export class CometchatReplyPreviewComponent implements OnInit {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("reply preview --> ngOnChanges -->  ", change);
-
     if (change["replyPreview"]) {
       if (change["replyPreview"].currentValue) {
         this.generateSmartReplyOptions(change["replyPreview"].currentValue);
@@ -68,8 +66,6 @@ export class CometchatReplyPreviewComponent implements OnInit {
             ];
 
             this.options = options;
-
-            console.log("Reply Preview --> options ", this.options);
           }
         }
       }
@@ -81,7 +77,6 @@ export class CometchatReplyPreviewComponent implements OnInit {
    * @param
    */
   sendReplyMessage(message) {
-    console.log(`Reply Preview --> send message `, message);
     this.actionGenerated.emit({ type: "sendSmartReply", payLoad: message });
   }
 
@@ -90,7 +85,6 @@ export class CometchatReplyPreviewComponent implements OnInit {
    * @param
    */
   closeReplyPreview() {
-    //console.log(`close preview clicked`);
     this.replyPreview = null;
   }
 }

@@ -36,7 +36,6 @@ export class CometchatCreateGroupComponent implements OnInit {
    */
   passwordChangeHandler(event) {
     this.password = event.target.value;
-    console.log(" create Group --> password ", event.target.value);
   }
 
   /**
@@ -45,7 +44,6 @@ export class CometchatCreateGroupComponent implements OnInit {
    */
   nameChangeHandler(event) {
     this.name = event.target.value;
-    console.log(" create Group --> name ", event.target.value);
   }
 
   /**
@@ -55,8 +53,6 @@ export class CometchatCreateGroupComponent implements OnInit {
   typeChangeHandler(event) {
     const type = event.target.value;
     this.type = event.target.value;
-
-    console.log(" create Group --> type of group ", event.target.value);
 
     if (type === "protected") {
       this.passwordInput = true;
@@ -137,12 +133,10 @@ export class CometchatCreateGroupComponent implements OnInit {
 
     CometChat.createGroup(group)
       .then((group) => {
-        console.log("Group created successfully:", group);
         this.resetGroupData();
         this.actionGenerated.emit({ type: "groupCreated", payLoad: group });
       })
       .catch((error) => {
-        console.log("Group creation failed with exception:", error);
         this.error = error;
       })
       .finally(() => {
@@ -155,7 +149,6 @@ export class CometchatCreateGroupComponent implements OnInit {
    * @param
    */
   closeCreateGroupView() {
-    console.log(" create Group --> close group view ");
     this.actionGenerated.emit({ type: "closeCreateGroupView", payLoad: null });
   }
 

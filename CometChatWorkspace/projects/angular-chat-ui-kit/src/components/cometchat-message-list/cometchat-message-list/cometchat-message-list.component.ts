@@ -62,7 +62,6 @@ export class CometchatMessageListComponent
 
   constructor(private ref: ChangeDetectorRef, public datepipe: DatePipe) {
     setInterval(() => {
-      //console.log("detectchange called");
       if (!this.ref["destroyed"]) {
         this.ref.detectChanges();
       }
@@ -70,8 +69,6 @@ export class CometchatMessageListComponent
   }
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message List --> ngOnChanges -->  ", change);
-
     if (change["item"]) {
       //Removing Previous Conversation Listeners
       CometChat.removeMessageListener(this.msgListenerId);
@@ -88,15 +85,7 @@ export class CometchatMessageListComponent
       this.addMessageEventListeners();
     }
 
-    if (change["messages"]) {
-      // console.log("Message List --> the messages changed ");
-      // console.log(change["messages"]);
-    }
-
     if (change["reachedTopOfConversation"]) {
-      // console.log("Message List --> reachedTopOfConversation ");
-      // console.log(change["reachedTopOfConversation"]);
-
       if (change["reachedTopOfConversation"].currentValue) {
         this.getMessages(false, false, true);
       }
@@ -115,10 +104,6 @@ export class CometchatMessageListComponent
   }
 
   ngOnInit() {
-    // console.log(`MessageList --> item `, this.item);
-    // console.log(`MessageList --> UserType `, this.type);
-    // console.log(`MessageList --> Messages `, this.messages);
-
     this.createMessageRequestObjectAndGetMessages();
 
     // Attach MessageListeners Here
@@ -165,25 +150,25 @@ export class CometchatMessageListComponent
       this.msgListenerId,
       new CometChat.MessageListener({
         onTextMessageReceived: (textMessage) => {
-          console.log("Text message received successfully", textMessage);
+          // console.log("Text message received successfully", textMessage);
           this.messageUpdated(enums.TEXT_MESSAGE_RECEIVED, textMessage);
         },
         onMediaMessageReceived: (mediaMessage) => {
-          console.log("Media message received successfully", mediaMessage);
+          // console.log("Media message received successfully", mediaMessage);
           this.messageUpdated(enums.MEDIA_MESSAGE_RECEIVED, mediaMessage);
         },
         onCustomMessageReceived: (customMessage) => {
-          console.log("Custom message received successfully", customMessage);
+          // console.log("Custom message received successfully", customMessage);
           this.messageUpdated(enums.CUSTOM_MESSAGE_RECEIVED, customMessage);
           // Handle custom message
         },
         onMessagesDelivered: (messageReceipt) => {
-          console.log("Text Message Delivered successfully ", messageReceipt);
+          // console.log("Text Message Delivered successfully ", messageReceipt);
 
           this.messageUpdated(enums.MESSAGE_DELIVERED, messageReceipt);
         },
         onMessagesRead: (messageReceipt) => {
-          console.log("Text Message Read successfully ", messageReceipt);
+          // console.log("Text Message Read successfully ", messageReceipt);
 
           this.messageUpdated(enums.MESSAGE_READ, messageReceipt);
         },
@@ -206,7 +191,6 @@ export class CometchatMessageListComponent
           oldScope,
           changedGroup
         ) => {
-          console.log("Message List --> group listener --> scope changed ");
           this.messageUpdated(
             enums.GROUP_MEMBER_SCOPE_CHANGED,
             message,
@@ -215,14 +199,12 @@ export class CometchatMessageListComponent
           );
         },
         onGroupMemberKicked: (message, kickedUser, kickedBy, kickedFrom) => {
-          console.log("Message List --> group listener --> member kicked ");
           this.messageUpdated(enums.GROUP_MEMBER_KICKED, message, kickedFrom, {
             user: kickedUser,
             hasJoined: false,
           });
         },
         onGroupMemberBanned: (message, bannedUser, bannedBy, bannedFrom) => {
-          console.log("Message List --> group listener --> member banned ");
           this.messageUpdated(enums.GROUP_MEMBER_BANNED, message, bannedFrom, {
             user: bannedUser,
           });
@@ -233,7 +215,6 @@ export class CometchatMessageListComponent
           unbannedBy,
           unbannedFrom
         ) => {
-          console.log("Message List --> group listener --> member unbanned ");
           this.messageUpdated(
             enums.GROUP_MEMBER_UNBANNED,
             message,
@@ -247,20 +228,17 @@ export class CometchatMessageListComponent
           userAddedBy,
           userAddedIn
         ) => {
-          console.log("Message List --> group listener --> member added ");
           this.messageUpdated(enums.GROUP_MEMBER_ADDED, message, userAddedIn, {
             user: userAdded,
             hasJoined: true,
           });
         },
         onGroupMemberLeft: (message, leavingUser, group) => {
-          console.log("Message List --> group listener --> member left ");
           this.messageUpdated(enums.GROUP_MEMBER_LEFT, message, group, {
             user: leavingUser,
           });
         },
         onGroupMemberJoined: (message, joinedUser, joinedGroup) => {
-          console.log("Message List --> group listener --> member joined ");
           this.messageUpdated(enums.GROUP_MEMBER_JOINED, message, joinedGroup, {
             user: joinedUser,
           });
@@ -348,7 +326,6 @@ export class CometchatMessageListComponent
 
     let user = CometChat.getLoggedinUser().then(
       (user) => {
-        // console.log("Inside MessageList user details:", { user });
         this.loggedInUser = user;
 
         this.messagesRequest.fetchPrevious().then(
@@ -427,9 +404,6 @@ export class CometchatMessageListComponent
                 payLoad: messageList,
               });
             }
-
-            console.log("Message list -->> fetched messages:", messageList);
-            // Handle the list of messages
           },
           (error) => {
             // console.log("Message fetching failed with error:", error);
@@ -485,8 +459,6 @@ export class CometchatMessageListComponent
   }
 
   messageReceived(message) {
-    // console.log(` Message Type of the receiver `, message.getReceiverType());
-
     //new messages
     if (
       this.type === "group" &&
@@ -518,13 +490,6 @@ export class CometchatMessageListComponent
         );
       }
 
-      // console.log(`received a message from a user `, this.item);
-
-      // test this line .. if this updates the message or not
-      // let dummy = [...this.messages];
-      // this.messages = [...dummy, ...[message]];
-      // console.log("after adding the received message ", this.messages);
-
       this.actionGenerated.emit({
         type: enums.MESSAGE_RECEIVED,
         payLoad: [message],
@@ -537,7 +502,6 @@ export class CometchatMessageListComponent
    * @param Event action
    */
   actionHandler(action) {
-    console.log("Message List --> action generation is ", action);
     this.actionGenerated.emit(action);
   }
 
@@ -715,8 +679,6 @@ export class CometchatMessageListComponent
         });
       } else if (message.type === enums.CUSTOM_TYPE_POLL) {
         //customdata (poll extension) does not have metadata
-
-        console.log(" Message List --> poll data  ", message);
 
         //The poll message that  is received by the message listeners , will not be appended to message list
         //if the current loggedIn user is the sender/creator of the poll message

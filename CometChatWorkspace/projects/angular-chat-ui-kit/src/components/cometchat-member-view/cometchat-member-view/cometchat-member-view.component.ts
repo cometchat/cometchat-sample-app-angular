@@ -40,7 +40,6 @@ export class CometchatMemberViewComponent implements OnInit {
   ngOnInit() {
     //this.getLoggedInUserInfo();
 
-    // console.log("member view --> member details ", this.member);
     this.scope = this.member.scope;
 
     //checking if logged in user is owner
@@ -104,8 +103,6 @@ export class CometchatMemberViewComponent implements OnInit {
       CometChat.GROUP_MEMBER_SCOPE.MODERATOR,
       CometChat.GROUP_MEMBER_SCOPE.PARTICIPANT,
     ];
-
-    //console.log("member view --> roles ", this.roles);
   }
 
   /**
@@ -121,7 +118,6 @@ export class CometchatMemberViewComponent implements OnInit {
    * @param Event event
    */
   scopeChangeHandler(event) {
-    //console.log("member view --> scope changed", event.target.value);
     this.scope = event.target.value;
   }
 

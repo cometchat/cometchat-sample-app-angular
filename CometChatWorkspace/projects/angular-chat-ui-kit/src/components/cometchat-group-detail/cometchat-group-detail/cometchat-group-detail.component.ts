@@ -51,8 +51,6 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    console.log(" Group Detail --> group data is  ", this.item);
-
     this.groupMemberRequest = this.createGroupMemberRequest(this.item.guid);
     this.getGroupMembers();
 
@@ -76,8 +74,6 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
    */
   actionHandler(action) {
     let data = action.payLoad;
-
-    console.log("Group Detail --> action generation is ", action);
 
     switch (action.type) {
       case enums.OPEN_VIEW_MEMBER: {
@@ -252,10 +248,6 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
               ...administratorslist,
             ];
             this.moderatorslist = [...this.moderatorslist, ...moderatorslist];
-
-            console.log("Group Details --> members ", this.memberlist);
-            console.log("Group Details --> admins ", this.administratorslist);
-            console.log("Group Details --> moderators ", this.moderatorslist);
           })
           .catch((error) => {
             console.error(
@@ -300,18 +292,11 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
         this.fetchNextBannedGroupMembers()
           .then((bannedMembers) => {
             // bannedMembers.forEach(member => this.setAvatar(member));
-            console.log("bann working");
 
             this.bannedmemberlist = [
               ...this.bannedmemberlist,
               ...bannedMembers,
             ];
-            console.log("bannnned members ", bannedMembers);
-
-            console.log(
-              "Group Details --> Banned members  ",
-              this.bannedmemberlist
-            );
           })
           .catch((error) => {
             console.error(
@@ -329,8 +314,6 @@ export class CometchatGroupDetailComponent implements OnInit, OnDestroy {
   };
 
   groupUpdated = (key = null, message = null, group = null, options = null) => {
-    console.log("Group Details --> Group should be updated because  ", key);
-
     const guid = this.item.guid;
     if (guid !== group.guid) {
       return false;

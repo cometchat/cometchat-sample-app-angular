@@ -22,8 +22,6 @@ export class CometchatBanMemberViewComponent implements OnInit {
 
   ngOnInit() {}
   unbanMember() {
-    //console.log("unban clciked");
-
     this.actionGenerated.emit({
       type: "unban",
       payLoad: { member: this.member },

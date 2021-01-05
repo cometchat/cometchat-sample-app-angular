@@ -52,7 +52,6 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
               "extensions"
             ].hasOwnProperty("polls")
           ) {
-            // console.log("receiver Poll bubble --> Enable poll extension ");
             this.isPollExtensionEnabled = true;
             this.setPollExtensionData();
           }
@@ -103,8 +102,6 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
     });
 
     this.pollOptions = [...optionList];
-
-    // console.log(`reciver poll bubble --> option list `, optionList);
   }
 
   /**
@@ -113,7 +110,6 @@ export class CometchatReceiverPollBubbleComponent implements OnInit {
    */
   answerPollQuestion(selectedOption) {
     this.selectedOption = selectedOption;
-    // console.log(" receiver poll bubble -->> option selected ", selectedOption);
 
     CometChat.callExtension("polls", "POST", "v1/vote", {
       vote: selectedOption.id,

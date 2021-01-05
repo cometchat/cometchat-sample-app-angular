@@ -26,7 +26,6 @@ export class CometchatBanMembersComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // console.log("BannedmemberList", this.bannedmemberlist);
     if (this.bannedmemberlist.length === 0) {
       this.decoratorMessage = STRING_MESSAGES.NO_BANNED_MEMBERS_FOUND;
     } else if (this.bannedmemberlist.length > 0) {
@@ -40,7 +39,6 @@ export class CometchatBanMembersComponent implements OnInit {
    */
   unbanMember(memberToUnBan) {
     // const group = this.context;
-    console.log("member to unban ", memberToUnBan);
 
     const guid = this.item.guid;
     CometChat.unbanGroupMember(guid, memberToUnBan.uid)
@@ -92,8 +90,6 @@ export class CometchatBanMembersComponent implements OnInit {
    * Emits action to Close Ban member Window
    */
   closeBanMemberModal() {
-    //console.log("cometchat ban member --> close ban member clicked");
-
     this.actionGenerated.emit({ type: enums.BAN_MEMBER, payLoad: [] });
   }
 }

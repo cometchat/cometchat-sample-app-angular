@@ -43,27 +43,14 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(change: SimpleChanges) {
-    // console.log("Message List --> ngOnChanges -->  ", change);
-
     if (change["composedthreadmessage"]) {
-      // console.log(
-      //   "Message List Screen --> a thread Parent was updated ",
-      //   change["composedthreadmessage"]
-      // );
-
       // There is a valid Thread parent message , than update it's reply count
       if (change["composedthreadmessage"].currentValue) {
-        //this.updateReplyCount(change["composedthreadmessage"].currentValue);
         this.messageEdited(change["composedthreadmessage"].currentValue);
       }
     }
 
     if (change["groupMessage"]) {
-      console.log(
-        "Message List Screen --> group messageList added ",
-        change["groupMessage"]
-      );
-
       if (change["groupMessage"].currentValue.length > 0) {
         this.appendMessage(change["groupMessage"].currentValue);
       }
@@ -86,10 +73,7 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit() {
-    //console.log("MessageListScreen -> Type of User ", this.type);
-    //console.log("MessageListScreen -> ChatWindow ", this.chatWindow);
-  }
+  ngOnInit() {}
 
   /**
    * Updating the reply count of Thread Parent Message
@@ -127,8 +111,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
 
     let data = action.payLoad;
 
-    // console.log("MessageListScreen --> action generation is ", action);
-
     switch (action.type) {
       case enums.CUSTOM_MESSAGE_RECEIVE:
       case enums.MESSAGE_RECEIVED: {
@@ -141,14 +123,9 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
           this.smartReplyPreview(messages);
 
           setTimeout(() => {
-            // console.log("scroll to bottom after getting smart reply");
-
             this.scrollToBottomOfChatWindow();
           }, 2500);
 
-          console.log(
-            " MessageListScreen -->  received a message from the user , u r chatting with , going to append it"
-          );
           this.appendMessage(messages);
         }
 
@@ -289,7 +266,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
    * @param
    */
   reactToMessage(message) {
-    // console.log("message list screen reaction works ", message);
     this.messageToReact = message;
   }
 
@@ -308,8 +284,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
    */
   setMessages(messages) {
     this.messageList = [...messages];
-
-    // console.log("MessageListScreen->> ", this.messageList);
 
     this.scrollToBottomOfChatWindow();
   }
@@ -332,8 +306,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     this.messageList = [...dummy, ...messages];
 
     this.scrollToBottomOfChatWindow();
-
-    //console.log("appending the sent message ", this.messageList);
   }
 
   /**
@@ -386,8 +358,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     CometChat.deleteMessage(messageId)
       .then((deletedMessage) => {
         this.removeMessages([deletedMessage]);
-
-        // console.log(" MessageList screen --> Message Deleted successfully");
 
         const messageList = [...this.messageList];
         let messageKey = messageList.findIndex((m) => m.id === message.id);
@@ -483,8 +453,6 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
     const bottom =
       Math.round(e.currentTarget.scrollHeight - e.currentTarget.scrollTop) ===
       Math.round(e.currentTarget.clientHeight);
-
-    //console.log("Message List Screen --> reached bottom ", bottom);
 
     const top = e.currentTarget.scrollTop === 0;
 

@@ -106,8 +106,6 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
     let membersRequest = null;
 
     if (searchKey !== "") {
-      console.log(`cometchat add memebr--> setting search key ${searchKey} `);
-
       membersRequest = new CometChat.UsersRequestBuilder()
         .setLimit(30)
         .friendsOnly(this.friendsOnly)
@@ -172,13 +170,8 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
             // this.setState({ userlist: [...this.state.userlist, ...userList], filteredlist: [...this.state.filteredlist, ...filteredUserList] });
 
             this.userlist = [...this.userlist, ...userList];
-            console.log("cometchat add member --> userlist ", this.userlist);
 
             this.filteredlist = [...this.filteredlist, ...filteredUserList];
-            console.log(
-              "cometchat add member --> filtered list ",
-              this.filteredlist
-            );
 
             if (this.filteredlist.length === 0) {
               this.decoratorMessage = STRING_MESSAGES.NO_USERS_FOUND;
@@ -210,7 +203,7 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
   actionHandler(action) {
     let data = action.payLoad;
 
-    console.log("comet chat add members --> action generated is ", action);
+    // console.log("comet chat add members --> action generated is ", action);
 
     switch (action.type) {
       case enums.MEMBER_UPDATED: {
@@ -239,8 +232,6 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
         this.membersToAdd = [...membersToAdd];
       }
     }
-
-    console.log("comet chat add members --> membersToAdd ", this.membersToAdd);
   };
 
   /**
@@ -321,8 +312,6 @@ export class CometchatAddMembersComponent implements OnInit, OnDestroy {
   }
 
   closeAddMembersView() {
-    console.log("comet chat add member --> close add member view clicked");
-
     this.actionGenerated.emit({
       type: enums.CLOSE_ADD_VIEW_MEMBER,
       payLoad: null,

@@ -33,8 +33,6 @@ export class CometchatViewMembersComponent implements OnInit {
   actionHandler(action) {
     let data = action.payLoad;
 
-    console.log("cometchat view member --> action generation is ", action);
-
     switch (action.type) {
       case enums.CHANGE_SCOPE: {
         this.changeScope(data.member, data.scope);
