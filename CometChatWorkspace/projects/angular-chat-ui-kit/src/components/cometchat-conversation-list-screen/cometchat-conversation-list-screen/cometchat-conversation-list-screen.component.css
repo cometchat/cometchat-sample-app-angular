@@ -49,7 +49,7 @@
   float: right;
   border-left: 1px solid #eaeaea;
   height: 100%;
-  width: 25%;
+  width: 400px;
   display: flex;
   flex-direction: column;
   order: 3;
