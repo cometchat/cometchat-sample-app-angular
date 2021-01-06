@@ -36,10 +36,11 @@
 
 .itemLinkStyle {
   height: 20px;
-  /* ...widthProp; */
   display: inline-block;
-  /* background: `url(${icon}) center center no-repeat`;
-    ...activeStateBg; */
+}
+
+.userInfoScreenStyle {
+  height: calc(100% - 40px);
 }
 
 .Chats {

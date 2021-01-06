@@ -1,5 +1,10 @@
 <div class="chatListStyle">
   <!--Message Container-->
+  <div class="decoratorMessageStyle">
+    <p class="decoratorMessageTxtStyle">
+      {{ decoratorMessage }}
+    </p>
+  </div>
   <div class="listWrapperStyle">
     <!--message-->
     <div *ngFor="let msg of messages; let i = index">

@@ -190,6 +190,13 @@ export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
         });
         break;
       }
+      case enums.THREAD_PARENT_MESSAGE_UPDATED: {
+        this.actionGenerated.emit({
+          type: enums.THREAD_PARENT_MESSAGE_UPDATED,
+          payLoad: data,
+        });
+        break;
+      }
       case enums.DELETE_MESSAGE: {
         this.deleteMessage(messages);
         break;

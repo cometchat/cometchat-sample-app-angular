@@ -47,6 +47,7 @@
 
 .regularReaction {
   display: flex;
+  flex-flow: wrap;
 }
 
 .regularReactionSecondaryStyle {

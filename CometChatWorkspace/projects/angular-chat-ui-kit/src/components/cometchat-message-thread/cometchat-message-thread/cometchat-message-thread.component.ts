@@ -78,6 +78,11 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
         this.replyCount = messages.length;
         break;
       }
+      case enums.THREAD_PARENT_MESSAGE_UPDATED: {
+        // console.log("messageThread --> updating thread parent ");
+        this.parentMessage = messages;
+        break;
+      }
       case enums.MESSAGE_COMPOSED: {
         this.appendMessage(messages);
         this.replyCount = this.replyCount + messages.length;

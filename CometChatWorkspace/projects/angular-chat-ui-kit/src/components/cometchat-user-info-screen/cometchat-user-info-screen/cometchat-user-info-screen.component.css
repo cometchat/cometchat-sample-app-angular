@@ -8,7 +8,22 @@
   box-sizing: border-box;
   font-family: Inter, sans-serif;
 }
+.userInfoScreenStyle *::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
 
+.userInfoScreenStyle *::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+.userInfoScreenStyle *::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+.userInfoScreenStyle *::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
 .headerStyle {
   padding: 19px 16px;
   position: relative;
