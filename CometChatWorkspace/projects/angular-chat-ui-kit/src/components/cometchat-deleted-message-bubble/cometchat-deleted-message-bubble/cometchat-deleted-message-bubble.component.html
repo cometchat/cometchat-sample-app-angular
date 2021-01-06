@@ -4,7 +4,9 @@
       <p class="messageTxtStyle">You deleted this message.</p>
     </div>
     <div class="messageInfoWrapperStyle">
-      <span class="messageTimeStampStyle"> {{ getTime() }} </span>
+      <span class="messageTimeStampStyle">
+        {{ getTime() | date: "shortTime" }}
+      </span>
     </div>
   </div>
 </div>
@@ -35,7 +37,9 @@
         <p class="messageTxtStyle">This message was deleted.</p>
       </div>
       <div class="messageInfoWrapperStyle deletedMessageReceivedStyle">
-        <span class="messageTimeStampStyle"> {{ getTime() }} </span>
+        <span class="messageTimeStampStyle">
+          {{ getTime() | date: "shortTime" }}
+        </span>
       </div>
     </div>
   </div>
