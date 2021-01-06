@@ -70,6 +70,7 @@ export const MESSAGE_FETCHED = "messageFetched";
 export const OLDER_MESSAGES_FETCHED = "olderMessagesFetched";
 export const MESSAGE_COMPOSED = "messageComposed";
 export const MESSAGE_UPDATED = "messageUpdated";
+export const THREAD_PARENT_MESSAGE_UPDATED = "threadParentMessageUpdated";
 export const VIEW_ACTUAL_IMAGE = "viewActualImage";
 export const NEW_CONVERSATION_OPENED = "newConversationOpened";
 export const VIEW_MESSAGE_THREAD = "viewMessageThread";
