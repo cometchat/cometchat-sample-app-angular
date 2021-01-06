@@ -27,7 +27,7 @@
       <div *ngIf="msg?.category == 'call'">
         <cometchat-call-message
           [MessageDetails]="msg"
-          [loggedInUserUid]="loggedInUser.uid"
+          [loggedInUserUid]="loggedInUser?.uid"
         ></cometchat-call-message>
       </div>
       <!--CASE FOR CALL MESSAGES ENDS-->
