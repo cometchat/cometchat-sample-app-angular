@@ -101,6 +101,12 @@ export class CometchatMessageListComponent
       // Attach MessageListeners for the new conversation
       this.addMessageEventListeners();
     }
+
+    if (change["messages"]) {
+      if (change["messages"].currentValue.length > 0) {
+        this.decoratorMessage = "";
+      }
+    }
   }
 
   ngOnInit() {
@@ -322,6 +328,7 @@ export class CometchatMessageListComponent
     newConversation = false,
     scrollToTop = false
   ) {
+    this.decoratorMessage = STRING_MESSAGES.LOADING_MESSSAGE;
     const actionMessages = [];
 
     let user = CometChat.getLoggedinUser().then(
@@ -331,8 +338,10 @@ export class CometchatMessageListComponent
         this.messagesRequest.fetchPrevious().then(
           (messageList) => {
             // No Messages Found
-            if (messageList.length === 0) {
+            if (messageList.length === 0 && this.messages.length === 0) {
               this.decoratorMessage = STRING_MESSAGES.NO_MESSAGES_FOUND;
+            } else {
+              this.decoratorMessage = "";
             }
 
             messageList.forEach((message) => {
@@ -617,6 +626,13 @@ export class CometchatMessageListComponent
    * @param Any message
    */
   updateEditedMessage = (message) => {
+    //If the updated message is the current message that is opened in thread view then update thread view also
+    if (message.id == this.parentMessageId) {
+      this.actionGenerated.emit({
+        type: enums.THREAD_PARENT_MESSAGE_UPDATED,
+        payLoad: message,
+      });
+    }
     const messageList = [...this.messages];
     let messageKey = messageList.findIndex((m, k) => m.id === message.id);
 
