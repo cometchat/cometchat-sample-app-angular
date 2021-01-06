@@ -5,7 +5,8 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds" : {
       "@cometchat-pro/chat" : "@cometchat-pro/chat",
-      "@ctrl/ngx-emoji-mart" : "@ctrl/ngx-emoji-mart"
+      "@ctrl/ngx-emoji-mart" : "@ctrl/ngx-emoji-mart",
+      "@ctrl/ngx-emoji-mart/ngx-emoji":"@ctrl/ngx-emoji-mart/ngx-emoji"
     }
   }
 }
