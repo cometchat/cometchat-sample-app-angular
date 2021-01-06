@@ -22,12 +22,8 @@ export class CometchatDeletedMessageBubbleComponent implements OnInit {
 
   getTime() {
     let msgSentAt = this.MessageDetails.sentAt;
-    let timeStamp = new Date(msgSentAt * 1000).toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
+    msgSentAt = msgSentAt * 1000;
 
-    return timeStamp;
+    return msgSentAt;
   }
 }
