@@ -703,7 +703,10 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
     }
     this.emojiToggled = !this.emojiToggled;
     if (!this.emojiToggled) {
-      this.messageToReact = null;
+      this.actionGenerated.emit({
+        type: enums.REACT_TO_MESSAGE,
+        payLoad: null,
+      });
     }
   }
 
