@@ -251,7 +251,10 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
 
         this.closeEditPreview();
 
-        this.actionGenerated.emit({ type: "messageEdited", payLoad: message });
+        this.actionGenerated.emit({
+          type: enums.MESSAGE_EDIT,
+          payLoad: message,
+        });
       })
       .catch((error) => {
         this.messageSending = false;
@@ -328,7 +331,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
 
         // this Message Emitted will Be Appended to the existing Message List
         this.actionGenerated.emit({
-          type: "messageComposed",
+          type: enums.MESSAGE_COMPOSED,
           payLoad: [message],
         });
 
@@ -494,7 +497,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
         this.messageSending = false;
         this.playAudio();
         this.actionGenerated.emit({
-          type: "messageComposed",
+          type: enums.MESSAGE_COMPOSED,
           payLoad: [response],
         });
       })
@@ -540,7 +543,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
     this.messageToBeEdited = null;
     this.messageInput = "";
     this.actionGenerated.emit({
-      type: "clearMessageToBeEdited",
+      type: enums.CLEAR_MESSAGE_TO_BE_UPDATED,
       payLoad: null,
     });
   }
@@ -629,13 +632,13 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
 
     this.startTyping(typingInterval, typingMetadata);
     this.actionGenerated.emit({
-      type: "sendReaction",
+      type: enums.SEND_REACTION,
     });
     // event.persist();
     setTimeout(() => {
       this.endTyping(typingMetadata);
       this.actionGenerated.emit({
-        type: "stopReaction",
+        type: enums.STOP_REACTION,
       });
     }, typingInterval);
   }
@@ -680,7 +683,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
         this.messageSending = false;
         this.playAudio();
         this.actionGenerated.emit({
-          type: "messageComposed",
+          type: enums.MESSAGE_COMPOSED,
           payLoad: [message],
         });
       })

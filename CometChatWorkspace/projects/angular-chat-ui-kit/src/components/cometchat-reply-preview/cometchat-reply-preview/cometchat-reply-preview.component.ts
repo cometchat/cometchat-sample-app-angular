@@ -8,7 +8,7 @@ import {
   EventEmitter,
 } from "@angular/core";
 import { trigger, style, transition, animate } from "@angular/animations";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-reply-preview",
   templateUrl: "./cometchat-reply-preview.component.html",
@@ -77,7 +77,10 @@ export class CometchatReplyPreviewComponent implements OnInit {
    * @param
    */
   sendReplyMessage(message) {
-    this.actionGenerated.emit({ type: "sendSmartReply", payLoad: message });
+    this.actionGenerated.emit({
+      type: enums.SEND_SMART_REPLY,
+      payLoad: message,
+    });
   }
 
   /**

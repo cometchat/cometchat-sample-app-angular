@@ -134,7 +134,10 @@ export class CometchatCreateGroupComponent implements OnInit {
     CometChat.createGroup(group)
       .then((group) => {
         this.resetGroupData();
-        this.actionGenerated.emit({ type: "groupCreated", payLoad: group });
+        this.actionGenerated.emit({
+          type: enums.GROUP_CREATED,
+          payLoad: group,
+        });
       })
       .catch((error) => {
         this.error = error;
@@ -149,7 +152,10 @@ export class CometchatCreateGroupComponent implements OnInit {
    * @param
    */
   closeCreateGroupView() {
-    this.actionGenerated.emit({ type: "closeCreateGroupView", payLoad: null });
+    this.actionGenerated.emit({
+      type: enums.CLOSE_CREATE_GROUP_VIEW,
+      payLoad: null,
+    });
   }
 
   /**

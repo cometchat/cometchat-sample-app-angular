@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import { STRING_MESSAGES } from "../../utils/messageConstants";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-sticker-view",
   templateUrl: "./cometchat-sticker-view.component.html",
@@ -113,7 +113,7 @@ export class CometchatStickerViewComponent implements OnInit {
    */
   sendStickerMessage(stickerItem) {
     this.actionGenerated.emit({
-      type: "sendSticker",
+      type: enums.SEND_STICKER,
       payLoad: stickerItem,
     });
   }

@@ -23,7 +23,7 @@ export class CometchatBanMemberViewComponent implements OnInit {
   ngOnInit() {}
   unbanMember() {
     this.actionGenerated.emit({
-      type: "unban",
+      type: enums.UNBAN,
       payLoad: { member: this.member },
     });
   }
