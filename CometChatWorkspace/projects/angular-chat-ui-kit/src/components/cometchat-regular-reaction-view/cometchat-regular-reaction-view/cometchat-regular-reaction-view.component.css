@@ -35,6 +35,7 @@
   margin: 5px;
   padding: 5px 10px;
   background-color: #f6f6f6;
+  cursor: pointer;
 }
 
 .reactionCountStyle {
