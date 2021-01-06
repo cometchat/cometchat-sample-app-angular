@@ -96,12 +96,12 @@ export class CometchatCallAlertComponent implements OnInit {
           //mark as read incoming call message
           this.markMessageAsRead(incomingCall);
           this.actionGenerated.emit({
-            type: "rejectedIncomingCall",
+            type: enums.REJECTED_INCOMING_CALL,
             payLoad: { incomingCall, rejectedCall: rejectedCall },
           });
         })
         .catch((error) => {
-          this.actionGenerated.emit({ type: "callError", payLoad: error });
+          this.actionGenerated.emit({ type: enums.CALL_ERROR, payLoad: error });
 
           console.log("Call rejection failed with error:", error);
         });
@@ -144,7 +144,7 @@ export class CometchatCallAlertComponent implements OnInit {
     )
       .then((rejectedCall) => {
         this.actionGenerated.emit({
-          type: "rejectedIncomingCall",
+          type: enums.REJECTED_INCOMING_CALL,
           payLoad: {
             incomingCall: this.incomingCall,
             rejectedCall: rejectedCall,
@@ -153,7 +153,7 @@ export class CometchatCallAlertComponent implements OnInit {
         this.incomingCall = null;
       })
       .catch((error) => {
-        this.actionGenerated.emit({ type: "callError", payLoad: error });
+        this.actionGenerated.emit({ type: enums.CALL_ERROR, payLoad: error });
         this.incomingCall = null;
       });
   }
@@ -166,7 +166,7 @@ export class CometchatCallAlertComponent implements OnInit {
     this.pauseAudio();
 
     this.actionGenerated.emit({
-      type: "acceptIncomingCall",
+      type: enums.ACCEPT_INCOMING_CALL,
       payLoad: this.incomingCall,
     });
     this.incomingCall = null;

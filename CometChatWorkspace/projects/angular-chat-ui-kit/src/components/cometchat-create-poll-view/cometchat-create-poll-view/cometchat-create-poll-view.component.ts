@@ -8,7 +8,7 @@ import {
 
 import { CometChat } from "@cometchat-pro/chat";
 import { STRING_MESSAGES } from "../../utils/messageConstants";
-
+import * as enums from "../../utils/enums";
 @Component({
   selector: "cometchat-create-poll-view",
   templateUrl: "./cometchat-create-poll-view.component.html",
@@ -142,7 +142,10 @@ export class CometchatCreatePollViewComponent implements OnInit {
 
         // console.log(" create poll view --> poll created ", message);
 
-        this.actionGenerated.emit({ type: "pollCreated", payLoad: message });
+        this.actionGenerated.emit({
+          type: enums.POLL_CREATED,
+          payLoad: message,
+        });
         this.errorText = "";
       })
       .catch((error) => {
@@ -169,6 +172,6 @@ export class CometchatCreatePollViewComponent implements OnInit {
    * @param
    */
   closePollView() {
-    this.actionGenerated.emit({ type: "closePollView", payLoad: null });
+    this.actionGenerated.emit({ type: enums.CLOSE_POLL_VIEW, payLoad: null });
   }
 }

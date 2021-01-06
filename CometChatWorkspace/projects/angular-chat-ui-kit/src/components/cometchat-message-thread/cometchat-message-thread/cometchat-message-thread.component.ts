@@ -243,7 +243,7 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
 
       if (messageList.length - messageKey === 1 && !message.replyCount) {
         this.actionGenerated.emit({
-          type: "messageEdited",
+          type: enums.MESSAGE_EDIT,
           payLoad: [newMessageObj],
         });
       }
@@ -265,7 +265,7 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
 
         if (messageList.length - messageKey === 1 && !message.replyCount) {
           this.actionGenerated.emit({
-            type: "messageDeleted",
+            type: enums.MESSAGE_DELETE,
             payLoad: [deletedMessage],
           });
         }

@@ -32,8 +32,6 @@ export class CometchatRegularReactionViewComponent
 
   ngOnChanges(change: SimpleChanges) {
     if (change["MessageDetails"]) {
-      console.log("regular reaction change");
-
       if (
         change["MessageDetails"].previousValue !==
         change["MessageDetails"].currentValue

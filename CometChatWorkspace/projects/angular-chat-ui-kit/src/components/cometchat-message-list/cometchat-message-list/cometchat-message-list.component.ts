@@ -685,12 +685,12 @@ export class CometchatMessageListComponent
         message.type !== enums.CUSTOM_TYPE_POLL
       ) {
         this.actionGenerated.emit({
-          type: "customMessageReceived",
+          type: enums.CUSTOM_MESSAGE_RECEIVE,
           payLoad: [message],
         });
       } else if (message.type === enums.CUSTOM_TYPE_STICKER) {
         this.actionGenerated.emit({
-          type: "customMessageReceived",
+          type: enums.CUSTOM_MESSAGE_RECEIVE,
           payLoad: [message],
         });
       } else if (message.type === enums.CUSTOM_TYPE_POLL) {
