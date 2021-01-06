@@ -1,0 +1,58 @@
+<div class="messageContainerStyle">
+  <!--ToolTip-->
+  <cometchat-tool-tip
+    class="tool"
+    [ngClass]="{
+      toolGroup: MessageDetails?.receiverType == 'group'
+    }"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <!--Avatar-->
+    <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">
+      <cometchat-avatar
+        [item]="MessageDetails?.sender"
+        [enableUserStatus]="false"
+        class="avatarStyle"
+      ></cometchat-avatar>
+    </div>
+    <!--Avatar Ends-->
+    <div class="messageDetailStyle">
+      <!--Name-->
+      <div class="nameWrapperStyle">
+        <span class="nameStyle">
+          {{ name }}
+        </span>
+      </div>
+      <!--Name End-->
+      <div class="messageVideoContainer">
+        <div class="messageVideoWrapperStyle">
+          <video controls>
+            <source [src]="videoUrl" />
+          </video>
+        </div>
+      </div>
+      <cometchat-regular-reaction-view
+        *ngIf="checkReaction"
+        [MessageDetails]="MessageDetails"
+        [loggedInUser]="loggedInUser"
+        (actionGenerated)="actionHandler($event)"
+      ></cometchat-regular-reaction-view>
+      <div class="messageInfoWrapperStyle">
+        <cometchat-read-reciept
+          [MessageDetails]="MessageDetails"
+          [displayReadReciept]="false"
+        ></cometchat-read-reciept>
+        <!--ReplyCount-->
+        <cometchat-reply-count
+          *ngIf="showReplyCount"
+          [MessageDetails]="MessageDetails"
+          (actionGenerated)="actionHandler($event)"
+        >
+        </cometchat-reply-count>
+      </div>
+    </div>
+  </div>
+</div>

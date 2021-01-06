@@ -43,16 +43,13 @@ export class KitchenSinkAppComponent implements OnInit {
    * @param {String} UID
    */
   onLogin(UID) {
-    //console.log(UID)
-
     CometChat.login(UID, COMETCHAT_CONSTANTS.API_KEY).then(
       (user) => {
         console.log("Login Successful:", { user });
         this.router.navigate(["/Home"]);
       },
       (error) => {
-        //console.log("Login failed with exception:", { error });
-        console.log(error.message);
+        console.log("Login failed with exception:", { error });
         this.onLoginError = true;
         this.errorMsg = error.message;
       }

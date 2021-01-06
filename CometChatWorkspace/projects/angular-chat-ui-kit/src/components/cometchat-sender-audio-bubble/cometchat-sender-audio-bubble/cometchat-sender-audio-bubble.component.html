@@ -1,0 +1,33 @@
+<div class="messageContainerStyle">
+  <cometchat-tool-tip
+    class="tool"
+    [MessageDetails]="MessageDetails"
+    (actionGenerated)="actionHandler($event)"
+    *ngIf="showToolTip"
+  ></cometchat-tool-tip>
+  <div class="messageWrapperStyle">
+    <div class="messageAudioWrapperStyle">
+      <audio controls>
+        <source [src]="audioUrl" />
+      </audio>
+    </div>
+  </div>
+  <cometchat-regular-reaction-view
+    *ngIf="checkReaction"
+    [MessageDetails]="MessageDetails"
+    [loggedInUser]="loggedInUser"
+    (actionGenerated)="actionHandler($event)"
+  ></cometchat-regular-reaction-view>
+  <div class="messageInfoWrapperStyle">
+    <!--Reply Count-->
+    <cometchat-reply-count
+      *ngIf="showReplyCount"
+      [MessageDetails]="MessageDetails"
+      (actionGenerated)="actionHandler($event)"
+    >
+    </cometchat-reply-count>
+    <cometchat-read-reciept
+      [MessageDetails]="MessageDetails"
+    ></cometchat-read-reciept>
+  </div>
+</div>
