@@ -29,7 +29,7 @@ export class KitchenSinkAppComponent implements OnInit {
     //Create User
     // let  user = new CometChat.User('testing');
     // user.setName('Sohail');
-    // CometChat.createUser(user, COMETCHAT_CONSTANTS.API_KEY).then(
+    // CometChat.createUser(user, COMETCHAT_CONSTANTS.AUTH_KEY).then(
     //   user => {
     //       console.log("user created", user);
     //   },error => {
@@ -43,7 +43,7 @@ export class KitchenSinkAppComponent implements OnInit {
    * @param {String} UID
    */
   onLogin(UID) {
-    CometChat.login(UID, COMETCHAT_CONSTANTS.API_KEY).then(
+    CometChat.login(UID, COMETCHAT_CONSTANTS.AUTH_KEY).then(
       (user) => {
         console.log("Login Successful:", { user });
         this.router.navigate(["/Home"]);
