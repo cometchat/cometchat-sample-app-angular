@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatSenderVideoBubbleComponent } from "./cometchat-sender-video-bubble/cometchat-sender-video-bubble.component";
+import { CometchatSenderVideoMessageBubbleComponent } from "./cometchat-sender-video-message-bubble/cometchat-sender-video-message-bubble.component";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
 import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
-  declarations: [CometchatSenderVideoBubbleComponent],
+  declarations: [CometchatSenderVideoMessageBubbleComponent],
   imports: [
     CommonModule,
     CometchatReadRecieptModule,
@@ -15,6 +15,6 @@ import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message
     CometchatReplyCountModule,
     CometchatMessageReactionsModule,
   ],
-  exports: [CometchatSenderVideoBubbleComponent],
+  exports: [CometchatSenderVideoMessageBubbleComponent],
 })
-export class CometchatSenderVideoBubbleModule {}
+export class CometchatSenderVideoMessageBubbleModule {}

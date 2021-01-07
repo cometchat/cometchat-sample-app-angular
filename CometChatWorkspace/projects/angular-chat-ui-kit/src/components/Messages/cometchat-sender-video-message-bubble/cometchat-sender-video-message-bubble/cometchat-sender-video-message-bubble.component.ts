@@ -3,11 +3,11 @@ import { checkMessageForExtensionsData } from "../../../utils/common";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-sender-video-bubble",
-  templateUrl: "./cometchat-sender-video-bubble.component.html",
-  styleUrls: ["./cometchat-sender-video-bubble.component.css"],
+  selector: "cometchat-sender-video-message-bubble",
+  templateUrl: "./cometchat-sender-video-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-video-message-bubble.component.css"],
 })
-export class CometchatSenderVideoBubbleComponent implements OnInit {
+export class CometchatSenderVideoMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
