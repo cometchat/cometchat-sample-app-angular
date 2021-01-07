@@ -150,9 +150,7 @@ CometChat.login(uid, authKey).then(
 **Import the CometchatUnifiedModule in the requierd module**
 
 ```html
-import {CometchatUnifiedModule} from "./angular-chat-ui-kit"; @NgModule({
-declarations: [], imports: [CometchatUnifiedModule], providers: [], bootstrap:
-[AppComponent], }) export class AppModule {}
+import {CometchatUnifiedModule} from "./angular-chat-ui-kit";
 ```
 
 **Use this selector in your html file**
