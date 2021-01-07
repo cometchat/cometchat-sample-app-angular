@@ -183,8 +183,8 @@ export * from "./components/Messages/cometchat-sender-image-message-bubble/comet
 export * from "./components/Messages/cometchat-sender-image-message-bubble/cometchat-sender-image-message-bubble.module";
 
 //senderMesageBubble
-export * from "./components/Messages/cometchat-sender-message-bubble/cometchat-sender-message-bubble/cometchat-sender-message-bubble.component";
-export * from "./components/Messages/cometchat-sender-message-bubble/cometchat-sender-message-bubble.module";
+export * from "./components/Messages/cometchat-sender-text-message-bubble/cometchat-sender-text-message-bubble/cometchat-sender-text-message-bubble.component";
+export * from "./components/Messages/cometchat-sender-text-message-bubble/cometchat-sender-text-message-bubble.module";
 
 //senderPollBubble
 export * from "./components/Messages/Extensions/cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.component";

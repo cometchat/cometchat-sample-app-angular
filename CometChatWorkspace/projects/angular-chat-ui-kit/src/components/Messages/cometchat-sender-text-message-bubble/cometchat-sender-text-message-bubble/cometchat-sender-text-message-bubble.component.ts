@@ -3,11 +3,11 @@ import { checkMessageForExtensionsData } from "../../../utils/common";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-sender-message-bubble",
-  templateUrl: "./cometchat-sender-message-bubble.component.html",
-  styleUrls: ["./cometchat-sender-message-bubble.component.css"],
+  selector: "cometchat-sender-text-message-bubble",
+  templateUrl: "./cometchat-sender-text-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-text-message-bubble.component.css"],
 })
-export class CometchatSenderMessageBubbleComponent implements OnInit {
+export class CometchatSenderTextMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
   @Input() loggedInUser;

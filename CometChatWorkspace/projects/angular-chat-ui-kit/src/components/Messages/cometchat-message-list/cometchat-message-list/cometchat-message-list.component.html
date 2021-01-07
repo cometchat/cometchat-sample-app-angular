@@ -53,12 +53,12 @@
               [loggedInUser]="loggedInUser"
               (actionGenerated)="actionHandler($event)"
             ></cometchat-receiver-message-bubble>
-            <cometchat-sender-message-bubble
+            <cometchat-sender-text-message-bubble
               *ngIf="msg.sender.uid === loggedInUser.uid"
               [MessageDetails]="msg"
               [loggedInUser]="loggedInUser"
               (actionGenerated)="actionHandler($event)"
-            ></cometchat-sender-message-bubble>
+            ></cometchat-sender-text-message-bubble>
           </div>
           <!--CASE FOR TEXT ENDS -->
           <!--CASE FOR FILE-->

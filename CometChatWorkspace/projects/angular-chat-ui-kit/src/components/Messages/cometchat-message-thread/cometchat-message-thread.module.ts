@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CometchatMessageThreadComponent } from "./cometchat-message-thread/cometchat-message-thread.component";
-import { CometchatSenderMessageBubbleModule } from "../cometchat-sender-message-bubble/cometchat-sender-message-bubble.module";
+import { CometchatSenderTextMessageBubbleModule } from "../cometchat-sender-text-message-bubble/cometchat-sender-text-message-bubble.module";
 import { CometchatMessageListModule } from "../cometchat-message-list/cometchat-message-list.module";
 import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
 import { CometchatReceiverMessageBubbleModule } from "../cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
@@ -22,7 +22,7 @@ import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometcha
   declarations: [CometchatMessageThreadComponent],
   imports: [
     CommonModule,
-    CometchatSenderMessageBubbleModule,
+    CometchatSenderTextMessageBubbleModule,
     CometchatReceiverMessageBubbleModule,
     CometchatSenderFileMessageBubbleModule,
     CometchatReceiverFileMessageBubbleModule,
