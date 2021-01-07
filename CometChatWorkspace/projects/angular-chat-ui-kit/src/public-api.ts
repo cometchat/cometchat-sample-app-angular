@@ -71,8 +71,8 @@ export * from "./components/Messages/cometchat-deleted-message-bubble/cometchat-
 export * from "./components/Messages/cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.module";
 
 //groupDetail
-export * from "./components/Groups/cometchat-group-detail/cometchat-group-detail/cometchat-group-detail.component";
-export * from "./components/Groups/cometchat-group-detail/cometchat-group-detail.module";
+export * from "./components/Groups/cometchat-group-details/cometchat-group-details/cometchat-group-details.component";
+export * from "./components/Groups/cometchat-group-details/cometchat-group-details.module";
 
 //groupList
 export * from "./components/Groups/cometchat-group-list/cometchat-group-list/cometchat-group-list.component";

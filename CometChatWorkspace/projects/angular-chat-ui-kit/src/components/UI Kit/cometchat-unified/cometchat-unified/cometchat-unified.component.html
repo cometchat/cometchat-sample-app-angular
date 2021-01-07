@@ -47,12 +47,12 @@
       </cometchat-user-detail>
     </div>
     <div *ngIf="type === 'group'">
-      <cometchat-group-detail
+      <cometchat-group-details
         *ngIf="viewDetailScreen"
         [item]="item"
         [type]="type"
         (actionGenerated)="actionHandler($event)"
-      ></cometchat-group-detail>
+      ></cometchat-group-details>
     </div>
 
     <cometchat-message-thread
