@@ -3,11 +3,11 @@ import { checkMessageForExtensionsData } from "../../../utils/common";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-receiver-file-bubble",
-  templateUrl: "./cometchat-receiver-file-bubble.component.html",
-  styleUrls: ["./cometchat-receiver-file-bubble.component.css"],
+  selector: "cometchat-receiver-file-message-bubble",
+  templateUrl: "./cometchat-receiver-file-message-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-file-message-bubble.component.css"],
 })
-export class CometchatReceiverFileBubbleComponent implements OnInit {
+export class CometchatReceiverFileMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   name: string;
   url: string;
