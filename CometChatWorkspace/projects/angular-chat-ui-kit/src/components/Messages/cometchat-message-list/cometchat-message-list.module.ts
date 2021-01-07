@@ -11,7 +11,7 @@ import { CometchatSenderVideoBubbleModule } from "../cometchat-sender-video-bubb
 import { CometchatReceiverVideoBubbleModule } from "../cometchat-receiver-video-bubble/cometchat-receiver-video-bubble.module";
 import { CometchatSenderAudioBubbleModule } from "../cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.module";
 import { CometchatReceiverAudioBubbleModule } from "../cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.module";
-import { CometchatDeletedMessageBubbleModule } from "../cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.module";
+import { CometchatDeleteMessageBubbleModule } from "../cometchat-delete-message-bubble/cometchat-delete-message-bubble.module";
 import { CometchatSenderPollMessageBubbleModule } from "../Extensions/cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.module";
 import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.module";
 import { CometchatSenderStickerMessageBubbleModule } from "../Extensions/cometchat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble.module";
@@ -33,7 +33,7 @@ import { DatePipe } from "@angular/common";
     CometchatSenderAudioBubbleModule,
     CometchatReceiverAudioBubbleModule,
     CometchatReceiverMessageBubbleModule,
-    CometchatDeletedMessageBubbleModule,
+    CometchatDeleteMessageBubbleModule,
     CometchatSenderPollMessageBubbleModule,
     CometchatReceiverPollMessageBubbleModule,
     CometchatSenderStickerMessageBubbleModule,

@@ -67,8 +67,8 @@ export * from "./components/Messages/Extensions/cometchat-create-poll-view/comet
 export * from "./components/Messages/Extensions/cometchat-create-poll-view/cometchat-create-poll-view.module";
 
 //deletedMessageBubble
-export * from "./components/Messages/cometchat-deleted-message-bubble/cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.component";
-export * from "./components/Messages/cometchat-deleted-message-bubble/cometchat-deleted-message-bubble.module";
+export * from "./components/Messages/cometchat-delete-message-bubble/cometchat-delete-message-bubble/cometchat-delete-message-bubble.component";
+export * from "./components/Messages/cometchat-delete-message-bubble/cometchat-delete-message-bubble.module";
 
 //groupDetail
 export * from "./components/Groups/cometchat-group-details/cometchat-group-details/cometchat-group-details.component";

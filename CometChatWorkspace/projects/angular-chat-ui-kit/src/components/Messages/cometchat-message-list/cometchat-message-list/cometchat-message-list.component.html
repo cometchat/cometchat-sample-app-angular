@@ -33,10 +33,10 @@
       <!--CASE FOR CALL MESSAGES ENDS-->
       <!-- CASE FOR DELETED MESSAGES -->
       <div *ngIf="msg?.deletedAt; else elseBlock">
-        <cometchat-deleted-message-bubble
+        <cometchat-delete-message-bubble
           [MessageDetails]="msg"
           [loggedInUser]="loggedInUser"
-        ></cometchat-deleted-message-bubble>
+        ></cometchat-delete-message-bubble>
       </div>
       <!-- CASE FOR DELETED MESSAGES ENDS -->
 
