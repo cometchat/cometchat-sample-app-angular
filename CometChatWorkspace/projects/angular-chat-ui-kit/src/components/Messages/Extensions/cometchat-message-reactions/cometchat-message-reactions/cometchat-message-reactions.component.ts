@@ -14,12 +14,11 @@ import { REACTION_ICON } from "../../../../resources/icons/reaction";
 import { STRING_MESSAGES } from "../../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-regular-reaction-view",
-  templateUrl: "./cometchat-regular-reaction-view.component.html",
-  styleUrls: ["./cometchat-regular-reaction-view.component.css"],
+  selector: "cometchat-message-reactions",
+  templateUrl: "./cometchat-message-reactions.component.html",
+  styleUrls: ["./cometchat-message-reactions.component.css"],
 })
-export class CometchatRegularReactionViewComponent
-  implements OnInit, OnChanges {
+export class CometchatMessageReactionsComponent implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

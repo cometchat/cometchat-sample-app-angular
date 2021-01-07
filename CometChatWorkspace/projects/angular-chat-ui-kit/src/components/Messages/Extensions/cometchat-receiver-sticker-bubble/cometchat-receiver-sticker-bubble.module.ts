@@ -5,7 +5,7 @@ import { CometchatToolTipModule } from "../../cometchat-tool-tip/cometchat-tool-
 import { CometchatReplyCountModule } from "../../cometchat-reply-count/cometchat-reply-count.module";
 import { CometchatAvatarModule } from "../../../Shared/cometchat-avatar/cometchat-avatar.module";
 import { CometchatReadRecieptModule } from "../../cometchat-read-reciept/cometchat-read-reciept.module";
-import { CometchatRegularReactionViewModule } from "../cometchat-regular-reaction-view/cometchat-regular-reaction-view.module";
+import { CometchatMessageReactionsModule } from "../cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
   declarations: [CometchatReceiverStickerBubbleComponent],
@@ -16,7 +16,7 @@ import { CometchatRegularReactionViewModule } from "../cometchat-regular-reactio
     CometchatAvatarModule,
     CometchatReplyCountModule,
     CometchatReadRecieptModule,
-    CometchatRegularReactionViewModule,
+    CometchatMessageReactionsModule,
   ],
   exports: [CometchatReceiverStickerBubbleComponent],
 })

@@ -4,7 +4,7 @@ import { CometchatSenderAudioBubbleComponent } from "./cometchat-sender-audio-bu
 import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
-import { CometchatRegularReactionViewModule } from "../Extensions/cometchat-regular-reaction-view/cometchat-regular-reaction-view.module";
+import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
   declarations: [CometchatSenderAudioBubbleComponent],
@@ -13,7 +13,7 @@ import { CometchatRegularReactionViewModule } from "../Extensions/cometchat-regu
     CometchatToolTipModule,
     CometchatReadRecieptModule,
     CometchatReplyCountModule,
-    CometchatRegularReactionViewModule,
+    CometchatMessageReactionsModule,
   ],
   exports: [CometchatSenderAudioBubbleComponent],
 })

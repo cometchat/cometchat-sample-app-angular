@@ -12,12 +12,12 @@
       </audio>
     </div>
   </div>
-  <cometchat-regular-reaction-view
+  <cometchat-message-reactions
     *ngIf="checkReaction"
     [MessageDetails]="MessageDetails"
     [loggedInUser]="loggedInUser"
     (actionGenerated)="actionHandler($event)"
-  ></cometchat-regular-reaction-view>
+  ></cometchat-message-reactions>
   <div class="messageInfoWrapperStyle">
     <!--Reply Count-->
     <cometchat-reply-count

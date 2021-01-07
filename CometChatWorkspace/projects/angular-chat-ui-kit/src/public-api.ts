@@ -155,8 +155,8 @@ export * from "./components/Messages/cometchat-receiver-video-bubble/cometchat-r
 export * from "./components/Messages/cometchat-receiver-video-bubble/cometchat-receiver-video-bubble.module";
 
 //regular reaction view
-export * from "./components/Messages/Extensions/cometchat-regular-reaction-view/cometchat-regular-reaction-view/cometchat-regular-reaction-view.component";
-export * from "./components/Messages/Extensions/cometchat-regular-reaction-view/cometchat-regular-reaction-view.module";
+export * from "./components/Messages/Extensions/cometchat-message-reactions/cometchat-message-reactions/cometchat-message-reactions.component";
+export * from "./components/Messages/Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 //replyCount
 export * from "./components/Messages/cometchat-reply-count/cometchat-reply-count/cometchat-reply-count.component";
