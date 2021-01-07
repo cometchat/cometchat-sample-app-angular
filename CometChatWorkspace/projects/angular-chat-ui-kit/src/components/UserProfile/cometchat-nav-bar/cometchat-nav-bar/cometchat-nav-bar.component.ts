@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-
+import * as enums from "../../../utils/enums";
 @Component({
   selector: "cometchat-nav-bar",
   templateUrl: "./cometchat-nav-bar.component.html",
@@ -23,7 +23,7 @@ export class CometchatNavBarComponent implements OnInit {
   displayUserInfoScreen: boolean = false;
 
   groupMessage = [];
-
+  curentItem;
   constructor() {}
 
   ngOnInit() {}
@@ -44,9 +44,7 @@ export class CometchatNavBarComponent implements OnInit {
    */
   openConversationList() {
     this.checkScreen("conversationList");
-    // this.actionGenerated.emit({
-    //   type: "tabChanged",
-    // });
+    this.closeDetailView();
   }
 
   /**
@@ -54,9 +52,7 @@ export class CometchatNavBarComponent implements OnInit {
    */
   openGroupList() {
     this.checkScreen("groupList");
-    // this.actionGenerated.emit({
-    //   type: "tabChanged",
-    // });
+    this.closeDetailView();
   }
 
   /**
@@ -64,9 +60,7 @@ export class CometchatNavBarComponent implements OnInit {
    */
   openUserList() {
     this.checkScreen("userList");
-    // this.actionGenerated.emit({
-    //   type: "tabChanged",
-    // });
+    this.closeDetailView();
   }
 
   /**
@@ -74,9 +68,16 @@ export class CometchatNavBarComponent implements OnInit {
    */
   openUserInfoScreen() {
     this.checkScreen("infoScreen");
-    // this.actionGenerated.emit({
-    //   type: "tabChanged",
-    // });
+    this.closeDetailView();
+  }
+
+  /**
+   * Closes Detail View when tab is changed
+   */
+  closeDetailView() {
+    this.actionGenerated.emit({
+      type: enums.TAB_CHANGED,
+    });
   }
 
   /**
@@ -86,8 +87,10 @@ export class CometchatNavBarComponent implements OnInit {
   userClicked(user) {
     if (user.hasOwnProperty("conversationWith")) {
       this.item = user.conversationWith;
+      this.curentItem = this.item;
     } else {
       this.item = user;
+      this.curentItem = this.item;
     }
     if (this.item.hasOwnProperty("uid")) {
       this.type = "user";
@@ -104,6 +107,7 @@ export class CometchatNavBarComponent implements OnInit {
    */
   groupClicked(group) {
     this.item = group;
+    this.curentItem = this.item;
 
     //Close Thread And User Detail Screen When Chat Window Is Changed
     //this.closeThreadMessages();
