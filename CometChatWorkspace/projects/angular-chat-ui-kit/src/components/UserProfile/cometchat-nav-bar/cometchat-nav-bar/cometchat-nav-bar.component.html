@@ -20,7 +20,7 @@
 
   <div *ngIf="displayUserList" class="listDisplayStyle">
     <cometchat-user-list
-      [item]="item"
+      [item]="curentItem"
       (onUserClick)="userClicked($event)"
     ></cometchat-user-list>
   </div>
