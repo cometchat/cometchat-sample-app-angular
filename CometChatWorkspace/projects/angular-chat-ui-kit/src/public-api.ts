@@ -163,8 +163,8 @@ export * from "./components/Messages/cometchat-reply-count/cometchat-reply-count
 export * from "./components/Messages/cometchat-reply-count/cometchat-reply-count.module";
 
 //replyPreview
-export * from "./components/Messages/Extensions/cometchat-reply-preview/cometchat-reply-preview/cometchat-reply-preview.component";
-export * from "./components/Messages/Extensions/cometchat-reply-preview/cometchat-reply-preview.module";
+export * from "./components/Messages/Extensions/cometchat-smart-reply-preview/cometchat-smart-reply-preview/cometchat-smart-reply-preview.component";
+export * from "./components/Messages/Extensions/cometchat-smart-reply-preview/cometchat-smart-reply-preview.module";
 
 //senderAudioBubble
 export * from "./components/Messages/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.component";

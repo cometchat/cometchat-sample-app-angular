@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatReplyPreviewComponent } from "./cometchat-reply-preview.component";
+import { CometchatSmartReplyPreviewComponent } from "./cometchat-smart-reply-preview.component";
 
 describe("ReplyPreviewComponent", () => {
-  let component: CometchatReplyPreviewComponent;
-  let fixture: ComponentFixture<CometchatReplyPreviewComponent>;
+  let component: CometchatSmartReplyPreviewComponent;
+  let fixture: ComponentFixture<CometchatSmartReplyPreviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatReplyPreviewComponent],
+      declarations: [CometchatSmartReplyPreviewComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatReplyPreviewComponent);
+    fixture = TestBed.createComponent(CometchatSmartReplyPreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

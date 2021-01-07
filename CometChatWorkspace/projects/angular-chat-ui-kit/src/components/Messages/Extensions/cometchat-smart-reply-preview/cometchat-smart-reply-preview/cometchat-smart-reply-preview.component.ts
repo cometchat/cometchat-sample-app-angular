@@ -10,9 +10,9 @@ import {
 import { trigger, style, transition, animate } from "@angular/animations";
 import * as enums from "../../../../utils/enums";
 @Component({
-  selector: "cometchat-reply-preview",
-  templateUrl: "./cometchat-reply-preview.component.html",
-  styleUrls: ["./cometchat-reply-preview.component.css"],
+  selector: "cometchat-smart-reply-preview",
+  templateUrl: "./cometchat-smart-reply-preview.component.html",
+  styleUrls: ["./cometchat-smart-reply-preview.component.css"],
   animations: [
     trigger("slideInOut", [
       transition(":enter", [
@@ -22,7 +22,7 @@ import * as enums from "../../../../utils/enums";
     ]),
   ],
 })
-export class CometchatReplyPreviewComponent implements OnInit {
+export class CometchatSmartReplyPreviewComponent implements OnInit {
   @Input() replyPreview = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
