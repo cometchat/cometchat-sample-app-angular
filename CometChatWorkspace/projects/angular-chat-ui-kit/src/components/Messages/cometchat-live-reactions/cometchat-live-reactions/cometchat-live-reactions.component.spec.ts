@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatLiveReactionComponent } from "./cometchat-live-reaction.component";
+import { CometchatLiveReactionsComponent } from "./cometchat-live-reactions.component";
 
 describe("LiveReactionComponent", () => {
-  let component: CometchatLiveReactionComponent;
-  let fixture: ComponentFixture<CometchatLiveReactionComponent>;
+  let component: CometchatLiveReactionsComponent;
+  let fixture: ComponentFixture<CometchatLiveReactionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatLiveReactionComponent],
+      declarations: [CometchatLiveReactionsComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatLiveReactionComponent);
+    fixture = TestBed.createComponent(CometchatLiveReactionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
