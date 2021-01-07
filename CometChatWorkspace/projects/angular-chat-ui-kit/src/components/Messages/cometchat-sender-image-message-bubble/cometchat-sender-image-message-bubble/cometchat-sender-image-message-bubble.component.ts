@@ -11,11 +11,11 @@ import { checkMessageForExtensionsData } from "../../../utils/common";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-sender-image-bubble",
-  templateUrl: "./cometchat-sender-image-bubble.component.html",
-  styleUrls: ["./cometchat-sender-image-bubble.component.css"],
+  selector: "cometchat-sender-image-message-bubble",
+  templateUrl: "./cometchat-sender-image-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-image-message-bubble.component.css"],
 })
-export class CometchatSenderImageBubbleComponent implements OnInit {
+export class CometchatSenderImageMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

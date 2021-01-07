@@ -114,14 +114,14 @@
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-image-message-bubble>
 
-          <cometchat-sender-image-bubble
+          <cometchat-sender-image-message-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
             [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
-          ></cometchat-sender-image-bubble>
+          ></cometchat-sender-image-message-bubble>
         </div>
         <!--CASE FOR IMAGE ENDS -->
 
