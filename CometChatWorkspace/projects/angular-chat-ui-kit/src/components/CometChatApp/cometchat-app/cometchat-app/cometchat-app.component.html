@@ -17,7 +17,7 @@
       unifiedMainSecondaryStyle: threadMessageView || viewDetailScreen
     }"
   >
-    <cometchat-message-list-screen
+    <cometchat-messages
       [item]="item"
       [type]="type"
       [callMessage]="callMessage"
@@ -25,7 +25,7 @@
       [groupMessage]="groupMessage"
       (actionGenerated)="actionHandler($event)"
     >
-    </cometchat-message-list-screen>
+    </cometchat-messages>
   </div>
   <!--Detail Screen-->
   <div

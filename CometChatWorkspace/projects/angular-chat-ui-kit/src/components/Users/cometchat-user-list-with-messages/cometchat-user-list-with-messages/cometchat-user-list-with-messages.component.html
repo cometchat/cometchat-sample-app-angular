@@ -13,13 +13,13 @@
       userScreenMainSecondaryStyle: threadMessageView || viewDetailScreen
     }"
   >
-    <cometchat-message-list-screen
+    <cometchat-messages
       [item]="curentItem"
       [type]="type"
       [composedthreadmessage]="composedthreadmessage"
       [callMessage]="callMessage"
       (actionGenerated)="actionHandler($event)"
-    ></cometchat-message-list-screen>
+    ></cometchat-messages>
   </div>
 
   <!-- Message Thread View Below -->

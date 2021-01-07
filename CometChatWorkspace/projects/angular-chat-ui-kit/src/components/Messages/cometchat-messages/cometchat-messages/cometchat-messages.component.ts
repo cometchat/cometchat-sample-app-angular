@@ -13,11 +13,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import { INCOMING_MESSAGE_SOUND } from "../../../resources/audio/incomingMessageSound";
 import * as enums from "../../../utils/enums";
 @Component({
-  selector: "cometchat-message-list-screen",
-  templateUrl: "./cometchat-message-list-screen.component.html",
-  styleUrls: ["./cometchat-message-list-screen.component.css"],
+  selector: "cometchat-messages",
+  templateUrl: "./cometchat-messages.component.html",
+  styleUrls: ["./cometchat-messages.component.css"],
 })
-export class CometchatMessageListScreenComponent implements OnInit, OnChanges {
+export class CometchatMessagesComponent implements OnInit, OnChanges {
   @ViewChild("messageWindow", null) chatWindow: ElementRef;
 
   @Input() item = null;

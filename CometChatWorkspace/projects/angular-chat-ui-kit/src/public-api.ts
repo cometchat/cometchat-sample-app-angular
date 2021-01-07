@@ -111,8 +111,8 @@ export * from "./components/Messages/cometchat-message-list/cometchat-message-li
 export * from "./components/Messages/cometchat-message-list/cometchat-message-list.module";
 
 //messageListScreen
-export * from "./components/Messages/cometchat-message-list-screen/cometchat-message-list-screen/cometchat-message-list-screen.component";
-export * from "./components/Messages/cometchat-message-list-screen/cometchat-message-list-screen.module";
+export * from "./components/Messages/cometchat-messages/cometchat-messages/cometchat-messages.component";
+export * from "./components/Messages/cometchat-messages/cometchat-messages.module";
 
 //messageThread
 export * from "./components/Messages/cometchat-message-thread/cometchat-message-thread/cometchat-message-thread.component";
