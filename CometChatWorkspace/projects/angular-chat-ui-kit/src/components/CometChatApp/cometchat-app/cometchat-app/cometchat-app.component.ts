@@ -238,8 +238,6 @@ export class CometchatAppComponent implements OnInit {
    * @param Any parentMessage
    */
   closeThreadMessages() {
-    console.log("close thread");
-
     //close Thread Screen
     this.threadMessageView = false;
     this.threadMessageParent = null;
@@ -287,7 +285,7 @@ export class CometchatAppComponent implements OnInit {
         this.item = { ...this.item, blockedByMe: false };
         this.curentItem = this.item;
 
-        console.log("unblock success");
+        // console.log("unblock success");
       })
       .catch((error) => {
         console.log("unblocking user fails with error", error);
