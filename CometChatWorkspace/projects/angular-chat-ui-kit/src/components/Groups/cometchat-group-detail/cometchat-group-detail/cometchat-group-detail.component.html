@@ -72,14 +72,14 @@
   </div>
 
   <!-- VIEW MEMBERS COMPONENT -->
-  <cometchat-view-members
+  <cometchat-view-group-member-list
     *ngIf="openViewMember"
     [item]="item"
     [type]="type"
     [memberlist]="memberlist"
     [loggedInUser]="loggedInUser"
     (actionGenerated)="actionHandler($event)"
-  ></cometchat-view-members>
+  ></cometchat-view-group-member-list>
 
   <!-- ADD MEMBERS COMPONENT -->
   <cometchat-add-members

@@ -231,5 +231,5 @@ export * from "./components/Users/cometchat-user-list-screen/cometchat-user-list
 export * from "./components/Users/cometchat-user-list-screen/cometchat-user-list-screen.module";
 
 //viewMembers
-export * from "./components/Groups/cometchat-view-members/cometchat-view-members/cometchat-view-members.component";
-export * from "./components/Groups/cometchat-view-members/cometchat-view-members.module";
+export * from "./components/Groups/cometchat-view-group-member-list/cometchat-view-group-member-list/cometchat-view-group-member-list.component";
+export * from "./components/Groups/cometchat-view-group-member-list/cometchat-view-group-member-list.module";

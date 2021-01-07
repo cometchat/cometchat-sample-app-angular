@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../../utils/enums";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 @Component({
-  selector: "cometchat-view-members",
-  templateUrl: "./cometchat-view-members.component.html",
-  styleUrls: ["./cometchat-view-members.component.css"],
+  selector: "cometchat-view-group-member-list",
+  templateUrl: "./cometchat-view-group-member-list.component.html",
+  styleUrls: ["./cometchat-view-group-member-list.component.css"],
 })
-export class CometchatViewMembersComponent implements OnInit {
+export class CometchatViewGroupMemberListComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() loggedInUser = null;
