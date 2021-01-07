@@ -14,7 +14,7 @@ import { CometchatReceiverVideoBubbleModule } from "../cometchat-receiver-video-
 import { CometchatSenderAudioBubbleModule } from "../cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.module";
 import { CometchatReceiverAudioBubbleModule } from "../cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.module";
 import { CometchatSenderStickerMessageBubbleModule } from "../Extensions/cometchat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble.module";
-import { CometchatReceiverStickerBubbleModule } from "../Extensions/cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.module";
+import { CometchatReceiverStickerMessageBubbleModule } from "../Extensions/cometchat-receiver-sticker-message-bubble/cometchat-receiver-sticker-message-bubble.module";
 import { CometchatSenderPollMessageBubbleModule } from "../Extensions/cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.module";
 import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.module";
 
@@ -35,7 +35,7 @@ import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometcha
     CometchatMessageListModule,
     CometchatMessageComposerModule,
     CometchatSenderStickerMessageBubbleModule,
-    CometchatReceiverStickerBubbleModule,
+    CometchatReceiverStickerMessageBubbleModule,
     CometchatSenderPollMessageBubbleModule,
     CometchatReceiverPollMessageBubbleModule,
   ],

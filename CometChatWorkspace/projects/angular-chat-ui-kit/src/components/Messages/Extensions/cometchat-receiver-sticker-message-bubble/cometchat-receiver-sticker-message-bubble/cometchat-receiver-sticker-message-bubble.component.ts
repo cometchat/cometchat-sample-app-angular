@@ -11,11 +11,11 @@ import { checkMessageForExtensionsData } from "../../../../utils/common";
 import { STRING_MESSAGES } from "../../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-receiver-sticker-bubble",
-  templateUrl: "./cometchat-receiver-sticker-bubble.component.html",
-  styleUrls: ["./cometchat-receiver-sticker-bubble.component.css"],
+  selector: "cometchat-receiver-sticker-message-bubble",
+  templateUrl: "./cometchat-receiver-sticker-message-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-sticker-message-bubble.component.css"],
 })
-export class CometchatReceiverStickerBubbleComponent
+export class CometchatReceiverStickerMessageBubbleComponent
   implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
