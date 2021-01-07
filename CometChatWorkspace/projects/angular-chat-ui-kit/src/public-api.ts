@@ -143,8 +143,8 @@ export * from "./components/Messages/cometchat-receiver-message-bubble/cometchat
 export * from "./components/Messages/cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
 
 //receiver poll bubble
-export * from "./components/Messages/Extensions/cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble.component";
-export * from "./components/Messages/Extensions/cometchat-receiver-poll-bubble/cometchat-receiver-poll-bubble.module";
+export * from "./components/Messages/Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.component";
+export * from "./components/Messages/Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.module";
 
 //receiver Sticker Bubble
 export * from "./components/Messages/Extensions/cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.component";

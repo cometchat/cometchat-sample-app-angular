@@ -46,7 +46,7 @@
             (actionGenerated)="actionHandler($event)"
           >
           </cometchat-sender-poll-bubble>
-          <cometchat-receiver-poll-bubble
+          <cometchat-receiver-poll-message-bubble
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [loggedInUserUid]="loggedInUser?.uid"
             [MessageDetails]="parentMessage"
@@ -55,7 +55,7 @@
             [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           >
-          </cometchat-receiver-poll-bubble>
+          </cometchat-receiver-poll-message-bubble>
         </div>
         <!--CASE FOR POLL ENDS -->
 

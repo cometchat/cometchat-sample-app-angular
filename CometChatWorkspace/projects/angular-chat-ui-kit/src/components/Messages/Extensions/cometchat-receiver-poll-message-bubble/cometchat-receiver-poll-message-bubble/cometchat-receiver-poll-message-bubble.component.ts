@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import { checkMessageForExtensionsData } from "../../../../utils/common";
 import * as enums from "../../../../utils/enums";
 @Component({
-  selector: "cometchat-receiver-poll-bubble",
-  templateUrl: "./cometchat-receiver-poll-bubble.component.html",
-  styleUrls: ["./cometchat-receiver-poll-bubble.component.css"],
+  selector: "cometchat-receiver-poll-message-bubble",
+  templateUrl: "./cometchat-receiver-poll-message-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-poll-message-bubble.component.css"],
 })
-export class CometchatReceiverPollBubbleComponent implements OnInit {
+export class CometchatReceiverPollMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
 
