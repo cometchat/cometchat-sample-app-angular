@@ -1,17 +1,17 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatCreatePollViewComponent } from "./cometchat-create-poll-view/cometchat-create-poll-view.component";
+import { CometchatCreatePollComponent } from "./cometchat-create-poll/cometchat-create-poll.component";
 import { CometchatBackdropModule } from "../../../Shared/cometchat-backdrop/cometchat-backdrop.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [CometchatCreatePollViewComponent],
+  declarations: [CometchatCreatePollComponent],
   imports: [
     CommonModule,
     CometchatBackdropModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [CometchatCreatePollViewComponent],
+  exports: [CometchatCreatePollComponent],
 })
-export class CometchatCreatePollViewModule {}
+export class CometchatCreatePollModule {}

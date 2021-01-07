@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatCreatePollViewComponent } from "./cometchat-create-poll-view.component";
+import { CometchatCreatePollComponent } from "./cometchat-create-poll.component";
 
 describe("CreatePollViewComponent", () => {
-  let component: CometchatCreatePollViewComponent;
-  let fixture: ComponentFixture<CometchatCreatePollViewComponent>;
+  let component: CometchatCreatePollComponent;
+  let fixture: ComponentFixture<CometchatCreatePollComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatCreatePollViewComponent],
+      declarations: [CometchatCreatePollComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatCreatePollViewComponent);
+    fixture = TestBed.createComponent(CometchatCreatePollComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

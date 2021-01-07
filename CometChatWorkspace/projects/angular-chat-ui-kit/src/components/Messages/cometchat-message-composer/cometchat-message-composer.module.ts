@@ -4,7 +4,7 @@ import { CometchatMessageComposerComponent } from "./cometchat-message-composer/
 import { CometchatSmartReplyPreviewModule } from "../Extensions/cometchat-smart-reply-preview/cometchat-smart-reply-preview.module";
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
 import { CometchatStickerKeyboardModule } from "../cometchat-sticker-keyboard/cometchat-sticker-keyboard.module";
-import { CometchatCreatePollViewModule } from "../Extensions/cometchat-create-poll-view/cometchat-create-poll-view.module";
+import { CometchatCreatePollModule } from "../Extensions/cometchat-create-poll/cometchat-create-poll.module";
 @NgModule({
   declarations: [CometchatMessageComposerComponent],
   imports: [
@@ -12,7 +12,7 @@ import { CometchatCreatePollViewModule } from "../Extensions/cometchat-create-po
     CometchatSmartReplyPreviewModule,
     PickerModule,
     CometchatStickerKeyboardModule,
-    CometchatCreatePollViewModule,
+    CometchatCreatePollModule,
   ],
   exports: [CometchatMessageComposerComponent],
 })

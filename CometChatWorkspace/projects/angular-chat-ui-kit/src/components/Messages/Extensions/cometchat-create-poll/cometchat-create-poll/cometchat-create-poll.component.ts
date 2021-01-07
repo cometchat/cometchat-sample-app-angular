@@ -10,11 +10,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import { STRING_MESSAGES } from "../../../../utils/messageConstants";
 import * as enums from "../../../../utils/enums";
 @Component({
-  selector: "cometchat-create-poll-view",
-  templateUrl: "./cometchat-create-poll-view.component.html",
-  styleUrls: ["./cometchat-create-poll-view.component.css"],
+  selector: "cometchat-create-poll",
+  templateUrl: "./cometchat-create-poll.component.html",
+  styleUrls: ["./cometchat-create-poll.component.css"],
 })
-export class CometchatCreatePollViewComponent implements OnInit {
+export class CometchatCreatePollComponent implements OnInit {
   pollFormData: FormGroup;
   errorText = "";
   @Input() item = null;
