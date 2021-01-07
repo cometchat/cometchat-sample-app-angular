@@ -8,7 +8,7 @@ import {
   CometchatConversationListScreenModule,
   CometchatGroupListModule,
   CometchatGroupListScreenModule,
-  CometchatUnifiedModule,
+  CometchatAppModule,
   CometchatUserListModule,
   CometchatUserListScreenModule,
   CometchatAvatarModule,
@@ -44,7 +44,7 @@ import { CometChatUnifiedPageComponent } from "./Components/Pages/comet-chat-uni
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CometchatUnifiedModule,
+    CometchatAppModule,
     CometchatConversationListScreenModule,
     CometchatGroupListScreenModule,
     CometchatUserListScreenModule,

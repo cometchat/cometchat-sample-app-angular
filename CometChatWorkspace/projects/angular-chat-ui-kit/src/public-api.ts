@@ -211,8 +211,8 @@ export * from "./components/Messages/cometchat-message-actions/cometchat-message
 export * from "./components/Messages/cometchat-message-actions/cometchat-message-actions.module";
 
 //CometChat Unified
-export * from "./components/UI Kit/cometchat-unified/cometchat-unified/cometchat-unified.component";
-export * from "./components/UI Kit/cometchat-unified/cometchat-unified.module";
+export * from "./components/CometChatApp/cometchat-app/cometchat-app/cometchat-app.component";
+export * from "./components/CometChatApp/cometchat-app/cometchat-app.module";
 
 //userDetail
 export * from "./components/Users/cometchat-user-detail/cometchat-user-detail/cometchat-user-detail.component";
