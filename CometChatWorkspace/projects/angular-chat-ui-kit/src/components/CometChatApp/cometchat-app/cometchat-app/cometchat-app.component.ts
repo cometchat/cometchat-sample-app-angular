@@ -206,6 +206,9 @@ export class CometchatAppComponent implements OnInit {
         this.item = null;
         break;
       }
+      case enums.TAB_CHANGED: {
+        this.viewDetailScreen = false;
+      }
       default:
         break;
     }
@@ -235,6 +238,8 @@ export class CometchatAppComponent implements OnInit {
    * @param Any parentMessage
    */
   closeThreadMessages() {
+    console.log("close thread");
+
     //close Thread Screen
     this.threadMessageView = false;
     this.threadMessageParent = null;
