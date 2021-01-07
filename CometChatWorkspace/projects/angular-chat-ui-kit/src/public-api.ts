@@ -119,8 +119,8 @@ export * from "./components/Messages/cometchat-message-thread/cometchat-message-
 export * from "./components/Messages/cometchat-message-thread/cometchat-message-thread.module";
 
 //navBar
-export * from "./components/cometchat-nav-bar/cometchat-nav-bar/cometchat-nav-bar.component";
-export * from "./components/cometchat-nav-bar/cometchat-nav-bar.module";
+export * from "./components/UserProfile/cometchat-nav-bar/cometchat-nav-bar/cometchat-nav-bar.component";
+export * from "./components/UserProfile/cometchat-nav-bar/cometchat-nav-bar.module";
 
 //readReceipt
 export * from "./components/Messages/cometchat-read-reciept/cometchat-read-reciept/cometchat-read-reciept.component";
