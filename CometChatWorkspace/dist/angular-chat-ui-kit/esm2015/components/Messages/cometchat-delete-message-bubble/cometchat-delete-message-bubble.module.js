@@ -1,0 +1,19 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: components/Messages/cometchat-delete-message-bubble/cometchat-delete-message-bubble.module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { CometchatDeleteMessageBubbleComponent } from "./cometchat-delete-message-bubble/cometchat-delete-message-bubble.component";
+import { CometchatAvatarModule } from "../../Shared/cometchat-avatar/cometchat-avatar.module";
+export class CometchatDeleteMessageBubbleModule {
+}
+CometchatDeleteMessageBubbleModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [CometchatDeleteMessageBubbleComponent],
+                imports: [CommonModule, CometchatAvatarModule],
+                exports: [CometchatDeleteMessageBubbleComponent],
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tZXRjaGF0LWRlbGV0ZS1tZXNzYWdlLWJ1YmJsZS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9hbmd1bGFyLWNoYXQtdWkta2l0LyIsInNvdXJjZXMiOlsiY29tcG9uZW50cy9NZXNzYWdlcy9jb21ldGNoYXQtZGVsZXRlLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1kZWxldGUtbWVzc2FnZS1idWJibGUubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUEsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFDL0MsT0FBTyxFQUFFLHFDQUFxQyxFQUFFLE1BQU0sNkVBQTZFLENBQUM7QUFFcEksT0FBTyxFQUFFLHFCQUFxQixFQUFFLE1BQU0sdURBQXVELENBQUM7QUFPOUYsTUFBTSxPQUFPLGtDQUFrQzs7O1lBTDlDLFFBQVEsU0FBQztnQkFDUixZQUFZLEVBQUUsQ0FBQyxxQ0FBcUMsQ0FBQztnQkFDckQsT0FBTyxFQUFFLENBQUMsWUFBWSxFQUFFLHFCQUFxQixDQUFDO2dCQUM5QyxPQUFPLEVBQUUsQ0FBQyxxQ0FBcUMsQ0FBQzthQUNqRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcbmltcG9ydCB7IENvbW1vbk1vZHVsZSB9IGZyb20gXCJAYW5ndWxhci9jb21tb25cIjtcbmltcG9ydCB7IENvbWV0Y2hhdERlbGV0ZU1lc3NhZ2VCdWJibGVDb21wb25lbnQgfSBmcm9tIFwiLi9jb21ldGNoYXQtZGVsZXRlLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1kZWxldGUtbWVzc2FnZS1idWJibGUuY29tcG9uZW50XCI7XG5cbmltcG9ydCB7IENvbWV0Y2hhdEF2YXRhck1vZHVsZSB9IGZyb20gXCIuLi8uLi9TaGFyZWQvY29tZXRjaGF0LWF2YXRhci9jb21ldGNoYXQtYXZhdGFyLm1vZHVsZVwiO1xuXG5ATmdNb2R1bGUoe1xuICBkZWNsYXJhdGlvbnM6IFtDb21ldGNoYXREZWxldGVNZXNzYWdlQnViYmxlQ29tcG9uZW50XSxcbiAgaW1wb3J0czogW0NvbW1vbk1vZHVsZSwgQ29tZXRjaGF0QXZhdGFyTW9kdWxlXSxcbiAgZXhwb3J0czogW0NvbWV0Y2hhdERlbGV0ZU1lc3NhZ2VCdWJibGVDb21wb25lbnRdLFxufSlcbmV4cG9ydCBjbGFzcyBDb21ldGNoYXREZWxldGVNZXNzYWdlQnViYmxlTW9kdWxlIHt9XG4iXX0=

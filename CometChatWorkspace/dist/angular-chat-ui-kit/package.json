@@ -1,0 +1,22 @@
+{
+  "name": "angular-chat-ui-kit",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "@ctrl/ngx-emoji-mart": "^1.0.6"
+  },
+  "main": "bundles/angular-chat-ui-kit.umd.js",
+  "module": "fesm5/angular-chat-ui-kit.js",
+  "es2015": "fesm2015/angular-chat-ui-kit.js",
+  "esm5": "esm5/angular-chat-ui-kit.js",
+  "esm2015": "esm2015/angular-chat-ui-kit.js",
+  "fesm5": "fesm5/angular-chat-ui-kit.js",
+  "fesm2015": "fesm2015/angular-chat-ui-kit.js",
+  "typings": "angular-chat-ui-kit.d.ts",
+  "metadata": "angular-chat-ui-kit.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
