@@ -93,10 +93,10 @@
   ></cometchat-add-group-member-list>
 
   <!-- BANNED MEMBERS COMPONENT -->
-  <cometchat-ban-members
+  <cometchat-ban-group-member-list-item
     *ngIf="openBanMember"
     [item]="item"
     [bannedmemberlist]="bannedmemberlist"
     (actionGenerated)="actionHandler($event)"
-  ></cometchat-ban-members>
+  ></cometchat-ban-group-member-list-item>
 </div>
