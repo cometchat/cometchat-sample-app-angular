@@ -82,12 +82,12 @@
           [displayReadReciept]="false"
         ></cometchat-read-reciept>
         <!--ReplyCount-->
-        <cometchat-reply-count
+        <cometchat-threaded-message-reply-count
           *ngIf="showReplyCount"
           [MessageDetails]="MessageDetails"
           (actionGenerated)="actionHandler($event)"
         >
-        </cometchat-reply-count>
+        </cometchat-threaded-message-reply-count>
       </div>
     </div>
   </div>

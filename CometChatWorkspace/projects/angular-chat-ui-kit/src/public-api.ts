@@ -159,8 +159,8 @@ export * from "./components/Messages/Extensions/cometchat-message-reactions/come
 export * from "./components/Messages/Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 //replyCount
-export * from "./components/Messages/cometchat-reply-count/cometchat-reply-count/cometchat-reply-count.component";
-export * from "./components/Messages/cometchat-reply-count/cometchat-reply-count.module";
+export * from "./components/Messages/cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count.component";
+export * from "./components/Messages/cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
 
 //replyPreview
 export * from "./components/Messages/Extensions/cometchat-smart-reply-preview/cometchat-smart-reply-preview/cometchat-smart-reply-preview.component";

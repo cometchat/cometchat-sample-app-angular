@@ -4,7 +4,7 @@ import { CometchatReceiverFileMessageBubbleComponent } from "./cometchat-receive
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatAvatarModule } from "../../Shared/cometchat-avatar/cometchat-avatar.module";
-import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
+import { CometchatThreadedMessageReplyCountModule } from "../cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
 import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
@@ -14,7 +14,7 @@ import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message
     CometchatToolTipModule,
     CometchatAvatarModule,
     CometchatReadRecieptModule,
-    CometchatReplyCountModule,
+    CometchatThreadedMessageReplyCountModule,
     CometchatMessageReactionsModule,
   ],
   exports: [CometchatReceiverFileMessageBubbleComponent],

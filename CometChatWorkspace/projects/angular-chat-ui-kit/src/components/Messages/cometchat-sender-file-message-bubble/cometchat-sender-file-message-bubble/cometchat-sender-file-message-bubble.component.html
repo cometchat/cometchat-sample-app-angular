@@ -22,12 +22,12 @@
   ></cometchat-message-reactions>
   <div class="messageInfoWrapperStyle">
     <!--ReplyCount-->
-    <cometchat-reply-count
+    <cometchat-threaded-message-reply-count
       *ngIf="showReplyCount"
       [MessageDetails]="MessageDetails"
       (actionGenerated)="actionHandler($event)"
     >
-    </cometchat-reply-count>
+    </cometchat-threaded-message-reply-count>
     <cometchat-read-reciept
       [MessageDetails]="MessageDetails"
     ></cometchat-read-reciept>

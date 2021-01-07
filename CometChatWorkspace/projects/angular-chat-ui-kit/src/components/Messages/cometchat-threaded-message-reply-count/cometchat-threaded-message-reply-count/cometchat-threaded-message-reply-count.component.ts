@@ -3,11 +3,11 @@ import * as enums from "../../../utils/enums";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-reply-count",
-  templateUrl: "./cometchat-reply-count.component.html",
-  styleUrls: ["./cometchat-reply-count.component.css"],
+  selector: "cometchat-threaded-message-reply-count",
+  templateUrl: "./cometchat-threaded-message-reply-count.component.html",
+  styleUrls: ["./cometchat-threaded-message-reply-count.component.css"],
 })
-export class CometchatReplyCountComponent implements OnInit {
+export class CometchatThreadedMessageReplyCountComponent implements OnInit {
   @Input() MessageDetails = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
