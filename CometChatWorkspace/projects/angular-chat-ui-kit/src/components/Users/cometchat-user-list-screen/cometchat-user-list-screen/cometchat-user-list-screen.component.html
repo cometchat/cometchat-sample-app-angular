@@ -51,13 +51,13 @@
   <cometchat-incoming-call
     (actionGenerated)="actionHandler($event)"
   ></cometchat-incoming-call>
-  <cometchat-call-screen
+  <cometchat-outgoing-call
     [item]="curentItem"
     [type]="type"
     [incomingCall]="incomingCall"
     [outgoingCall]="outgoingCall"
     (actionGenerated)="actionHandler($event)"
-  ></cometchat-call-screen>
+  ></cometchat-outgoing-call>
   <cometchat-image-view
     *ngIf="fullScreenViewImage"
     [MessageDetails]="imageView"

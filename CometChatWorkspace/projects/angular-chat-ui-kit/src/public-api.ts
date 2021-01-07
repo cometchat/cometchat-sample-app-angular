@@ -43,8 +43,8 @@ export * from "./components/Messages/cometchat-call-message/cometchat-call-messa
 export * from "./components/Messages/cometchat-call-message/call-message.module";
 
 //call-Screen
-export * from "./components/Calls/cometchat-call-screen/cometchat-call-screen/cometchat-call-screen.component";
-export * from "./components/Calls/cometchat-call-screen/call-screen.module";
+export * from "./components/Calls/cometchat-outgoing-call/cometchat-outgoing-call/cometchat-outgoing-call.component";
+export * from "./components/Calls/cometchat-outgoing-call/cometchat-outgoing-call.module";
 
 //conversationListComponent
 export * from "./components/Chats/cometchat-conversation-list/cometchat-conversation-list/cometchat-conversation-list.component";

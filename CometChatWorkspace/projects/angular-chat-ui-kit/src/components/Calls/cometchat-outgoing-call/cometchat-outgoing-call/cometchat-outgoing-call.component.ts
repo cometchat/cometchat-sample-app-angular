@@ -16,11 +16,11 @@ import { CometChatManager } from "../../../utils/controller";
 import { OUTGOING_CALL_ALERT } from "../../../resources/audio/outgoingCallAlert";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 @Component({
-  selector: "cometchat-call-screen",
-  templateUrl: "./cometchat-call-screen.component.html",
-  styleUrls: ["./cometchat-call-screen.component.css"],
+  selector: "cometchat-outgoing-call",
+  templateUrl: "./cometchat-outgoing-call.component.html",
+  styleUrls: ["./cometchat-outgoing-call.component.css"],
 })
-export class CometchatCallScreenComponent
+export class CometchatOutgoingCallComponent
   implements OnInit, OnChanges, OnDestroy {
   @ViewChild("callScreenFrame", null) callScreenFrame: ElementRef;
 
