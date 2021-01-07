@@ -35,8 +35,8 @@ export * from "./components/Groups/cometchat-ban-members/cometchat-ban-members/c
 export * from "./components/Groups/cometchat-ban-members/cometchat-ban-members.module";
 
 //call-alert
-export * from "./components/Calls/cometchat-call-alert/cometchat-call-alert/cometchat-call-alert.component";
-export * from "./components/Calls/cometchat-call-alert/cometchat-call-alert.module";
+export * from "./components/Calls/cometchat-incoming-call/cometchat-incoming-call/cometchat-incoming-call.component";
+export * from "./components/Calls/cometchat-incoming-call/cometchat-incoming-call.module";
 
 //call-message
 export * from "./components/Messages/cometchat-call-message/cometchat-call-message/cometchat-call-message.component";

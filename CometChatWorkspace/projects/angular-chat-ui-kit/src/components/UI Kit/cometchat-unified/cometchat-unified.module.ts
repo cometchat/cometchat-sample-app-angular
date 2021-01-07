@@ -7,7 +7,7 @@ import { CometchatUserDetailModule } from "../../Users/cometchat-user-detail/com
 import { CometchatMessageThreadModule } from "../../Messages/cometchat-message-thread/cometchat-message-thread.module";
 import { CometchatImageViewModule } from "../../Messages/cometchat-image-view/cometchat-image-view.module";
 import { CometchatGroupDetailModule } from "../../Groups/cometchat-group-detail/cometchat-group-detail.module";
-import { CometchatCallAlertModule } from "../../Calls/cometchat-call-alert/cometchat-call-alert.module";
+import { CometchatIncomingCallModule } from "../../Calls/cometchat-incoming-call/cometchat-incoming-call.module";
 import { CometchatCallScreenModule } from "../../Calls/cometchat-call-screen/call-screen.module";
 
 @NgModule({
@@ -20,7 +20,7 @@ import { CometchatCallScreenModule } from "../../Calls/cometchat-call-screen/cal
     CometchatMessageThreadModule,
     CometchatImageViewModule,
     CometchatGroupDetailModule,
-    CometchatCallAlertModule,
+    CometchatIncomingCallModule,
     CometchatCallScreenModule,
   ],
   exports: [CometchatUnifiedComponent],

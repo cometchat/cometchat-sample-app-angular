@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatCallAlert } from "./cometchat-call-alert.component";
+import { CometchatIncomingCall } from "./cometchat-incoming-call.component";
 
 describe("CallAlertComponent", () => {
-  let component: CometchatCallAlert;
-  let fixture: ComponentFixture<CometchatCallAlert>;
+  let component: CometchatIncomingCall;
+  let fixture: ComponentFixture<CometchatIncomingCall>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatCallAlert],
+      declarations: [CometchatIncomingCall],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatCallAlert);
+    fixture = TestBed.createComponent(CometchatIncomingCall);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

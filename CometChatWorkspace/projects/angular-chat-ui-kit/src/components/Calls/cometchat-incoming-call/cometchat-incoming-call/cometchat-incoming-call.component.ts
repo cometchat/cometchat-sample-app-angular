@@ -7,9 +7,9 @@ import { trigger, style, transition, animate } from "@angular/animations";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-call-alert",
-  templateUrl: "./cometchat-call-alert.component.html",
-  styleUrls: ["./cometchat-call-alert.component.css"],
+  selector: "cometchat-incoming-call",
+  templateUrl: "./cometchat-incoming-call.component.html",
+  styleUrls: ["./cometchat-incoming-call.component.css"],
   animations: [
     trigger("slideInOut", [
       transition(":enter", [
@@ -19,7 +19,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
     ]),
   ],
 })
-export class CometchatCallAlert implements OnInit {
+export class CometchatIncomingCall implements OnInit {
   incomingCall = null;
   callInProgress = null;
   callListenerId = "incoming_call_" + new Date().getTime();
