@@ -227,8 +227,8 @@ export * from "./components/Users/cometchat-user-list/cometchat-user-list/cometc
 export * from "./components/Users/cometchat-user-list/cometchat-user-list.module";
 
 //userListScreen
-export * from "./components/Users/cometchat-user-list-screen/cometchat-user-list-screen/cometchat-user-list-screen.component";
-export * from "./components/Users/cometchat-user-list-screen/cometchat-user-list-screen.module";
+export * from "./components/Users/cometchat-user-list-with-messages/cometchat-user-list-with-messages/cometchat-user-list-with-messages.component";
+export * from "./components/Users/cometchat-user-list-with-messages/cometchat-user-list-with-messages.module";
 
 //viewMembers
 export * from "./components/Groups/cometchat-view-group-member-list/cometchat-view-group-member-list/cometchat-view-group-member-list.component";

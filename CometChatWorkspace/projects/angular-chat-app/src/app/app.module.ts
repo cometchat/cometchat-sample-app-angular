@@ -10,7 +10,7 @@ import {
   CometchatGroupListScreenModule,
   CometchatAppModule,
   CometchatUserListModule,
-  CometchatUserListScreenModule,
+  CometchatUserListWithMessagesModule,
   CometchatAvatarModule,
 } from "angular-chat-ui-kit";
 import { KitchenSinkAppComponent } from "./Components/kitchen-sink-app/kitchen-sink-app.component";
@@ -47,7 +47,7 @@ import { CometChatUnifiedPageComponent } from "./Components/Pages/comet-chat-uni
     CometchatAppModule,
     CometchatConversationListWithMessagesModule,
     CometchatGroupListScreenModule,
-    CometchatUserListScreenModule,
+    CometchatUserListWithMessagesModule,
     CometchatConversationListModule,
     CometchatGroupListModule,
     CometchatUserListModule,
