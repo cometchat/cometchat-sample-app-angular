@@ -207,8 +207,8 @@ export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticke
 export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticker-keyboard.module";
 
 //toolTip
-export * from "./components/Messages/cometchat-tool-tip/cometchat-tool-tip/cometchat-tool-tip.component";
-export * from "./components/Messages/cometchat-tool-tip/cometchat-tool-tip.module";
+export * from "./components/Messages/cometchat-message-actions/cometchat-message-actions/cometchat-message-actions.component";
+export * from "./components/Messages/cometchat-message-actions/cometchat-message-actions.module";
 
 //CometChat Unified
 export * from "./components/UI Kit/cometchat-unified/cometchat-unified/cometchat-unified.component";

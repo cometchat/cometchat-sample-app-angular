@@ -1,10 +1,10 @@
 <div class="messageContainerStyle" *ngIf="isPollExtensionEnabled">
-  <cometchat-tool-tip
+  <cometchat-message-actions
     class="tool"
     *ngIf="showToolTip"
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
-  ></cometchat-tool-tip>
+  ></cometchat-message-actions>
   <div class="messageWrapperStyle">
     <div class="messageTxtWrapperStyle">
       <p class="pollQuestionStyle">{{ pollExtensionData?.question }}</p>

@@ -1,6 +1,6 @@
 <div class="messageContainerStyle">
   <!--ToolTip-->
-  <cometchat-tool-tip
+  <cometchat-message-actions
     class="tool"
     [ngClass]="{
       toolGroup: MessageDetails?.receiverType == 'group'
@@ -8,7 +8,7 @@
     [MessageDetails]="MessageDetails"
     (actionGenerated)="actionHandler($event)"
     *ngIf="showToolTip"
-  ></cometchat-tool-tip>
+  ></cometchat-message-actions>
   <div class="messageWrapperStyle">
     <!--Avatar-->
     <div class="messageThumbnailStyle" *ngIf="avatarIfGroup">

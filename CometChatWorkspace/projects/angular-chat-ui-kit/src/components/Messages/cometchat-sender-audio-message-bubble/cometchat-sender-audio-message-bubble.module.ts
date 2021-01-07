@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CometchatSenderAudioMessageBubbleComponent } from "./cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.component";
-import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
+import { CometchatMessageActionsModule } from "../cometchat-message-actions/cometchat-message-actions.module";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatThreadedMessageReplyCountModule } from "../cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
 import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
@@ -10,7 +10,7 @@ import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message
   declarations: [CometchatSenderAudioMessageBubbleComponent],
   imports: [
     CommonModule,
-    CometchatToolTipModule,
+    CometchatMessageActionsModule,
     CometchatReadRecieptModule,
     CometchatThreadedMessageReplyCountModule,
     CometchatMessageReactionsModule,

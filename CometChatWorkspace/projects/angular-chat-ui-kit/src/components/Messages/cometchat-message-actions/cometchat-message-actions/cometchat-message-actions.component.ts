@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import * as enums from "../../../utils/enums";
 import { REACTION_ICON } from "../../../resources/icons/reaction";
 @Component({
-  selector: "cometchat-tool-tip",
-  templateUrl: "./cometchat-tool-tip.component.html",
-  styleUrls: ["./cometchat-tool-tip.component.css"],
+  selector: "cometchat-message-actions",
+  templateUrl: "./cometchat-message-actions.component.html",
+  styleUrls: ["./cometchat-message-actions.component.css"],
 })
-export class CometchatToolTipComponent implements OnInit {
+export class CometchatMessageActionsComponent implements OnInit {
   @Input() MessageDetails = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
