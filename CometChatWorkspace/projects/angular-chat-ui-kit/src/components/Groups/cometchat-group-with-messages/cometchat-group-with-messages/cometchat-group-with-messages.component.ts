@@ -10,9 +10,9 @@ import {
   animate,
 } from "@angular/animations";
 @Component({
-  selector: "cometchat-group-list-screen",
-  templateUrl: "./cometchat-group-list-screen.component.html",
-  styleUrls: ["./cometchat-group-list-screen.component.css"],
+  selector: "cometchat-group-with-messages",
+  templateUrl: "./cometchat-group-with-messages.component.html",
+  styleUrls: ["./cometchat-group-with-messages.component.css"],
   animations: [
     trigger("FadeInFadeOut", [
       state(
@@ -32,7 +32,7 @@ import {
     ]),
   ],
 })
-export class CometchatGroupListScreenComponent implements OnInit {
+export class CometchatGroupWithMessagesComponent implements OnInit {
   //It can be a user or a group
   item = null;
 

@@ -79,8 +79,8 @@ export * from "./components/Groups/cometchat-group-list/cometchat-group-list/com
 export * from "./components/Groups/cometchat-group-list/cometchat-group-list.module";
 
 //groupList Screen
-export * from "./components/Groups/cometchat-group-list-screen/cometchat-group-list-screen/cometchat-group-list-screen.component";
-export * from "./components/Groups/cometchat-group-list-screen/cometchat-group-list-screen.module";
+export * from "./components/Groups/cometchat-group-with-messages/cometchat-group-with-messages/cometchat-group-with-messages.component";
+export * from "./components/Groups/cometchat-group-with-messages/cometchat-group-with-messages.module";
 
 //groupView
 export * from "./components/Groups/cometchat-group-list-item/cometchat-group-list-item/cometchat-group-list-item.component";
