@@ -25,14 +25,14 @@
           </tr>
         </thead>
         <tbody class="tableBodyStyle">
-          <cometchat-member-view
+          <cometchat-view-group-member-list-item
             *ngFor="let member of memberlist"
             [member]="member"
             [item]="item"
             [type]="type"
             [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
-          ></cometchat-member-view>
+          ></cometchat-view-group-member-list-item>
         </tbody>
       </table>
     </div>

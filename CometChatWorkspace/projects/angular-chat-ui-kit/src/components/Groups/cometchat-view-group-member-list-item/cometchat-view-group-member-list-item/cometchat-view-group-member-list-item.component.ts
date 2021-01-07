@@ -8,11 +8,11 @@ import { RIGHT_TICK_ICON } from "../../../resources/icons/rightTickIcon";
 import { CLOSE_ICON } from "../../../resources/icons/closeIcon";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 @Component({
-  selector: "cometchat-member-view",
-  templateUrl: "./cometchat-member-view.component.html",
-  styleUrls: ["./cometchat-member-view.component.css"],
+  selector: "cometchat-view-group-member-list-item",
+  templateUrl: "./cometchat-view-group-member-list-item.component.html",
+  styleUrls: ["./cometchat-view-group-member-list-item.component.css"],
 })
-export class CometchatMemberViewComponent implements OnInit {
+export class CometchatViewGroupMemberListItemComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() member = null;

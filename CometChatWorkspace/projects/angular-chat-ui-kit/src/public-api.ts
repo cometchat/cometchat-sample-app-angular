@@ -95,8 +95,8 @@ export * from "./components/Messages/cometchat-live-reaction/cometchat-live-reac
 export * from "./components/Messages/cometchat-live-reaction/cometchat-live-reaction.module";
 
 //cometchat-member-view
-export * from "./components/Groups/cometchat-member-view/cometchat-member-view/cometchat-member-view.component";
-export * from "./components/Groups/cometchat-member-view/cometchat-member-view.module";
+export * from "./components/Groups/cometchat-view-group-member-list-item/cometchat-view-group-member-list-item/cometchat-view-group-member-list-item.component";
+export * from "./components/Groups/cometchat-view-group-member-list-item/cometchat-view-group-member-list-item.module";
 
 //messageComposer
 export * from "./components/Messages/cometchat-message-composer/cometchat-message-composer/cometchat-message-composer.component";
