@@ -35,7 +35,7 @@ export class CometchatAddGroupMemberListComponent implements OnInit, OnDestroy {
   membersRequest = null;
   userListenerId = "userlist_" + new Date().getTime();
 
-  CONTACTS: String = STRING_MESSAGES.CONTACTS;
+  USERS: String = STRING_MESSAGES.USERS;
   SEARCH: String = STRING_MESSAGES.SEARCH;
 
   constructor() {}

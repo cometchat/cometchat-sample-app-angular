@@ -13,7 +13,6 @@ export const STRING_MESSAGES = {
   USERS: "Users",
   CHATS: "Chats",
   GROUPS: "Groups",
-  CONTACTS: "Contacts",
   MORE: "More",
   MESSAGE_IMAGE: "📷 Image",
   MESSAGE_FILE: "📁 File",

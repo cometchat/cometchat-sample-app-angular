@@ -38,7 +38,7 @@ export class CometchatUserListComponent
   defaultAvatarImage =
     "https://data-eu.cometchat.io/assets/images/avatars/spiderman.png";
 
-  CONTACTS: String = STRING_MESSAGES.CONTACTS;
+  USERS: String = STRING_MESSAGES.USERS;
   SEARCH: String = STRING_MESSAGES.SEARCH;
 
   constructor(private ref: ChangeDetectorRef) {
