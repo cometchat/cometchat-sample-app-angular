@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 import * as enums from "../../../utils/enums";
 @Component({
-  selector: "cometchat-sticker-view",
-  templateUrl: "./cometchat-sticker-view.component.html",
-  styleUrls: ["./cometchat-sticker-view.component.css"],
+  selector: "cometchat-sticker-keyboard",
+  templateUrl: "./cometchat-sticker-keyboard.component.html",
+  styleUrls: ["./cometchat-sticker-keyboard.component.css"],
 })
-export class CometchatStickerViewComponent implements OnInit {
+export class CometchatStickerKeyboardComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   decoratorMessage: string = STRING_MESSAGES.LOADING_MESSSAGE;

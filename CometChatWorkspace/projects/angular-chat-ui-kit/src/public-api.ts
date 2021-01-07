@@ -203,8 +203,8 @@ export * from "./components/Shared/cometchat-shared-media-view/cometchat-shared-
 export * from "./components/Shared/cometchat-shared-media-view/cometchat-shared-media-view.module";
 
 //stickerView
-export * from "./components/Messages/cometchat-sticker-view/cometchat-sticker-view/cometchat-sticker-view.component";
-export * from "./components/Messages/cometchat-sticker-view/cometchat-sticker-view.module";
+export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticker-keyboard/cometchat-sticker-keyboard.component";
+export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticker-keyboard.module";
 
 //toolTip
 export * from "./components/Messages/cometchat-tool-tip/cometchat-tool-tip/cometchat-tool-tip.component";

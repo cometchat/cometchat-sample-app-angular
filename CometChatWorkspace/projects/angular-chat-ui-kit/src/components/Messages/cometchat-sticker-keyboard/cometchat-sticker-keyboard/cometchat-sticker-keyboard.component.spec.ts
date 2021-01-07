@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatStickerViewComponent } from "./cometchat-sticker-view.component";
+import { CometchatStickerKeyboardComponent } from "./cometchat-sticker-keyboard.component";
 
 describe("StickerViewComponent", () => {
-  let component: CometchatStickerViewComponent;
-  let fixture: ComponentFixture<CometchatStickerViewComponent>;
+  let component: CometchatStickerKeyboardComponent;
+  let fixture: ComponentFixture<CometchatStickerKeyboardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatStickerViewComponent],
+      declarations: [CometchatStickerKeyboardComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatStickerViewComponent);
+    fixture = TestBed.createComponent(CometchatStickerKeyboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
