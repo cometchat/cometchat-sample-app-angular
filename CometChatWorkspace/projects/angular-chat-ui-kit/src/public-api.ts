@@ -127,8 +127,8 @@ export * from "./components/Messages/cometchat-read-reciept/cometchat-read-recie
 export * from "./components/Messages/cometchat-read-reciept/cometchat-read-reciept.module";
 
 //receiverAudioBubble
-export * from "./components/Messages/cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.component";
-export * from "./components/Messages/cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.module";
+export * from "./components/Messages/cometchat-receiver-audio-message-bubble/cometchat-receiver-audio-message-bubble/cometchat-receiver-audio-message-bubble.component";
+export * from "./components/Messages/cometchat-receiver-audio-message-bubble/cometchat-receiver-audio-message-bubble.module";
 
 //receiverFileBuble
 export * from "./components/Messages/cometchat-receiver-file-bubble/cometchat-receiver-file-bubble/cometchat-receiver-file-bubble.component";

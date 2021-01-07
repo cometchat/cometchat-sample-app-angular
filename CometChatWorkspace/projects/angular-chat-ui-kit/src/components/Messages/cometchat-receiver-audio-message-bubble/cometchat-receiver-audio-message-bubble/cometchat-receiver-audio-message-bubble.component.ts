@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
 
 @Component({
-  selector: "cometchat-receiver-audio-bubble",
-  templateUrl: "./cometchat-receiver-audio-bubble.component.html",
-  styleUrls: ["./cometchat-receiver-audio-bubble.component.css"],
+  selector: "cometchat-receiver-audio-message-bubble",
+  templateUrl: "./cometchat-receiver-audio-message-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-audio-message-bubble.component.css"],
 })
-export class CometchatReceiverAudioBubbleComponent implements OnInit {
+export class CometchatReceiverAudioMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

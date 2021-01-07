@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatReceiverAudioBubbleComponent } from "./cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.component";
+import { CometchatReceiverAudioMessageBubbleComponent } from "./cometchat-receiver-audio-message-bubble/cometchat-receiver-audio-message-bubble.component";
 import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatAvatarModule } from "../../Shared/cometchat-avatar/cometchat-avatar.module";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
@@ -8,7 +8,7 @@ import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-re
 import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
-  declarations: [CometchatReceiverAudioBubbleComponent],
+  declarations: [CometchatReceiverAudioMessageBubbleComponent],
   imports: [
     CommonModule,
     CometchatToolTipModule,
@@ -17,6 +17,6 @@ import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message
     CometchatReplyCountModule,
     CometchatMessageReactionsModule,
   ],
-  exports: [CometchatReceiverAudioBubbleComponent],
+  exports: [CometchatReceiverAudioMessageBubbleComponent],
 })
-export class CometchatReceiverAudioBubbleModule {}
+export class CometchatReceiverAudioMessageBubbleModule {}
