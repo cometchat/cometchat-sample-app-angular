@@ -1,16 +1,16 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatAddMembersComponent } from "./cometchat-add-members/cometchat-add-members.component";
+import { CometchatAddGroupMemberListComponent } from "./cometchat-add-group-member-list/cometchat-add-group-member-list.component";
 import { CometchatBackdropModule } from "../../Shared/cometchat-backdrop/cometchat-backdrop.module";
 import { CometchatAddGroupMemberListItemModule } from "../cometchat-add-group-member-list-item/cometchat-add-group-member-list-item.module";
 
 @NgModule({
-  declarations: [CometchatAddMembersComponent],
+  declarations: [CometchatAddGroupMemberListComponent],
   imports: [
     CommonModule,
     CometchatBackdropModule,
     CometchatAddGroupMemberListItemModule,
   ],
-  exports: [CometchatAddMembersComponent],
+  exports: [CometchatAddGroupMemberListComponent],
 })
-export class CometchatAddMembersModule {}
+export class CometchatAddGroupMemberListModule {}

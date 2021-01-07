@@ -82,7 +82,7 @@
   ></cometchat-view-group-member-list>
 
   <!-- ADD MEMBERS COMPONENT -->
-  <cometchat-add-members
+  <cometchat-add-group-member-list
     *ngIf="openAddMemberView"
     [item]="item"
     [type]="type"
@@ -90,7 +90,7 @@
     [memberlist]="memberlist"
     [bannedmemberlist]="bannedmemberlist"
     (actionGenerated)="actionHandler($event)"
-  ></cometchat-add-members>
+  ></cometchat-add-group-member-list>
 
   <!-- BANNED MEMBERS COMPONENT -->
   <cometchat-ban-members

@@ -11,11 +11,11 @@ import * as enums from "../../../utils/enums";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-add-members",
-  templateUrl: "./cometchat-add-members.component.html",
-  styleUrls: ["./cometchat-add-members.component.css"],
+  selector: "cometchat-add-group-member-list",
+  templateUrl: "./cometchat-add-group-member-list.component.html",
+  styleUrls: ["./cometchat-add-group-member-list.component.css"],
 })
-export class CometchatAddMembersComponent implements OnInit, OnDestroy {
+export class CometchatAddGroupMemberListComponent implements OnInit, OnDestroy {
   @Input() item = null;
   @Input() type = null;
   @Input() memberlist = [];

@@ -4,7 +4,7 @@ import { CometchatGroupDetailComponent } from "./cometchat-group-detail/cometcha
 import { CometchatSharedMediaViewModule } from "../../Shared/cometchat-shared-media-view/cometchat-shared-media-view.module";
 import { CometchatViewGroupMemberListModule } from "../cometchat-view-group-member-list/cometchat-view-group-member-list.module";
 import { CometchatBanMembersModule } from "../cometchat-ban-members/cometchat-ban-members.module";
-import { CometchatAddMembersModule } from "../cometchat-add-members/cometchat-add-members.module";
+import { CometchatAddGroupMemberListModule } from "../cometchat-add-group-member-list/cometchat-add-group-member-list.module";
 
 @NgModule({
   declarations: [CometchatGroupDetailComponent],
@@ -13,7 +13,7 @@ import { CometchatAddMembersModule } from "../cometchat-add-members/cometchat-ad
     CometchatSharedMediaViewModule,
     CometchatViewGroupMemberListModule,
     CometchatBanMembersModule,
-    CometchatAddMembersModule,
+    CometchatAddGroupMemberListModule,
   ],
   exports: [CometchatGroupDetailComponent],
 })

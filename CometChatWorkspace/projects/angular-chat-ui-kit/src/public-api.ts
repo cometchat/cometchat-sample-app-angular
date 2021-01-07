@@ -11,8 +11,8 @@ export * from "./components/Groups/cometchat-add-group-member-list-item/cometcha
 export * from "./components/Groups/cometchat-add-group-member-list-item/cometchat-add-group-member-list-item.module";
 
 //add-Members
-export * from "./components/Groups/cometchat-add-members/cometchat-add-members/cometchat-add-members.component";
-export * from "./components/Groups/cometchat-add-members/cometchat-add-members.module";
+export * from "./components/Groups/cometchat-add-group-member-list/cometchat-add-group-member-list/cometchat-add-group-member-list.component";
+export * from "./components/Groups/cometchat-add-group-member-list/cometchat-add-group-member-list.module";
 
 //avatar
 export * from "./components/Shared/cometchat-avatar/cometchat-avatar/cometchat-avatar.component";
