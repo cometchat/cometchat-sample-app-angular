@@ -83,8 +83,8 @@ export * from "./components/Groups/cometchat-group-list-screen/cometchat-group-l
 export * from "./components/Groups/cometchat-group-list-screen/cometchat-group-list-screen.module";
 
 //groupView
-export * from "./components/Groups/cometchat-group-view/cometchat-group-view/cometchat-group-view.component";
-export * from "./components/Groups/cometchat-group-view/cometchat-group-view.module";
+export * from "./components/Groups/cometchat-group-list-item/cometchat-group-list-item/cometchat-group-list-item.component";
+export * from "./components/Groups/cometchat-group-list-item/cometchat-group-list-item.module";
 
 //ImageView
 export * from "./components/Messages/cometchat-image-view/cometchat-image-view/cometchat-image-view.component";
