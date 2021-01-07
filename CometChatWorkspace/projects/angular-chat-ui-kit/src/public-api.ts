@@ -139,8 +139,8 @@ export * from "./components/Messages/cometchat-receiver-image-message-bubble/com
 export * from "./components/Messages/cometchat-receiver-image-message-bubble/cometchat-receiver-image-message-bubble.module";
 
 //receiverMessageBubble
-export * from "./components/Messages/cometchat-receiver-message-bubble/cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.component";
-export * from "./components/Messages/cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
+export * from "./components/Messages/cometchat-receiver-text-message-bubble/cometchat-receiver-text-message-bubble/cometchat-receiver-text-message-bubble.component";
+export * from "./components/Messages/cometchat-receiver-text-message-bubble/cometchat-receiver-text-message-bubble.module";
 
 //receiver poll bubble
 export * from "./components/Messages/Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.component";
