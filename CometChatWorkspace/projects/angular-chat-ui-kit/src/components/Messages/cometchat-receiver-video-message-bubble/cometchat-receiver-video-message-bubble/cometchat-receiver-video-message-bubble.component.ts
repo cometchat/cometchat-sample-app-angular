@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
 
 @Component({
-  selector: "cometchat-receiver-video-bubble",
-  templateUrl: "./cometchat-receiver-video-bubble.component.html",
-  styleUrls: ["./cometchat-receiver-video-bubble.component.css"],
+  selector: "cometchat-receiver-video-message-bubble",
+  templateUrl: "./cometchat-receiver-video-message-bubble.component.html",
+  styleUrls: ["./cometchat-receiver-video-message-bubble.component.css"],
 })
-export class CometchatReceiverVideoBubbleComponent implements OnInit {
+export class CometchatReceiverVideoMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;
