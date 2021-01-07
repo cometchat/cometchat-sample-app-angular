@@ -3,11 +3,11 @@ import { checkMessageForExtensionsData } from "../../../utils/common";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-sender-audio-bubble",
-  templateUrl: "./cometchat-sender-audio-bubble.component.html",
-  styleUrls: ["./cometchat-sender-audio-bubble.component.css"],
+  selector: "cometchat-sender-audio-message-bubble",
+  templateUrl: "./cometchat-sender-audio-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-audio-message-bubble.component.css"],
 })
-export class CometchatSenderAudioBubbleComponent implements OnInit {
+export class CometchatSenderAudioMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

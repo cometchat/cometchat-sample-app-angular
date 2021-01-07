@@ -167,12 +167,12 @@ export * from "./components/Messages/Extensions/cometchat-smart-reply-preview/co
 export * from "./components/Messages/Extensions/cometchat-smart-reply-preview/cometchat-smart-reply-preview.module";
 
 //senderAudioBubble
-export * from "./components/Messages/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.component";
-export * from "./components/Messages/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.module";
+export * from "./components/Messages/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.component";
+export * from "./components/Messages/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.module";
 
 //senderFileBubble
-export * from "./components/Messages/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.component";
-export * from "./components/Messages/cometchat-sender-audio-bubble/cometchat-sender-audio-bubble.module";
+export * from "./components/Messages/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.component";
+export * from "./components/Messages/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.module";
 
 //senderFileBubble
 export * from "./components/Messages/cometchat-sender-file-bubble/cometchat-sender-file-bubble/cometchat-sender-file-bubble.component";
