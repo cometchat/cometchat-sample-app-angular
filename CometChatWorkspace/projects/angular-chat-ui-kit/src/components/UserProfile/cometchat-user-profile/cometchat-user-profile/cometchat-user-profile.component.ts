@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import { CometChatManager } from "../../../utils/controller";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 @Component({
-  selector: "cometchat-user-info-screen",
-  templateUrl: "./cometchat-user-info-screen.component.html",
-  styleUrls: ["./cometchat-user-info-screen.component.css"],
+  selector: "cometchat-user-profile",
+  templateUrl: "./cometchat-user-profile.component.html",
+  styleUrls: ["./cometchat-user-profile.component.css"],
 })
-export class CometchatUserInfoScreenComponent implements OnInit {
+export class CometchatUserProfileComponent implements OnInit {
   user;
   name: string;
 
