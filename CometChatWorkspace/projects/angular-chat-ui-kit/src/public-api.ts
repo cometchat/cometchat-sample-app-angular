@@ -199,8 +199,8 @@ export * from "./components/Messages/cometchat-sender-video-message-bubble/comet
 export * from "./components/Messages/cometchat-sender-video-message-bubble/cometchat-sender-video-message-bubble.module";
 
 //shareMediaView
-export * from "./components/Shared/cometchat-shared-media-view/cometchat-shared-media-view/cometchat-shared-media-view.component";
-export * from "./components/Shared/cometchat-shared-media-view/cometchat-shared-media-view.module";
+export * from "./components/Shared/cometchat-shared-media/cometchat-shared-media/cometchat-shared-media.component";
+export * from "./components/Shared/cometchat-shared-media/cometchat-shared-media-view.module";
 
 //stickerView
 export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticker-keyboard/cometchat-sticker-keyboard.component";

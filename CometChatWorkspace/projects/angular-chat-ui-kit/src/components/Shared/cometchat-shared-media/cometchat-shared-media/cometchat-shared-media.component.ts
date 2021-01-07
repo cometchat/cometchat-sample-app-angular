@@ -5,11 +5,11 @@ import { CometChatManager } from "../../../utils/controller";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-shared-media-view",
-  templateUrl: "./cometchat-shared-media-view.component.html",
-  styleUrls: ["./cometchat-shared-media-view.component.css"],
+  selector: "cometchat-shared-media",
+  templateUrl: "./cometchat-shared-media.component.html",
+  styleUrls: ["./cometchat-shared-media.component.css"],
 })
-export class CometchatSharedMediaViewComponent implements OnInit {
+export class CometchatSharedMediaComponent implements OnInit {
   @ViewChild("mediaContainer", null) mediaWindow: ElementRef;
 
   @Input() type = null;

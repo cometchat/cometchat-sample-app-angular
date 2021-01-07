@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatSharedMediaViewComponent } from "./cometchat-shared-media-view.component";
+import { CometchatSharedMediaComponent } from "./cometchat-shared-media.component";
 
 describe("SharedMediaViewComponent", () => {
-  let component: CometchatSharedMediaViewComponent;
-  let fixture: ComponentFixture<CometchatSharedMediaViewComponent>;
+  let component: CometchatSharedMediaComponent;
+  let fixture: ComponentFixture<CometchatSharedMediaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatSharedMediaViewComponent],
+      declarations: [CometchatSharedMediaComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatSharedMediaViewComponent);
+    fixture = TestBed.createComponent(CometchatSharedMediaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
