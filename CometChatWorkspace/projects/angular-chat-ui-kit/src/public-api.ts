@@ -27,8 +27,8 @@ export * from "./components/Shared/cometchat-badge-count/cometchat-badge-count/c
 export * from "./components/Shared/cometchat-badge-count/cometchat-badge-count.module";
 
 //ban-member-view
-export * from "./components/Groups/cometchat-ban-member-view/cometchat-ban-member-view/cometchat-ban-member-view.component";
-export * from "./components/Groups/cometchat-ban-member-view/ban-member-view.module";
+export * from "./components/Groups/cometchat-ban-group-member-list/cometchat-ban-group-member-list/cometchat-ban-group-member-list.component";
+export * from "./components/Groups/cometchat-ban-group-member-list/cometchat-ban-group-member-list.module";
 
 //cometchat-ban-members
 export * from "./components/Groups/cometchat-ban-group-member-list-item/cometchat-ban-group-member-list-item/cometchat-ban-group-member-list-item.component";
