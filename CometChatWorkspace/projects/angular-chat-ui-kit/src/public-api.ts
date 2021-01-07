@@ -39,8 +39,8 @@ export * from "./components/Calls/cometchat-incoming-call/cometchat-incoming-cal
 export * from "./components/Calls/cometchat-incoming-call/cometchat-incoming-call.module";
 
 //call-message
-export * from "./components/Messages/cometchat-call-message/cometchat-call-message/cometchat-call-message.component";
-export * from "./components/Messages/cometchat-call-message/call-message.module";
+export * from "./components/Messages/cometchat-action-message-bubble/cometchat-action-message-bubble/cometchat-action-message-bubble.component";
+export * from "./components/Messages/cometchat-action-message-bubble/cometchat-action-message-bubble.module";
 
 //call-Screen
 export * from "./components/Calls/cometchat-outgoing-call/cometchat-outgoing-call/cometchat-outgoing-call.component";

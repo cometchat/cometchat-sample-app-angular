@@ -25,10 +25,10 @@
       </div>
       <!--CASE FOR CALL MESSAGES-->
       <div *ngIf="msg?.category == 'call'">
-        <cometchat-call-message
+        <cometchat-action-message-bubble
           [MessageDetails]="msg"
           [loggedInUserUid]="loggedInUser?.uid"
-        ></cometchat-call-message>
+        ></cometchat-action-message-bubble>
       </div>
       <!--CASE FOR CALL MESSAGES ENDS-->
       <!-- CASE FOR DELETED MESSAGES -->

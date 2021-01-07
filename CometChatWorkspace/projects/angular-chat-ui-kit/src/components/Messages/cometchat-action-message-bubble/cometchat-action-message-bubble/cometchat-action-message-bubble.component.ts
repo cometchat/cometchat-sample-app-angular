@@ -3,11 +3,11 @@ import { CometChat } from "@cometchat-pro/chat";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-call-message",
-  templateUrl: "./cometchat-call-message.component.html",
-  styleUrls: ["./cometchat-call-message.component.css"],
+  selector: "cometchat-action-message-bubble",
+  templateUrl: "./cometchat-action-message-bubble.component.html",
+  styleUrls: ["./cometchat-action-message-bubble.component.css"],
 })
-export class CometchatCallMessageComponent implements OnInit {
+export class CometchatActionMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() loggedInUserUid;
   message;

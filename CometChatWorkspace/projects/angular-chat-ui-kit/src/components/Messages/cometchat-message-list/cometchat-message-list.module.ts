@@ -16,7 +16,7 @@ import { CometchatSenderPollMessageBubbleModule } from "../Extensions/cometchat-
 import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.module";
 import { CometchatSenderStickerMessageBubbleModule } from "../Extensions/cometchat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble.module";
 import { CometchatReceiverStickerMessageBubbleModule } from "../Extensions/cometchat-receiver-sticker-message-bubble/cometchat-receiver-sticker-message-bubble.module";
-import { CometchatCallMessageModule } from "../cometchat-call-message/call-message.module";
+import { CometchatActionMessageBubbleModule } from "../cometchat-action-message-bubble/cometchat-action-message-bubble.module";
 import { DatePipe } from "@angular/common";
 
 @NgModule({
@@ -38,7 +38,7 @@ import { DatePipe } from "@angular/common";
     CometchatReceiverPollMessageBubbleModule,
     CometchatSenderStickerMessageBubbleModule,
     CometchatReceiverStickerMessageBubbleModule,
-    CometchatCallMessageModule,
+    CometchatActionMessageBubbleModule,
   ],
   exports: [CometchatMessageListComponent],
   providers: [DatePipe],
