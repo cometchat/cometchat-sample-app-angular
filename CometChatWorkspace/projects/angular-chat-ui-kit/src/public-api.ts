@@ -51,8 +51,8 @@ export * from "./components/Chats/cometchat-conversation-list/cometchat-conversa
 export * from "./components/Chats/cometchat-conversation-list/cometchat-conversation-list.module";
 
 //conversationListScreen
-export * from "./components/Chats/cometchat-conversation-list-screen/cometchat-conversation-list-screen/cometchat-conversation-list-screen.component";
-export * from "./components/Chats/cometchat-conversation-list-screen/cometchat-conversation-list-screen.module";
+export * from "./components/Chats/cometchat-conversation-list-with-messages/cometchat-conversation-list-with-messages/cometchat-conversation-list-with-messages.component";
+export * from "./components/Chats/cometchat-conversation-list-with-messages/cometchat-conversation-list-with-messages.module";
 
 //conversationView
 export * from "./components/Chats/cometchat-conversation-list-item/cometchat-conversation-list-item/cometchat-conversation-list-item.component";

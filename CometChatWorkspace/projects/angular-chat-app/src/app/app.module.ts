@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {
   CometchatConversationListModule,
-  CometchatConversationListScreenModule,
+  CometchatConversationListWithMessagesModule,
   CometchatGroupListModule,
   CometchatGroupListScreenModule,
   CometchatAppModule,
@@ -45,7 +45,7 @@ import { CometChatUnifiedPageComponent } from "./Components/Pages/comet-chat-uni
     BrowserModule,
     AppRoutingModule,
     CometchatAppModule,
-    CometchatConversationListScreenModule,
+    CometchatConversationListWithMessagesModule,
     CometchatGroupListScreenModule,
     CometchatUserListScreenModule,
     CometchatConversationListModule,
