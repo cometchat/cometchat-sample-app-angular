@@ -10,11 +10,11 @@ import {
 import { checkMessageForExtensionsData } from "../../../../utils/common";
 
 @Component({
-  selector: "cometchat-sender-sticker-bubble",
-  templateUrl: "./cometchat-sender-sticker-bubble.component.html",
-  styleUrls: ["./cometchat-sender-sticker-bubble.component.css"],
+  selector: "cometchat-sender-sticker-message-bubble",
+  templateUrl: "./cometchat-sender-sticker-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-sticker-message-bubble.component.css"],
 })
-export class CometchatSenderStickerBubbleComponent
+export class CometchatSenderStickerMessageBubbleComponent
   implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;

@@ -191,8 +191,8 @@ export * from "./components/Messages/Extensions/cometchat-sender-poll-message-bu
 export * from "./components/Messages/Extensions/cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.module";
 
 //senderStcikerBubble
-export * from "./components/Messages/Extensions/cometchat-sender-sticker-bubble/cometchat-sender-sticker-bubble/cometchat-sender-sticker-bubble.component";
-export * from "./components/Messages/Extensions/cometchat-sender-sticker-bubble/cometchat-sender-sticker-bubble.module";
+export * from "./components/Messages/Extensions/cometchat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble.component";
+export * from "./components/Messages/Extensions/cometchat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble.module";
 
 //senderVideoBubble
 export * from "./components/Messages/cometchat-sender-video-bubble/cometchat-sender-video-bubble/cometchat-sender-video-bubble.component";

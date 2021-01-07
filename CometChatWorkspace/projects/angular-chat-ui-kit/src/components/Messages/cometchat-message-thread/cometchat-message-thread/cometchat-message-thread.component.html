@@ -14,7 +14,7 @@
       <div [ngSwitch]="parentMessage?.type">
         <!--CASE FOR STICKER -->
         <div *ngSwitchCase="'extension_sticker'">
-          <cometchat-sender-sticker-bubble
+          <cometchat-sender-sticker-message-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
@@ -22,7 +22,7 @@
             [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
           >
-          </cometchat-sender-sticker-bubble>
+          </cometchat-sender-sticker-message-bubble>
           <cometchat-receiver-sticker-bubble
             *ngIf="parentMessage?.sender?.uid !== loggedInUser?.uid"
             [MessageDetails]="parentMessage"
