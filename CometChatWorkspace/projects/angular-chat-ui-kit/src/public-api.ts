@@ -7,8 +7,8 @@ export * from "./components/angular-chat-ui-kit.component";
 export * from "./components/angular-chat-ui-kit.module";
 
 //add-member-View
-export * from "./components/Groups/cometchat-add-member-view/cometchat-add-member-view/cometchat-add-member-view.component";
-export * from "./components/Groups/cometchat-add-member-view/cometchat-add-member-view.module";
+export * from "./components/Groups/cometchat-add-group-member-list-item/cometchat-add-group-member-list-item/cometchat-add-group-member-list-item.component";
+export * from "./components/Groups/cometchat-add-group-member-list-item/cometchat-add-group-member-list-item.module";
 
 //add-Members
 export * from "./components/Groups/cometchat-add-members/cometchat-add-members/cometchat-add-members.component";
