@@ -1,33 +1,182 @@
-# CometChat Kitchen Sink Sample App
+<div style="width:100%">
+    <div style="width:50%;">
+        <div align="center">
+        <img align="center" width="180" height="180" alt="CometChat" src="./Screenshots/logo.png">    
+        </div>    
+    </div>    
+</div>
 
-CometChat Kitchen Sink Sample App is a real-time messaging app capable of **one-on-one** (private), **group** messaging, voice & video calling.
+<br/><br/>
 
-## Features
+# Angular Chat UI Kit
 
-- Login
-- Private and Group conversations
-- Search by users and groups
-- Text, Media and Custom messages
-- Read receipts
-- Chat history
+<!--<p align="left">-->
+<!--  <a href="https://github.com/cometchat-pro/javascript-react-chat-ui-kit/releases/" alt="Releases">-->
+<!--    <img src="https://img.shields.io/github/v/release/cometchat-pro/javascript-react-chat-ui-kit" />-->
+<!--  </a>-->
+<!--  <a href="https://img.shields.io/github/languages/top/cometchat-pro/javascript-react-chat-ui-kit">-->
+<!--    <img src="https://img.shields.io/github/languages/top/cometchat-pro/javascript-react-chat-ui-kit" />-->
+<!--  </a>-->
+<!--  <a href="https://github.com/cometchat-pro/javascript-react-chat-app/stargazers">-->
+<!--    <img src="https://img.shields.io/github/stars/cometchat-pro/javascript-react-chat-ui-kit?style=social" />-->
+<!--  </a>-->
+<!--  <a href="https://twitter.com/CometChat">-->
+<!--    <img src="https://img.shields.io/twitter/follow/CometChat?label=CometChat&style=social" />-->
+<!--  </a>-->
+<!--</p>-->
 
-## Prerequisite
+</br></br>
 
-1. To run this app, you must have the **Node Package Manager (NPM)** and **Angular CLI** already installed and setup . If you don't, this documentation will help you in setting up **NPM** and **Angular CLI** <a href="https://jasonwatmore.com/post/2020/06/02/angular-setup-development-environment" target="_blank">Angular - Setup Development Environment (For Windows) </a> and <a href="https://www.zeolearn.com/magazine/setup-angular-mac" target="_blank">Angular - Setup Development Environment (For Mac) </a>
+<div style="width:100%">
+    <div style="width:50%; display:inline-block">
+        <div align="center">
+          <img align="left" alt="Main" src="./Screenshots/main.png">    
+        </div>    
+    </div>    
+</div>
 
-2. To run this app, you must create an account with CometChat and obtain your `App ID`, `Auth Key` and `Region`. If you don't have an account, you can create one from <a href="https://app.cometchat.io/" target="_blank">CometChat Dashboard</a>.
+</br></br>
 
-## Usage
+Angular Chat UI Kit is a collection of custom **UI Components** and **UI Screens** designed to build chat application with fully customizable UI. It is designed to avoid boilerplate code for building UI.
 
-1. Clone this repository
-2. Navigate to the root directory and replace `APP_ID`, `REGION` and `AUTH_KEY` with your CometChat `App ID`, `Region` and `Auth Key` in `src/CONSTS.ts` file
-3. Install dependencies and run the app
+---
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- A text editor, to write code in. This could be a text editor (e.g. [Visual Studio Code](https://code.visualstudio.com/), [Notepad++](https://notepad-plus-plus.org/), [Sublime Text](https://www.sublimetext.com/), [Atom](https://atom.io/), or [VIM](https://www.vim.org/))
+
+- [Node](https://nodejs.org/)
+
+- [npm](https://www.npmjs.com/get-npm)
+
+- Angular CLI `npm install -g @angular/cli`
+
+---
+
+## Installing Angular Chat UI Kit
+
+## 1. Setup :wrench:
+
+To install Angular UI Kit, you need to first register on CometChat Dashboard. <a href="https://app.cometchat.com/" target="_blank">Click here to sign up</a>
+
+### i. Get your Application Keys :key:
+
+- Create a new app
+- Head over to the Quick Start or API & Auth Keys section and note the `App ID`, `Auth Key`, and `Region`.
+
+### ii. Add the CometChat Dependency
 
 ```javascript
-    cd CometChatWorkspace
-    npm install
-    ng build angular-chat-ui-kit
-    ng serve angular-chat-app
+  npm install @cometchat-pro/chat@2.1.6 --save
 ```
+
+<br/>
+
+## 2. Configure CometChat inside your app
+
+### i. Initialize CometChat 🌟
+
+The `init()` method initializes the settings required for CometChat.
+We suggest calling the `init()` method on app startup, preferably in the `onCreate()` method of the Application class.
+
+```javascript
+const appID = "APP_ID";
+const region = "REGION";
+const appSetting = new CometChat.AppSettingsBuilder()
+  .subscribePresenceForAllUsers()
+  .setRegion(region)
+  .build();
+CometChat.init(appID, appSetting).then(
+  () => {
+    console.log("Initialization completed successfully");
+    // You can now call login function.
+  },
+  (error) => {
+    console.log("Initialization failed with error:", error);
+    // Check the reason for error and take appropriate action.
+  }
+);
+```
+
+**Note:**</br>
+
+- Replace APP_ID and REGION with your CometChat `App ID` and `Region` in the above code.
+
+### ii. Login your user 👤
+
+This method takes `UID` and `Auth Key` as input parameters and returns the User object containing all the information of the logged-in user..
+
+```javascript
+const authKey = "AUTH_KEY";
+const uid = "SUPERHERO1";
+
+CometChat.login(uid, authKey).then(
+  (user) => {
+    console.log("Login Successful:", { user });
+  },
+  (error) => {
+    console.log("Login failed with exception:", { error });
+  }
+);
+```
+
+**Note:** </br>
+
+- Replace `AUTH_KEY` with your CometChat `Auth Key` in the above code.
+
+- We have setup 5 users for testing having UIDs: `SUPERHERO1`, `SUPERHERO2`, `SUPERHERO3`,`SUPERHERO4` and `SUPERHERO5`.
+
+<br/>
+
+## 3. Add UI Kit to your project
+
+- Clone this repository
+- Copy the folder to your source folder
+
+<img align="center" width="auto" height="auto" src="./Screenshots/add-ui-kit.png">
+
+- Copy all the dependencies from package.json into your project's package.js and install them
+
+<img align="center" width="auto" height="auto"  src="./Screenshots/package-dependencies.png" />
+
+<br/>
+
+## 4. Launch UI Unified
+
+**UI Unified** is an option to launch a fully functional chat application using the UI Kit. In UI Unified all the UI Screens and UI Components are interlinked and work together to launch a fully functional chat on your website/application.
+
+**Import the CometchatUnifiedModule in the requierd module**
+
+```html
+import {CometchatUnifiedModule} from "./angular-chat-ui-kit";
+```
+
+**Use this selector in your html file**
+
+```
+<cometchat-unified></cometchat-unified>
+```
+
+---
+
+# Checkout our sample app
+
+Visit our [Angular sample app](https://github.com/cometchat-pro/angular-chat-app) repo to run the Angular sample app.
+
+---
+
+# Troubleshooting
+
+- To read the full documentation on UI Kit integration visit our [Documentation](https://prodocs.cometchat.com/docs/js-angular-ui-kit).
+
+- Facing any issues while integrating or installing the UI Kit please <a href="https://app.cometchat.com/" target="_blank"> connect with us via real time support present in CometChat Dashboard.</a>
+
+---
+
+# Contact :mailbox:
+
+Contact us via real time support present in [CometChat Dashboard](https://app.cometchat.com/).
 
 ---
