@@ -434,7 +434,9 @@ export class CometchatConversationListWithMessagesComponent implements OnInit {
     const messageList = [];
     members.forEach((eachMember) => {
       const message = `${this.loggedInUser.name} unbanned ${eachMember.name}`;
-      const sentAt = new Date();
+      const date: any = new Date();
+      const sentAt: any = (date / 1000) | 0;
+
       const messageObj = {
         category: "action",
         message: message,
