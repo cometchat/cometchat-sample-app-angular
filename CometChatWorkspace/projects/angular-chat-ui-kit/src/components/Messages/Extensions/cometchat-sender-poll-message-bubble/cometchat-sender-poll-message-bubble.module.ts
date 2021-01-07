@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatSenderPollBubbleComponent } from "./cometchat-sender-poll-bubble/cometchat-sender-poll-bubble.component";
+import { CometchatSenderPollMessageBubbleComponent } from "./cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.component";
 import { CometchatToolTipModule } from "../../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatReadRecieptModule } from "../../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatReplyCountModule } from "../../cometchat-reply-count/cometchat-reply-count.module";
 import { CometchatMessageReactionsModule } from "../cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
-  declarations: [CometchatSenderPollBubbleComponent],
+  declarations: [CometchatSenderPollMessageBubbleComponent],
   imports: [
     CommonModule,
     CometchatToolTipModule,
@@ -15,6 +15,6 @@ import { CometchatMessageReactionsModule } from "../cometchat-message-reactions/
     CometchatReplyCountModule,
     CometchatMessageReactionsModule,
   ],
-  exports: [CometchatSenderPollBubbleComponent],
+  exports: [CometchatSenderPollMessageBubbleComponent],
 })
-export class CometchatSenderPollBubbleModule {}
+export class CometchatSenderPollMessageBubbleModule {}

@@ -3,11 +3,11 @@ import { checkMessageForExtensionsData } from "../../../../utils/common";
 import { STRING_MESSAGES } from "../../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-sender-poll-bubble",
-  templateUrl: "./cometchat-sender-poll-bubble.component.html",
-  styleUrls: ["./cometchat-sender-poll-bubble.component.css"],
+  selector: "cometchat-sender-poll-message-bubble",
+  templateUrl: "./cometchat-sender-poll-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-poll-message-bubble.component.css"],
 })
-export class CometchatSenderPollBubbleComponent implements OnInit {
+export class CometchatSenderPollMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showReplyCount = true;
   @Input() loggedInUser;

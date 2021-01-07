@@ -15,7 +15,7 @@ import { CometchatSenderAudioBubbleModule } from "../cometchat-sender-audio-bubb
 import { CometchatReceiverAudioBubbleModule } from "../cometchat-receiver-audio-bubble/cometchat-receiver-audio-bubble.module";
 import { CometchatSenderStickerBubbleModule } from "../Extensions/cometchat-sender-sticker-bubble/cometchat-sender-sticker-bubble.module";
 import { CometchatReceiverStickerBubbleModule } from "../Extensions/cometchat-receiver-sticker-bubble/cometchat-receiver-sticker-bubble.module";
-import { CometchatSenderPollBubbleModule } from "../Extensions/cometchat-sender-poll-bubble/cometchat-sender-poll-bubble.module";
+import { CometchatSenderPollMessageBubbleModule } from "../Extensions/cometchat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.module";
 import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometchat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.module";
 
 @NgModule({
@@ -36,7 +36,7 @@ import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometcha
     CometchatMessageComposerModule,
     CometchatSenderStickerBubbleModule,
     CometchatReceiverStickerBubbleModule,
-    CometchatSenderPollBubbleModule,
+    CometchatSenderPollMessageBubbleModule,
     CometchatReceiverPollMessageBubbleModule,
   ],
   exports: [CometchatMessageThreadComponent],
