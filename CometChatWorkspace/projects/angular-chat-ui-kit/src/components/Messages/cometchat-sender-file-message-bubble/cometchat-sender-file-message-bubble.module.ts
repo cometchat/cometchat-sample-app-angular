@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatSenderFileBubbleComponent } from "./cometchat-sender-file-bubble/cometchat-sender-file-bubble.component";
+import { CometchatSenderFileMessageBubbleComponent } from "./cometchat-sender-file-message-bubble/cometchat-sender-file-message-bubble.component";
 import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
 import { CometchatToolTipModule } from "../cometchat-tool-tip/cometchat-tool-tip.module";
 import { CometchatReplyCountModule } from "../cometchat-reply-count/cometchat-reply-count.module";
 import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
-  declarations: [CometchatSenderFileBubbleComponent],
+  declarations: [CometchatSenderFileMessageBubbleComponent],
   imports: [
     CommonModule,
     CometchatReadRecieptModule,
@@ -15,6 +15,6 @@ import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message
     CometchatReplyCountModule,
     CometchatMessageReactionsModule,
   ],
-  exports: [CometchatSenderFileBubbleComponent],
+  exports: [CometchatSenderFileMessageBubbleComponent],
 })
-export class CometchatSenderFileBubbleModule {}
+export class CometchatSenderFileMessageBubbleModule {}

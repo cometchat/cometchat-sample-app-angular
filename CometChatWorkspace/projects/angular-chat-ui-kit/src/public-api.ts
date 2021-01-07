@@ -175,8 +175,8 @@ export * from "./components/Messages/cometchat-sender-audio-message-bubble/comet
 export * from "./components/Messages/cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.module";
 
 //senderFileBubble
-export * from "./components/Messages/cometchat-sender-file-bubble/cometchat-sender-file-bubble/cometchat-sender-file-bubble.component";
-export * from "./components/Messages/cometchat-sender-file-bubble/cometchat-sender-file-bubble.module";
+export * from "./components/Messages/cometchat-sender-file-message-bubble/cometchat-sender-file-message-bubble/cometchat-sender-file-message-bubble.component";
+export * from "./components/Messages/cometchat-sender-file-message-bubble/cometchat-sender-file-message-bubble.module";
 
 //senderImageBubble
 export * from "./components/Messages/cometchat-sender-image-bubble/cometchat-sender-image-bubble/cometchat-sender-image-bubble.component";

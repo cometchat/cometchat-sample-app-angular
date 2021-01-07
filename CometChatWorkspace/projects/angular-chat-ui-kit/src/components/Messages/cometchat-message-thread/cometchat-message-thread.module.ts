@@ -5,7 +5,7 @@ import { CometchatSenderMessageBubbleModule } from "../cometchat-sender-message-
 import { CometchatMessageListModule } from "../cometchat-message-list/cometchat-message-list.module";
 import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
 import { CometchatReceiverMessageBubbleModule } from "../cometchat-receiver-message-bubble/cometchat-receiver-message-bubble.module";
-import { CometchatSenderFileBubbleModule } from "../cometchat-sender-file-bubble/cometchat-sender-file-bubble.module";
+import { CometchatSenderFileMessageBubbleModule } from "../cometchat-sender-file-message-bubble/cometchat-sender-file-message-bubble.module";
 import { CometchatReceiverFileMessageBubbleModule } from "../cometchat-receiver-file-message-bubble/cometchat-receiver-file-message-bubble.module";
 import { CometchatSenderImageBubbleModule } from "../cometchat-sender-image-bubble/cometchat-sender-image-bubble.module";
 import { CometchatReceiverImageMessageBubbleModule } from "../cometchat-receiver-image-message-bubble/cometchat-receiver-image-message-bubble.module";
@@ -24,7 +24,7 @@ import { CometchatReceiverPollMessageBubbleModule } from "../Extensions/cometcha
     CommonModule,
     CometchatSenderMessageBubbleModule,
     CometchatReceiverMessageBubbleModule,
-    CometchatSenderFileBubbleModule,
+    CometchatSenderFileMessageBubbleModule,
     CometchatReceiverFileMessageBubbleModule,
     CometchatSenderImageBubbleModule,
     CometchatReceiverImageMessageBubbleModule,

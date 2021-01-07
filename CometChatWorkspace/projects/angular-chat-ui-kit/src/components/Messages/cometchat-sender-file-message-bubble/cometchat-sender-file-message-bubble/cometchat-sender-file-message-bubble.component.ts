@@ -2,11 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
 
 @Component({
-  selector: "cometchat-sender-file-bubble",
-  templateUrl: "./cometchat-sender-file-bubble.component.html",
-  styleUrls: ["./cometchat-sender-file-bubble.component.css"],
+  selector: "cometchat-sender-file-message-bubble",
+  templateUrl: "./cometchat-sender-file-message-bubble.component.html",
+  styleUrls: ["./cometchat-sender-file-message-bubble.component.css"],
 })
-export class CometchatSenderFileBubbleComponent implements OnInit {
+export class CometchatSenderFileMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

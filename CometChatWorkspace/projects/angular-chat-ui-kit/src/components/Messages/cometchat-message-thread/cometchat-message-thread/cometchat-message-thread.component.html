@@ -92,14 +92,14 @@
             (actionGenerated)="actionHandler($event)"
           ></cometchat-receiver-file-message-bubble>
 
-          <cometchat-sender-file-bubble
+          <cometchat-sender-file-message-bubble
             *ngIf="parentMessage?.sender?.uid === loggedInUser?.uid"
             [MessageDetails]="parentMessage"
             [showToolTip]="false"
             [showReplyCount]="false"
             [loggedInUser]="loggedInUser"
             (actionGenerated)="actionHandler($event)"
-          ></cometchat-sender-file-bubble>
+          ></cometchat-sender-file-message-bubble>
         </div>
         <!--CASE FOR FILE ENDS -->
 
