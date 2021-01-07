@@ -32,12 +32,12 @@
         detailScreenStyle: viewDetailScreen
       }"
     >
-      <cometchat-user-detail
+      <cometchat-user-details
         *ngIf="viewDetailScreen"
         [item]="curentItem"
         [type]="type"
         (actionGenerated)="actionHandler($event)"
-      ></cometchat-user-detail>
+      ></cometchat-user-details>
     </div>
     <cometchat-message-thread
       *ngIf="threadMessageView"

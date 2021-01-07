@@ -215,8 +215,8 @@ export * from "./components/CometChatApp/cometchat-app/cometchat-app/cometchat-a
 export * from "./components/CometChatApp/cometchat-app/cometchat-app.module";
 
 //userDetail
-export * from "./components/Users/cometchat-user-detail/cometchat-user-detail/cometchat-user-detail.component";
-export * from "./components/Users/cometchat-user-detail/cometchat-user-detail.module";
+export * from "./components/Users/cometchat-user-details/cometchat-user-details/cometchat-user-details.component";
+export * from "./components/Users/cometchat-user-details/cometchat-user-details.module";
 
 //userInfoScreen
 export * from "./components/UserProfile/cometchat-user-profile/cometchat-user-profile/cometchat-user-profile.component";

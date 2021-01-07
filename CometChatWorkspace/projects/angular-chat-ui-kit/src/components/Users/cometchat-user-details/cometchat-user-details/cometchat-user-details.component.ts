@@ -10,11 +10,11 @@ import {
 import * as enums from "../../../utils/enums";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 @Component({
-  selector: "cometchat-user-detail",
-  templateUrl: "./cometchat-user-detail.component.html",
-  styleUrls: ["./cometchat-user-detail.component.css"],
+  selector: "cometchat-user-details",
+  templateUrl: "./cometchat-user-details.component.html",
+  styleUrls: ["./cometchat-user-details.component.css"],
 })
-export class CometchatUserDetailComponent implements OnInit, OnChanges {
+export class CometchatUserDetailsComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

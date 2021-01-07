@@ -7,7 +7,7 @@ import { CometchatUserListModule } from "../cometchat-user-list/cometchat-user-l
 import { CometchatMessageListScreenModule } from "../../Messages/cometchat-message-list-screen/cometchat-message-list-screen.module";
 import { CometchatMessageThreadModule } from "../../Messages/cometchat-message-thread/cometchat-message-thread.module";
 import { CometchatImageViewerModule } from "../../Messages/cometchat-image-viewer/cometchat-image-viewer.module";
-import { CometchatUserDetailModule } from "../cometchat-user-detail/cometchat-user-detail.module";
+import { CometchatUserDetailsModule } from "../cometchat-user-details/cometchat-user-details.module";
 import { CometchatIncomingCallModule } from "../../Calls/cometchat-incoming-call/cometchat-incoming-call.module";
 import { CometchatOutgoingCallModule } from "../../Calls/cometchat-outgoing-call/cometchat-outgoing-call.module";
 
@@ -19,7 +19,7 @@ import { CometchatOutgoingCallModule } from "../../Calls/cometchat-outgoing-call
     CometchatMessageListScreenModule,
     CometchatMessageThreadModule,
     CometchatImageViewerModule,
-    CometchatUserDetailModule,
+    CometchatUserDetailsModule,
     CometchatIncomingCallModule,
     CometchatOutgoingCallModule,
     BrowserModule,

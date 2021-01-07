@@ -38,13 +38,13 @@
         detailScreenStyle: viewDetailScreen
       }"
     >
-      <cometchat-user-detail
+      <cometchat-user-details
         *ngIf="viewDetailScreen"
         [item]="item"
         [type]="type"
         (actionGenerated)="actionHandler($event)"
       >
-      </cometchat-user-detail>
+      </cometchat-user-details>
     </div>
     <div *ngIf="type === 'group'">
       <cometchat-group-details
