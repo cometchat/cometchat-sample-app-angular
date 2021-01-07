@@ -12,11 +12,12 @@ import * as enums from "../../../utils/enums";
 import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
-  selector: "cometchat-conversation-view",
-  templateUrl: "./cometchat-conversation-view.component.html",
-  styleUrls: ["./cometchat-conversation-view.component.css"],
+  selector: "cometchat-conversation-list-item",
+  templateUrl: "./cometchat-conversation-list-item.component.html",
+  styleUrls: ["./cometchat-conversation-list-item.component.css"],
 })
-export class CometchatConversationViewComponent implements OnInit, OnChanges {
+export class CometchatConversationListItemComponent
+  implements OnInit, OnChanges {
   @Input() ConversationDetails = null;
   @Input() loggedInUser = null;
   @Output() onUserClick: EventEmitter<any> = new EventEmitter();
