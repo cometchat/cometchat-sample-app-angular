@@ -36,8 +36,6 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
   ConversationListManager;
   checkItemChange: boolean = false;
 
-  // this.audio = new Audio(incomingOtherMessageAlert);
-
   conversationRequest = null;
 
   conversationListenerId = "chatlist_" + new Date().getTime();
@@ -117,7 +115,6 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
           if (convKey > -1) {
             conversationlist.splice(convKey, 1);
             this.conversationList = conversationlist;
-            // this.setState({ conversationlist: conversationlist });
           }
         }
       }
@@ -152,7 +149,6 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
           });
 
           conversationList.splice(groupKey, 1, newGroupObj);
-          // this.setState({grouplist: groups});
 
           this.conversationList = conversationList;
         }
@@ -186,7 +182,6 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
           });
 
           conversationList.splice(groupKey, 1, newgroupObj);
-          // this.setState({grouplist: groups});
 
           this.conversationList = conversationList;
         }
@@ -211,7 +206,6 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
 
         if (groupKey > -1) {
           conversationList.splice(groupKey, 1);
-          // this.setState({grouplist: groups});
 
           this.conversationList = conversationList;
 
@@ -469,16 +463,12 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
     ) {
       const uid = conversation.conversationWith.uid;
       const char = conversation.conversationWith.name.charAt(0).toUpperCase();
-
-      // return SvgAvatar.getAvatar(uid, char);
     } else if (
       conversation.conversationType === "group" &&
       !conversation.conversationWith.icon
     ) {
       const guid = conversation.conversationWith.guid;
       const char = conversation.conversationWith.name.charAt(0).toUpperCase();
-
-      // return SvgAvatar.getAvatar(guid, char)
     }
   }
 
@@ -503,29 +493,6 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
       case enums.MESSAGE_DELETED:
         this.conversationEditedDeleted(message);
         break;
-      // case enums.INCOMING_CALL_RECEIVED:
-      // case enums.INCOMING_CALL_CANCELLED:
-      //   this.updateConversation(message, false);
-      //   break;
-      // case enums.GROUP_MEMBER_ADDED:
-      //   this.updateGroupMemberAdded(message, options);
-      //   break;
-      // case enums.GROUP_MEMBER_KICKED:
-      // case enums.GROUP_MEMBER_BANNED:
-      // case enums.GROUP_MEMBER_LEFT:
-      //   this.updateGroupMemberRemoved(message, options);
-      //   break;
-      // case enums.GROUP_MEMBER_SCOPE_CHANGED:
-      //   this.updateGroupMemberScopeChanged(message, options);
-      //   break;
-      // case enums.GROUP_MEMBER_JOINED:
-      //   this.updateGroupMemberChanged(message, options, "increment");
-      //   break;
-      // case enums.GROUP_MEMBER_UNBANNED:
-      //   this.updateGroupMemberChanged(message, options, "");
-      //   break;
-      // default:
-      //   break;
     }
   };
 
