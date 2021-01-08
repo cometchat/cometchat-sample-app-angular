@@ -73,7 +73,6 @@
 .stickerMsgTxtStyle {
   margin: 0;
   height: 30px;
-  /* color: `${theme.color.secondary}`; */
   font-size: 24px !important;
   font-weight: 600;
   color: #ccc;

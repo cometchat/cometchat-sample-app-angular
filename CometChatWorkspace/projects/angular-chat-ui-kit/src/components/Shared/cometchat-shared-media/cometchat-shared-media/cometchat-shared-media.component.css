@@ -30,7 +30,6 @@ sectionStyle * {
   font-weight: 500 !important;
   line-height: 20px;
   color: #cccccc;
-  /* color: `${props.theme.color.secondary}`; */
   text-transform: uppercase;
 }
 

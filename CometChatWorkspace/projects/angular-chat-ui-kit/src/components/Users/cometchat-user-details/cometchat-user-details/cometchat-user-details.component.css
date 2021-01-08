@@ -45,10 +45,6 @@
   justify-content: space-between;
   align-items: flex-start;
   height: calc(100% - 70px);
-
-  /* '&:not(:last-of-type)': {
-        marginBottom: "16px",
-    } */
 }
 
 .privacySectionStyle {
@@ -68,7 +64,6 @@
   font-size: 12px;
   font-weight: 500 !important;
   line-height: 20px;
-  /* color: `${props.theme.color.secondary}`; */
   color: #cccccc;
   text-transform: uppercase;
 }
@@ -80,9 +75,6 @@
 
 .contentItemStyle {
   width: 100%;
-  /* '&:not(:first-of-type):not(:last-of-type)': {
-        padding: "6px 0";
-    } */
 }
 
 .itemLinkStyle {

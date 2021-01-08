@@ -4,8 +4,6 @@
   width: auto;
   height: 18px;
   border-radius: 16px;
-  /* backgroundColor: `${props.theme.backgroundColor.blue}`;
-    color: `${props.theme.color.white}`; */
   background-color: #39f;
   color: #fff;
   text-align: center;
