@@ -43,8 +43,6 @@ export class CometchatReceiverVideoMessageBubbleComponent implements OnInit {
       if (!this.MessageDetails.sender.avatar) {
         const uid = this.MessageDetails.sender.getUid();
         const char = this.MessageDetails.sender.getName().charAt(0);
-
-        //  this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid,char))
       }
       this.name = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;
