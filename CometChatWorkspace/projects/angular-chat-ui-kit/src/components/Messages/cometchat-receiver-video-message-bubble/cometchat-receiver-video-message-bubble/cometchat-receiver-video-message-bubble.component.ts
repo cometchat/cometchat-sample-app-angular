@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
+import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-receiver-video-message-bubble",
@@ -32,7 +33,7 @@ export class CometchatReceiverVideoMessageBubbleComponent implements OnInit {
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
 
     /**

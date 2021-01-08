@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { CometChat } from "@cometchat-pro/chat";
 import { checkMessageForExtensionsData } from "../../../../utils/common";
 import * as enums from "../../../../utils/enums";
+import { STRING_MESSAGES } from "../../../../utils/messageConstants";
 @Component({
   selector: "cometchat-receiver-poll-message-bubble",
   templateUrl: "./cometchat-receiver-poll-message-bubble.component.html",
@@ -31,7 +32,7 @@ export class CometchatReceiverPollMessageBubbleComponent implements OnInit {
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
 
     this.checkPollExtension();

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
-
+import { STRING_MESSAGES } from "../../../utils/messageConstants";
 @Component({
   selector: "cometchat-receiver-audio-message-bubble",
   templateUrl: "./cometchat-receiver-audio-message-bubble.component.html",
@@ -29,7 +29,7 @@ export class CometchatReceiverAudioMessageBubbleComponent implements OnInit {
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
 
     /**
