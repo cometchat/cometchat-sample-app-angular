@@ -103,8 +103,8 @@ export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticke
 export * from "./components/Messages/cometchat-sticker-keyboard/cometchat-sticker-keyboard.module";
 export * from "./components/Messages/cometchat-message-actions/cometchat-message-actions/cometchat-message-actions.component";
 export * from "./components/Messages/cometchat-message-actions/cometchat-message-actions.module";
-export * from "./components/CometChatApp/cometchat-app/cometchat-app/cometchat-app.component";
-export * from "./components/CometChatApp/cometchat-app/cometchat-app.module";
+export * from "./components/UnifiedChat/cometchat-unified-chat/cometchat-unified-chat/cometchat-unified-chat.component";
+export * from "./components/UnifiedChat/cometchat-unified-chat/cometchat-unified-chat.module";
 export * from "./components/Users/cometchat-user-details/cometchat-user-details/cometchat-user-details.component";
 export * from "./components/Users/cometchat-user-details/cometchat-user-details.module";
 export * from "./components/UserProfile/cometchat-user-profile/cometchat-user-profile/cometchat-user-profile.component";
