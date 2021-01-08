@@ -110,18 +110,10 @@ export class CometchatConversationListWithMessagesComponent implements OnInit {
       case enums.UNBLOCK_USER:
         this.unblockUser();
         break;
-      //   case "audioCall":
-      //     this.audioCall();
-      //   break;
-      //   case "videoCall":
-      //     this.videoCall();
-      //   break;
       case enums.VIEW_DETAIL:
       case enums.CLOSE_DETAIL_CLICKED:
         this.toggleDetailView();
         break;
-
-      //   // eslint-disable-next-line no-lone-blocks
       case enums.MENU_CLICKED: {
         this.checkAnimatedState = "normal";
         this.toggleSideBar();
@@ -505,7 +497,6 @@ export class CometchatConversationListWithMessagesComponent implements OnInit {
     CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.VIDEO)
       .then((call) => {
         this.appendCallMessage(call);
-        // this.setState({ outgoingCall: call });
 
         this.outgoingCall = call;
       })
@@ -535,7 +526,6 @@ export class CometchatConversationListWithMessagesComponent implements OnInit {
 
     CometChat.getConversation(id, type)
       .then((conversation: any) => {
-        // this.itemClicked(conversation.conversationWith, type);
         this.item = { ...conversation.conversationWith };
         this.type = type;
       })

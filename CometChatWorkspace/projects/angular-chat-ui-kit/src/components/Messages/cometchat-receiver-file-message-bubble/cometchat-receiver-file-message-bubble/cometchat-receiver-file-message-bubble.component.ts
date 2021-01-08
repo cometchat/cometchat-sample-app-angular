@@ -40,7 +40,6 @@ export class CometchatReceiverFileMessageBubbleComponent implements OnInit {
           .getName()
           .charAt(0)
           .toUpperCase();
-        // this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid, char));
       }
       this.avatarName = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;

@@ -78,7 +78,6 @@ export class CometchatGroupListComponent
           });
 
           groups.splice(groupKey, 1, newGroupObj);
-          // this.setState({grouplist: groups});
 
           this.grouplist = groups;
         }
@@ -112,7 +111,6 @@ export class CometchatGroupListComponent
           });
 
           groups.splice(groupKey, 1, newgroupObj);
-          // this.setState({grouplist: groups});
 
           this.grouplist = groups;
         }
@@ -136,7 +134,6 @@ export class CometchatGroupListComponent
         );
         if (groupKey > -1) {
           groups.splice(groupKey, 1);
-          // this.setState({grouplist: groups});
 
           this.grouplist = groups;
 
@@ -254,7 +251,6 @@ export class CometchatGroupListComponent
     if (group.hasOwnProperty("icon") === false) {
       const guid = group.guid;
       const char = group.name.charAt(0).toUpperCase();
-      // group.icon = SvgAvatar.getAvatar(guid, char);
     }
     return group;
   }
@@ -272,7 +268,6 @@ export class CometchatGroupListComponent
             }
 
             groupList.forEach((group) => (group = this.setAvatar(group)));
-            // this.setState({ grouplist: [...this.state.grouplist, ...groupList] });
             this.grouplist = [...this.grouplist, ...groupList];
 
             this.decoratorMessage = "";
@@ -315,7 +310,6 @@ export class CometchatGroupListComponent
     const groupList = [group, ...this.grouplist];
 
     // this.handleClick(group);
-    // this.setState({ grouplist: groupList, createGroup: false });
     this.grouplist = [group, ...this.grouplist];
   };
 
@@ -431,7 +425,6 @@ export class CometchatGroupListComponent
         let newgroupObj = Object.assign({}, groupObj, group);
 
         grouplist.splice(groupKey, 1, newgroupObj);
-        // this.setState({ grouplist: grouplist });
 
         this.grouplist = grouplist;
       } else {
@@ -443,7 +436,6 @@ export class CometchatGroupListComponent
         });
 
         grouplist.splice(groupKey, 1, newgroupObj);
-        // this.setState({ grouplist: grouplist });
         this.grouplist = grouplist;
       }
     }
@@ -477,7 +469,6 @@ export class CometchatGroupListComponent
       });
 
       grouplist.splice(groupKey, 1, newgroupObj);
-      // this.setState({ grouplist: grouplist });
       this.grouplist = grouplist;
     } else {
       let groupObj = { ...group };
@@ -500,7 +491,6 @@ export class CometchatGroupListComponent
       });
 
       const groupList = [newgroupObj, ...this.grouplist];
-      // this.setState({ grouplist: groupList });
       this.grouplist = grouplist;
     }
   };
@@ -527,7 +517,6 @@ export class CometchatGroupListComponent
       });
 
       grouplist.splice(groupKey, 1, newgroupObj);
-      // this.setState({ grouplist: grouplist });
       this.grouplist = grouplist;
     }
   };
@@ -544,7 +533,6 @@ export class CometchatGroupListComponent
         let newgroupObj = Object.assign({}, groupObj, { scope: options.scope });
 
         grouplist.splice(groupKey, 1, newgroupObj);
-        // this.setState({ grouplist: grouplist });
         this.grouplist = grouplist;
       }
     }

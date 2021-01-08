@@ -7,11 +7,9 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  /* fontFamily: `${theme.fontFamily}`; */
 }
 .chatScreenStyle * {
   box-sizing: border-box;
-  /* fontFamily: `${theme.fontFamily}`; */
 }
 .chatScreenStyle::-webkit-scrollbar {
   width: 8px;

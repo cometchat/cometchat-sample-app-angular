@@ -22,7 +22,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
 })
 export class CometchatOutgoingCallComponent
   implements OnInit, OnChanges, OnDestroy {
-  @ViewChild("callScreenFrame", null) callScreenFrame: ElementRef;
+  @ViewChild("callScreenFrame", { static: false }) callScreenFrame: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
@@ -331,14 +331,11 @@ export class CometchatOutgoingCallComponent
           type: enums.OUTGOING_CALL_CANCELLED,
           payLoad: call,
         });
-        // this.setState({ outgoingCallScreen: false, callInProgress: null });
-
         this.outgoingCallScreen = false;
         this.callInProgress = null;
       })
       .catch((error) => {
         this.actionGenerated.emit({ type: enums.CALL_ERROR, payLoad: error });
-        // this.setState({ outgoingCallScreen: false, callInProgress: null });
         this.outgoingCallScreen = false;
         this.callInProgress = null;
       });

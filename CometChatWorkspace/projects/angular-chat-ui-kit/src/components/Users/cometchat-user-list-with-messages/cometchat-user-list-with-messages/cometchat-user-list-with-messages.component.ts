@@ -332,7 +332,6 @@ export class CometchatUserListWithMessagesComponent implements OnInit {
     CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.VIDEO)
       .then((call) => {
         this.appendCallMessage(call);
-        // this.setState({ outgoingCall: call });
 
         this.outgoingCall = call;
       })

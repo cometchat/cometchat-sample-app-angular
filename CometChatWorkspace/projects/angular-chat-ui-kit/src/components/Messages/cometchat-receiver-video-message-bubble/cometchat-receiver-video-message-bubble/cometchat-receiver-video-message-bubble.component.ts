@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
+import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-receiver-video-message-bubble",
@@ -32,7 +33,7 @@ export class CometchatReceiverVideoMessageBubbleComponent implements OnInit {
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
 
     /**
@@ -43,8 +44,6 @@ export class CometchatReceiverVideoMessageBubbleComponent implements OnInit {
       if (!this.MessageDetails.sender.avatar) {
         const uid = this.MessageDetails.sender.getUid();
         const char = this.MessageDetails.sender.getName().charAt(0);
-
-        //  this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid,char))
       }
       this.name = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;

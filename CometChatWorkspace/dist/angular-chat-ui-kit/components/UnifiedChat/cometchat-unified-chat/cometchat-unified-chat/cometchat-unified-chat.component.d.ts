@@ -1,5 +1,5 @@
 import { OnInit } from "@angular/core";
-export declare class CometchatAppComponent implements OnInit {
+export declare class CometchatUnifiedChatComponent implements OnInit {
     item: any;
     curentItem: any;
     type: any;

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { checkMessageForExtensionsData } from "../../../utils/common";
+import { STRING_MESSAGES } from "../../../utils/messageConstants";
 
 @Component({
   selector: "cometchat-sender-file-message-bubble",
@@ -21,7 +22,7 @@ export class CometchatSenderFileMessageBubbleComponent implements OnInit {
   ngOnInit() {
     this.checkReaction = checkMessageForExtensionsData(
       this.MessageDetails,
-      "reactions"
+      STRING_MESSAGES.REACTIONS
     );
     this.url = this.MessageDetails.data.attachments[0].url;
     this.name = this.MessageDetails.data.attachments[0].name;
