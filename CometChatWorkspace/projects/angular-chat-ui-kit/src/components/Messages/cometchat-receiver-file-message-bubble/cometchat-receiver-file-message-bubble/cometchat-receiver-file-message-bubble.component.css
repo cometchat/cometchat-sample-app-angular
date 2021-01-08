@@ -65,8 +65,6 @@
   border-radius: 12px;
   color: #cccccc;
   background-color: #f6f6f6;
-  /* color: `${props.theme.color.secondary}`;
-    backgroundColor: `${props.theme.backgroundColor.secondary}`; */
   padding: 8px 12px;
   align-self: flex-start;
   width: auto;
@@ -76,7 +74,6 @@
   text-decoration: none;
   background-color: transparent;
   color: #141414;
-  /* color: `${props.theme.color.primary}`; */
   width: auto;
   font-size: 14px;
 }
@@ -84,7 +81,6 @@
 .messageFileWrapperStyle:active,
 .messageFileWrapperStyle:hover {
   color: #141414;
-  /* color: `${props.theme.color.primary}`, */
   text-decoration: none;
 }
 
@@ -110,5 +106,4 @@
   font-weight: 500;
   line-height: 12px;
   text-transform: uppercase;
-  /* color: `${props.theme.color.helpText}`; */
 }
