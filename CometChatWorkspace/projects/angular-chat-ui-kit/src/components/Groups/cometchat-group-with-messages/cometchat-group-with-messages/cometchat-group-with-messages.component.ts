@@ -445,7 +445,6 @@ export class CometchatGroupWithMessagesComponent implements OnInit {
     CometChatManager.call(receiverId, receiverType, CometChat.CALL_TYPE.VIDEO)
       .then((call) => {
         this.appendCallMessage(call);
-        // this.setState({ outgoingCall: call });
 
         this.outgoingCall = call;
       })
@@ -475,7 +474,6 @@ export class CometchatGroupWithMessagesComponent implements OnInit {
 
     CometChat.getConversation(id, type)
       .then((conversation: any) => {
-        // this.itemClicked(conversation.conversationWith, type);
         this.item = { ...conversation.conversationWith };
         this.type = type;
       })

@@ -103,7 +103,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
         const message = messages[0];
         if (message.parentMessageId === this.parentMessage.id) {
           // const replyCount = this.state.replyCount + 1;
-          // this.setState({ replyCount: replyCount });
           this.smartReplyPreview(messages);
           this.replyCount = this.replyCount + messages.length;
           this.appendMessage(messages);
@@ -291,7 +290,6 @@ export class CometchatMessageThreadComponent implements OnInit, OnChanges {
       let newMessageObj = Object.assign({}, messageObj, deletedMessage);
 
       messagelist.splice(messageKey, 1, newMessageObj);
-      // this.setState({ messageList: messagelist, scrollToBottom: false });
       this.messageList = [...messagelist];
     }
   };
