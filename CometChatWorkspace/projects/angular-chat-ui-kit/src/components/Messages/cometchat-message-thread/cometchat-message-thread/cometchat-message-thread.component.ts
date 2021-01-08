@@ -19,7 +19,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   styleUrls: ["./cometchat-message-thread.component.css"],
 })
 export class CometchatMessageThreadComponent implements OnInit, OnChanges {
-  @ViewChild("messageWindow", null) chatWindow: ElementRef;
+  @ViewChild("messageWindow", { static: false }) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;

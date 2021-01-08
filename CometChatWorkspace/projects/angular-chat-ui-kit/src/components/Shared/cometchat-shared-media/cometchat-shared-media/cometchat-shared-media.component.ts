@@ -10,7 +10,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   styleUrls: ["./cometchat-shared-media.component.css"],
 })
 export class CometchatSharedMediaComponent implements OnInit {
-  @ViewChild("mediaContainer", null) mediaWindow: ElementRef;
+  @ViewChild("mediaContainer", { static: false }) mediaWindow: ElementRef;
 
   @Input() type = null;
   @Input() item = null;
