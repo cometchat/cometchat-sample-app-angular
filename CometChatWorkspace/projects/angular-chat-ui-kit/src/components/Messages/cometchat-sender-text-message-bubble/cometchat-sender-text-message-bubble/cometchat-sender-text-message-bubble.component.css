@@ -30,8 +30,6 @@
   border-radius: 12px;
   background-color: #39f;
   color: #fff;
-  /* backgroundColor: `${props.theme.backgroundColor.blue}`;
-color: `${props.theme.color.white}`; */
   padding: 8px 12px;
   align-self: flex-end;
   width: auto;
@@ -54,7 +52,6 @@ color: `${props.theme.color.white}`; */
 .messagePreviewContainerStyle {
   display: inline-block;
   border-radius: 12px;
-  /* backgroundColor: `${props.theme.backgroundColor.white}`; */
   background-color: white;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.18);
   align-self: flex-start;
@@ -67,7 +64,6 @@ color: `${props.theme.color.white}`; */
 }
 
 .previewImageStyle {
-  /* background: `url(${img}) no-repeat center center`; */
   align-self: center;
   height: 150px;
   margin: 12px 0;
@@ -79,8 +75,6 @@ color: `${props.theme.color.white}`; */
 }
 
 .previewDataStyle {
-  /* borderTop: `1px solid  ${props.theme.borderColor.primary}`;
-  borderBottom: `1px solid  ${props.theme.borderColor.primary}`; */
   border-top: 1px solid #eaeaea;
   border-bottom: 1px solid #eaeaea;
 
@@ -92,7 +86,6 @@ color: `${props.theme.color.white}`; */
   word-break: break-word;
   text-align: left;
   width: auto;
-  /* color: `${props.theme.color.helpText}`; */
   color: rgba(20, 20, 20, 0.6);
   font-weight: 700;
   margin-bottom: 8px;
@@ -103,7 +96,6 @@ color: `${props.theme.color.white}`; */
   word-break: break-word;
   text-align: left;
   width: auto;
-  /* color: `${props.theme.color.helpText}`; */
   color: rgba(20, 20, 20, 0.6);
 
   font-size: italic;
@@ -120,7 +112,6 @@ color: `${props.theme.color.white}`; */
 }
 .previewTextStyle + .messageTxtWrapperStyle {
   background-color: transparent;
-  /* color: `${props.theme.color.helpText}`; */
   color: rgba(20, 20, 20, 0.6);
 
   font-style: normal;
@@ -142,7 +133,6 @@ color: `${props.theme.color.white}`; */
 }
 .previewLinkStyle > a {
   display: inline-block;
-  /* color: `${props.theme.color.blue}`; */
   color: #39f;
   font-weight: 700;
   text-decoration: none;

@@ -231,8 +231,6 @@ export class CometchatGroupDetailsComponent implements OnInit, OnDestroy {
         this.fetchNextGroupMembers()
           .then((groupMembers) => {
             groupMembers.forEach((member) => {
-              // this.setAvatar(member);
-
               if (member.scope === "admin") {
                 administratorslist.push(member);
               }
@@ -291,8 +289,6 @@ export class CometchatGroupDetailsComponent implements OnInit, OnDestroy {
       .then((user) => {
         this.fetchNextBannedGroupMembers()
           .then((bannedMembers) => {
-            // bannedMembers.forEach(member => this.setAvatar(member));
-
             this.bannedmemberlist = [
               ...this.bannedmemberlist,
               ...bannedMembers,

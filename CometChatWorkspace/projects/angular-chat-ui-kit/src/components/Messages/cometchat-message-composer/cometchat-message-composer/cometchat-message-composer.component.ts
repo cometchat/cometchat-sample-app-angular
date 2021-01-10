@@ -65,10 +65,10 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild("imgPicker", null) imgPicker: ElementRef;
-  @ViewChild("vidPicker", null) vidPicker: ElementRef;
-  @ViewChild("audPicker", null) audPicker: ElementRef;
-  @ViewChild("filePicker", null) filePicker: ElementRef;
+  @ViewChild("imgPicker", { static: false }) imgPicker: ElementRef;
+  @ViewChild("vidPicker", { static: false }) vidPicker: ElementRef;
+  @ViewChild("audPicker", { static: false }) audPicker: ElementRef;
+  @ViewChild("filePicker", { static: false }) filePicker: ElementRef;
 
   senddisable = false;
   reactdisable = true;

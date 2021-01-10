@@ -73,7 +73,6 @@ export class CometchatReceiverStickerMessageBubbleComponent
           .getName()
           .charAt(0)
           .toUpperCase();
-        // this.MessageDetails.sender.setAvatar(SvgAvatar.getAvatar(uid, char));
       }
       this.name = this.MessageDetails.sender.name;
       this.avatar = this.MessageDetails.sender.avatar;

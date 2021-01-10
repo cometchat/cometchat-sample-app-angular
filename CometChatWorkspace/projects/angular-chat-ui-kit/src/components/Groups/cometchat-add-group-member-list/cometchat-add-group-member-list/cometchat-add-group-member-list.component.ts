@@ -152,8 +152,6 @@ export class CometchatAddGroupMemberListComponent implements OnInit, OnDestroy {
       .then((user) => {
         this.fetchNextUsers()
           .then((userList) => {
-            // userList.forEach(user => user = this.setAvatar(user));
-
             const filteredUserList = userList.filter((user) => {
               const found = this.memberlist.find(
                 (member) => user.uid === member.uid
@@ -166,8 +164,6 @@ export class CometchatAddGroupMemberListComponent implements OnInit, OnDestroy {
               }
               return true;
             });
-
-            // this.setState({ userlist: [...this.state.userlist, ...userList], filteredlist: [...this.state.filteredlist, ...filteredUserList] });
 
             this.userlist = [...this.userlist, ...userList];
 

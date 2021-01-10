@@ -33,7 +33,5 @@ export class CometchatAddGroupMemberListItemComponent implements OnInit {
       type: enums.MEMBER_UPDATED,
       payLoad: { user: this.user, userState: this.checked },
     });
-
-    // props.changed(props.user, value);
   }
 }

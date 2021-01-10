@@ -1,7 +1,4 @@
 .listItem {
-  /* const selectedState = (props.selectedConversation && props.selectedConversation.conversationId === props.conversation.conversationId) ? {
-        backgroundColor: `${props.theme.backgroundColor.primary}`
-    } : {}; */
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -11,7 +8,6 @@
   padding: 10px 20px;
 }
 .listItem:hover {
-  /* backgroundColor: `${props.theme.backgroundColor.primary}` */
   background-color: #eaeaea;
 }
 
@@ -53,13 +49,10 @@
   white-space: nowrap;
   line-height: 20px;
   color: rgba(20, 20, 20, 0.6);
-  /* color: `${props.theme.color.helpText}`; */
 }
 
 .itemLastMsgTimeStyle {
   font-size: 11px;
   text-transform: uppercase;
   color: rgba(20, 20, 20, 0.6);
-
-  /* color: `${props.theme.color.helpText}`; */
 }

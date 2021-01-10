@@ -18,7 +18,7 @@ import * as enums from "../../../utils/enums";
   styleUrls: ["./cometchat-messages.component.css"],
 })
 export class CometchatMessagesComponent implements OnInit, OnChanges {
-  @ViewChild("messageWindow", null) chatWindow: ElementRef;
+  @ViewChild("messageWindow", { static: false }) chatWindow: ElementRef;
 
   @Input() item = null;
   @Input() type = null;
