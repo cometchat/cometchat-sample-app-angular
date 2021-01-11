@@ -223,7 +223,8 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
       if (change["lastMessage"]) {
         if (
           change["lastMessage"].previousValue !==
-          change["lastMessage"].currentValue
+            change["lastMessage"].currentValue &&
+          change["lastMessage"].currentValue !== undefined
         ) {
           const lastMessage = change["lastMessage"].currentValue[0];
 
