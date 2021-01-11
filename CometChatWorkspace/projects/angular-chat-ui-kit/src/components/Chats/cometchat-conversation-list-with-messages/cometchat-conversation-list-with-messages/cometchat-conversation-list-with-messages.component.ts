@@ -134,6 +134,7 @@ export class CometchatConversationListWithMessagesComponent implements OnInit {
         break;
       case enums.CLOSE_FULL_SCREEN_IMAGE: {
         this.toggleImageView(null);
+        break;
       }
       case enums.MESSAGE_COMPOSED:
       case enums.MESSAGE_EDIT:
