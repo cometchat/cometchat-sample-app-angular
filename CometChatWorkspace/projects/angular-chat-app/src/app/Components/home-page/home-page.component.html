@@ -13,12 +13,13 @@
   </p>
 
   <div class="componentStyle">
+    <!-- UNIFIED CHAT -->
     <div class="boxStyle">
       <div class="titleWrapperStyle">
         <div class="thumbnailWrapperStyle">
           <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
         </div>
-        <h2 class="componentTitleStyle">UI Unified</h2>
+        <h2 class="componentTitleStyle">Unified Chat</h2>
       </div>
       <div class="descWrapperStyle">
         <p>
@@ -33,6 +34,143 @@
         </li>
       </ul>
     </div>
+    <!-- UNIFIED CHAT -->
+
+    <!-- CONVERSATIONS-->
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+        <div class="thumbnailWrapperStyle">
+          <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
+        </div>
+        <h2 class="componentTitleStyle">Conversations</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatConversationListWithMessaging component launches
+          Conversation list with messaging
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToConversationListScreen()"
+            >Launch</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- CONVERSATIONS -->
+
+    <!-- GROUPS -->
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+        <div class="thumbnailWrapperStyle">
+          <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
+        </div>
+        <h2 class="componentTitleStyle">Groups</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatGroupListWithMessaging component launches Conversation
+          list with messaging
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToGroupListScreen()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- GROUPS -->
+  </div>
+
+  <div class="componentStyle">
+    <!-- USERS -->
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+        <div class="thumbnailWrapperStyle">
+          <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
+        </div>
+        <h2 class="componentTitleStyle">Users</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatUserListWithMessaging component launches Conversation
+          list with messaging
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToContactScreen()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- USERS -->
+
+    <!-- Conversations List -->
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+        <div class="thumbnailWrapperStyle">
+          <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
+        </div>
+        <h2 class="componentTitleStyle">Conversation List</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatConversationList component launches Conversation list .
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToConversationList()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Conversations List -->
+
+    <!-- GROUP LIST -->
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+        <div class="thumbnailWrapperStyle">
+          <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
+        </div>
+        <h2 class="componentTitleStyle">Group List</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>The CometChatGroupList component launches Group list .</p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToGroupListPage()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- GROUP LIST -->
+  </div>
+
+  <div class="componentStyle componentSecondaryStyle">
+    <!-- USER LIST -->
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+        <div class="thumbnailWrapperStyle">
+          <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
+        </div>
+        <h2 class="componentTitleStyle">User List</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>The CometChatUserList component launches User list .</p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToContactPage()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- USER LIST -->
 
     <!-- <div class="boxStyle">
       <div class="titleWrapperStyle">
@@ -63,7 +201,7 @@
       </ul>
     </div> -->
 
-    <div class="boxStyle">
+    <!-- <div class="boxStyle">
       <div class="titleWrapperStyle">
         <div class="thumbnailWrapperStyle">
           <cometchat-avatar [avatar]="defaultAvatar"></cometchat-avatar>
@@ -90,7 +228,7 @@
           <a class="linkStyle" (click)="navigateToContactScreen()">Users</a>
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 
   <div class="logoutBtn">
