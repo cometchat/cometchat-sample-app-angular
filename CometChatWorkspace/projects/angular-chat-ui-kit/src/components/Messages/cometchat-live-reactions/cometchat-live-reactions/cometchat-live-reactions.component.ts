@@ -40,7 +40,7 @@ export class CometchatLiveReactionsComponent implements OnInit {
   timer;
   checkAnimatedState = "normal";
 
-  @ViewChild("emoji", { static: false }) emojiWindow: ElementRef;
+  @ViewChild("emoji", { static: true }) emojiWindow: ElementRef;
 
   constructor() {}
 
