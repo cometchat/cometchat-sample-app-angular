@@ -26,9 +26,8 @@ CometChat Kitchen Sink Sample App is a real-time messaging app capable of **one-
 3. Install dependencies and run the app
 
 ```javascript
+
     cd CometChatWorkspace
-    npm install
-    ng build angular-chat-ui-kit
     ng serve angular-chat-app
 ```
 
