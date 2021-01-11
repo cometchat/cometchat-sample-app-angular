@@ -229,7 +229,10 @@ export class CometchatConversationListComponent implements OnInit, OnChanges {
 
           const conversationList = [...this.conversationList];
           const conversationKey = conversationList.findIndex((c) => {
-            return c.conversationId == lastMessage.conversationId;
+            if (lastMessage === undefined) {
+              return false;
+            }
+            return c.conversationId === lastMessage.conversationId;
           });
 
           if (conversationKey > -1) {
