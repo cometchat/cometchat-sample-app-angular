@@ -817,9 +817,16 @@ export class CometchatMessageListComponent
    * Compares two dates and return true if they are not equal
    */
   isDateDifferent(firstDate, secondDate) {
-    return (
-      this.datepipe.transform(firstDate, "d mm yyyy").toString() !==
-      this.datepipe.transform(secondDate, "d mm yyyy").toString()
-    );
+    let firstDateObj: Date, secondDateObj: Date;
+    firstDateObj = new Date(firstDate * 1000);
+    secondDateObj = new Date(secondDate * 1000);
+    if (
+      firstDateObj.getDate() === secondDateObj.getDate() &&
+      firstDateObj.getMonth() === secondDateObj.getMonth() &&
+      firstDateObj.getFullYear() === secondDateObj.getFullYear()
+    ) {
+      return false;
+    }
+    return true;
   }
 }
