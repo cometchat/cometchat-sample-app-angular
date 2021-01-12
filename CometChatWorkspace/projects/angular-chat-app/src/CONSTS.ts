@@ -1,10 +1,3 @@
-//SOHAIL
-// export const COMETCHAT_CONSTANTS = {
-//   APP_ID: "2744304bf4076af",
-//   REGION: "eu",
-//   AUTH_KEY: "ed94db6b23bdc3943b98722de1505942ed034d23",
-// };
-
 export const COMETCHAT_CONSTANTS = {
   APP_ID: "27441899beb21ec",
   REGION: "eu",
