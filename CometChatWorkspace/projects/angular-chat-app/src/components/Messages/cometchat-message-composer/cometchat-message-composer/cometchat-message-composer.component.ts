@@ -218,7 +218,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
   sendMessageOnEnter(event) {
     if (event.keyCode === 13 && !event.shiftKey) {
       event.preventDefault();
-      this.sendTextMessage();
+      this.sendTextMessage(event.target.value);
       this.playAudio();
     }
   }
@@ -266,7 +266,7 @@ export class CometchatMessageComposerComponent implements OnInit, OnChanges {
    * Send Text Message
    * @param
    */
-  sendTextMessage(textMsg = null) {
+  sendTextMessage(textMsg: String = "") {
     //If user you are chatting with is blocked then return false
     if (this.userBlocked) {
       return false;
