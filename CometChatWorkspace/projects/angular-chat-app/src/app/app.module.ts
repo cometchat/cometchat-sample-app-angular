@@ -20,7 +20,7 @@ import { CometchatConversationListModule } from "../components/Chats/cometchat-c
 import { CometchatConversationListWithMessagesModule } from "../components/Chats/cometchat-conversation-list-with-messages/cometchat-conversation-list-with-messages.module";
 import { CometchatGroupListModule } from "../components/Groups/cometchat-group-list/cometchat-group-list.module";
 import { CometchatGroupWithMessagesModule } from "../components/Groups/cometchat-group-with-messages/cometchat-group-with-messages.module";
-import { CometchatModule } from "../components/CometChat/cometchat/cometchat.module";
+import { Cometchat } from "../components/CometChat/cometchat/cometchat.module";
 import { CometchatUserListModule } from "../components/Users/cometchat-user-list/cometchat-user-list.module";
 import { CometchatUserListWithMessagesModule } from "../components/Users/cometchat-user-list-with-messages/cometchat-user-list-with-messages.module";
 import { CometchatAvatarModule } from "../components/Shared/cometchat-avatar/cometchat-avatar.module";
@@ -42,7 +42,7 @@ import { CometchatAvatarModule } from "../components/Shared/cometchat-avatar/com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CometchatModule,
+    Cometchat,
     CometchatConversationListWithMessagesModule,
     CometchatGroupWithMessagesModule,
     CometchatUserListWithMessagesModule,

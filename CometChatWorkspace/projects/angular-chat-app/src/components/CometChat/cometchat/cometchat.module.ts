@@ -25,4 +25,4 @@ import { CometchatOutgoingCallModule } from "../../Calls/cometchat-outgoing-call
   ],
   exports: [CometchatComponent],
 })
-export class CometchatModule {}
+export class Cometchat {}
