@@ -8,7 +8,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-create-group.component.html",
   styleUrls: ["./cometchat-create-group.component.css"],
 })
-export class CometchatCreateGroupComponent implements OnInit {
+export class CometChatCreateGroupComponent implements OnInit {
   error = null;
   passwordInput: boolean = false;
   name: String = "";

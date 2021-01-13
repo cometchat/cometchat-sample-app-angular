@@ -6,7 +6,7 @@ import * as enums from "../../../utils/enums";
   templateUrl: "./cometchat-image-viewer.component.html",
   styleUrls: ["./cometchat-image-viewer.component.css"],
 })
-export class CometchatImageViewerComponent implements OnInit {
+export class CometChatImageViewerComponent implements OnInit {
   @Input() MessageDetails;
   @Input() open;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

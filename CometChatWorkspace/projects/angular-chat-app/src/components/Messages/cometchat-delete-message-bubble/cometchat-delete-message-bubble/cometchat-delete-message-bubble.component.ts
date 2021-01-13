@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from "@angular/core";
   templateUrl: "./cometchat-delete-message-bubble.component.html",
   styleUrls: ["./cometchat-delete-message-bubble.component.css"],
 })
-export class CometchatDeleteMessageBubbleComponent implements OnInit {
+export class CometChatDeleteMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
 
   @Input() loggedInUser = null;

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatBanGroupMemberListComponent } from "./cometchat-ban-group-member-list.component";
+import { CometChatBanGroupMemberListComponent } from "./cometchat-ban-group-member-list.component";
 
 describe("BanMemberViewComponent", () => {
-  let component: CometchatBanGroupMemberListComponent;
-  let fixture: ComponentFixture<CometchatBanGroupMemberListComponent>;
+  let component: CometChatBanGroupMemberListComponent;
+  let fixture: ComponentFixture<CometChatBanGroupMemberListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatBanGroupMemberListComponent],
+      declarations: [CometChatBanGroupMemberListComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatBanGroupMemberListComponent);
+    fixture = TestBed.createComponent(CometChatBanGroupMemberListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

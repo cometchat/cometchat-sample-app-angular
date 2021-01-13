@@ -8,7 +8,7 @@ import * as enums from "../../../utils/enums";
   templateUrl: "./cometchat-ban-group-member-list.component.html",
   styleUrls: ["./cometchat-ban-group-member-list.component.css"],
 })
-export class CometchatBanGroupMemberListComponent implements OnInit {
+export class CometChatBanGroupMemberListComponent implements OnInit {
   @Input() item = null;
   @Input() member = null;
   @Input() loggedInUser = null;

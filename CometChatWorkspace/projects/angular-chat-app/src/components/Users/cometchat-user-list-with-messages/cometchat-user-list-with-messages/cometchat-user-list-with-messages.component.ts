@@ -32,7 +32,7 @@ import {
     ]),
   ],
 })
-export class CometchatUserListWithMessagesComponent implements OnInit {
+export class CometChatUserListWithMessagesComponent implements OnInit {
   //It can be a user or a group
   curentItem = null;
   item;

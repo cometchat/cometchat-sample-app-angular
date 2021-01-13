@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatImageViewerComponent } from "./cometchat-image-viewer.component";
+import { CometChatImageViewerComponent } from "./cometchat-image-viewer.component";
 
 describe("ImageViewComponent", () => {
-  let component: CometchatImageViewerComponent;
-  let fixture: ComponentFixture<CometchatImageViewerComponent>;
+  let component: CometChatImageViewerComponent;
+  let fixture: ComponentFixture<CometChatImageViewerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatImageViewerComponent],
+      declarations: [CometChatImageViewerComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatImageViewerComponent);
+    fixture = TestBed.createComponent(CometChatImageViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

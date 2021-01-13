@@ -18,7 +18,7 @@ import { DatePipe } from "@angular/common";
   templateUrl: "./cometchat-message-header.component.html",
   styleUrls: ["./cometchat-message-header.component.css"],
 })
-export class CometchatMessageHeaderComponent
+export class CometChatMessageHeaderComponent
   implements OnInit, OnChanges, OnDestroy {
   @Input() item = null;
   @Input() type = null;

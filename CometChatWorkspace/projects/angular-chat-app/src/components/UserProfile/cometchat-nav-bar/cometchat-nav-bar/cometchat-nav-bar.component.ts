@@ -5,7 +5,7 @@ import * as enums from "../../../utils/enums";
   templateUrl: "./cometchat-nav-bar.component.html",
   styleUrls: ["./cometchat-nav-bar.component.css"],
 })
-export class CometchatNavBarComponent implements OnInit {
+export class CometChatNavBarComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() lastMessage;

@@ -18,7 +18,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-group-list.component.html",
   styleUrls: ["./cometchat-group-list.component.css"],
 })
-export class CometchatGroupListComponent
+export class CometChatGroupListComponent
   implements OnInit, OnDestroy, OnChanges {
   @Input() enableSelectedGroupStyling = false;
   @Input() groupToUpdate = null;

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatReceiverVideoMessageBubbleComponent } from "./cometchat-receiver-video-message-bubble.component";
+import { CometChatReceiverVideoMessageBubbleComponent } from "./cometchat-receiver-video-message-bubble.component";
 
 describe("ReceiverVideoBubbleComponent", () => {
-  let component: CometchatReceiverVideoMessageBubbleComponent;
-  let fixture: ComponentFixture<CometchatReceiverVideoMessageBubbleComponent>;
+  let component: CometChatReceiverVideoMessageBubbleComponent;
+  let fixture: ComponentFixture<CometChatReceiverVideoMessageBubbleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatReceiverVideoMessageBubbleComponent],
+      declarations: [CometChatReceiverVideoMessageBubbleComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(
-      CometchatReceiverVideoMessageBubbleComponent
+      CometChatReceiverVideoMessageBubbleComponent
     );
     component = fixture.componentInstance;
     fixture.detectChanges();

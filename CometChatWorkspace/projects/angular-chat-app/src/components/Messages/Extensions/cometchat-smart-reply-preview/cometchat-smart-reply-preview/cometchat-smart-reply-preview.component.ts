@@ -22,7 +22,7 @@ import * as enums from "../../../../utils/enums";
     ]),
   ],
 })
-export class CometchatSmartReplyPreviewComponent implements OnInit {
+export class CometChatSmartReplyPreviewComponent implements OnInit {
   @Input() replyPreview = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

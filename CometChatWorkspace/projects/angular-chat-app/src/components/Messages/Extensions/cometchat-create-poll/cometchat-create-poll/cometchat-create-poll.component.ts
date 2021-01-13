@@ -14,7 +14,7 @@ import * as enums from "../../../../utils/enums";
   templateUrl: "./cometchat-create-poll.component.html",
   styleUrls: ["./cometchat-create-poll.component.css"],
 })
-export class CometchatCreatePollComponent implements OnInit {
+export class CometChatCreatePollComponent implements OnInit {
   pollFormData: FormGroup;
   errorText = "";
   @Input() item = null;

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatSenderAudioMessageBubbleComponent } from "./cometchat-sender-audio-message-bubble.component";
+import { CometChatSenderAudioMessageBubbleComponent } from "./cometchat-sender-audio-message-bubble.component";
 
 describe("SenderAudioBubbleComponent", () => {
-  let component: CometchatSenderAudioMessageBubbleComponent;
-  let fixture: ComponentFixture<CometchatSenderAudioMessageBubbleComponent>;
+  let component: CometChatSenderAudioMessageBubbleComponent;
+  let fixture: ComponentFixture<CometChatSenderAudioMessageBubbleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatSenderAudioMessageBubbleComponent],
+      declarations: [CometChatSenderAudioMessageBubbleComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(
-      CometchatSenderAudioMessageBubbleComponent
+      CometChatSenderAudioMessageBubbleComponent
     );
     component = fixture.componentInstance;
     fixture.detectChanges();

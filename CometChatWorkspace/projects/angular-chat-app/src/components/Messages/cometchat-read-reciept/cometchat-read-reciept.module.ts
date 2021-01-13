@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatReadRecieptComponent } from "./cometchat-read-reciept/cometchat-read-reciept.component";
+import { CometChatReadRecieptComponent } from "./cometchat-read-reciept/cometchat-read-reciept.component";
 
 @NgModule({
-  declarations: [CometchatReadRecieptComponent],
+  declarations: [CometChatReadRecieptComponent],
   imports: [CommonModule],
-  exports: [CometchatReadRecieptComponent],
+  exports: [CometChatReadRecieptComponent],
 })
-export class CometchatReadRecieptModule {}
+export class CometChatReadReciept {}

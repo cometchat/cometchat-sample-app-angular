@@ -7,7 +7,7 @@ import { REACTION_ICON } from "../../../resources/icons/reaction";
   templateUrl: "./cometchat-message-actions.component.html",
   styleUrls: ["./cometchat-message-actions.component.css"],
 })
-export class CometchatMessageActionsComponent implements OnInit {
+export class CometChatMessageActionsComponent implements OnInit {
   @Input() MessageDetails = null;
 
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

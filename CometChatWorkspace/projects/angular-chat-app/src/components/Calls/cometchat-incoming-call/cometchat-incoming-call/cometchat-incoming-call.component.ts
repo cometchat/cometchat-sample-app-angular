@@ -19,7 +19,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
     ]),
   ],
 })
-export class CometchatIncomingCallComponent implements OnInit {
+export class CometChatIncomingCallComponent implements OnInit {
   incomingCall = null;
   callInProgress = null;
   callListenerId = "incoming_call_" + new Date().getTime();

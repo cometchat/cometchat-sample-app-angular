@@ -18,7 +18,7 @@ import { STRING_MESSAGES } from "../../../../utils/messageConstants";
   templateUrl: "./cometchat-message-reactions.component.html",
   styleUrls: ["./cometchat-message-reactions.component.css"],
 })
-export class CometchatMessageReactionsComponent implements OnInit, OnChanges {
+export class CometChatMessageReactionsComponent implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() loggedInUser;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

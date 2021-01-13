@@ -1,20 +1,20 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatSenderAudioMessageBubbleComponent } from "./cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.component";
-import { CometchatMessageActionsModule } from "../cometchat-message-actions/cometchat-message-actions.module";
-import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
-import { CometchatThreadedMessageReplyCountModule } from "../cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
-import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
+import { CometChatSenderAudioMessageBubbleComponent } from "./cometchat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.component";
+import { CometChatMessageActions } from "../CometChat-message-actions/cometchat-message-actions.module";
+import { CometChatReadReciept } from "../CometChat-read-reciept/cometchat-read-reciept.module";
+import { CometChatThreadedMessageReplyCount } from "../CometChat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
+import { CometChatMessageReactions } from "../Extensions/CometChat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
-  declarations: [CometchatSenderAudioMessageBubbleComponent],
+  declarations: [CometChatSenderAudioMessageBubbleComponent],
   imports: [
     CommonModule,
-    CometchatMessageActionsModule,
-    CometchatReadRecieptModule,
-    CometchatThreadedMessageReplyCountModule,
-    CometchatMessageReactionsModule,
+    CometChatMessageActions,
+    CometChatReadReciept,
+    CometChatThreadedMessageReplyCount,
+    CometChatMessageReactions,
   ],
-  exports: [CometchatSenderAudioMessageBubbleComponent],
+  exports: [CometChatSenderAudioMessageBubbleComponent],
 })
-export class CometchatSenderAudioMessageBubbleModule {}
+export class CometChatSenderAudioMessageBubble {}

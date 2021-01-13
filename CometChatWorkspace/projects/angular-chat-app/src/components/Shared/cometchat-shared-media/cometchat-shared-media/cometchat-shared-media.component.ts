@@ -9,7 +9,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-shared-media.component.html",
   styleUrls: ["./cometchat-shared-media.component.css"],
 })
-export class CometchatSharedMediaComponent implements OnInit {
+export class CometChatSharedMediaComponent implements OnInit {
   @ViewChild("mediaContainer", { static: false }) mediaWindow: ElementRef;
 
   @Input() type = null;

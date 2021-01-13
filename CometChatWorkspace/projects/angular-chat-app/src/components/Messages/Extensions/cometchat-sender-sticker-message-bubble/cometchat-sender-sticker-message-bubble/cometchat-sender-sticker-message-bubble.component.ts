@@ -15,7 +15,7 @@ import { STRING_MESSAGES } from "../../../../utils/messageConstants";
   templateUrl: "./cometchat-sender-sticker-message-bubble.component.html",
   styleUrls: ["./cometchat-sender-sticker-message-bubble.component.css"],
 })
-export class CometchatSenderStickerMessageBubbleComponent
+export class CometChatSenderStickerMessageBubbleComponent
   implements OnInit, OnChanges {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatDeleteMessageBubbleComponent } from "./cometchat-delete-message-bubble.component";
+import { CometChatDeleteMessageBubbleComponent } from "./cometchat-delete-message-bubble.component";
 
 describe("DeletedMessageBubbleComponent", () => {
-  let component: CometchatDeleteMessageBubbleComponent;
-  let fixture: ComponentFixture<CometchatDeleteMessageBubbleComponent>;
+  let component: CometChatDeleteMessageBubbleComponent;
+  let fixture: ComponentFixture<CometChatDeleteMessageBubbleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatDeleteMessageBubbleComponent],
+      declarations: [CometChatDeleteMessageBubbleComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatDeleteMessageBubbleComponent);
+    fixture = TestBed.createComponent(CometChatDeleteMessageBubbleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

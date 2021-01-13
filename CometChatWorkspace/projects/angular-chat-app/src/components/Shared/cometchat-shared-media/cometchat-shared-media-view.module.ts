@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatSharedMediaComponent } from "./cometchat-shared-media/cometchat-shared-media.component";
+import { CometChatSharedMediaComponent } from "./cometchat-shared-media/cometchat-shared-media.component";
 
 @NgModule({
-  declarations: [CometchatSharedMediaComponent],
+  declarations: [CometChatSharedMediaComponent],
   imports: [CommonModule],
-  exports: [CometchatSharedMediaComponent],
+  exports: [CometChatSharedMediaComponent],
 })
-export class CometchatSharedMediaModule {}
+export class CometChatSharedMedia {}

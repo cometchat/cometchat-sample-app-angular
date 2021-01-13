@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatNavBarComponent } from "./cometchat-nav-bar.component";
+import { CometChatNavBarComponent } from "./cometchat-nav-bar.component";
 
 describe("NavBarComponent", () => {
-  let component: CometchatNavBarComponent;
-  let fixture: ComponentFixture<CometchatNavBarComponent>;
+  let component: CometChatNavBarComponent;
+  let fixture: ComponentFixture<CometChatNavBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatNavBarComponent],
+      declarations: [CometChatNavBarComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatNavBarComponent);
+    fixture = TestBed.createComponent(CometChatNavBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

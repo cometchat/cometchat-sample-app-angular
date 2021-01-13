@@ -7,7 +7,7 @@ import * as enums from "../../../utils/enums";
   templateUrl: "./cometchat-sticker-keyboard.component.html",
   styleUrls: ["./cometchat-sticker-keyboard.component.css"],
 })
-export class CometchatStickerKeyboardComponent implements OnInit {
+export class CometChatStickerKeyboardComponent implements OnInit {
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   decoratorMessage: string = STRING_MESSAGES.LOADING_MESSSAGE;

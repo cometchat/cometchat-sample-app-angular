@@ -20,7 +20,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-outgoing-call.component.html",
   styleUrls: ["./cometchat-outgoing-call.component.css"],
 })
-export class CometchatOutgoingCallComponent
+export class CometChatOutgoingCallComponent
   implements OnInit, OnChanges, OnDestroy {
   @ViewChild("callScreenFrame", { static: false }) callScreenFrame: ElementRef;
 

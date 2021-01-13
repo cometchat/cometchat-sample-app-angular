@@ -16,14 +16,14 @@ import { GroupListComponent } from "./App-Components/Pages/group-list/group-list
 import { GroupListScreenPageComponent } from "./App-Components/Pages/group-list-screen-page/group-list-screen-page.component";
 import { CometChatUnifiedPageComponent } from "./App-Components/Pages/comet-chat-unified-page/comet-chat-unified-page.component";
 
-import { CometchatConversationListModule } from "../components/Chats/cometchat-conversation-list/cometchat-conversation-list.module";
-import { CometchatConversationListWithMessagesModule } from "../components/Chats/cometchat-conversation-list-with-messages/cometchat-conversation-list-with-messages.module";
-import { CometchatGroupListModule } from "../components/Groups/cometchat-group-list/cometchat-group-list.module";
-import { CometchatGroupWithMessagesModule } from "../components/Groups/cometchat-group-with-messages/cometchat-group-with-messages.module";
-import { Cometchat } from "../components/CometChat/cometchat/cometchat.module";
-import { CometchatUserListModule } from "../components/Users/cometchat-user-list/cometchat-user-list.module";
-import { CometchatUserListWithMessagesModule } from "../components/Users/cometchat-user-list-with-messages/cometchat-user-list-with-messages.module";
-import { CometchatAvatarModule } from "../components/Shared/cometchat-avatar/cometchat-avatar.module";
+import { CometChatConversationList } from "../components/Chats/CometChat-conversation-list/cometchat-conversation-list.module";
+import { CometChatConversationListWithMessages } from "../components/Chats/CometChat-conversation-list-with-messages/cometchat-conversation-list-with-messages.module";
+import { CometChatGroupList } from "../components/Groups/CometChat-group-list/cometchat-group-list.module";
+import { CometChatGroupWithMessages } from "../components/Groups/CometChat-group-with-messages/cometchat-group-with-messages.module";
+import { CometChat } from "../components/CometChatUI/CometChat/cometchat.module";
+import { CometChatUserList } from "../components/Users/CometChat-user-list/cometchat-user-list.module";
+import { CometChatUserListWithMessages } from "../components/Users/CometChat-user-list-with-messages/cometchat-user-list-with-messages.module";
+import { CometChatAvatar } from "../components/Shared/CometChat-avatar/cometchat-avatar.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,14 +42,14 @@ import { CometchatAvatarModule } from "../components/Shared/cometchat-avatar/com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    Cometchat,
-    CometchatConversationListWithMessagesModule,
-    CometchatGroupWithMessagesModule,
-    CometchatUserListWithMessagesModule,
-    CometchatConversationListModule,
-    CometchatGroupListModule,
-    CometchatUserListModule,
-    CometchatAvatarModule,
+    CometChat,
+    CometChatConversationListWithMessages,
+    CometChatGroupWithMessages,
+    CometChatUserListWithMessages,
+    CometChatConversationList,
+    CometChatGroupList,
+    CometChatUserList,
+    CometChatAvatar,
     FormsModule,
   ],
   providers: [],

@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatBadgeCountComponent } from "./cometchat-badge-count/cometchat-badge-count.component";
+import { CometChatBadgeCountComponent } from "./cometchat-badge-count/cometchat-badge-count.component";
 
 @NgModule({
-  declarations: [CometchatBadgeCountComponent],
+  declarations: [CometChatBadgeCountComponent],
   imports: [CommonModule],
-  exports: [CometchatBadgeCountComponent],
+  exports: [CometChatBadgeCountComponent],
 })
-export class CometchatBadgeCountModule {}
+export class CometChatBadgeCount {}

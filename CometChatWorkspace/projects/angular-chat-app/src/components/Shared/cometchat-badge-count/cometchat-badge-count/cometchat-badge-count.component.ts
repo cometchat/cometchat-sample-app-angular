@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from "@angular/core";
   templateUrl: "./cometchat-badge-count.component.html",
   styleUrls: ["./cometchat-badge-count.component.css"],
 })
-export class CometchatBadgeCountComponent implements OnInit {
+export class CometChatBadgeCountComponent implements OnInit {
   @Input() count = null;
 
   constructor() {}

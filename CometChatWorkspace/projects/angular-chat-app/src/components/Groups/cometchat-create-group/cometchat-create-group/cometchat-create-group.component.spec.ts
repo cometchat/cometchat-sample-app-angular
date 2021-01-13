@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatCreateGroupComponent } from "./cometchat-create-group.component";
+import { CometChatCreateGroupComponent } from "./cometchat-create-group.component";
 
 describe("CometChatCreateGroupComponent", () => {
-  let component: CometchatCreateGroupComponent;
-  let fixture: ComponentFixture<CometchatCreateGroupComponent>;
+  let component: CometChatCreateGroupComponent;
+  let fixture: ComponentFixture<CometChatCreateGroupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatCreateGroupComponent],
+      declarations: [CometChatCreateGroupComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatCreateGroupComponent);
+    fixture = TestBed.createComponent(CometChatCreateGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

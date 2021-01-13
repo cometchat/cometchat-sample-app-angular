@@ -34,8 +34,8 @@
 
 .chatScreenMainStyle {
   width: calc(100% - 280px);
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
   order: 2;
 }

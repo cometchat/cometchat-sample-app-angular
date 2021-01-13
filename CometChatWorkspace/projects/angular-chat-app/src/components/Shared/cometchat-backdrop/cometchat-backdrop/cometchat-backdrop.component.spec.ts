@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatBackdropComponent } from "./cometchat-backdrop.component";
+import { CometChatBackdropComponent } from "./cometchat-backdrop.component";
 
 describe("BackdropComponent", () => {
-  let component: CometchatBackdropComponent;
-  let fixture: ComponentFixture<CometchatBackdropComponent>;
+  let component: CometChatBackdropComponent;
+  let fixture: ComponentFixture<CometChatBackdropComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatBackdropComponent],
+      declarations: [CometChatBackdropComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatBackdropComponent);
+    fixture = TestBed.createComponent(CometChatBackdropComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

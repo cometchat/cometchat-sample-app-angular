@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatSmartReplyPreviewComponent } from "./cometchat-smart-reply-preview/cometchat-smart-reply-preview.component";
+import { CometChatSmartReplyPreviewComponent } from "./cometchat-smart-reply-preview/cometchat-smart-reply-preview.component";
 
 @NgModule({
-  declarations: [CometchatSmartReplyPreviewComponent],
+  declarations: [CometChatSmartReplyPreviewComponent],
   imports: [CommonModule],
-  exports: [CometchatSmartReplyPreviewComponent],
+  exports: [CometChatSmartReplyPreviewComponent],
 })
-export class CometchatSmartReplyPreviewModule {}
+export class CometChatSmartReplyPreview {}

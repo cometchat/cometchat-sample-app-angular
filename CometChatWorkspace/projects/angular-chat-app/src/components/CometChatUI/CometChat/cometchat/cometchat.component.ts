@@ -32,7 +32,7 @@ import {
     ]),
   ],
 })
-export class CometchatComponent implements OnInit {
+export class CometChatComponent implements OnInit {
   item = null;
   curentItem;
   type;

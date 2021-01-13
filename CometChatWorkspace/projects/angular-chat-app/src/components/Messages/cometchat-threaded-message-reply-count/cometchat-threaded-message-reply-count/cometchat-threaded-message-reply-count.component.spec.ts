@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatThreadedMessageReplyCountComponent } from "./cometchat-threaded-message-reply-count.component";
+import { CometChatThreadedMessageReplyCountComponent } from "./cometchat-threaded-message-reply-count.component";
 
 describe("ReplyCountComponent", () => {
-  let component: CometchatThreadedMessageReplyCountComponent;
-  let fixture: ComponentFixture<CometchatThreadedMessageReplyCountComponent>;
+  let component: CometChatThreadedMessageReplyCountComponent;
+  let fixture: ComponentFixture<CometChatThreadedMessageReplyCountComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatThreadedMessageReplyCountComponent],
+      declarations: [CometChatThreadedMessageReplyCountComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(
-      CometchatThreadedMessageReplyCountComponent
+      CometChatThreadedMessageReplyCountComponent
     );
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -12,7 +12,7 @@ import { DomSanitizer } from "@angular/platform-browser";
   templateUrl: "./cometchat-avatar.component.html",
   styleUrls: ["./cometchat-avatar.component.scss"],
 })
-export class CometchatAvatarComponent implements OnInit, OnChanges {
+export class CometChatAvatarComponent implements OnInit, OnChanges {
   @Input() item = null;
 
   @Input() avatar: any =

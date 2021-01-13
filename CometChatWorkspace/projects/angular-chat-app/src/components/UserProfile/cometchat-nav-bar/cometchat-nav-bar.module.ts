@@ -1,19 +1,19 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatNavBarComponent } from "./cometchat-nav-bar/cometchat-nav-bar.component";
-import { CometchatUserProfileModule } from "../cometchat-user-profile/cometchat-user-profile.module";
-import { CometchatUserListModule } from "../../Users/cometchat-user-list/cometchat-user-list.module";
-import { CometchatGroupListModule } from "../../Groups/cometchat-group-list/cometchat-group-list.module";
-import { CometchatConversationListModule } from "../../Chats/cometchat-conversation-list/cometchat-conversation-list.module";
+import { CometChatNavBarComponent } from "./cometchat-nav-bar/cometchat-nav-bar.component";
+import { CometChatUserProfile } from "../CometChat-user-profile/cometchat-user-profile.module";
+import { CometChatUserList } from "../../Users/CometChat-user-list/cometchat-user-list.module";
+import { CometChatGroupList } from "../../Groups/CometChat-group-list/cometchat-group-list.module";
+import { CometChatConversationList } from "../../Chats/CometChat-conversation-list/cometchat-conversation-list.module";
 @NgModule({
-  declarations: [CometchatNavBarComponent],
+  declarations: [CometChatNavBarComponent],
   imports: [
     CommonModule,
-    CometchatUserProfileModule,
-    CometchatUserListModule,
-    CometchatGroupListModule,
-    CometchatConversationListModule,
+    CometChatUserProfile,
+    CometChatUserList,
+    CometChatGroupList,
+    CometChatConversationList,
   ],
-  exports: [CometchatNavBarComponent],
+  exports: [CometChatNavBarComponent],
 })
-export class CometchatNavBarModule {}
+export class CometChatNavBar {}

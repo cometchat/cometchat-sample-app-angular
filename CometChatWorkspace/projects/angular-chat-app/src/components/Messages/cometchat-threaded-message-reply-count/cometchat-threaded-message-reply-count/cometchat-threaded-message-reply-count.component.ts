@@ -7,7 +7,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-threaded-message-reply-count.component.html",
   styleUrls: ["./cometchat-threaded-message-reply-count.component.css"],
 })
-export class CometchatThreadedMessageReplyCountComponent implements OnInit {
+export class CometChatThreadedMessageReplyCountComponent implements OnInit {
   @Input() MessageDetails = null;
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 

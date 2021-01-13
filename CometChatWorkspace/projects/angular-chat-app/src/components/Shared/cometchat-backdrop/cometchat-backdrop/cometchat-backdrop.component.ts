@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from "@angular/core";
   templateUrl: "./cometchat-backdrop.component.html",
   styleUrls: ["./cometchat-backdrop.component.css"],
 })
-export class CometchatBackdropComponent implements OnInit {
+export class CometChatBackdropComponent implements OnInit {
   @Input() show;
   constructor() {}
 

@@ -7,7 +7,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-user-profile.component.html",
   styleUrls: ["./cometchat-user-profile.component.css"],
 })
-export class CometchatUserProfileComponent implements OnInit {
+export class CometChatUserProfileComponent implements OnInit {
   user;
   name: string;
 

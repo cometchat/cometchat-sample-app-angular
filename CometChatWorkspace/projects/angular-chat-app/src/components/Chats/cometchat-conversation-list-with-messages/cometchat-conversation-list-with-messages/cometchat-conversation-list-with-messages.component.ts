@@ -34,7 +34,7 @@ import {
     ]),
   ],
 })
-export class CometchatConversationListWithMessagesComponent implements OnInit {
+export class CometChatConversationListWithMessagesComponent implements OnInit {
   curentItem;
   lastMessage;
   item = null;

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatUserProfileComponent } from "./cometchat-user-profile.component";
+import { CometChatUserProfileComponent } from "./cometchat-user-profile.component";
 
 describe("CometChatUserInfoScreenComponent", () => {
-  let component: CometchatUserProfileComponent;
-  let fixture: ComponentFixture<CometchatUserProfileComponent>;
+  let component: CometChatUserProfileComponent;
+  let fixture: ComponentFixture<CometChatUserProfileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatUserProfileComponent],
+      declarations: [CometChatUserProfileComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatUserProfileComponent);
+    fixture = TestBed.createComponent(CometChatUserProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

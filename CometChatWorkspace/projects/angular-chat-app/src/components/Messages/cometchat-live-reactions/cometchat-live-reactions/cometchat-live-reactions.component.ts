@@ -30,7 +30,7 @@ import {
     ]),
   ],
 })
-export class CometchatLiveReactionsComponent implements OnInit {
+export class CometChatLiveReactionsComponent implements OnInit {
   @Input() reactionName = null;
   counter;
   verticalSpeed;

@@ -15,7 +15,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-group-details.component.html",
   styleUrls: ["./cometchat-group-details.component.css"],
 })
-export class CometchatGroupDetailsComponent implements OnInit, OnDestroy {
+export class CometChatGroupDetailsComponent implements OnInit, OnDestroy {
   @Input() item = null;
   @Input() type = null;
 

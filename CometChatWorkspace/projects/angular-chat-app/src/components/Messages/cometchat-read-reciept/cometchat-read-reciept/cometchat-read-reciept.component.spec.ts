@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatReadRecieptComponent } from "./cometchat-read-reciept.component";
+import { CometChatReadRecieptComponent } from "./cometchat-read-reciept.component";
 
 describe("ReadRecieptComponent", () => {
-  let component: CometchatReadRecieptComponent;
-  let fixture: ComponentFixture<CometchatReadRecieptComponent>;
+  let component: CometChatReadRecieptComponent;
+  let fixture: ComponentFixture<CometChatReadRecieptComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatReadRecieptComponent],
+      declarations: [CometChatReadRecieptComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatReadRecieptComponent);
+    fixture = TestBed.createComponent(CometChatReadRecieptComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

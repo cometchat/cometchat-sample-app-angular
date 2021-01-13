@@ -1,9 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CometChatConversationListWithMessagesComponent } from "./cometchat-conversation-list-with-messages/cometchat-conversation-list-with-messages.component";
-import { CometChatConversationList } from "../CometChat-conversation-list/cometchat-conversation-list.module";
+import { CometChatComponent } from "./cometchat/cometchat.component";
+import { CometChatNavBar } from "../../UserProfile/CometChat-nav-bar/cometchat-nav-bar.module";
 import { CometChatMessages } from "../../Messages/CometChat-messages/cometchat-messages.module";
 import { CometChatUserDetails } from "../../Users/CometChat-user-details/cometchat-user-details.module";
 import { CometChatMessageThread } from "../../Messages/CometChat-message-thread/cometchat-message-thread.module";
@@ -11,21 +9,20 @@ import { CometChatImageViewer } from "../../Messages/CometChat-image-viewer/come
 import { CometChatGroupDetails } from "../../Groups/CometChat-group-details/cometchat-group-details.module";
 import { CometChatIncomingCall } from "../../Calls/CometChat-incoming-call/cometchat-incoming-call.module";
 import { CometChatOutgoingCall } from "../../Calls/CometChat-outgoing-call/cometchat-outgoing-call.module";
+
 @NgModule({
-  declarations: [CometChatConversationListWithMessagesComponent],
+  declarations: [CometChatComponent],
   imports: [
     CommonModule,
-    CometChatConversationList,
+    CometChatNavBar,
     CometChatMessages,
     CometChatUserDetails,
-    CometChatGroupDetails,
     CometChatMessageThread,
     CometChatImageViewer,
+    CometChatGroupDetails,
     CometChatIncomingCall,
     CometChatOutgoingCall,
-    BrowserModule,
-    BrowserAnimationsModule,
   ],
-  exports: [CometChatConversationListWithMessagesComponent],
+  exports: [CometChatComponent],
 })
-export class CometChatConversationListWithMessages {}
+export class CometChat {}

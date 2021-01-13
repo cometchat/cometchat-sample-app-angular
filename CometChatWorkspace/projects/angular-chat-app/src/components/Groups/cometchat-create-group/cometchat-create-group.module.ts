@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatCreateGroupComponent } from "./cometchat-create-group/cometchat-create-group.component";
-import { CometchatBackdropModule } from "../../Shared/cometchat-backdrop/cometchat-backdrop.module";
+import { CometChatCreateGroupComponent } from "./cometchat-create-group/cometchat-create-group.component";
+import { CometChatBackdrop } from "../../Shared/CometChat-backdrop/cometchat-backdrop.module";
 
 @NgModule({
-  declarations: [CometchatCreateGroupComponent],
-  imports: [CommonModule, CometchatBackdropModule],
-  exports: [CometchatCreateGroupComponent],
+  declarations: [CometChatCreateGroupComponent],
+  imports: [CommonModule, CometChatBackdrop],
+  exports: [CometChatCreateGroupComponent],
 })
-export class CometchatCreateGroupModule {}
+export class CometChatCreateGroup {}

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatSenderStickerMessageBubbleComponent } from "./cometchat-sender-sticker-message-bubble.component";
+import { CometChatSenderStickerMessageBubbleComponent } from "./cometchat-sender-sticker-message-bubble.component";
 
 describe("SenderStickerBubbleComponent", () => {
-  let component: CometchatSenderStickerMessageBubbleComponent;
-  let fixture: ComponentFixture<CometchatSenderStickerMessageBubbleComponent>;
+  let component: CometChatSenderStickerMessageBubbleComponent;
+  let fixture: ComponentFixture<CometChatSenderStickerMessageBubbleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatSenderStickerMessageBubbleComponent],
+      declarations: [CometChatSenderStickerMessageBubbleComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(
-      CometchatSenderStickerMessageBubbleComponent
+      CometChatSenderStickerMessageBubbleComponent
     );
     component = fixture.componentInstance;
     fixture.detectChanges();

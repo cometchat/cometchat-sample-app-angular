@@ -8,7 +8,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-ban-group-member-list-item.component.html",
   styleUrls: ["./cometchat-ban-group-member-list-item.component.css"],
 })
-export class CometchatBanGroupMemberListItemComponent implements OnInit {
+export class CometChatBanGroupMemberListItemComponent implements OnInit {
   @Input() item = null;
   @Input() bannedmemberlist = [];
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();

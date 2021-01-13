@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatAvatarComponent } from "./cometchat-avatar/cometchat-avatar.component";
+import { CometChatAvatarComponent } from "./cometchat-avatar/cometchat-avatar.component";
 
 @NgModule({
-  declarations: [CometchatAvatarComponent],
+  declarations: [CometChatAvatarComponent],
   imports: [CommonModule],
-  exports: [CometchatAvatarComponent],
+  exports: [CometChatAvatarComponent],
 })
-export class CometchatAvatarModule {}
+export class CometChatAvatar {}

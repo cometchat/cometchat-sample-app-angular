@@ -1,22 +1,22 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatReceiverFileMessageBubbleComponent } from "./cometchat-receiver-file-message-bubble/cometchat-receiver-file-message-bubble.component";
-import { CometchatReadRecieptModule } from "../cometchat-read-reciept/cometchat-read-reciept.module";
-import { CometchatMessageActionsModule } from "../cometchat-message-actions/cometchat-message-actions.module";
-import { CometchatAvatarModule } from "../../Shared/cometchat-avatar/cometchat-avatar.module";
-import { CometchatThreadedMessageReplyCountModule } from "../cometchat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
-import { CometchatMessageReactionsModule } from "../Extensions/cometchat-message-reactions/cometchat-message-reactions.module";
+import { CometChatReceiverFileMessageBubbleComponent } from "./cometchat-receiver-file-message-bubble/cometchat-receiver-file-message-bubble.component";
+import { CometChatReadReciept } from "../CometChat-read-reciept/cometchat-read-reciept.module";
+import { CometChatMessageActions } from "../CometChat-message-actions/cometchat-message-actions.module";
+import { CometChatAvatar } from "../../Shared/CometChat-avatar/cometchat-avatar.module";
+import { CometChatThreadedMessageReplyCount } from "../CometChat-threaded-message-reply-count/cometchat-threaded-message-reply-count.module";
+import { CometChatMessageReactions } from "../Extensions/CometChat-message-reactions/cometchat-message-reactions.module";
 
 @NgModule({
-  declarations: [CometchatReceiverFileMessageBubbleComponent],
+  declarations: [CometChatReceiverFileMessageBubbleComponent],
   imports: [
     CommonModule,
-    CometchatMessageActionsModule,
-    CometchatAvatarModule,
-    CometchatReadRecieptModule,
-    CometchatThreadedMessageReplyCountModule,
-    CometchatMessageReactionsModule,
+    CometChatMessageActions,
+    CometChatAvatar,
+    CometChatReadReciept,
+    CometChatThreadedMessageReplyCount,
+    CometChatMessageReactions,
   ],
-  exports: [CometchatReceiverFileMessageBubbleComponent],
+  exports: [CometChatReceiverFileMessageBubbleComponent],
 })
-export class CometchatReceiverFileMessageBubbleModule {}
+export class CometChatReceiverFileMessageBubble {}

@@ -7,7 +7,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-sender-audio-message-bubble.component.html",
   styleUrls: ["./cometchat-sender-audio-message-bubble.component.css"],
 })
-export class CometchatSenderAudioMessageBubbleComponent implements OnInit {
+export class CometChatSenderAudioMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

@@ -7,7 +7,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-view-group-member-list.component.html",
   styleUrls: ["./cometchat-view-group-member-list.component.css"],
 })
-export class CometchatViewGroupMemberListComponent implements OnInit {
+export class CometChatViewGroupMemberListComponent implements OnInit {
   @Input() item = null;
   @Input() type = null;
   @Input() loggedInUser = null;

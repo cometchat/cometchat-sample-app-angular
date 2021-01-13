@@ -15,7 +15,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-receiver-image-message-bubble.component.html",
   styleUrls: ["./cometchat-receiver-image-message-bubble.component.css"],
 })
-export class CometchatReceiverImageMessageBubbleComponent implements OnInit {
+export class CometChatReceiverImageMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

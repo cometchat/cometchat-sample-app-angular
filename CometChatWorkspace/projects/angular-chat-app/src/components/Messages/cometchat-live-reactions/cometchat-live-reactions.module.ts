@@ -3,11 +3,11 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { CometchatLiveReactionsComponent } from "./cometchat-live-reactions/cometchat-live-reactions.component";
+import { CometChatLiveReactionsComponent } from "./cometchat-live-reactions/cometchat-live-reactions.component";
 
 @NgModule({
-  declarations: [CometchatLiveReactionsComponent],
+  declarations: [CometChatLiveReactionsComponent],
   imports: [CommonModule, BrowserModule, BrowserAnimationsModule],
-  exports: [CometchatLiveReactionsComponent],
+  exports: [CometChatLiveReactionsComponent],
 })
-export class CometchatLiveReactionsModule {}
+export class CometChatLiveReactions {}

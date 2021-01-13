@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CometchatMessageHeaderComponent } from "./cometchat-message-header.component";
+import { CometChatMessageHeaderComponent } from "./cometchat-message-header.component";
 
 describe("MessageHeaderComponent", () => {
-  let component: CometchatMessageHeaderComponent;
-  let fixture: ComponentFixture<CometchatMessageHeaderComponent>;
+  let component: CometChatMessageHeaderComponent;
+  let fixture: ComponentFixture<CometChatMessageHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CometchatMessageHeaderComponent],
+      declarations: [CometChatMessageHeaderComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CometchatMessageHeaderComponent);
+    fixture = TestBed.createComponent(CometChatMessageHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

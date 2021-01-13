@@ -7,7 +7,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-receiver-video-message-bubble.component.html",
   styleUrls: ["./cometchat-receiver-video-message-bubble.component.css"],
 })
-export class CometchatReceiverVideoMessageBubbleComponent implements OnInit {
+export class CometChatReceiverVideoMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() showToolTip = true;
   @Input() showReplyCount = true;

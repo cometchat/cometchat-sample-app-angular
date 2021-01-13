@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatStickerKeyboardComponent } from "./cometchat-sticker-keyboard/cometchat-sticker-keyboard.component";
+import { CometChatStickerKeyboardComponent } from "./cometchat-sticker-keyboard/cometchat-sticker-keyboard.component";
 
 @NgModule({
-  declarations: [CometchatStickerKeyboardComponent],
+  declarations: [CometChatStickerKeyboardComponent],
   imports: [CommonModule],
-  exports: [CometchatStickerKeyboardComponent],
+  exports: [CometChatStickerKeyboardComponent],
 })
-export class CometchatStickerKeyboardModule {}
+export class CometChatStickerKeyboard {}

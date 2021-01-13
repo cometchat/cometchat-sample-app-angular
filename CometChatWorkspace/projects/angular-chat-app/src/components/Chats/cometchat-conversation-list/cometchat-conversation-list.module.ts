@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatConversationListComponent } from "./cometchat-conversation-list/cometchat-conversation-list.component";
-import { CometchatConversationListItemModule } from "../cometchat-conversation-list-item/cometchat-conversation-list-item.module";
+import { CometChatConversationListComponent } from "./cometchat-conversation-list/cometchat-conversation-list.component";
+import { CometChatConversationListItem } from "../CometChat-conversation-list-item/cometchat-conversation-list-item.module";
 
 @NgModule({
-  declarations: [CometchatConversationListComponent],
-  imports: [CommonModule, CometchatConversationListItemModule],
-  exports: [CometchatConversationListComponent],
+  declarations: [CometChatConversationListComponent],
+  imports: [CommonModule, CometChatConversationListItem],
+  exports: [CometChatConversationListComponent],
 })
-export class CometchatConversationListModule {}
+export class CometChatConversationList {}

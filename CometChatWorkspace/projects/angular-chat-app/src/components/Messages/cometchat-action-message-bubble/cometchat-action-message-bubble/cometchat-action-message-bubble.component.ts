@@ -7,7 +7,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-action-message-bubble.component.html",
   styleUrls: ["./cometchat-action-message-bubble.component.css"],
 })
-export class CometchatActionMessageBubbleComponent implements OnInit {
+export class CometChatActionMessageBubbleComponent implements OnInit {
   @Input() MessageDetails = null;
   @Input() loggedInUserUid;
   message;

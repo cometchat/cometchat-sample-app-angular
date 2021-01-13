@@ -1,20 +1,20 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatMessagesComponent } from "./cometchat-messages/cometchat-messages.component";
-import { CometchatMessageHeaderModule } from "../cometchat-message-header/cometchat-message-header.module";
-import { CometchatMessageListModule } from "../cometchat-message-list/cometchat-message-list.module";
-import { CometchatMessageComposerModule } from "../cometchat-message-composer/cometchat-message-composer.module";
-import { CometchatLiveReactionsModule } from "../cometchat-live-reactions/cometchat-live-reactions.module";
+import { CometChatMessagesComponent } from "./cometchat-messages/cometchat-messages.component";
+import { CometChatMessageHeader } from "../CometChat-message-header/cometchat-message-header.module";
+import { CometChatMessageList } from "../CometChat-message-list/cometchat-message-list.module";
+import { CometChatMessageComposer } from "../CometChat-message-composer/cometchat-message-composer.module";
+import { CometChatLiveReactions } from "../CometChat-live-reactions/cometchat-live-reactions.module";
 
 @NgModule({
-  declarations: [CometchatMessagesComponent],
+  declarations: [CometChatMessagesComponent],
   imports: [
     CommonModule,
-    CometchatMessageHeaderModule,
-    CometchatMessageComposerModule,
-    CometchatMessageListModule,
-    CometchatLiveReactionsModule,
+    CometChatMessageHeader,
+    CometChatMessageComposer,
+    CometChatMessageList,
+    CometChatLiveReactions,
   ],
-  exports: [CometchatMessagesComponent],
+  exports: [CometChatMessagesComponent],
 })
-export class CometchatMessagesModule {}
+export class CometChatMessages {}

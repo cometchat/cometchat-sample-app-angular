@@ -16,7 +16,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-user-list.component.html",
   styleUrls: ["./cometchat-user-list.component.css"],
 })
-export class CometchatUserListComponent
+export class CometChatUserListComponent
   implements OnInit, OnDestroy, OnChanges {
   @Input() friendsOnly = false;
   @Input() hasActions = false;

@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometchatDeleteMessageBubbleComponent } from "./cometchat-delete-message-bubble/cometchat-delete-message-bubble.component";
+import { CometChatDeleteMessageBubbleComponent } from "./cometchat-delete-message-bubble/cometchat-delete-message-bubble.component";
 
-import { CometchatAvatarModule } from "../../Shared/cometchat-avatar/cometchat-avatar.module";
+import { CometChatAvatar } from "../../Shared/CometChat-avatar/cometchat-avatar.module";
 
 @NgModule({
-  declarations: [CometchatDeleteMessageBubbleComponent],
-  imports: [CommonModule, CometchatAvatarModule],
-  exports: [CometchatDeleteMessageBubbleComponent],
+  declarations: [CometChatDeleteMessageBubbleComponent],
+  imports: [CommonModule, CometChatAvatar],
+  exports: [CometChatDeleteMessageBubbleComponent],
 })
-export class CometchatDeleteMessageBubbleModule {}
+export class CometChatDeleteMessageBubble {}

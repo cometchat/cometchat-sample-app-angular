@@ -41,8 +41,8 @@
 .userScreenMainStyle {
   width: calc(100% - 280px);
   /* width: 80%; */
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
   order: 2;
 }

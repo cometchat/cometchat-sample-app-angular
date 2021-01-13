@@ -53,7 +53,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
     ]),
   ],
 })
-export class CometchatMessageComposerComponent implements OnInit, OnChanges {
+export class CometChatMessageComposerComponent implements OnInit, OnChanges {
   @Input() parentMessageId = null;
 
   // can be user or a group

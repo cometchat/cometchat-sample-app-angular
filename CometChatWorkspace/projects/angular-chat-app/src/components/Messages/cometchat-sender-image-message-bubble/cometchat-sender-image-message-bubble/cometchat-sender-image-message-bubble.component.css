@@ -28,7 +28,7 @@
 .messageImgWrapper {
   display: inline-block;
   align-self: flex-end;
-  width: 300px;
+  max-width: 300px;
   height: 200px;
   cursor: pointer;
   flex-shrink: 0;

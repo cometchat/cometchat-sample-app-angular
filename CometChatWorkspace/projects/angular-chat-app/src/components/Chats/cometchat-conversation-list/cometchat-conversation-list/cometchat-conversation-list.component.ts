@@ -19,7 +19,7 @@ import { STRING_MESSAGES } from "../../../utils/messageConstants";
   templateUrl: "./cometchat-conversation-list.component.html",
   styleUrls: ["./cometchat-conversation-list.component.css"],
 })
-export class CometchatConversationListComponent implements OnInit, OnChanges {
+export class CometChatConversationListComponent implements OnInit, OnChanges {
   @Input() item = null;
   @Input() type = null;
   @Input() lastMessage;
