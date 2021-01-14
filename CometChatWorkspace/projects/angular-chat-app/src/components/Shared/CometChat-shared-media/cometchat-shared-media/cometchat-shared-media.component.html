@@ -37,8 +37,8 @@
       #mediaContainer
       [scrollTop]="scrollVariable"
     >
-      <div class="mediaContainer" *ngFor="let msg of messageList">
-        <div [ngSwitch]="msg.type" *ngIf="msg.data.url">
+      <ng-container *ngFor="let msg of messageList">
+        <div class="mediaContainer" [ngSwitch]="msg.type" *ngIf="msg.data.url">
           <div class="imageStyle" *ngSwitchCase="'image'">
             <div class="itemStylePhotos">
               <img [src]="msg.data.url" loading="lazy" />
@@ -58,7 +58,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
       <div *ngIf="checkMediaMessage">
         {{ displayMessage }}
       </div>
