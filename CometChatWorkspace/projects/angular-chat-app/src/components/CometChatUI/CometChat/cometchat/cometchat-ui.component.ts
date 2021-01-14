@@ -10,7 +10,7 @@ import {
   animate,
 } from "@angular/animations";
 @Component({
-  selector: "cometchat",
+  selector: "CometChatUI",
   templateUrl: "./cometchat-ui.component.html",
   styleUrls: ["./cometchat-ui.component.css"],
   animations: [
