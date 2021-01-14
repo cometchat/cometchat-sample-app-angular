@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { CometChatComponent } from "./cometchat/cometchat.component";
+import { CometChatUIComponent } from "./cometchat/cometchat-ui.component";
 import { CometChatNavBar } from "../../UserProfile/CometChat-nav-bar/cometchat-nav-bar.module";
 import { CometChatMessages } from "../../Messages/CometChat-messages/cometchat-messages.module";
 import { CometChatUserDetails } from "../../Users/CometChat-user-details/cometchat-user-details.module";
@@ -11,7 +11,7 @@ import { CometChatIncomingCall } from "../../Calls/CometChat-incoming-call/comet
 import { CometChatOutgoingCall } from "../../Calls/CometChat-outgoing-call/cometchat-outgoing-call.module";
 
 @NgModule({
-  declarations: [CometChatComponent],
+  declarations: [CometChatUIComponent],
   imports: [
     CommonModule,
     CometChatNavBar,
@@ -23,6 +23,6 @@ import { CometChatOutgoingCall } from "../../Calls/CometChat-outgoing-call/comet
     CometChatIncomingCall,
     CometChatOutgoingCall,
   ],
-  exports: [CometChatComponent],
+  exports: [CometChatUIComponent],
 })
-export class CometChat {}
+export class CometChatUI {}

@@ -61,7 +61,7 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 
 2. To run this app, you must create an account with CometChat . If you don't have an account, you can create one from <a href="https://app.cometchat.io/" target="_blank">CometChat Dashboard</a>.
 
-3. Than Create a new App in your cometchat account and obtain your `App ID`, `Auth Key` and `Region`.
+3. Create a new App in your cometchat account and obtain your `App ID`, `Auth Key` and `Region`.
 
 ## Usage
 
@@ -69,8 +69,8 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 2. Navigate to the root directory and replace `APP_ID`, `REGION` and `AUTH_KEY` with your CometChat `App ID`, `Region` and `Auth Key` in `src/CONSTS.ts` file
 3. Install dependencies and run the app
 
-```javascript
 
+```javascript
     cd CometChatWorkspace
     npm install
     ng serve angular-chat-app
