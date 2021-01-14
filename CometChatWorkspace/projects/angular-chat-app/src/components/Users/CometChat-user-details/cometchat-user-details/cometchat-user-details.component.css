@@ -92,6 +92,6 @@
 
 @media (min-width: 320px) and (max-width: 767px) {
   .headerCloseStyle {
-    display: "block";
+    display: block;
   }
 }
