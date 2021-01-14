@@ -10,9 +10,9 @@ import {
   animate,
 } from "@angular/animations";
 @Component({
-  selector: "cometchat",
-  templateUrl: "./cometchat.component.html",
-  styleUrls: ["./cometchat.component.css"],
+  selector: "CometChatUI",
+  templateUrl: "./cometchat-ui.component.html",
+  styleUrls: ["./cometchat-ui.component.css"],
   animations: [
     trigger("FadeInFadeOut", [
       state(
@@ -32,7 +32,7 @@ import {
     ]),
   ],
 })
-export class CometChatComponent implements OnInit {
+export class CometChatUIComponent implements OnInit {
   item = null;
   curentItem;
   type;
