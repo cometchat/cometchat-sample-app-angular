@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CometChatGroupWithMessagesComponent } from "./cometchat-group-with-messages/cometchat-group-with-messages.component";
+import { CometChatGroupListWithMessagesComponent } from "./cometchat-group-list-with-messages/cometchat-group-list-with-messages.component";
 import { CometChatGroupList } from "../CometChat-group-list/cometchat-group-list.module";
 import { CometChatMessages } from "../../Messages/CometChat-messages/cometchat-messages.module";
 import { CometChatMessageThread } from "../../Messages/CometChat-message-thread/cometchat-message-thread.module";
@@ -13,7 +13,7 @@ import { CometChatIncomingCall } from "../../Calls/CometChat-incoming-call/comet
 import { CometChatOutgoingCall } from "../../Calls/CometChat-outgoing-call/cometchat-outgoing-call.module";
 
 @NgModule({
-  declarations: [CometChatGroupWithMessagesComponent],
+  declarations: [CometChatGroupListWithMessagesComponent],
   imports: [
     CommonModule,
     CometChatGroupList,
@@ -26,6 +26,6 @@ import { CometChatOutgoingCall } from "../../Calls/CometChat-outgoing-call/comet
     BrowserModule,
     BrowserAnimationsModule,
   ],
-  exports: [CometChatGroupWithMessagesComponent],
+  exports: [CometChatGroupListWithMessagesComponent],
 })
-export class CometChatGroupWithMessages {}
+export class CometChatGroupListWithMessages {}
