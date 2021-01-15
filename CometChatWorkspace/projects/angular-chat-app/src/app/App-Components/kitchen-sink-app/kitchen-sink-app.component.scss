@@ -1,0 +1,98 @@
+.wrapperStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorStyle {
+  font-size: 12px;
+  color: red;
+  width: 100%;
+  text-align: center;
+}
+
+.titleStyle {
+  font-size: 42px;
+  color: #2da7ff;
+  width: 100%;
+  text-align: center;
+}
+
+.subtitleStyle {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.userContainerStyle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 320px) and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.userWrapperStyle {
+  display: flex;
+  width: 150px;
+  margin: 10px;
+  justify-content: space-around;
+  align-items: center;
+  background: #333;
+  border-radius: 10px;
+  color: white;
+  padding: 6px 10px;
+  cursor: pointer;
+  p {
+    margin: 0;
+  }
+}
+
+.thumbnailWrapperStyle {
+  width: 36px;
+  height: 36px;
+}
+
+.uidWrapperStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  div {
+    width: 100%;
+  }
+}
+.inputWrapperStyle {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    outline: none;
+    margin: 10px 30px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+  }
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    outline: none;
+    background-color: #333;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

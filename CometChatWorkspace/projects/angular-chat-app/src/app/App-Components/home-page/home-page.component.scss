@@ -1,0 +1,143 @@
+.wrapperStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.titleStyle {
+  text-align: center;
+  color: rgb(67, 171, 255);
+  font-size: 24px;
+  width: 100%;
+  padding: 0 1em;
+  @media (min-width: 320px,) and (max-width: 767px,) {
+    font-size: 20px;
+  }
+}
+
+.subtitleStyle {
+  text-align: center;
+  color: #aaa;
+  font-size: 16px;
+  width: 100%;
+  padding: 0 1em;
+  @media (min-width: 320px,) and (max-width: 767px,) {
+    font-size: 16px;
+  }
+}
+
+.helpTextStyle {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  color: #333;
+  padding: 0 1em;
+}
+
+.componentStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 50px;
+  // width: 100%;
+  @media (min-width: 320px) and (max-width: 767px) {
+    flex-direction: column;
+    padding: 50px 100px;
+  }
+  @media (min-width: 768px,) and (max-width: 1024px,) {
+    flex-direction: column;
+    padding: 50x 50px;
+  }
+}
+
+.componentSecondaryStyle {
+  max-width: 550px;
+}
+
+.boxStyle {
+  margin: 10px 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px #bbb;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 300px;
+  @media (min-width: 768px,) and (max-width: 1024px,) {
+    width: 400px;
+  }
+}
+
+.titleWrapperStyle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnailWrapperStyle {
+  width: 36px;
+  height: 36px;
+}
+
+.componentTitleStyle {
+  width: 100%;
+  padding: 10px 0px;
+  margin: 0;
+}
+
+.descWrapperStyle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkWrapperStyle {
+  border-top: 0.3px solid #e8e8e8;
+  padding: 10px;
+  display: flex;
+  margin: 0;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  li {
+    list-style-type: none;
+  }
+  @media (min-width: 320px,) and (max-width: 767px,) {
+    flex-direction: column;
+    li {
+      padding: 10px;
+    }
+  }
+}
+
+.linkStyle {
+  color: rgb(67, 171, 255) !important;
+  font-weight: 600;
+  font-size: 14px;
+  &:hover {
+    cursor: pointer;
+    color: darken(rgb(67, 171, 255), 20%);
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.logoutBtn {
+  margin: auto;
+  button {
+    outline: none;
+    background-color: #333;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

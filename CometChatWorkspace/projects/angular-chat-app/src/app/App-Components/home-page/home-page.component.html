@@ -1,0 +1,142 @@
+<div class="wrapperStyle">
+  <p class="titleStyle">
+    The UI Kit has different ways to make fully customizable UI required to
+    build a chat application.
+  </p>
+  <p class="subtitleStyle">
+    The UI Kit has been developed to help developers of different levels of
+    experience to build a chat application in a few minutes to a couple of
+    hours.
+  </p>
+
+  <div class="componentStyle">
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">        
+        <h2 class="componentTitleStyle">Comet Chat</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>The CometChat component launches a fully working chat application</p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToUnifiedScreen()">Launch</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- UNIFIED CHAT ENDS -->
+
+  <!--LIST WITH MESSAGES STARTS-->
+  <div class="componentStyle">
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+       
+        <h2 class="componentTitleStyle">Conversations</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatConversationListWithMessages component launches
+          Conversation list with messaging
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToConversationListScreen()"
+            >Launch</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+       
+        <h2 class="componentTitleStyle">Groups</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatGroupListWithMessages component launches Conversation
+          list with messaging
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToGroupListScreen()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+       
+        <h2 class="componentTitleStyle">Users</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatUserListWithMessages component launches Conversation list
+          with messaging
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToContactScreen()">Launch</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--LIST WITH MESSAGES ENDS-->
+
+  <!--LIST START-->
+  <div class="componentStyle">
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+       
+        <h2 class="componentTitleStyle">Conversation List</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>
+          The CometChatConversationList component launches Conversation list.
+        </p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToConversationList()">Launch</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+       
+        <h2 class="componentTitleStyle">Group List</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>The CometChatGroupList component launches Group list.</p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToGroupListPage()">Launch</a>
+        </li>
+      </ul>
+    </div>
+    <div class="boxStyle">
+      <div class="titleWrapperStyle">
+       
+        <h2 class="componentTitleStyle">User List</h2>
+      </div>
+      <div class="descWrapperStyle">
+        <p>The CometChatUserList component launches User list.</p>
+      </div>
+      <ul class="linkWrapperStyle">
+        <li>
+          <a class="linkStyle" (click)="navigateToContactPage()">Launch</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--LIST ENDS-->
+
+  <div class="logoutBtn">
+    <button type="button" (click)="onLogout()">Logout</button>
+  </div>
+</div>

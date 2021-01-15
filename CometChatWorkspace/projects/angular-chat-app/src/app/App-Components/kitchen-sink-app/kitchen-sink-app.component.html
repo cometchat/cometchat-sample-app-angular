@@ -1,0 +1,54 @@
+<div class="wrapperStyle">
+  <p *ngIf="onLoginError" class="errorStyle">{{ errorMsg }}</p>
+  <p class="titleStyle">Kitchen Sink App</p>
+  <p class="subtitleStyle">Login with one of our sample users</p>
+
+  <div class="userContainerStyle">
+    <div class="userWrapperStyle" (click)="onLogin('superhero1')">
+      <div class="thumbnailWrapperStyle">
+        <cometchat-avatar [avatar]="superHero1"></cometchat-avatar>
+      </div>
+      <p>superhero1</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero2')">
+      <div class="thumbnailWrapperStyle">
+        <cometchat-avatar [avatar]="superHero2"></cometchat-avatar>
+      </div>
+      <p>superhero2</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero3')">
+      <div class="thumbnailWrapperStyle">
+        <cometchat-avatar [avatar]="superHero3"></cometchat-avatar>
+      </div>
+      <p>superhero3</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero4')">
+      <div class="thumbnailWrapperStyle">
+        <cometchat-avatar [avatar]="superHero4"></cometchat-avatar>
+      </div>
+      <p>superhero4</p>
+    </div>
+    <div class="userWrapperStyle" (click)="onLogin('superhero5')">
+      <div class="thumbnailWrapperStyle">
+        <cometchat-avatar [avatar]="superHero5"></cometchat-avatar>
+      </div>
+      <p>superhero5</p>
+    </div>
+  </div>
+
+  <div class="uidWrapperStyle">
+    <div>
+      <p class="subtitleStyle">Login continue with UID</p>
+    </div>
+    <div class="inputWrapperStyle">
+      <input
+        type="text"
+        placeholder="Enter your UID here"
+        [(ngModel)]="userInput"
+      />
+    </div>
+    <div class="loginBtn">
+      <button type="button" (click)="onLogin(userInput)">Login</button>
+    </div>
+  </div>
+</div>
