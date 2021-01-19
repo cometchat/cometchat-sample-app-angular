@@ -32,6 +32,7 @@
   height: 200px;
   cursor: pointer;
   flex-shrink: 0;
+  width: -webkit-fill-available;
 }
 .messageImgWrapper img {
   border-radius: 8px;
