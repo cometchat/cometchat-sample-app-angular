@@ -1,16 +1,15 @@
 <div style="width:100%">
     <div style="width:50%;">
         <div align="center">
-       <a> <img align="center" width="180" height="180" alt="CometChat" src="./images/logo.png"> </a>  
+       <a> <img align="center" width="180" height="180" alt="CometChat" src="./Screenshots/logo.png"> </a>  
         </div>    
     </div>    
 </div>
 
-
-
 </br></br>
 
 # CometChat Kitchen Sink Sample App (Angular)
+
 [![Platform](https://img.shields.io/badge/Platform-Javascript-brightgreen)](#)
 ![GitHub repo size](https://img.shields.io/github/repo-size/cometchat-pro/javascript-angular-chat-app)
 ![GitHub contributors](https://img.shields.io/github/contributors/cometchat-pro/javascript-angular-chat-app)
@@ -21,18 +20,17 @@
 <div style="width:100%">
     <div style="width:50%; display:inline-block">
         <div align="center">
-          <img align="left" alt="Main" src="./images/main.png">    
+          <img align="left" alt="Main" src="./Screenshots/main.png">    
         </div>    
     </div>    
 </div>
 
 </br></br>
 
-
-
 CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
 
 ## Features
+
 - Login
 - Private(1-1) & Group Conversations
 - Voice & video calling & conferencing
@@ -47,13 +45,12 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 - Search by users and groups
 - Conversations List
 - Threaded Conversations
-  
- ## Extensions
 
- [Thumbnail Generation](https://prodocs.cometchat.com/docs/extensions-thumbnail-generation) | [Link Preview](https://prodocs.cometchat.com/docs/extensions-link-preview) | [Rich Media Preview](https://prodocs.cometchat.com/docs/extensions-rich-media-preview) | [Smart Reply](https://prodocs.cometchat.com/docs/extensions-smart-reply)| [Emojis](https://prodocs.cometchat.com/docs/extensions-emojis) | [Polls](https://prodocs.cometchat.com/docs/extensions-polls) | [Reactions](https://prodocs.cometchat.com/docs/extensions-reactions) | [Stickers](https://prodocs.cometchat.com/docs/extensions-stickers)
+## Extensions
 
-<hr/> 
+[Thumbnail Generation](https://prodocs.cometchat.com/docs/extensions-thumbnail-generation) | [Link Preview](https://prodocs.cometchat.com/docs/extensions-link-preview) | [Rich Media Preview](https://prodocs.cometchat.com/docs/extensions-rich-media-preview) | [Smart Reply](https://prodocs.cometchat.com/docs/extensions-smart-reply)| [Emojis](https://prodocs.cometchat.com/docs/extensions-emojis) | [Polls](https://prodocs.cometchat.com/docs/extensions-polls) | [Reactions](https://prodocs.cometchat.com/docs/extensions-reactions) | [Stickers](https://prodocs.cometchat.com/docs/extensions-stickers)
 
+<hr/>
 
 ## Prerequisite
 
@@ -69,7 +66,6 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 2. Navigate to the root directory and replace `APP_ID`, `REGION` and `AUTH_KEY` with your CometChat `App ID`, `Region` and `Auth Key` in `src/CONSTS.ts` file
 3. Install dependencies and run the app
 
-
 ```javascript
     cd CometChatWorkspace
     npm install
@@ -82,14 +78,11 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 
 Learn more about how to integrate [UI Kit](https://github.com/cometchat-pro/angular-chat-ui-kit) inside your app.
 
-
 # Troubleshooting
 
 - To read the full dcoumentation on UI Kit integration visit our [Documentation](https://prodocs.cometchat.com/docs/angular-ui-kit) .
 
 - Facing any issues while integrating or installing the UI Kit please <a href="https://app.cometchat.io/"> connect with us via real time support present in CometChat Dashboard.</a>.
-
-
 
 # Contact 📪
 
