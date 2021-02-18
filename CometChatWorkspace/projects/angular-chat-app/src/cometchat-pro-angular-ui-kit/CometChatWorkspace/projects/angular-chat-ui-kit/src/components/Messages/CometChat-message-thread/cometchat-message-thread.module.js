@@ -1,0 +1,52 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: components/Messages/CometChat-message-thread/cometchat-message-thread.module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { CometChatMessageThreadComponent } from "./cometchat-message-thread/cometchat-message-thread.component";
+import { CometChatSenderTextMessageBubble } from "../CometChat-sender-text-message-bubble/cometchat-sender-text-message-bubble.module";
+import { CometChatMessageList } from "../CometChat-message-list/cometchat-message-list.module";
+import { CometChatMessageComposer } from "../CometChat-message-composer/cometchat-message-composer.module";
+import { CometChatReceiverTextMessageBubble } from "../CometChat-receiver-text-message-bubble/cometchat-receiver-text-message-bubble.module";
+import { CometChatSenderFileMessageBubble } from "../CometChat-sender-file-message-bubble/cometchat-sender-file-message-bubble.module";
+import { CometChatReceiverFileMessageBubble } from "../CometChat-receiver-file-message-bubble/cometchat-receiver-file-message-bubble.module";
+import { CometChatSenderImageMessageBubble } from "../CometChat-sender-image-message-bubble/cometchat-sender-image-message-bubble.module";
+import { CometChatReceiverImageMessageBubble } from "../CometChat-receiver-image-message-bubble/cometchat-receiver-image-message-bubble.module";
+import { CometChatSenderVideoMessageBubble } from "../CometChat-sender-video-message-bubble/cometchat-sender-video-message-bubble.module";
+import { CometChatReceiverVideoMessageBubble } from "../CometChat-receiver-video-message-bubble/cometchat-receiver-video-message-bubble.module";
+import { CometChatSenderAudioMessageBubble } from "../CometChat-sender-audio-message-bubble/cometchat-sender-audio-message-bubble.module";
+import { CometChatReceiverAudioMessageBubble } from "../CometChat-receiver-audio-message-bubble/cometchat-receiver-audio-message-bubble.module";
+import { CometChatSenderStickerMessageBubble } from "../Extensions/CometChat-sender-sticker-message-bubble/cometchat-sender-sticker-message-bubble.module";
+import { CometChatReceiverStickerMessageBubble } from "../Extensions/CometChat-receiver-sticker-message-bubble/cometchat-receiver-sticker-message-bubble.module";
+import { CometChatSenderPollMessageBubble } from "../Extensions/CometChat-sender-poll-message-bubble/cometchat-sender-poll-message-bubble.module";
+import { CometChatReceiverPollMessageBubble } from "../Extensions/CometChat-receiver-poll-message-bubble/cometchat-receiver-poll-message-bubble.module";
+export class CometChatMessageThread {
+}
+CometChatMessageThread.decorators = [
+    { type: NgModule, args: [{
+                declarations: [CometChatMessageThreadComponent],
+                imports: [
+                    CommonModule,
+                    CometChatSenderTextMessageBubble,
+                    CometChatReceiverTextMessageBubble,
+                    CometChatSenderFileMessageBubble,
+                    CometChatReceiverFileMessageBubble,
+                    CometChatSenderImageMessageBubble,
+                    CometChatReceiverImageMessageBubble,
+                    CometChatSenderAudioMessageBubble,
+                    CometChatReceiverAudioMessageBubble,
+                    CometChatSenderVideoMessageBubble,
+                    CometChatReceiverVideoMessageBubble,
+                    CometChatMessageList,
+                    CometChatMessageComposer,
+                    CometChatSenderStickerMessageBubble,
+                    CometChatReceiverStickerMessageBubble,
+                    CometChatSenderPollMessageBubble,
+                    CometChatReceiverPollMessageBubble,
+                ],
+                exports: [CometChatMessageThreadComponent],
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tZXRjaGF0LW1lc3NhZ2UtdGhyZWFkLm1vZHVsZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2FuZ3VsYXItY2hhdC11aS1raXQvIiwic291cmNlcyI6WyJjb21wb25lbnRzL01lc3NhZ2VzL0NvbWV0Q2hhdC1tZXNzYWdlLXRocmVhZC9jb21ldGNoYXQtbWVzc2FnZS10aHJlYWQubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUEsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsWUFBWSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFDL0MsT0FBTyxFQUFFLCtCQUErQixFQUFFLE1BQU0sK0RBQStELENBQUM7QUFDaEgsT0FBTyxFQUFFLGdDQUFnQyxFQUFFLE1BQU0scUZBQXFGLENBQUM7QUFDdkksT0FBTyxFQUFFLG9CQUFvQixFQUFFLE1BQU0seURBQXlELENBQUM7QUFDL0YsT0FBTyxFQUFFLHdCQUF3QixFQUFFLE1BQU0saUVBQWlFLENBQUM7QUFDM0csT0FBTyxFQUFFLGtDQUFrQyxFQUFFLE1BQU0seUZBQXlGLENBQUM7QUFDN0ksT0FBTyxFQUFFLGdDQUFnQyxFQUFFLE1BQU0scUZBQXFGLENBQUM7QUFDdkksT0FBTyxFQUFFLGtDQUFrQyxFQUFFLE1BQU0seUZBQXlGLENBQUM7QUFDN0ksT0FBTyxFQUFFLGlDQUFpQyxFQUFFLE1BQU0sdUZBQXVGLENBQUM7QUFDMUksT0FBTyxFQUFFLG1DQUFtQyxFQUFFLE1BQU0sMkZBQTJGLENBQUM7QUFDaEosT0FBTyxFQUFFLGlDQUFpQyxFQUFFLE1BQU0sdUZBQXVGLENBQUM7QUFDMUksT0FBTyxFQUFFLG1DQUFtQyxFQUFFLE1BQU0sMkZBQTJGLENBQUM7QUFDaEosT0FBTyxFQUFFLGlDQUFpQyxFQUFFLE1BQU0sdUZBQXVGLENBQUM7QUFDMUksT0FBTyxFQUFFLG1DQUFtQyxFQUFFLE1BQU0sMkZBQTJGLENBQUM7QUFDaEosT0FBTyxFQUFFLG1DQUFtQyxFQUFFLE1BQU0sc0dBQXNHLENBQUM7QUFDM0osT0FBTyxFQUFFLHFDQUFxQyxFQUFFLE1BQU0sMEdBQTBHLENBQUM7QUFDakssT0FBTyxFQUFFLGdDQUFnQyxFQUFFLE1BQU0sZ0dBQWdHLENBQUM7QUFDbEosT0FBTyxFQUFFLGtDQUFrQyxFQUFFLE1BQU0sb0dBQW9HLENBQUM7QUF5QnhKLE1BQU0sT0FBTyxzQkFBc0I7OztZQXZCbEMsUUFBUSxTQUFDO2dCQUNSLFlBQVksRUFBRSxDQUFDLCtCQUErQixDQUFDO2dCQUMvQyxPQUFPLEVBQUU7b0JBQ1AsWUFBWTtvQkFDWixnQ0FBZ0M7b0JBQ2hDLGtDQUFrQztvQkFDbEMsZ0NBQWdDO29CQUNoQyxrQ0FBa0M7b0JBQ2xDLGlDQUFpQztvQkFDakMsbUNBQW1DO29CQUNuQyxpQ0FBaUM7b0JBQ2pDLG1DQUFtQztvQkFDbkMsaUNBQWlDO29CQUNqQyxtQ0FBbUM7b0JBQ25DLG9CQUFvQjtvQkFDcEIsd0JBQXdCO29CQUN4QixtQ0FBbUM7b0JBQ25DLHFDQUFxQztvQkFDckMsZ0NBQWdDO29CQUNoQyxrQ0FBa0M7aUJBQ25DO2dCQUNELE9BQU8sRUFBRSxDQUFDLCtCQUErQixDQUFDO2FBQzNDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tIFwiQGFuZ3VsYXIvY29yZVwiO1xuaW1wb3J0IHsgQ29tbW9uTW9kdWxlIH0gZnJvbSBcIkBhbmd1bGFyL2NvbW1vblwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0TWVzc2FnZVRocmVhZENvbXBvbmVudCB9IGZyb20gXCIuL2NvbWV0Y2hhdC1tZXNzYWdlLXRocmVhZC9jb21ldGNoYXQtbWVzc2FnZS10aHJlYWQuY29tcG9uZW50XCI7XG5pbXBvcnQgeyBDb21ldENoYXRTZW5kZXJUZXh0TWVzc2FnZUJ1YmJsZSB9IGZyb20gXCIuLi9Db21ldENoYXQtc2VuZGVyLXRleHQtbWVzc2FnZS1idWJibGUvY29tZXRjaGF0LXNlbmRlci10ZXh0LW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0TWVzc2FnZUxpc3QgfSBmcm9tIFwiLi4vQ29tZXRDaGF0LW1lc3NhZ2UtbGlzdC9jb21ldGNoYXQtbWVzc2FnZS1saXN0Lm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0TWVzc2FnZUNvbXBvc2VyIH0gZnJvbSBcIi4uL0NvbWV0Q2hhdC1tZXNzYWdlLWNvbXBvc2VyL2NvbWV0Y2hhdC1tZXNzYWdlLWNvbXBvc2VyLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0UmVjZWl2ZXJUZXh0TWVzc2FnZUJ1YmJsZSB9IGZyb20gXCIuLi9Db21ldENoYXQtcmVjZWl2ZXItdGV4dC1tZXNzYWdlLWJ1YmJsZS9jb21ldGNoYXQtcmVjZWl2ZXItdGV4dC1tZXNzYWdlLWJ1YmJsZS5tb2R1bGVcIjtcbmltcG9ydCB7IENvbWV0Q2hhdFNlbmRlckZpbGVNZXNzYWdlQnViYmxlIH0gZnJvbSBcIi4uL0NvbWV0Q2hhdC1zZW5kZXItZmlsZS1tZXNzYWdlLWJ1YmJsZS9jb21ldGNoYXQtc2VuZGVyLWZpbGUtbWVzc2FnZS1idWJibGUubW9kdWxlXCI7XG5pbXBvcnQgeyBDb21ldENoYXRSZWNlaXZlckZpbGVNZXNzYWdlQnViYmxlIH0gZnJvbSBcIi4uL0NvbWV0Q2hhdC1yZWNlaXZlci1maWxlLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1yZWNlaXZlci1maWxlLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0U2VuZGVySW1hZ2VNZXNzYWdlQnViYmxlIH0gZnJvbSBcIi4uL0NvbWV0Q2hhdC1zZW5kZXItaW1hZ2UtbWVzc2FnZS1idWJibGUvY29tZXRjaGF0LXNlbmRlci1pbWFnZS1tZXNzYWdlLWJ1YmJsZS5tb2R1bGVcIjtcbmltcG9ydCB7IENvbWV0Q2hhdFJlY2VpdmVySW1hZ2VNZXNzYWdlQnViYmxlIH0gZnJvbSBcIi4uL0NvbWV0Q2hhdC1yZWNlaXZlci1pbWFnZS1tZXNzYWdlLWJ1YmJsZS9jb21ldGNoYXQtcmVjZWl2ZXItaW1hZ2UtbWVzc2FnZS1idWJibGUubW9kdWxlXCI7XG5pbXBvcnQgeyBDb21ldENoYXRTZW5kZXJWaWRlb01lc3NhZ2VCdWJibGUgfSBmcm9tIFwiLi4vQ29tZXRDaGF0LXNlbmRlci12aWRlby1tZXNzYWdlLWJ1YmJsZS9jb21ldGNoYXQtc2VuZGVyLXZpZGVvLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0UmVjZWl2ZXJWaWRlb01lc3NhZ2VCdWJibGUgfSBmcm9tIFwiLi4vQ29tZXRDaGF0LXJlY2VpdmVyLXZpZGVvLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1yZWNlaXZlci12aWRlby1tZXNzYWdlLWJ1YmJsZS5tb2R1bGVcIjtcbmltcG9ydCB7IENvbWV0Q2hhdFNlbmRlckF1ZGlvTWVzc2FnZUJ1YmJsZSB9IGZyb20gXCIuLi9Db21ldENoYXQtc2VuZGVyLWF1ZGlvLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1zZW5kZXItYXVkaW8tbWVzc2FnZS1idWJibGUubW9kdWxlXCI7XG5pbXBvcnQgeyBDb21ldENoYXRSZWNlaXZlckF1ZGlvTWVzc2FnZUJ1YmJsZSB9IGZyb20gXCIuLi9Db21ldENoYXQtcmVjZWl2ZXItYXVkaW8tbWVzc2FnZS1idWJibGUvY29tZXRjaGF0LXJlY2VpdmVyLWF1ZGlvLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0U2VuZGVyU3RpY2tlck1lc3NhZ2VCdWJibGUgfSBmcm9tIFwiLi4vRXh0ZW5zaW9ucy9Db21ldENoYXQtc2VuZGVyLXN0aWNrZXItbWVzc2FnZS1idWJibGUvY29tZXRjaGF0LXNlbmRlci1zdGlja2VyLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0UmVjZWl2ZXJTdGlja2VyTWVzc2FnZUJ1YmJsZSB9IGZyb20gXCIuLi9FeHRlbnNpb25zL0NvbWV0Q2hhdC1yZWNlaXZlci1zdGlja2VyLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1yZWNlaXZlci1zdGlja2VyLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0U2VuZGVyUG9sbE1lc3NhZ2VCdWJibGUgfSBmcm9tIFwiLi4vRXh0ZW5zaW9ucy9Db21ldENoYXQtc2VuZGVyLXBvbGwtbWVzc2FnZS1idWJibGUvY29tZXRjaGF0LXNlbmRlci1wb2xsLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0UmVjZWl2ZXJQb2xsTWVzc2FnZUJ1YmJsZSB9IGZyb20gXCIuLi9FeHRlbnNpb25zL0NvbWV0Q2hhdC1yZWNlaXZlci1wb2xsLW1lc3NhZ2UtYnViYmxlL2NvbWV0Y2hhdC1yZWNlaXZlci1wb2xsLW1lc3NhZ2UtYnViYmxlLm1vZHVsZVwiO1xuXG5ATmdNb2R1bGUoe1xuICBkZWNsYXJhdGlvbnM6IFtDb21ldENoYXRNZXNzYWdlVGhyZWFkQ29tcG9uZW50XSxcbiAgaW1wb3J0czogW1xuICAgIENvbW1vbk1vZHVsZSxcbiAgICBDb21ldENoYXRTZW5kZXJUZXh0TWVzc2FnZUJ1YmJsZSxcbiAgICBDb21ldENoYXRSZWNlaXZlclRleHRNZXNzYWdlQnViYmxlLFxuICAgIENvbWV0Q2hhdFNlbmRlckZpbGVNZXNzYWdlQnViYmxlLFxuICAgIENvbWV0Q2hhdFJlY2VpdmVyRmlsZU1lc3NhZ2VCdWJibGUsXG4gICAgQ29tZXRDaGF0U2VuZGVySW1hZ2VNZXNzYWdlQnViYmxlLFxuICAgIENvbWV0Q2hhdFJlY2VpdmVySW1hZ2VNZXNzYWdlQnViYmxlLFxuICAgIENvbWV0Q2hhdFNlbmRlckF1ZGlvTWVzc2FnZUJ1YmJsZSxcbiAgICBDb21ldENoYXRSZWNlaXZlckF1ZGlvTWVzc2FnZUJ1YmJsZSxcbiAgICBDb21ldENoYXRTZW5kZXJWaWRlb01lc3NhZ2VCdWJibGUsXG4gICAgQ29tZXRDaGF0UmVjZWl2ZXJWaWRlb01lc3NhZ2VCdWJibGUsXG4gICAgQ29tZXRDaGF0TWVzc2FnZUxpc3QsXG4gICAgQ29tZXRDaGF0TWVzc2FnZUNvbXBvc2VyLFxuICAgIENvbWV0Q2hhdFNlbmRlclN0aWNrZXJNZXNzYWdlQnViYmxlLFxuICAgIENvbWV0Q2hhdFJlY2VpdmVyU3RpY2tlck1lc3NhZ2VCdWJibGUsXG4gICAgQ29tZXRDaGF0U2VuZGVyUG9sbE1lc3NhZ2VCdWJibGUsXG4gICAgQ29tZXRDaGF0UmVjZWl2ZXJQb2xsTWVzc2FnZUJ1YmJsZSxcbiAgXSxcbiAgZXhwb3J0czogW0NvbWV0Q2hhdE1lc3NhZ2VUaHJlYWRDb21wb25lbnRdLFxufSlcbmV4cG9ydCBjbGFzcyBDb21ldENoYXRNZXNzYWdlVGhyZWFkIHt9XG4iXX0=

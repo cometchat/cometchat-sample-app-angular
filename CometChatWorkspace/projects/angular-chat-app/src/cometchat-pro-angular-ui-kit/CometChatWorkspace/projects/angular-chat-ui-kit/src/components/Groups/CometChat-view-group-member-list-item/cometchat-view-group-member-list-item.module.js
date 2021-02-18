@@ -1,0 +1,19 @@
+/**
+ * @fileoverview added by tsickle
+ * Generated from: components/Groups/CometChat-view-group-member-list-item/cometchat-view-group-member-list-item.module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { CometChatViewGroupMemberListItemComponent } from "./cometchat-view-group-member-list-item/cometchat-view-group-member-list-item.component";
+import { CometChatAvatar } from "../../Shared/CometChat-avatar/cometchat-avatar.module";
+export class CometChatViewGroupMemberListItem {
+}
+CometChatViewGroupMemberListItem.decorators = [
+    { type: NgModule, args: [{
+                declarations: [CometChatViewGroupMemberListItemComponent],
+                imports: [CommonModule, CometChatAvatar],
+                exports: [CometChatViewGroupMemberListItemComponent],
+            },] }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tZXRjaGF0LXZpZXctZ3JvdXAtbWVtYmVyLWxpc3QtaXRlbS5tb2R1bGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9hbmd1bGFyLWNoYXQtdWkta2l0LyIsInNvdXJjZXMiOlsiY29tcG9uZW50cy9Hcm91cHMvQ29tZXRDaGF0LXZpZXctZ3JvdXAtbWVtYmVyLWxpc3QtaXRlbS9jb21ldGNoYXQtdmlldy1ncm91cC1tZW1iZXItbGlzdC1pdGVtLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUFBLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFDekMsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGlCQUFpQixDQUFDO0FBQy9DLE9BQU8sRUFBRSx5Q0FBeUMsRUFBRSxNQUFNLHlGQUF5RixDQUFDO0FBQ3BKLE9BQU8sRUFBRSxlQUFlLEVBQUUsTUFBTSx1REFBdUQsQ0FBQztBQU94RixNQUFNLE9BQU8sZ0NBQWdDOzs7WUFMNUMsUUFBUSxTQUFDO2dCQUNSLFlBQVksRUFBRSxDQUFDLHlDQUF5QyxDQUFDO2dCQUN6RCxPQUFPLEVBQUUsQ0FBQyxZQUFZLEVBQUUsZUFBZSxDQUFDO2dCQUN4QyxPQUFPLEVBQUUsQ0FBQyx5Q0FBeUMsQ0FBQzthQUNyRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcbmltcG9ydCB7IENvbW1vbk1vZHVsZSB9IGZyb20gXCJAYW5ndWxhci9jb21tb25cIjtcbmltcG9ydCB7IENvbWV0Q2hhdFZpZXdHcm91cE1lbWJlckxpc3RJdGVtQ29tcG9uZW50IH0gZnJvbSBcIi4vY29tZXRjaGF0LXZpZXctZ3JvdXAtbWVtYmVyLWxpc3QtaXRlbS9jb21ldGNoYXQtdmlldy1ncm91cC1tZW1iZXItbGlzdC1pdGVtLmNvbXBvbmVudFwiO1xuaW1wb3J0IHsgQ29tZXRDaGF0QXZhdGFyIH0gZnJvbSBcIi4uLy4uL1NoYXJlZC9Db21ldENoYXQtYXZhdGFyL2NvbWV0Y2hhdC1hdmF0YXIubW9kdWxlXCI7XG5cbkBOZ01vZHVsZSh7XG4gIGRlY2xhcmF0aW9uczogW0NvbWV0Q2hhdFZpZXdHcm91cE1lbWJlckxpc3RJdGVtQ29tcG9uZW50XSxcbiAgaW1wb3J0czogW0NvbW1vbk1vZHVsZSwgQ29tZXRDaGF0QXZhdGFyXSxcbiAgZXhwb3J0czogW0NvbWV0Q2hhdFZpZXdHcm91cE1lbWJlckxpc3RJdGVtQ29tcG9uZW50XSxcbn0pXG5leHBvcnQgY2xhc3MgQ29tZXRDaGF0Vmlld0dyb3VwTWVtYmVyTGlzdEl0ZW0ge31cbiJdfQ==
