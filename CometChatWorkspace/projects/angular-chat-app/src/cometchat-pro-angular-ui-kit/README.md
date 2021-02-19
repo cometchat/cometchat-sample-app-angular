@@ -194,7 +194,7 @@ import { CometChatUI } from "../components/CometChatUI/CometChat/cometchat-ui.mo
 
 # Checkout our sample app
 
-Visit our [Angular sample app](https://github.com/cometchat-pro/javascript-angular-chat-app) repo to run the Angular sample app.
+Visit our [Angular sample app](https://github.com/cometchat-pro/cometchat-pro-angular-sample-app) repo to run the Angular sample app.
 
 ---
 
