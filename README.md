@@ -82,7 +82,7 @@ Learn more about how to integrate [UI Kit](https://github.com/cometchat-pro/come
 
 - To read the full dcoumentation on UI Kit integration visit our [Documentation](https://prodocs.cometchat.com/docs/angular-ui-kit) .
 
-- Facing any issues while integrating or installing the UI Kit please <a href="https://app.cometchat.com/"> connect with us via real time support present in CometChat Dashboard.</a>.
+- Facing any issues while integrating or installing the UI Kit please connect with us via real time support present in <a href="https://app.cometchat.com/"> CometChat Dashboard.</a>.
 
 # Contact 📪
 
