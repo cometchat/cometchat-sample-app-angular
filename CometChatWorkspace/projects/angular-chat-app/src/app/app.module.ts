@@ -19,7 +19,7 @@ import { CometChatUnifiedPageComponent } from "./App-Components/Pages/comet-chat
 import { CometChatConversationList } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Chats/CometChat-conversation-list/cometchat-conversation-list.module";
 import { CometChatConversationListWithMessages } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Chats/CometChat-conversation-list-with-messages/cometchat-conversation-list-with-messages.module";
 import { CometChatGroupList } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Groups/CometChat-group-list/cometchat-group-list.module";
-import { CometChatGroupWithMessages } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Groups/CometChat-group-with-messages/cometchat-group-with-messages.module";
+import { CometChatGroupListWithMessages } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Groups/CometChat-group-list-with-messages/cometchat-group-list-with-messages.module";
 import { CometChatUI } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/CometChatUI/CometChat-Ui/cometchat-ui.module";
 import { CometChatUserList } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Users/CometChat-user-list/cometchat-user-list.module";
 import { CometChatUserListWithMessages } from "../cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/components/Users/CometChat-user-list-with-messages/cometchat-user-list-with-messages.module";
@@ -44,7 +44,7 @@ import { CometChatAvatar } from "../cometchat-pro-angular-ui-kit/CometChatWorksp
     AppRoutingModule,
     CometChatUI,
     CometChatConversationListWithMessages,
-    CometChatGroupWithMessages,
+    CometChatGroupListWithMessages,
     CometChatUserListWithMessages,
     CometChatConversationList,
     CometChatGroupList,
