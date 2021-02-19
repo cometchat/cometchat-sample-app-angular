@@ -15,7 +15,6 @@
 ![GitHub stars](https://img.shields.io/github/stars/cometchat-pro/javascript-angular-chat-ui-kit?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/cometchat?style=social)
 
-
 </br></br>
 
 <div style="width:100%">
@@ -33,7 +32,9 @@ The CometChat Angular UI Kit is a library designed to keep developers in mind an
 Using customizable UI components, the UI Kit library provides options to add text chat and voice/video calling features to your application seamlessly.
 
 ---
+
 ## Features
+
 - Private(1-1) & Group Conversations
 - Voice & video calling & conferencing
 - Rich Media Attachments
@@ -47,13 +48,12 @@ Using customizable UI components, the UI Kit library provides options to add tex
 - Groups List
 - Conversations List
 - Threaded Conversations
-  
 
 ## Extensions
 
- [Thumbnail Generation](https://prodocs.cometchat.com/docs/extensions-thumbnail-generation) | [Link Preview](https://prodocs.cometchat.com/docs/extensions-link-preview) | [Rich Media Preview](https://prodocs.cometchat.com/docs/extensions-rich-media-preview) | [Smart Reply](https://prodocs.cometchat.com/docs/extensions-smart-reply)| [Emojis](https://prodocs.cometchat.com/docs/extensions-emojis) | [Polls](https://prodocs.cometchat.com/docs/extensions-polls) | [Reactions](https://prodocs.cometchat.com/docs/extensions-reactions) | [Stickers](https://prodocs.cometchat.com/docs/extensions-stickers)
+[Thumbnail Generation](https://prodocs.cometchat.com/docs/extensions-thumbnail-generation) | [Link Preview](https://prodocs.cometchat.com/docs/extensions-link-preview) | [Rich Media Preview](https://prodocs.cometchat.com/docs/extensions-rich-media-preview) | [Smart Reply](https://prodocs.cometchat.com/docs/extensions-smart-reply)| [Emojis](https://prodocs.cometchat.com/docs/extensions-emojis) | [Polls](https://prodocs.cometchat.com/docs/extensions-polls) | [Reactions](https://prodocs.cometchat.com/docs/extensions-reactions) | [Stickers](https://prodocs.cometchat.com/docs/extensions-stickers)
 
-  ---
+---
 
 ## Prerequisites
 
@@ -74,6 +74,7 @@ Before you begin, ensure you have met the following requirements:
 ## 1. Setup
 
 ### i. Register on CometChat 🔧
+
 To install Angular UI Kit, you need to first register on CometChat Dashboard. <a href="https://app.cometchat.com/" target="_blank">Click here to sign up</a>
 
 ### ii. Get your Application Keys :key:
@@ -94,7 +95,7 @@ To install Angular UI Kit, you need to first register on CometChat Dashboard. <a
 ### i. Import CometChat SDK
 
 ```javascript
-  import { CometChat } from "@cometchat-pro/chat";
+import { CometChat } from "@cometchat-pro/chat";
 ```
 
 ### ii. Initialize CometChat 🌟
@@ -156,7 +157,7 @@ CometChat.login(uid, authKey).then(
 
 ## 3. Add UI Kit to your project
 
-- Clone this repository `https://github.com/cometchat-pro/cometchat-pro-angular-ui-kit`
+- Clone [this](https://github.com/cometchat-pro/cometchat-pro-angular-ui-kit) repository
 - Copy the cloned repository into your project src folder.
 
 <div style="width:100%">
@@ -186,7 +187,8 @@ In this component all UI Components are interlinked and work together to launch 
 **Import the Cometchat in the requierd module**
 
 ```html
-import { CometChatUI } from "../components/CometChatUI/CometChat/cometchat-ui.module";
+import { CometChatUI } from
+"../components/CometChatUI/CometChat/cometchat-ui.module";
 ```
 
 **Use this selector in your html file**
