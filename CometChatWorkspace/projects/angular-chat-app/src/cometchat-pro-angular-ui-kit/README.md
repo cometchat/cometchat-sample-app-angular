@@ -26,10 +26,9 @@
 </div>
 
 </br></br>
+CometChat Angular UI Kit is a collection of custom UI Components designed to build text chat and voice/video calling features in your application. 
 
-The CometChat Angular UI Kit is a library designed to keep developers in mind and aims to greatly reduce the development efforts needed to add text chat and voice/video calling features to your website or mobile application.
-
-Using customizable UI components, the UI Kit library provides options to add text chat and voice/video calling features to your application seamlessly.
+The UI Kit is developed to keep developers in mind and aims to reduce development efforts significantly. 
 
 ---
 
@@ -85,7 +84,7 @@ To install Angular UI Kit, you need to first register on CometChat Dashboard. <a
 ### iii. Add the CometChat Dependency
 
 ```javascript
-  npm install @cometchat-pro/chat@2.1.7 --save
+  npm install @cometchat-pro/chat@2.2.1 --save
 ```
 
 <br/>
@@ -157,7 +156,7 @@ CometChat.login(uid, authKey).then(
 
 ## 3. Add UI Kit to your project
 
-- Clone [this](https://github.com/cometchat-pro/cometchat-pro-angular-ui-kit) repository
+- Clone this repository `git clone https://github.com/cometchat-pro/cometchat-pro-angular-ui-kit.git`
 - Copy the cloned repository into your project src folder.
 
 <div style="width:100%">
@@ -184,7 +183,7 @@ CometChat.login(uid, authKey).then(
 Using the CometChatUI component from the UI Kit, you can launch a fully functional chat application.
 In this component all UI Components are interlinked and work together to launch a fully functional chat on your website/application.
 
-**Import the Cometchat in the requierd module**
+**Import the CometChat in the required module**
 
 ```html
 import { CometChatUI } from
