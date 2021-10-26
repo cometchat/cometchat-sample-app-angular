@@ -17,15 +17,17 @@
 ![Twitter Follow](https://img.shields.io/twitter/follow/cometchat?style=social)
 </br></br>
 
-<div style="width:100%">
+<!--<div style="width:100%">
     <div style="width:50%;">
         <div align="center">
-        <img align="center" width="180" height="180" alt="CometChat" src="./Screenshots/main.png">    
-        </div>    
-    </div>    
-</div>
+        <img align="center" width="180" height="180" alt="CometChat" src="./Screenshots/main.png">
+        </div>
+    </div>
+</div> -->
 
-<br/><br/>
+![alt text](./Screenshots/main.png "Main")
+
+<!-- <br/><br/> -->
 
 CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
 
