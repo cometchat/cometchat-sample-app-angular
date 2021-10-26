@@ -11,25 +11,25 @@
         }
       },
       "root": "projects/angular-chat-app",
-      "sourceRoot": "projects/angular-chat-app/src",
+      "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/angular-chat-app",
-            "index": "projects/angular-chat-app/src/index.html",
-            "main": "projects/angular-chat-app/src/main.ts",
-            "polyfills": "projects/angular-chat-app/src/polyfills.ts",
-            "tsConfig": "projects/angular-chat-app/tsconfig.app.json",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "projects/angular-chat-app/src/favicon.ico",
-              "projects/angular-chat-app/src/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "node_modules/@ctrl/ngx-emoji-mart/picker.css",
-              "projects/angular-chat-app/src/cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/css/styles.scss"
+              "src/cometchat-pro-angular-ui-kit/CometChatWorkspace/projects/angular-chat-ui-kit/src/css/styles.scss"
             ],
             "scripts": []
           },
@@ -37,8 +37,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/angular-chat-app/src/environments/environment.ts",
-                  "with": "projects/angular-chat-app/src/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -85,16 +85,16 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-chat-app/src/test.ts",
-            "polyfills": "projects/angular-chat-app/src/polyfills.ts",
-            "tsConfig": "projects/angular-chat-app/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-chat-app/karma.conf.js",
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
             "assets": [
-              "projects/angular-chat-app/src/favicon.ico",
-              "projects/angular-chat-app/src/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "projects/angular-chat-app/src/styles.scss" ],
+              "src/styles.scss" ],
             "scripts": []
           }
         },
@@ -102,9 +102,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/angular-chat-app/tsconfig.app.json",
-              "projects/angular-chat-app/tsconfig.spec.json",
-              "projects/angular-chat-app/e2e/tsconfig.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -114,7 +114,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/angular-chat-app/e2e/protractor.conf.js",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "angular-chat-app:serve"
           },
           "configurations": {

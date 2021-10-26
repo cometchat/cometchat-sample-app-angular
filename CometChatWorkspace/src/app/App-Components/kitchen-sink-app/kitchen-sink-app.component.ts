@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CometChat } from "@cometchat-pro/chat";
-import { COMETCHAT_CONSTANTS } from "projects/angular-chat-app/src/CONSTS";
+import { COMETCHAT_CONSTANTS } from "src/CONSTS";
 
 @Component({
   selector: "app-kitchen-sink-app",
