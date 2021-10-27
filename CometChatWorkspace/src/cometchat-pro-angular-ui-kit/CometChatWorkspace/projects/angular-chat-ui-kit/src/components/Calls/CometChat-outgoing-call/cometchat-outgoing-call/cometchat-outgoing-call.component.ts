@@ -338,7 +338,7 @@ export class CometChatOutgoingCallComponent
           : message.receiverId;
 
       if (message.hasOwnProperty(enums.READ_AT) === false) {
-        CometChat.markAsRead(message);
+        CometChat.markAsRead(message.id, id, type);
       }
     } catch (error) {
       logger(error);

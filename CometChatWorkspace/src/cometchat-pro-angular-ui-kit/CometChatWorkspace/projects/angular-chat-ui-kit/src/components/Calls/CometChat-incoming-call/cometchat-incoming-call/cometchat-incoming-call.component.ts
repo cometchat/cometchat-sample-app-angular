@@ -163,7 +163,7 @@ export class CometChatIncomingCallComponent implements OnInit {
           : message.receiverId;
 
       if (message.hasOwnProperty(enums.READ_AT) === false) {
-        CometChat.markAsRead(message);
+        CometChat.markAsRead(message.id, receiverId, receiverType);
       }
     } catch (error) {
       logger(error);

@@ -486,7 +486,7 @@ export class CometChatUserListWithMessagesComponent implements OnInit {
 
       //marking the incoming call message as read
       if (incomingCallMessage.hasOwnProperty(enums.READ_AT) === false) {
-        CometChat.markAsRead(incomingCallMessage);
+        CometChat.markAsRead(incomingCallMessage.id, receiverId, receiverType);
       }
 
       //updating unreadcount in chats list
