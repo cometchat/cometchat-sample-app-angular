@@ -70,6 +70,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "angular-chat-app:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "angular-chat-app:build:production"
