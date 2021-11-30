@@ -60,7 +60,7 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 
 2. To run this app, you must create an account with CometChat . If you don't have an account, you can create one from <a href="https://app.cometchat.com/signup" target="_blank">CometChat Dashboard</a>.
 
-3. Create a new App in your Cometchat account and obtain your `App ID`, `Auth Key` and `Region`.
+3. Create a new App in your CometChat account and obtain your `App ID`, `Auth Key` and `Region`.
 
 ## Usage
 
