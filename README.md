@@ -62,7 +62,7 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 
 ## Usage
 
-1. Clone this repository `git clone https://github.com/cometchat-pro/cometchat-pro-angular-sample-app.git`
+1. Clone this repository `git clone https://github.com/cometchat-pro/cometchat-pro-angular-sample-app.git -b v2`
 2. Navigate to the `CometChatWorkspace/projects/angular-chat-app/src` directory and replace `APP_ID`, `REGION` and `AUTH_KEY` with your CometChat `App ID`, `Region` and `Auth Key` in `CONSTS.ts` file
 3. Install dependencies and run the app
 
