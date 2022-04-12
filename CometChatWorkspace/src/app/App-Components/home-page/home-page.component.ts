@@ -62,15 +62,34 @@ export class HomePageComponent implements OnInit {
    * Logout the user that is currently logged in
    * @param
    */
-  onLogout() {
-    CometChat.logout().then(
-      (user) => {
-        console.log("Logout successfull:");
-        this.router.navigate(["/login"]);
-      },
-      (error) => {
-        console.log("Logout failed", { error });
-      }
-    );
+   onLogout() {
+    if(CometChat.getActiveCall()){
+      CometChat.endCall(CometChat.getActiveCall().getSessionId())
+      CometChat.logout().then(
+        (user) => {
+        
+          console.log("Logout successfull:");
+          this.router.navigate(["/login"]);
+        },
+        (error) => {
+          console.log("Logout failed", { error });
+        }
+      );
+   
+    }
+    else{
+      CometChat.logout().then(
+        (user) => {
+        
+          console.log("Logout successfull:");
+          this.router.navigate(["/login"]);
+        },
+        (error) => {
+          console.log("Logout failed", { error });
+        }
+      );
+
+    }
+    
   }
 }
