@@ -66,6 +66,9 @@ Javascript Angular Chat App (built using **CometChat UI Kit**) is a fully functi
     npm install
     ng serve
 ```
+or :
+[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/create-react-app)
+
 
 ---
 
