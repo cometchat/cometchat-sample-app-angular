@@ -1,0 +1,11 @@
+
+<cometchat-theme-wrapper [theme]="theme">
+    <cometchat-groups-with-messages *ngIf="openGroupsWithMessages" [style]="withMessagesStyle" [isMobileView]="isMobileView">
+
+    </cometchat-groups-with-messages>
+    <cometchat-groups *ngIf="openGroups" [style]="groupListStyle"></cometchat-groups>
+    <cometchat-group-list *ngIf="openGroupList " [style]="groupListStyle">
+    
+    </cometchat-group-list>
+    <cometchat-data-item *ngIf="openGroupDataItem" [inputData]="groupInputdata" [group]="group" [style]="dataItemStyle"></cometchat-data-item>
+</cometchat-theme-wrapper>

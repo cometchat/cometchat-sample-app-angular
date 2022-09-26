@@ -1,0 +1,11 @@
+
+<cometchat-theme-wrapper [theme]="theme">
+    <cometchat-conversations-with-messages *ngIf="openConversationsWithMessages" [style]="withMessagesStyle" [isMobileView]="isMobileView">
+
+    </cometchat-conversations-with-messages>
+    <cometchat-conversation *ngIf="openConversations"  ></cometchat-conversation>
+    <cometchat-conversation-list *ngIf="openConversationList" [style]="conversationListStyle">
+    
+    </cometchat-conversation-list>
+    <cometchat-conversation-list-item *ngIf="openConversationListItem" [conversationInputData]="inputdata" [style]="listItemStyle" [conversationObject]="conversationObject"></cometchat-conversation-list-item>
+</cometchat-theme-wrapper>
