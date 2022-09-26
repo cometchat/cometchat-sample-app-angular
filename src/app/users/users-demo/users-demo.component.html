@@ -1,0 +1,11 @@
+
+<cometchat-theme-wrapper [theme]="theme">
+    <cometchat-users-with-messages *ngIf="openUsersWithMessages" [style]="withMessagesStyle" [isMobileView]="isMobileView">
+
+    </cometchat-users-with-messages>
+    <cometchat-users *ngIf="openUsers" [style]="userListStyle" [hideSearch]="true"></cometchat-users>
+    <cometchat-user-list *ngIf="openUserList" [style]="userListStyle">
+    
+    </cometchat-user-list>
+    <cometchat-data-item *ngIf="openUserDataItem" [inputData]="inputdata" [user]="user" [style]="dataItemStyle"></cometchat-data-item>
+</cometchat-theme-wrapper>

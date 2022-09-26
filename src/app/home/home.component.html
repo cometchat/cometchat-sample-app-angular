@@ -1,0 +1,84 @@
+<div class="home__screen">
+    <div class="home__screen__sidebar" [@FadeInFadeOut]="checkAnimatedState"  [ngStyle]="style.sidebarStyle()">
+        <div class="sidebar__header">
+            <span class="header__title" [ngStyle]="style.headerTitleStyle()">
+                UI Components
+            </span>
+        </div>
+        <div class="sidebar__content">
+            <div class="cards" [ngStyle]="style.cardStyle()" (click)="changePage('Chats')">
+                <div class="left__content">
+                    <span class="card__title" [ngStyle]="style.cardTitleStyle()" > {{localize("CHATS")}} </span>
+                    <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                        Conversations module helps you to list the recent conversations between your users and groups. To learn more about its components click here.
+                    </div>
+                </div>
+                <div class="card__icon" [ngStyle]="style.iconStyle()">
+                </div>
+            </div>
+            <div class="cards" [ngStyle]="style.cardStyle()" (click)="changePage('Messages')">
+                <div class="left__content">
+                    <span class="card__title" [ngStyle]="style.cardTitleStyle()" >{{localize("MESSAGES")}}</span>
+                    <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                        Messages module helps you to send and receive in a conversation between a user or group. To learn more about its components click here.
+                    </div>
+                </div>
+                <div class="card__icon" [ngStyle]="style.iconStyle()">
+                </div>
+            </div>
+            <div class="cards" [ngStyle]="style.cardStyle()" (click)="changePage('Users')">
+                <div class="left__content">
+                    <span class="card__title" [ngStyle]="style.cardTitleStyle()" >{{localize("USERS")}}</span>
+                    <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                        Users module helps you list all the users available in your app. To learn more about its components click here.
+                    </div>
+                </div>
+                <div class="card__icon" [ngStyle]="style.iconStyle()">
+                </div>
+            </div>
+            <div class="cards" [ngStyle]="style.cardStyle()" (click)="changePage('Groups')">
+                <div class="left__content">
+                    <span class="card__title" [ngStyle]="style.cardTitleStyle()" >{{localize("GROUPS")}}</span>
+                    <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                        Groups module helps you list all the groups you are part of in your app. To learn more about its components click here.
+                    </div>
+                </div>
+                <div class="card__icon" [ngStyle]="style.iconStyle()">
+                </div>
+            </div>
+            <div class="cards" [ngStyle]="style.cardStyle()" (click)="changePage('Shared')">
+                <div class="left__content">
+                    <span class="card__title" [ngStyle]="style.cardTitleStyle()" >{{localize("SHARED")}}</span>
+                    <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                        Share module contains several reusable components that are divided into Primary, Secondary and SDK derived components. To learn more about these components click here.
+                    </div>
+                </div>
+                <div class="card__icon" [ngStyle]="style.iconStyle()">
+                </div>
+            </div>
+        </div>
+        <div class="sidebar__footer">
+            <footer [ngStyle]="style.footerStyle()">v1.0-beta1</footer>
+        </div>
+    </div>
+    <div class="home__screen__main" [ngStyle]="style.mainscreenStyle()" >
+        <div class="navbar">
+            <div class="navbar__left">
+             <span class="root__page" [ngStyle]="style.rootPageStyle()"(click)="goBack()" > UI Components </span>  <span class="pointer" [ngStyle]="style.pointerStyle()"> <span [ngStyle]="style.navigateIconURL()"></span> </span>  <span class="active__page" [ngStyle]="style.currentPageStyle()">  {{pageName}}</span>
+            </div>
+        </div>
+        <div class="content">
+            <cometchat-conversations-wrapper  *ngIf="pageName == 'Chats'"></cometchat-conversations-wrapper>
+            <cometchat-messages-wrapper  *ngIf="pageName == 'Messages'"></cometchat-messages-wrapper>
+            <cometchat-users-wrapper  *ngIf="pageName == 'Users'"></cometchat-users-wrapper>
+            <cometchat-groups-wrapper  *ngIf="pageName == 'Groups'"></cometchat-groups-wrapper>
+            <cometchat-shared-wrapper *ngIf="pageName == 'Shared'" ></cometchat-shared-wrapper>
+        </div>
+    </div>
+  </div>
+  <div class="navbar__right">
+    <div class="theme__mode" [ngStyle]="style.themeModeIoncStyle()" (click)="changeTheme()">
+    </div>
+    <div class="logout__icon" [ngStyle]="style.logoutIoncStyle()" (click)="logout()">
+    </div>
+</div>
