@@ -8,8 +8,6 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "resolveJsonModule": true, //for importing json file.
-    "esModuleInterop": true, //for default module import.
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
