@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { CometChatTheme, fontHelper, localize } from '@cometchat-pro/angular-ui-kit';
-import { CometChatServices } from '../app.service';
+import { CometChatTheme, CometChatThemeService, CometChatUIKitConstants, localize } from '@cometchat-pro/angular-ui-kit';
+import { fontHelper } from '@cometchat-pro/angular-ui-kit';
+
 
 @Component({
   selector: 'cometchat-users-wrapper',
@@ -10,7 +11,7 @@ import { CometChatServices } from '../app.service';
 })
 export class UsersComponent implements OnInit {
   public localize:any = localize
-  @Input() theme = new CometChatTheme({})
+
   public logoutIconURL:string="assets/logout.svg";
   public soundIconURL:string="assets/sound-small.png";
   public localizeIconURL:string="assets/localize.png";
@@ -19,24 +20,20 @@ export class UsersComponent implements OnInit {
   public listwrapperIconURL:string="assets/listwrapper.png";
   public listIconURL:string="assets/list.png";
   public conversationIconURL:string="assets/conversation.png";
+  public detailsIconURL:string = "assets/details.svg"
+  constructor(private router: Router,private route: ActivatedRoute,private themeService:CometChatThemeService) {
 
-  constructor(private router: Router,private route: ActivatedRoute,private cometchatService:CometChatServices) { 
-    if(this.cometchatService.theme){
-      this.theme = this.cometchatService.theme
-
-    }
 
   }
 
   ngOnInit(): void {
   }
   redirect(name:string){
-    this.cometchatService.theme = this.theme
-      let navigationExtras: NavigationExtras = {
-    state: {pageName:name}
-};
- 
-  this.router.navigate(['/users-demo'],navigationExtras);
+
+    let navigationExtras: NavigationExtras = {
+      state: {type:CometChatUIKitConstants.MessageReceiverType.user}
+  };
+    this.router.navigate([name],navigationExtras);
 
 
   }
@@ -44,46 +41,46 @@ export class UsersComponent implements OnInit {
 style:any={
   sidebarStyle:()=>{
     return{
-      background:this.theme.palette.getSecondary()
+      background:this.themeService.theme.palette.getSecondary()
 
     }
   },
   headerTitleStyle:()=>{
     return{
-      font: fontHelper(this.theme.typography.heading),
-      color:this.theme.palette.getAccent()
+      font: fontHelper(this.themeService.theme.typography.heading),
+      color:this.themeService.theme.palette.getAccent()
     }
   },
   cardTitleStyle:()=>{
     return{
-      font: fontHelper(this.theme.typography.title1),
-      color:this.theme.palette.getAccent()
+      font: fontHelper(this.themeService.theme.typography.title2),
+      color:this.themeService.theme.palette.getAccent()
     }
   },
   cardStyle:()=>{
     return{
-     background:this.theme.palette.getBackground(),
-     boxShadow: `${this.theme.palette.getAccent400()} 0px 0px 5px`
+     background:this.themeService.theme.palette.getBackground(),
+     boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 5px`
     }
   },
   cardDescriptionStyle:()=>{
     return{
-      font: fontHelper(this.theme.typography.subtitle2),
-      color:this.theme.palette.getAccent600()
+      font: fontHelper(this.themeService.theme.typography.subtitle2),
+      color:this.themeService.theme.palette.getAccent600()
 
     }
   },
   footerStyle:()=>{
     return{
-      font: fontHelper(this.theme.typography.subtitle2),
-      color:this.theme.palette.getAccent500()
+      font: fontHelper(this.themeService.theme.typography.subtitle2),
+      color:this.themeService.theme.palette.getAccent500()
 
     }
   },
   iconStyle:(icon:string)=>{
     return{
       WebkitMask: `url(${icon}) center center no-repeat`,
-      background:this.theme.palette.getAccent() ,
+      background:this.themeService.theme.palette.getAccent() ,
       height:"28px",
       width:"fit-content"
 

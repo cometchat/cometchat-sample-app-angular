@@ -8,7 +8,7 @@
     align-items: center;
     flex-direction: column;
     height: 100%;
-    width: 75%;
+    width: 80%;
     margin: auto;
     padding: 0 8px;
     .header__section{
@@ -216,7 +216,7 @@ button{
     position: relative;
     padding: 0 12px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 800px) {
     .left__content{
         width: 100% !important;
         height: 100% !important;
@@ -229,3 +229,56 @@ button{
     width: 98% !important;
 }
    }
+@media (min-width: 820px) and (max-width: 1200px) {
+.signup__page{
+width: 96% !important;
+}
+
+}
+@media (min-height: 300px) and (max-height: 600px) {
+    .signup__section{
+        margin-top: 0px !important;
+    }
+    .signup__container{
+        height: fit-content !important;
+    }
+
+    }
+    .spinner__wheel {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+        justify-content: center;
+        top: 0;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: -1;
+        }
+
+        .spinner__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 25px;
+            background: white;
+            height: 200px;
+            width: 300px;
+            border-radius: 8px;
+            padding-bottom: 30px;
+        }
+        img{
+            height: 55px;
+            width: 55px;
+        }
+      }

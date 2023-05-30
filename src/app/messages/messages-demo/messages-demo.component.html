@@ -1,16 +1,4 @@
 
-<div class="messages__wrapper" *ngIf="openMessageComposer">
-    <cometchat-theme-wrapper [theme]="theme">
-
-        <cometchat-message-composer  [group]="group" [style]="messageComposerStyle"> </cometchat-message-composer>
-    </cometchat-theme-wrapper>
-
-</div>
-<cometchat-theme-wrapper [theme]="theme">
-    <cometchat-messages *ngIf="openMessages" [style]="withMessagesStyle" [group]="group">
+    <cometchat-messages   [user]="user">
     </cometchat-messages>
-    <cometchat-message-list *ngIf="openMessageList" [group]="group" [style]="messageListStyle"></cometchat-message-list>
-    <cometchat-message-header *ngIf="openMessageHeader" [group]="group">
-    </cometchat-message-header>
 
-</cometchat-theme-wrapper>

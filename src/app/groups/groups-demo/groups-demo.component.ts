@@ -1,9 +1,8 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CometChatServices } from 'src/app/app.service';
-import { CometChatTheme, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { dataItemStyle } from '@cometchat-pro/angular-ui-kit/lib/src/cometchat-pro-angular-ui-kit/src/components/Messages/CometChatMessageHeader/headerInterface';
-import { InputData } from '@cometchat-pro/angular-ui-kit/lib/src/cometchat-pro-angular-ui-kit/src/components/Shared/InputData/inputData';
+import { GroupsStyle } from 'uikit-utils-lerna';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { ListItemStyle } from 'my-cstom-package-lit';
 
 @Component({
   selector: 'cometchat-groups-demo',
@@ -12,11 +11,10 @@ import { InputData } from '@cometchat-pro/angular-ui-kit/lib/src/cometchat-pro-a
 })
 export class GroupsDemoComponent implements OnInit {
 
-  @Input() theme = new CometChatTheme({})
-  public openGroupsWithMessages:boolean = false;
-  public openGroups:boolean = false;
-  public openGroupList:boolean = false;
-  public openGroupDataItem:boolean = false;
+  public openUsersWithMessages:boolean = false;
+  public openUsers:boolean = false;
+  public openUserList:boolean = false;
+  public openUserDataItem:boolean = false;
   withMessagesStyle:any={
     width: "100%",
     height: "100%",
@@ -26,70 +24,38 @@ export class GroupsDemoComponent implements OnInit {
     messageTextColor: "rgba(20, 20, 20, 0.33)",
     messageTextFont: "700 22px Inter",
   }
-  groupListStyle:any = {
-    
-  }
-  public group: any={
-    getName:()=> "new group",
-    getMembersCount:()=> 12,
-    getGuid:()=> "new__group123",
-    getType:()=>"public",
-    getIcon:()=>null
-
+  public image:string="https://data-us.cometchat.io/assets/images/avatars/captainamerica.png";
+  public user:any = {
+    getName:()=> "Raj Dubey",
+    getAvatar:()=> this.image,
+    getUid:()=>"uid123",
+    getStatus:()=>"online"
   };
-  public dataItemStyle:dataItemStyle = {
-    background:"",
-    titleColor:"",
-    titleFont:"",
-    subtitleColor:"",
-    subtitleFont:""
-  };
-  public groupInputdata:InputData = {
-    thumbnail:true,
-    title:true,
 
+  groupsStyle:any = {
 
   }
 
-  constructor(private router: Router,private route: ActivatedRoute, private cometchatService:CometChatServices) { 
-    this.theme = this.cometchatService.theme;
-    this.route.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation()?.extras.state) {
-       if(this.router.getCurrentNavigation()?.extras?.state!["pageName"]){
-         if(this.router.getCurrentNavigation()?.extras?.state!["pageName"] == "groupsWithMessages"){
-           this.openGroupsWithMessages = true;
-         }
-         else    if(this.router.getCurrentNavigation()?.extras?.state!["pageName"] == "groups"){
-          this.openGroups = true;
-        }
-        else    if(this.router.getCurrentNavigation()?.extras?.state!["pageName"] == "groupList"){
-          this.openGroupList = true;
-        }
-        else    if(this.router.getCurrentNavigation()?.extras?.state!["pageName"] == "dataItem"){
-          this.openGroupDataItem = true;
-        }
-       }
-       else{
-        window.history.back()
-       }
 
-      }
-      else{
-        window.history.back()
-       }
-      
-    });
+
+  constructor(private themeService:CometChatThemeService) {
+
+
   }
-  
 
   ngOnInit(): void {
-    this.groupInputdata.subtitle = ()=> this.group.getMembersCount() + " members";
 
-    this.setTheme()
+
+    this.setGroupsStyle()
     this.onResize()
   }
   innerWidth!: number;
   isMobileView: boolean=false;
+  listItemStyle: ListItemStyle = {
+    height: "100%",
+    width: "100%",
+
+  };
     /**
    * Checks when window size is changed in realtime
    */
@@ -106,26 +72,48 @@ export class GroupsDemoComponent implements OnInit {
            this.isMobileView = false
          }
        } catch (error) {
-       
+
        }
        return true;
      }
-  setTheme(){
-    this.withMessagesStyle.background = this.theme.palette.getBackground();
-    this.withMessagesStyle.messageTextFont = fontHelper(this.theme.typography.heading);
-    this.withMessagesStyle.messageTextColor = this.theme.palette.getAccent400();
+     setListItemStyle(){
+      let defaultStyle:ListItemStyle = new ListItemStyle({
+        height: "100%",
+        width: "100%",
+        background: this.themeService.theme.palette.getBackground(),
+        borderRadius: "0",
+        titleFont: fontHelper(this.themeService.theme.typography.title2),
+        titleColor: this.themeService.theme.palette.getAccent(),
+        border: "none",
+        separatorColor:this.themeService.theme.palette.getAccent200(),
+      })
+      this.listItemStyle = {...defaultStyle,...this.listItemStyle}
+    }
+    setGroupsStyle(){
+      let defaultStyle:GroupsStyle = new GroupsStyle({
+        subTitleTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
+        subTitleTextColor: this.themeService.theme.palette.getAccent600(),
+        background:this.themeService.theme.palette.getBackground(),
+        border:`1px solid ${this.themeService.theme.palette.getAccent50()}`,
+        titleTextFont:fontHelper(this.themeService.theme.typography.title1),
+        titleTextColor:this.themeService.theme.palette.getAccent(),
+        emptyStateTextFont:fontHelper(this.themeService.theme.typography.title1),
+        emptyStateTextColor:this.themeService.theme.palette.getAccent600(),
+        errorStateTextFont:fontHelper(this.themeService.theme.typography.title1),
+        errorStateTextColor:this.themeService.theme.palette.getAccent600(),
+        loadingIconTint:this.themeService.theme.palette.getAccent600(),
+        separatorColor:this.themeService.theme.palette.getAccent400(),
+        privateGroupIconBackground:this.themeService.theme.palette.getSuccess(),
+        passwordGroupIconBackground:"RGB(247, 165, 0)",
+        searchIconTint:this.themeService.theme.palette.getAccent600(),
+        searchPlaceholderTextColor:this.themeService.theme.palette.getAccent600(),
+        searchBackground:this.themeService.theme.palette.getAccent100(),
+        searchPlaceholderTextFont:fontHelper(this.themeService.theme.typography.text3),
+        searchTextColor:this.themeService.theme.palette.getAccent600(),
+        searchTextFont:fontHelper(this.themeService.theme.typography.text3)
+      })
+      this.groupsStyle = {...defaultStyle,...this.groupsStyle}
+    }
 
-    this.dataItemStyle.background = this.theme.palette.getBackground();
-    this.dataItemStyle.activeBackground = this.theme.palette.getBackground();
-    this.dataItemStyle.titleColor = this.theme.palette.getAccent();
-    this.dataItemStyle.subtitleColor = this.theme.palette.getAccent600();
-    this.dataItemStyle.titleFont = fontHelper(this.theme.typography.title1);
-    this.dataItemStyle.subtitleFont = fontHelper(this.theme.typography.subtitle2);
-    this.groupListStyle.background =   this.theme.palette.getBackground(); 
-    this.groupListStyle.errorStateTextFont = fontHelper(this.theme.typography.heading)
-    this.groupListStyle.errorStateTextColor = this.theme.palette.getAccent400()
-    this.groupListStyle.emptyStateTextFont =  fontHelper(this.theme.typography.heading)
-    this.groupListStyle.emptyStateTextColor = this.theme.palette.getAccent400()
-  }
 
 }
