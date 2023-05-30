@@ -1,62 +1,63 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SharedComponent } from './shared.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CometChatDataItemDemoComponent } from './cometchat-data-item-demo/cometchat-data-item-demo.component';
-import { CometChatAvatarDemoComponent } from './cometchat-avatar-demo/cometchat-avatar-demo.component';
-import { CometChatBadgeCountComponent } from './cometchat-badge-count-demo/cometchat-badge-count-demo.component';
-import { CometChatLocalizeDemoComponent } from './cometchat-localize-demo/cometchat-localize-demo.component';
-import { CometChatThemeDemoComponent } from './cometchat-theme-demo/cometchat-theme-demo.component';
-import { CometChatStatusIndicatorDemoComponent } from './cometchat-status-indicator-demo/cometchat-status-indicator-demo.component';
-import { CometChatMessageReceiptDemoComponent } from './cometchat-message-receipt-demo/cometchat-message-receipt-demo.component';
-import { CometChatConversationListItemDemoComponent } from './cometchat-conversation-list-item-demo/cometchat-conversation-list-item-demo.component';
-import { CometChatSoundManagerDemoComponent } from './cometchat-sound-manager-demo/cometchat-sound-manager-demo.component';
-import { CometChatAvatar, CometChatBadgeCount, CometChatDataItem, CometChatConversationListItem, CometChatConversationsWithMessages, CometChatConversation, CometChatUsersWithMessages, CometChatUserList, CometChatUsers, CometChatGroups, CometChatGroupsWithMessages, CometChatGroupList, CometChatMessages, CometChatMessageList, CometChatMessageHeader, CometChatMessageComposer, CometChatConversationList, CometChatStatusIndicator, CometChatBackdrop, CometChatMessageReceipt } from '@cometchat-pro/angular-ui-kit';
+import { AvatarDemoComponent } from './avatar-demo/avatar-demo.component';
+import { BadgeComponent } from './badge-demo/badge-demo.component';
+import { LocalizeDemoComponent } from './localize-demo/localize-demo.component';
+import { ThemeDemoComponent } from './theme-demo/theme-demo.component';
+import { StatusIndicatorDemoComponent } from './status-indicator-demo/status-indicator-demo.component';
+import { ReceiptDemoComponent } from './message-receipt-demo/message-receipt-demo.component';
+import { ListItemDemoComponent } from './list-item-demo/list-item-demo.component';
+import { SoundManagerDemoComponent } from './sound-manager-demo/sound-manager-demo.component';
+import {  CometChatConversationsWithMessages, CometChatConversations, CometChatUsersWithMessages, CometChatUsers, CometChatGroups, CometChatGroupsWithMessages, CometChatMessages, CometChatMessageList, CometChatMessageHeader, CometChatMessageComposer, CometChatDetails } from '@cometchat-pro/angular-ui-kit';
+import { TextBubbleDemoComponent } from './text-bubble-demo/text-bubble-demo.component';
+import { AudioBubbleDemoComponent } from './audio-bubble-demo/audio-bubble-demo.component';
+import { VideoBubbleDemoComponent } from './video-bubble-demo/video-bubble-demo.component';
+import { FileBubbleDemoComponent } from './file-bubble-demo/file-bubble-demo.component';
+import { ImageBubbleDemoComponent } from './image-bubble-demo/image-bubble-demo.component';
+import { DetailsDemoComponent } from './details-demo/details-demo.component';
 @NgModule({
   declarations: [
     SharedComponent,
-    CometChatDataItemDemoComponent,
-    CometChatAvatarDemoComponent,
-    CometChatBadgeCountComponent,
-    CometChatLocalizeDemoComponent,
-    CometChatThemeDemoComponent,
-    CometChatStatusIndicatorDemoComponent,
-    CometChatMessageReceiptDemoComponent,
-    CometChatConversationListItemDemoComponent,
-    CometChatSoundManagerDemoComponent
+    AvatarDemoComponent,
+    BadgeComponent,
+    LocalizeDemoComponent,
+    ThemeDemoComponent,
+    StatusIndicatorDemoComponent,
+    ReceiptDemoComponent,
+    ListItemDemoComponent,
+    SoundManagerDemoComponent,
+    TextBubbleDemoComponent,
+    AudioBubbleDemoComponent,
+    VideoBubbleDemoComponent,
+    FileBubbleDemoComponent,
+    ImageBubbleDemoComponent,
+    DetailsDemoComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
     FormsModule,
-    CometChatAvatar,
-    CometChatBadgeCount,
-    CometChatDataItem,
     BrowserAnimationsModule,
-    CometChatConversationListItem,
     CometChatConversationsWithMessages,
-    CometChatConversation,
+    CometChatConversations,
     CometChatUsersWithMessages,
-    CometChatUserList,
     CometChatUsers,
     RouterModule,
     CometChatGroups,
     CometChatGroupsWithMessages,
-    CometChatGroupList,
     CometChatMessages,
     CometChatMessageList,
     CometChatMessageHeader,
     CometChatMessageComposer,
-    CometChatConversationList,
-    CometChatConversationListItem,
-    CometChatStatusIndicator,
-    CometChatBackdrop,
-    CometChatMessageReceipt,
+    CometChatDetails,
   ],
   providers: [],
-  bootstrap: [SharedComponent]
+  bootstrap: [SharedComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

@@ -1,8 +1,47 @@
 .login__wrapper{
-    height: 100%;
+    height: 95%;
     width: 100%;
     overflow-y: auto;
 }
+.spinner__wheel {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    justify-content: center;
+    top: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .spinner__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 25px;
+        background: white;
+        height: 200px;
+        width: 300px;
+        border-radius: 8px;
+        padding-bottom: 30px;
+    }
+    img{
+        height: 55px;
+        width: 55px;
+    }
+  }
+
 .login__page{
     display: flex;
     align-items: center;
@@ -102,19 +141,19 @@
             flex-grow: 1;
         }
     }
-    .footer__section{
-        margin-bottom: 8px;
-        bottom: 0;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px;
-        width: 100%;
-    }
+
 }
 button{
     cursor: pointer;
+}
+.footer__section{
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 100%;
+    height: 5%;
 }
 .error__text{
     display: flex;
@@ -168,7 +207,7 @@ button{
         margin-top: 0px !important;
         height: 150px !important;
     }
-       
+
     }
     @media (min-height: 600px) and (max-height: 685px) {
         .content__section{
@@ -185,7 +224,7 @@ button{
         }
         .login__field{
         margin-top: 0px !important;
- 
+
     }
-           
+
         }

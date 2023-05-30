@@ -15,7 +15,10 @@
   .sidebar__content::-webkit-scrollbar {
     width: 8px;
     height: 4px;
-  
+
+  }
+  .root__page{
+    cursor: pointer;
   }
   .sidebar__content::-webkit-scrollbar-track {
     background: #ffffff00;
