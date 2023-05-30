@@ -37,8 +37,8 @@
     display: flex;
     min-height: 120px;
     height: fit-content;
-    // justify-content: space-between;
-    justify-content: space-around;
+    justify-content: flex-start;
+    column-gap:12px ;
     cursor: pointer;
     margin: 14px 8px;
     padding: 10px 8px;
@@ -57,7 +57,6 @@
 
 @media (min-width: 320px) and (max-width: 895px) {
     .cards{
-        justify-content: space-evenly;
         height: fit-content;
         min-height: fit-content;
     }
@@ -70,8 +69,5 @@
     .card__content{
         grid-template-columns: auto auto;
 
-    }
-    .cards{
-        justify-content: space-between;
     }
   }

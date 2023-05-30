@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CometChatLocalize, CometChatTheme, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { CometChatServices } from '../../../app/app.service';
+import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+
 
 @Component({
   selector: 'cometchat-conversations-with-messages-demo',
@@ -9,7 +9,6 @@ import { CometChatServices } from '../../../app/app.service';
   styleUrls: ['./conversations-with-messages-demo.component.scss']
 })
 export class ConversationsWithMessagesDemoComponent implements OnInit {
-  @Input() theme = new CometChatTheme({})
   withMessagesStyle:any={
     width: "100%",
     height: "100%",
@@ -19,25 +18,24 @@ export class ConversationsWithMessagesDemoComponent implements OnInit {
     messageTextColor: "rgba(20, 20, 20, 0.33)",
     messageTextFont: "700 22px Inter",
   }
-
-  constructor(private router: Router,private route: ActivatedRoute,private cometchatService:CometChatServices) { 
+public replaceTheme:boolean = false;
+  constructor(private router: Router,private route: ActivatedRoute,private themeService:CometChatThemeService) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
+
         if(this.router.getCurrentNavigation()?.extras.state!["pageLanguage"]){
           CometChatLocalize.init(this.router.getCurrentNavigation()?.extras.state!["pageLanguage"])
+        }
+        if(this.router.getCurrentNavigation()?.extras.state!["customTheme"] == true){
+          this.replaceTheme = true
+
+
         }
 
       }
 
-      
-    });
-    if(this.cometchatService.customTheme){
-      this.theme = this.cometchatService.customTheme;
-    }
-    else{
 
-      this.theme = this.cometchatService.theme;
-    }
+    });
   }
 
   ngOnInit(): void {
@@ -62,17 +60,22 @@ export class ConversationsWithMessagesDemoComponent implements OnInit {
            this.isMobileView = false
          }
        } catch (error) {
-       
+
        }
        return true;
      }
   setTheme(){
-    this.withMessagesStyle.background = this.theme.palette.getBackground();
-    this.withMessagesStyle.messageTextFont = fontHelper(this.theme.typography.heading);
-    this.withMessagesStyle.messageTextColor = this.theme.palette.getAccent400();
+    this.withMessagesStyle.background = this.themeService.theme.palette.getBackground();
+    this.withMessagesStyle.messageTextFont = fontHelper(this.themeService.theme.typography.heading);
+    this.withMessagesStyle.messageTextColor = this.themeService.theme.palette.getAccent400();
   }
   ngOnDestroy(){
     CometChatLocalize.init(CometChatLocalize.getBrowserLanguage());
-    this.cometchatService.customTheme = undefined;
+    if(this.replaceTheme){
+      let mode = this.themeService.theme.palette.mode
+      this.themeService.theme = new CometChatTheme({});
+      this.themeService.theme.palette.setMode(mode)
+    }
+
   }
 }

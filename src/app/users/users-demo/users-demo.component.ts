@@ -1,9 +1,8 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CometChatServices } from '../../../app/app.service';
-import { CometChatTheme, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { dataItemStyle } from '@cometchat-pro/angular-ui-kit/lib/src/cometchat-pro-angular-ui-kit/src/components/Messages/CometChatMessageHeader/headerInterface';
-import { InputData } from '@cometchat-pro/angular-ui-kit/lib/src/cometchat-pro-angular-ui-kit/src/components/Shared/InputData/inputData';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { ListItemStyle } from 'my-cstom-package-lit';
+import { UsersStyle } from 'uikit-utils-lerna';
+
 
 @Component({
   selector: 'cometchat-users-demo',
@@ -12,97 +11,65 @@ import { InputData } from '@cometchat-pro/angular-ui-kit/lib/src/cometchat-pro-a
 })
 export class UsersDemoComponent implements OnInit {
 
-  @Input() theme = new CometChatTheme({})
-  public openUsersWithMessages:boolean = false;
-  public openUsers:boolean = false;
-  public openUserList:boolean = false;
-  public openUserDataItem:boolean = false;
-  withMessagesStyle:any={
-    width: "100%",
-    height: "100%",
-    background: "transparent",
-    borderRadius: "none",
-    border: "none",
-    messageTextColor: "rgba(20, 20, 20, 0.33)",
-    messageTextFont: "700 22px Inter",
-  }
-  public image:string="https://data-us.cometchat.io/assets/images/avatars/captainamerica.png";
-  public user:any = {
-    getName:()=> "Raj Dubey",
-    getAvatar:()=> this.image,
-    getUid:()=>"uid123",
-    getStatus:()=>"online"
-  };
 
-  public inputdata:InputData = {
-    thumbnail:true,
-    title:true
+  usersStyle:any = {
 
   }
-  userListStyle:any = {
-    
-  }
-  public dataItemStyle:dataItemStyle = {
-    background:"",
-    titleColor:"",
-    titleFont:"",
-    subtitleColor:"",
-    subtitleFont:""
-  };
 
 
-  constructor(private cometchatService:CometChatServices) { 
-    if(this.cometchatService.theme){
-      this.theme = this.cometchatService.theme
 
-    }
+  constructor(private themeService:CometChatThemeService) {
+
 
   }
 
   ngOnInit(): void {
-
-    
-    this.setTheme()
-    this.onResize()
+    this.setUsersStyle()
   }
   innerWidth!: number;
   isMobileView: boolean=false;
-    /**
-   * Checks when window size is changed in realtime
-   */
-     @HostListener("window:resize", [])
-     onResize(): boolean {
-       try {
-         this.innerWidth = window.innerWidth;
-         if (
-           this.innerWidth >= 320 &&
-           this.innerWidth <= 760
-         ) {
-           this.isMobileView = true;
-         } else {
-           this.isMobileView = false
-         }
-       } catch (error) {
-       
-       }
-       return true;
-     }
-  setTheme(){
-    this.dataItemStyle.background = this.theme.palette.getBackground();
-    this.dataItemStyle.activeBackground = this.theme.palette.getBackground();
-    this.dataItemStyle.titleColor = this.theme.palette.getAccent();
-    this.dataItemStyle.subtitleColor = this.theme.palette.getAccent600();
-    this.dataItemStyle.titleFont = fontHelper(this.theme.typography.title2);
-    this.dataItemStyle.subtitleFont = fontHelper(this.theme.typography.subtitle2);
-    this.withMessagesStyle.background = this.theme.palette.getBackground();
-    this.withMessagesStyle.messageTextFont = fontHelper(this.theme.typography.heading);
-    this.withMessagesStyle.messageTextColor = this.theme.palette.getAccent400();
-    this.userListStyle.background =   this.theme.palette.getBackground(); 
-    this.userListStyle.errorStateTextFont = fontHelper(this.theme.typography.heading)
-    this.userListStyle.errorStateTextColor = this.theme.palette.getAccent400()
-    this.userListStyle.emptyStateTextFont =  fontHelper(this.theme.typography.heading)
-    this.userListStyle.emptyStateTextColor = this.theme.palette.getAccent400()
-  }
+  listItemStyle: ListItemStyle = {
+    height: "100%",
+    width: "100%",
+
+  };
+     setListItemStyle(){
+      let defaultStyle:ListItemStyle = new ListItemStyle({
+        height: "100%",
+        width: "100%",
+        background: this.themeService.theme.palette.getBackground(),
+        borderRadius: "0",
+        titleFont: fontHelper(this.themeService.theme.typography.title2),
+        titleColor: this.themeService.theme.palette.getAccent(),
+        border: "none",
+        separatorColor:this.themeService.theme.palette.getAccent200(),
+      })
+      this.listItemStyle = {...defaultStyle,...this.listItemStyle}
+    }
+     setUsersStyle(){
+      let defaultStyle:UsersStyle = new UsersStyle({
+        background:this.themeService.theme.palette.getBackground(),
+        border:`1px solid ${this.themeService.theme.palette.getAccent50()}`,
+        titleTextFont:fontHelper(this.themeService.theme.typography.title1),
+        titleTextColor:this.themeService.theme.palette.getAccent(),
+        emptyStateTextFont:fontHelper(this.themeService.theme.typography.title1),
+        emptyStateTextColor:this.themeService.theme.palette.getAccent600(),
+        errorStateTextFont:fontHelper(this.themeService.theme.typography.title1),
+        errorStateTextColor:this.themeService.theme.palette.getAccent600(),
+        loadingIconTint:this.themeService.theme.palette.getAccent600(),
+        separatorColor:this.themeService.theme.palette.getAccent400(),
+        onlineStatusColor:this.themeService.theme.palette.getSuccess(),
+        sectionHeaderTextColor:this.themeService.theme.palette.getAccent600(),
+        sectionHeaderTextFont:fontHelper(this.themeService.theme.typography.subtitle2),
+        searchIconTint:this.themeService.theme.palette.getAccent600(),
+        searchPlaceholderTextColor:this.themeService.theme.palette.getAccent600(),
+        searchBackground:this.themeService.theme.palette.getAccent100(),
+        searchPlaceholderTextFont:fontHelper(this.themeService.theme.typography.text3),
+        searchTextColor:this.themeService.theme.palette.getAccent600(),
+        searchTextFont:fontHelper(this.themeService.theme.typography.text3)
+      })
+      this.usersStyle = {...defaultStyle,...this.usersStyle}
+    }
 
 
 }

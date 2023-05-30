@@ -1,6 +1,3 @@
-<div class="messages__wrapper">
-
-        <cometchat-message-composer [theme]="theme"  [group]="group" [style]="messageComposerStyle"> </cometchat-message-composer>
-
-
+<div class="messages__wrapper" [ngStyle]="wrapperStyle()">
+<cometchat-message-composer  [user]="user"> </cometchat-message-composer>
 </div>

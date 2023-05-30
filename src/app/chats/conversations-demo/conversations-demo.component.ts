@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChatTheme } from '@cometchat-pro/angular-ui-kit';
-import { CometChatServices } from '../../../app/app.service';
+import { CometChatTheme, CometChatThemeService } from '@cometchat-pro/angular-ui-kit';
+
 
 @Component({
   selector: 'cometchat-conversations-demo',
@@ -8,16 +8,12 @@ import { CometChatServices } from '../../../app/app.service';
   styleUrls: ['./conversations-demo.component.scss']
 })
 export class ConversationsDemoComponent implements OnInit {
-  @Input() theme = new CometChatTheme({})
-  constructor(private cometchatService:CometChatServices) { 
-    if(this.cometchatService.theme){
-      this.theme = this.cometchatService.theme
-
-    }
+  constructor(private themeService:CometChatThemeService) {
 
   }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { CometChatTheme, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { CometChatServices } from '../../../app/app.service';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+
 
 @Component({
   selector: 'cometchat-users-with-messages-demo',
@@ -11,15 +11,12 @@ export class UsersWithMessagesDemoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
     this.setTheme()
     this.onResize()
   }
-  constructor(private cometchatService:CometChatServices) { 
-    if(this.cometchatService.theme){
-      this.theme = this.cometchatService.theme
+  constructor(private themeService:CometChatThemeService) {
 
-    }
 
   }
   innerWidth!: number;
@@ -33,7 +30,7 @@ export class UsersWithMessagesDemoComponent implements OnInit {
     messageTextColor: "rgba(20, 20, 20, 0.33)",
     messageTextFont: "700 22px Inter",
   }
-  @Input() theme = new CometChatTheme({})
+
     /**
    * Checks when window size is changed in realtime
    */
@@ -50,15 +47,15 @@ export class UsersWithMessagesDemoComponent implements OnInit {
            this.isMobileView = false
          }
        } catch (error) {
-       
+
        }
        return true;
      }
   setTheme(){
 
-    this.withMessagesStyle.background = this.theme.palette.getBackground();
-    this.withMessagesStyle.messageTextFont = fontHelper(this.theme.typography.heading);
-    this.withMessagesStyle.messageTextColor = this.theme.palette.getAccent400();
+    this.withMessagesStyle.background = this.themeService.theme.palette.getBackground();
+    this.withMessagesStyle.messageTextFont = fontHelper(this.themeService.theme.typography.heading);
+    this.withMessagesStyle.messageTextColor = this.themeService.theme.palette.getAccent400();
 
   }
 
