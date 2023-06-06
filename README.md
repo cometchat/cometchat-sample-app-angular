@@ -58,7 +58,7 @@ CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully 
 
 ### Built With
 
-- [React](https://angular.io)
+- [Angular](https://angular.io)
 - [CometChat](https://cometchat.com)
 
 <!-- GETTING STARTED -->
@@ -105,7 +105,7 @@ Simply clone or fork this repo and run it using the instructions below to see al
 
 ## Usage
 
-This app contains all features offered by CometChat through its UI Kit. [Read more about the React UI Kit here.](https://www.cometchat.com/docs/angular-uikit-beta/overview)
+This app contains all features offered by CometChat through its UI Kit. [Read more about the Angular UI Kit here.](https://www.cometchat.com/docs/angular-uikit-beta/overview)
 
 ### Run project locally
 
@@ -141,7 +141,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## About Authors
 
-`javascript-react-chat-app` is created & maintained by CometChat.
+`javascript-angular-chat-app` is created & maintained by CometChat.
 
 The names and logos for CometChat are trademarks of CometChat, Inc.
 
