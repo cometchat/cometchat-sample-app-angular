@@ -1,9 +1,8 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CometChat } from '@cometchat-pro/chat';
-import { CometChatLocalize, CometChatTheme, CometChatThemeService, CometChatUIKitConstants, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { ListItemStyle } from 'my-cstom-package-lit';
-import { UsersStyle } from 'uikit-utils-lerna';
+import { CometChatLocalize, CometChatTheme, CometChatThemeService, CometChatUIKitConstants, fontHelper } from '@cometchat/chat-uikit-angular';
+import { ListItemStyle } from '@cometchat/uikit-elements';
 
 
 @Component({

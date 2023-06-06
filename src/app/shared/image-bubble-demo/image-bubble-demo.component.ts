@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { AvatarStyle } from 'my-cstom-package-lit';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
+import { AvatarStyle } from '@cometchat/uikit-elements';
 
 @Component({
   selector: 'image-bubble-demo',

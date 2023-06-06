@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ChatsComponent } from './chats.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CometChatConversations, CometChatConversationsWithMessages } from '@cometchat-pro/angular-ui-kit';
+import { CometChatConversations, CometChatConversationsWithMessages } from '@cometchat/chat-uikit-angular';
 import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
