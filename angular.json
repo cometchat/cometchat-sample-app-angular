@@ -31,7 +31,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input":  "./node_modules/@cometchat-pro/angular-ui-kit/assets/",
+                "input":  "./node_modules/@cometchat-pro/chat-uikit-angular/assets/",
                 "output": "assets/"
               }
             ],
@@ -106,7 +106,7 @@
               "src/assets",
               {
                 "glob": "**/*",
-                "input":  "./node_modules/@cometchat-pro/angular-ui-kit/assets/",
+                "input":  "./node_modules/@cometchat-pro/chat-uikit-angular/assets/",
                 "output": "assets/"
               }
             ],
