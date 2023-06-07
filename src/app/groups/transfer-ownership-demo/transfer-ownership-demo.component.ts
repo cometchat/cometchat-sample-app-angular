@@ -1,9 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import {CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
-import { ListItemStyle } from '@cometchat/uikit-elements';
-import '@cometchat/uikit-elements'
+import { GroupsStyle } from 'uikit-utils-lerna';
+import {CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { ListItemStyle } from 'my-cstom-package-lit';
+import 'my-cstom-package-lit'
 import { CometChat } from '@cometchat-pro/chat';
-import {TransferOwnershipStyle} from '@cometchat/uikit-shared'
+import {TransferOwnershipStyle} from 'uikit-utils-lerna'
 @Component({
   selector: 'cometchat-transfer-ownership-demo',
   templateUrl: './transfer-ownership-demo.component.html',

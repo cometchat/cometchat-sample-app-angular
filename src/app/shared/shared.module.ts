@@ -12,7 +12,7 @@ import { StatusIndicatorDemoComponent } from './status-indicator-demo/status-ind
 import { ReceiptDemoComponent } from './message-receipt-demo/message-receipt-demo.component';
 import { ListItemDemoComponent } from './list-item-demo/list-item-demo.component';
 import { SoundManagerDemoComponent } from './sound-manager-demo/sound-manager-demo.component';
-import {  CometChatConversationsWithMessages, CometChatConversations, CometChatUsersWithMessages, CometChatUsers, CometChatGroups, CometChatGroupsWithMessages, CometChatMessages, CometChatMessageList, CometChatMessageHeader, CometChatMessageComposer, CometChatDetails } from '@cometchat/chat-uikit-angular';
+import {  CometChatConversationsWithMessages, CometChatConversations, CometChatUsersWithMessages, CometChatUsers, CometChatGroups, CometChatGroupsWithMessages, CometChatMessages, CometChatMessageList, CometChatMessageHeader, CometChatMessageComposer, CometChatDetails } from '@cometchat-pro/angular-ui-kit';
 import { TextBubbleDemoComponent } from './text-bubble-demo/text-bubble-demo.component';
 import { AudioBubbleDemoComponent } from './audio-bubble-demo/audio-bubble-demo.component';
 import { VideoBubbleDemoComponent } from './video-bubble-demo/video-bubble-demo.component';

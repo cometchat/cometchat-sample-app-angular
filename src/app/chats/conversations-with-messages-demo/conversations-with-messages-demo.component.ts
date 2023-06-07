@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
+import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
 
 
 @Component({

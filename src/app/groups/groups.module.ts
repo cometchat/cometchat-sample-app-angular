@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CreateGroupDemoComponent } from './create-group-demo/create-group-demo.component';
 import { JoinGroupDemoComponent } from './join-group-demo/join-group-demo.component';
 import { GroupMembersDemoComponent } from './group-members-demo/group-members-demo.component';
-import { CometChatAddMembers, CometChatBannedMembers, CometChatDetails, CometChatGroupMembers, CometChatTransferOwnership } from '@cometchat/chat-uikit-angular';
+import { CometChatAddMembers, CometChatBannedMembers, CometChatDetails, CometChatGroupMembers, CometChatTransferOwnership } from '@cometchat-pro/angular-ui-kit';
 import { AddMembersDemoComponent } from './add-members-demo/add-members-democomponent';
 import { TransferOwnershipDemoComponent } from './transfer-ownership-demo/transfer-ownership-demo.component';
 import { BannedMembersDemoComponent } from './banned-members-demo/banned-members-demo.component';

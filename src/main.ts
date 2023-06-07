@@ -2,11 +2,11 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CometChat } from '@cometchat-pro/chat';
 import { COMETCHAT_CONSTANTS } from './CONSTS';
-import { CometChatLocalize, CometChatUIKit, StickersExtension } from '@cometchat/chat-uikit-angular';
+import { CometChatLocalize, CometChatUIKit, StickersExtension } from '@cometchat-pro/angular-ui-kit';
 import { AppModule } from './app/app.module';
 
 import { environment } from './environments/environment';
-import { UIKitSettingsBuilder } from '@cometchat/uikit-shared';
+import { UIKitSettingsBuilder } from 'uikit-utils-lerna';
 
 if (environment.production) {
   enableProdMode();

@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CometChat } from '@cometchat-pro/chat';
 
-import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
-import { MessagesStyle } from '@cometchat/uikit-shared';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { MessagesStyle } from 'uikit-utils-lerna';
 
 @Component({
   selector: 'cometchat-messages-demo',

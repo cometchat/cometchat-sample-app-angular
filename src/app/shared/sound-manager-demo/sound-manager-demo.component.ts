@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
-import { CometChatSoundManager } from '@cometchat/uikit-shared';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { CometChatSoundManager } from 'uikit-utils-lerna';
 @Component({
   selector: 'sound-manager-demo',
   templateUrl: './sound-manager-demo.component.html',

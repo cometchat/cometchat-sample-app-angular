@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CallsComponent } from './calls.component';
-import { CometChatCallButtons, CometChatIncomingCall, CometChatOngoingCall, CometChatOutgoingCall } from '@cometchat/chat-uikit-angular';
+import { CometChatCallButtons, CometChatIncomingCall, CometChatOngoingCall, CometChatOutgoingCall } from '@cometchat-pro/angular-ui-kit';
 import { CallButtonsDemoComponent } from './call-buttons-demo/call-buttons-demo.component';
 
 @NgModule({
