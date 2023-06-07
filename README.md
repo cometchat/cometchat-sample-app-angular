@@ -1,12 +1,12 @@
 <!-- readme -->
-<p align="center">
+<p align="left">
   <a href="https://cometchat.com">
     <img src="./Screenshots/logo.png" alt="CometChat logo" width="180" height="180">
   </a>
 
-  <h2 align="center">Angular Sample Chat App by CometChat</h3>
+  <h2 align="left">Angular Sample Chat App by CometChat</h3>
 
-  <p align="center">
+  <p align="left">
     CometChat Kitchen Sink Sample App (built using <b>CometChat UI Kits</b>) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
     <br />
     <a href="https://www.cometchat.com/docs/angular-uikit-beta/overview"><strong>Explore the docs »</strong></a>
@@ -16,7 +16,7 @@
   </p>
 </p>
 
-<div align="center">
+<div align="left">
     <a href="https://github.com/cometchat-pro/javascript-angular-chat-app/releases" alt="Releases">
         <img src="https://img.shields.io/github/v/release/cometchat-pro/cometchat-pro-angular-sample-app" />
     </a>
@@ -51,8 +51,6 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-![Product screenshot](./Screenshots/main.png "Product screenshot")
 
 CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
 
@@ -104,9 +102,8 @@ Simply clone or fork this repo and run it using the instructions below to see al
 <!-- USAGE EXAMPLES -->
 
 ## Usage
-
-This app contains all features offered by CometChat through its UI Kit. [Read more about the Angular UI Kit here.](https://www.cometchat.com/docs/angular-uikit-beta/overview)
-
+Under Usage -
+To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/angular-uikit-beta/integration).
 ### Run project locally
 
 ```sh
@@ -117,7 +114,7 @@ For more on UI Kits, please refer to the [documentation](https://www.cometchat.c
 
 ## Help
 
-Read the full dcoumentation on our UI Kits by visiting our [documentation](https://www.cometchat.com/docs/angular-uikit-beta/overview).
+To learn more about our UI kits, visit our [documentation](https://www.cometchat.com/docs/angular-uikit-beta/overview).
 
 If you are still facing issues while running this project or integrating with our UI Kits, please connect with our real time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
