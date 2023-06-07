@@ -102,7 +102,9 @@ Simply clone or fork this repo and run it using the instructions below to see al
 <!-- USAGE EXAMPLES -->
 
 ## Usage
+
 To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/angular-uikit-beta/integration).
+
 ### Run project locally
 
 ```sh
