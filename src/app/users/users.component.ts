@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { CometChatTheme, CometChatThemeService, CometChatUIKitConstants, localize } from '@cometchat-pro/angular-ui-kit';
-import { fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { CometChatTheme, CometChatThemeService, CometChatUIKitConstants, localize } from '@cometchat/chat-uikit-angular';
+import { fontHelper } from '@cometchat/chat-uikit-angular';
 
 
 @Component({

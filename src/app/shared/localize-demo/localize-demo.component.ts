@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
-import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 @Component({
   selector: 'localize-demo',
   templateUrl: './localize-demo.component.html',

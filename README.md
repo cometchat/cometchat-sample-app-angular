@@ -1,88 +1,146 @@
-<div style="width:100%">
-    <div style="width:50%;">
-        <div align="center">
-       <a> <img align="center" width="180" height="180" alt="CometChat" src="./Screenshots/logo.png"> </a>
-        </div>
-    </div>
+<!-- readme -->
+<p align="left">
+  <a href="https://cometchat.com">
+    <img src="./Screenshots/logo.png" alt="CometChat logo" width="180" height="180">
+  </a>
+
+  <h2 align="left">Angular Sample Chat App by CometChat</h3>
+
+  <p align="left">
+    CometChat Kitchen Sink Sample App (built using <b>CometChat UI Kits</b>) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
+    <br />
+    <a href="https://www.cometchat.com/docs/angular-uikit-beta/overview"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/cometchat-pro/javascript-angular-chat-app/issues">Report Bug</a>
+  </p>
+</p>
+
+<div align="left">
+    <a href="https://github.com/cometchat-pro/javascript-angular-chat-app/releases" alt="Releases">
+        <img src="https://img.shields.io/github/v/release/cometchat-pro/cometchat-pro-angular-sample-app" />
+    </a>
+    <a href="https://img.shields.io/github/languages/top/cometchat-pro/cometchat-pro-angular-sample-app">
+        <img src="https://img.shields.io/github/languages/top/cometchat-pro/cometchat-pro-angular-sample-app" />
+    </a>
+    <a href="https://github.com/cometchat-pro/cometchat-pro-angular-sample-app/stargazers">
+        <img src="https://img.shields.io/github/stars/cometchat-pro/cometchat-pro-angular-sample-app?style=social" />
+    </a>
+    <a href="https://twitter.com/CometChat">
+        <img src="https://img.shields.io/twitter/follow/CometChat?label=CometChat&style=social" />
+    </a>
 </div>
 
-</br></br>
+<!-- TABLE OF CONTENTS -->
 
-# Javascript Angular Chat App
+## Table of Contents
 
-[![Platform](https://img.shields.io/badge/Platform-Javascript-brightgreen)](#)
-![GitHub repo size](https://img.shields.io/github/repo-size/cometchat-pro/javascript-angular-chat-app)
-![GitHub contributors](https://img.shields.io/github/contributors/cometchat-pro/javascript-angular-chat-app)
-![GitHub stars](https://img.shields.io/github/stars/cometchat-pro/javascript-angular-chat-app?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/cometchat?style=social)
-</br></br>
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Dependencies](#dependencies)
+  - [Installing](#installing)
+  - [Usage](#usage)
+    - [Run locally](#run-project-locally)
+  - [Help](#help)
+- [Contributing](#contributing)
+- [Support](#support)
+- [License](#license)
+- [About Authors](#about-authors)
 
-<div style="width:100%">
-    <div style="width:50%; display:inline-block">
-        <div align="center">
-          <img align="left" alt="Main" src="./Screenshots/main.png">
-        </div>
-    </div>
-</div>
+<!-- ABOUT THE PROJECT -->
 
-</br></br>
+## About The Project
 
-Javascript Angular Chat App (built using **CometChat UI Kit**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
+CometChat Kitchen Sink Sample App (built using **CometChat UI Kit**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
 
-## Features
+### Built With
 
-- Login
-- Private(1-1) & Group Conversations
-- Typing Indicators
-- Text, Media and Custom messages
-- Read receipts
-- Online Presence Indicators
-- Message History
-- Users & Friends List
-- Groups List
-- Search by users and groups
-- Conversations List
+- [Angular](https://angular.io)
+- [CometChat](https://cometchat.com)
 
-## Extensions
+<!-- GETTING STARTED -->
 
-[Thumbnail Generation](https://prodocs.cometchat.com/docs/extensions-thumbnail-generation) | [Link Preview](https://prodocs.cometchat.com/docs/extensions-link-preview)  | [Smart Reply](https://prodocs.cometchat.com/docs/extensions-smart-reply) | [Polls](https://prodocs.cometchat.com/docs/extensions-polls) | [Reactions](https://prodocs.cometchat.com/docs/extensions-reactions) | [Stickers](https://prodocs.cometchat.com/docs/extensions-stickers)
+## Getting Started
 
-<hr/>
+Simply clone or fork this repo and run it using the instructions below to see all features in action. Or use it as a starter template/boilerplate and make edits to suit your needs.
 
-## Prerequisite
+## Dependencies
 
-1. To run this app, you must have the **Node Package Manager (NPM)** and **Angular CLI** already installed and setup . If you don't, this documentation will help you in setting up **NPM** and **Angular CLI** <a href="https://jasonwatmore.com/post/2020/06/02/angular-setup-development-environment" target="_blank">Angular - Setup Development Environment (For Windows) </a> and <a href="https://www.zeolearn.com/magazine/setup-angular-mac" target="_blank">Angular - Setup Development Environment (For Mac) </a>
+- CometChat - [Sign up for CometChat](https://app.cometchat.com) and create an app to obtain your keys and other credentials
 
-2. To run this app, you must create an account with CometChat . If you don't have an account, you can create one from <a href="https://app.cometchat.com/" target="_blank">CometChat Dashboard</a>.
+- npm
 
-3. Create a new App in your cometchat account and obtain your `App ID`, `Auth Key` and `Region`.
+  ```sh
+  npm install npm@latest -g
+  ```
+
+## Installing
+
+1. Clone the repo
+
+   ```sh
+   git clone -b v4 https://github.com/cometchat-pro/javascript-angular-chat-app.git
+   ```
+
+2. Change to the working directory
+
+   ```sh
+   cd javascript-angular-chat-app
+   ```
+
+3. Install dependencies via NPM
+
+   ```sh
+   npm install
+   ```
+
+4. Replace `APP_ID`, `REGION` and `AUTH_KEY` with your CometChat `App ID`, `Region` and `Auth Key` in `src/consts.ts` file.
+
+   ![Replacing constants in src/consts.js](./Screenshots/constants.png "Replacing constants in src/consts.ts")
+
+<!-- USAGE EXAMPLES -->
 
 ## Usage
 
-1. Download the example [or clone the repo](https://github.com/cometchat-pro/javascript-angular-chat-app/tree/pluto)
-2. Navigate to the javascript-angular-chat-app/src/CONST directory and replace APP_ID, REGION and AUTH_KEY with your CometChat App ID, Region and Auth Key in CONSTS.ts file
+To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/angular-uikit-beta/integration).
 
-```javascript
-    npm install
-    ng serve
+### Run project locally
+
+```sh
+ng serve
 ```
-or :
 
+For more on UI Kits, please refer to the [documentation](https://www.cometchat.com/docs/beta-uikits).
 
+## Help
 
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/angular-ivy-kfducx?file=src%2Fapp%2Fapp.component.ts)
+To learn more about our UI kits, visit our [documentation](https://www.cometchat.com/docs/angular-uikit-beta/overview).
 
+If you are still facing issues while running this project or integrating with our UI Kits, please connect with our real time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
----
+<!-- CONTRIBUTING -->
 
+## Contributing
 
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Sincere thanks to all our [contributors](https://github.com/cometchat-pro/javascript-angular-chat-app/graphs/contributors)!
 
-# Troubleshooting
+You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
 
-- To read the full documentation on UI Kit integration visit our [Documentation](https://www.cometchat.com/docs/angular-uikit-beta/overview).
+## Support
 
-- Facing any issues while integrating or installing the UI Kit please connect with us via real time support present in <a href="https://app.cometchat.com/"> CometChat Dashboard.</a>
+Please connect with our real time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
-# Contact 📪
+<!-- LICENSE -->
 
-Contact us via real time support present in [CometChat Dashboard](https://app.cometchat.com/).
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+## About Authors
+
+`javascript-angular-chat-app` is created & maintained by CometChat.
+
+The names and logos for CometChat are trademarks of CometChat, Inc.
+
+We love open source software! See [our other projects](https://github.com/cometchat-pro) or [sign up with us](https://app.cometchat.com) to start using our product.

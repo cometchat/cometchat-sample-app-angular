@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 import { CometChat } from '@cometchat-pro/chat';
 
-import { MessageListStyle } from 'uikit-utils-lerna';
+import { MessageListStyle } from '@cometchat/uikit-shared';
 
 @Component({
   selector: 'cometchat-message-list-demo',
