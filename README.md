@@ -7,6 +7,8 @@
 </div>
 
 </br></br>
+> **_NOTE:_**  We've launched a major update to our UI Kit with the release of UI Kit v4. Please switch to the branch `v4` to check out the sample app based on this version. Read about this new and upgraded version [on our docs](https://www.cometchat.com/docs/angular-uikit-beta/overview).
+<br/><br/>
 
 # CometChat Kitchen Sink Sample App (Angular)
 
