@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CometChatConversationsWithMessages, CometChatConversationsWithMessagesComponent } from '@cometchat-pro/angular-ui-kit';
+import { CometChatConversationsWithMessages, CometChatConversationsWithMessagesComponent } from '@cometchat/chat-uikit-angular';
 import { ChatsComponent } from './chats/chats.component';
 import { ConversationsDemoComponent } from './chats/conversations-demo/conversations-demo.component';
 import { ConversationsWithMessagesDemoComponent } from './chats/conversations-with-messages-demo/conversations-with-messages-demo.component';

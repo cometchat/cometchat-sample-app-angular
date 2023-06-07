@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CometChat } from '@cometchat-pro/chat';
-import { CometChatThemeService } from '@cometchat-pro/angular-ui-kit';
+import { CometChatThemeService } from '@cometchat/chat-uikit-angular';
 @Component({
   selector: "call-buttons-demo",
   templateUrl: "./call-buttons-demo.component.html",

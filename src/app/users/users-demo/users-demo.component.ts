@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { ListItemStyle } from 'my-cstom-package-lit';
-import { UsersStyle } from 'uikit-utils-lerna';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
+import { ListItemStyle } from '@cometchat/uikit-elements';
+import { UsersStyle } from '@cometchat/uikit-shared';
 
 
 @Component({

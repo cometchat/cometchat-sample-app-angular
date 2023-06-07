@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CometChat } from '@cometchat-pro/chat';
 import { COMETCHAT_CONSTANTS } from '../../CONSTS';
-import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
 @Component({
   selector: 'cometchat-sign-up',
   templateUrl: './sign-up.component.html',

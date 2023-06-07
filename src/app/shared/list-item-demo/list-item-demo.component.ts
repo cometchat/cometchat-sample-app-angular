@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat-pro/angular-ui-kit';
-import { BadgeStyle, DateStyle, ListItemStyle, AvatarStyle, ReceiptStyle } from 'my-cstom-package-lit';
-import { ConversationsStyle, BaseStyle } from 'uikit-utils-lerna';
+import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
+import { BadgeStyle, DateStyle, ListItemStyle, AvatarStyle, ReceiptStyle } from '@cometchat/uikit-elements';
+import { ConversationsStyle, BaseStyle } from '@cometchat/uikit-shared';
 @Component({
   selector: 'list-item-demo',
   templateUrl: './list-item-demo.component.html',

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat-pro/angular-ui-kit';
+import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 
 @Component({
   selector: 'status-indicator-demo',

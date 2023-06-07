@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CometChat } from '@cometchat-pro/chat';
 import { COMETCHAT_CONSTANTS } from '../../CONSTS';
-import {  CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat-pro/angular-ui-kit';
-import { AvatarStyle } from 'my-cstom-package-lit';
+import {  CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
+import { AvatarStyle } from '@cometchat/uikit-elements';
 @Component({
   selector: 'cometchat-login',
   templateUrl: './login.component.html',
