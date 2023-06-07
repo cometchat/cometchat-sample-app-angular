@@ -9,7 +9,7 @@
   <p align="center">
     CometChat Kitchen Sink Sample App (built using <b>CometChat UI Kits</b>) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
     <br />
-    <a href="https://www.cometchat.com/docs/angular-chat-ui-kit/overview"><strong>Explore the docs »</strong></a>
+    <a href="https://www.cometchat.com/docs/angular-uikit-beta/overview"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/cometchat-pro/javascript-angular-chat-app/issues">Report Bug</a>
