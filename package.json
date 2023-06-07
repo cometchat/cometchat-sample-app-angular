@@ -1,6 +1,6 @@
 {
   "name": "cometchat-angular-sample-app",
-  "version": "0.0.0",
+  "version": "v4.0.0-beta.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
