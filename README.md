@@ -107,7 +107,7 @@ To learn about Angular UI Kit Integration, please click [here](https://www.comet
 ### Run project locally
 
 ```sh
-npm start
+ng serve
 ```
 
 For more on UI Kits, please refer to the [documentation](https://www.cometchat.com/docs/beta-uikits).
