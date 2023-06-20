@@ -3,16 +3,16 @@ const request = require('request');
 const extract = require('extract-zip')
 const rimraf = require("rimraf");
 
-const fileName = "cometchat-pro-angular-ui-kit";
+const fileName = "cometchat-chat-uikit-angular";
 const filePath = __dirname + "/src/" + fileName;
 
-const zipFileName = "cometchat-pro-angular-ui-kit-master";
+const zipFileName = "cometchat-chat-uikit-angular-master";
 
 const zipName = zipFileName + ".zip";
 const source = __dirname + "/" + zipFileName;
-const destination = filePath;//__dirname + "/src/cometchat-pro-angular-ui-kit";
+const destination = filePath;//__dirname + "/src/cometchat-chat-uikit-angular";
 
-const downloadUrl = "https://github.com/cometchat-pro/cometchat-pro-angular-ui-kit/archive/master.zip";
+const downloadUrl = "https://github.com/cometchat-pro/cometchat-chat-uikit-angular/archive/master.zip";
 
 
 const download = (uri, filename, callback) => {

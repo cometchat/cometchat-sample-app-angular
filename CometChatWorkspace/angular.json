@@ -31,7 +31,7 @@
             ],
             "styles": [
               "node_modules/@ctrl/ngx-emoji-mart/picker.css",
-              "src/cometchat-pro-angular-ui-kit/CometChatWorkspace/src/css/styles.scss"
+              "src/cometchat-chat-uikit-angular/CometChatWorkspace/src/css/styles.scss"
             ],
             "scripts": []
           },
