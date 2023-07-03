@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@cometchat-pro/web-calls": "3.0.0",
-    "@cometchat/chat-uikit-angular":"4.0.0-beta.1.1",
+    "@cometchat/chat-uikit-angular":"^4.0.0-beta.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
