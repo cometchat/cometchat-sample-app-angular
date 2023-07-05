@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
     (user) => {
       if (!user) {
 
-        CometChatUIKit.login(UID).then(
+        CometChatUIKit.login({uid:UID}).then(
           user => {
 
           this.inProgress = false
