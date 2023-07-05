@@ -97,7 +97,7 @@ CometChatUIKit.createUser(user).then(
     (user) => {
       if (!user) {
         this.inProgress = false
-        CometChatUIKit.login(UID).then(
+        CometChatUIKit.login({uid:UID}).then(
           user => {
             console.log("Login Successful:", { user });
             this.router.navigate(['/home']);
