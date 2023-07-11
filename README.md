@@ -103,19 +103,18 @@ Simply clone or fork this repo and run it using the instructions below to see al
 
 ## Usage
 
-To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/angular-uikit-beta/integration).
+This app contains all features offered by CometChat through its UI Kit. [Read more about the Angular UI Kit here.](https://www.cometchat.com/docs/angular-v4-uikit/overview)
 
 ### Run project locally
 
 ```sh
 ng serve
 ```
-
-For more on UI Kits, please refer to the [documentation](https://www.cometchat.com/docs/beta-uikits).
+To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/angular-v4-uikit/integration).
 
 ## Help
 
-To learn more about our UI kits, visit our [documentation](https://www.cometchat.com/docs/angular-uikit-beta/overview).
+To learn more about our UI kits, visit our [documentation](https://www.cometchat.com/docs/v4-uikits).
 
 If you are still facing issues while running this project or integrating with our UI Kits, please connect with our real-time support via the [CometChat Dashboard](https://app.cometchat.com/).
 
