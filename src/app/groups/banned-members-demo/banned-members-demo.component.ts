@@ -3,7 +3,7 @@ import { GroupsStyle } from '@cometchat/uikit-shared';
 import {CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 import { ListItemStyle } from '@cometchat/uikit-elements';
 import '@cometchat/uikit-elements'
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 @Component({
   selector: 'cometchat-banned-members-demo',
   templateUrl: './banned-members-demo.component.html',

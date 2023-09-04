@@ -23,7 +23,16 @@
                 </div>
             </div>
         </div>
-        <theme-demo-copy></theme-demo-copy>
+        <div class="cards" [ngStyle]="style.cardStyle()" (click)="redirect('contacts')">
+            <div class="card__icon" [ngStyle]="style.iconStyle(contactsIconURL)">
+            </div>
+            <div class="right__content">
+                <span class="card__title" [ngStyle]="style.cardTitleStyle()" >Contacts</span>
+                <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                    CometChatContacts is an independent component used to set up a tabs screen  to switch between users and groups.
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

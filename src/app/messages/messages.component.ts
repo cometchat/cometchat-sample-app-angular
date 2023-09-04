@@ -23,6 +23,7 @@ export class MessagesComponent implements OnInit {
   public listwrapperIconURL:string="assets/listwrapper.png";
   public listIconURL:string="assets/list.png";
   public composerIconURL:string="assets/composer.png";
+  public infoIconURL:string="assets/Info.svg";
 
 
   constructor(private router: Router,private route: ActivatedRoute,private themeService:CometChatThemeService) {

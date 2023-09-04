@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [MessagesComponent]

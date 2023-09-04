@@ -16,6 +16,8 @@ export class ChatsComponent implements OnInit {
   public listIconURL:string="assets/list.png";
   public conversationIconURL:string="assets/conversation.png";
 
+  public contactsIconURL:string="assets/contacts.svg";
+
   constructor(private router: Router,private route: ActivatedRoute,private themeService:CometChatThemeService) {
 
 

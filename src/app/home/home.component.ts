@@ -1,7 +1,7 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper, localize } from '@cometchat/chat-uikit-angular';
 
 @Component({

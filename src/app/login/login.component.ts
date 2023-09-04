@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { COMETCHAT_CONSTANTS } from '../../CONSTS';
 import {  CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
 import { AvatarStyle } from '@cometchat/uikit-elements';
@@ -77,7 +77,6 @@ export class LoginComponent implements OnInit {
       nameTextColor: this.themeService.theme.palette.getAccent900(),
       backgroundSize: "cover",
       nameTextFont: fontHelper(this.themeService.theme.typography.subtitle1),
-      outerViewBorder: "",
       outerViewBorderSpacing: "",
     })
     this.avatarStyle = {...defaultStyle,...this.avatarStyle}

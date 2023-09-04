@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService } from '@cometchat/chat-uikit-angular';
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 
 @Component({
   selector: 'cometchat-message-header-demo',

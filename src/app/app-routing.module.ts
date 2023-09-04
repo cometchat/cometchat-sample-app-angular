@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CometChatConversationsWithMessages, CometChatConversationsWithMessagesComponent } from '@cometchat/chat-uikit-angular';
+import { CometChatContacts, CometChatConversationsWithMessages, CometChatConversationsWithMessagesComponent } from '@cometchat/chat-uikit-angular';
 import { ChatsComponent } from './chats/chats.component';
 import { ConversationsDemoComponent } from './chats/conversations-demo/conversations-demo.component';
 import { ConversationsWithMessagesDemoComponent } from './chats/conversations-with-messages-demo/conversations-with-messages-demo.component';
@@ -30,6 +30,8 @@ import { BannedMembersDemoComponent } from './groups/banned-members-demo/banned-
 import { DetailsDemoComponent } from './shared/details-demo/details-demo.component';
 import { CallsComponent } from './calls/calls.component';
 import { CallButtonsDemoComponent } from './calls/call-buttons-demo/call-buttons-demo.component';
+import { ContactsDemoComponent } from './chats/contacts-demo/contacts-demo.component';
+import { MessageInformationDemoComponent } from './messages/message-information-demo/message-information-demo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "login", pathMatch: "full" },
@@ -71,6 +73,14 @@ const routes: Routes = [
   {
     path: 'conversations-with-messages',
     component: ConversationsWithMessagesDemoComponent,
+  },
+  {
+    path: 'contacts',
+    component: ContactsDemoComponent,
+  },
+  {
+    path: 'message-information',
+    component: MessageInformationDemoComponent,
   },
   {
     path: 'conversations',

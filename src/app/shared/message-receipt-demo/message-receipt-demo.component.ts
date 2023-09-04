@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { CometChatTheme, CometChatThemeService, Receipts, fontHelper } from '@cometchat/chat-uikit-angular';
 @Component({
   selector: 'message-receipt-demo',

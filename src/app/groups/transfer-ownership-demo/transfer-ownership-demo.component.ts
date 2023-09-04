@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import {CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 import { ListItemStyle } from '@cometchat/uikit-elements';
 import '@cometchat/uikit-elements'
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 import {TransferOwnershipStyle} from '@cometchat/uikit-shared'
 @Component({
   selector: 'cometchat-transfer-ownership-demo',
