@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { MessageComposerStyle } from '@cometchat/uikit-shared';
 
 @Component({

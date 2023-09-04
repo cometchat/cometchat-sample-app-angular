@@ -55,6 +55,19 @@
             </div>
 
         </div>
+        <div class="cards" [ngStyle]="style.cardStyle()" (click)="redirect('message-information')">
+            <div class="card__icon" [ngStyle]="style.iconStyle(infoIconURL)">
+
+            </div>
+            <div class="right__content">
+                <span class="card__title" [ngStyle]="style.cardTitleStyle()" >Message Information</span>
+                <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+                    CometChatMessageInformation is an independent and a critical component that allows users to see information about the message receipts.
+
+                </div>
+            </div>
+
+        </div>
 
     </div>
 

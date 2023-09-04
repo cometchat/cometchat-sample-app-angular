@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { CometChat } from '@cometchat-pro/chat';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { COMETCHAT_CONSTANTS } from './CONSTS';
 import { CometChatLocalize, CometChatUIKit, StickersExtension } from '@cometchat/chat-uikit-angular';
 import { AppModule } from './app/app.module';
