@@ -1,0 +1,14 @@
+<div [ngStyle]="wrapperStyle()">
+    <cometchat-message-information [messageInformationStyle]="messageinfoStyle"  *ngIf="message" [bubbleView]="messageinfoBubble" [message]="message"></cometchat-message-information>
+</div>
+<ng-template #messageinfoBubble let-message>
+
+    <cometchat-message-bubble   
+    [contentView]="contentView"  [id]="message?.getId()"  [messageBubbleStyle]="getMessageBubbleStyle()"  [alignment]="1">
+      <ng-template #contentView>
+       <cometchat-text-bubble [text]="message.getText()" [textStyle]="textStyle"></cometchat-text-bubble>
+      </ng-template>
+
+    </cometchat-message-bubble>
+  
+  </ng-template>

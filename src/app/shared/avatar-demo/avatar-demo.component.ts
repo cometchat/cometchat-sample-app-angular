@@ -33,7 +33,6 @@ console.log("open")
       nameTextColor: this.themeService.theme.palette.getAccent900(),
       backgroundSize: "cover",
       nameTextFont: fontHelper(this.themeService.theme.typography.subtitle1),
-      outerViewBorder: "",
       outerViewBorderSpacing: "",
     }
   }
@@ -54,7 +53,6 @@ console.log("open")
       nameTextColor: this.themeService.theme.palette.getAccent900(),
       backgroundSize: "cover",
       nameTextFont: fontHelper(this.themeService.theme.typography.subtitle1),
-      outerViewBorder: "",
       outerViewBorderSpacing: "",
     })
     this.avatarStyle = {...defaultStyle,...this.avatarStyle}

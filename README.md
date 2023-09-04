@@ -9,7 +9,7 @@
   <p align="left">
     CometChat Kitchen Sink Sample App (built using <b>CometChat UI Kits</b>) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
     <br />
-    <a href="https://www.cometchat.com/docs/angular-v4-uikit/overview"><strong>Explore the docs »</strong></a>
+    <a href="https://www.cometchat.com/docs/v4/angular-uikit/overview"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/cometchat-pro/cometchat-chat-sample-app-angular/issues">Report Bug</a>
@@ -103,14 +103,14 @@ Simply clone or fork this repo and run it using the instructions below to see al
 
 ## Usage
 
-This app contains all features offered by CometChat through its UI Kit. [Read more about the Angular UI Kit here.](https://www.cometchat.com/docs/angular-v4-uikit/overview)
+This app contains all features offered by CometChat through its UI Kit. [Read more about the Angular UI Kit here.](https://www.cometchat.com/docs/v4/angular-uikit/overview)
 
 ### Run project locally
 
 ```sh
 ng serve
 ```
-To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/angular-v4-uikit/integration).
+To learn about Angular UI Kit Integration, please click [here](https://www.cometchat.com/docs/v4/angular-uikit/integration).
 
 ## Help
 

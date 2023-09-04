@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { CometChatConversations, CometChatConversationsWithMessages,  CometChatGroups, CometChatGroupsWithMessages, CometChatIncomingCall, CometChatMessageComposer, CometChatMessageHeader, CometChatMessageList, CometChatMessages, CometChatUsers, CometChatUsersWithMessages } from '@cometchat/chat-uikit-angular';
+import { CometChatContacts, CometChatConversations, CometChatConversationsWithMessages,  CometChatGroups, CometChatGroupsWithMessages, CometChatIncomingCall, CometChatMessageBubble, CometChatMessageComposer, CometChatMessageHeader, CometChatMessageInformation, CometChatMessageList, CometChatMessages, CometChatUsers, CometChatUsersWithMessages } from '@cometchat/chat-uikit-angular';
 import { RouterModule } from '@angular/router';
 import { MessagesDemoComponent } from './messages/messages-demo/messages-demo.component';
 import { GroupsDemoComponent } from './groups/groups-demo/groups-demo.component';
@@ -25,6 +25,8 @@ import { ChatsModule } from './chats/chats.module';
 import { GroupsModule } from './groups/groups.module';
 import { HomeModule } from './home/home.module';
 import { CallsModule } from './calls/calls.module';
+import { ContactsDemoComponent } from './chats/contacts-demo/contacts-demo.component';
+import { MessageInformationDemoComponent } from './messages/message-information-demo/message-information-demo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,8 @@ import { CallsModule } from './calls/calls.module';
     MessageListDemoComponent,
     MessageComposerDemoComponent,
     MessageHeaderDemoComponent,
+    ContactsDemoComponent,
+    MessageInformationDemoComponent
 
   ],
   imports: [
@@ -65,7 +69,10 @@ import { CallsModule } from './calls/calls.module';
     GroupsModule,
     CallsModule,
     FormsModule,
-    CometChatIncomingCall
+    CometChatIncomingCall,
+    CometChatContacts,
+    CometChatMessageInformation,
+    CometChatMessageBubble
   ],
   providers: [],
   bootstrap: [AppComponent],
