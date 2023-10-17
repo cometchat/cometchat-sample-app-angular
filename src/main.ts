@@ -7,6 +7,7 @@ import { AppModule } from './app/app.module';
 
 import { environment } from './environments/environment';
 import { UIKitSettingsBuilder } from '@cometchat/uikit-shared';
+import { MetaInfo } from './MetaInfo';
 
 if (environment.production) {
   enableProdMode();
@@ -20,6 +21,7 @@ const uiKitSettings = new UIKitSettingsBuilder()
 
 
   CometChatUIKit.init(uiKitSettings)!.then(()=>{
+    try{CometChat.setDemoMetaInfo(MetaInfo)}catch(err){}
     platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
