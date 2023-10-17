@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/cometchat-angular-sample-app'),
+      dir: require('path').join(__dirname, './coverage/cometchat-chat-sample-app-angular'),
       subdir: '.',
       reporters: [
         { type: 'html' },
