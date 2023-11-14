@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cometchat-angular-sample-app": {
+    "cometchat-chat-sample-app-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cometchat-angular-sample-app",
+            "outputPath": "dist/cometchat-chat-sample-app-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cometchat-angular-sample-app:build:production"
+              "browserTarget": "cometchat-chat-sample-app-angular:build:production"
             },
             "development": {
-              "browserTarget": "cometchat-angular-sample-app:build:development"
+              "browserTarget": "cometchat-chat-sample-app-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cometchat-angular-sample-app:build"
+            "browserTarget": "cometchat-chat-sample-app-angular:build"
           }
         },
         "test": {
@@ -119,5 +119,5 @@
       }
     }
   },
-  "defaultProject": "cometchat-angular-sample-app"
+  "defaultProject": "cometchat-chat-sample-app-angular"
 }

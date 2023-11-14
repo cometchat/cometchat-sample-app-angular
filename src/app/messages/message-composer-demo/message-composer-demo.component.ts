@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { MessageComposerStyle } from '@cometchat/uikit-shared';
 
@@ -46,10 +47,6 @@ export class MessageComposerDemoComponent implements OnInit {
       dividerTint: this.themeService.theme.palette.getAccent200(),
       textFont: fontHelper(this.themeService.theme.typography.subtitle1),
       textColor: this.themeService.theme.palette.getAccent(),
-      ActionSheetSeparatorTint: this.themeService.theme.palette.getAccent200(),
-      ActionSheetTitleColor: this.themeService.theme.palette.getAccent(),
-      ActionSheetTitleFont: fontHelper(this.themeService.theme.typography.title1),
-      ActionSheetLayoutModeIconTint: this.themeService.theme.palette.getPrimary(),
       emojiKeyboardTextFont:fontHelper(this.themeService.theme.typography.subtitle2),
       emojiKeyboardTextColor:this.themeService.theme.palette.getAccent400(),
       previewTitleFont:fontHelper(this.themeService.theme.typography.subtitle1),
