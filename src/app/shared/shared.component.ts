@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
 @Component({
   selector: 'cometchat-shared-wrapper',
@@ -23,6 +23,8 @@ export class SharedComponent implements OnInit {
   public videoBubbleIcon:string = "assets/video-bubble.svg"
   public imageBubbleIcon:string = "assets/image-bubble.svg"
   public fileBubbleIcon:string = "assets/file-bubble.svg"
+  public formBubbleIcon:string = "assets/form-bubble.svg"
+  public cardBubbleIcon:string = "assets/card-bubble.svg"
   public openDataItem:boolean=false;
   public openAvatar:boolean=false;
   public openBadgeCount:boolean=false;
@@ -37,6 +39,8 @@ export class SharedComponent implements OnInit {
   public openVideoBubble:boolean =false;
   public openFileBubble:boolean =false;
   public openImageBubble:boolean =false;
+  public openFormBubble:boolean =false;
+  public openCardBubble:boolean =false;
 
 
 
@@ -92,6 +96,12 @@ export class SharedComponent implements OnInit {
       case 'text':
         this.openTextBubble = true;
          break;
+      case 'form':
+        this.openFormBubble = true;
+         break;
+      case 'card':
+        this.openCardBubble = true;
+         break;
       default:
 
         // Handle invalid modal name
@@ -113,6 +123,8 @@ export class SharedComponent implements OnInit {
     this.openTextBubble = false;
     this.openImageBubble = false;
     this.openFileBubble = false;
+    this.openFormBubble = false;
+    this.openCardBubble = false;
   }
   // styles
 style:any={

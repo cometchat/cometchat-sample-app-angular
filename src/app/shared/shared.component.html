@@ -139,6 +139,28 @@
             </div>
         </div>
     </div>
+    <div class="cards" [ngStyle]="style.cardStyle()" (click)="openModal('form')">
+      <div class="card__icon" [ngStyle]="style.iconStyle(formBubbleIcon)">
+      </div>
+      <div class="right__content">
+          <span class="card__title" [ngStyle]="style.cardTitleStyle()" >{{'Form Bubble'}}</span>
+          <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+            The CometChatFormBubble component is used to render a form within a chat bubble.
+            To learn more about this component tap here
+          </div>
+      </div>
+  </div>
+  <div class="cards" [ngStyle]="style.cardStyle()" (click)="openModal('card')">
+    <div class="card__icon" [ngStyle]="style.iconStyle(cardBubbleIcon)">
+    </div>
+    <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()" >{{'Card Bubble'}}</span>
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          The CometChatCardBubble component is used to display a card within a
+          chat bubble. To learn more about this component tap here.
+        </div>
+    </div>
+</div>
   </div>
     </div>
 </div>
@@ -186,3 +208,9 @@
 <text-bubble-demo *ngIf="openTextBubble" [closeButton]="closeModal" >
 
 </text-bubble-demo>
+<form-bubble-demo *ngIf="openFormBubble" [closeButton]="closeModal" >
+
+</form-bubble-demo>
+<card-bubble-demo *ngIf="openCardBubble" [closeButton]="closeModal" >
+
+</card-bubble-demo>
