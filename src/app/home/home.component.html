@@ -1,4 +1,4 @@
-<div class="home__screen" style="border: 2px solid red">
+<div class="home__screen">
   <div
     class="home__screen__sidebar"
     [@FadeInFadeOut]="checkAnimatedState"
@@ -56,7 +56,7 @@
         class="cards"
         routerLink="call-logs-module"
         [ngStyle]="style.cardStyle()"
-        (click)="changePage('calls-module')"
+        (click)="changePage('call-logs-module')"
       >
         <div class="left__content">
           <span class="card__title" [ngStyle]="style.cardTitleStyle()">
