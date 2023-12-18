@@ -40,18 +40,15 @@ export class CallLogRecordingsDemoComponent implements OnInit {
       let filterList = res.filter((recording: any) => {
         return 'recordings' in recording;
       });
-      console.log('filterList', filterList);
       this.call = filterList[0];
-      console.log(' this.call', this.call);
 
       if (!this.call) {
-        this.call = this.getCallObject();
+        this.call = this.getDummyCallObject();
       }
     });
   }
 
-  getCallObject() {
-    console.log('called??');
+  getDummyCallObject() {
     const initiator = this.loggedInUSer;
     const receiver = CallUser.getUserFromJson({
       name: 'Kevin',
@@ -103,7 +100,6 @@ export class CallLogRecordingsDemoComponent implements OnInit {
       hasRecording: true,
       initiatedAt: 1697458328,
     });
-    console.log('call', call);
     return call;
   }
 }

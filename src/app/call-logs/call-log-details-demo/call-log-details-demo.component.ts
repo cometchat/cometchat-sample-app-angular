@@ -62,7 +62,6 @@ export class CallLogDetailsDemoComponent implements OnInit {
       .build();
 
     callsRequest?.fetchNext().then((res: any) => {
-      console.log('res', res);
       this.call = res[0];
       this.ref.detectChanges();
     });
