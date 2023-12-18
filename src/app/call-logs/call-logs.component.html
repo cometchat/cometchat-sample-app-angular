@@ -1,6 +1,6 @@
 <div class="call-logs__wrapper">
   <div class="call-logs__header" [ngStyle]="style.headerTitleStyle()">
-    Chats
+    Call Logs
   </div>
   <div class="card__content">
     <div
@@ -8,7 +8,10 @@
       [ngStyle]="style.cardStyle()"
       (click)="redirect('call-logs')"
     >
-      <div class="card__icon" [ngStyle]="style.iconStyle(sidebarIconURL)"></div>
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogsIconURL)"
+      ></div>
       <div class="right__content">
         <span class="card__title" [ngStyle]="style.cardTitleStyle()"
           >Call Logs</span
@@ -26,7 +29,7 @@
     >
       <div
         class="card__icon"
-        [ngStyle]="style.iconStyle(listwrapperIconURL)"
+        [ngStyle]="style.iconStyle(callLogDetailsIconURL)"
       ></div>
       <div class="right__content">
         <span class="card__title" [ngStyle]="style.cardTitleStyle()"
@@ -45,7 +48,7 @@
     >
       <div
         class="card__icon"
-        [ngStyle]="style.iconStyle(contactsIconURL)"
+        [ngStyle]="style.iconStyle(callLogDetailsIconURL)"
       ></div>
       <div class="right__content">
         <span class="card__title" [ngStyle]="style.cardTitleStyle()"
@@ -64,7 +67,7 @@
     >
       <div
         class="card__icon"
-        [ngStyle]="style.iconStyle(contactsIconURL)"
+        [ngStyle]="style.iconStyle(callLogParticipantsIconURL)"
       ></div>
       <div class="right__content">
         <span class="card__title" [ngStyle]="style.cardTitleStyle()"
@@ -83,7 +86,7 @@
     >
       <div
         class="card__icon"
-        [ngStyle]="style.iconStyle(contactsIconURL)"
+        [ngStyle]="style.iconStyle(callLogRecordingsIconURL)"
       ></div>
       <div class="right__content">
         <span class="card__title" [ngStyle]="style.cardTitleStyle()"
@@ -102,7 +105,7 @@
     >
       <div
         class="card__icon"
-        [ngStyle]="style.iconStyle(contactsIconURL)"
+        [ngStyle]="style.iconStyle(callLogHistoryIconURL)"
       ></div>
       <div class="right__content">
         <span class="card__title" [ngStyle]="style.cardTitleStyle()"

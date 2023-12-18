@@ -16,12 +16,12 @@ import {
 export class CallLogsComponent implements OnInit {
   public localize: any = localize;
   public logoutIconURL: string = 'assets/logout.svg';
-  public sidebarIconURL: string = 'assets/sidebar.png';
-  public listwrapperIconURL: string = 'assets/listwrapper.png';
-  public listIconURL: string = 'assets/list.png';
-  public conversationIconURL: string = 'assets/conversation.png';
 
-  public contactsIconURL: string = 'assets/contacts.svg';
+  public callLogsIconURL: string = 'assets/call-logs.svg';
+  public callLogDetailsIconURL: string = 'assets/call-log-detail.svg';
+  public callLogHistoryIconURL: string = 'assets/call-history.svg';
+  public callLogRecordingsIconURL: string = 'assets/call-log-recording.svg';
+  public callLogParticipantsIconURL: string = 'assets/call-participants.svg';
 
   constructor(
     private router: Router,
@@ -32,11 +32,6 @@ export class CallLogsComponent implements OnInit {
 
   redirect(name: string) {
     this.router.navigate([name]);
-    //
-    //       let navigationExtras: NavigationExtras = {
-    //       state: {pageName:name}
-    // };
-    //   this.router.navigate(['/chats-demo'],navigationExtras);
   }
   // styles
   style: any = {
