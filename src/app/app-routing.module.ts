@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CometChatContacts, CometChatConversationsWithMessages, CometChatConversationsWithMessagesComponent } from '@cometchat/chat-uikit-angular';
+import {
+  CometChatContacts,
+  CometChatConversationsWithMessages,
+  CometChatConversationsWithMessagesComponent,
+} from '@cometchat/chat-uikit-angular';
 import { ChatsComponent } from './chats/chats.component';
 import { ConversationsDemoComponent } from './chats/conversations-demo/conversations-demo.component';
 import { ConversationsWithMessagesDemoComponent } from './chats/conversations-with-messages-demo/conversations-with-messages-demo.component';
@@ -32,9 +36,16 @@ import { CallsComponent } from './calls/calls.component';
 import { CallButtonsDemoComponent } from './calls/call-buttons-demo/call-buttons-demo.component';
 import { ContactsDemoComponent } from './chats/contacts-demo/contacts-demo.component';
 import { MessageInformationDemoComponent } from './messages/message-information-demo/message-information-demo.component';
+import { CallLogsComponent } from './call-logs/call-logs.component';
+import { CallLogsWithDetailsDemoComponent } from './call-logs/call-logs-with-details-demo/call-logs-with-details-demo.component';
+import { CallLogDetailsDemoComponent } from './call-logs/call-log-details-demo/call-log-details-demo.component';
+import { CallLogsDemoComponent } from './call-logs/call-logs-demo/call-logs-demo.component';
+import { CallLogParticipantsDemoComponent } from './call-logs/call-log-participants-demo/call-log-participants-demo.component';
+import { CallLogRecordingsDemoComponent } from './call-logs/call-log-recordings-demo/call-log-recordings-demo.component';
+import { CallLogHistoryDemoComponent } from './call-logs/call-log-history-demo/call-log-history-demo.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: "login", pathMatch: "full" },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
@@ -46,29 +57,40 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    children:[
+    children: [
       {
-        path : '',
-        component: ChatsComponent},
+        path: '',
+        component: ChatsComponent,
+      },
       {
-       path : 'shared-module',
-       component: SharedComponent},
-       {
-        path : 'users-module',
-        component: UsersComponent},
-        {
-          path : 'groups-module',
-          component: GroupsComponent},
-          {
-            path : 'chats-module',
-            component: ChatsComponent},
-            {
-              path : 'messages-module',
-              component: MessagesComponent},
-              {
-                path : 'calls-module',
-                component: CallsComponent},
-      ]
+        path: 'shared-module',
+        component: SharedComponent,
+      },
+      {
+        path: 'users-module',
+        component: UsersComponent,
+      },
+      {
+        path: 'groups-module',
+        component: GroupsComponent,
+      },
+      {
+        path: 'chats-module',
+        component: ChatsComponent,
+      },
+      {
+        path: 'messages-module',
+        component: MessagesComponent,
+      },
+      {
+        path: 'calls-module',
+        component: CallsComponent,
+      },
+      {
+        path: 'call-logs-module',
+        component: CallLogsComponent,
+      },
+    ],
   },
   {
     path: 'conversations-with-messages',
@@ -125,41 +147,58 @@ const routes: Routes = [
   {
     path: 'join-group',
     component: JoinGroupDemoComponent,
-
   },
   {
     path: 'group-members',
     component: GroupMembersDemoComponent,
-
   },
   {
     path: 'add-member',
     component: AddMembersDemoComponent,
-
   },
   {
     path: 'transfer-ownership',
     component: TransferOwnershipDemoComponent,
-
   },
   {
     path: 'banned-members',
     component: BannedMembersDemoComponent,
-
   },
   {
     path: 'details',
     component: DetailsDemoComponent,
-
   },
   {
     path: 'call-buttons',
     component: CallButtonsDemoComponent,
   },
-
+  {
+    path: 'call-logs',
+    component: CallLogsDemoComponent,
+  },
+  {
+    path: 'call-logs-with-details',
+    component: CallLogsWithDetailsDemoComponent,
+  },
+  {
+    path: 'call-log-details',
+    component: CallLogDetailsDemoComponent,
+  },
+  {
+    path: 'call-log-participants',
+    component: CallLogParticipantsDemoComponent,
+  },
+  {
+    path: 'call-log-recordings',
+    component: CallLogRecordingsDemoComponent,
+  },
+  {
+    path: 'call-log-history',
+    component: CallLogHistoryDemoComponent,
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

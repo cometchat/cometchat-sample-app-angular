@@ -1,0 +1,121 @@
+<div class="call-logs__wrapper">
+  <div class="call-logs__header" [ngStyle]="style.headerTitleStyle()">
+    Call Logs
+  </div>
+  <div class="card__content">
+    <div
+      class="cards"
+      [ngStyle]="style.cardStyle()"
+      (click)="redirect('call-logs')"
+    >
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogsIconURL)"
+      ></div>
+      <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()"
+          >Call Logs</span
+        >
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          CometChatCallLogs is an independent component used to show call Logs
+          of Loggedin User.
+        </div>
+      </div>
+    </div>
+    <div
+      class="cards"
+      [ngStyle]="style.cardStyle()"
+      (click)="redirect('call-logs-with-details')"
+    >
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogDetailsIconURL)"
+      ></div>
+      <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()"
+          >Call Logs With Details</span
+        >
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          CometChatCallLogsWithDetails is an independent component used to show
+          Call logs and Details of the user.
+        </div>
+      </div>
+    </div>
+    <div
+      class="cards"
+      [ngStyle]="style.cardStyle()"
+      (click)="redirect('call-log-details')"
+    >
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogDetailsIconURL)"
+      ></div>
+      <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()"
+          >Call Log Details</span
+        >
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          CometChatCallLogDetails is an independent component used to show
+          Details of the call.
+        </div>
+      </div>
+    </div>
+    <div
+      class="cards"
+      [ngStyle]="style.cardStyle()"
+      (click)="redirect('call-log-participants')"
+    >
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogParticipantsIconURL)"
+      ></div>
+      <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()"
+          >Call Log Participants
+        </span>
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          CometChatCallLogParticipants is an independent component used to
+          display list of participants for a particular Call.
+        </div>
+      </div>
+    </div>
+    <div
+      class="cards"
+      [ngStyle]="style.cardStyle()"
+      (click)="redirect('call-log-recordings')"
+    >
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogRecordingsIconURL)"
+      ></div>
+      <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()"
+          >Call Log Recordings</span
+        >
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          CometChatCallLogRecordings is an independent component used to display
+          list of participants for a particular Call.
+        </div>
+      </div>
+    </div>
+    <div
+      class="cards"
+      [ngStyle]="style.cardStyle()"
+      (click)="redirect('call-log-history')"
+    >
+      <div
+        class="card__icon"
+        [ngStyle]="style.iconStyle(callLogHistoryIconURL)"
+      ></div>
+      <div class="right__content">
+        <span class="card__title" [ngStyle]="style.cardTitleStyle()"
+          >Call Log History</span
+        >
+        <div class="card__description" [ngStyle]="style.cardDescriptionStyle()">
+          CometChatCallLogHistory is an independent component used to display
+          list of call history for a particular User or Group.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

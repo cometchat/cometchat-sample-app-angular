@@ -1,12 +1,33 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { CometChatContacts, CometChatConversations, CometChatConversationsWithMessages,  CometChatGroups, CometChatGroupsWithMessages, CometChatIncomingCall, CometChatMessageBubble, CometChatMessageComposer, CometChatMessageHeader, CometChatMessageInformation, CometChatMessageList, CometChatMessages, CometChatUsers, CometChatUsersWithMessages } from '@cometchat/chat-uikit-angular';
+import {
+  CometChatCallLogDetails,
+  CometChatCallLogHistory,
+  CometChatCallLogParticipants,
+  CometChatCallLogRecordings,
+  CometChatCallLogs,
+  CometChatCallLogsWithDetails,
+  CometChatContacts,
+  CometChatConversations,
+  CometChatConversationsWithMessages,
+  CometChatGroups,
+  CometChatGroupsWithMessages,
+  CometChatIncomingCall,
+  CometChatMessageBubble,
+  CometChatMessageComposer,
+  CometChatMessageHeader,
+  CometChatMessageInformation,
+  CometChatMessageList,
+  CometChatMessages,
+  CometChatUsers,
+  CometChatUsersWithMessages,
+} from '@cometchat/chat-uikit-angular';
 import { RouterModule } from '@angular/router';
 import { MessagesDemoComponent } from './messages/messages-demo/messages-demo.component';
 import { GroupsDemoComponent } from './groups/groups-demo/groups-demo.component';
@@ -27,6 +48,13 @@ import { HomeModule } from './home/home.module';
 import { CallsModule } from './calls/calls.module';
 import { ContactsDemoComponent } from './chats/contacts-demo/contacts-demo.component';
 import { MessageInformationDemoComponent } from './messages/message-information-demo/message-information-demo.component';
+import { CallLogsModule } from './call-logs/call-logs.module';
+import { CallLogsDemoComponent } from './call-logs/call-logs-demo/call-logs-demo.component';
+import { CallLogsWithDetailsDemoComponent } from './call-logs/call-logs-with-details-demo/call-logs-with-details-demo.component';
+import { CallLogDetailsDemoComponent } from './call-logs/call-log-details-demo/call-log-details-demo.component';
+import { CallLogParticipantsDemoComponent } from './call-logs/call-log-participants-demo/call-log-participants-demo.component';
+import { CallLogRecordingsDemoComponent } from './call-logs/call-log-recordings-demo/call-log-recordings-demo.component';
+import { CallLogHistoryDemoComponent } from './call-logs/call-log-history-demo/call-log-history-demo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +71,13 @@ import { MessageInformationDemoComponent } from './messages/message-information-
     MessageComposerDemoComponent,
     MessageHeaderDemoComponent,
     ContactsDemoComponent,
-    MessageInformationDemoComponent
-
+    MessageInformationDemoComponent,
+    CallLogsDemoComponent,
+    CallLogsWithDetailsDemoComponent,
+    CallLogDetailsDemoComponent,
+    CallLogParticipantsDemoComponent,
+    CallLogRecordingsDemoComponent,
+    CallLogHistoryDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,14 +101,21 @@ import { MessageInformationDemoComponent } from './messages/message-information-
     ChatsModule,
     GroupsModule,
     CallsModule,
+    CallLogsModule,
     FormsModule,
     CometChatIncomingCall,
     CometChatContacts,
     CometChatMessageInformation,
-    CometChatMessageBubble
+    CometChatMessageBubble,
+    CometChatCallLogs,
+    CometChatCallLogsWithDetails,
+    CometChatCallLogDetails,
+    CometChatCallLogParticipants,
+    CometChatCallLogRecordings,
+    CometChatCallLogHistory,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
