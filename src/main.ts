@@ -20,9 +20,9 @@ const uiKitSettings = new UIKitSettingsBuilder()
   .build();
 
 
-  CometChatUIKit.init(uiKitSettings)!.then(()=>{
-    try{CometChat.setDemoMetaInfo(MetaInfo)}catch(err){}
-    platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+CometChatUIKit.init(uiKitSettings)!.then(() => {
+  try { CometChat.setDemoMetaInfo(MetaInfo) } catch (err) { }
+  platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.error(err));
 
 })

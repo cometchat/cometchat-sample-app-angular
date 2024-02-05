@@ -8,12 +8,12 @@ import { AvatarStyle } from '@cometchat/uikit-elements';
   styleUrls: ['./audio-bubble-demo.component.scss']
 })
 export class AudioBubbleDemoComponent implements OnInit {
-  public closeIconURL:string="assets/close2x.svg";
+  public closeIconURL: string = "assets/close.svg";
 
-  @Input() closeButton:any;
-    bubbleStyle:any = {}
-    audioURL:string = "assets/sample.mp3"
-  constructor(private themeService:CometChatThemeService) { }
+  @Input() closeButton: any;
+  bubbleStyle: any = {}
+  audioURL: string = "assets/sample.mp3"
+  constructor(private themeService: CometChatThemeService) { }
 
 
   ngOnInit(): void {
@@ -22,33 +22,33 @@ export class AudioBubbleDemoComponent implements OnInit {
 
 
   // style
-  style:any = {
-    closeIconStyle:()=>{
-      return{
+  style: any = {
+    closeIconStyle: () => {
+      return {
         WebkitMask: `url(${this.closeIconURL}) center center no-repeat`,
-        background:  this.themeService.theme.palette.getAccent600(),
+        background: this.themeService.theme.palette.getAccent600(),
 
 
       }
     },
-    titleStyle:()=>{
-      return{
-       font: fontHelper(this.themeService.theme.typography.title2),
-       color:this.themeService.theme.palette.getAccent(),
+    titleStyle: () => {
+      return {
+        font: fontHelper(this.themeService.theme.typography.title2),
+        color: this.themeService.theme.palette.getAccent(),
 
       }
     },
-    wrapperStyle:()=>{
-      return{
-        background:  this.themeService.theme.palette.getBackground(),
+    wrapperStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getBackground(),
         boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 3px`
 
       }
     },
-    cardDescriptionStyle:()=>{
-      return{
+    cardDescriptionStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
       }
     },
 
