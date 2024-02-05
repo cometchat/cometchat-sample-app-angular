@@ -1,4 +1,4 @@
-.shared__wrapper{
+.shared__wrapper {
     height: 100%;
     width: 100%;
     background: transparent;
@@ -6,68 +6,87 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    .shared__header{
+
+    .shared__header {
         flex-basis: 3%;
         display: flex;
         padding-left: 8px;
         align-items: center;
     }
-    .card__sections{
+
+    .card__sections {
         flex-basis: 95%;
     }
 }
+
+.card__icon {
+    mask-size: 100%;
+}
+
 .shared__wrapper::-webkit-scrollbar {
     background: transparent;
     width: 8px;
-  }
-  .shared__wrapper::-webkit-scrollbar-thumb {
+}
+
+.shared__wrapper::-webkit-scrollbar-thumb {
     background: rgb(232, 229, 229);
     border-radius: 8px;
-  }
-  .card__content{
+}
+
+.card__content {
     display: grid;
     grid-template-columns: auto auto auto;
     height: fit-content;
     width: 100%;
 }
-.section__header{
+
+.section__header {
     padding: 5px 10px;
 }
-.cards{
+
+.cards {
     display: flex;
     min-height: 120px;
     height: fit-content;
     justify-content: flex-start;
-    column-gap:12px ;
+    column-gap: 12px;
     cursor: pointer;
     margin: 14px 8px;
     padding: 10px 8px;
     border-radius: 12px;
-    .right__content{
+
+    .right__content {
         flex-basis: 85%;
-        .card__description{
+
+        .card__description {
             text-align: left;
             margin: 8px 0;
         }
     }
-    .card__icon{
+
+    .card__icon {
         flex-basis: 34px;
+
     }
 }
 
+
+
 @media (min-width: 320px) and (max-width: 895px) {
-    .cards{
+    .cards {
         height: fit-content;
         min-height: fit-content;
     }
-    .card__content{
+
+    .card__content {
         grid-template-columns: auto;
 
     }
-  }
-  @media (min-width: 895px) and (max-width: 1260px) {
-    .card__content{
+}
+
+@media (min-width: 895px) and (max-width: 1260px) {
+    .card__content {
         grid-template-columns: auto auto;
 
     }
-  }
+}

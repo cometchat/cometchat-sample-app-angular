@@ -196,6 +196,7 @@ const routes: Routes = [
     path: 'call-log-history',
     component: CallLogHistoryDemoComponent,
   },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

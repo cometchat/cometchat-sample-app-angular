@@ -8,24 +8,24 @@ import { AvatarStyle } from '@cometchat/uikit-elements';
   styleUrls: ['./text-bubble-demo.component.scss']
 })
 export class TextBubbleDemoComponent implements OnInit {
-  public closeIconURL:string="assets/close2x.svg";
+  public closeIconURL: string = "assets/close.svg";
 
-  @Input() closeButton:any;
-    senderBubbleStyle:any = {}
-    receiverBubbleStyle:any = {}
-  constructor(private themeService:CometChatThemeService) { }
+  @Input() closeButton: any;
+  senderBubbleStyle: any = {}
+  receiverBubbleStyle: any = {}
+  constructor(private themeService: CometChatThemeService) { }
 
 
   ngOnInit(): void {
     this.senderBubbleStyle = {
-      borderRadius:"8px",
-      background:this.themeService.theme.palette.getPrimary(),
+      borderRadius: "8px",
+      background: this.themeService.theme.palette.getPrimary(),
       textFont: fontHelper(this.themeService.theme.typography.text2),
       textColor: this.themeService.theme.palette.getAccent("dark"),
     }
     this.receiverBubbleStyle = {
-      borderRadius:"8px",
-      background:this.themeService.theme.palette.getAccent200(),
+      borderRadius: "8px",
+      background: this.themeService.theme.palette.getAccent200(),
       textFont: fontHelper(this.themeService.theme.typography.text2),
       textColor: this.themeService.theme.palette.getAccent(),
     }
@@ -33,33 +33,33 @@ export class TextBubbleDemoComponent implements OnInit {
 
 
   // style
-  style:any = {
-    closeIconStyle:()=>{
-      return{
+  style: any = {
+    closeIconStyle: () => {
+      return {
         WebkitMask: `url(${this.closeIconURL}) center center no-repeat`,
-        background:  this.themeService.theme.palette.getAccent600(),
+        background: this.themeService.theme.palette.getAccent600(),
 
 
       }
     },
-    titleStyle:()=>{
-      return{
-       font: fontHelper(this.themeService.theme.typography.title2),
-       color:this.themeService.theme.palette.getAccent(),
+    titleStyle: () => {
+      return {
+        font: fontHelper(this.themeService.theme.typography.title2),
+        color: this.themeService.theme.palette.getAccent(),
 
       }
     },
-    wrapperStyle:()=>{
-      return{
-        background:  this.themeService.theme.palette.getBackground(),
+    wrapperStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getBackground(),
         boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 3px`
 
       }
     },
-    cardDescriptionStyle:()=>{
-      return{
+    cardDescriptionStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
       }
     },
 

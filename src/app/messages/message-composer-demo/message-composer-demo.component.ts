@@ -1,10 +1,6 @@
+
+import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  CometChatTheme,
-  CometChatThemeService,
-  fontHelper,
-  localize,
-} from '@cometchat/chat-uikit-angular';
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { MessageComposerStyle } from '@cometchat/uikit-shared';
 
@@ -49,25 +45,16 @@ export class MessageComposerDemoComponent implements OnInit {
       dividerTint: this.themeService.theme.palette.getAccent200(),
       textFont: fontHelper(this.themeService.theme.typography.subtitle1),
       textColor: this.themeService.theme.palette.getAccent(),
-      emojiKeyboardTextFont: fontHelper(
-        this.themeService.theme.typography.subtitle2
-      ),
-      emojiKeyboardTextColor: this.themeService.theme.palette.getAccent400(),
-      previewTitleFont: fontHelper(
-        this.themeService.theme.typography.subtitle1
-      ),
-      previewTitleColor: this.themeService.theme.palette.getAccent(),
-      previewSubtitleFont: fontHelper(
-        this.themeService.theme.typography.subtitle2
-      ),
-      previewSubtitleColor: this.themeService.theme.palette.getAccent600(),
-      closePreviewTint: this.themeService.theme.palette.getAccent500(),
-      maxInputHeight: '100px',
-    });
-    this.messageComposerStyle = {
-      ...defaultStyle,
-      ...this.messageComposerStyle,
-    };
+      emojiKeyboardTextFont:fontHelper(this.themeService.theme.typography.subtitle2),
+      emojiKeyboardTextColor:this.themeService.theme.palette.getAccent400(),
+      previewTitleFont:fontHelper(this.themeService.theme.typography.subtitle1),
+      previewTitleColor:this.themeService.theme.palette.getAccent(),
+      previewSubtitleFont:fontHelper(this.themeService.theme.typography.subtitle2),
+      previewSubtitleColor:this.themeService.theme.palette.getAccent600(),
+      closePreviewTint:this.themeService.theme.palette.getAccent500(),
+      maxInputHeight:"100px"
+    })
+    this.messageComposerStyle = {...defaultStyle,...this.messageComposerStyle}
   }
   wrapperStyle = () => {
     return {

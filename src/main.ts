@@ -16,13 +16,15 @@ const uiKitSettings = new UIKitSettingsBuilder()
   .setAppId(COMETCHAT_CONSTANTS.APP_ID)
   .setRegion(COMETCHAT_CONSTANTS.REGION)
   .setAuthKey(COMETCHAT_CONSTANTS.AUTH_KEY)
+  .setAdminHost(`${COMETCHAT_CONSTANTS.APP_ID}.api-us.cometchat-staging.com/v3`)
+  .setClientHost(`${COMETCHAT_CONSTANTS.APP_ID}.apiclient-us.cometchat-staging.com/v3`)
   .subscribePresenceForFriends()
   .build();
 
 
-  CometChatUIKit.init(uiKitSettings)!.then(()=>{
-    try{CometChat.setDemoMetaInfo(MetaInfo)}catch(err){}
-    platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+CometChatUIKit.init(uiKitSettings)!.then(() => {
+  try { CometChat.setDemoMetaInfo(MetaInfo) } catch (err) { }
+  platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.error(err));
 
 })
