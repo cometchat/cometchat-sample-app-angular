@@ -1,12 +1,12 @@
 <!-- readme -->
-<p align="left">
+<p align="center">
   <a href="https://cometchat.com">
     <img src="./Screenshots/logo.png" alt="CometChat logo" width="180" height="180">
   </a>
 
-  <h2 align="left">Angular Sample Chat App by CometChat</h3>
+  <h2 align="center">Angular Sample Chat App by CometChat</h3>
 
-  <p align="left">
+  <p align="center">
     CometChat Kitchen Sink Sample App (built using <b>CometChat UI Kits</b>) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice & video calling.
     <br />
     <a href="https://www.cometchat.com/docs/v4/angular-uikit/overview"><strong>Explore the docs »</strong></a>
@@ -16,7 +16,7 @@
   </p>
 </p>
 
-<div align="left">
+<div align="center">
     <a href="https://github.com/cometchat-pro/javascript-angular-chat-app/releases" alt="Releases">
         <img src="https://img.shields.io/github/v/release/cometchat-pro/cometchat-pro-angular-sample-app" />
     </a>
@@ -97,7 +97,13 @@ Simply clone or fork this repo and run it using the instructions below to see al
 
 4. Replace `APP_ID`, `REGION`, and `AUTH_KEY` with your CometChat `App ID`, `Region`, and `Auth Key` in the `src/CONSTS.ts` file.
 
-   ![Replacing constants in src/consts.js](./Screenshots/constants.png "Replacing constants in src/consts.ts")
+```sh
+export const COMETCHAT_CONSTANTS = {
+		APP_ID: "APP_ID",
+		REGION: "REGION",
+		AUTH_KEY: "AUTH_KEY",
+};
+```
 
 <!-- USAGE EXAMPLES -->
 

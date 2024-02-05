@@ -7,57 +7,57 @@ import { CometChatSoundManager } from '@cometchat/uikit-shared';
   styleUrls: ['./sound-manager-demo.component.scss']
 })
 export class SoundManagerDemoComponent implements OnInit {
-  public closeIconURL:string="assets/close2x.svg";
+  public closeIconURL: string = "assets/close.svg";
 
-  public buttonImage:string="assets/button-opc.png";
-  @Input() closeButton:any;
-  constructor(private themeService:CometChatThemeService) { }
+  public buttonImage: string = "assets/button-opc.png";
+  @Input() closeButton: any;
+  constructor(private themeService: CometChatThemeService) { }
   ngOnInit(): void {
   }
-playIncoming = ()=>{
-  CometChatSoundManager.play(CometChatSoundManager.Sound.incomingMessage)
-}
-playOutgoing = ()=>{
-  CometChatSoundManager.play(CometChatSoundManager.Sound.outgoingMessage)
-}
+  playIncoming = () => {
+    CometChatSoundManager.play(CometChatSoundManager.Sound.incomingMessage)
+  }
+  playOutgoing = () => {
+    CometChatSoundManager.play(CometChatSoundManager.Sound.outgoingMessage)
+  }
   // style
-  style:any = {
-    closeIconStyle:()=>{
-      return{
+  style: any = {
+    closeIconStyle: () => {
+      return {
         WebkitMask: `url(${this.closeIconURL}) center center no-repeat`,
-        background:  this.themeService.theme.palette.getAccent600(),
+        background: this.themeService.theme.palette.getAccent600(),
 
       }
     },
-    titleStyle:()=>{
-      return{
-       font: fontHelper(this.themeService.theme.typography.title2),
-       color:this.themeService.theme.palette.getAccent(),
+    titleStyle: () => {
+      return {
+        font: fontHelper(this.themeService.theme.typography.title2),
+        color: this.themeService.theme.palette.getAccent(),
       }
     },
-    subtitleStyle:()=>{
-      return{
+    subtitleStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle1),
-        color:this.themeService.theme.palette.getAccent(),
+        color: this.themeService.theme.palette.getAccent(),
       }
     },
-    wrapperStyle:()=>{
-      return{
-        background:  this.themeService.theme.palette.getBackground(),
+    wrapperStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getBackground(),
         boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 3px`
       }
     },
-    cardDescriptionStyle:()=>{
-      return{
+    cardDescriptionStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
       }
     },
-    buttonStyle:()=>{
-      return{
+    buttonStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle1),
-        color:this.themeService.theme.palette.getAccent("dark"),
-        backgroundColor:this.themeService.theme.palette.getPrimary(),
+        color: this.themeService.theme.palette.getAccent("dark"),
+        backgroundColor: this.themeService.theme.palette.getPrimary(),
         backgroundImage: `url(${this.buttonImage})`
       }
     },

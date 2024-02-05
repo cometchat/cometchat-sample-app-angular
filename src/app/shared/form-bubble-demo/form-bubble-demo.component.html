@@ -1,25 +1,22 @@
-
-
 <cometchat-backdrop>
   <div class="form__container" [ngStyle]="style.wrapperStyle()">
     <div class="header">
-        <span class="title" [ngStyle]="style.titleStyle()">Form Bubble</span>
-        <div class="close__icon" [ngStyle]="style.closeIconStyle()" (click)="closeButton()"></div>
+      <span class="title" [ngStyle]="style.titleStyle()">Form Bubble</span>
+      <div class="close__icon" [ngStyle]="style.closeIconStyle()"
+        (click)="closeButton()"></div>
     </div>
     <div class="description" [ngStyle]="style.cardDescriptionStyle()">
-      The CometChatFormBubble component is used to render a form within a chat bubble.
-      To learn more about this component tap here
+      The CometChatFormBubble component is used to render a form within a chat
+      bubble.
     </div>
-  <div class="form">
-<cometchat-form-bubble
-[message]="message"
-[formBubbleStyle]="formBubbleStyle"
->
+    <div class="form">
+      <cometchat-form-bubble [message]="message"
+        [formBubbleStyle]="formBubbleStyle">
 
-</cometchat-form-bubble>
+      </cometchat-form-bubble>
+
+    </div>
+
 
   </div>
-
-
-</div>
 </cometchat-backdrop>

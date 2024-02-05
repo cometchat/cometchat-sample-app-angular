@@ -1,33 +1,12 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import {
-  CometChatCallLogDetails,
-  CometChatCallLogHistory,
-  CometChatCallLogParticipants,
-  CometChatCallLogRecordings,
-  CometChatCallLogs,
-  CometChatCallLogsWithDetails,
-  CometChatContacts,
-  CometChatConversations,
-  CometChatConversationsWithMessages,
-  CometChatGroups,
-  CometChatGroupsWithMessages,
-  CometChatIncomingCall,
-  CometChatMessageBubble,
-  CometChatMessageComposer,
-  CometChatMessageHeader,
-  CometChatMessageInformation,
-  CometChatMessageList,
-  CometChatMessages,
-  CometChatUsers,
-  CometChatUsersWithMessages,
-} from '@cometchat/chat-uikit-angular';
+import { CometChatCallLogDetails, CometChatCallLogHistory, CometChatCallLogParticipants, CometChatCallLogRecordings, CometChatCallLogs, CometChatCallLogsWithDetails, CometChatContacts, CometChatConversations, CometChatConversationsWithMessages,  CometChatGroups, CometChatGroupsWithMessages, CometChatIncomingCall, CometChatMessageBubble, CometChatMessageComposer, CometChatMessageHeader, CometChatMessageInformation, CometChatMessageList, CometChatMessages, CometChatUsers, CometChatUsersWithMessages } from '@cometchat/chat-uikit-angular';
 import { RouterModule } from '@angular/router';
 import { MessagesDemoComponent } from './messages/messages-demo/messages-demo.component';
 import { GroupsDemoComponent } from './groups/groups-demo/groups-demo.component';
@@ -78,6 +57,7 @@ import { CallLogHistoryDemoComponent } from './call-logs/call-log-history-demo/c
     CallLogParticipantsDemoComponent,
     CallLogRecordingsDemoComponent,
     CallLogHistoryDemoComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -112,10 +92,10 @@ import { CallLogHistoryDemoComponent } from './call-logs/call-log-history-demo/c
     CometChatCallLogDetails,
     CometChatCallLogParticipants,
     CometChatCallLogRecordings,
-    CometChatCallLogHistory,
+    CometChatCallLogHistory
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

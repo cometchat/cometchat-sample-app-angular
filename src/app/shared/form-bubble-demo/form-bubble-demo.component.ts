@@ -1,7 +1,7 @@
 import { CheckboxStyle, CometChatTheme, CometChatThemeService, DropdownStyle, FormBubbleStyle, FormMessage, InputStyle, LabelStyle, RadioButtonStyle, fontHelper, } from '@cometchat/chat-uikit-angular';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { AvatarStyle } from '@cometchat/uikit-elements';
+import { AvatarStyle, QuickViewStyle, SingleSelectStyle } from '@cometchat/uikit-elements';
 
 @Component({
   selector: 'form-bubble-demo',
@@ -9,14 +9,14 @@ import { AvatarStyle } from '@cometchat/uikit-elements';
   styleUrls: ['./form-bubble-demo.component.scss']
 })
 export class FormBubbleDemoComponent implements OnInit {
-  public closeIconURL:string="assets/close2x.svg";
-  public message:any = this.getFormMessage();
-  public formBubbleStyle:any = this.getFormMessageBubbleStyle();
+  public closeIconURL: string = "assets/close.svg";
+  public message: any = this.getFormMessage();
+  public formBubbleStyle: any = this.getFormMessageBubbleStyle();
 
-  @Input() closeButton:any;
-    bubbleStyle:any = {}
-    audioURL:string = "assets/sample.mp3"
-  constructor(private themeService:CometChatThemeService) { }
+  @Input() closeButton: any;
+  bubbleStyle: any = {}
+  audioURL: string = "assets/sample.mp3"
+  constructor(private themeService: CometChatThemeService) { }
 
 
   ngOnInit(): void {
@@ -25,11 +25,11 @@ export class FormBubbleDemoComponent implements OnInit {
   }
 
   getFormMessageBubbleStyle() {
-    let textStyle = new InputStyle({
+    const textStyle = new InputStyle({
       width: "100%",
       height: "30px",
       border: `1px solid ${this.themeService.theme.palette.getAccent100()}`,
-      borderRadius: "3px",
+      borderRadius: "6px",
       padding: "0px 0px 0px 5px",
       placeholderTextColor: this.themeService.theme.palette.getAccent400(),
       placeholderTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
@@ -58,14 +58,14 @@ export class FormBubbleDemoComponent implements OnInit {
       borderRadius: "4px",
       background: "",
       labelTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
-      labelTextColor: this.themeService.theme.palette.getAccent600(),
+      labelTextColor: this.themeService.theme.palette.getAccent(),
     });
     const dropdownStyle = new DropdownStyle({
       height: "35px",
       width: "100%",
       background: this.themeService.theme.palette.getBackground(),
       border: `1px solid ${this.themeService.theme.palette.getAccent100()}`,
-      borderRadius: "12px",
+      borderRadius: "6px",
       activeTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
       activeTextColor: this.themeService.theme.palette.getAccent(),
       arrowIconTint: this.themeService.theme.palette.getAccent700(),
@@ -83,47 +83,46 @@ export class FormBubbleDemoComponent implements OnInit {
       width: "100%",
       background: this.themeService.theme.palette.getPrimary(),
       border: `none`,
-      borderRadius: "12px",
+      borderRadius: "6px",
       buttonTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
       buttonTextColor: this.themeService.theme.palette.getBackground(),
       justifyContent: "center",
     };
-    const singleSelectStyle = {
+    const singleSelectStyle = new SingleSelectStyle({
       height: "100%",
       width: "100%",
-      background: this.themeService.theme.palette.getBackground()!,
+      background: this.themeService.theme.palette.getBackground(),
       border: "none",
       borderRadius: "12px",
-      activeTextFont: fontHelper(this.themeService.theme.typography.subtitle2)!,
-      activeTextColor: this.themeService.theme.palette.getAccent()!,
-      activeTextBackground: this.themeService.theme.palette.getAccent100()!,
-      textFont: fontHelper(this.themeService.theme.typography.subtitle2)!,
-      textColor: this.themeService.theme.palette.getAccent() || "",
-      optionBackground: this.themeService.theme.palette.getBackground() || "",
+      activeTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
+      activeTextColor: this.themeService.theme.palette.getAccent(),
+      activeTextBackground: this.themeService.theme.palette.getAccent100(),
+      textFont: fontHelper(this.themeService.theme.typography.subtitle2),
+      textColor: this.themeService.theme.palette.getAccent(),
+      optionBackground: this.themeService.theme.palette.getBackground(),
       optionBorder: `1px solid ${this.themeService.theme.palette.getAccent100()}`,
-      optionBorderRadius: "2px",
-      hoverTextFont: fontHelper(this.themeService.theme.typography.subtitle2)!,
-      hoverTextColor: this.themeService.theme.palette.getAccent()!,
-      hoverTextBackground: this.themeService.theme.palette.getAccent100()!,
-    };
-    const quickViewStyle = {
+      optionBorderRadius: "3px",
+      hoverTextFont: fontHelper(this.themeService.theme.typography.subtitle2),
+      hoverTextColor: this.themeService.theme.palette.getAccent(),
+      hoverTextBackground: this.themeService.theme.palette.getAccent100(),
+    });
+    const quickViewStyle = new QuickViewStyle({
       background: "transparent",
       height: "fit-content",
       width: "100%",
-      titleFont: fontHelper(this.themeService.theme.typography.subtitle2) || "",
-      titleColor: this.themeService.theme.palette.getPrimary() || "",
-      subtitleFont: fontHelper(this.themeService.theme.typography.subtitle2)!,
-      subtitleColor: this.themeService.theme.palette.getAccent600()!,
-      leadingBarTint: this.themeService.theme.palette.getPrimary()!,
+      titleFont: fontHelper(this.themeService.theme.typography.subtitle2),
+      titleColor: this.themeService.theme.palette.getPrimary(),
+      subtitleFont: fontHelper(this.themeService.theme.typography.subtitle2),
+      subtitleColor: this.themeService.theme.palette.getAccent600(),
+      leadingBarTint: this.themeService.theme.palette.getPrimary(),
       leadingBarWidth: "4px",
       borderRadius: "8px",
-      closeIconTint: "",
-    };
+    });
     return new FormBubbleStyle({
       width: "300px",
       height: "fit-content",
-      border: "1px solid #e0e0e0",
-      background: "transparent",
+      border: "none",
+      background: this.themeService.theme.palette.getSecondary(),
       wrapperBackground: this.themeService.theme.palette.getBackground(),
       borderRadius: "8px",
       wrapperBorderRadius: "8px",
@@ -140,69 +139,58 @@ export class FormBubbleDemoComponent implements OnInit {
       goalCompletionTextColor: this.themeService.theme.palette.getAccent(),
       goalCompletionTextFont: fontHelper(this.themeService.theme.typography.subtitle1),
       wrapperPadding: "2px",
+      datePickerBorder: `1px solid ${this.themeService.theme.palette.getAccent100()}`,
+      datePickerBorderRadius: "6px",
+      datePickerFont: fontHelper(this.themeService.theme.typography.subtitle2),
+      datePickerFontColor: this.themeService.theme.palette.getAccent(),
     });
   }
 
   getFormMessage() {
     const json = {
-      id: "2862",
-      muid: "1698667506320",
-      conversationId: "group_group_1696408979857",
-      sender: "nakul",
+      id: "757",
+      conversationId: "group_group_1706078382528",
+      sender: "superhero2",
       receiverType: "group",
-      receiver: "group_1696408979857",
+      receiver: "group_1706078382528",
       category: "interactive",
       type: "form",
       data: {
         entities: {
           sender: {
             entity: {
-              uid: "nakul",
-              name: "Nakul",
+              uid: "superhero2",
+              name: "Captain America",
               role: "default",
+              avatar:
+                "https://data-us.cometchat-staging.com/assets/images/avatars/captainamerica.png",
               status: "available",
-              lastActiveAt: 1698830332,
+              createdAt: 1683717043,
+              lastActiveAt: 1704738138,
             },
             entityType: "user",
           },
           receiver: {
             entity: {
-              guid: "group_1696408979857",
-              name: "chutiyaGang",
+              guid: "group_1706078382528",
+              name: "Scheduler TimeDate",
               type: "public",
-              owner: "vivek",
-              createdAt: 1696408980,
-              updatedAt: 1698667314,
-              membersCount: 7,
-              conversationId: "group_group_1696408979857",
-              onlineMembersCount: 14,
+              owner: "superhero2",
+              createdAt: 1706078391,
+              updatedAt: 1706078425,
+              membersCount: 12,
+              conversationId: "group_group_1706078382528",
+              onlineMembersCount: 8,
             },
             entityType: "group",
           },
         },
-        metadata: {
-          data: {
-            text: "Thanks For filling the Form!",
-          },
-          type: "text",
-          category: "message",
-          receiver: "{$s}",
-          receiverType: "{$t}",
-        },
-        resource:
-          "WEB-4_0_1-a9b124b3-e092-43a7-9f78-cf507c93d153-1698830285347",
-        interactions: [
-          {
-            elementId: "element8",
-            interactedAt: 1699874632,
-          },
-        ],
         interactionGoal: {
           type: "none",
-          elementIds: [],
+          elementIds: ["element8"],
         },
         interactiveData: {
-          title: "Society Survey",
+          title: "Form Title",
           formFields: [
             {
               label: "Name",
@@ -210,7 +198,9 @@ export class FormBubbleDemoComponent implements OnInit {
               optional: false,
               elementId: "element1",
               elementType: "textInput",
-              defaultValue: "vivek",
+              placeholder: {
+                text: "write your name here",
+              },
             },
             {
               label: "Last Name",
@@ -227,21 +217,40 @@ export class FormBubbleDemoComponent implements OnInit {
               elementType: "textInput",
             },
             {
-              label: "Country",
-              options: [
-                {
-                  label: "INDIA",
-                  value: "option1",
-                },
-                {
-                  label: "AUSTRALIA",
-                  value: "option2",
-                },
-              ],
+              to: "2024-02-09T23:59",
+              from: "2024-02-08T12:00",
+              mode: "dateTime",
+              label: "Select Date & Time",
               optional: false,
-              elementId: "element4",
-              elementType: "dropdown",
-              defaultValue: "option1",
+              elementId: "67",
+              elementType: "dateTime",
+              defaultValue: "2024-01-01T12:00",
+              timezoneCode: "Asia/Kolkata",
+              dateTimeFormat: "yyyy-MM-dd HH:mm",
+            },
+            {
+              to: "2024-02-09",
+              from: "2024-01-09",
+              mode: "date",
+              label: "Select Date",
+              optional: false,
+              elementId: "68",
+              elementType: "dateTime",
+              defaultValue: "2024-01-11",
+              timezoneCode: "Asia/Kolkata",
+              dateTimeFormat: "yyyy-MM-dd",
+            },
+            {
+              to: "15:30",
+              from: "14:30",
+              mode: "time",
+              label: "Select Time",
+              optional: false,
+              elementId: "69",
+              elementType: "dateTime",
+              defaultValue: "14:55",
+              timezoneCode: "Asia/Kolkata",
+              dateTimeFormat: "HH:mm",
             },
             {
               label: "Services",
@@ -259,7 +268,7 @@ export class FormBubbleDemoComponent implements OnInit {
                   value: "option3",
                 },
               ],
-              optional: false,
+              optional: true,
               elementId: "element5",
               elementType: "checkbox",
               defaultValue: ["option1", "option2"],
@@ -268,11 +277,28 @@ export class FormBubbleDemoComponent implements OnInit {
               label: "Wing",
               options: [
                 {
-                  label: "A",
+                  label: "A Wing",
                   value: "option1",
                 },
                 {
-                  label: "B",
+                  label: "B Wing",
+                  value: "option2",
+                },
+              ],
+              optional: false,
+              elementId: "element10",
+              elementType: "dropdown",
+              defaultValue: "option1",
+            },
+            {
+              label: "Wing",
+              options: [
+                {
+                  label: "A Wing",
+                  value: "option1",
+                },
+                {
+                  label: "B Wing",
                   value: "option2",
                 },
               ],
@@ -283,7 +309,7 @@ export class FormBubbleDemoComponent implements OnInit {
             },
             {
               action: {
-                url: "https://www.cometchat.com/",
+                url: "https://www.cometchat.com",
                 actionType: "urlNavigation",
               },
               elementId: "element9",
@@ -294,8 +320,9 @@ export class FormBubbleDemoComponent implements OnInit {
           ],
           submitElement: {
             action: {
-              url: "",
-              actionType: "urlNavigation",
+              url: "https://www.cometchat.com",
+              method: "POST",
+              actionType: "apiAction",
             },
             elementId: "element8",
             buttonText: "Submit",
@@ -304,43 +331,52 @@ export class FormBubbleDemoComponent implements OnInit {
           },
         },
         allowSenderInteraction: true,
+        interactions: [
+          {
+            elementId: "element8",
+            interactedAt: 1706677823,
+          },
+        ],
       },
-      sentAt: 1698830332,
-      updatedAt: 1698830332,
+      sentAt: 1706092684,
+      updatedAt: 1706092684,
+      replyCount: 2,
     };
+
     const formMessage = FormMessage.fromJSON(json);
+
     return formMessage;
   }
 
 
   // style
-  style:any = {
-    closeIconStyle:()=>{
-      return{
+  style: any = {
+    closeIconStyle: () => {
+      return {
         WebkitMask: `url(${this.closeIconURL}) center center no-repeat`,
-        background:  this.themeService.theme.palette.getAccent600(),
+        background: this.themeService.theme.palette.getAccent600(),
 
 
       }
     },
-    titleStyle:()=>{
-      return{
-       font: fontHelper(this.themeService.theme.typography.title2),
-       color:this.themeService.theme.palette.getAccent(),
+    titleStyle: () => {
+      return {
+        font: fontHelper(this.themeService.theme.typography.title2),
+        color: this.themeService.theme.palette.getAccent(),
 
       }
     },
-    wrapperStyle:()=>{
-      return{
-        background:  this.themeService.theme.palette.getBackground(),
+    wrapperStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getBackground(),
         boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 3px`
 
       }
     },
-    cardDescriptionStyle:()=>{
-      return{
+    cardDescriptionStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
       }
     },
 
