@@ -1,11 +1,6 @@
-# Angular Sample Chat App by CometChat
-The CometChat Kitchen Sink Sample App (built using **CometChat UI Kits**) is a fully functional real-time messaging app capable of private (one-on-one), group messaging, voice, and video calling.
+# Angular Sample App by CometChat
 
-Explore the [**Angular UIKits**](https://www.cometchat.com/docs/v4/angular-uikit/overview) docs.
-
-
-## Getting Started
-This repo can be used directly as a full-featured real-time messaging application or as a starter template for your custom projects.
+The App is a reference application showcasing the integration of [**CometChat's Angular UI Kit**](https://www.cometchat.com/docs/v4/angular-uikit/overview) within an Angular framework. It provides developers with examples of implementing real-time messaging and voice and video calling features in their own Angular-based applications.
 
 ## Prerequisites
 
