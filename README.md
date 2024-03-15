@@ -16,11 +16,11 @@ This is a reference application showcasing the integration of [**CometChat's Ang
 ## Installation
 1. Clone the repository:
     ```
-    git clone https://github.com/cometchat-pro/cometchat-pro-angular-sample-app.git
+    git clone https://github.com/cometchat/cometchat-sample-app-angular.git
     ```
 2. Navigate to the cloned directory:
     ```
-    cd cometchat-pro-angular-sample-app
+    cd cometchat-sample-app-angular
     ```
 3. Install dependencies:
     ```
