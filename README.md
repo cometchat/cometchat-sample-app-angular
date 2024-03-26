@@ -5,7 +5,7 @@ This is a reference application showcasing the integration of [**CometChat's Ang
 ## Prerequisites
 
 - Ensure that you have Node.js and npm installed:
-  
+
     ```sh
     npm install npm@latest -g
     ```
@@ -26,9 +26,9 @@ This is a reference application showcasing the integration of [**CometChat's Ang
     ```
     npm install
     ```
-4. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [src/CONSTS.ts](https://github.com/cometchat/cometchat-sample-app-angular/blob/v4/src/CONSTS.ts) file:
+4. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [src/AppConstants.ts](https://github.com/cometchat/cometchat-sample-app-angular/blob/v4/src/AppConstants.ts) file:
     ```typescript
-    export const COMETCHAT_CONSTANTS = {
+    export const AppConstants = {
         APP_ID: "YOUR_APP_ID",
         REGION: "YOUR_REGION",
         AUTH_KEY: "YOUR_AUTH_KEY",
@@ -38,7 +38,9 @@ This is a reference application showcasing the integration of [**CometChat's Ang
     ```
     npm run start
     ```
-![image](https://github.com/cometchat/cometchat-sample-app-angular/assets/2210730/fcd814ef-a155-468a-93db-cf2cabf590ad)
+<p align="left">
+  <img max-width="100%" height="600px" src="./Screenshots/login-page.png">
+</p>
 
 
 ## Help and Support

@@ -11,16 +11,16 @@ import { MessageListStyle } from '@cometchat/uikit-shared';
 })
 export class MessageListDemoComponent implements OnInit {
 
-  public user!:CometChat.User;
-  constructor(private themeService:CometChatThemeService) {
+  public user!: CometChat.User;
+  constructor(private themeService: CometChatThemeService) {
 
-    CometChat.getUser("superhero5").then((user:CometChat.User)=>{
+    CometChat.getUser("superhero5").then((user: CometChat.User) => {
       this.user = user
 
     })
-    .catch((error:CometChat.CometChatException)=>{
-      console.log(error)
-    })
+      .catch((error: CometChat.CometChatException) => {
+        console.log(error)
+      })
 
   }
   messageListStyle: MessageListStyle = {
@@ -28,7 +28,6 @@ export class MessageListDemoComponent implements OnInit {
     nameTextColor: "white",
     TimestampTextFont: "",
     TimestampTextColor: "",
-    threadReplySeparatorColor: "",
     threadReplyTextFont: "",
     threadReplyIconTint: "",
     threadReplyTextColor: "",
@@ -55,25 +54,24 @@ export class MessageListDemoComponent implements OnInit {
 
     this.setMessagesStyle()
   }
-  setMessagesStyle(){
-    let defaultStyle:MessageListStyle = new MessageListStyle({
-      background:this.themeService.theme.palette.getBackground(),
-      border:`none`,
-      emptyStateTextFont:fontHelper(this.themeService.theme.typography.title1),
-      emptyStateTextColor:this.themeService.theme.palette.getAccent600(),
-      errorStateTextFont:fontHelper(this.themeService.theme.typography.title1),
-      errorStateTextColor:this.themeService.theme.palette.getAccent600(),
-      loadingIconTint:this.themeService.theme.palette.getAccent600(),
+  setMessagesStyle() {
+    let defaultStyle: MessageListStyle = new MessageListStyle({
+      background: this.themeService.theme.palette.getBackground(),
+      border: `none`,
+      emptyStateTextFont: fontHelper(this.themeService.theme.typography.title1),
+      emptyStateTextColor: this.themeService.theme.palette.getAccent600(),
+      errorStateTextFont: fontHelper(this.themeService.theme.typography.title1),
+      errorStateTextColor: this.themeService.theme.palette.getAccent600(),
+      loadingIconTint: this.themeService.theme.palette.getAccent600(),
       nameTextFont: fontHelper(this.themeService.theme.typography.title2),
       nameTextColor: this.themeService.theme.palette.getAccent600(),
-      threadReplySeparatorColor: this.themeService.theme.palette.getAccent400(),
       threadReplyTextFont: fontHelper(this.themeService.theme.typography.subtitle1),
       threadReplyIconTint: this.themeService.theme.palette.getAccent600(),
       threadReplyTextColor: this.themeService.theme.palette.getAccent600(),
       TimestampTextFont: fontHelper(this.themeService.theme.typography.caption2),
       TimestampTextColor: this.themeService.theme.palette.getAccent600(),
     })
-    this.messageListStyle = {...defaultStyle,...this.messageListStyle}
+    this.messageListStyle = { ...defaultStyle, ...this.messageListStyle }
   }
 
 }

@@ -1,6 +1,6 @@
 export const MetaInfo = {
     name: "cometchat-chat-sample-app-angular",
-    version: "4.2.0",
+    version: "4.3.0",
     type: "sample",
     platform: "Angular"
 }

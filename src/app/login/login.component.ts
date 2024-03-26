@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CometChat } from '@cometchat/chat-sdk-javascript';
-import { COMETCHAT_CONSTANTS } from '../../CONSTS';
-import {  CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
+import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
 import { AvatarStyle } from '@cometchat/uikit-elements';
 @Component({
   selector: 'cometchat-login',
@@ -11,40 +10,40 @@ import { AvatarStyle } from '@cometchat/uikit-elements';
 })
 export class LoginComponent implements OnInit {
   public theme = new CometChatTheme({})
-  public avatarStyle:AvatarStyle = {
-    height:"32px",
-    width:"32px",
-    backgroundColor:"white",
-    borderRadius:"24px"
+  public avatarStyle: AvatarStyle = {
+    height: "32px",
+    width: "32px",
+    backgroundColor: "white",
+    borderRadius: "24px"
   }
-  public uid:string="";
-  public error:string=""
-  public usersArray:any[] = [
+  public uid: string = "";
+  public error: string = ""
+  public usersArray: any[] = [
     {
-      name:"Iron Man",
-      uid:"superhero1",
-      avatar:"https://data-us.cometchat.io/assets/images/avatars/ironman.png"
+      name: "Iron Man",
+      uid: "superhero1",
+      avatar: "https://data-us.cometchat.io/assets/images/avatars/ironman.png"
     },
     {
-      name:"Captain America",
-      uid:"superhero2",
-      avatar:"https://data-us.cometchat.io/assets/images/avatars/captainamerica.png"
+      name: "Captain America",
+      uid: "superhero2",
+      avatar: "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png"
     },
     {
-      name:"Spiderman",
-      uid:"superhero3",
-      avatar:"https://data-us.cometchat.io/assets/images/avatars/spiderman.png"
+      name: "Spiderman",
+      uid: "superhero3",
+      avatar: "https://data-us.cometchat.io/assets/images/avatars/spiderman.png"
     },
     {
-      name:"Wolvorine",
-      uid:"superhero4",
-      avatar:"https://data-us.cometchat.io/assets/images/avatars/wolverine.png"
+      name: "Wolvorine",
+      uid: "superhero4",
+      avatar: "https://data-us.cometchat.io/assets/images/avatars/wolverine.png"
     }
   ]
-  public buttonImage:string="assets/button-opc.png";
-  public backgroundImage:string="assets/Image-518@1x.png";
-  public inProgress:boolean = false;
-  constructor(private router:Router,private themeService:CometChatThemeService) {
+  public buttonImage: string = "assets/button-opc.png";
+  public backgroundImage: string = "assets/Image-518@1x.png";
+  public inProgress: boolean = false;
+  constructor(private router: Router, private themeService: CometChatThemeService) {
   }
   ngOnInit(): void {
     this.checkUserLogIn()
@@ -67,8 +66,8 @@ export class LoginComponent implements OnInit {
 
 
   }
-  setAvatarStyle(){
-    let defaultStyle:AvatarStyle = new AvatarStyle({
+  setAvatarStyle() {
+    let defaultStyle: AvatarStyle = new AvatarStyle({
       borderRadius: "24px",
       width: "36px",
       height: "36px",
@@ -79,181 +78,181 @@ export class LoginComponent implements OnInit {
       nameTextFont: fontHelper(this.themeService.theme.typography.subtitle1),
       outerViewBorderSpacing: "",
     })
-    this.avatarStyle = {...defaultStyle,...this.avatarStyle}
+    this.avatarStyle = { ...defaultStyle, ...this.avatarStyle }
   }
-  loginToDashboard(user:string) {
+  loginToDashboard(user: string) {
     this.error = ""
- if(user && user != ' '){
-  this.inProgress = true
-  var UID = user
-  CometChat.getLoggedinUser().then(
-    (user) => {
-      if (!user) {
+    if (user && user != ' ') {
+      this.inProgress = true
+      var UID = user
+      CometChat.getLoggedinUser().then(
+        (user) => {
+          if (!user) {
 
-        CometChatUIKit.login({uid:UID}).then(
-          user => {
+            CometChatUIKit.login({ uid: UID }).then(
+              user => {
 
-          this.inProgress = false
-            console.log("Login Successful:", { user });
-            this.router.navigate(['/home']);
-          }, error => {
-            this.inProgress = false
-            this.error = error.message
+                this.inProgress = false
+                console.log("Login Successful:", { user });
+                this.router.navigate(['/home']);
+              }, error => {
+                this.inProgress = false
+                this.error = error.message
+              }
+            )
+              .catch((error: CometChat.CometChatException) => {
+                this.inProgress = false
+                console.log(error)
+              })
           }
-        )
-        .catch((error:CometChat.CometChatException)=>{
+          else {
+            this.inProgress = false
+            this.router.navigate(['/home']);
+          }
+        }, error => {
           this.inProgress = false
-          console.log(error)
-        })
-      }
-      else {
+          this.error = error.message
+
+        }
+      ).catch((err: any) => {
         this.inProgress = false
-        this.router.navigate(['/home']);
-      }
-    }, error => {
-      this.inProgress = false
-      this.error = error.message
+        console.log(err)
+
+      })
 
     }
-  ).catch((err:any)=>{
-    this.inProgress = false
-    console.log(err)
-
-  })
-
- }
- else{
-  this.inProgress = false
-  this.error = "UID is required to login"
- }
+    else {
+      this.inProgress = false
+      this.error = "UID is required to login"
+    }
 
 
   }
-  signup(){
+  signup() {
     this.router.navigate(['/signup']);
 
   }
-  consoleError(event:any){
+  consoleError(event: any) {
     this.error = ""
   }
-  styles:any = {
-    loginWrapperStyle : ()=>{
-      return{
-        background:this.themeService.theme.palette.getAccent100()
+  styles: any = {
+    loginWrapperStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getAccent100()
       }
     },
-    headerTitleStyle:()=>{
-      return{
+    headerTitleStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.name),
-        color:this.themeService.theme.palette.getAccent("light")
+        color: this.themeService.theme.palette.getAccent("light")
       }
     },
-    headerSectionStyle:()=>{
-      return{
+    headerSectionStyle: () => {
+      return {
         borderBottom: `1px solid ${this.themeService.theme.palette.getAccent100()}`
 
       }
     },
-    headerSubtitleStyle:()=>{
-      return{
+    headerSubtitleStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent400("light")
+        color: this.themeService.theme.palette.getAccent400("light")
       }
     },
-    titleStyle:()=>{
-      return{
+    titleStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.heading),
-        color:this.themeService.theme.palette.getAccent("light")
+        color: this.themeService.theme.palette.getAccent("light")
       }
     },
-    borderStyle:()=>{
-      return{
+    borderStyle: () => {
+      return {
         borderBottom: `1px solid ${this.themeService.theme.palette.getAccent100()}`
 
       }
     },
-    subtitleStyle:()=>{
-      return{
+    subtitleStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
       }
     },
-    containerStyle:()=>{
-      return{
-       background:this.themeService.theme.palette.getBackground(),
-       boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 5px`
+    containerStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getBackground(),
+        boxShadow: `${this.themeService.theme.palette.getAccent400()} 0px 0px 5px`
       }
     },
-    usernameStyle:()=>{
-      return{
+    usernameStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.name),
-        color:this.themeService.theme.palette.getAccent()
+        color: this.themeService.theme.palette.getAccent()
       }
     },
-    errorTextStyle:()=>{
-      return{
+    errorTextStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getError()
+        color: this.themeService.theme.palette.getError()
 
 
       }
     },
-    useruidStyle:()=>{
-      return{
+    useruidStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
       }
     },
-    userDetailsStyle:()=>{
-      return{
-        background:this.themeService.theme.palette.getAccent100(),
+    userDetailsStyle: () => {
+      return {
+        background: this.themeService.theme.palette.getAccent100(),
         backgroundImage: `url(${this.buttonImage})`
       }
     },
-    loginMessageStyle:()=>{
-      return{
+    loginMessageStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600()
+        color: this.themeService.theme.palette.getAccent600()
 
       }
     },
-    inputStyle:()=>{
-      return{
+    inputStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent600(),
+        color: this.themeService.theme.palette.getAccent600(),
         border: `1px solid ${this.themeService.theme.palette.getAccent100()}`,
 
       }
     },
-    footerStyle:()=>{
-      return{
+    footerStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle2),
-        color:this.themeService.theme.palette.getAccent500(),
-        background:this.themeService.theme.palette.getAccent100()
+        color: this.themeService.theme.palette.getAccent500(),
+        background: this.themeService.theme.palette.getAccent100()
 
       }
     },
-    buttonStyle:()=>{
-      return{
+    buttonStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.subtitle1),
-        color:this.themeService.theme.palette.getAccent("dark"),
-        backgroundColor:this.themeService.theme.palette.getPrimary(),
+        color: this.themeService.theme.palette.getAccent("dark"),
+        backgroundColor: this.themeService.theme.palette.getPrimary(),
         backgroundImage: `url(${this.buttonImage})`
 
       }
     },
-    signupButtonStyle:()=>{
-      return{
+    signupButtonStyle: () => {
+      return {
         font: fontHelper(this.themeService.theme.typography.title2),
-        color:this.themeService.theme.palette.getAccent600(),
-        backgroundColor:"transparent",
+        color: this.themeService.theme.palette.getAccent600(),
+        backgroundColor: "transparent",
         border: `1px solid ${this.themeService.theme.palette.getAccent100()}`,
-        borderRadius:"4px"
+        borderRadius: "4px"
 
       }
     },
-    sectionImageStyle:()=>{
-      return{
+    sectionImageStyle: () => {
+      return {
         background: `url(${this.backgroundImage}) center center no-repeat`,
         backgroundSize: "contain"
 
