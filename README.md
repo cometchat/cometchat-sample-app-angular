@@ -30,14 +30,9 @@ This is a reference application showcasing the integration of [**CometChat's Ang
     ```
     npm install
     ```
-4. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [src/AppConstants.ts](https://github.com/cometchat/cometchat-sample-app-angular/blob/v4/src/AppConstants.ts) file:
-    ```typescript
-    export const AppConstants = {
-        APP_ID: "YOUR_APP_ID",
-        REGION: "YOUR_REGION",
-        AUTH_KEY: "YOUR_AUTH_KEY",
-    };
-    ```
+4. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [AppConstants.ts](https://github.com/cometchat/cometchat-sample-app-angular/blob/v4/src/AppConstants.ts) file:
+   https://github.com/cometchat/cometchat-sample-app-angular/blob/9e868938ab4fbfb70cfea28c6fa773e8431c0e26/src/AppConstants.ts#L1-L5
+
 5. Run the project locally to see all CometChat features in action:
     ```
     npm run start
