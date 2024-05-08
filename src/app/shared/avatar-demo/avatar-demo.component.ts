@@ -20,7 +20,6 @@ export class AvatarDemoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("open")
     this.setAvatarStyle()
   }
   updateBorderRadius(ev: any) {

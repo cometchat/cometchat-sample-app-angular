@@ -68,7 +68,6 @@ export class SignUpComponent implements OnInit {
       let trimmedUID: string = username.trim()
       let generatedUID: string = trimmedUID.replace(" ", "")
       uid = generatedUID + Math.round(+new Date() / 1000)
-      console.log(username.replace(" ", ""))
     }
     else {
       uid = UID;
