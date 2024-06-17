@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
+import { Component, OnInit } from '@angular/core';
+
 import { AvatarStyle } from '@cometchat/uikit-elements';
+import { CometChat } from '@cometchat/chat-sdk-javascript';
+import { Router } from '@angular/router';
+import { users } from '../../sampleApp/sampledata';
+
 @Component({
   selector: 'cometchat-login',
   templateUrl: './login.component.html',
@@ -18,28 +21,7 @@ export class LoginComponent implements OnInit {
   }
   public uid: string = "";
   public error: string = ""
-  public usersArray: any[] = [
-    {
-      name: "Iron Man",
-      uid: "superhero1",
-      avatar: "https://data-us.cometchat.io/assets/images/avatars/ironman.png"
-    },
-    {
-      name: "Captain America",
-      uid: "superhero2",
-      avatar: "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png"
-    },
-    {
-      name: "Spiderman",
-      uid: "superhero3",
-      avatar: "https://data-us.cometchat.io/assets/images/avatars/spiderman.png"
-    },
-    {
-      name: "Wolvorine",
-      uid: "superhero4",
-      avatar: "https://data-us.cometchat.io/assets/images/avatars/wolverine.png"
-    }
-  ]
+  public usersArray: any[] = [];
   public buttonImage: string = "assets/button-opc.png";
   public backgroundImage: string = "assets/Image-518@1x.png";
   public inProgress: boolean = false;
@@ -48,6 +30,23 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.checkUserLogIn()
     this.setAvatarStyle()
+    this.fetchDefaultUsers()
+  }
+
+  async fetchDefaultUsers() {
+    try {
+      const response = await fetch(
+        "https://assets.cometchat.io/sampleapp/sampledata.json"
+      );
+      const data = await response.json();
+      this.usersArray = data.users;
+    } catch (error) {
+      console.log(
+        "fetching default users failed, using fallback data",
+        error
+      );
+      this.usersArray = users.users;
+    }
   }
   checkUserLogIn() {
     CometChat.getLoggedinUser().then(
