@@ -1,6 +1,6 @@
 {
   "name": "javascript-angular-chat-app",
-  "version": "3.0.11-1",
+  "version": "3.0.11-2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { CometChat } from "@cometchat-pro/chat";
+
 import { COMETCHAT_CONSTANTS } from "src/CONSTS";
+import { CometChat } from "@cometchat-pro/chat";
+import { Router } from "@angular/router";
+import { users } from "src/sampleApp/sampledata";
 
 @Component({
   selector: "app-kitchen-sink-app",
@@ -10,14 +12,7 @@ import { COMETCHAT_CONSTANTS } from "src/CONSTS";
 })
 export class KitchenSinkAppComponent implements OnInit {
   userInput: String = "";
-  superHero1 = "https://data-us.cometchat.io/assets/images/avatars/ironman.png";
-  superHero2 =
-    "https://data-us.cometchat.io/assets/images/avatars/captainamerica.png";
-  superHero3 =
-    "https://data-us.cometchat.io/assets/images/avatars/spiderman.png";
-  superHero4 =
-    "https://data-us.cometchat.io/assets/images/avatars/wolverine.png";
-  superHero5 = "https://data-us.cometchat.io/assets/images/avatars/cyclops.png";
+  userList = [];
 
   constructor(private router: Router) {}
 
@@ -36,6 +31,21 @@ export class KitchenSinkAppComponent implements OnInit {
     //       console.log("error", error);
     //   }
     // )
+    this.fetchDefaultUsers();
+
+  }
+
+  async fetchDefaultUsers() {
+    try {
+      const response = await fetch(
+        "https://assets.cometchat.io/sampleapp/sampledata.json"
+      );
+      const data = await response.json();
+      this.userList = data.users;
+    } catch (error) {
+      console.log("fetching default users failed, using fallback data", error);
+      this.userList = users.users;
+    }
   }
 
   /**
