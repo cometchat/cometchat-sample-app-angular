@@ -1,6 +1,6 @@
 {
   "name": "cometchat-chat-sample-app-angular",
-  "version": "4.3.6",
+  "version": "4.3.7",
   "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
     "ng": "ng",
@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@cometchat/calls-sdk-javascript": "^4.0.7",
-    "@cometchat/chat-uikit-angular": "~4.3.6",
+    "@cometchat/chat-uikit-angular": "~4.3.10",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
