@@ -40,6 +40,7 @@ export class MessageComposerDemoComponent implements OnInit {
       attachIcontint: this.themeService.theme.palette.getAccent500(),
       sendIconTint: '#2fb5e9d1',
       emojiIconTint: this.themeService.theme.palette.getAccent500(),
+      voiceRecordingIconTint:this.themeService.theme.palette.getAccent500(),
       inputBackground: 'transparent',
       inputBorder: 'none',
       dividerTint: this.themeService.theme.palette.getAccent200(),
