@@ -5,6 +5,7 @@ import { fontHelper } from '@cometchat/chat-uikit-angular';
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-users-wrapper',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
@@ -98,5 +99,3 @@ style:any={
 }
 
 }
-
-

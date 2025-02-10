@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cometchat-chat-sample-app-angular:build:production"
+              "buildTarget": "cometchat-chat-sample-app-angular:build:production"
             },
             "development": {
-              "browserTarget": "cometchat-chat-sample-app-angular:build:development"
+              "buildTarget": "cometchat-chat-sample-app-angular:build:development"
             }
           },
           "defaultConfiguration": "development"

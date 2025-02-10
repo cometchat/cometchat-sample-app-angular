@@ -4,6 +4,7 @@ import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper } 
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-conversations-with-messages-demo',
   templateUrl: './conversations-with-messages-demo.component.html',
   styleUrls: ['./conversations-with-messages-demo.component.scss']

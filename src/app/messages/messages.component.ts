@@ -4,6 +4,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@co
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-messages-wrapper',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss']

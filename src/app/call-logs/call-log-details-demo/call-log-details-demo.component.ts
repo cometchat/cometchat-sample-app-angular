@@ -18,6 +18,7 @@ import {
 import { ListItemStyle } from '@cometchat/uikit-elements';
 
 @Component({
+  standalone: false,
   selector: 'call-log-details-demo',
   templateUrl: './call-log-details-demo.component.html',
   styleUrls: ['./call-log-details-demo.component.scss'],

@@ -6,6 +6,7 @@ import { ListItemStyle } from '@cometchat/uikit-elements';
 
 
 @Component({
+  standalone: false,
   selector: 'details-demo',
   templateUrl: './details-demo.component.html',
   styleUrls: ['./details-demo.component.scss']

@@ -3,6 +3,7 @@ import { CometChatUIKitCalls, States } from '@cometchat/chat-uikit-angular';
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 
 @Component({
+  standalone: false,
   selector: 'call-log-participants-demo',
   templateUrl: './call-log-participants-demo.component.html',
   styleUrls: ['./call-log-participants-demo.component.scss'],

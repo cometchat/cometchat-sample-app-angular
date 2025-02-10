@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/ch
 import { AvatarStyle } from '@cometchat/uikit-elements';
 
 @Component({
+  standalone: false,
   selector: 'avatar-demo',
   templateUrl: './avatar-demo.component.html',
   styleUrls: ['./avatar-demo.component.scss']

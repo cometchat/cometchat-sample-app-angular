@@ -5,6 +5,7 @@ import '@cometchat/uikit-elements'
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 import {TransferOwnershipStyle} from '@cometchat/uikit-shared'
 @Component({
+  standalone: false,
   selector: 'cometchat-transfer-ownership-demo',
   templateUrl: './transfer-ownership-demo.component.html',
   styleUrls: ['./transfer-ownership-demo.component.scss']

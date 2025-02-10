@@ -4,6 +4,7 @@ import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { AppConstants } from '../../AppConstants';
 import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper } from '@cometchat/chat-uikit-angular';
 @Component({
+  standalone: false,
   selector: 'cometchat-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']

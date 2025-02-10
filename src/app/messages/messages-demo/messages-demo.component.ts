@@ -6,6 +6,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/ch
 import { MessagesStyle } from '@cometchat/uikit-shared';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-messages-demo',
   templateUrl: './messages-demo.component.html',
   styleUrls: ['./messages-demo.component.scss']

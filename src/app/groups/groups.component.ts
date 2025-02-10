@@ -5,6 +5,7 @@ import { CometChatTheme, CometChatThemeService, CometChatUIKitConstants, fontHel
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-groups-wrapper',
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.scss']

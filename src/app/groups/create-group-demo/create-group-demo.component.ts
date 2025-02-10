@@ -5,6 +5,7 @@ import { CreateGroupStyle, JoinGroupStyle, ListItemStyle } from '@cometchat/uiki
 import '@cometchat/uikit-elements'
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 @Component({
+  standalone: false,
   selector: 'cometchat-create-group-demo',
   templateUrl: './create-group-demo.component.html',
   styleUrls: ['./create-group-demo.component.scss']

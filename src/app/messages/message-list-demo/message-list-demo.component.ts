@@ -5,6 +5,7 @@ import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { MessageListStyle } from '@cometchat/uikit-shared';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-message-list-demo',
   templateUrl: './message-list-demo.component.html',
   styleUrls: ['./message-list-demo.component.scss']

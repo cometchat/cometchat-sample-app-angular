@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 
 @Component({
+  standalone: false,
   selector: 'status-indicator-demo',
   templateUrl: './status-indicator-demo.component.html',
   styleUrls: ['./status-indicator-demo.component.scss']

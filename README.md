@@ -38,10 +38,9 @@ This is a reference application showcasing the integration of [CometChat's Angul
     npm install
     ```
 4. Enter your CometChat _`App ID`_, _`Region`_, and _`Auth Key`_ in the [AppConstants.ts](https://github.com/cometchat/cometchat-sample-app-angular/blob/v4/src/AppConstants.ts) file:
-   https://github.com/cometchat/cometchat-sample-app-angular/blob/b624244691176cad7b468b8fa343fe3b3f76e27a/src/AppConstants.ts#L1-L5
-5. If your app is created before August 12th, 2024 then change the sample data URL to `https://assets.cometchat.io/sampleapp/v1/sampledata.json` in the [src/app/login/login.component.ts](https://github.com/cometchat/cometchat-sample-app-angular/src/app/login/login.component.ts) file: https://github.com/cometchat/cometchat-sample-app-angular/blob/b624244691176cad7b468b8fa343fe3b3f76e27a/src/app/login/login.component.ts#L38-L40
+   https://github.com/cometchat/cometchat-sample-app-angular/blob/9e868938ab4fbfb70cfea28c6fa773e8431c0e26/src/AppConstants.ts#L1-L5
 
-6. Run the project locally to see all CometChat features in action:
+5. Run the project locally to see all CometChat features in action:
     ```
     npm run start
     ```

@@ -5,6 +5,7 @@ import { UsersStyle } from '@cometchat/uikit-shared';
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-users-demo',
   templateUrl: './users-demo.component.html',
   styleUrls: ['./users-demo.component.scss']

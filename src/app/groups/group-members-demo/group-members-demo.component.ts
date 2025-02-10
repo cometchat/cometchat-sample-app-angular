@@ -5,6 +5,7 @@ import { ListItemStyle } from '@cometchat/uikit-elements';
 import '@cometchat/uikit-elements'
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 @Component({
+  standalone: false,
   selector: 'group-members-demo',
   templateUrl: './group-members-demo.component.html',
   styleUrls: ['./group-members-demo.component.scss']

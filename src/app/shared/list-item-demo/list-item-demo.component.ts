@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@co
 import { BadgeStyle, DateStyle, ListItemStyle, AvatarStyle, ReceiptStyle } from '@cometchat/uikit-elements';
 import { ConversationsStyle, BaseStyle } from '@cometchat/uikit-shared';
 @Component({
+  standalone: false,
   selector: 'list-item-demo',
   templateUrl: './list-item-demo.component.html',
   styleUrls: ['./list-item-demo.component.scss']

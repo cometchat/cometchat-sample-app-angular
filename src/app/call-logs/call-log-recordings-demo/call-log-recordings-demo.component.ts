@@ -4,6 +4,7 @@ import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { CometChatUIKitCalls, States } from '@cometchat/chat-uikit-angular';
 
 @Component({
+  standalone: false,
   selector: 'call-log-recordings-demo',
   templateUrl: './call-log-recordings-demo.component.html',
   styleUrls: ['./call-log-recordings-demo.component.scss'],

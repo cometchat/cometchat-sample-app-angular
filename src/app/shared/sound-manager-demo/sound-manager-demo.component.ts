@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular';
 import { CometChatSoundManager } from '@cometchat/uikit-shared';
 @Component({
+  standalone: false,
   selector: 'sound-manager-demo',
   templateUrl: './sound-manager-demo.component.html',
   styleUrls: ['./sound-manager-demo.component.scss']

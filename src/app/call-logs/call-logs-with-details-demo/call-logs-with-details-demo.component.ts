@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/ch
 
 
 @Component({
+  standalone: false,
   selector: 'call-logs-with-details-demo',
   templateUrl: './call-logs-with-details-demo.component.html',
   styleUrls: ['./call-logs-with-details-demo.component.scss']

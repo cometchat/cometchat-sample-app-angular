@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AvatarStyle } from '@cometchat/uikit-elements';
 
 @Component({
+  standalone: false,
   selector: 'card-bubble-demo',
   templateUrl: './card-bubble-demo.component.html',
   styleUrls: ['./card-bubble-demo.component.scss']

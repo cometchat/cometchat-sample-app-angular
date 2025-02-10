@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/ch
 import { AvatarStyle } from '@cometchat/uikit-elements';
 
 @Component({
+  standalone: false,
   selector: 'video-bubble-demo',
   templateUrl: './video-bubble-demo.component.html',
   styleUrls: ['./video-bubble-demo.component.scss']

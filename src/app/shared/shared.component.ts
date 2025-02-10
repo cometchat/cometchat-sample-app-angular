@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
 @Component({
+  standalone: false,
   selector: 'cometchat-shared-wrapper',
   templateUrl: './shared.component.html',
   styleUrls: ['./shared.component.scss']

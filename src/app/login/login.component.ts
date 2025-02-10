@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { users } from '../../sampleApp/sampledata';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

@@ -5,6 +5,7 @@ import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { MessageComposerStyle } from '@cometchat/uikit-shared';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-message-composer-demo',
   templateUrl: './message-composer-demo.component.html',
   styleUrls: ['./message-composer-demo.component.scss'],

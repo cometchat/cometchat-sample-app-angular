@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AvatarStyle, ListItemStyle, QuickViewStyle } from '@cometchat/uikit-elements';
 import '@cometchat/uikit-shared'
 @Component({
+  standalone: false,
   selector: 'scheduler-bubble-demo',
   templateUrl: './scheduler-bubble-demo.component.html',
   styleUrls: ['./scheduler-bubble-demo.component.scss']

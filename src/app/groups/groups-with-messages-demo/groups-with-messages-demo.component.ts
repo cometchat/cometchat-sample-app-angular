@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/ch
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-groups-with-messages-demo',
   templateUrl: './groups-with-messages-demo.component.html',
   styleUrls: ['./groups-with-messages-demo.component.scss']

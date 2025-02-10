@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService } from '@cometchat/chat-uikit-ang
 
 
 @Component({
+  standalone: false,
   selector: 'cometchat-contacts-demo',
   templateUrl: './contacts-demo.component.html',
   styleUrls: ['./contacts-demo.component.scss']

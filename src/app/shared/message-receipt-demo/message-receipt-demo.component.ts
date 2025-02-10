@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { CometChatTheme, CometChatThemeService, Receipts, fontHelper } from '@cometchat/chat-uikit-angular';
 @Component({
+  standalone: false,
   selector: 'message-receipt-demo',
   templateUrl: './message-receipt-demo.component.html',
   styleUrls: ['./message-receipt-demo.component.scss']

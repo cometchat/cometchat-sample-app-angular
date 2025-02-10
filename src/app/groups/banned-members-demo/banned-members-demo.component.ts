@@ -5,6 +5,7 @@ import { ListItemStyle } from '@cometchat/uikit-elements';
 import '@cometchat/uikit-elements'
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 @Component({
+  standalone: false,
   selector: 'cometchat-banned-members-demo',
   templateUrl: './banned-members-demo.component.html',
   styleUrls: ['./banned-members-demo.component.scss']

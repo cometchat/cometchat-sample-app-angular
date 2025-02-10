@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CometChatPalette, CometChatTheme, CometChatThemeService, fontHelper, } from '@cometchat/chat-uikit-angular';
 
 @Component({
+  standalone: false,
   selector: 'theme-demo',
   templateUrl: './theme-demo.component.html',
   styleUrls: ['./theme-demo.component.scss']

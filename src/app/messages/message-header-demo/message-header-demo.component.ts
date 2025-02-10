@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService } from '@cometchat/chat-uikit-ang
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-message-header-demo',
   templateUrl: './message-header-demo.component.html',
   styleUrls: ['./message-header-demo.component.scss']

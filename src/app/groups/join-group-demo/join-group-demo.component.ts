@@ -3,6 +3,7 @@ import {CometChatThemeService, fontHelper } from '@cometchat/chat-uikit-angular'
 import { JoinGroupStyle, ListItemStyle } from '@cometchat/uikit-elements';
 import '@cometchat/uikit-elements'
 @Component({
+  standalone: false,
   selector: 'cometchat-join-group-demo',
   templateUrl: './join-group-demo.component.html',
   styleUrls: ['./join-group-demo.component.scss']

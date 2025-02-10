@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { CometChatLocalize, CometChatTheme, CometChatThemeService, fontHelper, localize } from '@cometchat/chat-uikit-angular';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-conversations-wrapper',
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.scss']

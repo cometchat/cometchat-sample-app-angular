@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, fontHelper } from '@cometchat/ch
 import { BadgeStyle } from '@cometchat/uikit-elements';
 
 @Component({
+  standalone: false,
   selector: 'badge-demo',
   templateUrl: './badge-demo.component.html',
   styleUrls: ['./badge-demo.component.scss']

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CometChat } from '@cometchat/chat-sdk-javascript';
 
 @Component({
+  standalone: false,
   selector: 'call-log-history-demo',
   templateUrl: './call-log-history-demo.component.html',
   styleUrls: ['./call-log-history-demo.component.scss'],

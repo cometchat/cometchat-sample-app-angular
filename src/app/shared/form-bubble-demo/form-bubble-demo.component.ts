@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AvatarStyle, QuickViewStyle, SingleSelectStyle } from '@cometchat/uikit-elements';
 
 @Component({
+  standalone: false,
   selector: 'form-bubble-demo',
   templateUrl: './form-bubble-demo.component.html',
   styleUrls: ['./form-bubble-demo.component.scss']

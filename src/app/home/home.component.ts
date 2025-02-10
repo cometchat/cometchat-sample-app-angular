@@ -5,6 +5,7 @@ import { CometChat } from '@cometchat/chat-sdk-javascript';
 import { CometChatTheme, CometChatThemeService, CometChatUIKit, fontHelper, localize } from '@cometchat/chat-uikit-angular';
 
 @Component({
+  standalone: false,
   selector: 'cometchat-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],

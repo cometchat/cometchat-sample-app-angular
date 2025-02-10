@@ -3,6 +3,7 @@ import { CometChatTheme, CometChatThemeService, TextBubbleStyle, fontHelper, loc
 import {CometChat} from '@cometchat/chat-sdk-javascript'
 import {MessageInformationStyle} from '@cometchat/uikit-shared'
 @Component({
+  standalone: false,
   selector: 'cometchat-message-information-demo',
   templateUrl: './message-information-demo.component.html',
   styleUrls: ['./message-information-demo.component.scss']

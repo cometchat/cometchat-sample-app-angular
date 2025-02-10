@@ -9,6 +9,7 @@ import {
 } from '@cometchat/chat-uikit-angular';
 
 @Component({
+  standalone: false,
   selector: 'call-logs',
   templateUrl: './call-logs.component.html',
   styleUrls: ['./call-logs.component.scss'],
